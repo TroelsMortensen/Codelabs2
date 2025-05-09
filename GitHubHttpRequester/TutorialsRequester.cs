@@ -12,7 +12,7 @@ public static class TutorialsRequester
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
 
-        HttpResponseMessage response = await client.GetAsync(BaseUrl.TUTORIALS_URL);
+        HttpResponseMessage response = await client.GetAsync(BaseUrl.ARTICLES_URL);
         if (!response.IsSuccessStatusCode)
         {
             throw new Exception($"Error: {response.StatusCode}");
