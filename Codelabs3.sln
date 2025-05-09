@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tutorials", "Tutorials\Tutorials.csproj", "{99EE28BA-F627-40C5-B85C-7C1C1D580D73}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Articles", "Articles\Articles.csproj", "{99EE28BA-F627-40C5-B85C-7C1C1D580D73}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetFromGitTester", "GetFromGitTester\GetFromGitTester.csproj", "{79592103-CE46-43B9-B3D1-F929C49E88B5}"
 EndProject
