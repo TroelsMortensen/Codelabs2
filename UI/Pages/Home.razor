@@ -1,9 +1,9 @@
 ﻿@page "/"
-@using GitHubHttpRequester
+@using UI.Data.Models
 
 <PageTitle>Home</PageTitle>
 
-@if (folders is null)
+@if (headers is null)
 {
     <h2>Loading tutorials..</h2>
 }
@@ -12,10 +12,10 @@ else
     <div>
         <h2>GitHub Tutorials</h2>
         <ul>
-            @foreach (GitHubFolderContent folder in folders)
+            @foreach (ArticleHeader header in headers)
             {
-                <div class="tutorials-card" @onclick="() => NavigateToArticle(folder.Name)">
-                    <h3>@folder.Name</h3>
+                <div class="tutorials-card" @onclick="() => NavigateToArticle(header.Name)">
+                    <h3>@header.Name</h3>
                 </div>
             }
         </ul>
