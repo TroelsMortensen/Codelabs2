@@ -1,0 +1,22 @@
+﻿@page "/Article/{tutorialsname}"
+<h3>Article</h3>
+
+@if (files.Count == 0)
+{
+    <h2>Loading article..</h2>
+}
+else
+{
+    <div class="layout">
+        <div class="steps-container">
+            <div class="step">Step 1</div>
+            <div class="step">Step 2</div>
+        </div>
+        <div class="page-container">
+            <div class="tutorials-page">
+                <h3>@currentPage.Name</h3>
+                <p>@currentPage.Markdown</p>
+            </div>
+        </div>
+    </div>
+}

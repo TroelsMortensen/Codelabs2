@@ -11,4 +11,12 @@
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.4" PrivateAssets="all"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\GitHubHttpRequester\GitHubHttpRequester.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="State\" />
+    </ItemGroup>
+
 </Project>

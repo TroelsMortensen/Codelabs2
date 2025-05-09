@@ -1,7 +1,23 @@
 ﻿@page "/"
+@using GitHubHttpRequester
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
+@if (folders is null)
+{
+    <h2>Loading tutorials..</h2>
+}
+else
+{
+    <div>
+        <h2>GitHub Tutorials</h2>
+        <ul>
+            @foreach (GitHubFolderContent folder in folders)
+            {
+                <div class="tutorials-card" @onclick="() => NavigateToArticle(folder.Name)">
+                    <h3>@folder.Name</h3>
+                </div>
+            }
+        </ul>
+    </div>
+}

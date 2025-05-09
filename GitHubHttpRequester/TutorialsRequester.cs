@@ -12,7 +12,7 @@ public static class TutorialsRequester
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
 
-        HttpResponseMessage response = await client.GetAsync(BaseUrl.REPOSITORY_URL);
+        HttpResponseMessage response = await client.GetAsync(BaseUrl.TUTORIALS_URL);
         if (!response.IsSuccessStatusCode)
         {
             throw new Exception($"Error: {response.StatusCode}");
@@ -26,7 +26,10 @@ public static class TutorialsRequester
             }
         )!;
 
-        return contents;
+        return contents
+            .Where(cnt => cnt.Type == "dir")
+            .OrderBy(cnt => cnt.Name)
+            .ToList();
     }
 }
 
