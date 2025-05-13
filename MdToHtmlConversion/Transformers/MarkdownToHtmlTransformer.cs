@@ -4,7 +4,7 @@ namespace MdToHtmlConversion.Transformers;
 
 public class MarkdownToHtmlTransformer : ITransformer
 {
-    public string Handle(string markdown)
+    public string Handle(string markdown, string articleName)
     {
         var pipeline = new MarkdownPipelineBuilder()
             .UseAdvancedExtensions()

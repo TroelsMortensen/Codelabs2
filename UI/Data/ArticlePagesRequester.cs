@@ -17,7 +17,7 @@ public static class ArticlePagesRequester
             .Where(file => file.Name.EndsWith(".md"))
             .Select((content, index) => new ArticlePage(
                 FixName(content.Name, index),
-                new MarkupString(MasterConverter.ConvertMarkdownToHtml(content.Markdown))
+                new MarkupString(MasterConverter.ConvertMarkdownToHtml(content.Markdown, articleName))
             )).ToList();
 
         return articlePages;

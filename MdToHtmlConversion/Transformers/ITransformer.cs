@@ -2,5 +2,5 @@
 
 public interface ITransformer
 {
-    public string Handle(string markdown);
+    public string Handle(string markdown, string articleName);
 }

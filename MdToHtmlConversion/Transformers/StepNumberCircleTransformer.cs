@@ -4,7 +4,7 @@ namespace MdToHtmlConversion.Transformers;
 
 public class StepNumberCircleTransformer : ITransformer
 {
-    public string Handle(string markdown)
+    public string Handle(string markdown, string articleName)
     {
         Regex pattern = new(@"\(\(\d*\)\)");
         MatchCollection matchCollection = pattern.Matches(markdown);
