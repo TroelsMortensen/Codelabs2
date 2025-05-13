@@ -1,3 +1,5 @@
-﻿namespace UI.Data.Models;
+﻿using Microsoft.AspNetCore.Components;
 
-public record ArticlePage(string Name, string Html);
+namespace UI.Data.Models;
+
+public record ArticlePage(string Name, MarkupString Html);

@@ -1,5 +1,6 @@
 ﻿using GitHubHttpRequester;
 using MdToHtmlConversion;
+using Microsoft.AspNetCore.Components;
 using UI.Data.Models;
 
 namespace UI.Data;
@@ -13,10 +14,15 @@ public static class ArticlePagesRequester
         List<ArticlePage> articlePages = files
             .Where(file => !file.Name.StartsWith("Meta.json", StringComparison.OrdinalIgnoreCase))
             .Select(content => new ArticlePage(
-                content.Name,
-                MasterConverter.ConvertMarkdownToHtml(content.Markdown)
+                FixName(content.Name),
+                new MarkupString(MasterConverter.ConvertMarkdownToHtml(content.Markdown))
             )).ToList();
 
         return articlePages;
     }
+
+    private static string FixName(string name) =>
+        name
+            .Replace(".md", "")
+            [name.IndexOf(' ')..];
 }

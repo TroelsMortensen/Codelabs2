@@ -1,5 +1,7 @@
 ﻿@page "/Article/{tutorialsname}"
+
 @using UI.Data.Models
+
 <h3>@TutorialsName</h3>
 
 @if (pages.Count == 0)
@@ -10,18 +12,19 @@ else
 {
     <div class="layout">
         <div class="steps-container">
-            @foreach (ArticlePage file in pages)
+            @foreach (ArticlePage articlePage in pages)
             {
-                <div class="step">@file.Name</div>
+                <div class="step @(currentPage == articlePage ? "active" : "")">
+                    @articlePage.Name
+                </div>
             }
         </div>
         <div class="page-container">
             <div class="tutorials-page">
-                <h3>@currentPage.Name</h3>
-                <p>@currentPage.Html</p>
+                @currentPage.Html
             </div>
         </div>
-        <div class="steps-container">
+        <div class="steps-container steps-container-spacer">
         </div>
     </div>
 }
