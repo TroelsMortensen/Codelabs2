@@ -1,6 +1,6 @@
 ﻿# First steps
 
-## Main Title Placeholder
+## Main Title Placeholder1
 
 This is an introductory paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
