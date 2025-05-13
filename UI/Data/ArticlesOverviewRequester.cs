@@ -7,7 +7,7 @@ public static class ArticlesOverviewRequester
 {
     public static async Task<List<ArticleHeader>> GetArticleHeaders(HttpClient client)
     {
-        List<GitHubFolderContent> folders = await TutorialsRequester.GetFolders(client);
+        List<GitHubFolderContent> folders = await GitHubHttpRequester.ArticlesOverviewRequester.GetFolders(client);
 
         List<ArticleHeader> articleHeaders = folders
             .ToList()

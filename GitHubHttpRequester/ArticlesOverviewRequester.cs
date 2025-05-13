@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace GitHubHttpRequester;
 
-public static class TutorialsRequester
+public static class ArticlesOverviewRequester
 {
     public static async Task<List<GitHubFolderContent>> GetFolders(HttpClient client)
     {

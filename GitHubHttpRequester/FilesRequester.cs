@@ -9,7 +9,7 @@ public static class FilesRequester
     public static async Task<List<GitHubFileContent>> GetFilesFromFolder(HttpClient client, string folderPath)
     {
         string content = await FetchArticlesOverview(client, folderPath);
-        var fileDetails = ToFileContents(content);
+        List<GitHubFileContent> fileDetails = ToFileContents(content);
         await PopulateFileDetailsWithMarkdownContents(client, fileDetails);
 
         return fileDetails;

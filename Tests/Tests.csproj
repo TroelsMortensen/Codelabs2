@@ -24,6 +24,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\GitHubHttpRequester\GitHubHttpRequester.csproj" />
+      <ProjectReference Include="..\UI\UI.csproj" />
     </ItemGroup>
 
 </Project>
