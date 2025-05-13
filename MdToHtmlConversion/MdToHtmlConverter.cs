@@ -1,20 +1,20 @@
-﻿using Markdig;
+﻿namespace MdToHtmlConversion;
 
-namespace MdToHtmlConversion;
-
-public static class MdToHtmlConverter
+public static class MasterConverter
 {
     public static string ConvertMarkdownToHtml(string markdown)
     {
-        // Use a Markdown library to convert the markdown to HTML
-        var pipeline = new Markdig.MarkdownPipelineBuilder()
-            .UseAdvancedExtensions()
-            .Build();
-
         List<IConverter> converters = new List<IConverter>
         {
+            new MarkdownToHtmlConverter()
         };
-        
-        return string.Empty;
+
+        string finalHtml = converters
+            .Aggregate(
+                markdown,
+                (currentHtml, converter) => converter.Handle(currentHtml)
+            );
+
+        return finalHtml;
     }
 }

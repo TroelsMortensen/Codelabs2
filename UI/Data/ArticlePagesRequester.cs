@@ -1,4 +1,5 @@
 ﻿using GitHubHttpRequester;
+using MdToHtmlConversion;
 using UI.Data.Models;
 
 namespace UI.Data;
@@ -9,12 +10,12 @@ public static class ArticlePagesRequester
     {
         List<GitHubFileContent> files = await FilesRequester.GetFilesFromFolder(client, articleName);
         
-        List<ArticlePage> articleHeaders = files.Select(content => new ArticlePage(
+        List<ArticlePage> articlePages = files.Select(content => new ArticlePage(
             content.Name,
-            content.Markdown
+            MasterConverter.ConvertMarkdownToHtml(content.Markdown)
         )).ToList();
         
-        return articleHeaders;
+        return articlePages;
     }
 }
 

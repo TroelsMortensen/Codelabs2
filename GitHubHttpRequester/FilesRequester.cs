@@ -11,7 +11,7 @@ public static class FilesRequester
     {
         string content = await FetchArticlesOverview(client, folderPath);
         var fileDetails = ToFileContents(content);
-        await PopulateFileDatasWithMarkdownContents(client, fileDetails);
+        await PopulateFileDetailsWithMarkdownContents(client, fileDetails);
 
         return fileDetails;
     }
@@ -46,8 +46,9 @@ public static class FilesRequester
         return content;
     }
 
-    private static async Task PopulateFileDatasWithMarkdownContents(HttpClient client, List<GitHubFileContent> fileDetails)
+    private static async Task PopulateFileDetailsWithMarkdownContents(HttpClient client, List<GitHubFileContent> fileDetails)
     {
+        // TODO Do this in parallel, instead of serial
         foreach (GitHubFileContent fileContent in fileDetails)
         {
             HttpResponseMessage contentResponse = await client.GetAsync(fileContent.DownloadUrl);

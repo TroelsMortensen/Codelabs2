@@ -13,6 +13,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\GitHubHttpRequester\GitHubHttpRequester.csproj" />
+      <ProjectReference Include="..\MdToHtmlConversion\MdToHtmlConversion.csproj" />
     </ItemGroup>
 
     <ItemGroup>
