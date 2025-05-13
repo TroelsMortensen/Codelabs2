@@ -8,9 +8,10 @@ public static class MasterConverter
     {
         List<ITransformer> converters = new List<ITransformer>
         {
-            new MarkdownToHtmlTransformer(),
-            new StepNumberCircleTransformer(),
-            new ImageUrlFixer()
+            new ConvertMarkdownToHtml(),
+            new CircleStepNumbersInRed(),
+            new FixImageUrls(),
+            new AddLinesToCodeBlocks()
         };
 
         string finalHtml = converters

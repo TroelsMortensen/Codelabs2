@@ -31,22 +31,18 @@
 
 .article-content-container img {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
     box-shadow: 0px 0px 0px 0px rgb(60 64 67), 0px 0px 10px 1px rgb(60 64 67);
+    max-width: 90%;
+    min-width: 20%;
+    margin: 30px auto;
+    padding: 10px;
+    border-radius: 15px;
 }
 
-.article-content-container code {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #e3e3e3;
-    padding: 0 2px;
-    color:black;
-}
+/*This is for code blocks*/
 
+
+/*This is for inline code*/
 .article-content-container code:not([class]) {
     display: inline-block;
     border-radius: 5px;

@@ -2,7 +2,7 @@
 
 namespace MdToHtmlConversion.Transformers;
 
-public class ImageUrlFixer : ITransformer
+public class FixImageUrls : ITransformer
 {
     public string Handle(string markdown, string articleName)
     {

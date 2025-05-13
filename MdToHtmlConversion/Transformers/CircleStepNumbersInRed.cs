@@ -2,7 +2,7 @@
 
 namespace MdToHtmlConversion.Transformers;
 
-public class StepNumberCircleTransformer : ITransformer
+public class CircleStepNumbersInRed : ITransformer
 {
     public string Handle(string markdown, string articleName)
     {

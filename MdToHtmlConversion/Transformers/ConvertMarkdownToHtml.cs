@@ -2,7 +2,7 @@
 
 namespace MdToHtmlConversion.Transformers;
 
-public class MarkdownToHtmlTransformer : ITransformer
+public class ConvertMarkdownToHtml : ITransformer
 {
     public string Handle(string markdown, string articleName)
     {

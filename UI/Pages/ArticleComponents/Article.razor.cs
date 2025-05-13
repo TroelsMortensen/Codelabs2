@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using UI.Data;
 using UI.Data.Models;
 
@@ -11,6 +12,8 @@ public partial class Article : ComponentBase
     [Inject] public HttpClient Client { get; set; }
 
     [Inject] public NavigationManager NavMgr { get; set; }
+    
+    [Inject] public IJSRuntime JsRuntime { get; set; }
 
     private List<ArticlePage> pages = new();
     private int stepIndex = 0;
@@ -32,5 +35,10 @@ public partial class Article : ComponentBase
     {
         stepIndex = idx;
         currentPage = pages[stepIndex];
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JsRuntime.InvokeVoidAsync("Prism.highlightAll");
     }
 }

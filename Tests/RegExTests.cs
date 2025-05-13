@@ -18,7 +18,7 @@ public class RegExTests(ITestOutputHelper testOutputHelper)
 <img src=""/images/logo.gif"" />
 ";
         string articleName = "Feature Tester";
-        var result = ImageUrlFixer.PrependBaseUrlToRelativeImgUrl(articleName, input);
+        var result = FixImageUrls.PrependBaseUrlToRelativeImgUrl(articleName, input);
         testOutputHelper.WriteLine(result);
         // TODO Assert something eventually..
     }
