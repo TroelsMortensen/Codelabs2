@@ -1,5 +1,4 @@
 ﻿using System.Net.Http.Headers;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -20,7 +19,7 @@ public static class FilesRequester
     {
         List<GitHubFileContent> fileDetails = JsonSerializer.Deserialize<List<GitHubFileContent>>(content, new JsonSerializerOptions
         {
-            PropertyNameCaseInsensitive = true 
+            PropertyNameCaseInsensitive = true
         })!;
 
         fileDetails = fileDetails

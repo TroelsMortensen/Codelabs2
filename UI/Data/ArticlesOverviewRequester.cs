@@ -7,12 +7,22 @@ public static class ArticlesOverviewRequester
 {
     public static async Task<List<ArticleHeader>> GetArticleHeaders(HttpClient client)
     {
-        var folders = await TutorialsRequester.GetFolders(client);
-        
+        List<GitHubFolderContent> folders = await TutorialsRequester.GetFolders(client);
+
         List<ArticleHeader> articleHeaders = folders
-            .Select(content => new ArticleHeader(content.Name))
+            .ToList()
+            .Select(content => new ArticleHeader(
+                content.Name,
+                AddMetaData(content))
+            )
             .ToList();
-        
+
         return articleHeaders;
+    }
+
+    private static ArticleHeaderMetaData AddMetaData(GitHubFolderContent content)
+    {
+        // TODO fetch meta data file
+        return new("Category");
     }
 }
