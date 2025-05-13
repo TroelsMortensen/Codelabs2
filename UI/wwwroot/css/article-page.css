@@ -39,14 +39,14 @@
     border-radius: 15px;
 }
 
-/*This is for code blocks*/
-
-
 /*This is for inline code*/
 .article-content-container code:not([class]) {
     display: inline-block;
     border-radius: 5px;
     line-height: 1.2;
+    color:black;
+    background-color: #e3e3e3;
+    padding: 0 4px;
 }
 
 .article-content-container thead {
