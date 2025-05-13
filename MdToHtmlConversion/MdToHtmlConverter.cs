@@ -1,12 +1,15 @@
-﻿namespace MdToHtmlConversion;
+﻿using MdToHtmlConversion.Transformers;
+
+namespace MdToHtmlConversion;
 
 public static class MasterConverter
 {
     public static string ConvertMarkdownToHtml(string markdown)
     {
-        List<IConverter> converters = new List<IConverter>
+        List<ITransformer> converters = new List<ITransformer>
         {
-            new MarkdownToHtmlConverter()
+            new MarkdownToHtmlTransformer(),
+            new StepNumberCircleTransformer()
         };
 
         string finalHtml = converters

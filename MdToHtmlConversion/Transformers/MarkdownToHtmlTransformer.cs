@@ -1,8 +1,8 @@
 ﻿using Markdig;
 
-namespace MdToHtmlConversion;
+namespace MdToHtmlConversion.Transformers;
 
-public class MarkdownToHtmlConverter : IConverter
+public class MarkdownToHtmlTransformer : ITransformer
 {
     public string Handle(string markdown)
     {
