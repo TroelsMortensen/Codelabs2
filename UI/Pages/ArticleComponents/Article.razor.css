@@ -1,0 +1,146 @@
+﻿.homelink {
+    cursor: pointer;
+    font-size: 50px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.steps-container {
+    min-width: 250px;
+    border: 1px dotted #fb3737;
+}
+
+.step {
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: 5px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: white;
+    opacity: 0.3;
+}
+
+.step.active {
+    opacity: 1.0;
+    box-shadow: 0 1px 5px 1px rgb(60 64 67 / 60%), 0 2px 6px 2px rgb(60 64 67 / 30%);
+    transform: translate(3px, -1px);
+}
+
+.step:hover {
+    box-shadow: 0 0 10px 1px rgb(60 64 67);
+    transform: translate(3px, -1px);
+}
+
+.article-content-container {
+    min-width: 400px;
+    max-width: 1200px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 15px;
+}
+
+.steps-container-spacer {
+}
+
+.top-buttons-row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buttons-box {
+    margin: 10px;
+    margin-right: 25px;
+}
+
+.page-card {
+    background-color: #ffffff;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    max-width: 130ch;
+    width: 100%;
+    border-radius: 25px;
+    box-shadow: 0px 1px 2px 0px rgb(60 64 67), 0px 2px 16px 12px rgba(60, 64, 67, 0.5);
+}
+
+.article-button {
+    border-radius: 25px;
+    background-color: #5ca1e1;
+    border: none;
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+    font-weight: bold;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 9px;
+    box-shadow: 0 5px 10px 0px rgba(0, 0, 0, .5);
+    display: inline-block;
+    position: relative;
+}
+
+.next-page-button {
+    width: 100px;
+}
+
+.article-button:hover {
+    box-shadow: 0 8px 10px 2px rgba(0, 0, 0, .7);
+    transform: translateY(-3px);
+}
+
+.next-page-button:after {
+    content: '>>';
+    position: absolute;
+    opacity: 0;
+    top: 12px;
+    right: -6px;
+    transition: 0.25s;
+}
+
+.next-page-button:hover {
+    padding-right: 24px;
+    padding-left: 0px;
+}
+
+.next-page-button:hover:after {
+    opacity: 1;
+    right: 10px;
+}
+
+.prev-page-button {
+    width: 120px;
+}
+
+.home-button {
+    width: 100px;
+}
+
+.prev-page-button:after {
+    content: '<<';
+    position: absolute;
+    opacity: 0;
+    top: 12px;
+    left: -20px;
+    transition: 0.25s;
+}
+
+.prev-page-button:hover {
+    padding-right: 0px;
+    padding-left: 24px;
+}
+
+.prev-page-button:hover:after {
+    opacity: 1;
+    left: 10px;
+}
