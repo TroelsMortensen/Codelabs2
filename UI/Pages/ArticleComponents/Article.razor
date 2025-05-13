@@ -3,12 +3,10 @@
 @using UI.Data.Models
 
 <div>
-    <i class="fa fa-home homelink" @onclick='() => NavMgr.NavigateTo("/")'></i>
 </div>
 <div class="header-container">
-    <div>
-        <h1>@TutorialsName</h1>
-    </div>
+    <i class="fa fa-home home-link" @onclick='() => NavMgr.NavigateTo("/")'></i>
+    <h1>@TutorialsName</h1>
 </div>
 @if (pages.Count == 0)
 {

@@ -1,12 +1,16 @@
-﻿.homelink {
+﻿.home-link {
     cursor: pointer;
     font-size: 50px;
+    position: absolute;
+    left: 0;
+    padding: 0 1rem;
 }
 
 .header-container {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .layout {
