@@ -1,10 +1,10 @@
 ﻿# First steps
 
-# Main Title Placeholder
+## Main Title Placeholder
 
 This is an introductory paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
-## Subheading Example
+### Subheading Example
 
 Here's some **bold text** and some *italic text*.
 You can also combine them for ***bold and italic***.

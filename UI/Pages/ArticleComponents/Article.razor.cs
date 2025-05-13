@@ -27,4 +27,10 @@ public partial class Article : ComponentBase
         stepIndex += step;
         currentPage = pages[stepIndex];
     }
+
+    private void GoToPage(int idx)
+    {
+        stepIndex = idx;
+        currentPage = pages[stepIndex];
+    }
 }

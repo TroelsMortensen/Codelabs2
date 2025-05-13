@@ -18,10 +18,11 @@ else
 {
     <div class="layout">
         <div class="steps-container">
-            @foreach (ArticlePage articlePage in pages)
+            @for (int i = 0; i < pages.Count; i++)
             {
-                <div class="step @(currentPage == articlePage ? "active" : "")">
-                    @articlePage.Name
+                int idx = i;
+                <div class="step @(currentPage == pages[i] ? "active" : "")" @onclick="() => GoToPage(idx)">
+                    @pages[i].Name
                 </div>
             }
         </div>
@@ -30,19 +31,23 @@ else
                 <div class="buttons-box">
                     @if (stepIndex != 0)
                     {
-                        <button type="button" class="article-button prev-page-button" @onclick="() => ChangePage(-1)">
+                        <button type="button" class="article-button prev-page-button"
+                                @onclick="() => ChangePage(-1)">
                             Previous
                         </button>
                     }
                     @if (stepIndex != pages.Count - 1)
                     {
-                        <button type="button" class="article-button next-page-button" @onclick="() => ChangePage(1)">
+                        <button type="button" class="article-button next-page-button"
+                                @onclick="() => ChangePage(1)">
                             Next
                         </button>
                     }
                     else
                     {
-                        <button type="button" class="article-button home-button">Home</button>
+                        <button type="button" class="article-button home-button"
+                                @onclick='() => NavMgr.NavigateTo("/")'>Home
+                        </button>
                     }
                 </div>
             </div>

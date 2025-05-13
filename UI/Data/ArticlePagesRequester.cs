@@ -13,16 +13,19 @@ public static class ArticlePagesRequester
 
         List<ArticlePage> articlePages = files
             .Where(file => !file.Name.StartsWith("Meta.json", StringComparison.OrdinalIgnoreCase))
-            .Select(content => new ArticlePage(
-                FixName(content.Name),
+            .Select((content, index) => new ArticlePage(
+                FixName(content.Name, index),
                 new MarkupString(MasterConverter.ConvertMarkdownToHtml(content.Markdown))
             )).ToList();
 
         return articlePages;
     }
 
-    private static string FixName(string name) =>
-        name
+    private static string FixName(string name, int index)
+    {
+        string updatedName = (++index + ". ") + name
             .Replace(".md", "")
             [name.IndexOf(' ')..];
+        return updatedName;
+    }
 }
