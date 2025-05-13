@@ -139,7 +139,7 @@ div.code-toolbar > .toolbar {
     top: .3em;
     right: .2em;
     transition: opacity .3s ease-in-out;
-    opacity: 0
+    opacity: 0.5;
 }
 
 div.code-toolbar:hover > .toolbar {
@@ -151,7 +151,8 @@ div.code-toolbar:focus-within > .toolbar {
 }
 
 div.code-toolbar > .toolbar > .toolbar-item {
-    display: inline-block
+    display: inline-block;
+    font-size: 30px;
 }
 
 div.code-toolbar > .toolbar > .toolbar-item > a {

@@ -138,3 +138,7 @@
 .article-content-container details > summary {
     list-style: none;
 }
+
+.copy-to-clipboard-button{
+    font-size: 50px;
+}
