@@ -25,6 +25,7 @@ public static class FilesRequester
         fileDetails = fileDetails
             .Where(cnt => cnt.Type == "file")
             .ToList();
+
         return fileDetails;
     }
 
@@ -34,6 +35,8 @@ public static class FilesRequester
         client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("MyCSharpApp-FileFetcher", "1.0"));
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
+        client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue { NoCache = true };
+        client.DefaultRequestHeaders.Pragma.Add(new NameValueHeaderValue("no-cache"));
 
         HttpResponseMessage response = await client.GetAsync(BaseUrl.ARTICLES_URL + "/" + folderPath);
         if (!response.IsSuccessStatusCode)
