@@ -8,6 +8,6 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(_ => new HttpClient());
-builder.Services.AddSingleton<ArticlesState>();
+builder.Services.AddScoped<ArticlesState>();
 
 await builder.Build().RunAsync();
