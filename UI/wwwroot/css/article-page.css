@@ -11,7 +11,7 @@
     margin-bottom: 0.5em; /* space between the line and the heading */
 }
 
-.article-content-container details p:before{
+.article-content-container details[open] summary:after{
     content: "";
     display: block;
     height: 1px; /* thickness of the line */
