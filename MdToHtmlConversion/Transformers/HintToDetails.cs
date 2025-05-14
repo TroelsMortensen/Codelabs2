@@ -11,7 +11,9 @@ public class HintToDetails : ITransformer
 @"
 <details>
     <summary>$1</summary>
-    $2
+<p>
+$2
+</p>
 </details>";
 
         return Regex.Replace(html, pattern, replacement, RegexOptions.Singleline);
