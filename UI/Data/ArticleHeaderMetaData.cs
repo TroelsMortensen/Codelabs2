@@ -1,3 +1,3 @@
 ﻿namespace UI.Data;
 
-public record ArticleHeaderMetaData(string Category);
+public record ArticleHeaderMetaData(string Description, string Category, List<string> Tags);

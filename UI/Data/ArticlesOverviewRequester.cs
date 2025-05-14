@@ -25,7 +25,7 @@ public static class ArticlesOverviewRequester
 
     private static ArticleHeaderMetaData AddMetaData(GitHubFolderContent content)
     {
-        // TODO fetch meta data file
-        return new("Category");
+        // TODO fetch meta data file, later. For now, dummy data.
+        return new ArticleHeaderMetaData("Description", "Category", []);
     }
 }
