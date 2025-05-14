@@ -4,4 +4,4 @@
 * How do tables look?
 * better responsive design, mht den der steps overview
 * Do some caching in the state container class thingy.
-* dark theme?
+* create Article class, for the State class. Owner property, for the github repo, with root url
