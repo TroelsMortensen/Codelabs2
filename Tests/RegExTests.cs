@@ -1,4 +1,5 @@
-﻿using MdToHtmlConversion.Transformers;
+﻿using System.Text.RegularExpressions;
+using MdToHtmlConversion.Transformers;
 using Xunit.Abstractions;
 
 namespace Tests;
@@ -21,5 +22,24 @@ public class RegExTests(ITestOutputHelper testOutputHelper)
         var result = FixImageUrls.PrependBaseUrlToRelativeImgUrl(articleName, input);
         testOutputHelper.WriteLine(result);
         // TODO Assert something eventually..
+    }
+
+    [Fact]
+    public void CanConvertHintToDetails()
+    {
+        string input = @"
+<hint title=""Hint 1"">
+    This is a hint box, and it should be collapsible.
+</hint>";
+
+        string pattern = @"<hint\s+title=""(.*?)"">\s*\r?\n(.*?)\r?\n?</hint>";
+        string replacement = @"
+<details>
+    <summary>$1</summary>
+    $2
+</details>";
+
+        string output = Regex.Replace(input, pattern, replacement, RegexOptions.Singleline);
+        testOutputHelper.WriteLine(output);
     }
 }
