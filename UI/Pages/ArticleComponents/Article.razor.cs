@@ -10,8 +10,8 @@ public partial class Article : ComponentBase
 {
     [Parameter] public string TutorialsName { get; set; } = string.Empty;
     [Parameter] public string Owner { get; set; } = string.Empty;
+    [Parameter, SupplyParameterFromQuery] public string? PageNumber { get; set; }
 
-    // [Inject] public HttpClient Client { get; set; }
     [Inject] public NavigationManager NavMgr { get; set; }
     [Inject] public IJSRuntime JsRuntime { get; set; }
     [Inject] public ArticlesState ArticlesState { get; set; }
@@ -23,8 +23,16 @@ public partial class Article : ComponentBase
     protected override async Task OnInitializedAsync()
     {
         pages = await ArticlesState.GetArticlePages(Owner, TutorialsName);
+        SetPageIndex();
         currentPage = pages[stepIndex];
     }
+
+    private void SetPageIndex() =>
+        stepIndex =
+            int.TryParse(PageNumber, out int pageNumber)
+                ? pageNumber - 1
+                : 0;
+
 
     private void ChangePage(int step)
     {
@@ -38,8 +46,6 @@ public partial class Article : ComponentBase
         currentPage = pages[stepIndex];
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
+    protected override async Task OnAfterRenderAsync(bool firstRender) =>
         await JsRuntime.InvokeVoidAsync("Prism.highlightAll");
-    }
 }
