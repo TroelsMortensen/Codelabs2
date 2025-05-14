@@ -17,10 +17,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="State\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <_ContentIncludedByDefault Remove="wwwroot\js\languages\1c.js" />
       <_ContentIncludedByDefault Remove="wwwroot\js\languages\1c.min.js" />
       <_ContentIncludedByDefault Remove="wwwroot\js\languages\abnf.js" />

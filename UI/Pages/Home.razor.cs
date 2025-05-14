@@ -1,23 +1,23 @@
-﻿using GitHubHttpRequester;
-using Microsoft.AspNetCore.Components;
-using UI.Data;
+﻿using Microsoft.AspNetCore.Components;
 using UI.Data.Models;
+using UI.State;
 using ArticlesOverviewRequester = UI.Data.ArticlesOverviewRequester;
 
 namespace UI.Pages;
 
 public partial class Home : ComponentBase
 {
-    [Inject] public HttpClient Client { get; set; }
+    // [Inject] public HttpClient Client { get; set; }
     [Inject] public NavigationManager NavMgr { get; set; }
+    [Inject] public ArticlesState ArticlesState { get; set; }
 
-    private List<ArticleHeader>? headers;
+    private List<ArticleHeader>? articles;
 
     protected override async Task OnInitializedAsync()
     {
-        headers = await ArticlesOverviewRequester.GetArticleHeaders(Client);
+        articles = await ArticlesState.GetArticleHeaders();
     }
 
-    private void NavigateToArticle(string tutorialName) =>
-        NavMgr.NavigateTo($"/article/{tutorialName}");
+    private void NavigateToArticle(string owner, string tutorialName) =>
+        NavMgr.NavigateTo($"/article/{owner}/{tutorialName}");
 }

@@ -3,18 +3,18 @@
 
 <PageTitle>Home</PageTitle>
 
-@if (headers is null)
+@if (articles is null)
 {
-    <h2>Loading tutorials..</h2>
+    <h2>Loading articles..</h2>
 }
 else
 {
     <div>
-        <h2>GitHub Tutorials</h2>
+        <h2>Articles</h2>
         <ul>
-            @foreach (ArticleHeader header in headers)
+            @foreach (ArticleHeader header in articles)
             {
-                <div class="tutorials-card" @onclick="() => NavigateToArticle(header.Name)">
+                <div class="tutorials-card" @onclick="() => NavigateToArticle(header.Owner, header.Name)">
                     <h3>@header.Name</h3>
                 </div>
             }

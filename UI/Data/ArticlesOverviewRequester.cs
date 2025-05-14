@@ -5,15 +5,18 @@ namespace UI.Data;
 
 public static class ArticlesOverviewRequester
 {
-    public static async Task<List<ArticleHeader>> GetArticleHeaders(HttpClient client)
+    public static async Task<List<ArticleData>> GetArticleHeaders(HttpClient client)
     {
         List<GitHubFolderContent> folders = await GitHubHttpRequester.ArticlesOverviewRequester.GetFolders(client);
 
-        List<ArticleHeader> articleHeaders = folders
+        List<ArticleData> articleHeaders = folders
             .ToList()
-            .Select(content => new ArticleHeader(
-                content.Name,
-                AddMetaData(content))
+            .Select(content => new ArticleData(
+                    content.Name,
+                    content.Owner,
+                    AddMetaData(content),
+                    []
+                )
             )
             .ToList();
 

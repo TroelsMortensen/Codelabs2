@@ -25,6 +25,8 @@ public static class ArticlesOverviewRequester
                 PropertyNameCaseInsensitive = true
             }
         )!;
+        
+        contents.ForEach(x => x.Owner = "TroelsMortensen"); // TODO owner has to be set from the list of owners, in the future 
 
         return contents
             .Where(cnt => cnt.Type == "dir")
@@ -42,4 +44,5 @@ public class GitHubFolderContent
     public string Type { get; set; }
 
     public string Url { get; set; }
+    public string Owner { get; set; }
 }

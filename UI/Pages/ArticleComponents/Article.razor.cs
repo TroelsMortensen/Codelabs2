@@ -2,18 +2,19 @@
 using Microsoft.JSInterop;
 using UI.Data;
 using UI.Data.Models;
+using UI.State;
 
 namespace UI.Pages.ArticleComponents;
 
 public partial class Article : ComponentBase
 {
     [Parameter] public string TutorialsName { get; set; } = string.Empty;
+    [Parameter] public string Owner { get; set; } = string.Empty;
 
-    [Inject] public HttpClient Client { get; set; }
-
+    // [Inject] public HttpClient Client { get; set; }
     [Inject] public NavigationManager NavMgr { get; set; }
-    
     [Inject] public IJSRuntime JsRuntime { get; set; }
+    [Inject] public ArticlesState ArticlesState { get; set; }
 
     private List<ArticlePage> pages = new();
     private int stepIndex = 0;
@@ -21,7 +22,7 @@ public partial class Article : ComponentBase
 
     protected override async Task OnInitializedAsync()
     {
-        pages = await ArticlePagesRequester.GetArticlePages(Client, TutorialsName);
+        pages = await ArticlesState.GetArticlePages(Owner, TutorialsName);
         currentPage = pages[stepIndex];
     }
 
