@@ -44,9 +44,9 @@
     display: inline-block;
     border-radius: 5px;
     line-height: 1.2;
-    color:black;
-    background-color: #e3e3e3;
-    padding: 0 4px;
+    color: black;
+    background-color: #ececec;
+    padding: 2px 4px;
 }
 
 .article-content-container thead {
@@ -126,19 +126,19 @@
 }
 
 .article-content-container details {
-    display: inline-block;
+    /*display: inline-block;*/
     border: 1px solid #b4b4b4;
     padding: 10px;
-    margin: 10px;
-    box-shadow: 0px 0px 0px 0px rgb(60 64 67), 0px 0px 10px 1px rgb(100 100 100);
+    /*margin: 10px;*/
+    /*box-shadow: 0px 0px 0px 0px rgb(60 64 67), 0px 0px 10px 1px rgb(100 100 100);*/
     border-radius: 10px;
-    background-color: lightgrey;
+    background-color: #eeeeee;
+    cursor: pointer;
 }
 
 .article-content-container details > summary {
     list-style: none;
+    text-align: center;
+    color: #0d77f0;
 }
 
-.copy-to-clipboard-button{
-    font-size: 50px;
-}
