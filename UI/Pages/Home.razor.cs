@@ -13,10 +13,8 @@ public partial class Home : ComponentBase
 
     private List<ArticleHeader>? articles;
 
-    protected override async Task OnInitializedAsync()
-    {
+    protected override async Task OnInitializedAsync() =>
         articles = await ArticlesState.GetArticleHeaders();
-    }
 
     private void NavigateToArticle(string owner, string tutorialName) =>
         NavMgr.NavigateTo($"/article/{owner}/{tutorialName}");

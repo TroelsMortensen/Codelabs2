@@ -11,7 +11,8 @@ public static class ArticlesOverviewRequester
 
         List<ArticleData> articleHeaders = folders
             .ToList()
-            .Select(content => new ArticleData(
+            .Select(content =>
+                new ArticleData(
                     content.Name,
                     content.Owner,
                     AddMetaData(content),
