@@ -4,3 +4,4 @@
 * How do tables look?
 * better responsive design, mht den der steps overview
 * Do some caching in the state container class thingy.
+* dark theme?
