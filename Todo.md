@@ -2,5 +2,5 @@
 * Can search on home page by tags.
 * better responsive design, mht den der steps overview
 * Owner property, for the github repo, with root url
-* Documentation page
+* Noget quizz?
 * ??? skal blive til et... spørgsmål somehow, lidt som hint?
