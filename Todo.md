@@ -4,3 +4,5 @@
 * Owner property, for the github repo, with root url
 * Noget quizz?
 * ??? skal blive til et... spørgsmål somehow, lidt som hint?
+* indlejre videoer
+* Get it hosted
