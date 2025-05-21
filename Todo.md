@@ -3,6 +3,8 @@
 * better responsive design, mht den der steps overview
 * Owner property, for the github repo, with root url
 * Noget quizz?
-* ??? skal blive til et... spørgsmål somehow, lidt som hint?
+* ??? skal blive til et... spørgsmål somehow, lidt som hint? måske lige meget
 * indlejre videoer
 * Get it hosted
+* Skal have en slags review question thingy. Måske det er under quizz..
+* dark mode. gem setting i local storage?
