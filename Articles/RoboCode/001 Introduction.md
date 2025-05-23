@@ -7,3 +7,5 @@ You are going to write Java code, and the robots will be compiled and run in a s
 RoboCode provides a simple API that allows you to control the robot's movement, firing, and scanning capabilities. 
 
 You can also customize the robot's behavior by implementing different strategies and algorithms. The game is highly customizable, allowing you to create your own robots, arenas, and battle rules.
+
+There is a wiki available at [RoboCode Wiki](https://robowiki.net/wiki/Main_Page) that contains a lot of information about the game, including tutorials, API documentation, and community resources.
