@@ -1,0 +1,162 @@
+.article-content-container h1 {
+    text-align: center;
+    width: 100%;
+}
+
+.article-content-container h1:after{
+    content: "";
+    display: block;
+    height: 2px; /* thickness of the line */
+    background-color: black;
+    margin-bottom: 0.5em; /* space between the line and the heading */
+}
+
+.article-content-container details[open] summary:after{
+    content: "";
+    display: block;
+    height: 1px; /* thickness of the line */
+    background-color: black;
+    margin-bottom: 0.5em; /* space between the line and the heading */
+}
+
+.article-content-container details[open] {
+    display: block;
+}
+
+.article-content-container details {
+    border: 1px solid #b4b4b4;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #eee;
+    margin-bottom: 10px;
+}
+
+.article-content-container details > summary {
+    list-style: none;
+    text-align: center;
+    color: #0d77f0;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.article-content-container h1 {
+    text-align: center;
+}
+
+.article-content-container h2 {
+    padding-top: 3ch;
+}
+
+.article-content-container h3 {
+    padding-top: 3ch;
+}
+
+.article-content-container h6 {
+    font-size: medium;
+    color: gray;
+    font-style: italic;
+}
+
+.article-content-container img {
+    display: block;
+    box-shadow: 0px 0px 0px 0px rgb(60 64 67), 0px 0px 10px 1px rgb(60 64 67);
+    max-width: 90%;
+    min-width: 20%;
+    margin: 30px auto;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+/*This is for inline code*/
+.article-content-container code:not([class]) {
+    display: inline-block;
+    border-radius: 5px;
+    line-height: 1.2;
+    color: black;
+    background-color: #ececec;
+    padding: 2px 4px;
+}
+
+.article-content-container thead {
+    background-color: #464646;
+    color: #ffffff;
+    text-align: center;
+}
+
+.article-content-container th {
+    padding: 5px 6px;
+}
+
+.article-content-container tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.article-content-container td {
+    padding: 5px 6px;
+    border: 1px solid #808080;
+}
+
+.article-content-container tbody tr:nth-of-type(even) {
+    background-color: #e0e0e0;
+}
+
+.article-content-container tbody tr:last-of-type {
+    border-bottom: 2px solid #464646;
+}
+
+.article-content-container blockquote {
+    background-color: #eaeaea;
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+
+
+.article-content-container .numberCircle {
+    display: inline-block;
+    line-height: 0px;
+    border-radius: 50%;
+    background: #8C0202FF;
+    border: 2px solid #8C0202FF;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.article-content-container .numberCircle span {
+    display: inline-block;
+    padding-top: 50%;
+    padding-bottom: 50%;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.article-content-container kbd {
+    background-color: #eee;
+    border-radius: 3px;
+    border: 1px solid #b4b4b4;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 2px 0 0 rgba(255, 255, 255, .7) inset;
+    color: #333;
+    display: inline-block;
+    font-size: .85em;
+    font-weight: 700;
+    line-height: 1;
+    padding: 2px 4px;
+    margin: 1px;
+    white-space: nowrap;
+}
+
+
+
+.article-content-container table {
+    /*border:1px solid;*/
+    border-collapse: collapse;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 0px 0px rgb(60 64 67), 0px 0px 10px 1px rgb(60 64 67);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
