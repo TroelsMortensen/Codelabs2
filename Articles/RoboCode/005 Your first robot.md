@@ -8,9 +8,9 @@ Initially this is shown in built-in code editor. On the next slide, we will set 
 
 There are three types of robots, we can pick from. It is essentially about how advanced they are, what we can make the do. They are
 
-* Junior Robot
-* Robot
-* Advanced Robot
+* [Junior Robot](https://robocode.sourceforge.io/docs/robocode/robocode/JuniorRobot.html)
+* [Robot](https://robocode.sourceforge.io/docs/robocode/robocode/Robot.html)
+* [Advanced Robot](https://robocode.sourceforge.io/docs/robocode/robocode/AdvancedRobot.html)
 
 I strongly recommend just sticking to the Junior Robot, and will only explain this one.
 
