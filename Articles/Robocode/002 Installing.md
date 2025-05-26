@@ -10,4 +10,4 @@ It took about 30 minutes for me.
 
 Watch my video here on how I install Robocode.
 
-<iframe width="560" height="315" src="https://youtube.com/embed/blTsMIoXog0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe src="https://youtube.com/embed/blTsMIoXog0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
