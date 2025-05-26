@@ -17,5 +17,5 @@ public partial class Home : ComponentBase
         articles = await ArticlesState.GetArticleHeaders();
 
     private void NavigateToArticle(string owner, string tutorialName) =>
-        NavMgr.NavigateTo($"/article/{owner}/{tutorialName}");
+        NavMgr.NavigateTo($"article/{owner}/{tutorialName}");
 }
