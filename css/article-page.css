@@ -3,7 +3,7 @@
     width: 100%;
 }
 
-.article-content-container h1:after{
+.article-content-container h1:after {
     content: "";
     display: block;
     height: 2px; /* thickness of the line */
@@ -11,7 +11,7 @@
     margin-bottom: 0.5em; /* space between the line and the heading */
 }
 
-.article-content-container details[open] summary:after{
+.article-content-container details[open] summary:after {
     content: "";
     display: block;
     height: 1px; /* thickness of the line */
@@ -68,6 +68,13 @@
     border-radius: 15px;
 }
 
+.article-content-container iframe {
+    display: block;
+    width: 90%;
+    min-width: 20%;
+    margin: 30px auto;
+}
+
 /*This is for inline code*/
 .article-content-container code:not([class]) {
     display: inline-block;
@@ -113,7 +120,6 @@
 }
 
 
-
 .article-content-container .numberCircle {
     display: inline-block;
     line-height: 0px;
@@ -146,7 +152,6 @@
     margin: 1px;
     white-space: nowrap;
 }
-
 
 
 .article-content-container table {
