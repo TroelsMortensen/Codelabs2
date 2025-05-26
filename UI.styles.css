@@ -232,7 +232,7 @@ main[b-mr0ddkk2zs] {
     background-color: #77b8f4;
     border-radius: 0.5rem;
     padding: 1rem;
-    margin-bottom: 1rem;
-    width: 150px;
     cursor: pointer;
+    display:inline-block;
+    margin: 15px;
 }
