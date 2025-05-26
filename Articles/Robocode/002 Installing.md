@@ -12,7 +12,7 @@ Watch my video here on how I install Robocode.
 
 You don't need to make the same setup choice as me, but I will argue my choice.
 
-<iframe src="https://youtube.com/embed/blTsMIoXog0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<video src="https://youtu.be/blTsMIoXog0"></video>
 
 
 

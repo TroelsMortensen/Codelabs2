@@ -20,4 +20,4 @@ I strongly recommend just sticking to the Junior Robot, and will only explain th
 
 Watch the following video to see how I create a new junior robot:
 
-
+<video src="https://youtu.be/OcqSY-h-glo"></video>
