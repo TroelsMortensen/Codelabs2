@@ -2,7 +2,9 @@
 
 It is time to create your own first robot.
 
-Initially this is shown in built-in code editor. On the next slide, we will set it up to work with IntelliJ IDEA instead. It is much easier to develop your robot this way.
+Initially this is shown in built-in code editor. 
+On the next page, we will set it up to work with IntelliJ IDEA instead. 
+It is much easier to develop your robot this way, because you get all your usual help from IntelliJ.
 
 ## Robot types
 
@@ -15,4 +17,7 @@ There are three types of robots, we can pick from. It is essentially about how a
 I strongly recommend just sticking to the Junior Robot, and will only explain this one.
 
 ## Creating a new robot
+
+Watch the following video to see how I create a new junior robot:
+
 
