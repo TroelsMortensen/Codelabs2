@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using UI.Data.Models;
 using UI.State;
-using ArticlesOverviewRequester = UI.Data.ArticlesOverviewRequester;
 
 namespace UI.Pages;
 
