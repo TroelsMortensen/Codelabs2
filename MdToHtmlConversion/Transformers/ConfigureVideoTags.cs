@@ -13,6 +13,8 @@ public class ConfigureVideoTags : ITransformer
     {
         string pattern = @"<video\s+src=""https:\/\/youtu\.be\/([a-zA-Z0-9_-]+)\""\s*><\/video>";
         
+        jeg skal også lige wrappe i en div så jeg kan style iframe korrekt ift størrelse i højden, se aritcle-css også
+        
         string replacement = @"<iframe src=""https://youtube.com/embed/$1"" frameborder=""0"" allow=""accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"" allowfullscreen></iframe>";
 
         string result = Regex.Replace(inputHtml, pattern, replacement);

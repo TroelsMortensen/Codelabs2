@@ -163,5 +163,19 @@
     margin-left: auto;
     margin-right: auto;
 }
+/*todo*/
+æ-- target p surrounding iframe {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 ratio = 9 / 16 = 0.5625 */
+    height: 0;
+    overflow: hidden;
+}
 
-
+-- target the iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
