@@ -163,6 +163,7 @@
     padding-bottom: 56.25%; /* 16:9 ratio = 9 / 16 = 0.5625 */
     height: 0;
     overflow: hidden;
+    margin-bottom: 15px;
 }
 
 .article-content-container iframe {
