@@ -1,6 +1,6 @@
 ﻿# Your first test battle
 
-First, we will run a battle with pre-made robots, just to see how it works.
+Here, we will run a battle with pre-made robots, just to see how it works.
 
 Watch the video:
 
