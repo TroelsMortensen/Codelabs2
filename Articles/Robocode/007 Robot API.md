@@ -7,3 +7,9 @@ You can look into these, if you are brave, but I recommend you to stick with the
 You can get an overview of available methods and data in the [API documentation](https://robocode.sourceforge.io/docs/robocode/robocode/JuniorRobot.html).
 
 On the following pages, I will also cover the most important parts, show examples, and explain what is going on.
+
+I plan on covering
+
+* Basic movement
+* Basic targeting
+* Maybe more eventually..?
