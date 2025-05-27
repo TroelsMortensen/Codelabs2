@@ -8,3 +8,5 @@
 * Get it hosted
 * Skal have en slags review question thingy. Måske det er under quizz..
 * dark mode. gem setting i local storage?
+* Det virker til jeg ikke kan linke til artikler. kun home page. kan det fixes?
+  * kan jeg lade home page tage route param, og videre dirigere?
