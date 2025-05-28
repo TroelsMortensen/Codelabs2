@@ -10,6 +10,6 @@ To print to the console, you can use the `out.println()` method, like this:
 out.println("Moving forward");
 ```
 
-Notice you do not have the usual System in front, as _this_ out is a variable in the JuniorRobot class.
+Notice you do not have the usual `System` in front, as _this_ `out` is a field variable in the JuniorRobot class.
 
-Use the print method for information about what your robot is doing.
+Use the `println(..)` method for information about what your robot is doing.

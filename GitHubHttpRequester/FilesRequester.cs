@@ -31,7 +31,6 @@ public static class FilesRequester
 
     private static async Task<string> FetchArticlesOverview(HttpClient client, string folderPath)
     {
-
         client.DefaultRequestHeaders.UserAgent.Clear();
         client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("MyCSharpApp-FileFetcher", "1.0"));
         client.DefaultRequestHeaders.Accept.Clear();
@@ -51,15 +50,28 @@ public static class FilesRequester
     private static async Task PopulateFileDetailsWithMarkdownContents(HttpClient client, List<GitHubFileContent> fileDetails)
     {
         // TODO Do this in parallel, instead of serial
+        List<Task<HttpResponseMessage>> requestTasks = new List<Task<HttpResponseMessage>>();
         foreach (GitHubFileContent fileContent in fileDetails)
         {
-            HttpResponseMessage contentResponse = await client.GetAsync(fileContent.DownloadUrl);
+            Task<HttpResponseMessage> requestTask = client.GetAsync(fileContent.DownloadUrl);
+            requestTasks.Add(requestTask);
+        }
+
+        while (requestTasks.Count > 0)
+        {
+            Task<HttpResponseMessage> doneRequest = await Task.WhenAny(requestTasks);
+            requestTasks.Remove(doneRequest);
+
+            HttpResponseMessage contentResponse = await doneRequest;
             if (!contentResponse.IsSuccessStatusCode)
             {
                 throw new Exception($"Error: {contentResponse.StatusCode}");
             }
 
             string mdContent = await contentResponse.Content.ReadAsStringAsync();
+            GitHubFileContent fileContent = fileDetails.First(fc =>
+                fc.DownloadUrl == new Uri(contentResponse.RequestMessage.RequestUri.ToString()).AbsoluteUri);
+
             fileContent.Markdown = mdContent;
         }
     }

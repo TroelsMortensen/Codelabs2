@@ -5,3 +5,4 @@
 * ??? skal blive til et... spørgsmål somehow, lidt som hint? måske lige meget
 * Skal have en slags review question thingy. Måske det er under quizz..
 * dark mode. gem setting i local storage?
+* Next/previous buttons at the bottom of page.
