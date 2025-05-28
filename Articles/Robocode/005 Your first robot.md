@@ -8,7 +8,8 @@ It is much easier to develop your robot this way, because you get all your usual
 
 ## Robot types
 
-There are three types of robots, we can pick from. It is essentially about how advanced they are, what we can make the do. They are
+There are three types of robots, we can pick from. It is essentially about how advanced they are, and what we can make them do. 
+They are:
 
 * [Junior Robot](https://robocode.sourceforge.io/docs/robocode/robocode/JuniorRobot.html)
 * [Robot](https://robocode.sourceforge.io/docs/robocode/robocode/Robot.html)

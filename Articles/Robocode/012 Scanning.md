@@ -1,5 +1,7 @@
 ﻿# Scanning
 
+The scanner is used to find other robots.
+
 ## Rotating the scanner
 
 As mentioned in a previous video, the scanner and the gun always moves together.\
