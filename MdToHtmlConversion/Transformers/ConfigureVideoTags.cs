@@ -13,7 +13,6 @@ public class ConfigureVideoTags : ITransformer
     {
         string pattern = @"<p><video\s+src=""https:\/\/youtu\.be\/([a-zA-Z0-9_-]+)\""\s*><\/video><\/p>";
 
-        Console.WriteLine(inputHtml);
         string replacement = @"
 <div class=""video-box"">
 <p>

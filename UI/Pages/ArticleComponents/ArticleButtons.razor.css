@@ -1,0 +1,81 @@
+﻿.top-buttons-row {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buttons-box {
+    margin: 10px;
+    margin-right: 25px;
+}
+
+
+.article-button {
+    border-radius: 25px;
+    background-color: #5ca1e1;
+    border: none;
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+    font-weight: bold;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 9px;
+    box-shadow: 0 5px 10px 0px rgba(0, 0, 0, .5);
+    display: inline-block;
+    position: relative;
+}
+
+.next-page-button {
+    width: 100px;
+}
+
+.article-button:hover {
+    box-shadow: 0 8px 10px 2px rgba(0, 0, 0, .7);
+    transform: translateY(-3px);
+}
+
+.next-page-button:after {
+    content: '>>';
+    position: absolute;
+    opacity: 0;
+    top: 12px;
+    right: -6px;
+    transition: 0.25s;
+}
+
+.next-page-button:hover {
+    padding-right: 24px;
+    padding-left: 0px;
+}
+
+.next-page-button:hover:after {
+    opacity: 1;
+    right: 10px;
+}
+
+.prev-page-button {
+    width: 120px;
+}
+
+.home-button {
+    width: 100px;
+}
+
+.prev-page-button:after {
+    content: '<<';
+    position: absolute;
+    opacity: 0;
+    top: 12px;
+    left: -20px;
+    transition: 0.25s;
+}
+
+.prev-page-button:hover {
+    padding-right: 0px;
+    padding-left: 24px;
+}
+
+.prev-page-button:hover:after {
+    opacity: 1;
+    left: 10px;
+}

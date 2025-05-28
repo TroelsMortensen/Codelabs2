@@ -23,34 +23,19 @@ else
             }
         </div>
         <div class="page-card">
-            <div class="top-buttons-row">
-                <div class="buttons-box">
-                    @if (stepIndex != 0)
-                    {
-                        <button type="button" class="article-button prev-page-button"
-                                @onclick="() => ChangePage(-1)">
-                            Previous
-                        </button>
-                    }
-                    @if (stepIndex != pages.Count - 1)
-                    {
-                        <button type="button" class="article-button next-page-button"
-                                @onclick="() => ChangePage(1)">
-                            Next
-                        </button>
-                    }
-                    else
-                    {
-                        <button type="button" class="article-button home-button"
-                                @onclick='() => NavMgr.NavigateTo("/")'>Home
-                        </button>
-                    }
-                </div>
-            </div>
+            <ArticleButtons
+                StepIndex="stepIndex"
+                MaxSteps="(pages.Count - 1)"
+                OnChangePage="ChangePage"/>
             <div class="article-content-container">
                 @currentPage.Html
             </div>
+            <ArticleButtons
+                StepIndex="stepIndex"
+                MaxSteps="(pages.Count - 1)"
+                OnChangePage="ChangePage"/>
         </div>
+
         <div class="steps-container steps-container-spacer">
         </div>
     </div>

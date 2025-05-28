@@ -1,0 +1,24 @@
+﻿<div class="top-buttons-row">
+    <div class="buttons-box">
+        @if (StepIndex != 0)
+        {
+            <button type="button" class="article-button prev-page-button"
+                    @onclick="() => OnChangePage.InvokeAsync(-1)">
+                Previous
+            </button>
+        }
+        @if (StepIndex != MaxSteps)
+        {
+            <button type="button" class="article-button next-page-button"
+                    @onclick="() => OnChangePage.InvokeAsync(1)">
+                Next
+            </button>
+        }
+        else
+        {
+            <button type="button" class="article-button home-button"
+                    @onclick='() => NavMgr.NavigateTo("/")'>Home
+            </button>
+        }
+    </div>
+</div>
