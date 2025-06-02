@@ -36,4 +36,9 @@ Inside the `main` method body, use the `System.out.println` method to print "Hel
 This is what your class should look like:
 
 ![Hello world solution](Resources/Exercise1Solution.png)
+
+When you run the program, the console should automatically open and display the message "Hello, World!":
+
+![Hello world console output](Resources/FirstPrint.png)
+
 </hint>
