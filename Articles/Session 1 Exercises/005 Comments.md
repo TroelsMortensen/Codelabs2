@@ -19,3 +19,21 @@ There are two types of comments in Java:
     int y = 10; /* Assigning 10 to variable y
                     This is a multi-line comment */
 
+### Exercise - Comments
+
+Create a new class called `CommentsExample`. In this class, write a main method which prints out to the console. Like this:
+
+```java
+public class CommentsExample {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!"); 
+        System.out.println("Hello, People!"); 
+    }
+}
+```
+
+Running this, you should see "Hello, World!" printed in the console.
+
+Now, comment out the line that prints "Hello, World!".
+
+Run the program again. You should only see "Hello, People!" printed in the console.
