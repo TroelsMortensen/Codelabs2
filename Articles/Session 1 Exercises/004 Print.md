@@ -13,6 +13,7 @@ Text is surrounded by double quotes `"`.
 "Hello, World!"
 ```
 
+Each time you execute `System.out.println()`, it will print the text to the console and then move to a new line.
 
 ## Exercise 1: Print a message
 

@@ -1,6 +1,6 @@
 # Introduction
 
-This learning path will continue where the presentation ended. There are a few more things to introduce about Java.
+This learning path will continue where the presentation ended. 
 
 We will cover the following (many) topics:
 * Main method

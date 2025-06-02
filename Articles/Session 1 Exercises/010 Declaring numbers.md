@@ -24,3 +24,7 @@ If you forget, you will get an error from the Java compiler:
 
 Notice the red squiggly line, indicating an error in your program. When you mouse over the error, it will show you a tool tip, explaining the problem.
 
+
+
+
+

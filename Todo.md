@@ -6,6 +6,7 @@
 * Skal have en slags review question thingy. Måske det er under quizz..
 * dark mode. gem setting i local storage?
 * Next/previous buttons at the bottom of page.
+* Det der line highlighter, jeg havde i codelabs 1
 
 
 Kan jeg have tre css
