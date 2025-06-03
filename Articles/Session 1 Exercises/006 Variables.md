@@ -1,6 +1,6 @@
 # Variables
 
-Every program works with data, and in Java, we use variables to store and manipulate this data. A variable is a named storage location in memory that holds a value.
+Every program works with data, and in Java, we use variables to store and manipulate this data. 
 
 You may be familiar with a similar concept from mathematics, where a variable can represent a number or an unknown value. In programming, variables can hold different types of data, such as numbers, text, or even more complex objects.
 
@@ -8,7 +8,7 @@ You may be familiar with a similar concept from mathematics, where a variable ca
 
 In this example, `x` is a variable that holds the value `5`. You can think of it as a box labeled `x` that contains the number `5`.
 
-In Java we can declare variables, but we must also define its type. The type of a variable determines what kind of data it can hold.\
+In Java, we can declare variables, but we must also define its type. The type of a variable determines what kind of data it can hold.\
 For example, if you want to store a whole number, you would use the `int` type, and if you want to store a decimal number, you would use the `double` type.\
 If you want to store some text, you would use the `String` type.
 

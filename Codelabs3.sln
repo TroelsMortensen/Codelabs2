@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{92C42A4A-6
 		Todo.md = Todo.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{D20B2575-5ACE-47FB-B93E-378AE3BD775D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateFileNumbers", "Tools\UpdateFileNumbers\UpdateFileNumbers.csproj", "{CED94648-7D66-4F6E-BE02-B9BF96BEAC1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,5 +45,12 @@ Global
 		{E684EE6B-0FFD-4854-B9A1-3B7F2C43130F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E684EE6B-0FFD-4854-B9A1-3B7F2C43130F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E684EE6B-0FFD-4854-B9A1-3B7F2C43130F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CED94648-7D66-4F6E-BE02-B9BF96BEAC1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CED94648-7D66-4F6E-BE02-B9BF96BEAC1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CED94648-7D66-4F6E-BE02-B9BF96BEAC1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CED94648-7D66-4F6E-BE02-B9BF96BEAC1C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CED94648-7D66-4F6E-BE02-B9BF96BEAC1C} = {D20B2575-5ACE-47FB-B93E-378AE3BD775D}
 	EndGlobalSection
 EndGlobal
