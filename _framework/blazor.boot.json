@@ -1,12 +1,12 @@
 {
   "mainAssemblyName": "UI",
   "resources": {
-    "hash": "sha256-RFSAuPVCD1S/m/0cR6MeVULGm9VlH4qVRd4PQ4sb7E0=",
+    "hash": "sha256-fI7Hb2qSerseI8OXLJBeH5TGYWOuWSQ9I8FICIcBcAg=",
     "fingerprinting": {
-      "Articles.4i4tmekfuq.wasm": "Articles.wasm",
-      "GitHubHttpRequester.xg3bombwx7.wasm": "GitHubHttpRequester.wasm",
+      "Articles.dgf0hyx9b9.wasm": "Articles.wasm",
+      "GitHubHttpRequester.iwjd3btozd.wasm": "GitHubHttpRequester.wasm",
       "Markdig.8m8q17eux9.wasm": "Markdig.wasm",
-      "MdToHtmlConversion.dtoee90va5.wasm": "MdToHtmlConversion.wasm",
+      "MdToHtmlConversion.2siu3x920q.wasm": "MdToHtmlConversion.wasm",
       "Microsoft.AspNetCore.Components.ybk9837008.wasm": "Microsoft.AspNetCore.Components.wasm",
       "Microsoft.AspNetCore.Components.Web.bipktkzgg8.wasm": "Microsoft.AspNetCore.Components.Web.wasm",
       "Microsoft.AspNetCore.Components.WebAssembly.6mskw7k1mj.wasm": "Microsoft.AspNetCore.Components.WebAssembly.wasm",
@@ -41,7 +41,7 @@
       "System.Text.Json.n0ff0535gg.wasm": "System.Text.Json.wasm",
       "System.Text.RegularExpressions.x6t0gcfdqv.wasm": "System.Text.RegularExpressions.wasm",
       "System.Threading.3twfkmfokt.wasm": "System.Threading.wasm",
-      "UI.6y4zu3qh7g.wasm": "UI.wasm",
+      "UI.aobv15uodu.wasm": "UI.wasm",
       "dotnet.js": "dotnet.js",
       "dotnet.native.uhsveqo9bs.js": "dotnet.native.js",
       "dotnet.native.swgexbmoy7.wasm": "dotnet.native.wasm",
@@ -69,10 +69,10 @@
       "System.Runtime.InteropServices.JavaScript.5pcrya9j00.wasm": "sha256-92zUoi9qwW2rZalWHIYTUNdUv+uUJLg6ZLS4Aj0eqHk="
     },
     "assembly": {
-      "Articles.4i4tmekfuq.wasm": "sha256-9HU5lOKKfdG8hhA31Mvu+gksaj3oJ9570gG7ywiH9Kg=",
-      "GitHubHttpRequester.xg3bombwx7.wasm": "sha256-Ucbzp3qKWpg/Cgm0U/7SqJqlWKPaFvVJfradzb8Gq1E=",
+      "Articles.dgf0hyx9b9.wasm": "sha256-PRfun+edPr0beLqaQiKZuvhBl3JAAZovL+DEjnbXOjU=",
+      "GitHubHttpRequester.iwjd3btozd.wasm": "sha256-/ppCiykp2Omrt2FtvPd9KmPzj5OmDf6XLMqeeXWE2ZE=",
       "Markdig.8m8q17eux9.wasm": "sha256-4NRl6Uv3KMSWq86K58aRc0myM/vF0kILqNdUqpOTXdw=",
-      "MdToHtmlConversion.dtoee90va5.wasm": "sha256-IcdYPAuRIiJOZ3Wf24/ZD80b86Uep92HGk6tgLPwUys=",
+      "MdToHtmlConversion.2siu3x920q.wasm": "sha256-ktENFmuBbJZspUi2ABjbCTeR6+H4WJA7Jqw8AS+KPu8=",
       "Microsoft.AspNetCore.Components.ybk9837008.wasm": "sha256-0szSHVMso7CBeHsljohLoUABqwAlvqquiaZJmjUlBVs=",
       "Microsoft.AspNetCore.Components.Web.bipktkzgg8.wasm": "sha256-3QSSs1PU62jhVuJWjQw0YFX5kVXQikkYVHpKT8qpi7E=",
       "Microsoft.AspNetCore.Components.WebAssembly.6mskw7k1mj.wasm": "sha256-3ulKIZ845YoIKfYEVcWgRPM1BqvYQC3DIzTjTScbfX8=",
@@ -105,7 +105,7 @@
       "System.Text.Json.n0ff0535gg.wasm": "sha256-x51EZ6Hu+Bljc0lzBiAROZ6EWnzn9eKqtRzh66g3Kyc=",
       "System.Text.RegularExpressions.x6t0gcfdqv.wasm": "sha256-yYP7FmHZpSUK6Pjzm3ZGsUiLNifo3fb+w7YtP0xRCqg=",
       "System.Threading.3twfkmfokt.wasm": "sha256-KRBqxgU9Zh2j0cHE1zIDpLlm7TKMP9QacmuY6myYt84=",
-      "UI.6y4zu3qh7g.wasm": "sha256-MlL1sJKcTSzGd7z2pXCr3SQ/QzgnVQ4Jvd4Wv5/XYsw="
+      "UI.aobv15uodu.wasm": "sha256-2gHUVgKXJ/xd8m8ksf15Ql5ZUe8iT+PuE2aYn54dktA="
     }
   },
   "cacheBootResources": true,
