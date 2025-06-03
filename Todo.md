@@ -7,6 +7,9 @@
 * dark mode. gem setting i local storage?
 * Next/previous buttons at the bottom of page.
 * Det der line highlighter, jeg havde i codelabs 1
+* Der er noget styling omkring quote boxes.
+* Jeg skal have en metode til at double alle md fil numbers, så der kommer huller, hvis jeg vil indsætte nye pages. Eller måske til rykke alle numbre _x_ fra md fil nr _y_.
+* Og tilsvarende til at opdatere numbers i md filer, så de passer igen.
 
 
 Kan jeg have tre css
