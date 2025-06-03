@@ -6,8 +6,8 @@ We will keep the explanation simple for now, I just think this will help with un
 
 ![DM](Resources/DungeonMaster.png)
 
-> "You are an adventurer in a fantasy world. On your hip is your utility belt, which has several slots for items. Each slot can hold a different type of item, like a sword, a potion, or magic scrolls."
-> On your back is a backpack, which can hold many items, but it is not as easy to access as your utility belt. 
+> "You are an adventurer in a fantasy world. On your hip is your utility belt, which has several slots for items. Each slot can hold a different type of item, like a sword, a potion, or magic scrolls.\
+On your back is a backpack, which can hold many items, but it is not as easy to access as your utility belt."
 
 If you know anything about computer games, think of an inventory system. This is your memory, where we can store data.
 
@@ -24,8 +24,6 @@ When you declare a primitive type variable, like `int`, `double`, or `boolean`, 
 ```java
 int num = 5; // The value 5 is stored directly in memory
 ```
-
-
 
 ### Reference types
 
