@@ -1,0 +1,28 @@
+# Introduction
+
+You have already seen how we store text data in variables of type `String`.
+
+```java
+String greeting = "Hello, World!";
+```
+
+You have also seen that we can check if two strings are equal using the `equals` method:
+
+```java
+String first = "Hello";
+String second = "Hello";
+boolean areEqual = first.equals(second);
+System.out.println(areEqual); // true
+```
+
+But, because the String is an object, there are many more methods available to us.\
+In this article, we will look at some of the most commonly used methods of the `String` class.
+
+* length
+* toUpperCase
+* toLowerCase
+* charAt
+* substring
+* indexOf
+* replace
+* trim
