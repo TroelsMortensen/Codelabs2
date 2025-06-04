@@ -38,3 +38,7 @@ If you run this code, `myInt` will be `5`, as the decimal part is discarded duri
 If you remove the cast, i.e. `(int)`, you will get a compiler errror, that red squiggly line again, indicating that you cannot assign a `double` to an `int` without explicitly casting it.
 
 This is because converting from a larger type (like `double`) to a smaller type (like `int`) can potentially lose information, so Java requires you to explicitly state that you understand the risk of losing data.
+
+## Additional reading
+
+You can read more about casting [here](https://www.w3schools.com/java/java_type_casting.asp)

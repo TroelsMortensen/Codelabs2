@@ -20,6 +20,6 @@ public class ScannerExample {
 ```
 
 Similar to the `String` class, the `Scanner` is also a class, and we can create a new instance of it using the `new` keyword.\
-This is about objects and classes, which we will get back to later in the course.\
+This is about objects and classes, which we will get back to later in the course.
 
 Just accept for now, this is how we access a Scanner, which can read input from the console.

@@ -173,3 +173,7 @@ When you increment the maximum value of an `int`, it wraps around to the minimum
 This is known as **integer overflow**. When a value exceeds the maximum limit of its data type, it wraps around to the minimum limit.
 
 </hint>
+
+## Additional reading
+
+You can read more about arithmetic operations in Java [here](https://www.w3schools.com/java/java_operators.asp).
