@@ -31,7 +31,7 @@ Substring 1: Progra
 Substring 2: mming
 ```
 
-## Exercises
+# Exercises
 
 ### Exercise 1: Extract from Start Index
 Write a program that asks the user to enter a word and a starting index. Use the `substring()` method to extract the portion of the word starting from the given index and display it.

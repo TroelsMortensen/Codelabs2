@@ -34,7 +34,7 @@ Index of "world": 7
 Index of 'o' after position 5: 8
 ```
 
-## Exercises
+# Exercises
 
 ### Exercise 1: Find the First Occurrence
 Write a program that asks the user to enter a word and a character. Use the `indexOf()` method to find the first occurrence of the character in the word and display its index.

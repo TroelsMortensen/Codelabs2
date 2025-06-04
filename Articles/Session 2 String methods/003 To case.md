@@ -37,7 +37,7 @@ Uppercase: HELLO, WORLD!
 Lowercase: hello, world!
 ```
 
-## Exercises
+# Exercises
 
 ### Exercise 1: Convert to Uppercase
 Write a program that asks the user to enter a word. Use the `toUpperCase()` method to convert the word to uppercase and display the result.

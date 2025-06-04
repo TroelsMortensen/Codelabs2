@@ -36,7 +36,7 @@ The first character is: H
 The third character is: l
 ```
 
-## Exercises
+# Exercises
 
 ### Exercise 1: Access a Character
 Write a program that asks the user to enter a word and an index. Use the `charAt()` method to retrieve the character at the specified index and display it.

@@ -35,6 +35,8 @@ The name Alice has 5 characters.
 
 This method is simple but very powerful, and you will use it often when working with strings in Java.
 
+# Exercises
+
 ## Exercise: Using the `length()` Method
 
 Write a program that asks the user to enter their favorite word. Then, use the `length()` method to calculate the number of characters in the word and display the result.
