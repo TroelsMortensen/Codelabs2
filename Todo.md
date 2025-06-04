@@ -10,7 +10,8 @@
 * Der er noget styling omkring quote boxes.
 * Jeg skal have en metode til at double alle md fil numbers, så der kommer huller, hvis jeg vil indsætte nye pages. Eller måske til rykke alle numbre _x_ fra md fil nr _y_.
 * Og tilsvarende til at opdatere numbers i md filer, så de passer igen.
-
+* gul text for inline code, som vsc gør
+* 
 
 Kan jeg have tre css
 Basic til alt fælles. 
