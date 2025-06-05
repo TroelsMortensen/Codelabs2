@@ -22,18 +22,28 @@ else
                 </div>
             }
         </div>
+
+        <div class="steps-dropdown" >
+            <select>
+                <option value="1">1. Introduction</option>
+                <option value="2">2. Import</option>
+                <option value="3">3. Scanner</option>
+                <option value="4">4. Read Input</option>
+                <option value="5">5. Exercise 1</option>
+                <option value="6">6. Exercise 2</option>
+                <option value="7">7. Exercise 3</option>
+                <option value="8">8. Exercise 4</option>
+                <option value="9">9. Exercise 5</option>
+                <option value="10">10. Exercise 6</option>
+                <option value="11">11. Exercise 7</option>
+            </select>
+        </div>
         <div class="page-card">
-            <ArticleButtons
-                StepIndex="stepIndex"
-                MaxSteps="(pages.Count - 1)"
-                OnChangePage="ChangePage"/>
+            <ArticleButtons StepIndex="stepIndex" MaxSteps="(pages.Count - 1)" OnChangePage="ChangePage" />
             <div class="article-content-container">
                 @currentPage.Html
             </div>
-            <ArticleButtons
-                StepIndex="stepIndex"
-                MaxSteps="(pages.Count - 1)"
-                OnChangePage="ChangePage"/>
+            <ArticleButtons StepIndex="stepIndex" MaxSteps="(pages.Count - 1)" OnChangePage="ChangePage" />
         </div>
 
         <div class="steps-container steps-container-spacer">
