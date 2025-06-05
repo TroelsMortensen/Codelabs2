@@ -20,34 +20,14 @@ pre[class*=language-] {
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
-
-    /* AI vibe coding */
-    white-space: pre;
-    /* Prevents text wrapping */
-    overflow-x: auto;
-    /* Adds horizontal scrolling for overflowing content */
-    display: block;
-    /* Ensures the code block behaves like a block element */
-    max-width: 100%;
-    /* Prevents the code block from exceeding the container width */
-    box-sizing: border-box;
 }
+
 
 pre[class*=language-] {
     padding: 1em;
     margin: .5em 0;
     overflow: auto;
     border-radius: .3em;
-
-    /* AI vibe coding */
-    padding: 1em;
-    margin: .5em 0;
-    overflow-x: auto;
-    /* Adds horizontal scrolling for overflowing content */
-    border-radius: .3em;
-    max-width: 100%;
-    /* Prevents the pre block from exceeding the container width */
-    box-sizing: border-box;
 }
 
 :not(pre)>code[class*=language-],
