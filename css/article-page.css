@@ -169,6 +169,21 @@
     height: 90%;
 }
 
-pre {
+
+/* AI */
+.article-content-container pre,
+.article-content-container pre[class*="language-"] {
+    min-width: 0;
+    flex-shrink: 1;
+    max-width: 100%;
     overflow-x: auto;
+    box-sizing: border-box;
+}
+
+.article-content-container {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    display: block; /* or unset, if you don't want it to be flex itself */
 }
