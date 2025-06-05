@@ -12,9 +12,9 @@ public partial class Article : ComponentBase
     [Parameter] public string Owner { get; set; } = string.Empty;
     [Parameter, SupplyParameterFromQuery] public string? PageNumber { get; set; }
 
-    [Inject] public NavigationManager NavMgr { get; set; }
-    [Inject] public IJSRuntime JsRuntime { get; set; }
-    [Inject] public ArticlesState ArticlesState { get; set; }
+    [Inject] public NavigationManager NavMgr { get; set; } = null!;
+    [Inject] public IJSRuntime JsRuntime { get; set; } = null!;
+    [Inject] public ArticlesState ArticlesState { get; set; } = null!;
 
     private List<ArticlePage> pages = new();
     private int stepIndex = 0;
