@@ -12,7 +12,7 @@
 }
 else
 {
-    <div class="layout">
+    <div class="layout" @onclick="CloseDropdown">
         <div class="steps-container">
             @for (int i = 0; i < pages.Count; i++)
             {
@@ -23,20 +23,19 @@ else
             }
         </div>
 
-        <div class="steps-dropdown" >
-            <select>
-                <option value="1">1. Introduction</option>
-                <option value="2">2. Import</option>
-                <option value="3">3. Scanner</option>
-                <option value="4">4. Read Input</option>
-                <option value="5">5. Exercise 1</option>
-                <option value="6">6. Exercise 2</option>
-                <option value="7">7. Exercise 3</option>
-                <option value="8">8. Exercise 4</option>
-                <option value="9">9. Exercise 5</option>
-                <option value="10">10. Exercise 6</option>
-                <option value="11">11. Exercise 7</option>
-            </select>
+        <div class="steps-dropdown" @onclick="CloseDropdown">
+            <div class="burger-menu" @onclick="ToggleDropdown" @onclick:stopPropagation>
+                <i class="fa fa-bars"></i>
+            </div>
+            <ul class="dropdown-menu" style="display: @(isDropdownVisible ? "block" : "none");" @onclick:stopPropagation>
+                @for (int i = 0; i < pages.Count; i++)
+                {
+                    int idx = i;
+                    <li class="dropdown-item" @onclick="() => GoToPage(idx)">
+                        @pages[i].Name
+                    </li>
+                }
+            </ul>
         </div>
         <div class="page-card">
             <ArticleButtons StepIndex="stepIndex" MaxSteps="(pages.Count - 1)" OnChangePage="ChangePage" />

@@ -70,8 +70,7 @@
     margin-right: 20px;
     padding-left: 40px;
     padding-right: 40px;
-    max-width: 130ch;
-    width: 100%;
+    max-width: 100%;
     border-radius: 25px;
     box-shadow: 0px 1px 2px 0px rgb(60 64 67), 0px 2px 16px 12px rgba(60, 64, 67, 0.5);
     word-wrap: break-word;
@@ -84,68 +83,72 @@
 
 /* Responsive Design */
 
-/* When the browser width is less than 1200px, hide the third column */
+.steps-dropdown {
+    position: relative;
+    display: none; /* Hidden by default */
+}
+
+.burger-menu {
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background-color: white;
+    border: 1px solid #fb3737;
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    list-style: none;
+    margin: 0;
+    z-index: 1000;
+}
+
+.dropdown-item {
+    padding: 10px 15px;
+    margin: 5px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+}
+
+.dropdown-item:hover {
+    background-color: #fb3737;
+    color: white;
+}
+
 @media (max-width: 1200px) {
     .steps-container-spacer {
         display: none;
     }
 }
 
-.steps-dropdown {
-    display: none;
-    /* Hide by default */
-    position: relative;
-}
 
-.steps-dropdown select {
-    appearance: none;
-    /* Remove default dropdown styling */
-    -webkit-appearance: none;
-    /* For Safari */
-    -moz-appearance: none;
-    /* For Firefox */
-    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="black" d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>') no-repeat center;
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 50%;
-    width: 40px;
-    /* Adjust width to match the icon size */
-    height: 40px;
-    /* Adjust height to match the icon size */
-    cursor: pointer;
-    padding: 0;
-
-    text-indent: -9999px;
-    /* Move text out of view */
-    overflow: hidden;
-    /* Prevent text from overflowing */
-}
-
-.steps-dropdown select option {
-    padding: 10px; /* Add padding inside each dropdown item */
-    margin: 5px; /* Add spacing between dropdown items */
-    background-color: white; /* Ensure a consistent background */
-    color: black; /* Text color */
-    border: none; /* Remove borders */
-}
-
-
-/* When the browser width is less than 900px, hide the first column */
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     .steps-container {
         display: none;
     }
 
     .steps-dropdown {
         display: block;
-
     }
 
 }
 
-/* When the browser width is less than 600px, allow the page-card to shrink */
 @media (max-width: 600px) {
     .page-card {
         max-width: 90%;
+
     }
 }

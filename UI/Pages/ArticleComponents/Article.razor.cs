@@ -19,6 +19,7 @@ public partial class Article : ComponentBase
     private List<ArticlePage> pages = new();
     private int stepIndex = 0;
     private ArticlePage currentPage = null!;
+    private bool isDropdownVisible = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -44,8 +45,16 @@ public partial class Article : ComponentBase
     {
         stepIndex = idx;
         currentPage = pages[stepIndex];
+        isDropdownVisible = false;
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender) =>
         await JsRuntime.InvokeVoidAsync("Prism.highlightAll");
+
+
+    private void ToggleDropdown() =>
+        isDropdownVisible = !isDropdownVisible;
+
+    private void CloseDropdown() =>
+        isDropdownVisible = false;
 }
