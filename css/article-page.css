@@ -168,3 +168,7 @@
     width: 90%;
     height: 90%;
 }
+
+pre {
+    overflow-x: auto;
+}
