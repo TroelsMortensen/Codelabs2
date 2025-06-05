@@ -3,16 +3,18 @@
 
 The `indexOf()` method is a built-in function in Java that allows you to find the position (index) of a specific character or substring within a string. If the character or substring is not found, the method returns `-1`.
 
+There are actually several versions of the `indexOf()` method, which can be used in different ways:
+
 ### Syntax:
 ```java
-int index = string.indexOf(character);
 int index = string.indexOf(substring);
+int index = string.indexOf(character);
 int index = string.indexOf(character, fromIndex);
 int index = string.indexOf(substring, fromIndex);
 ```
 
-- **`character`**: The character you want to find.
 - **`substring`**: The substring you want to find.
+- **`character`**: The character you want to find.
 - **`fromIndex`**: The position in the string to start searching from.
 
 ### Example:
@@ -41,8 +43,10 @@ Write a program that asks the user to enter a word and a character. Use the `ind
 
 Example Output:
 ```
-Enter a word: Programming
-Enter a character: g
+Enter a word: 
+Programming         // user input
+Enter a character: 
+g                   // user input
 The first occurrence of 'g' is at index: 3
 ```
 
@@ -82,6 +86,26 @@ Enter the starting position: 4
 The first occurrence of 'g' after position 4 is at index: 7
 ```
 
+Below is a screenshot, which shows several versions of the indexOf() method, find one that suits your needs:
+
+![indexOf() Method](Resources/IndexOfMethod.png)
+
+
+<hint title="Hint 1">
+There is a version of the `indexOf()` method that allows you to specify a starting position for the search, and which character to find.
+</hint>
+
+<hint title="Hint 2">
+
+The `scanner.nextLine()` method reads the next line. This will give you a `String`, but assuming correct input from the user, that string is a single character.
+You must then convert it to a `char` using `charAt(0)`.
+
+</hint>
+
+<hint title="Hint 3">
+Use the `indexOf()` method with two arguments: the character to find and the starting position. This will search for the character starting from the specified position.
+</hint>
+
 <hint title="Solution">
 
 ```java
@@ -95,7 +119,8 @@ public class FindOccurrenceAfterPosition {
         String word = scanner.nextLine();
 
         System.out.print("Enter a character: ");
-        char character = scanner.next().charAt(0);
+        String input = scanner.next();
+        char character = input.charAt(0);
 
         System.out.print("Enter the starting position: ");
         int startPosition = scanner.nextInt();
@@ -121,6 +146,7 @@ Enter a letter: g
 The substring up to 'g' is: Pro
 ```
 
+
 <hint title="Hint 1">
 Use the `indexOf()` method to find the position of the letter in the word. If the letter is not found, `indexOf()` will return `-1`.
 </hint>
@@ -142,7 +168,8 @@ public class SubstringUpToLetter {
         String word = scanner.nextLine();
 
         System.out.print("Enter a letter: ");
-        char letter = scanner.next().charAt(0);
+        String input = scanner.next();
+        char letter = input.charAt(0);
 
         int index = word.indexOf(letter);
 
