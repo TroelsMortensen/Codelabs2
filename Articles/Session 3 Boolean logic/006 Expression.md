@@ -16,8 +16,8 @@ A boolean expression is an expression that evaluates to either `true` or `false`
 
 **Examples of boolean expressions:**
 ```java
-5 > 3           // true
-x == 10         // true if x is 10, false otherwise
-isRaining && isCold  // true if both variables are true
-!(a < b)        // true if a is not less than b
+5 > 3                   // true
+x == 10                 // true if x is 10, false otherwise
+isRaining && isCold     // true if both variables are true
+!(a < b)                // true if a is not less than b
 ```
