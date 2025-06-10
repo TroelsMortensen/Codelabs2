@@ -16,6 +16,7 @@
   * Jeg skal så opdatere al min prism.css... og prism.js fejler nok.
   * Jeg tror prism.js kommer til at fejle hårdt.
 * Ved next page, scroll to top igen.
+* Page width hopper rundt. Set noget preferred width på body?
 
 
 Kan jeg have tre css
