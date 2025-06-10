@@ -5,3 +5,5 @@ Quite often, when you write code in IntelliJ IDEA, you might encounter situation
 The short cut for this is <kbd>Alt</kbd> + <kbd>Enter</kbd>.
 
 Watch the video below to see how Quick Fix works in IntelliJ IDEA:
+
+![Quick fix video](https://youtu.be/Be6vuPdDtm0)

@@ -27,3 +27,5 @@ In this article, we will look at some of the most commonly used methods of the `
 * indexOf
 * replace
 * trim
+
+You may also read more about strings [here](https://www.w3schools.com/java/java_strings.asp).
