@@ -15,6 +15,7 @@
   * Jeg kunne prøve at konvertere pre til et div og have class på, efter min første converter.
   * Jeg skal så opdatere al min prism.css... og prism.js fejler nok.
   * Jeg tror prism.js kommer til at fejle hårdt.
+* Ved next page, scroll to top igen.
 
 
 Kan jeg have tre css
