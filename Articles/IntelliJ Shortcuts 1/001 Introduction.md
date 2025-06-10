@@ -10,3 +10,6 @@ In this article, I will introduce 4 features.
 2) **Quick fix**: If you make a mistake, IntelliJ can suggest ways to fix it quickly.
 3) **Method arguments**: When you call a method, IntelliJ shows you the parameters it expects, so you know what to provide.
 4) **Method Documentation**: You can view documentation for methods, which helps you understand how to use them without leaving your code.
+5) **Formatting code**: IntelliJ can automatically format your code to make it more readable and consistent.
+
+These features are designed to make your coding experience smoother and more productive. As you continue to use IntelliJ IDEA, you'll find that these shortcuts become second nature, allowing you to focus more on writing great code and less on the mechanics of the IDE.
