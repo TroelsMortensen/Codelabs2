@@ -2,11 +2,11 @@
 
  In math a quadratic equation is given as: 
  
-$ax^2 + bx + c = 0$
+$$ax^2 + bx + c = 0$$
 
  For such an equation the discriminant (`D`) is calculated as: 
  
-$D = b^2 - 4ac$
+$$D = b^2 - 4ac$$
 
 and the solution to the equation is given by:
 
@@ -14,15 +14,14 @@ If `D` is negative, there are no real solutions.
 
 If `D` is zero, there is one real solution:
 
-$x = \frac{-b}{2a}$
 
 $$x = \frac{-b}{2a}$$
 
 If `D` is positive, there are two real solutions:
 
-$x = \frac{-b + \sqrt{D}}{2a}$
+$$x = \frac{-b + \sqrt{D}}{2a}$$
 
-$x = \frac{-b - \sqrt{D}}{2a}$
+$$x = \frac{-b - \sqrt{D}}{2a}$$
 
 
 Create a program that asks the user for input values for `a`, `b`, and `c`, and then calculates the solutions (if any) to the quadratic equation.\
