@@ -167,4 +167,3 @@ Enter your age:
 16
 You are not eligible to vote
 ```
-
