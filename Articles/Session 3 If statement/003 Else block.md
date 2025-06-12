@@ -61,7 +61,9 @@ The number is even
 ```
 
 <hint title="Hint 1">
+
 Remember, you can use the modulo operator (`%`) in Java to find the remainder when dividing two numbers. For example, `number % 2 == 0` checks if a number is even.
+
 </hint>
 
 <hint title="Solution">
