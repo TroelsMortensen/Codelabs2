@@ -68,7 +68,9 @@ The number is positive
 ```
 
 <hint title="Hint 1">
+
 Use three separate if-statements: one for checking if the number is positive, one for zero, and one for negative.
+
 </hint>
 
 <hint title="Solution">
@@ -114,7 +116,9 @@ The number is even
 ```
 
 <hint title="Hint 1">
+
 Remember, you can use the modulo operator (`%`) to find the remainder when dividing by 2. If `number % 2 == 0`, the number is even.
+
 </hint>
 
 <hint title="Solution">
@@ -133,4 +137,5 @@ public class EvenOrOdd {
     }
 }
 ```
+
 </hint>
