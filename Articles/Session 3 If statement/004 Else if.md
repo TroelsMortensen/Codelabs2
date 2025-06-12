@@ -40,6 +40,12 @@ Enter a number:
 The number is Negative
 ```
 
+```
+Enter a number:
+5
+The number is Positive
+```
+
 <hint title="Solution">
 
 ```java
