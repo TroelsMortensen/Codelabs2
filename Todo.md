@@ -17,6 +17,7 @@
   * Jeg tror prism.js kommer til at fejle hårdt.
 * Ved next page, scroll to top igen.
 * Page width hopper rundt. Set noget preferred width på body?
+* Styling på min math equations, se page 10 under if-statement
 
 
 Kan jeg have tre css

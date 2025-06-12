@@ -25,6 +25,24 @@ if (conditionA) {
 } 
 ```
 
+## Comment 2 to video
+It is important to note that the `else if` structure is evaluated in order. The first condition that evaluates to `true` will execute its block of code, and the rest will be skipped. This means that if you have multiple conditions, only the first one that is true will be executed.
+
+```java
+if (conditionA) {
+    System.out.println("condition A is true");
+} else if (conditionB) {
+    System.out.println("condition B is true");
+} else if (conditionC) {
+    System.out.println("condition C is true");
+} else {
+    System.out.println("None of the conditions are true");
+}
+```
+
+If, for example, `conditionA` is true, the program will print "condition A is true" and skip the rest of the conditions. If `conditionA` is false but `conditionB` is true, it will print "condition B is true" and skip `conditionC` and the `else` block.
+
+
 # Exercises
 
 ### Exercise 1: Number Classification

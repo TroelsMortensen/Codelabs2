@@ -55,3 +55,8 @@ public class GenderAndAgeDescription {
 }
 ```
 </hint>
+
+
+## Exercise 2, optional!
+
+If you are interested, you can extend the program to include more complex conditions, such as checking for more fine-grained age ranges or adding more gender options.
