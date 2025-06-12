@@ -1,10 +1,10 @@
 # If-Else
 
-Sometimes you have two pieces of code, and you want to run one of them based on a condition. This is where the `else` block comes in.
+Sometimes you have two pieces of code, and you want to run only one of them based on a condition. This is where the `else` block comes in: execute either _this_ block of code or _that_ block of code, depending on whether a condition is true or false.
 
 Watch the video below to learn how to use the `else` block in Java.
 
-<video src=""></video>
+<video src="https://youtu.be/MFHkY9TNI18"></video>
 
 # Exercises
 
@@ -59,6 +59,10 @@ Enter a number:
 8
 The number is even
 ```
+
+<hint title="Hint 1">
+Remember, you can use the modulo operator (`%`) in Java to find the remainder when dividing two numbers. For example, `number % 2 == 0` checks if a number is even.
+</hint>
 
 <hint title="Solution">
 
