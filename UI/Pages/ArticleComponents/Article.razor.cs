@@ -48,8 +48,11 @@ public partial class Article : ComponentBase
         isDropdownVisible = false;
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender) =>
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
         await JsRuntime.InvokeVoidAsync("Prism.highlightAll");
+        await JsRuntime.InvokeVoidAsync("MathJax.typeset");
+    }
 
 
     private void ToggleDropdown() =>
