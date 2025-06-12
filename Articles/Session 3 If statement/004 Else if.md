@@ -8,7 +8,7 @@ What if we have A, B, C, and D? What if we have more than two options? This is w
 
 Watch the video below to learn how to use the `else if` statement in Java.
 
-<video src="https://youtu.be/P0e-KIHchF4"></video>
+<video src="https://youtu.be/0FxgQ1PRVYU"></video>
 
 
 ## Comment to video

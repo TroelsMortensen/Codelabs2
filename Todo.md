@@ -18,6 +18,7 @@
 * Ved next page, scroll to top igen.
 * Page width hopper rundt. Set noget preferred width på body?
 * Styling på min math equations, se page 10 under if-statement
+* skal ikke kunne selct text i steps overview
 
 
 Kan jeg have tre css
