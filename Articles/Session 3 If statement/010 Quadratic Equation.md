@@ -16,6 +16,8 @@ If `D` is zero, there is one real solution:
 
 $x = \frac{-b}{2a}$
 
+$$x = \frac{-b}{2a}$$
+
 If `D` is positive, there are two real solutions:
 
 $x = \frac{-b + \sqrt{D}}{2a}$
