@@ -31,7 +31,7 @@ System.out.println("Lowercase: " + lower);
 4. **Print the Results**: The original, uppercase, and lowercase versions of the string are printed to the screen.
 
 ### Output:
-```
+```yaml
 Original: Hello, World!
 Uppercase: HELLO, WORLD!
 Lowercase: hello, world!
@@ -43,7 +43,7 @@ Lowercase: hello, world!
 Write a program that asks the user to enter a word. Use the `toUpperCase()` method to convert the word to uppercase and display the result.
 
 Example Output:
-```
+```yaml
 Enter a word: hello
 Uppercase: HELLO
 ```
@@ -72,13 +72,13 @@ public class ConvertToUppercase {
 Write a program that asks the user to enter a word. Use the `toLowerCase()` method to convert the word to lowercase and display the result.
 
 Example Output:
-```
+```yaml
 Enter a word: HELLO
 Lowercase: hello
 ```
 
 Example Output:
-```
+```yaml
 Enter a word: HelLo
 Lowercase: hello
 ```

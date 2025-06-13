@@ -29,7 +29,7 @@ System.out.println("The name " + name + " has " + name.length() + " characters."
 ```
 
 Output:
-```
+```yaml
 The name Alice has 5 characters.
 ```
 
@@ -43,7 +43,7 @@ Write a program that asks the user to enter their favorite word. Then, use the `
 
 Example Output:
 
-```console
+```yaml
 Enter your favorite word: Programming
 The word "Programming" has 11 characters.
 ```
@@ -74,7 +74,7 @@ public class FavoriteWordLength {
 Write a program that asks the user to enter a word. Use the `length()` method to check if the word has more than 5 characters. If it does, display `true`. Otherwise, display `false`.
 
 Example Output:
-```
+```yaml
 Enter a word: Hello
 Is the word longer than 5 characters? false
 ```
@@ -105,7 +105,8 @@ Write a program that asks the user to enter a **word** and a **number**.\
 Use the `length()` method to check if the word's length is greater than the number. Display `true` if it is, and `false` otherwise.
 
 Example Output:
-```
+
+```yaml
 Enter a word: Programming
 Enter a number: 10
 Is the word longer than the number? true

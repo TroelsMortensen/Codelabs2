@@ -2,7 +2,7 @@
 
 using System.Text.RegularExpressions;
 
-const string path = "C:\\TRMO\\RiderProjects\\Codelabs3\\Articles\\Session 3 If statement";
+const string path = "C:\\TRMO\\RiderProjects\\Codelabs3\\Articles\\Session 2 String methods";
 
 Directory.EnumerateFiles(path)
     .Where(EndsWithMd)
