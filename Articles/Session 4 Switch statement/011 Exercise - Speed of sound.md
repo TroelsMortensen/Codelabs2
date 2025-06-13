@@ -20,7 +20,7 @@ You can calculate the amount of time it takes sound to travel in each medium usi
 
 ### Example Output
 
-```yaml
+```
 Enter the medium (air, water, steel):
 water
 Enter the distance (in feet):
