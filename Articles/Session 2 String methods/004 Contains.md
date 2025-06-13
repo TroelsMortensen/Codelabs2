@@ -89,4 +89,50 @@ public class CheckForWord {
 </hint>
 
 
+### Exercise 2: Check for a word ignoring case
+Write a program that asks the user to enter a sentence and a word. Check if the word is present in the sentence, ignoring case.
 
+Example Output:
+
+```yaml
+Enter a sentence:
+Java is awesome!
+Enter a word:
+awesome
+The sentence contains the word (ignoring case): true
+```
+
+Example Output:
+
+```yaml
+Enter a sentence:
+Java is aWeSoME!
+Enter a word:
+awesome
+The sentence contains the word (ignoring case): true
+```
+
+
+<hint title="Solution">
+
+```java
+import java.util.Scanner;
+
+public class CheckForWordIgnoringCase {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a sentence: ");
+        String sentence = scanner.nextLine();
+        String sentenceLower = sentence.toLowerCase();
+
+        System.out.print("Enter a word: ");
+        String word = scanner.nextLine();
+        String wordLower = word.toLowerCase();
+
+        boolean result = sentenceLower.contains(wordLower);
+
+        System.out.println("The sentence contains the word (ignoring case): " + result);
+    }
+}
+```
