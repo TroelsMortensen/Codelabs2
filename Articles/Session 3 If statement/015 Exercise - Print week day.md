@@ -12,7 +12,7 @@ Monday
 
 Example Output:
 
-```yaml
+```
 Enter a number (1-7):
 3
 Wednesday
