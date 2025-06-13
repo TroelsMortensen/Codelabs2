@@ -2,15 +2,17 @@
 
 using System.Text.RegularExpressions;
 
-const string path = "C:\\TRMO\\RiderProjects\\Codelabs3\\Articles\\Session 1 Learning Path";
+const string path = "C:\\TRMO\\RiderProjects\\Codelabs3\\Articles\\Session 3 If statement";
 
 Directory.EnumerateFiles(path)
-    .Where(filePath => filePath.EndsWith(".md"))
+    .Where(EndsWithMd)
     .Where(StartsWithPageIndex)
     .Select((filePath, index) => (fileName: filePath, index: index))
     .ToList()
     .ForEach(tuple => UpdateName(tuple.fileName, tuple.index));
 
+static bool EndsWithMd(string filePath) =>
+    filePath.EndsWith(".md");
 
 static bool StartsWithPageIndex(string filePath) =>
     Regex.IsMatch(Path.GetFileName(filePath), @"^\d{2,4} ");
