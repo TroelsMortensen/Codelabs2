@@ -66,3 +66,8 @@ public class DaysInMonth {
 ```
 
 </hint>
+
+
+## Extra
+
+Extend the above exercise to also request a year, and if the month is February, print 29 days if the year is a leap year.
