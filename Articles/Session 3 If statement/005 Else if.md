@@ -52,13 +52,13 @@ Write a program that asks the user to enter a number. Use an if-else-if-else str
 - "Negative" if the number is less than 0
 
 Example Output:
-```
+```yaml
 Enter a number:
 -5
 The number is Negative
 ```
 
-```
+```yaml
 Enter a number:
 5
 The number is Positive
@@ -96,7 +96,7 @@ Write a program that asks the user to enter the current temperature. Use an if-e
 - "It's cold" for temperatures below 10
 
 Example Output:
-```
+```yaml
 Enter the temperature:
 15
 It's cool

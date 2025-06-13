@@ -48,13 +48,13 @@ public class PassOrFail {
 Write a program that asks the user to enter a number. Use an if-else statement to print "The number is even" if the number is divisible by 2, and "The number is odd" otherwise.
 
 Example Output:
-```
+```yaml
 Enter a number:
 7
 The number is odd
 ```
 
-```
+```yaml
 Enter a number:
 8
 The number is even

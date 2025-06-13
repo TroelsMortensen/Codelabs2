@@ -14,13 +14,13 @@ Once you have watched the video, then watch the following video to see how the i
 Write a program that asks the user to enter a number. Use an if-statement to print "The number is positive" if the number is greater than or equal to 0. If the number is negative, nothing should be printed.
 
 Example Output:
-```
+```yaml
 Enter a number:
 -5
 ```
 (prints nothing)
 
-```
+```yaml
 Enter a number:
 7
 The number is positive
@@ -49,19 +49,19 @@ public class PositiveOrNegative {
 In the previous exercise, expand the program to also print "The number is negative" if the number is less than 0. If the number is 0, print "The number is zero".
 
 Example Output:
-```
+```yaml
 Enter a number:
 -5
 The number is negative
 ```
 
-```
+```yaml
 Enter a number:
 0
 The number is zero
 ```
 
-```
+```yaml
 Enter a number:
 7
 The number is positive
@@ -103,13 +103,13 @@ Write a program that asks the user to enter a number. Use an if-statement to pri
 If the number is odd, nothing should be printed.
 
 Example Output:
-```
+```yaml
 Enter a number:
 7
 ```
 (prints nothing)
 
-```
+```yaml
 Enter a number:
 8
 The number is even
