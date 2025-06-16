@@ -6,4 +6,10 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <None Remove="Session 3 If statement\003 Else block.md" />
+      <None Remove="Session 2 String methods\006 Index of.md" />
+      <None Remove="Session 2 String methods\004 Char at.md" />
+    </ItemGroup>
+
 </Project>
