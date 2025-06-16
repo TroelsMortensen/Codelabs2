@@ -2,7 +2,7 @@
 
 In Java, you can convert a string to an enum using the `valueOf()` method provided by the `Enum` class.\
 This method takes a string and returns the corresponding enum constant, if it exists. If the string does not match any enum constant, you will get an exception, which crashes your program.\
-This is inconvenient, and we will learn about exceptions later.
+This last part is inconvenient, and we will learn about exceptions later.
 
 ### Example
 ```java
@@ -36,7 +36,7 @@ enum Day {
 
 #### Exercise 1: Convert Traffic Light String to Enum
 
-Redo the previous traffic light exercise, but now request input from the user instead.
+Redo the previous traffic light exercise, but now request input from the user instead. Convert the input string to an enum representing the traffic light color. 
 
 Example Output:
 ```
