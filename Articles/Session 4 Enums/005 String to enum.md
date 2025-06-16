@@ -31,16 +31,3 @@ enum Day {
 1. **`valueOf()` Method**: Converts the string to the corresponding enum constant.
 2. **Case Sensitivity**: The string must match the enum constant exactly, including case.
 3. **Error Handling**: Use a `try-catch` block to handle invalid strings. We will cover this towar the end of the course.
-
-### Exercises
-
-#### Exercise 1: Convert Traffic Light String to Enum
-
-Redo the previous traffic light exercise, but now request input from the user instead. Convert the input string to an enum representing the traffic light color. 
-
-Example Output:
-```
-Enter the traffic light color (RED, YELLOW, GREEN):
-RED
-Action: Stop
-```
