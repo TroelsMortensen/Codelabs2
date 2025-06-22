@@ -93,3 +93,5 @@ public class HelloWorldExample {
 ```
 
 Notice that in this kind of situation, the `do-while` loop is particularly useful because it ensures that the user is prompted at least once, even if the condition is not met initially.
+
+However, the two loop-versions are so similar, that I personally never use the do-while-loop. I simply forget it exists
