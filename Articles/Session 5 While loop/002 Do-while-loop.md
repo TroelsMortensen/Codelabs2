@@ -11,6 +11,10 @@ do {
 
 ```
 
+Here's a diagram to visualize the `do-while` loop:
+
+![Do-While Loop Diagram](Resources/do-while-loop.png)
+
 ### Key Points:
 - The loop body is executed first, and then the condition is evaluated.
 - If the condition is `true`, the loop continues; otherwise, it stops. But has executed _at least once_.
