@@ -92,7 +92,7 @@ Notice how the loop stops checking the remaining elements (15 and 2) once the ta
 
 ## Example 3: User input validation with break
 
-Here's a practical example using `break` for input validation:
+This example shows how to keep asking for user input until they provide a valid number (between 1 and 10), using `break` to exit when valid input is received:
 
 ```java
 import java.util.Scanner;
@@ -120,6 +120,17 @@ public class InputValidationExample {
 }
 ```
 
+**Example Input/Output:**
+```
+Enter a number between 1 and 10: 15
+Invalid input. Please try again.
+Enter a number between 1 and 10: -3
+Invalid input. Please try again.
+Enter a number between 1 and 10: 7
+Thank you! You entered: 7
+Program continues with valid number: 7
+```
+
 ## When to use break
 
 The `break` statement is useful when:
@@ -132,8 +143,8 @@ The `break` statement is useful when:
 
 ## Important Notes
 
-- `break` makes your code more efficient by avoiding unnecessary iterations
-- Always ensure your loop has a way to terminate to avoid infinite loops
+- `break` can make your code more efficient by avoiding unnecessary iterations
+- Always (almost) ensure your loop has a way to terminate to avoid infinite loops
 - In case of nested loops (introduced later), `break` will only exit out of the inner loop.
 
 The `break` statement is a powerful tool for controlling loop execution and making your programs more efficient and readable.
