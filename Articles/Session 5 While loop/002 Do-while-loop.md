@@ -1,6 +1,6 @@
 # The do-while loop
 
-The `do-while` loop is similar to the `while` loop, but it guarantees that the loop body will execute _at least once_. The condition is evaluated after the loop body is executed.
+The `do-while` loop is similar to the `while` loop, but it guarantees that the loop body will execute **_at least once_**. The condition is evaluated **_after_** the loop body is executed.
 
 ### Syntax:
 
@@ -75,6 +75,8 @@ Enter a positive number: 7
 You entered: 7
 ```
 
+The example could be improved by providing the user with an error message, when incorrect input is entered.
+
 ## Example 3: Request Hello World Input
 
 And just re-doing the example from the `while` loop, but using a `do-while` loop instead:
@@ -89,7 +91,7 @@ public class HelloWorldExample {
         do {
             System.out.print("Please enter 'Hello World': ");
             input = scanner.nextLine();
-        } while (!input.equals("Hello World"));
+        } while ( ! input.equals("Hello World"));
 
         System.out.println("Success! You entered 'Hello World'. That was very well done! Praise to you!");
     }
@@ -98,4 +100,4 @@ public class HelloWorldExample {
 
 Notice that in this kind of situation, the `do-while` loop is particularly useful because it ensures that the user is prompted at least once, even if the condition is not met initially.
 
-However, the two loop-versions are so similar, that I personally never use the do-while-loop. I simply forget it exists
+However, the two loop-versions are so similar, that I personally never use the do-while-loop. I simply forget it exists.

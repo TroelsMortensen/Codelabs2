@@ -1,6 +1,6 @@
 # The while loop
 
-The `while` loop is a control flow statement that allows code to be executed repeatedly based on a given condition. The loop continues as long as the condition evaluates to `true`. If the condition is `false`, the loop stops.
+The `while` loop is a control flow statement that allows a block of code to be executed repeatedly based on a given condition. The loop continues as long as the condition evaluates to `true`. If the condition is at some point evaluated to `false`, the code block is not executed, and the loop stops.
 
 It is similar to the for-loop, but perhaps a bit simpler in its structure. The `while` loop is particularly useful when the number of iterations is not known beforehand and depends on dynamic conditions.
 
