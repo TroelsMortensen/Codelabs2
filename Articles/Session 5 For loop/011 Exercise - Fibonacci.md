@@ -13,7 +13,7 @@ For example:
 - The 8th number is `8 + 13 = 21`
 
 ## Task
-Write a Java program that asks the user to input a number and prints all Fibonacci numbers up to that number.
+Write a Java program which asks the user to input a number and prints all Fibonacci numbers up to that number.
 
 ### Example Input:
 ```
