@@ -148,3 +148,8 @@ Create a program that combines all the above exercises. That means the program s
 
 This would putting copying all your previous helper methods into the new file.
 
+Feel free to expand, for example:
+* let the user define the initial size
+* find minimum and maximum values in the array
+* get the average of all numbers in the array
+* etc
