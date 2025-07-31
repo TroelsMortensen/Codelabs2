@@ -227,3 +227,4 @@ public class PrintArray {
         System.out.println(formattedArray);
     }
 }
+```
