@@ -46,5 +46,6 @@ ting, som List gør for os.
 * index of
 * contains
 * reverse
+* copy array to other
 * opret array af size read-from-console, input numbers, keep track of the next position to insert.
 * expand til at når array size er fuld, create a new array with double size, copy elements over, and continue inserting.

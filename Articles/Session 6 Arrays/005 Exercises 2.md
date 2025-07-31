@@ -135,3 +135,82 @@ public class SafeArrayAccess {
 </hint>
 
 Understanding array length is fundamental for safe and effective array manipulation in Java. Always remember that the length property helps you avoid index-related errors and write more robust code.
+
+## Exercise 3: User Determines Array Size and Fills It
+
+Write a Java program that asks the user to specify the size of an integer array, creates an array of that size, then asks the user to fill the array with numbers. After the array is filled, print all the elements along with their indices.
+
+### Example Output:
+```
+Enter the size of the array: 4
+Enter 4 numbers:
+Number 1: 15
+Number 2: 23
+Number 3: 8
+Number 4: 42
+
+Array contents: [15, 23, 8, 42]
+```
+
+<hint title="Hint 1">
+
+Use Scanner to read user input. First read the array size, then create an array of that size. 
+
+</hint>
+
+<hint title="Hint 2">
+
+The size of an array can be given from a variable:
+
+```java
+int size = 5;
+int[] numbers = new int[size];
+```
+</hint>
+
+<hint title="Hint 3>
+
+The upper bound of the loop iteration can also be given from a variable:
+
+```java
+int size = 5;
+for (int i = 0; i < size; i++) {
+    // loop body
+}
+```
+
+</hint>
+
+<hint title="Solution">
+
+```java
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class UserDefinedArray {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Get array size from user
+        System.out.print("Enter the size of the array: ");
+        int size = scanner.nextInt();
+        
+        // Create array of specified size
+        int[] numbers = new int[size];
+        
+        // Fill array with user input
+        System.out.println("Enter " + size + " numbers:");
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.print("Number " + (i + 1) + ": ");
+            numbers[i] = scanner.nextInt();
+        }
+        
+        // Display array contents
+        System.out.println(); // create an empty line for better readability
+        System.out.println("Array contents: " + Arrays.toString(numbers));
+        
+    }
+}
+```
+
+</hint>
