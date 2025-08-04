@@ -35,7 +35,7 @@ String[] names = new String[3]; // An array to hold 3 names
 
 Watch the following video, to get a brief introduction to arrays in Java:
 
-<video src="https://youtu.be/OvTsLiMCkHk" title="Java Arrays - Introduction" />
+<video src="https://youtu.be/OvTsLiMCkHk" ></video>
 
 
 ## Exercise ideas
