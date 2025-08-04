@@ -15,6 +15,9 @@ for (int i = 0; i < listName.size(); i++) {
 ```
 
 ### Example 1: Basic For Loop Iteration
+
+In this example, we will iterate through a list of fruits and print each fruit along with its index.
+
 ```java
 import java.util.ArrayList;
 
@@ -45,6 +48,9 @@ Index 3: Date
 ```
 
 ### Example 2: Modifying Elements with For Loop
+
+In this example, we will double each number in a list of integers using a traditional for loop.
+
 ```java
 import java.util.ArrayList;
 
@@ -62,7 +68,7 @@ public class Main {
         // Double each number using traditional for loop
         for (int i = 0; i < numbers.size(); i++) {
             int currentValue = numbers.get(i);
-            numbers.set(i, currentValue * 2);
+            numbers.set(i, currentValue * 2); // overwrite with doubled value
         }
 
         System.out.println("After modification: " + numbers);
@@ -88,6 +94,9 @@ for (elementType element : listName) {
 ```
 
 ### Example 3: Basic For-Each Loop
+
+In this example, we will iterate through a list of colors and print each color.
+
 ```java
 import java.util.ArrayList;
 
@@ -116,7 +125,10 @@ Color: Blue
 Color: Yellow
 ```
 
-### Example 4: Processing Data with For-Each Loop
+### Example 4: Processing Data with For-Each Loop 
+
+In this example, we will calculate the total price of items in a list, applying a tax rate.
+
 ```java
 import java.util.ArrayList;
 
@@ -134,11 +146,11 @@ public class Main {
         System.out.println("Prices with tax (25%):");
         for (double price : prices) {
             double priceWithTax = price * 1.25;
-            System.out.printf("$%.2f -> $%.2f%n", price, priceWithTax);
+            System.out.printf("$" + price + " -> " + "$" + priceWithTax);
             total += priceWithTax;
         }
 
-        System.out.printf("Total with tax: $%.2f%n", total);
+        System.out.printf("Total with tax: $" + total);
     }
 }
 ```
@@ -170,6 +182,9 @@ Total with tax: $84.05
 - You don't need the index information
 
 ## Example 5: Backwards Iteration (Traditional For Loop Only)
+
+In some cases, you may want to iterate through a list in reverse order. This can only be done with a traditional for loop.
+
 ```java
 import java.util.ArrayList;
 
@@ -210,6 +225,9 @@ Hello
 ```
 
 ## Example 6: Finding Elements
+
+In this example, we will find a specific element in a list using both traditional and enhanced for loops.
+
 ```java
 import java.util.ArrayList;
 
@@ -244,7 +262,7 @@ public class Main {
         System.out.println(searchName + (found ? " found" : " not found"));
     }
 }
-```
+```S
 
 **Output:**
 ```
