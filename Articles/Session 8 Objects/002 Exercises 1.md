@@ -6,17 +6,17 @@ Now, some of the objects below are quite complex in the real world, so just put 
 
 ## Exercise 0: Triangle Object
 
-Write down the properties and methods you would expect a triangle object to have.
+Write down the properties and methods you might expect a triangle object to have.
 
 For now, keep it in the same format, as you saw in the video:
 
 | TRIANGLE |
 |------------------|
-properties
+**properties**
 * ...
 * ...
 
-methods
+**methods**
 * xyz () 
 * ...
 
