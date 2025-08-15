@@ -1,6 +1,6 @@
 # Introducing methods in Java
 
-You have already seen methods in Java, you have used them in the previous sessions, but you have not formally been introduced to them yet.
+You have already seen methods in Java, you have used them in the previous sessions, but you have not formally been introduced to them yet. And while you have _used_ methods, you have probably not written that many yourself.
 
 Here are a few examples of methods you have seen:
 
@@ -15,3 +15,4 @@ Methods are blocks of code that perform a specific task. They can take inputs (c
 
 Watch the following video to get an introduction to methods in Java:
 
+<video src="https://youtu.be/yGvrgkX8g9k"></video>
