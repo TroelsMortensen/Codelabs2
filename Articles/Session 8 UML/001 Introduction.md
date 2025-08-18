@@ -7,7 +7,7 @@ In the Objects learning path, you saw a video about objects, and how we define t
 
 It looked something like this:
 
-![obj template](Resources/Objects%20concept.pptx.png)
+![obj template](Resources/Objects%20concept.png)
 
 This, however, was an informal, detail-lacking approach, I just made up on the spot.
 
@@ -29,8 +29,8 @@ Key points about UML:
 - It is **not a programming language**, nor is it specific to Java.
 - It helps in communicating complex ideas about software design to different stakeholders (developers, project managers, clients).
 
-There are many types of UML diagrams, each for a specific purpose (e.g., Use Case diagrams, Sequence diagrams, State diagrams). In this session, we will focus on one of the most common type: the **Class Diagram**.
+There are many types of UML diagrams, each for a specific purpose (e.g., Use Case diagrams, Sequence diagrams, State diagrams). In this learning path, we will focus on one of the most common type: the **Class Diagram**. And for now, only a subset. As we move along in the course, you will see more UML too.
 
-Above is a blueprint for a house, below is a blueprint, or, _class diagram_ for a system:
+Above is a blueprint for a house, below is a blueprint, or, _class diagram_, for a system:
 
 ... which I will insert eventually, once I find a good example.
