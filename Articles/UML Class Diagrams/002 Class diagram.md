@@ -9,4 +9,5 @@ Below is an example:
 ![class diagram example](Resources/ExampleLibrary.png)
 
 ## Creating a class diagram in Astah
-...
+
+video goes here...
