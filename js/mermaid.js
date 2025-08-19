@@ -1,8 +1,12 @@
 ﻿window.initializeMermaid = () => {
     mermaid.initialize({
         startOnLoad: true,
-        classDiagram: {
-            methodStyle: "colon" // Use a single colon instead of double colons
+        theme: "base",
+        themeVariables: {
+            primaryColor: "#ffffff", // White background for class boxes
+            primaryTextColor: "#000000", // Black text color
+            primaryBorderColor: "#000000", // Black border color
+            background: "#ffffff" // White overall diagram background
         }
     });
 }

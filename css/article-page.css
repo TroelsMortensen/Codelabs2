@@ -187,3 +187,8 @@
     overflow-x: auto;
     display: block; /* or unset, if you don't want it to be flex itself */
 }
+
+pre.mermaid svg {
+    display: block;
+    margin: 0 auto;
+}
