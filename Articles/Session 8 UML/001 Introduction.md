@@ -31,6 +31,6 @@ Key points about UML:
 
 There are many types of UML diagrams, each for a specific purpose (e.g., Use Case diagrams, Sequence diagrams, State diagrams). In this learning path, we will focus on one of the most common type: the **Class Diagram**. And for now, only a subset. As we move along in the course, you will see more UML too.
 
-Above is a blueprint for a house, below is a blueprint, or, _class diagram_, for a system:
+Above is a blueprint for a house, below is a blueprint, or, _class diagram_, for a library system:
 
-... which I will insert eventually, once I find a good example.
+![example library](Resources/ExampleLibrary.png)
