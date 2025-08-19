@@ -4,23 +4,15 @@ Static methods and field variables are underlined in UML class diagrams.
 
 Here is an example:
 
-image here...
+```mermaid
+classDiagram
+    class StaticExample {
+        __+staticMethod()__
+        __+staticProperty__
+    }
+```
 
 ## Marking something static in Astah
 
 video here..
 
-```mermaid
-classDiagram
-    class Person {
-        -String name
-        -int age
-        +getName()
-        +setName(String name)
-    }
-    class Employee {
-        -int employeeId
-        +getEmployeeId()
-    }
-    Person <|-- Employee
-```
