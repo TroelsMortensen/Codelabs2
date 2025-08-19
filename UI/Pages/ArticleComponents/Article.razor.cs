@@ -52,6 +52,7 @@ public partial class Article : ComponentBase
     {
         await JsRuntime.InvokeVoidAsync("Prism.highlightAll");
         await JsRuntime.InvokeVoidAsync("MathJax.typeset");
+        await JsRuntime.InvokeVoidAsync("initializeMermaid");
         await JsRuntime.InvokeVoidAsync("renderMermaid");
     }
 
