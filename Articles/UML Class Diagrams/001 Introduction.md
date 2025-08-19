@@ -11,9 +11,11 @@ I also, eventually, plan on having small videos accompanying each page, explaini
 
 **Note**
 
-Some diagram examples in this article are created in Astah, and screenshotted. Other examples are rendered directly using Mermaid UML. This is only to say, there are small differences in how the diagrams might look. 
+Some diagram examples in this article are created in Astah, and screenshot. Other examples are rendered directly using Mermaid UML. This is only to say, there may be small differences in how the diagrams might look. 
 
-Here is a diagram from Astah:
+You do not have to care about Mermaid at all.
+
+Here is a diagram as a screenshot from Astah:
 
 ![astah example](Resources/class-example.png)
 
