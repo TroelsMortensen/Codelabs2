@@ -51,6 +51,9 @@ You can also write it in one line:
 boolean result = (a < b) && (b < c);
 System.out.println("Is b between a and c? " + result);
 ```
+
+<video src="https://youtu.be/kYIexNLNH9I"></video>
+
 </hint>
 
 Try with different values for `b` to see how the result changes.

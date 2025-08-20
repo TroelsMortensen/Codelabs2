@@ -1,4 +1,4 @@
-﻿Exercise 5 - City information
+﻿# Exercise 5 - City information
 
 Write a program that asks the user to enter the name of their favorite city. 
 Use a String variable to store the input.\
@@ -44,5 +44,7 @@ public class CityInformation {
     }
 }
 ```
+
+<video src="https://youtu.be/N3H9UOdZm0M"></video>
 
 </hint>

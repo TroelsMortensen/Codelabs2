@@ -31,4 +31,6 @@ public class EchoString
 }
 ```
 
+<video src="https://youtu.be/8lcO3dhbnUs"></video>
+
 </hint>

@@ -42,5 +42,8 @@ public class ConcatenateStrings {
     }
 }
 ```
+
+<vidoe src="https://youtu.be/wGhWYe6XdLo"></video>
+
 </hint>
 

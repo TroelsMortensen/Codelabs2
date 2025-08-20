@@ -36,7 +36,8 @@ This is like having a note that says "Potion is in the left-side, lower pocket o
 For example:
 
 ```java
-String jarLocation = "Large Jar os weird stuff!"; // The variable 'jarLocation' holds a reference to the String object in memory
+// The variable 'jarLocation' holds a reference to the String object in memory
+String jarLocation = "Large Jar os weird stuff!"; 
 ```
 
 ![Memory Reference](Resources/JarLocation.png)

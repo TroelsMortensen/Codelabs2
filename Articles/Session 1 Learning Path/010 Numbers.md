@@ -61,19 +61,40 @@ public class ArithmeticExample {
 
 When you run this code, it will perform the arithmetic operations and print the results to the console.
 
-## Exercise - Arithmetic Example
+## Exercises
+
+### Exercise - Arithmetic Example
 
 Create a new class called `ArithmeticExample`. Copy the code above into the class and run it.
 
 Verify the output.
 
-## Exercise - Sum
+### Exercise - Sum
 
 Create a new class called `SumExample`. In this class, write a program that calculates the sum of three numbers, just use integers. 
 
 Declare three integer variables, assign them values, and print out the sum of these three numbers.
 
-## Exercise - Integer division
+<hint title="Solution">
+
+```java
+public class SumExample {
+    public static void main(String[] args) {
+        int num1 = 5;
+        int num2 = 10;
+        int num3 = 15;
+
+        int sum = num1 + num2 + num3;
+        System.out.println("Sum: " + sum);
+    }
+}
+```
+
+<video src="https://youtu.be/a9EgfSzj-ag"></video>
+
+</hint>
+
+### Exercise - Integer division
 
 Division in Java can be tricky, especially when dealing with integers. It behaves perhaps not as expected.
 
@@ -93,7 +114,25 @@ In Java, when you divide two integers, the result is also an integer. The decima
 So, `10 / 3` results in `3`, not `3.333...`.
 </hint>
 
-## Exercise - Sales tax
+<hint title="Solution">
+
+```java
+public class IntegerDivisionExample {
+    public static void main(String[] args) {
+        int x = 10;
+        int y = 3;
+
+        int result = x / y;
+        System.out.println("Result: " + result);
+    }
+}
+```
+
+<video src="https://youtu.be/zU5EOl50_5w"></video>
+
+</hint>
+
+### Exercise - Sales tax
 
 Create a new class called `SalesTaxExample`. In this class, write a main method which declares two integers with values 19 and 89.
 
@@ -103,7 +142,7 @@ In Denmark the sales tax is 25%. Calculate the sales tax for these two integers 
 
 25% of a number can be calculated by multiplying the number by 0.25.
 
-<hint>
+</hint>
 
 <hint title="Solution">
 
@@ -125,7 +164,7 @@ public class SalesTaxExample {
 ```
 </hint>
 
-## Exercise - Math expressions
+### Exercise - Math expressions
 
 Inspect the following code snippet:
 
@@ -147,7 +186,7 @@ What do you think the output will be? Try to predict the output before running t
 
 Then, run the code and verify your predictions.
 
-## Exercise - overflow
+### Exercise - overflow
 
 Inspect the following code snippet:
 
