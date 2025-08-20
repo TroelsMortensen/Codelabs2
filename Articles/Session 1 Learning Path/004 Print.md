@@ -42,4 +42,6 @@ When you run the program, the console should automatically open and display the 
 
 ![Hello world console output](Resources/FirstPrint.png)
 
+<video src="https://youtu.be/Op6m6Wp_y2c"></video>
+
 </hint>
