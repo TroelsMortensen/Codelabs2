@@ -56,3 +56,17 @@ public class Main {
 ```
 
 Now, the code should compile without errors. You have successfully declared an `ArrayList` that can hold `Integer` objects.
+
+Try adding some integers to the list:
+
+```java
+import java.util.ArrayList;
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Integer> myList = new ArrayList<>();
+        myList.add(5);
+        myList.add(10);
+        myList.add(15);
+    }
+}
+```
