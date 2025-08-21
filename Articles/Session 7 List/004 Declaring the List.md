@@ -27,6 +27,19 @@ In Java, you cannot use primitive types (like `int`, `char`, etc.) as type param
 
 The `int` is a primitive type, while `Integer` is an object type (wrapper class) that represents an `int` value. The Java Collections Framework (which includes `ArrayList`) works with objects, not primitive types.
 
+Java provides automatic conversion between primitive types and their corresponding wrapper classes, a feature known as "autoboxing" and "unboxing". This means you can add an `int` to an `ArrayList<Integer>` without explicitly converting it to an `Integer`.
+
+```java
+import java.util.ArrayList;
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Integer> myList = new ArrayList<>();
+        myList.add(5); // Autoboxing: int to Integer
+        int value = myList.get(0); // Unboxing: Integer to int
+    }
+}
+```
+
 </hint>
 
 ## Exercise 2: Fixing the problem
