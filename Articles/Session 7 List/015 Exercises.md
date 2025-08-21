@@ -15,11 +15,11 @@ Write a program that continuously reads numbers from the console. You will need 
 **Example (user input in bold):**
 
 ```
-Enter a number: **5**
-Enter a number: **-3**
-Enter a number: **7**
-Enter a number: **-2**
-Enter a number: **0**
+Enter a number: 5
+Enter a number: -3
+Enter a number: 7
+Enter a number: -2
+Enter a number: 0
 Positive numbers: 2
 Negative numbers: 2
 Sum of positive numbers: 12
@@ -32,7 +32,7 @@ Write a program that continuously reads numbers from the console until the user 
 
 When 0 is read from the console, the program should print out how many different numbers were entered (excluding 0) and print the count at the end.
 
-### Example Input:
+**Example Input:**
 ```
 5
 3
@@ -42,7 +42,7 @@ When 0 is read from the console, the program should print out how many different
 0 // terminate input
 ```
 
-### Example Output:
+**Example Output:**
 ```
 Different numbers entered: 3
 ```
@@ -65,7 +65,7 @@ Write a program that continuously reads numbers from the console until the user 
 
 When 0 is read from the console, the program should print out the second largest number entered (excluding 0). If there are fewer than two different numbers, print a message saying so.
 
-### Example Input:
+**Example Input:**
 ```
 8
 3
@@ -74,18 +74,18 @@ When 0 is read from the console, the program should print out the second largest
 0
 ```
 
-### Example Output:
+**Example Output:**
 ```
 Second largest number: 5
 ```
 
-### Example Input (not enough numbers):
+**Example Input (not enough numbers):**
 ```
 4
 0
 ```
 
-### Example Output:
+**Example Output:**
 ```
 Not enough different numbers entered.
 ```
