@@ -30,7 +30,7 @@ Write a program, which creates an ArrayList containing integers.
 
 Then add 100 numbers to the list, starting from 1 up to 100.
 
-At the end, you can print out the number of elements in the list, using the `size()` method of the ArrayList: `myList.size()`.
+At the end, you can print out the number of elements in the list, using the `size()` method of the ArrayList: `int listSize = myList.size();`.
 
 ## Growing and shrinking
 Initially the ArrayList declares an array of size 10 to hold the elements. But as you add more elements, the ArrayList will automatically grow to accommodate them.
