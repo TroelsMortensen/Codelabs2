@@ -13,4 +13,4 @@ We will ignore the LinkedList. You may use it instead of the ArrayList, but all 
 
 So, start by watching the video below, to get a brief introduction to how to do some basic operations with the ArrayList in Java. Later, we will explore the ArrayList in more detail, through exercises and examples.
 
-<video src="https://youtu.be/bHVrZJ-ES8w"/></video>
+<video src="https://youtu.be/bHVrZJ-ES8w"></video>
