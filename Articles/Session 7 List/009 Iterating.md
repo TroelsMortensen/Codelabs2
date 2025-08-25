@@ -262,9 +262,10 @@ public class Main {
         System.out.println(searchName + (found ? " found" : " not found"));
     }
 }
-```S
+```
 
 **Output:**
+
 ```
 Using traditional for loop:
 Charlie found at index 2
