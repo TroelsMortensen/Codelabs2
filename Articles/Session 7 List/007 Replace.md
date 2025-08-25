@@ -47,15 +47,17 @@ After replacement: [Apple, Blueberry, Cherry, Date]
 Here's how the replacement works:
 
 Before replacement:
+```
 | Index | 0     | 1      | 2      | 3    |
 |-------|-------|--------|--------|------|
 | Value | Apple | Banana | Cherry | Date |
-
+```
 After `fruits.set(1, "Blueberry")`:
+```
 | Index | 0     | 1         | 2      | 3    |
 |-------|-------|-----------|--------|------|
 | Value | Apple | Blueberry | Cherry | Date |
-
+```
 
 
 ## Important Notes

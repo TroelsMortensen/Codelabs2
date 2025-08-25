@@ -19,7 +19,7 @@
 * Page width hopper rundt. Set noget preferred width på body?
 * Styling på min math equations, se page 10 under if-statement
 * skal ikke kunne selct text i steps overview
-
+* box shadow rundt om hint kasser, når de er foldet ud.
 
 
 Kan jeg have tre css

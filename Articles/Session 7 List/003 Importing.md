@@ -1,6 +1,6 @@
 # Importing the ArrayList
 
-In order to use the `ArrayList` in your Java programs, you need to import it from the Java Collections Framework. This is done using the `import` statement at the beginning of your Java file.
+In order to use the `ArrayList` in your Java programs, you need to import it from the Java Collections. This is done using the `import` statement at the beginning of your Java file.
 
 Remember, how this needs to be done with the Scanner class to read user input? The same applies here.
 
