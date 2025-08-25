@@ -52,11 +52,13 @@ New size: 4
 ### Visual Representation: Remove by Index
 
 Before removal:
+
 | Index | 0     | 1      | 2      | 3    | 4          |
 |-------|-------|--------|--------|------|------------|
 | Value | Apple | Banana | Cherry | Date | Elderberry |
 
 After `fruits.remove(2)`:
+
 | Index | 0     | 1      | 2    | 3          |
 |-------|-------|--------|------|------------|
 | Value | Apple | Banana | Date | Elderberry |
