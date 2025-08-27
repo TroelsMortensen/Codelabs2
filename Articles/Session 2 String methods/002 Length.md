@@ -66,6 +66,8 @@ public class FavoriteWordLength {
 }
 ```
 
+<video src="https://youtu.be/zQ8oPT-n9uA"></video>
+
 </hint>
 
 
@@ -96,6 +98,8 @@ public class CheckWordLength {
     }
 }
 ```
+
+<video src="https://youtu.be/dT8R7S6JLhU"></video>
 
 </hint>
 
