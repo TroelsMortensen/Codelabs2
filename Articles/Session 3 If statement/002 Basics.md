@@ -26,7 +26,7 @@ Enter a number:
 The number is positive
 ```
 
-<hint title="Solution">
+<hint title="Code Solution">
 
 ```java
 import java.util.Scanner;
@@ -42,6 +42,12 @@ public class PositiveOrNegative {
     }
 }
 ```
+</hint>
+
+<hint title="Video Solution">
+
+<video src="https://youtu.be/978Xc-4jsc4"></video>
+
 </hint>
 
 ### Exercise 2: Is number positive or negative?
@@ -73,7 +79,7 @@ Use three separate if-statements: one for checking if the number is positive, on
 
 </hint>
 
-<hint title="Solution">
+<hint title="Code Solution">
 
 ```java
 import java.util.Scanner;
@@ -96,18 +102,26 @@ public class PositiveNegativeZero {
     }
 }
 ```
+
+</hint>
+
+<hint title="Video Solution">
+
+<video src="https://youtu.be/FMD2p797lXk"></video>
+
 </hint>
 
 ### Exercise 3: Even or Odd
 Write a program that asks the user to enter a number. Use an if-statement to print "The number is even" if the number is divisible by 2.\
-If the number is odd, nothing should be printed.
+If the number is odd, then print that out.
 
 Example Output:
 ```yaml
 Enter a number:
 7
+The number is odd
 ```
-(prints nothing)
+
 
 ```yaml
 Enter a number:

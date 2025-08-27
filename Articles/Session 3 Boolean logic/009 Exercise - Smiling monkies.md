@@ -21,3 +21,10 @@ public class MonkeyTrouble {
         // Your logic here
     }
 }
+```
+
+<hint title="Solution">
+
+<video src="https://youtu.be/Zg5w-7M05y0"></video>
+
+</hint>
