@@ -1,6 +1,6 @@
 # The `charAt()` Method in Java
 
-The `charAt()` method is a built-in function in Java that allows you to access a specific character in a string by its position (index). The index starts at 0, meaning the first character is at position 0, the second character is at position 1, and so on.
+The `charAt()` method is a built-in function in Java that allows you to access a specific character in a string by its position (index). The indexing starts at 0, meaning the first character is at position 0, the second character is at position 1, and so on.
 
 ## Example Table
 
@@ -18,7 +18,7 @@ char character = myString.charAt(index);
 ```
 
 - **`String`**: The string you want to access.
-- **`index`**: The position of the character you want to retrieve. Some number strictly less than the length of the string.
+- **`index`**: The position of the character you want to retrieve. Some number, strictly less than the length of the string.
 
 ### Example:
 ```java
@@ -84,7 +84,9 @@ The last character is: a
 ```
 
 <hint title="Hint 1">
+
 Remember, you can use the `length()` method to find the total number of characters in a string. The last character's index is always `length - 1`.
+
 </hint>
 
 <hint title="Solution">
@@ -120,10 +122,12 @@ For example, if you enter a word "Hello" and an index of 10, what happens?
 
 
 <hint title="Solution">
+
 You will encounter a `StringIndexOutOfBoundsException`. This exception occurs when you try to access an index that is not valid for the string.
 
 You should see your program crash with an error message like this:
-```
+
+```java
 Exception in thread "main" java.lang.StringIndexOutOfBoundsException: String index out of range: 10
 ```
 

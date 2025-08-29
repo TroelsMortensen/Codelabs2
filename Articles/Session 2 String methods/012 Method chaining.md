@@ -80,3 +80,13 @@ System.out.println(first); // j
 - When each method returns a new object (as with `String` methods).
 
 **Tip:** If the chain gets too long or hard to read, you can always break it up into intermediate variables for clarity. Provide good names for those variables to explain what this intermediate step represents.
+
+**Tip 2:** You can include line breaks to improve readability, especially in long chains. Example:
+
+```java
+String result = input
+    .trim()
+    .toLowerCase()
+    .replace(" ", "_");
+System.out.println(result); // hello_world  
+```
