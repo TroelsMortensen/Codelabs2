@@ -5,7 +5,7 @@ The `Scanner` class is a powerful tool for reading input from various sources, i
 We will focus on reading input from the console, only.
 
 To set up the `Scanner`, we need to create an instance of it.\
-This is done by calling the constructor of the `Scanner` class, passing `System.in` as an argument.\
+This is done by calling the constructor of the `Scanner` class, passing `System.in` as an argument.
 
 ```java
 import java.util.Scanner;

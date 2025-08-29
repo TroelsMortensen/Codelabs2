@@ -37,6 +37,10 @@ public class SumTwoIntegers {
 }
 ```
 
+</hint>
+
+<hint title="Video solution">
+
 <video src="https://youtu.be/B69d66pd5og"></video>
 
 </hint>
