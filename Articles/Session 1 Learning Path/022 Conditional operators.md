@@ -1,7 +1,7 @@
 # Conditional operators
 
-The last operators we need is used to combine multiple boolean values into a single boolean value.\
-These operators are called conditional operators, and they allow us to create complex conditions by combining simpler ones.
+The last operators we need are used to combine multiple boolean values into a single boolean value.\
+These operators are called _conditional operators_, and they allow us to create complex conditions by combining simpler ones.
 
 In Java, we have three conditional operators:
 - `&&`: Logical AND
@@ -9,9 +9,10 @@ In Java, we have three conditional operators:
 - `!`: Logical NOT
 
 ## Logical AND (`&&`)
-The logical AND operator (`&&`) checks if both conditions are true. If both conditions are true, the result is true; otherwise, it is false.\
+The logical AND operator (`&&`) checks if both conditions are true. If both conditions are true, the result is true; otherwise, it is false.
 
 Here is an example of how to use the logical AND operator:
+
 ```java
 boolean condition1 = true;
 boolean condition2 = false;
@@ -52,6 +53,10 @@ boolean result = (a < b) && (b < c);
 System.out.println("Is b between a and c? " + result);
 ```
 
+</hint>
+
+<hint title="Video solution">
+
 <video src="https://youtu.be/kYIexNLNH9I"></video>
 
 </hint>
@@ -70,7 +75,7 @@ boolean result = condition1 || condition2; // true, because one condition is tru
 System.out.println("Result of condition1 || condition2: " + result); // Prints true
 ```
 
-In the above code, the value of `result` is `true` because `condition1` is `true`, even though `condition2` is `false`.\
+In the above code, the value of `result` is `true` because `condition1` is `true`, even though `condition2` is `false`.
 
 ### Exercise
 Create a class with a main method. In the main method, declare three integer variables:

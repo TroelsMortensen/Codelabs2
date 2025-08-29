@@ -21,3 +21,5 @@ String tabbed = "This is a tab:\tTabbed text.";
 
 ## Exercise - Escaped Characters Example
 Create a new class called `EscapedCharactersExample`. In this class, create a main method. Copy in the above code examples of escaped characters and print each `String` to the console.
+
+Observe how the escape characters are not printed, but they may affect the character following them.

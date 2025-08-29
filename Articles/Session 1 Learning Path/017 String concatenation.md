@@ -1,6 +1,7 @@
 # String Concatenation
 
-You can combine two or more strings using the `+` operator. This is called string concatenation. For example:
+You can combine two or more strings using the `+` operator. This is called _string concatenation_.\
+For example:
 
 ```java
 String firstName = "John";
