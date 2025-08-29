@@ -1,6 +1,6 @@
 # Comments in code
 
-A comment is a piece of text in your code that is not executed by the Java compiler. It is used to explain the code, make notes, or temporarily disable parts of the code without deleting them.
+A comment is a piece of text in your code that is ignored by the Java compiler. It is used to explain the code, make notes, or temporarily disable parts of the code without deleting them.
 
 Comments are useful for making your code more readable and understandable, especially when working in teams or revisiting your code later.
 
@@ -32,7 +32,12 @@ public class CommentsExample {
 }
 ```
 
-Running this, you should see "Hello, World!" printed in the console.
+Running this, you should see "Hello, World!" printed in the console. And on the next line, you should see "Hello, People!":
+
+```
+Hello, World!
+Hello, People!
+```
 
 Now, comment out the line that prints "Hello, World!".
 

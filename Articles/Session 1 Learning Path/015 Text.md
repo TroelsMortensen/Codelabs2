@@ -1,6 +1,6 @@
 # Text (aka Strings)
 
-In Java, text is represented by the `String` type. A `String` is a sequence of characters enclosed in double quotes (`"`).
+In Java, text is represented by the `String` type. A `String` is a sequence of characters enclosed in double quotes (`""`).
 
 A `String` can contain letters, numbers, symbols, and whitespace. Here are some examples of `String` declarations:
 
@@ -16,7 +16,7 @@ Notice that `String` values are enclosed in double quotes (`"`), while character
 
 Even though `String` can contain numbers, it is still treated as text. For example, `"123"` is a `String`, not an integer.
 
-In the last example, the `\n` character is used to create a new line within the `String`. When printed, it will display the text on two lines.
+In the last example, the `\n` character is used to create a new line _within_ the `String`. When printed, it will display the text across two lines.
 
 ## Exercise - String Example
 

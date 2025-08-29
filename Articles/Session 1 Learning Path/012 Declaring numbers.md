@@ -1,6 +1,6 @@
 # Declaring numbers
 
-In java, because some numbers look similar, we must sometimes specify what kind of number we are using.\
+In java, because some numbers look similar, we must sometimes specify what kind of number we are using.
 
 For example, is `3` a short, an int, or a long?
 
@@ -17,7 +17,6 @@ float myFloat = 3.0f; // This is a float (single-precision floating-point number
 ```
 
 Notice the `L` and `f` at the end of the `long` and `float` values.\
-
 If you forget, you will get an error from the Java compiler:
 
 ![Java compiler error](Resources/RememberTheFloatF.png)

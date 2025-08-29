@@ -1,13 +1,14 @@
 # Escaped Characters
 In Java, you can use escaped characters to include special characters in a `String`. An escaped character is preceded by a backslash (`\`). Here are some common escaped characters:
 
-| Escaped Character | Description                     |
-| ----------------- | --------------------------------- |
+| Escaped Character | Description                      |
+| ----------------- | -------------------------------- |
 | `\"`              | Double quote                     |
 | `\'`              | Single quote                     |
 | `\\`              | Backslash                        |
 | `\n`              | New line                         |
 | `\t`              | Tab                              |
+
 You can use these escaped characters in your `String` declarations. For example:
 
 ```java

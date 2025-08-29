@@ -13,9 +13,10 @@ double myDouble = (double) myInt; // Cast int to double
 
 The `(double)` before `myInt` is the cast operator. It converts the `int` value to a `double` type.
 
-This tells the Java compiler to treat `myInt` as a `double`, allowing you to perform operations that require a floating-point number.
+This tells the Java compiler to treat `myInt` as a `double`, assign that "double" value to the variable `myDouble`, allowing you to perform operations that require a floating-point number.
 
 In the above example, we don't actually need the cast, as the conversion does not lose any information. 
+
 
 ### Exercise - Up-casting
 
@@ -26,7 +27,7 @@ This is known as "implicit casting" or "automatic type conversion."
 
 ## Down-casting
 
-However, if you were converting from a `double` to an `int`, you would lose the decimal part, and you would need to use casting:
+However, if you were converting from a `double` to an `int`, you would lose the decimal part, and you would need to use casting. This is a way to tell the compiler, you are aware of the potential dangers, and that you accept loosing the decimal digits:
 
 ```java
 double myDouble = 5.7;

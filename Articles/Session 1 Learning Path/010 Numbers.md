@@ -16,8 +16,9 @@ These numbers are whole numbers without any decimal points, e.g., 1, 42, -100, e
 
 Floating-point numbers are numbers that can have decimal points, e.g., 3.14, -0.001, etc. In Java, floating-point numbers can be represented using the following data types:
 - `double`: This is the most commonly used data type for floating-point numbers. It can store values with a high degree of precision, typically up to 15 decimal places.
-- `float`: This data type is used for single-precision floating-point numbers. It can store values with a lower degree of precision, typically up to 7 decimal places.\
-  If you use too many decimal places, you may get an error or unexpected results.
+- `float`: This data type is used for single-precision floating-point numbers. It can store values with a lower degree of precision, typically up to 7 decimal places.
+
+If you use too many decimal places, you may get an error or unexpected results.
 
 
 ## Arithmetic Operations
@@ -90,6 +91,10 @@ public class SumExample {
 }
 ```
 
+</hint>
+
+<hint title="Video solution">
+
 <video src="https://youtu.be/a9EgfSzj-ag"></video>
 
 </hint>
@@ -127,6 +132,10 @@ public class IntegerDivisionExample {
     }
 }
 ```
+
+</hint>
+
+<hint title="Video solution">
 
 <video src="https://youtu.be/zU5EOl50_5w"></video>
 
@@ -194,7 +203,8 @@ Inspect the following code snippet:
 public static void main(String[] args)
 {
     int maxValue = Integer.MAX_VALUE;
-    System.out.println(++maxValue);
+    int newValue = maxValue + 1;
+    System.out.println(newValue);
 }
 ```
 
@@ -203,11 +213,10 @@ What do you think will happen when you run this code? Try to predict the output 
 
 Then, run the code and verify your predictions.
 
-Why do you think this happens?
 
 <hint title="Hint">
 
-When you increment the maximum value of an `int`, it wraps around to the minimum value of an `int`, which is -2,147,483,648.
+When you increment (add one to) the maximum value of an `int`, it _wraps around_ to the minimum value of an `int`, which is -2,147,483,648.
 
 This is known as **integer overflow**. When a value exceeds the maximum limit of its data type, it wraps around to the minimum limit.
 

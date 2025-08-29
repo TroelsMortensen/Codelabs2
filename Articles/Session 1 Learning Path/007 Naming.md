@@ -9,13 +9,18 @@ When naming variables in Java, there are some rules you must follow:
 ## Naming conventions
 Java has some conventions for naming variables that help make your code more readable and maintainable. 
 
-Conventions generally makes things simpler, especially when working in teams or on larger projects. You will follow these conventions throughout the course.
+Conventions generally make things simpler, especially when working in teams or on larger projects. You will follow these conventions throughout the course.
 
 ### Class Names
 
 The names of classes should be written in **PascalCase**, where each word starts with a capital letter and there are no spaces or underscores. For example:
+
 ```java
 public class MyClass {
+    // Class code here
+}
+
+public class AnotherClassWithALongerName {
     // Class code here
 }
 ```

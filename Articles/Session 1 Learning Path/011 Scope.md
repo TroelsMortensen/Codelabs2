@@ -16,7 +16,7 @@ The Java runtime will execute your code, one statement at a time, from top to bo
 
 This means that the first line of code will be executed first, then the second line, and so on.
 
-This should not be a surprise.
+This should not be a surprise. If you follow a recipe to bake a cake, you go through the steps from the top. You don't jump around. You must melt the butter, before you can add melted butter to the mixture.
 
 Now, let's inspect the following code snippet:
 
@@ -42,7 +42,7 @@ The error says "Cannot resolve symbol x". You have used symbol, but the compiler
 When the compiler reached this line of code, it had not yet seen the declaration of `x`, so it does not know what `x` is.
 
 The blue line suggests a fix. You can probably click it, and IntelliJ will attempt to automatically fix things for your.\
-Don't do this. I strongly recommend doing things as manually as possible, until you understand what is going on.
+Don't do this. _I strongly recommend doing things as manually as possible, until you understand what is going on._
 
 Now, try moving the line of code `System.out.println(x);` below the declaration of `x`:
 

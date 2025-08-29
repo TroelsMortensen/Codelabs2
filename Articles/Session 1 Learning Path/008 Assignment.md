@@ -21,7 +21,7 @@ A statement is a complete instruction that the Java compiler can execute. In Jav
 Each of the three assignments above is a statement. You can think of statements as the building blocks of your program, where each statement performs a specific action.\
 A statement is a command to the Java compiler to perform a specific task, such as declaring a variable, assigning a value, or calling a method (meaning performing some action, like printing text to the console).
 
-A statement can be as simple as an assignment as a long chain of commands that perform a complex task.
+A statement can be as simple as an assignment or as a long chain of commands that perform a complex task.
 
 But the statement must always end with a semicolon (`;`).
 

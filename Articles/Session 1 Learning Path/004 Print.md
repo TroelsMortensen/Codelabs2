@@ -21,19 +21,26 @@ Create a new class called `PrintMessage` and write a program that prints the mes
 
 
 <hint title="Hint 1">
+
 Create a new class in the `session1` package.
+
 </hint>
 
 <hint title="Hint 2">
+
 Inside the class, write a `main` method.
+
 </hint>
 
 <hint title="Hint 3">
+
 Inside the `main` method body, use the `System.out.println` method to print "Hello, World!" to the console.
+
 </hint>
 
 
 <hint title="Solution">
+
 This is what your class should look like:
 
 ![Hello world solution](Resources/Exercise1Solution.png)
@@ -41,6 +48,11 @@ This is what your class should look like:
 When you run the program, the console should automatically open and display the message "Hello, World!":
 
 ![Hello world console output](Resources/FirstPrint.png)
+
+
+</hint>
+
+<hint title="Video solution">
 
 <video src="https://youtu.be/Op6m6Wp_y2c"></video>
 

@@ -19,5 +19,5 @@ We will cover the following (many) topics:
   * Conditional Operators
   * Logical Operators
 * Strings 
-  * concatenation
+  * Concatenation
   * Escape sequences

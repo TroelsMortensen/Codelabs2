@@ -1,6 +1,6 @@
 # Data types
 
-Java has two kin of data types:
+Java has two kinds of data types:
 
 1. **Primitive data types**: These are the basic data types that are built into the Java language. They include
     * `int` (integer)
@@ -12,7 +12,7 @@ Java has two kin of data types:
     * `long` (64-bit integer)
     * `float` (single-precision floating-point number)
 
-2. **Reference data types**: These are data types that refer to objects or instances of classes. They include:
+2. **Reference data types**: These are data types that refer to objects. They include:
    * Classes
    * Interfaces
    * Arrays
