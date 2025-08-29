@@ -2,15 +2,25 @@
 
 This article will provide a simple explanation of the Java Compiler and the Java Virtual Machine (JVM), two essential components of the Java programming language.
 
+You have probably encountered mentions of both already, but now you get a quick explanation.
+
 ## What is the Java Compiler?
 
-The Java Compiler is a tool that translates the code you write in the Java programming language into a format that the computer can understand. When you write Java code, you save it in files with the extension `.java`. These files contain human-readable instructions written in Java.
+The Java Compiler is a tool that translates the code you write in the Java programming language into a format that the computer can understand. When you write Java code, you save it in files with the extension `.java`. These files contain human-readable instructions, written in Java.
 
 Your Java files are the ones you create in IntelliJ, like here:
 
 ![java files in IntelliJ](Resources/ProjectStructureOverview.png)
 
 The Java Compiler takes these `.java` files and converts them into something called "bytecode." Bytecode is a set of instructions that the computer can process, but it is not specific to any one computer or operating system. Instead, bytecode is designed to be understood by the Java Virtual Machine (JVM).
+
+It is the compiler which checks if the _syntax_ of your program is correct, i.e. are you following the rules for how Java must be written.\
+When you make mistakes, you will see the red error indicator in your IDE, and you cannot run your program, until the error is fixed.
+
+We call these _syntax errors_. 
+
+Even though your program can run, it does not mean the logic is correct, so you can also have _logical errors_. These errors occur when your program compiles and runs, but it produces incorrect results.\
+Often these errors are called [bugs](https://en.wikipedia.org/wiki/Bug_(engineering)#History).
 
 ## What is the JVM?
 

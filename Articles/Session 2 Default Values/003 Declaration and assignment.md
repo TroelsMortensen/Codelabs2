@@ -26,3 +26,5 @@ name = "Alice"; // Assignment
 ```
 
 In rare cases it can be useful to declare a variable without assigning a value immediately. In that case, the variable will have a **default** value based on its type. 
+
+Generally, we want to avoid these rare cases, as they are error-prone and can lead to unexpected behavior. But sometimes they cannot be avoided.

@@ -37,7 +37,7 @@ For example:
 
 ```java
 // The variable 'jarLocation' holds a reference to the String object in memory
-String jarLocation = "Large Jar os weird stuff!"; 
+String jarLocation = "Large Jar of weird stuff!"; 
 ```
 
 ![Memory Reference](Resources/JarLocation.png)
@@ -45,3 +45,7 @@ String jarLocation = "Large Jar os weird stuff!";
 Notice "Large Jar of weird stuff!" is in the backpack (a separate place in your computers memory), and the variable `jarLocation` is just a note that tells you where to find the actual value.
 
 So, if you don't assign a value to a reference type variable, it will point to `null`, meaning it doesn't point to any object in memory. You have a note, but it doesn't tell you where to find anything.
+
+This is a _very_ simplified explanation. There are more involved, with heaps and stacks.
+
+You may optionally read more [here](https://www.baeldung.com/java-stack-heap).
