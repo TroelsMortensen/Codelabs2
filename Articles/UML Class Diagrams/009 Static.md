@@ -7,10 +7,10 @@ Here is an example:
 ```mermaid
 classDiagram
     class StaticExample {
-        -staticProperty : String$
-        -notStaticProperty : int
-        +staticMethod() void$
-        +notStaticMethod() void
+        - staticProperty : String$
+        - notStaticProperty : int
+        + staticMethod() void$
+        + notStaticMethod() void
     }
 ```
 

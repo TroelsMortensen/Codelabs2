@@ -6,6 +6,8 @@ Notice the constructor in the below diagram is public (+), has the same name as 
 
 The constructor does not have a return type, not even void. Compare the constructor with the other methods in the class, and observe the return types are at the end of each method.
 
+Conventionally, constructors are the first of the methods.
+
 ![constructor](Resources/Constructor.png)
 
 ## Adding a constructor to a class in Astah

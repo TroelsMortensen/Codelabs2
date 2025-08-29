@@ -2,28 +2,24 @@
 
 The following exercises will help you practice creating UML class diagrams and implementing them in Java. For each exercise, you are provided with a UML diagram of a single class. Your task is to implement the class in Java, including its attributes and methods.
 
----
-
 ## Exercise 1: Book Class
 
 Observe the UML diagram below.
 
-```
-+-----------------------------------+
-|               Book                |
-+-----------------------------------+
-| - title: String                   |
-| - author: String                  |
-| - pages: int                      |
-| - price: double                   |
-+-----------------------------------+
-| + Book()                          |
-| + getTitle(): String              |
-| + setTitle(title: String): void   |
-| + getPrice(): double              |
-| + setPrice(price: double): void   |
-| + displayInfo(): void             |
-+-----------------------------------+
+```mermaid
+classDiagram
+	class Book {
+		- title : String
+		- author : String
+		- pages : int
+		- price : double
+		+ Book()
+		+ getTitle()  String
+		+ setTitle(title : String) void
+		+ getPrice()  double
+		+ setPrice(price : double) void
+		+ displayInfo() void
+	}
 ```
 
 ### Task:
@@ -36,20 +32,18 @@ Observe the UML diagram below.
 
 Observe the UML diagram below.
 
-```
-+-----------------------------------+
-|               Car                 |
-+-----------------------------------+
-| - make: String                    |
-| - model: String                   |
-| - year: int                       |
-| - mileage: int                    |
-+-----------------------------------+
-| + getMake(): String               |
-| + setMake(make: String): void     |
-| + drive(distance: int): void      |
-| + displayDetails(): void          |
-+-----------------------------------+
+```mermaid
+classDiagram
+	class Car {
+		- make : String
+		- model : String
+		- year : int
+		- mileage : int
+		+ getMake() String
+		+ setMake(make : String) void
+		+ drive(distance : int) void
+		+ displayDetails() void
+	}
 ```
 
 ### Task:
@@ -61,20 +55,18 @@ Observe the UML diagram below.
 ## Exercise 3: Student Class
 
 ### UML Diagram:
-```
-+-------------------------------+
-|           Student             |
-+-------------------------------+
-| - name: String                |
-| - id: int                     |
-| - grades: int[]               |
-+-------------------------------+
-| + getName(): String           |
-| + setName(name: String): void |
-| + addGrade(grade: int): void  |
-| + calculateAverage(): double  |
-| + displayStudentInfo(): void  |
-+-------------------------------+
+```mermaid
+classDiagram
+	class Student {
+		- name : String
+		- id : int
+		- grades : int[]
+		+ getName() String
+		+ setName(name : String) void
+		+ addGrade(grade : int) void
+		+ calculateAverage() double
+		+ displayStudentInfo() void
+	}
 ```
 
 ### Task:

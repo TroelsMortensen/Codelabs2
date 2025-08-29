@@ -24,11 +24,11 @@ And here is the same diagram using Mermaid:
 ```mermaid
 classDiagram
     class Person{
-        -age : int
-        -name : String
-        +Person(age : int, name : String)
-        +greet() void
-        +getName() String
-        +setAge(newAge:int) void
+        - age : int
+        - name : String
+        + Person(age : int, name : String)
+        + greet() void
+        + getName() String
+        + setAge(newAge:int) void
     }
 ```
