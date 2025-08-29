@@ -29,11 +29,10 @@ System.out.println("The name " + name + " has " + name.length() + " characters."
 ```
 
 Output:
-```yaml
+
+```
 The name Alice has 5 characters.
 ```
-
-This method is simple but very powerful, and you will use it often when working with strings in Java.
 
 # Exercises
 
@@ -65,6 +64,10 @@ public class FavoriteWordLength {
     }
 }
 ```
+
+</hint>
+
+<hint title="Video solution">
 
 <video src="https://youtu.be/zQ8oPT-n9uA"></video>
 
@@ -98,6 +101,10 @@ public class CheckWordLength {
     }
 }
 ```
+
+</hint>
+
+<hint title="Video solution">
 
 <video src="https://youtu.be/dT8R7S6JLhU"></video>
 

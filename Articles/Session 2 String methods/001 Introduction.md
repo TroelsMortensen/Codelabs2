@@ -17,7 +17,7 @@ System.out.println(areEqual); // true
 
 But, because the String is an object, there are many more methods available to us.\
 Remember, methods are operations that belong to a class, and the `String` class is no exception.\
-In this article, we will look at some of the most commonly used methods of the `String` class:
+In this learning path, we will look at some of the most commonly used methods of the `String` class:
 
 * length
 * toUpperCase

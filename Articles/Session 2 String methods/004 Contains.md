@@ -20,7 +20,7 @@ System.out.println("Contains 'Hello': " + containsHello); // true
 System.out.println("Contains 'Java': " + containsJava);   // false
 ```
 
-### Output:
+**Output:**
 ```
 Contains 'Hello': true
 Contains 'Java': false
@@ -33,7 +33,7 @@ boolean containsLowercase = text.contains("hello");
 System.out.println("Contains 'hello': " + containsLowercase); // false
 ```
 
-### Output:
+**Output:**
 ```
 Contains 'hello': false
 ```
@@ -45,7 +45,7 @@ boolean containsProgramming = text.contains("programming");
 System.out.println("Contains 'programming': " + containsProgramming); // true
 ```
 
-### Output:
+**Output:**
 ```
 Contains 'programming': true
 ```
@@ -136,3 +136,5 @@ public class CheckForWordIgnoringCase {
     }
 }
 ```
+
+</hint>
