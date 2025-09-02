@@ -307,7 +307,6 @@ public class ComboString {
 
 ### Exercise 15 - Rotate left 2
 
-
 Given a string, return a "rotated left 2" version where the first 2 chars are moved to the end. The string length will be at least 2.
 
 ```java
@@ -325,7 +324,6 @@ public class Rotate2 {
 ```
 
 ### Exercise 16 - Rotate right 2
-
 
 Given a string, return a "rotated right 2" version where the last 2 chars are moved to the start. The string length will be at least 2.
 
