@@ -37,7 +37,7 @@ What is the problem here? If you hover over the `if` part?
 
 ![wrong](Resources/WhatsWrong.png)
 
-Why does the if-statement have an empty body? Clearly, there is a print-out of "Second" in the code, so it should not be empty.
+Why does the if-statement have an empty body? Clearly, there is a print-out of "Second" in the code, between the two braces, I believe is the if-statement-body, so it should not be empty.
 
 Remember, that you can auto-format your code by pressing <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>L</kbd>  in IntelliJ. This will make sure that the code is formatted nicely, and it will also help you see the structure of your code.
 
@@ -81,7 +81,7 @@ if (false)
     ; 
 ```
 
-You are also allowed to insert braces in your code, somewhat "arbitrarily", to make it more readable. For example, you could write:
+You are also allowed to insert braces in your code, somewhat "arbitrarily", to structure it. For example, you could write:
 
 ```java
 System.out.println("First");
@@ -93,6 +93,6 @@ System.out.println("Third");
 
 The above is valid, and works, even though it looks a bit strange. 
 
-This is because the braces `{}` are used to define a _block_ of code, and you can use them to group statements together.
+This is because the braces `{}` are used to define a _block_ of code, and you can use them to group statements together. If that block of code is immediately after an if-statement, it becomes the body of the if-statement.
 
 So, in conclusion, _do not_ put a semi-colon after your if-statement. It will create an empty statement, and the body of the if-statement will be empty.

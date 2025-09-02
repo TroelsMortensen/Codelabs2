@@ -2,7 +2,7 @@
 
 Yes, it is beginning to get funky. 
 
-On the previous page, you saw could have an either-or situation with an if-else statement. Execute code A _or_ code B, depending on a condition.
+On the previous page, you saw you could have an either-or situation with an if-else statement. Execute code A _or_ code B, depending on a condition.
 
 What if we have A, B, C, and D? What if we have more than two options? This is where the `else if` statement comes in.
 
@@ -40,7 +40,7 @@ if (conditionA) {
 }
 ```
 
-If, for example, `conditionA` is true, the program will print "condition A is true" and skip the rest of the conditions. If `conditionA` is false but `conditionB` is true, it will print "condition B is true" and skip `conditionC` and the `else` block.
+If, for example, `conditionA` is true, the program will print "condition A is true" and skip the rest of the conditions. The other `else if`s will not even be checked. If `conditionA` is false but `conditionB` is true, it will print "condition B is true" and skip `conditionC` and the `else` block.
 
 
 # Exercises

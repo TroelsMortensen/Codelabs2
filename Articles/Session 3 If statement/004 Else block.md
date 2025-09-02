@@ -121,3 +121,9 @@ public class TemperatureCheck {
 }
 ```
 </hint>
+
+All of the above exercises could be solved with two if-statements, rather than an if-else. So, what's the point?
+
+You might have a case, where two if-statments might both be true, ending up executing both bodies. But you wanted to only execute one body, always.
+
+Eventually, I will come up with a good code example here...

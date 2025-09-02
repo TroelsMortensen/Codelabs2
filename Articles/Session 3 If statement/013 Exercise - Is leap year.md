@@ -5,6 +5,14 @@ To determine if a year is a leap year, follow these rules:
 1. A year is a leap year if it is divisible by 4.
 2. However, if the year is a centurial year (e.g., 1900, 2000), it must also be divisible by 400 to be a leap year.
 
+You will probably need the module operator: `%`.\
+Example:
+
+```java
+int remainder = 10 % 3; // 1
+```
+
+
 ### Summary of Rules:
 - **Divisible by 4**: Leap year.
 - **Divisible by 100 but not by 400**: Not a leap year.

@@ -44,6 +44,8 @@ if (score >= 60) {
 }
 ```
 
+Yes, this is the same example as on the previous page, just more convoluted, because of the nested if-structures. Generally, we want to avoid nesting if possible, it will make your code cleaner.
+
 ### Explanation:
 1. The outer `if (score >= 60)` checks if the score is a passing grade.
 2. If `true`, the inner if-else structure evaluates the specific range of the score and prints an appropriate message.

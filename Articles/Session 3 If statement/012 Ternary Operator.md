@@ -20,7 +20,7 @@ First, let's use the if-statement to check if a number is even or odd. Then, we 
 
 ```java	
 int number = 5;
-String result;
+String result;          // variable declaration, without assigning a value.
 if (number % 2 == 0) {
     result = "Even";
 } else {
