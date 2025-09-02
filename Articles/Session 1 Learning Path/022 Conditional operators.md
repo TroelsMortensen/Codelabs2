@@ -123,7 +123,7 @@ In the above code, the value of `result` is `false` because we negated `conditio
 Create a class with a main method. In the main method, declare a boolean variable `theTemperatureIsNice`, and an integer variable `theTemperature`.
 
 It is a nice temperature if it is between 15 and 25 degrees Celsius (inclusive).\
-Then write code which prints out `It is nice weather` if the temperature is nice, otherwise print out `Not so nice weather`.
+Then write code which prints out `It is nice weather: true` if the temperature is nice, otherwise print out `It is nice weather: false`.
 
 Try with different values for `theTemperature` to see how the result changes.
 
@@ -143,51 +143,51 @@ Update the code accordingly to print out `true` if the weather is nice, otherwis
 
 Test with the following values:
 
-| Temperature | itIsSunny | itIsSnowing | Expected Output      | Reason                                        |
-| ----------- | --------- | ----------- | -------------------- | --------------------------------------------- |
-| 25          | true      | false       | **Nice weather**     | Sunny and temperature in 20–30                |
-| 10          | true      | false       | **Not nice weather** | Too cold even though sunny                    |
-| -5          | false     | true        | **Nice weather**     | Snowing and temperature between -10 and -2    |
-| -11         | false     | true        | **Not nice weather** | Snowing but too cold                          |
-| 22          | false     | false       | **Not nice weather** | Temperature is okay, but not sunny or snowing |
-| -3          | false     | false       | **Not nice weather** | Cold, but no snow                             |
-| 27          | true      | true        | **Nice weather**     | Meets both conditions — still nice            |
-| -2          | false     | true        | **Nice weather**     | Edge case for lower snow-temp bound           |
-| -10         | false     | true        | **Nice weather**     | Edge case for upper snow-temp bound           |
-| 30          | true      | false       | **Nice weather**     | Max of nice temp range and sunny              |
+| Temperature | itIsSunny | itIsSnowing | Expected Output         | Reason                                        |
+| ----------- | --------- | ----------- | ----------------------- | --------------------------------------------- |
+| 25          | true      | false       | **Nice weather: true**  | Sunny and temperature in 20–30                |
+| 10          | true      | false       | **Nice weather: false** | Too cold even though sunny                    |
+| -5          | false     | true        | **Nice weather: true**  | Snowing and temperature between -10 and -2    |
+| -11         | false     | true        | **Nice weather: false** | Snowing but too cold                          |
+| 22          | false     | false       | **Nice weather: false** | Temperature is okay, but not sunny or snowing |
+| -3          | false     | false       | **Nice weather: false** | Cold, but no snow                             |
+| 27          | true      | true        | **Nice weather: true**  | Meets both conditions — still nice            |
+| -2          | false     | true        | **Nice weather: true**  | Edge case for lower snow-temp bound           |
+| -10         | false     | true        | **Nice weather: true**  | Edge case for upper snow-temp bound           |
+| 30          | true      | false       | **Nice weather: true**  | Max of nice temp range and sunny              |
 
 ### Exercise - More complex weather
 
-Now, for it to be nice weather, if it is snowing, it _must_ also be sunny.
+Now, for it to be nice weather, if it is snowing, it _must_ also be sunny (yes, realistically it probably won't be snowing and sunny at the same time, but let's pretend for now).
 
 Update the code accordingly.
 
 And verify using the following values:
 
-| Temperature | itIsSunny | itIsSnowing | Expected Output      | Reason                                            |
-| ----------- | --------- | ----------- | -------------------- | ------------------------------------------------- |
-| 25          | true      | false       | **Nice weather**     | Sunny and temperature in 20–30                    |
-| 10          | true      | false       | **Not nice weather** | Too cold even though sunny                        |
-| -5          | true      | true        | **Nice weather**     | Snowing, sunny, and temp between -10 and -2       |
-| -5          | false     | true        | **Not nice weather** | Snowing but **not** sunny                         |
-| -11         | true      | true        | **Not nice weather** | Too cold, even though it's snowing and sunny      |
-| 22          | false     | false       | **Not nice weather** | Temperature is okay, but not sunny or snowing     |
-| -3          | false     | false       | **Not nice weather** | Cold and neither sunny nor snowing                |
-| 27          | true      | true        | **Nice weather**     | Still sunny and warm enough; snowing doesn't hurt |
-| -2          | true      | true        | **Nice weather**     | Edge case for upper snow-temp bound, and sunny    |
-| -10         | false     | true        | **Not nice weather** | Temp okay, snowing, but **not sunny**             |
-| 30          | true      | false       | **Nice weather**     | Upper bound of nice range and sunny               |
+| Temperature | itIsSunny | itIsSnowing | Expected Output         | Reason                                            |
+| ----------- | --------- | ----------- | ----------------------- | ------------------------------------------------- |
+| 25          | true      | false       | **Nice weather: true**  | Sunny and temperature in 20–30                    |
+| 10          | true      | false       | **Nice weather: false** | Too cold even though sunny                        |
+| -5          | true      | true        | **Nice weather: true**  | Snowing, sunny, and temp between -10 and -2       |
+| -5          | false     | true        | **Nice weather: false** | Snowing but **not** sunny                         |
+| -11         | true      | true        | **Nice weather: false** | Too cold, even though it's snowing and sunny      |
+| 22          | false     | false       | **Nice weather: false** | Temperature is okay, but not sunny or snowing     |
+| -3          | false     | false       | **Nice weather: false** | Cold and neither sunny nor snowing                |
+| 27          | true      | true        | **Nice weather: true**  | Still sunny and warm enough; snowing doesn't hurt |
+| -2          | true      | true        | **Nice weather: true**  | Edge case for upper snow-temp bound, and sunny    |
+| -10         | false     | true        | **Nice weather: false** | Temp okay, snowing, but **not sunny**             |
+| 30          | true      | false       | **Nice weather: true**  | Upper bound of nice range and sunny               |
 
 
 ### Exercise - super complex
 
 Now we up the game.
 
-For it to be nice weather, if the temperature is above 15 degrees, it _cannot_ be snowing.\
+For it to be nice weather, if the temperature is above 15 degrees, it _cannot_ be snowing.
 
 Update the code accordingly.
 
-And verify using the following values:
+And verify using the following values, just adjust your print out to `Nice weather: true` or `Nice weather: false`.
 
 | Temperature | itIsSunny | itIsSnowing | Expected Output    | Reason                                         |
 | ----------- | --------- | ----------- | ------------------ | ---------------------------------------------- |
