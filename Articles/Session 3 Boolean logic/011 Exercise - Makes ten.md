@@ -1,6 +1,6 @@
 # Exercise - Makes ten
 
-Given 2 ints, a and b, return true if one if them is 10 or if their sum is 10.
+Given 2 ints, a and b, return true if one of them is 10 _or_ if their sum is 10.
 
 Write a program to determine if the conditions are met based on the values of a and b.
 
@@ -18,7 +18,7 @@ public class MakesTen {
     }
 
     public static void makesTen(int a, int b) {
-        // Your logic here
+        // Your logic here, print out the result
     }
 }
 ```

@@ -10,16 +10,16 @@ Again, I suggest creating a helper method to encapsulate the logic.
 ```java
 public class TalkingParrot {
     public static void main(String[] args) {
-        weAreInTrouble(true, 6); // should return true
-        weAreInTrouble(true, 7); // should return false
-        weAreInTrouble(false, 6); // should return false
-        weAreInTrouble(true, 21); // should return true
-        weAreInTrouble(false, 21); // should return false
-        weAreInTrouble(true, 20); // should return false
+        weAreInTrouble(true, 6); // should print out true
+        weAreInTrouble(true, 7); // should print out false
+        weAreInTrouble(false, 6); // should print out false
+        weAreInTrouble(true, 21); // should print out true
+        weAreInTrouble(false, 21); // should print out false
+        weAreInTrouble(true, 20); // should print out false
     }
 
     public static void weAreInTrouble(boolean isTalking, int hour) {
-        // Your logic here
+        // Your logic here, print out the result
     }
 }
 ```

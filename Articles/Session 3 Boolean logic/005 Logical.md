@@ -5,13 +5,13 @@ Logical operators are used to combine or modify boolean values and expressions. 
 | Operator | Name      | Description                                      | Example           |
 |----------|-----------|--------------------------------------------------|-------------------|
 | &&       | AND       | True if both sides are true                      | true && false     |
-| \|\|     | OR        | True if at least one side is true                | true || false     |
+| \|\|     | OR        | True if at least one side is true                | true \|\|  false  |
 | !        | NOT       | Inverts the value (true becomes false, etc.)     | !true             |
 
 ## How They Work
-- **AND (&&):** Returns true only if both expressions are true.
-- **OR (||):** Returns true if at _least one_ expression is true.
-- **NOT (!):** Returns the opposite of the boolean value.
+- **AND ( && ):** Returns true only if both expressions are true.
+- **OR ( || ):** Returns true if at _least one_ expression is true.
+- **NOT ( ! ):** Returns the opposite of the boolean value.
 
 ## Examples
 ```java

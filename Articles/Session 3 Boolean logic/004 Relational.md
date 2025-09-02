@@ -1,6 +1,6 @@
 # Relational Operators
 
-Relational operators are used to compare two values. They return a boolean value (True or False) based on the comparison.
+Relational operators are used to compare two values. They return a boolean value (`true` or `false`) based on the comparison.
 
 ## Relational Operators Table
 
@@ -10,8 +10,6 @@ Relational operators are used to compare two values. They return a boolean value
 | Is x less than y?                 | x < y    |
 | Is x greater than or equal to y?  | x >= y   |
 | Is x less than or equal to y?     | x <= y   |
-| Is x equal to y?                  | x == y   |
-| Is x not equal to y?              | x != y   |
 
 Example:
 
@@ -23,6 +21,4 @@ System.out.println(x > y);   // false
 System.out.println(x < y);   // true
 System.out.println(x >= y);  // false
 System.out.println(x <= y);  // true
-System.out.println(x == y);  // false
-System.out.println(x != y);  // true
 ```

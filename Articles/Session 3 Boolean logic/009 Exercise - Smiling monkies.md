@@ -11,19 +11,19 @@ Like this:
 ```java
 public class MonkeyTrouble {
     public static void main(String[] args) {
-        weAreInTrouble(true, true); // should return true
-        weAreInTrouble(false, false); // should return true
-        weAreInTrouble(true, false); // should return false
-        weAreInTrouble(false, true); // should return false
+        weAreInTrouble(true, true);     // should print out true
+        weAreInTrouble(false, false);   // should print out true
+        weAreInTrouble(true, false);    // should print out false
+        weAreInTrouble(false, true);    // should print out false
     }
 
     public static void weAreInTrouble(boolean aSmile, boolean bSmile) {
-        // Your logic here
+        // Your logic here, print out the result
     }
 }
 ```
 
-<hint title="Solution">
+<hint title="Video solution">
 
 <video src="https://youtu.be/Zg5w-7M05y0"></video>
 

@@ -49,6 +49,10 @@ public class SleepIn {
 }
 ```
 
+</hint>
+
+<hint title="Video solution">
+
 <video src="https://youtu.be/kcVN4Uz5quc"></video>
 
 </hint>
