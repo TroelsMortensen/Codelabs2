@@ -21,6 +21,7 @@ classDiagram
         - year : int
         - mileage : int
         + Car(make : String, model : String, year : int, mileage : int)
+        + updateMileage(newMileage : int) void
     }
 ```
 
@@ -28,5 +29,8 @@ classDiagram
 
 Test the implemention from the above exercise, with a main method.
 
-- Create two `Car` objects with identical field values and verify `equals` returns `true` and that a `HashSet<Car>` does not allow duplicates.
+- Create two `Car` objects with identical field values and verify `equals` returns `true`.
+- Verify that the hash codes of the two `Car` objects are identical.
 - Print a `Car` instance to verify `toString()` output.
+- Create a third `Car` object with different field values and verify `equals` returns `false` when compared to the first two.
+- Verify that the hash code of the third `Car` object is different from the first two.

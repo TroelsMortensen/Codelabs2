@@ -15,6 +15,8 @@ Print out relevant information along the way.
 - Constructor that increments the static counter
 - Instance method to get the instance number
 
+**Example Output:**
+
 ```console
 Counter 1 created
 Counter 2 created
