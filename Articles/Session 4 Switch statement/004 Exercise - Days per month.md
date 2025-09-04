@@ -27,8 +27,10 @@ Remember, you can use the fall-through feature of the switch statement to handle
 ```java
 import java.util.Scanner;
 
-public class DaysInMonth {
-    public static void main(String[] args) {
+public class DaysInMonth 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
         
         System.out.print("Enter a month (1-12): ");
@@ -38,8 +40,10 @@ public class DaysInMonth {
 
     }
 
-    static void printDaysInMonth(int month) {
-        switch (month) {
+    static void printDaysInMonth(int month) 
+    {
+        switch (month) 
+        {
             case 1: // January
             case 3: // March
             case 5: // May

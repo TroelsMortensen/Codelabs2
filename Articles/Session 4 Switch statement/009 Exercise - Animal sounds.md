@@ -16,3 +16,6 @@ Enter an animal:
 cat
 The sound of a cat is: Meow!
 ```
+
+## Optional
+Redo the exercise, but now with the other type of switch.

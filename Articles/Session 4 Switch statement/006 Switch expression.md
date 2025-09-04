@@ -1,19 +1,25 @@
 
 
-The problem with the switch _statement_, is if you use it to assign a value to a variable, you need to declare the variable before the switch statement. This can lead to errors. Consider the following example, which we will afterwards fix using a switch _expression_:
+The problem with the switch _statement_, is if you use it to assign a value to a variable, you need to declare the variable before the switch statement. This can lead to errors.\
+Another problem is you need the `break`s. If you forget, you have a bug in your code. Or they just bloat your code. The switch _expression_ can provide some slightly cleaner code. 
+
+Consider the following example, which we will afterwards fix using a switch _expression_. Can you spot the errors?
 
 ```java
 import java.util.Scanner;
 
-public class SwitchStatementExample {
-    public static void main(String[] args) {
+public class SwitchStatementExample 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a day of the week (1-7): ");
         int day = scanner.nextInt();
         
         String dayName = null;
         
-        switch (day) {
+        switch (day) 
+        {
             case 1:
                 dayName = "Monday";
                 break;
@@ -49,13 +55,16 @@ Let's rewrite the above example using a switch _expression_:
 ```java
 import java.util.Scanner;
 
-public class SwitchExpressionExample {
-    public static void main(String[] args) {
+public class SwitchExpressionExample 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a day of the week (1-7): ");
         int day = scanner.nextInt();
         
-        String dayName = switch (day) {
+        String dayName = switch (day) 
+        {
             case 1 -> "Monday";
             case 2 -> "Tuesday";
             case 3 -> "Wednesday";
@@ -82,7 +91,8 @@ Scanner scanner = new Scanner(System.in);
 System.out.print("Enter a letter: ");
 char letter = Character.toLowerCase(scanner.next().charAt(0));
 
-switch (letter) {
+switch (letter) 
+{
     case 'a', 'e', 'i', 'o', 'u' -> System.out.println("Vowel");
     default -> System.out.println("Consonant");
 }

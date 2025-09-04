@@ -1,6 +1,5 @@
 # Exercise - Restaurant Ordering System
 
-### Problem Statement
 Create a Java program that simulates a basic restaurant ordering system. The user will first be prompted to choose between two main menu categories: Drinks and Food. Based on the user's choice, a subcategory menu will be displayed for them to make a more specific selection.
 
 ### Instructions

@@ -1,6 +1,6 @@
 # Exercise - The Speed of Sound
 
-The following table shows the approximate speed of sound in different mediums:
+The following table shows the approximate speed of sound in different mediums (feel free to look up more):
 
 | Medium | Speed (feet per second) |
 |--------|--------------------------|
@@ -10,6 +10,8 @@ The following table shows the approximate speed of sound in different mediums:
 
 ### Instructions
 Write a program that asks the user to enter "air", "water", or "steel", and the distance that a sound wave will travel in the medium. The program should then display the amount of time it will take.
+
+How do you handle invalid input?
 
 ### Formula
 You can calculate the amount of time it takes sound to travel in each medium using the following formulas:

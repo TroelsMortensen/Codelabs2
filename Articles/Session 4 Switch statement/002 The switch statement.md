@@ -62,8 +62,10 @@ Wednesday
 
 ## Example 2: Using Strings
 ```java
-public class SwitchWithStrings {
-    public static void main(String[] args) {
+public class SwitchWithStrings 
+{
+    public static void main(String[] args) 
+    {
         String fruit = "Apple";
 
         switch (fruit) {
@@ -91,14 +93,17 @@ You chose Apple.
 ## Example 3: Fall-Through Behavior
 If you omit the `break` statement, execution will "fall through" to the next case.
 
-This means that the first match is found, that statement is executed, and then all subsequent cases are executed until a `break` is encountered or the switch statement ends. This can be useful in certain scenarios but can also lead to unintended behavior if not handled carefully.
+This means that when the first match is found, that statement is executed, and then all subsequent cases are executed until a `break` is encountered or the switch statement ends. This can be useful in certain scenarios but can also lead to unintended behavior if not handled carefully. Personally, I try to avoid it.
 
 ```java
-public class FallThroughExample {
-    public static void main(String[] args) {
+public class FallThroughExample 
+{
+    public static void main(String[] args) 
+    {
         int number = 2;
 
-        switch (number) {
+        switch (number) 
+        {
             case 1:
                 System.out.println("One");
             case 2:
@@ -113,7 +118,7 @@ public class FallThroughExample {
 ```
 
 ### Output:
-```yaml
+```
 Two
 Three
 Default

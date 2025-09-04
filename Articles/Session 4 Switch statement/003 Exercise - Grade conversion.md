@@ -13,7 +13,7 @@ Write a program that converts a numerical grade to a letter grade using a switch
 | 0            | Fx                   |
 | -3           | F                    |
 
-Use the switch statement to print out the internaltional grade based on the Danish grade entered by the user.
+Use the switch statement to print out the international grade based on the Danish grade entered by the user.
 
 ### Example Output
 ```yaml
@@ -26,14 +26,17 @@ International grade: A
 
 ```java
 import java.util.Scanner;
-public class GradeConversion {
-    public static void main(String[] args) {
+public class GradeConversion 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter a Danish grade: ");
         int danishGrade = scanner.nextInt();
 
-        switch (danishGrade) {
+        switch (danishGrade) 
+        {
             case 12:
                 System.out.println("International grade: A");
                 break;
@@ -61,3 +64,5 @@ public class GradeConversion {
     }
 }
 ```
+
+</hint>
