@@ -16,3 +16,12 @@ We will dig into what the various things mean, by starting with this overview he
 ## Creating a new class in Astah
 
 video here..
+
+script
+* I can create it by double clicking.
+* Or by selecting the "Class" icon.
+* It now appears to the left.
+* If I remove the class from the diagram, it is still in the project.
+* If I try to create a class again, with the same name, I get an error.
+* Instead, I can drag it out, from the project, to the diagram.
+* I can remove it from the project, and it will be completely gone.

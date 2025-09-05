@@ -4,4 +4,4 @@ This is not strictly necessary, but all diagrams come with some kind of outer fr
 
 I recommend you remove it.
 
---> show here....
+![remove frame](Resources/RemoveFrame.gif)
