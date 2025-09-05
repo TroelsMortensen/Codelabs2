@@ -9,13 +9,14 @@ This article aims to put it all in one place.
 
 I also, eventually, plan on having small videos accompanying each page, explaining how to do that particular concept in Astah.
 
-**Note**
+## Astah vs Mermaid
 
-Some diagram examples in this article are created in Astah, and screenshot. Other examples are rendered directly using Mermaid UML. This is only to say, there may be small differences in how the diagrams might look. 
+Some diagram examples in this article are created in Astah, and screenshot. Other examples are rendered directly using Mermaid UML (this is easier, and quicker for me).\
+This is only to say, there may be small differences in how the diagrams might look. 
 
 You do not have to care about Mermaid at all.
 
-Here is a diagram as a screenshot from Astah:
+For comparison, here is a diagram as a screenshot from Astah:
 
 ![astah example](Resources/class-example.png)
 
@@ -29,6 +30,6 @@ classDiagram
         + Person(age : int, name : String)
         + greet() void
         + getName() String
-        + setAge(newAge:int) void
+        + setAge(newAge : int) void
     }
 ```
