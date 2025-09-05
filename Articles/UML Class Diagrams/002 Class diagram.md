@@ -10,4 +10,4 @@ Below is an example:
 
 ## Creating a class diagram in Astah
 
-video goes here...
+![class diagram example](Resources/CreateClassDiagram.gif)
