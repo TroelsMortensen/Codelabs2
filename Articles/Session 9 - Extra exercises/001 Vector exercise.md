@@ -4,6 +4,27 @@ Implement a 2D `Vector2` class that models a vector in the plane.\
 The class will have instance fields, multiple constructors, and static utility methods.\
 Write a small `main` program to demonstrate and test the features.
 
+**UML class diagram:**
+Notice there is no way to mark something `final` in UML. I have cheated by inventing my own way to show `[final]` on the two instance fields. 
+
+```mermaid
+classDiagram
+  class Vector2 {
+    - x: double [final]
+    - y: double [final]
+    + Vector2()
+    + Vector2(x: double, y: double)
+    + Vector2(other: Vector2)
+    + add(other: Vector2) Vector2
+    + scale(factor: double) Vector2
+    + magnitude() double
+    + normalized() Vector2
+    + toString() String
+    + add(a: Vector2, b: Vector2)$ Vector2
+    + normalize(a: Vector2)$ Vector2
+  }
+```
+
 **Requirements:**
 
 Instance fields: 
@@ -38,24 +59,6 @@ Notes for implementation:
 - Keep rounding for `toString()` display only; store exact `double` values internally.
 
 
-**UML class diagram:**
-Notice there is no way to mark something `final` in UML. I have cheated with `[final]` on the two instance fields.
 
-```mermaid
-classDiagram
-  class Vector2 {
-    - x: double [final]
-    - y: double [final]
-    + Vector2()
-    + Vector2(x: double, y: double)
-    + Vector2(other: Vector2)
-    + add(other: Vector2) Vector2
-    + scale(factor: double) Vector2
-    + magnitude() double
-    + normalized() Vector2
-    + toString() String
-    + add(a: Vector2, b: Vector2)$ Vector2
-    + normalize(a: Vector2)$ Vector2
-  }
-```
+
 
