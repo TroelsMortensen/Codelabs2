@@ -46,10 +46,3 @@ You can also use `substring()` to extract the relevant part of the numbers.
 ## Follow up Exercise
 
 What should happen if either number has less than three decimal places?
-
-
-## Follow up Exercise 2
-
-Given the above same input, i.e. two numbers, starting from the left side, how many digits are the same?
-
-Print out the number of sequential digits that are the same, starting from the left side.

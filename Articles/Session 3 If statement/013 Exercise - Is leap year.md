@@ -31,7 +31,7 @@ Write a program that asks the user to enter a year and then determines if it is 
 For quicker testing, instead of re-running the program, and try new values, you can create a "helper method", and call it several times with different years, from the main method.
 
 ```java
-public class HelperMethod
+public class LeapYearChecker
 {
     public static void main(String[] args) {
         checkLeapYear(2024);

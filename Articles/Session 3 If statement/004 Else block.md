@@ -44,6 +44,12 @@ public class PassOrFail {
 ```
 </hint>
 
+<hint title="Video solution">
+
+<video src="https://youtu.be/h29ELEE3Ok4"></video>
+
+</hint>
+
 ### Exercise 2: Odd or Even
 Write a program that asks the user to enter a number. Use an if-else statement to print "The number is even" if the number is divisible by 2, and "The number is odd" otherwise.
 

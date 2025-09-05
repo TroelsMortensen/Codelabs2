@@ -35,7 +35,7 @@ public class SimpleCalculator {
         System.out.print("Enter an operator (+, -, *, /): ");
         char operator = scanner.next().charAt(0);
 
-        double result;
+        double result = 0;
 
         if (operator == '+') {
             result = num1 + num2;
@@ -60,8 +60,6 @@ In the previous exercise, what happens if the user inputs an invalid operator?\
 What happens if the user tries to divide by zero?
 
 Expand your program to handle these cases, by printing an error message if the operator is invalid or if the user tries to divide by zero.
-
-
 
 
 <hint title="Hint 1">
