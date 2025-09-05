@@ -1,5 +1,13 @@
 # Introduction
 
+This learning path introduces UML (Unified Modeling Language), and how to use it to create class diagrams. However, it will only cover concepts, you have learned about so far. In upcoming sessions, you will see new programming concepts, and how to express them in UML.
+
+I will have a different article combining all the UML concepts, and how to use them in Astah, so that everything is in one place.
+
+[UML overview](https://troelsmortensen.github.io/Codelabs2/article/TroelsMortensen/UML%20Class%20Diagrams)
+
+## Conceptual
+
 In the Objects learning path, you saw a video about objects, and how we define them by their:
 - name (class name)
 - data (field variables)
