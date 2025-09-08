@@ -16,5 +16,5 @@ classDiagram
 
 ## Marking something static in Astah
 
-video here..
+![static](Resources/MakeStatic.gif)
 
