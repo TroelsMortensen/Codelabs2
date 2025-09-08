@@ -36,7 +36,8 @@ public class PositiveOrNegative {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a number: ");
         int number = scanner.nextInt();
-        if (number >= 0) {
+        if (number >= 0) 
+        {
             System.out.println("The number is positive");
         }
     }
@@ -89,13 +90,16 @@ public class PositiveNegativeZero {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a number: ");
         int number = scanner.nextInt();
-        if (number > 0) {
+        if (number > 0) 
+        {
             System.out.println("The number is positive");
         }
-        if (number == 0) {
+        if (number == 0) 
+        {
             System.out.println("The number is zero");
         }
-        if (number < 0) {
+        if (number < 0) 
+        {
             System.out.println("The number is negative");
         }
         scanner.close();
@@ -140,12 +144,15 @@ Remember, you can use the modulo operator (`%`) to find the remainder when divid
 ```java
 import java.util.Scanner;
 
-public class EvenOrOdd {
-    public static void main(String[] args) {
+public class EvenOrOdd 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a number: ");
         int number = scanner.nextInt();
-        if (number % 2 == 0) {
+        if (number % 2 == 0) 
+        {
             System.out.println("The number is even");
         }
     }

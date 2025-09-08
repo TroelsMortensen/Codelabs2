@@ -21,9 +21,12 @@ First, let's use the if-statement to check if a number is even or odd. Then, we 
 ```java	
 int number = 5;
 String result;          // variable declaration, without assigning a value.
-if (number % 2 == 0) {
+if (number % 2 == 0) 
+{
     result = "Even";
-} else {
+} 
+else 
+{
     result = "Odd";
 }
 System.out.println("The number is " + result);
@@ -49,9 +52,12 @@ Again, we start with an if-statement to find the maximum of two numbers:
 ```java
 int a = 10;
 int b = 20;
-if (a > b) {
+if (a > b) 
+{
     System.out.println("The maximum is " + a);
-} else {
+} 
+else 
+{
     System.out.println("The maximum is " + b);
 }
 ```
@@ -87,8 +93,10 @@ The number is Negative
 ```java
 import java.util.Scanner;
 
-public class PositiveOrNegative {
-    public static void main(String[] args) {
+public class PositiveOrNegative 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a number: ");
         int number = scanner.nextInt();
@@ -116,8 +124,10 @@ The minimum is 5
 ```java
 import java.util.Scanner;
 
-public class MinimumOfTwoNumbers {
-    public static void main(String[] args) {
+public class MinimumOfTwoNumbers 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the first number: ");
         int num1 = scanner.nextInt();
@@ -145,8 +155,10 @@ The absolute value is 10
 ```java
 import java.util.Scanner;
 
-public class AbsoluteValue {
-    public static void main(String[] args) {
+public class AbsoluteValue 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a number: ");
         int number = scanner.nextInt();

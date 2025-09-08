@@ -22,8 +22,10 @@ The result is: 15
 ```java
 import java.util.Scanner;
 
-public class SimpleCalculator {
-    public static void main(String[] args) {
+public class SimpleCalculator 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter the first number: ");
@@ -37,13 +39,20 @@ public class SimpleCalculator {
 
         double result = 0;
 
-        if (operator == '+') {
+        if (operator == '+') 
+        {
             result = num1 + num2;
-        } else if (operator == '-') {
+        } 
+        else if (operator == '-') 
+        {
             result = num1 - num2;
-        } else if (operator == '*') {
+        } 
+        else if (operator == '*') 
+        {
             result = num1 * num2;
-        } else if (operator == '/') {
+        } 
+        else if (operator == '/') 
+        {
             result = num1 / num2;
         } 
 
@@ -69,11 +78,14 @@ You can terminate (exit) a method early using the `return` keyword. This is usef
 ### Example:
 
 ```java
-public class EarlyReturnExample {
-    public static void main(String[] args) {
+public class EarlyReturnExample 
+{
+    public static void main(String[] args) 
+    {
         int number = -1;
 
-        if (number < 0) {
+        if (number < 0) 
+        {
             System.out.println("Error: Number cannot be negative.");
             return; // Exit the method early
         }

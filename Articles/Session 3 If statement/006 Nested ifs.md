@@ -10,13 +10,19 @@ When an outer if-statement evaluates to `true`, the program executes its body, w
 int age = 20;
 boolean hasID = true;
 
-if (age >= 18) {
-    if (hasID) {
+if (age >= 18) 
+{
+    if (hasID) 
+    {
         System.out.println("You are allowed to enter.");
-    } else {
+    } 
+    else
+     {
         System.out.println("You need an ID to enter.");
     }
-} else {
+} 
+else 
+{
     System.out.println("You are not old enough to enter.");
 }
 ```
@@ -30,16 +36,24 @@ if (age >= 18) {
 ```java
 int score = 85;
 
-if (score >= 60) {
+if (score >= 60) 
+{
     System.out.println("You passed.");
-    if (score >= 90) {
+    if (score >= 90) 
+    {
         System.out.println("Excellent work!");
-    } else if (score >= 75) {
+    } 
+    else if (score >= 75) 
+    {
         System.out.println("Good job!");
-    } else {
+    } 
+    else 
+    {
         System.out.println("You can do better.");
     }
-} else {
+} 
+else 
+{
     System.out.println("You failed.");
 }
 ```
@@ -60,11 +74,16 @@ For example, the first example from above could be simplified using logical oper
 ```java
 int age = 20;
 boolean hasID = true;
-if (age >= 18 && hasID) {
+if (age >= 18 && hasID) 
+{
     System.out.println("You are allowed to enter.");
-} else if (age < 18) {
+} 
+else if (age < 18) 
+{
     System.out.println("You are not old enough to enter.");
-} else {
+} 
+else 
+{
     System.out.println("You need an ID to enter.");
 }
 ```

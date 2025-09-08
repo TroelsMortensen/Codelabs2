@@ -29,14 +29,19 @@ You passed
 ```java
 import java.util.Scanner;
 
-public class PassOrFail {
-    public static void main(String[] args) {
+public class PassOrFail 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your score: ");
         int score = scanner.nextInt();
-        if (score >= 50) {
+        if (score >= 50) 
+        {
             System.out.println("You passed");
-        } else {
+        } 
+        else 
+        {
             System.out.println("You failed");
         }
     }
@@ -77,14 +82,19 @@ Remember, you can use the modulo operator (`%`) in Java to find the remainder wh
 ```java
 import java.util.Scanner;
 
-public class OddOrEven {
-    public static void main(String[] args) {
+public class OddOrEven 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a number: ");
         int number = scanner.nextInt();
-        if (number % 2 == 0) {
+        if (number % 2 == 0) 
+        {
             System.out.println("The number is even");
-        } else {
+        } 
+        else 
+        {
             System.out.println("The number is odd");
         }
     }
@@ -113,14 +123,19 @@ It's warm outside
 ```java
 import java.util.Scanner;
 
-public class TemperatureCheck {
-    public static void main(String[] args) {
+public class TemperatureCheck 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the temperature: ");
         int temperature = scanner.nextInt();
-        if (temperature >= 20) {
+        if (temperature >= 20) 
+        {
             System.out.println("It's warm outside");
-        } else {
+        } 
+        else 
+        {
             System.out.println("It's cold outside");
         }
     }

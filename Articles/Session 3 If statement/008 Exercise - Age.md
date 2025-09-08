@@ -16,22 +16,33 @@ Test the program by running it at least 5 times to ensure that it prints the cor
 ```java
 import java.util.Scanner;
 
-public class AgeDescription {
-    public static void main(String[] args) {
+public class AgeDescription 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter your age: ");
         int age = scanner.nextInt();
 
-        if (age < 0) {
+        if (age < 0) 
+        {
             System.out.println("Error in age value");
-        } else if (age <= 12) {
+        } 
+        else if (age <= 12) 
+        {
             System.out.println("Child");
-        } else if (age <= 19) {
+        } 
+        else if (age <= 19) 
+        {
             System.out.println("Teenager");
-        } else if (age <= 65) {
+        } 
+        else if (age <= 65) 
+        {
             System.out.println("Adult");
-        } else {
+        } 
+        else 
+        {
             System.out.println("Senior citizen");
         }
     }

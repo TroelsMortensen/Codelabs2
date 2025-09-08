@@ -22,28 +22,45 @@ Wednesday
 
 ```java
 import java.util.Scanner;
-public class PrintWeekDay {
-    public static void main(String[] args) {
+public class PrintWeekDay 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
         
         System.out.print("Enter a number (1-7): ");
         int dayNumber = scanner.nextInt();
         
-        if (dayNumber == 1) {
+        if (dayNumber == 1) 
+        {
             System.out.println("Monday");
-        } else if (dayNumber == 2) {
+        } 
+        else if (dayNumber == 2) 
+        {
             System.out.println("Tuesday");
-        } else if (dayNumber == 3) {
+        } 
+        else if (dayNumber == 3) 
+        {
             System.out.println("Wednesday");
-        } else if (dayNumber == 4) {
+        } 
+        else if (dayNumber == 4) 
+        {
             System.out.println("Thursday");
-        } else if (dayNumber == 5) {
+        } 
+        else if (dayNumber == 5) 
+        {
             System.out.println("Friday");
-        } else if (dayNumber == 6) {
+        } 
+        else if (dayNumber == 6) 
+        {
             System.out.println("Saturday");
-        } else if (dayNumber == 7) {
+        } 
+        else if (dayNumber == 7) 
+        {
             System.out.println("Sunday");
-        } else {
+        } 
+        else 
+        {
             System.out.println("Invalid input");
         }
         

@@ -18,9 +18,12 @@ In the video, I showed the "full" structure, including the `else` block. However
 For example:
 
 ```java
-if (conditionA) {
+if (conditionA) 
+{
     System.out.println("condition A is true");
-} else if (conditionB) {
+} 
+else if (conditionB) 
+{
     System.out.println("condition B is true");
 } 
 ```
@@ -29,13 +32,20 @@ if (conditionA) {
 It is important to note that the `else if` structure is evaluated in order. The first condition that evaluates to `true` will execute its block of code, and the rest will be skipped. This means that if you have multiple conditions, only the first one that is true will be executed.
 
 ```java
-if (conditionA) {
+if (conditionA) 
+{
     System.out.println("condition A is true");
-} else if (conditionB) {
+} 
+else if (conditionB) 
+{
     System.out.println("condition B is true");
-} else if (conditionC) {
+} 
+else if (conditionC) 
+{
     System.out.println("condition C is true");
-} else {
+} 
+else 
+{
     System.out.println("None of the conditions are true");
 }
 ```
@@ -69,17 +79,24 @@ The number is Positive
 ```java
 import java.util.Scanner;
 
-public class NumberClassification {
-    public static void main(String[] args) {
+public class NumberClassification 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a number: ");
         int number = scanner.nextInt();
 
-        if (number > 0) {
+        if (number > 0) 
+        {
             System.out.println("The number is Positive");
-        } else if (number == 0) {
+        } 
+        else if (number == 0) 
+        {
             System.out.println("The number is Zero");
-        } else {
+        } 
+        else 
+        {
             System.out.println("The number is Negative");
         }
     }
@@ -107,19 +124,28 @@ It's cool
 ```java
 import java.util.Scanner;
 
-public class TemperatureDescription {
-    public static void main(String[] args) {
+public class TemperatureDescription 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the temperature: ");
         int temperature = scanner.nextInt();
 
-        if (temperature > 30) {
+        if (temperature > 30) 
+        {
             System.out.println("It's hot");
-        } else if (temperature >= 20) {
+        } 
+        else if (temperature >= 20) 
+        {
             System.out.println("It's warm");
-        } else if (temperature >= 10) {
+        } 
+        else if (temperature >= 10) 
+        {
             System.out.println("It's cool");
-        } else {
+        } 
+        else 
+        {
             System.out.println("It's cold");
         }
     }
@@ -147,21 +173,32 @@ Your grade is: B
 ```java
 import java.util.Scanner;
 
-public class GradeEvaluation {
-    public static void main(String[] args) {
+public class GradeEvaluation 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your score: ");
         int score = scanner.nextInt();
 
-        if (score >= 90) {
+        if (score >= 90) 
+        {
             System.out.println("Your grade is: A");
-        } else if (score >= 80) {
+        } 
+        else if (score >= 80) 
+        {
             System.out.println("Your grade is: B");
-        } else if (score >= 70) {
+        } 
+        else if (score >= 70) 
+        {
             System.out.println("Your grade is: C");
-        } else if (score >= 60) {
+        } 
+        else if (score >= 60) 
+        {
             System.out.println("Your grade is: D");
-        } else {
+        } 
+        else 
+        {
             System.out.println("Your grade is: F");
         }
     }
@@ -178,28 +215,36 @@ It would look like this:
 
 ```java
 import java.util.Scanner;
-public class GradeEvaluationSequential {
-    public static void main(String[] args) {
+public class GradeEvaluationSequential 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your score: ");
         int score = scanner.nextInt();
 
-        if (score >= 90) {
+        if (score >= 90) 
+        {
             System.out.println("Your grade is: A");
         }
-        if (score >= 80) {
+        if (score >= 80) 
+        {
             System.out.println("Your grade is: B");
         }
-        if (score >= 70) {
+        if (score >= 70) 
+        {
             System.out.println("Your grade is: C");
         }
-        if (score >= 60) {
+        if (score >= 60) 
+        {
             System.out.println("Your grade is: D");
         }
-        if (score < 60) {
+        if (score < 60) 
+        {
             System.out.println("Your grade is: F");
         }
-        if (score < 40) {
+        if (score < 40) 
+        {
             System.out.println("You failed the exam");
         }
     }

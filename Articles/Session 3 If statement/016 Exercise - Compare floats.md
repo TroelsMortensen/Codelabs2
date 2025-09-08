@@ -1,4 +1,4 @@
-# Exercise - Comparing doubles
+# Exercise - Comparing floats
 
 Write a program, which asks the user to enter two decimal numbers (`double`) 
 

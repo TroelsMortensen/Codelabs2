@@ -25,28 +25,44 @@ Remember to handle invalid input gracefully by printing an error message if the 
 ```java
 import java.util.Scanner;
 
-public class GradeConversion {
-    public static void main(String[] args) {
+public class GradeConversion 
+{
+    public static void main(String[] args) 
+    {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter a Danish grade: ");
         int danishGrade = scanner.nextInt();
 
-        if (danishGrade == 12) {
+        if (danishGrade == 12) 
+        {
             System.out.println("International grade: A");
-        } else if (danishGrade == 10) {
+        } 
+        else if (danishGrade == 10) 
+        {
             System.out.println("International grade: B");
-        } else if (danishGrade == 7) {
+        } 
+        else if (danishGrade == 7) 
+        {
             System.out.println("International grade: C");
-        } else if (danishGrade == 4) {
+        } 
+        else if (danishGrade == 4) 
+        {
             System.out.println("International grade: D");
-        } else if (danishGrade == 2) {
+        } 
+        else if (danishGrade == 2) 
+        {
             System.out.println("International grade: E");
-        } else if (danishGrade == 0) {
+        } 
+        else if (danishGrade == 0) 
+        {
             System.out.println("International grade: Fx");
-        } else if (danishGrade == -3) {
+        } 
+        else if (danishGrade == -3) 
+        {
             System.out.println("International grade: F");
-        } else {
+        } 
+        else {
             System.out.println("Error: Invalid Danish grade");
         }
     }
