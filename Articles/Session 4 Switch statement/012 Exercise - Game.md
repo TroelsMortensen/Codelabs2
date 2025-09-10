@@ -36,15 +36,15 @@ int roll = (int) (Math.random() * 3) + 1;
 ```
 - `Math.random()` generates a random double between 0.0 and 1.0.
 - Multiplying by 3 gives a range of 0.0 to 2.999...
-- Casting to `int` truncates the decimal part, resulting in 0, 1, or 2.
 - Adding 1 shifts the range to 1, 2, or 3.
+- Casting to `int` truncates the decimal part, resulting in 1, 2, or 3.
 
 
 ## Extension Ideas
 
-Redo the exercise to implement the Rock-Paper-Scissors-Lizard-Spock game. 
+Redo the exercise to implement the [Rock-Paper-Scissors-Lizard-Spock game](https://bigbangtheory.fandom.com/wiki/Rock,_Paper,_Scissors,_Lizard,_Spock). 
 
-<video src="https://www.youtube.com/watch?v=pIpmITBocfM" />
+<video src="https://www.youtube.com/watch?v=pIpmITBocfM"></video>
 
 The rules are:
 

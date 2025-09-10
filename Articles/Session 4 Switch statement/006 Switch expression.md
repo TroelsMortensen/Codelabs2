@@ -122,7 +122,8 @@ switch (letter) {
 ```
 
 
-If you want to do the above example with a switch expression, you can do it like this:
+If you want to do the above example with a switch expression including an assignment, you can do it like below. Notice that we now have a `String result` variable, and we are assigning the result of the switch to it.
+
 
 ```java
 Scanner scanner = new Scanner(System.in);
@@ -136,3 +137,7 @@ String result = switch (letter) {
 
 System.out.println(result);
 ```
+
+To sum up, this enhanced switch statement can either execute functionality, or assign a value to a variable. And, the syntax is slightly cleaner and more concise.
+
+and 

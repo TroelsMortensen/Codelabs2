@@ -1,6 +1,6 @@
 # Exercise - Animal sounds
 
-Write a program which given animal, prints out its sound. Come up with at least 5 different animals and their sounds. Use a switch to implement this functionality.
+Write a program which reads an animal from the console, and prints out its sound. Come up with at least 5 different animals and their sounds. Use a switch to implement this functionality.
 
 
 Example output:
