@@ -21,7 +21,7 @@
 * skal ikke kunne selct text i steps overview
 * box shadow rundt om hint kasser, når de er foldet ud.
 * Scroll to top ved page skift. Når jeg skifter page, hvad hvis jeg laver en yield Task.wait i 1ms,så den lige når at refresh før ny page indsætte. Scrolle den så til toppen igen? 
-
+* flyt den der top learning path title hen over steps boksen.
 
 Kan jeg have tre css
 Basic til alt fælles. 

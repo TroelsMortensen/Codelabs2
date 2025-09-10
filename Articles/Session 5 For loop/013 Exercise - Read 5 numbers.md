@@ -99,3 +99,11 @@ public class AverageOfFiveNumbers {
 ```
 
 </hint>
+
+
+### Exercise 3: Read X numbers
+
+Expand on the above exercises. Now, the user should first input how many numbers they want to enter, instead of the fixed 5.
+
+Then the program should read the numbers from the user input, and print out the sum and average of the numbers.
+

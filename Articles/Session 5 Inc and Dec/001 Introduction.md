@@ -1,6 +1,6 @@
 # Incrementing and Decrementing
 
-In programming you will often need to increase or decrease a value by one. This is called incrementing (one up) or decrementing (one down).
+In programming you will often need to increase or decrease a number value by one. This is called incrementing (one up) or decrementing (one down).
 
 Here is how, you might do this in Java:
 

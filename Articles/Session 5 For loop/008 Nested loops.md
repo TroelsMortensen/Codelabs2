@@ -1,6 +1,6 @@
 # Nested For-Loops
 
-Nested `for` loops are loops within loops. They are useful for iterating over multi-dimensional data structures or performing repeated actions within a loop.
+Nested `for` loops are loops within loops. They are useful for iterating over multi-dimensional data structures, like a matrix, or a 2d game board, or performing repeated actions within a loop.
 
 ## Explanation
 When you nest a `for` loop, the inner loop runs completely for each iteration of the outer loop. This means the inner loop executes multiple times for every single execution of the outer loop.

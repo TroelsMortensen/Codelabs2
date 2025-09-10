@@ -3,7 +3,7 @@
 This file contains four exercises designed to help you practice using `for` loops in Java.
 
 ## Exercise 1: Sum of Numbers from 0 to Input
-Write a Java program where the user inputs through the console, and the program calculates and prints the sum of all numbers from 0 to the input.
+Write a Java program where the user inputs a number through the console, and the program calculates and prints the sum of all numbers from 0 to the input.
 
 ### Example Input:
 ```

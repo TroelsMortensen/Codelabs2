@@ -37,5 +37,7 @@ for (int i = 10; i > 0; i--) {
 }
 ```
 
+Notice the variable `i` is initialized to 10, and the condition is `i > 0`, and the variable is decremented by 1 in each iteration. That means, we start at 10, and decrement until we reach 1, i.e. as long as `i` is greater than 0.
+
 </hint>
 

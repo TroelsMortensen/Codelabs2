@@ -6,9 +6,9 @@ The if-statement allowed you to conditionally execute a block of code. Loops tak
 
 In Java (and most other programming languages), there are several types of loops, including:
 - **`for` loop**: Used when you know in advance how many times you want to repeat a block of code. "I want to repeat this _x_ times."
-- **`while` loop**: Used when you want to repeat a block of code as long as a certain condition is true. "I want to repeat this until _y_ is true."
-- **`do-while` loop**: Similar to the `while` loop, but it guarantees that the block of code will be executed at least once. "I want to repeat this until _y_ is true, but I want to execute the code at least once."
-- **`for-each` loop**: Used to iterate over elements in a collection or array. "I want to repeat this for each element in this collection."
+- **`while` loop**: Used when you want to repeat a block of code as long as a certain condition is true. "I want to repeat this until _y_ is false."
+- **`do-while` loop**: Similar to the `while` loop, but it guarantees that the block of code will be executed at least once. "I want to repeat this until _y_ is false, but I want to execute the code _at least once_."
+- **`for-each` loop**: Used to iterate over elements in a collection or array. "I want to do this for each element in this collection."
 
 In this article, I will cover the first three loop types. I will get back to the for-each loop later in the course when we cover collections and arrays.
 

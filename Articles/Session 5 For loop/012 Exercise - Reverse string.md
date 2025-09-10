@@ -19,6 +19,12 @@ Use a `for` loop to iterate through the string in reverse order and construct th
 
 </hint>
 
+<hint title="Hint 2">
+    
+Use the `charAt()` method to get the character at a specific index.
+
+</hint>
+
 <hint title="Solution">
 
 ```java
