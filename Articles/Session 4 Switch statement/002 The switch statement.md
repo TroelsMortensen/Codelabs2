@@ -59,6 +59,7 @@ public class SwitchExample {
 ```yaml
 Wednesday
 ```
+Here we see that the `Wednesday` is printed. This is because the `day` variable is set to `3`, which matches the case `3`.
 
 ## Example 2: Using Strings
 ```java
@@ -89,6 +90,7 @@ public class SwitchWithStrings
 ```yaml
 You chose Apple.
 ```
+Here we see that the `Apple` is printed. This is because the `fruit` variable is set to `Apple`, which matches the switch-case `Apple`.
 
 ## Example 3: Fall-Through Behavior
 If you omit the `break` statement, execution will "fall through" to the next case.
@@ -124,5 +126,6 @@ Three
 Default
 ```
 
+Here we see that the `Two`, `Three`, and `Default` are printed. This is because the `number` variable is set to `2`, which matches the case `2`, and then it "falls through" to the next case `3`, because there is no `break` statement, and then it falls through to the default case, again because there is no `break` statement.
 
 

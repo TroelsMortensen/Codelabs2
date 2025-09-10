@@ -1,7 +1,7 @@
 
 
 The problem with the switch _statement_, is if you use it to assign a value to a variable, you need to declare the variable before the switch statement. This can lead to errors.\
-Another problem is you need the `break`s. If you forget, you have a bug in your code. Or they just bloat your code. The switch _expression_ can provide some slightly cleaner code. 
+Another problem is you need the `break`s. If you forget, you have a bug in your code. Or they just bloat your code. The switch _expression_ can provide some slightly cleaner code. It is also known as the _enhanced switch statement_.
 
 Consider the following example, which we will afterwards fix using a switch _expression_. Can you spot the errors?
 
@@ -79,9 +79,10 @@ public class SwitchExpressionExample
     }
 }
 ```
+Notice that we are doing an _assignment_ of the result of the switch to the `String dayName` variable.\
+Switching on the `day` variable will find a `String` value based on which case is matched, and that value is assigned to the `dayName` variable.
 
-
-## Switch expression abuse
+## Switch expression "abuse"
 The switch expression can be used without assigning a result to a variable. So, it can be a shorter-hand normal switch statement. 
 
 Consider this example:
@@ -120,8 +121,6 @@ switch (letter) {
 }
 ```
 
-I am personally not a fan of using using the switch expression to execute functionality, like the print outs above.\
-I think the switch statement is to execute functionality, and the switch expression is to assign a value to a variable. But you can use it as you like, of course.
 
 If you want to do the above example with a switch expression, you can do it like this:
 
