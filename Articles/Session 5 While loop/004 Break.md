@@ -2,15 +2,11 @@
 
 No, it is not a break for _you_, the reader, you still have a lot of work to do.
 
-The `break` keyword is a powerful control statement in Java that allows you to exit or "break out of" loops prematurely. When a `break` statement is encountered inside a loop, the loop is immediately terminated, and the program control flows to the statement after the loop.
+The `break` keyword is a control statement in Java that allows you to exit, or "break out of", loops prematurely. When a `break` statement is encountered inside a loop, the loop is immediately terminated, and the program control flows to the statement after the loop.
 
 ## How break works
 
-The `break` statement can be used in:
-- `for` loops
-- `while` loops 
-- `do-while` loops
- 
+The `break` statement can be used in each of the four types of loops. 
 
 When `break` is executed, it immediately exits the innermost loop that contains it.
 

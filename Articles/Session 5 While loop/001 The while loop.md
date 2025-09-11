@@ -1,6 +1,6 @@
 # The while loop
 
-The `while` loop is a control flow statement that allows a block of code to be executed repeatedly based on a given condition. The loop continues as long as the condition evaluates to `true`. If the condition is at some point evaluated to `false`, the code block is not executed, and the loop stops.
+The `while` loop is a control flow statement that allows a block of code to be executed repeatedly based on a given condition. The loop continues as long as the condition evaluates to `true`. If the condition is at some point evaluates to `false`, the code block is not executed, and the loop stops. Code execution continues with the code after the loop.
 
 It is similar to the for-loop, but perhaps a bit simpler in its structure. The `while` loop is particularly useful when the number of iterations is not known beforehand and depends on dynamic conditions.
 
@@ -76,3 +76,6 @@ public class HelloWorldExample {
     }
 }
 ```
+
+Notice the `keepGoing` variable is initialized to `true`, and the condition of the while-loop is `keepGoing`. At some point the correct user input is entered, and `keepGoing` is set to `false`, and the loop stops.\
+After the loop, the code execution continues with the code after the loop, and the `println` statement is executed.

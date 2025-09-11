@@ -51,17 +51,13 @@ public class CountDown {
 ## Exercise 2: Sum Until X
 Write a program that continuously asks the user to enter numbers and adds them to a running sum. The program should stop when the user enters "x" and then display the total sum.
 
-### Example Input:
+### Example Output:
 ```
 Enter a number (x to stop): 5
 Enter a number (x to stop): 3
 Enter a number (x to stop): -2
 Enter a number (x to stop): 4
 Enter a number (x to stop): x
-```
-
-### Example Output:
-```
 The total sum is: 10
 ```
 
@@ -108,17 +104,13 @@ public class SumUntilX {
 ## Exercise 3: Password Validation
 Create a program that asks the user to enter a password. The correct password is "java123". Keep asking until the user enters the correct password, then display a success message. Upon incorrect input, show an appropriate error message.
 
-### Example Input:
+### Example Output:
 ```
 Enter the password: hello
 Incorrect password, try again.
 Enter the password: java
 Incorrect password, try again.
 Enter the password: java123
-```
-
-### Example Output:
-```
 Access granted! Welcome!
 ```
 
@@ -154,17 +146,13 @@ public class PasswordValidation {
 ## Exercise 4: Number Guessing Game
 Write a program where the computer picks a random number between 1 and 10, and the user has to guess it. Keep asking for guesses until the user guesses correctly, providing hints if the guess is too high or too low.
 
-### Example Input:
+### Example Output:
 ```
 Guess the number (1-10): 5
 Too low! Try again.
 Guess the number (1-10): 8
 Too high! Try again.
 Guess the number (1-10): 7
-```
-
-### Example Output:
-```
 Congratulations! You guessed it! The number was 7.
 ```
 

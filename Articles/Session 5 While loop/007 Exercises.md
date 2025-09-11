@@ -1,6 +1,6 @@
 # Exercises - Training the Continue Keyword
 
-This file contains four exercises designed to help you practice using the `continue` keyword in `while` loops in Java. The `continue` keyword allows you to skip the rest of the current iteration and move to the next iteration of the loop.
+This page contains exercises designed to help you practice using the `continue` keyword in `while` loops in Java. The `continue` keyword allows you to skip the rest of the current iteration and move to the next iteration of the loop.
 
 ## Exercise 1: Skip Numbers Divisible by 4
 Write a Java program that asks the user for an upper bound, then prints all numbers from 1 to that upper bound using a loop type of your choice, but skips any numbers that are divisible by 4 using the `continue` keyword.

@@ -20,7 +20,7 @@ Your program should:
 4. **Generate random computer moves**
 5. **Determine the winner** of each round
 6. **Keep track of the score** (player wins vs computer wins)
-7. **Continue playing** until one player wins 2 rounds (best of 3)
+7. **Continue playing** until one player wins 2 rounds (best of 3, until someone leads with 2 wins)
 8. **Display the final winner** and ask if the player wants to play again
 9. **Use appropriate loops** for game flow and input validation
 

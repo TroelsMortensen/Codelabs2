@@ -19,7 +19,7 @@ Actual PI: 3.141592653589793
 Difference: 0.09975283465960932
 ```
 
-**Note:** Java provides the actual value of PI through `Math.PI` which you can use for comparison.
+**Note:** Java provides the actual value of PI through `Math.PI` which you can use for comparison. E.g.: `double actualPI = Math.PI;`. You will be prompted to import the `Math` class.
 
 <hint title="Hint 1">
 

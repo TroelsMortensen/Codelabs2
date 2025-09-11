@@ -134,42 +134,6 @@ public class MultiplicationTableFor {
 5	10	15	20	25	
 ```
 
-## Example 3: Mixed Loop Types
-
-This example shows how you can mix different loop types. Here we use a `for` loop to control attempts and a `while` loop for input validation:
-
-This program gives the user up to 3 attempts to enter a valid number between 1 and 10. When a valid number is entered, it counts from 1 up to that number. If the user fails to enter a valid number after 3 attempts, the program displays a "maximum attempts reached" message.
-
-```java
-import java.util.Scanner;
-
-public class MixedLoopValidation {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
-        for (int attempts = 0; attempts < 3; attempts++) {
-            System.out.print("Enter a number between 1 and 10: ");
-            int number = scanner.nextInt();
-            
-            if (number >= 1 && number <= 10) {
-                System.out.println("Valid number: " + number);
-                
-                // Inner while loop to process the valid number
-                int count = 1;
-                while (count <= number) {
-                    System.out.println("Count: " + count);
-                    count++;
-                }
-                return; // Exit the entire method when valid input is received
-            } else {
-                System.out.println("Invalid input. Try again.");
-            }
-        }
-        
-        System.out.println("Maximum attempts reached.");
-    }
-}
-```
 
 ## Important Notes
 
@@ -358,96 +322,6 @@ public class InteractiveMultiplicationTableMixed {
             System.out.println("Multiplication table for " + number + ":");
             for (int multiplier = 1; multiplier <= 10; multiplier++) {
                 System.out.println(number + " x " + multiplier + " = " + (number * multiplier));
-            }
-            System.out.println();
-        }
-    }
-}
-```
-
-</hint>
-
-## Exercise 3: Pattern Maker
-
-Write a program that asks the user for a pattern size and creates a square pattern where each position shows the sum of its row and column numbers (both starting from 1). You can choose to implement this using any type of nested loops.
-
-### Example Input:
-```
-Enter pattern size: 3
-```
-
-### Example Output:
-```
-2 3 4 
-3 4 5 
-4 5 6 
-```
-
-### Example Input:
-```
-Enter pattern size: 5
-```
-
-### Example Output:
-```
-2 3 4 5 6 
-3 4 5 6 7 
-4 5 6 7 8 
-5 6 7 8 9 
-6 7 8 9 10 
-```
-
-<hint title="Hint 1">
-
-Use nested loops where the outer loop controls the rows and the inner loop controls the columns. For each position, calculate and print the sum of the current row number and column number.
-
-</hint>
-
-<hint title="Hint 2">
-
-Remember that if you want row and column numbers to start from 1, you should initialize your counter variables to 1, not 0.
-
-</hint>
-
-<hint title="Solution - Using While Loops">
-
-```java
-import java.util.Scanner;
-
-public class PatternMakerWhile {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter pattern size: ");
-        int size = scanner.nextInt();
-        
-        int row = 1;
-        while (row <= size) {
-            int col = 1;
-            while (col <= size) {
-                System.out.print((row + col) + " ");
-                col++;
-            }
-            System.out.println();
-            row++;
-        }
-    }
-}
-```
-
-And with `for` loops:
-
-```java
-import java.util.Scanner;
-
-public class PatternMakerFor {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter pattern size: ");
-        int size = scanner.nextInt();
-        
-        for (int row = 1; row <= size; row++) {
-            for (int col = 1; col <= size; col++) {
-                System.out.print((row + col) + " ");
             }
             System.out.println();
         }

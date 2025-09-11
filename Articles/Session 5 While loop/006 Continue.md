@@ -2,7 +2,7 @@
 
 We continue with more content, more exercises, by introducing the `continue` keyword.
 
-The `continue` keyword is another control statement in Java that affects loop execution. Unlike `break`, which exits the loop entirely, `continue` skips the rest of the current iteration and jumps directly to the next iteration of the loop.
+The `continue` keyword is another control statement in Java that affects loop execution. Unlike `break`, which exits the loop entirely, `continue` skips the rest of the current iteration and jumps directly to the next iteration of the loop. Or, it skips the rest of the loop-body, and starts over from the top of the loop-body.
 
 ## How continue works
 
@@ -12,14 +12,11 @@ When a `continue` statement is encountered inside a loop:
 3. For `for` loops, the increment/update expression is executed before the next iteration
 4. For `while` loops, control goes back to the condition check
 
-The `continue` statement can be used in:
-- `for` loops
-- `while` loops
-- `do-while` loops
+The `continue` statement can be used in each of the four types of loops.
 
 ## Example 1: Skip even numbers in a for loop
 
-This example prints only odd numbers from 1 to 10:
+This example prints only odd numbers from 1 to 10. The if-statement is used to skip the even numbers.
 
 ```java
 public class SkipEvenNumbers {

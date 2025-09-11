@@ -76,27 +76,8 @@ Chars: 12
 ```
 
 
-### Exercise 4 - Palindrome (Forgiving)
 
-Read a phrase; ignore case and non-letters; check if it is a palindrome.
-
-```console
-Phrase:
-Never odd or even
-Normalized: neveroddoreven
-Is palindrome: true
-```
-
-Here are a few palindromes to test with:
-* Racecar
-* Madam, I'm Adam
-* No lemon, no melon
-* Step on no pets
-* Was it a car or a cat I saw?
-* A man, a plan, a canal, Panama
-
-
-### Exercise 5 - Is Double an Integer?
+### Exercise 4 - Is Double an Integer?
 
 Write a program that reads a `double` from the console and prints whether it is an integer value (`true` or `false`).
 
@@ -117,7 +98,7 @@ Is integer: false
 ```
 
 
-### Exercise 6 - Fifteen Rule
+### Exercise 5 - Fifteen Rule
 
 Write a program that accepts two integers and prints `true` if either 
 * number is 15, or
@@ -164,7 +145,7 @@ Result: false
 ```
 
 
-### Exercise 7 - String Equality
+### Exercise 6 - String Equality
 
 Read two lines of text. Print whether they are exactly equal, and whether they are equal ignoring case.
 
@@ -178,7 +159,7 @@ Equals (ignore case): true
 ```
 
 
-### Exercise 8 - Vowel Masker
+### Exercise 7 - Vowel Masker
 
 Read a line of text. Replace all vowels (a, e, i, o, u) regardless of case with '*'. Also print how many vowels were replaced.
 
@@ -190,7 +171,7 @@ Vowels replaced: 5
 ```
 
 
-### Exercise 9 - Word Length Comparator
+### Exercise 8 - Word Length Comparator
 
 Read two words. Print which word is longer, or that they are equal length, followed by their lengths.
 
@@ -202,7 +183,7 @@ pear
 Longer: apple (5 vs 4)
 ```
 
-### Exercise 10 - Make ABBA
+### Exercise 9 - Make ABBA
 
 Given two strings, a and b, return the result of putting them together in the order abba, e.g. "Hi" and "Bye" returns "HiByeByeHi".
 
@@ -225,7 +206,7 @@ public class MakeAbba {
  
 
 
-### Exercise 11 - Make tags
+### Exercise 10 - Make tags
 
 The web is built with HTML strings like `<i>Yay</i>` which draws Yay as italic text. 
 
@@ -248,7 +229,7 @@ public class MakeTags {
 }
 ```
 
-### Exercise 12 - Extra end
+### Exercise 11 - Extra end
 
 Given a string, return a new string made of 3 copies of the last 2 chars of the original string. The string length will be at least 2.
 
@@ -266,7 +247,7 @@ public class ExtraEnd {
 }
 ```
 
-### Exercise 13 - Without ends
+### Exercise 12 - Without ends
 
 Given a string, return a version without the first and last char, so "Hello" yields "ell". The string length will be at least 2.
 
@@ -284,7 +265,7 @@ public class WithoutEnds {
 }
 ```
 
-### Exercise 14 - Combo string
+### Exercise 13 - Combo string
 
 Given 2 strings, a and b, return a string of the form short+long+short, with the shorter string on the outside and the longer string on the inside. 
 
@@ -305,7 +286,7 @@ public class ComboString {
 }
 ```
 
-### Exercise 15 - Rotate left 2
+### Exercise 14 - Rotate left 2
 
 Given a string, return a "rotated left 2" version where the first 2 chars are moved to the end. The string length will be at least 2.
 
@@ -323,7 +304,7 @@ public class Rotate2 {
 }
 ```
 
-### Exercise 16 - Rotate right 2
+### Exercise 15 - Rotate right 2
 
 Given a string, return a "rotated right 2" version where the last 2 chars are moved to the start. The string length will be at least 2.
 
