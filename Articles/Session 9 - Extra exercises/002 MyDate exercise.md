@@ -1,6 +1,6 @@
 # MyDate Exercise (Simplified Date Class)
 
-Implement a simplified immutable `MyDate` class to represent a calendar date.\
+Implement a simplified `MyDate` class to represent a calendar date.\
 Provide multiple constructors, common instance methods, and a few static utility methods. Write a small `main` program to interactively create and manipulate dates and to validate your implementation.
 
 Below is a class diagram for the `MyDate` class.
@@ -12,26 +12,27 @@ No validation is expected, as you have not yet learned about exceptions. Just as
 ```mermaid
 classDiagram
     class MyDate {
-        - int year [final]
-        - int month [final]
-        - int day [final]
+        - int year
+        - int month
+        - int day
         + MyDate()
         + MyDate(int year, int month, int day)
         + MyDate(MyDate other)
         + getYear() int
         + getMonth() int
         + getDay() int
+        + setYear(int y) void
+        + setMonth(int m) void
+        + setDay(int d) void
         + isLeapYear() boolean
         + lengthOfMonth() int
-        + withYear(int y) MyDate
-        + withMonth(int m) MyDate
-        + withDay(int d) MyDate
-        + plusDays(int n) MyDate
-        + plusMonths(int n) MyDate
-        + plusYears(int n) MyDate
+        + plusDays(int n) void
+        + plusMonths(int n) void
+        + plusYears(int n) void
         + equals(Object o) boolean [override]
         + hashCode() int [override]
         + toString() String [override]
+        + copy() MyDate
         + isLeapYear(int y) boolean$
         + daysBetween(MyDate a, MyDate b) int$
         + now() MyDate$
@@ -40,7 +41,6 @@ classDiagram
 
 **Fields**
 
-Make these final, i.e. immutable:
 - `year: int`
 - `month: int` (1–12)
 - `day: int` (1–28/29/30/31 depending on month)
@@ -57,13 +57,15 @@ You can see a couple of instance methods.
 
 First, you have the accessors for the fields: `getYear()`, `getMonth()`, `getDay()`.
 
-Then the `isLeapYear()` method. It should return `true` if the year of the instance is a leap year, and `false` otherwise.
+Then the mutator methods: `setYear(int y)`, `setMonth(int m)`, `setDay(int d)` which modify the instance fields directly.
+
+The `isLeapYear()` method. It should return `true` if the year of the instance is a leap year, and `false` otherwise.
 
 The `lengthOfMonth()` method should return the number of days in the month of the instance.
 
-And the `withYear(int y)`, `withMonth(int m)`, `withDay(int d)` methods should return a new `MyDate` instance with the year, month, or day changed to the value of the parameter. This is a "copy-with-modifications" method. Commonly the methods start with `with` as they are not mutating the instance, but rather returning a new instance.
+Three `plus...` methods. They should modify the current instance by adding the specified number of days, months, or years to the current date. These are mutating methods with `void` return type.
 
-Three `plus...` methods. They should return a new `MyDate` instance with the year, month, or day increased as necessary by the value of the parameter. This is a copy-with-modifications method.
+The `copy()` method should return a new `MyDate` instance that is a copy of the current instance.
 
 And finally override the three methods from Object: `equals(Object o)`, `hashCode()`, `toString()`.
 
@@ -71,7 +73,4 @@ And finally override the three methods from Object: `equals(Object o)`, `hashCod
 
 - `now(): MyDate` → create a new MyDate instance with today's date
 - `isLeapYear(int y): boolean` → return `true` if the year is a leap year, and `false` otherwise.
-- `of(int y, int m, int d): MyDate` → create a new MyDate instance with the year, month, and day of the parameters. We call this a factory method.
-
-
-
+- `daysBetween(MyDate a, MyDate b): int` → return the number of days between two dates
