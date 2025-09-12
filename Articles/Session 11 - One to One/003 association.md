@@ -22,12 +22,16 @@ Watch the following video for an overview of the association relationship:
 
 ## How Association Works in Java
 
-Association is implemented through:
-- **Instance variables** that hold references to other objects
-- **Method parameters** that accept other objects
-- **Return values** that provide references to other objects
+Association is implemented by having a field variable of the first class, which is an instance of the second class.
+
+Class `A` has a field variable `b` of type `B`. So, `A` has an association with `B`.
+This field variable generally makes it an association.
+
 
 ## Example 1: Person and Address
+In the following example, the `Person` class has a field variable `address` of type `Address`. So, `Person` has an association with `Address`.
+
+First the `Address` class:
 
 ```java
 public class Address 
@@ -48,7 +52,11 @@ public class Address
         return street + ", " + city + " " + zipCode;
     }
 }
+```
 
+And here the `Person` class, notice the field variable `address` of type `Address`. This is the association.
+
+```java
 public class Person 
 {
     private String name;
@@ -75,6 +83,9 @@ public class Person
 
 ### Usage Example:
 
+Here is an example of how to use the `Person` and `Address` classes.
+Notice how the `Person` constructor receieves an `Address` object, in line 6.
+
 ```java
 public class AssociationExample 
 {
@@ -94,116 +105,13 @@ public class AssociationExample
 }
 ```
 
-## Example 2: Student and Course
-
-```java
-public class Course 
-{
-    private String courseName;
-    private String instructor;
-    
-    public Course(String courseName, String instructor) 
-    {
-        this.courseName = courseName;
-        this.instructor = instructor;
-    }
-    
-    public String getCourseInfo() 
-    {
-        return courseName + " taught by " + instructor;
-    }
-}
-
-public class Student 
-{
-    private String studentName;
-    private Course enrolledCourse; // One-to-one association
-    
-    public Student(String studentName) 
-    {
-        this.studentName = studentName;
-    }
-    
-    public void enrollInCourse(Course course) 
-    {
-        this.enrolledCourse = course;
-        System.out.println(studentName + " enrolled in " + course.getCourseInfo());
-    }
-    
-    public void dropCourse() 
-    {
-        if (enrolledCourse != null) 
-        {
-            System.out.println(studentName + " dropped " + enrolledCourse.getCourseInfo());
-            enrolledCourse = null;
-        }
-    }
-}
-```
-
-## Example 3: Car and Driver
-
-```java
-public class Driver 
-{
-    private String name;
-    private String licenseNumber;
-    
-    public Driver(String name, String licenseNumber) 
-    {
-        this.name = name;
-        this.licenseNumber = licenseNumber;
-    }
-    
-    public String getName() 
-    {
-        return name;
-    }
-    
-    public String getLicenseNumber() 
-    {
-        return licenseNumber;
-    }
-}
-
-public class Car 
-{
-    private String make;
-    private String model;
-    private Driver driver; // Association with Driver
-    
-    public Car(String make, String model) 
-    {
-        this.make = make;
-        this.model = model;
-    }
-    
-    public void assignDriver(Driver driver) 
-    {
-        this.driver = driver;
-        System.out.println(driver.getName() + " is now driving the " + make + " " + model);
-    }
-    
-    public void startEngine() 
-    {
-        if (driver != null) 
-        {
-            System.out.println("Engine started by " + driver.getName());
-        } 
-        else 
-        {
-            System.out.println("No driver assigned to start the engine");
-        }
-    }
-}
-```
 
 ## Key Points About Association
 
 1. **Independence**: Both objects can exist without each other
 2. **Flexibility**: Objects can be associated and disassociated at runtime
 3. **No lifecycle dependency**: Destroying one object doesn't affect the other
-4. **Reference-based**: Uses object references, not inheritance
-5. **Runtime binding**: Associations can be established and changed during program execution
+4. **Reference-based**: Uses object references
+5. **Runtime binding**: Associations can be established and changed during program execution. In the above example, during program execution, the Person object had its address changed
 
 Association is the most flexible type of relationship and is commonly used when you need objects to work together but maintain their independence.
