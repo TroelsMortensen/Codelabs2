@@ -7,7 +7,7 @@ int x = 7;
 x = 9;
 ```
 
-You declare a variable, `x`, assign it a value of `7`, and on the second line, `x` is reassigned to another value, `9`. 
+You declare a variable, `x`, assign it a value of `7`, and on the second line, `x` is reassigned to another value, `9`. Here we can _mutate_ the variable.
 
 When a variable is _immutable_, it means the value of the variable is assigned once, and cannot be changed afterwards. Some programming langauges use this a lot. Java, less so. But some times, it makes sense.
 

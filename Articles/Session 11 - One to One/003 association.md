@@ -2,6 +2,17 @@
 
 An **association** is a relationship between two classes where one class "knows about" or "uses" another class. It represents a loose coupling where objects can exist independently of each other. In a one-to-one association, each instance of one class is associated with exactly one instance of another class.
 
+This is the most common relationship between two objects.
+
+The short version is that one object has a reference to another object, i.e. a field variable of the first object is an instance of the second object.
+
+Watch the following video for an overview of the association relationship:
+
+<video src="..."></video>
+
+
+
+
 ## Key Characteristics
 
 - **Loose coupling**: Objects can exist independently
