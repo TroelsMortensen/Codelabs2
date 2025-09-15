@@ -1,6 +1,6 @@
 # Multi-Dimensional Arrays in Java
 
-So far, we've worked with one-dimensional arrays - arrays that store elements in a single row. However, Java also supports multi-dimensional arrays, which are essentially "arrays of arrays." The most common type is the two-dimensional array, which can be visualized as a table with rows and columns.
+So far, we've worked with one-dimensional arrays - arrays that store elements in a single `row`. However, Java also supports multi-dimensional arrays, which are essentially "arrays of arrays." The most common type is the two-dimensional array, which can be visualized as a table with rows and columns.
 
 ## What are Multi-Dimensional Arrays?
 
@@ -166,11 +166,11 @@ public class StudentGrades {
 **Output:**
 ```
 Student Grades:
-Student	Math	Science	English
-Student 1	85	92	78
-Student 2	90	88	95
-Student 3	76	84	89
-Student 4	95	91	87
+Student	    Math	Science	English
+Student 1	85	    92	    78
+Student 2	90	    88	    95
+Student 3	76	    84	    89
+Student 4	95	    91	    87
 ```
 
 ### Example 2: Tic-Tac-Toe Board
@@ -212,45 +212,6 @@ O | X | O
 X |   | O
 ```
 
-## Common Operations on 2D Arrays
-
-### Finding Sum of All Elements
-```java
-int[][] matrix = {
-    {1, 2, 3},
-    {4, 5, 6},
-    {7, 8, 9}
-};
-
-int sum = 0;
-for (int row = 0; row < matrix.length; row++) {
-    for (int col = 0; col < matrix[row].length; col++) {
-        sum += matrix[row][col];
-    }
-}
-
-System.out.println("Sum of all elements: " + sum); // Output: 45
-```
-
-### Finding Maximum Element
-```java
-int[][] matrix = {
-    {15, 23, 8},
-    {42, 7, 19},
-    {31, 56, 12}
-};
-
-int max = matrix[0][0]; // Start with first element
-for (int row = 0; row < matrix.length; row++) {
-    for (int col = 0; col < matrix[row].length; col++) {
-        if (matrix[row][col] > max) {
-            max = matrix[row][col];
-        }
-    }
-}
-
-System.out.println("Maximum element: " + max); // Output: 56
-```
 
 
 
@@ -270,6 +231,8 @@ cube[1][2][3] = 100;
 System.out.println(cube[0][0][0]); // Output: 1
 System.out.println(cube[1][2][3]); // Output: 100
 ```
+
+I doubt you will encouter these any time soon, but it _is_ possible.
 
 ## Important Notes
 

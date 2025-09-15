@@ -1,7 +1,8 @@
-# Exercises - round 4
+# Implement a "List"
 
-The purpose of these exercises is to task you to implement common operations on arrays in Java. It is annoying to manually implement these operations, so next week, we will look at how Java makes working with arrays easier.
+Some of these will be very tough, I don't expect you to do them, but it's a good challenge to try.
 
+The purpose of these exercises is to task you to implement common operations on arrays in Java. It is annoying to manually implement these operations, so next week, we will look at how Java makes working with arrays easier.\
 But for now, you will have to implement these operations yourself. It is a good exercise to understand how arrays work in Java.
 
 These exercises will use helper methods to simplify the tasks. You have briefly seen the idea previously, but when relevant below, I will remind you how to use them.
@@ -30,7 +31,9 @@ Write a program that does the following:
 1. Create an array of integers with size 7.
 2. Fill the first 5 elements with values (5, 10, 15, 20, 25).
 
-Then, so simplify things a bit, we will use a helper method. This concept was introduced a while ago, but hopefully you remember it. The initial code will look like this.
+You may assume that the user does not misuse your program, or you can try to handle the errors. E.g. what happens if the chosen index is out of bounds? Or if the array is full, i.e. has no default values?
+
+Then, to simplify things a bit, we will use a helper method. This concept was introduced a while ago, but hopefully you remember it. The initial code will look like this.
 
 ```java
 import java.util.Arrays;
@@ -60,7 +63,7 @@ In the method, use these three variables to insert the value into the array at t
 After the execution of the method, in the main method, the print out still knows about the now updated array, so you can print it out using `Arrays.toString(array)`.
 
 ### Version two
-Allow the user to input the new number and the index where to insert it. 
+Allow the user to input the new number and the index where to insert it, by reading from the console.
 
 ## Exercise 1: Remove Element from Array
 
@@ -88,13 +91,11 @@ Create a main method that demonstrates this functionality with an array containi
 
 ## Exercise 2: Index Of Element
 
-Write a helper method that finds the index of a specific element in an array. If the element is found, print its index. If the element is not found, print -1. The helper method should have the signature:
+Write a program with a helper method that finds the index of a specific element in an array. If the element is found, print its index. If the element is not found, print -1. The helper method should have the signature:
 
 ```java
 public static void indexOf(int[] array, int value)
 ```
-
-That means, unlike a previous exercise where you created a new array, this time it is the initial array that is modified. You may create another temporary array to help, if you like, but it is actually not necessary.
 
 Create a main method that demonstrates this functionality by searching for different values in an array.
 
@@ -116,6 +117,8 @@ Write a helper method that reverses the elements of an array and prints the reve
 public static void reverseAndPrint(int[] array)
 ```
 
+This means, you should modify the original array, not create a new one. Swap the first and last elements, the second and second last elements, etc.
+
 Create a main method that demonstrates this functionality with an array of your choice.
 
 ## Exercise 5: Copy Array
@@ -126,7 +129,7 @@ Write a helper method that copies all values from one array to another array. Th
 public static void copyArray(int[] source, int[] destination)
 ```
 
-Create a main method that demonstrates this functionality by copying values from one array to another and printing both arrays.
+Create a main method that demonstrates this functionality by copying values from one array to another and printing both arrays. The `destination` array should be created with the same size as the `source` array.
 
 ## Exercise 6: Dynamic Array Addition
 
@@ -134,7 +137,7 @@ Create a program that instantiates an array of size 10 and continuously requests
 
 ## Exercise 7: Expandable Array
 
-Expand on Exercise 6, but when there is no more room in the array, create a new array of double the size and copy all elements over so the user can continue to input numbers. Provide the user with options to either add a new number or print the current array contents. Continue until the user chooses to exit.
+Expand on Exercise 6, but when there is no more room in the array, create a new array of double the size and copy all elements over so the user can continue to input numbers. Provide the user with options to either add a new number or print the current array contents. Continue until the user chooses to exit. Notice you may use exercise 5 to help you.
 
 ## Exercise 8: putting it all together
 Create a program that combines all the above exercises. That means the program should create an initial int array of size 5, then start a menu (in a while loop), requesting the user to choose an operation:
@@ -146,7 +149,7 @@ Create a program that combines all the above exercises. That means the program s
 * reverse - to reverse the array
 * exit - to exit the program
 
-This would putting copying all your previous helper methods into the new file.
+As needed copy your previous helper methods into the new file.
 
 Feel free to expand, for example:
 * let the user define the initial size

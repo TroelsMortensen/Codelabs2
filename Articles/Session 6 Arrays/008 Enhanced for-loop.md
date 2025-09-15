@@ -11,7 +11,7 @@ for (dataType variableName : arrayOrCollection) {
 }
 ```
 
-The enhanced for-loop reads as: "for each element in the array/collection, do something with that element."
+The enhanced for-loop reads as: "for each element in the array, do something with that element."
 
 ## Key Components
 
@@ -82,6 +82,8 @@ Total cost: $100.48
 ```
 
 ## Comparison: Regular vs Enhanced For-Loop
+
+All three code snippets below do the same thing.
 
 ### Regular For-Loop (with index)
 ```java
@@ -206,26 +208,3 @@ for (int i = 0; i < names.length; i++) {
     System.out.println((i + 1) + ". " + names[i]); // Can print position
 }
 ```
-
-## Best Practices
-
-1. **Use descriptive variable names** in the enhanced for-loop:
-   ```java
-   // Good
-   for (String studentName : studentNames) { ... }
-   
-   // Avoid
-   for (String s : studentNames) { ... }
-   ```
-
-2. **Choose the right loop type** based on your needs:
-   - Enhanced for-loop for reading values
-   - Regular for-loop for modifying or when you need indices
-
-3. **Keep it simple**: Enhanced for-loops are perfect for straightforward operations on each element.
-
-## Summary
-
-The enhanced for-loop is a powerful and elegant feature in Java that makes code more readable and less error-prone when iterating through arrays. It automatically handles the iteration details, so you can focus on what you want to do with each element rather than how to access it.
-
-Remember: Use enhanced for-loops when you just need to read values, and use regular for-loops when you need more control over the iteration process.
