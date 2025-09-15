@@ -1,155 +1,150 @@
 # Exercises - round 4
 
-The purpose of these exercises is to task you to implement common operations on arrays in Java. It is annoying to manually implement these operations, so next week, we will look at how Java makes working with arrays easier.
+## Exercise 1: Double Array Values
 
-But for now, you will have to implement these operations yourself. It is a good exercise to understand how arrays work in Java.
+Write a Java program that doubles each element in an array of five integers and then prints out the modified array. Use the array: {5, 10, 15, 20, 25}.
 
-These exercises will use helper methods to simplify the tasks. You have briefly seen the idea previously, but when relevant below, I will remind you how to use them.
+### Example Output:
+```
+Original array: 5 10 15 20 25
+Doubled array: 10 20 30 40 50
+```
 
+<hint title="Hint 1">
 
-## Exercise 0: Insert at specific positions in the array.
-Sometimes you have an array, with numbers in it already, and you want to insert a new number at a specific position in the array.
+Use a for loop to iterate through the array and multiply each element by 2. Assign this new value back to the array at the same index.Then use another loop (or the same loop) to print all the elements.
 
-For example:
+</hint>
 
-
-| Index | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
-|-------|---|---|---|---|---|---|---|
-| Value | 5 | 10| 15| 20| 25|  0|  0|
-
-Above you have an array with room for 7 elements, but only 5 of them are filled with values. The last two are empty (0).
-
-You want to insert a new number, 30, at index 2, so the array should look like this after the insertion:
-| Index | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
-|-------|---|---|---|---|---|---|---|
-| Value | 5 | 10| 30| 15| 20| 25|  0|
-
-Notice how the numbers after index 2 have been shifted one position to the right, to make room for the new number.
-
-Write a program that does the following:
-1. Create an array of integers with size 7.
-2. Fill the first 5 elements with values (5, 10, 15, 20, 25).
-
-Then, so simplify things a bit, we will use a helper method. This concept was introduced a while ago, but hopefully you remember it. The initial code will look like this.
+<hint title="Solution">
 
 ```java
-import java.util.Arrays;
-public class InsertAtPosition {
+public class DoubleArray {
     public static void main(String[] args) {
-        int[] numbers = {5, 10, 15, 20, 25, 0, 0}; // Initial array with room for 7 elements
+        int[] numbers = {5, 10, 15, 20, 25};
 
-        // Insert a new number at index 2
-        int newNumber = 30;
-        int position = 2;
+        // Print original array
+        System.out.print("Original array: ");
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.print(numbers[i] + " ");
+        }
+        System.out.println();
 
-        insertAtPosition(numbers, newNumber, position);
+        // Double each element
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = numbers[i] * 2;
+        }
 
-        // Print the updated array
-        System.out.println("Updated array: " + Arrays.toString(numbers));
-    }
-
-    public static void insertAtPosition(int[] array, int value, int index) {
-        // your cocde here
+        // Print doubled array
+        System.out.print("Doubled array: ");
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.print(numbers[i] + " ");
+        }
+        System.out.println();
     }
 }
 ```
 
-The above helper method `insertAtPosition` will take an array variable, called `array`, a value to insert, called `value`, and an index where to insert the value, called `index`.\
-In the method, use these three variables to insert the value into the array at the specified index. 
+</hint>
 
-After the execution of the method, in the main method, the print out still knows about the now updated array, so you can print it out using `Arrays.toString(array)`.
+## Exercise 2: String Array Information
 
-### Version two
-Allow the user to input the new number and the index where to insert it. 
+Write a Java program that creates an array of fruit names and prints information about each string, including its length and first character. Use the array: {"apple", "banana", "cherry", "date", "elderberry"}.
 
-## Exercise 1: Remove Element from Array
-
-Write a helper method that can remove an element at a specific index from an array and shift all values to the right of that index one position to the left. The method should have the signature:
-
-```java
-public static void removeAtIndex(int[] array, int index)
+### Example Output:
+```
+Fruit information:
+apple - Length: 5, First character: a
+banana - Length: 6, First character: b
+cherry - Length: 6, First character: c
+date - Length: 4, First character: d
+elderberry - Length: 10, First character: e
 ```
 
-For example, if you have an array like this:
+<hint title="Hint 1">
 
-| Index | 0 | 1 | 2 | 3 | 4 |
-|-------|---|---|---|---|---|
-| Value | 10| 20| 30| 40| 50|
+Use a for loop to iterate through the string array. For each string, use the .length() method to get its length and .charAt(0) to get the first character.
 
-And you want to remove the element at index 2 (value 30), the array should look like this after the removal:
+</hint>
 
-| Index | 0 | 1 | 2 | 3 | 4 |
-|-------|---|---|---|---|---|
-| Value | 10| 20| 40| 50| 0 |
-
-Notice how the values after index 2 have been shifted one position to the left, and the last position is now 0 (or empty).
-
-Create a main method that demonstrates this functionality with an array containing values {10, 20, 30, 40, 50} and removes the element at index 2.
-
-## Exercise 2: Index Of Element
-
-Write a helper method that finds the index of a specific element in an array. If the element is found, print its index. If the element is not found, print -1. The helper method should have the signature:
+<hint title="Solution">
 
 ```java
-public static void indexOf(int[] array, int value)
+public class StringArrayInfo {
+    public static void main(String[] args) {
+        String[] fruits = {"apple", "banana", "cherry", "date", "elderberry"};
+
+        System.out.println("Fruit information:");
+        for (int i = 0; i < fruits.length; i++) {
+            String fruit = fruits[i];
+            int length = fruit.length();
+            char firstChar = fruit.charAt(0);
+            
+            System.out.println(fruit + " - Length: " + length + ", First character: " + firstChar);
+        }
+    }
+}
 ```
 
-That means, unlike a previous exercise where you created a new array, this time it is the initial array that is modified. You may create another temporary array to help, if you like, but it is actually not necessary.
+</hint>
 
-Create a main method that demonstrates this functionality by searching for different values in an array.
+## Exercise 3: Format Fruit Array to String
 
-## Exercise 3: Contains Element
+Write a Java program that takes an array of fruit names and formats them into a single string where each fruit name is capitalized and separated by periods. Use the array: {"apple", "banana", "cherry", "date", "elderberry"}.
 
-Write a helper method that checks if a given element exists in an array. Print true if the element is found, false if it is not found. The method should have the signature:
+### Example Output:
+```
+Formatted fruits: Apple. Banana. Cherry. Date. Elderberry.
+```
+
+<hint title="Hint - upper case">
+
+Capitalize the first letter using .substring() and .toUpperCase().
+
+</hint>
+
+<hint title="Hint - string concatenation">
+
+You can concatenate strings using the `+=` operator. Remember to add a period and space after each fruit.
 
 ```java
-public static void contains(int[] array, int value)
+String formattedString = "";
+String a = "a";
+String b = "b";
+formattedString += a + ". ";
+formattedString += b + ". ";
+// formattedString now contains "a. b. "
 ```
 
-Create a main method that demonstrates this functionality by checking for the existence of different values in an array.
+</hint>
 
-## Exercise 4: Reverse Array
 
-Write a helper method that reverses the elements of an array and prints the reversed array. The method should have the signature:
+<hint title="Solution">
 
 ```java
-public static void reverseAndPrint(int[] array)
+public class FormatFruits {
+    public static void main(String[] args) {
+        String[] fruits = {"apple", "banana", "cherry", "date", "elderberry"};
+        String formattedString = "";
+
+        for (int i = 0; i < fruits.length; i++) {
+            String fruit = fruits[i];
+            // Capitalize first letter and add the rest
+            String capitalizedFruit = fruit.substring(0, 1).toUpperCase() + fruit.substring(1);
+            
+            formattedString += capitalizedFruit;
+            
+            // Add period and space after each fruit
+            if (i < fruits.length - 1) {
+                formattedString += ". ";
+            } else {
+                formattedString += ".";
+            }
+        }
+
+        System.out.println("Formatted fruits: " + formattedString);
+    }
+}
 ```
 
-Create a main method that demonstrates this functionality with an array of your choice.
-
-## Exercise 5: Copy Array
-
-Write a helper method that copies all values from one array to another array. The method should have the signature:
-
-```java
-public static void copyArray(int[] source, int[] destination)
-```
-
-Create a main method that demonstrates this functionality by copying values from one array to another and printing both arrays.
-
-## Exercise 6: Dynamic Array Addition
-
-Create a program that instantiates an array of size 10 and continuously requests the user for numbers to input into the array. Each number should be added at the next available position, so keep track of this position. Provide the user with options to either add a new number or print the current array contents. Continue until the user chooses to exit.
-
-## Exercise 7: Expandable Array
-
-Expand on Exercise 6, but when there is no more room in the array, create a new array of double the size and copy all elements over so the user can continue to input numbers. Provide the user with options to either add a new number or print the current array contents. Continue until the user chooses to exit.
-
-## Exercise 8: putting it all together
-Create a program that combines all the above exercises. That means the program should create an initial int array of size 5, then start a menu (in a while loop), requesting the user to choose an operation:
-* add - to add a number to the array
-* removeAtIndex - to remove a number from the array
-* print - to print the current state of the array
-* contains - to check if a number is in the array
-* indexOf - to find the index of a number in the array
-* reverse - to reverse the array
-* exit - to exit the program
-
-This would putting copying all your previous helper methods into the new file.
-
-Feel free to expand, for example:
-* let the user define the initial size
-* find minimum and maximum values in the array
-* get the average of all numbers in the array
-* etc
+</hint>

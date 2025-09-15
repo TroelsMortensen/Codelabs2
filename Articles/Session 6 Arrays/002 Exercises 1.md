@@ -60,7 +60,7 @@ You can see at which line the error occurred, highlighted in blue, here it's lin
 
 ## Exercise 2: Store and Print Student Ages
 
-Write a Java program that creates an array to store the ages of 5 students. Fill the array with the following ages: 18, 19, 20, 17, and 21. Then print out each age along with the student number.
+Write a Java program that creates an array to store the ages of 5 students. Fill the array with the following ages: 18, 19, 20, 17, and 21. Then extract and print out each age along with the student number.
 
 ### Example Output:
 ```
@@ -112,17 +112,13 @@ Write a Java program that:
 3. Extracts the numbers from the array and calculates their sum
 4. Prints the sum
 
-### Example Input:
+### Example output:
 ```
 Enter number 1: 10
 Enter number 2: 20
 Enter number 3: 5
 Enter number 4: 15
 Enter number 5: 25
-```
-
-### Example Output:
-```
 The sum of all numbers is: 75
 ```
 
@@ -170,6 +166,9 @@ public class ArraySum {
 ```
 
 </hint>
+
+**Note**: It does perhaps seem silly to first put the numbers into the array, then extract them again. Shortly, we will see how to use a loop to do this more efficiently.
+
 
 ## Exercise 3: Mismatching types
 

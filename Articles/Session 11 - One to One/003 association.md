@@ -1,8 +1,9 @@
 # Association Relationship
 
-An **association** is a relationship between two classes where one class "knows about" or "uses" another class. It represents a loose coupling where objects can exist independently of each other. In a one-to-one association, each instance of one class is associated with exactly one instance of another class.
+An **association** is a relationship between two classes where one class "knows about" or "uses" or "references" another class.\
+It represents a loose coupling where objects can exist independently of each other. In a one-to-one association, each instance of one class is associated with exactly one instance of another class.
 
-This is the most common relationship between two objects.
+The association relationship is the most common relationship between two objects.
 
 The short version is that one object has a reference to another object, i.e. a field variable of the first object is an instance of the second object.
 
@@ -81,6 +82,32 @@ public class Person
 }
 ```
 
+We might express this in UML as follows:
+
+```mermaid
+classDiagram
+    class Person {
+        - name : String
+        - address : Address
+        + Person(name : String, address : Address)
+        + displayInfo() void
+        + changeAddress(newAddress : Address) void
+    }
+
+    class Address {
+        - street : String
+        - city : String
+        - zipCode : String
+        + Address(street : String, city : String, zipCode : String)
+        + getFullAddress() String
+    }
+
+    Person --> Address
+``` 
+
+Notice the _type_ of the arrow, and that it is pointing from `Person` to `Address`. This indicates the association from `Person` to `Address`.
+
+
 ### Usage Example:
 
 Here is an example of how to use the `Person` and `Address` classes.
@@ -105,6 +132,8 @@ public class AssociationExample
 }
 ```
 
+
+Notice in the above code, that nothing is preventing me from creating another `Person` object`, and passing in the same `Address` object. This is because the association is loose. It would then be a many-to-one relationship, but we deal with these further in the next session. 
 
 ## Key Points About Association
 

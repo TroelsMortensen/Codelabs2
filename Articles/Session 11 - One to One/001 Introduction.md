@@ -23,4 +23,6 @@ So, these two relationships have different implications for the code. And differ
 
 Some relationships are more complex than others. And some _types_ of relationships are used more often than others. And some types of relationships are not always shown in UML diagrams.
 
+You will notice that most relationships are _one-way_, meaning that one object has a reference to another object, but the other object does not have a reference to the first object.
+
 First, let's get some context, on the next page.

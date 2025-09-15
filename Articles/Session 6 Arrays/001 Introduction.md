@@ -37,15 +37,3 @@ Watch the following video, to get a brief introduction to arrays in Java:
 
 <video src="https://youtu.be/OvTsLiMCkHk" ></video>
 
-
-## Exercise ideas
-ting, som List gør for os.
-* Insert at specific positions in the array.
-* Remove elements from the array, og shift the remaining elements.
-* Search for elements in the array.
-* index of
-* contains
-* reverse
-* copy array to other
-* opret array af size read-from-console, input numbers, keep track of the next position to insert.
-* expand til at når array size er fuld, create a new array with double size, copy elements over, and continue inserting.

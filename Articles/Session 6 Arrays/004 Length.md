@@ -1,10 +1,10 @@
 # Array Length in Java
 
-Every array in Java has a built-in property called `length` that tells you how many elements the array can hold (not how many you have inserted!). Understanding how to use this property is essential for working with arrays effectively and avoiding common errors.
+Every array in Java has a built-in property (field variable) called `length` that tells you how many elements the array can hold (not how many you have inserted!). Understanding how to use this property is essential for working with arrays effectively and avoiding common errors.
 
 ## What is Array Length?
 
-The `length` property returns the number of elements that an array can store. This is determined when the array is created and cannot be changed afterward.
+The `length` field variable returns the number of elements that an array can store. This is determined when the array is created and cannot be changed afterward.
 
 ### Syntax:
 ```java
@@ -12,7 +12,7 @@ arrayName.length
 ```
 
 **Important Notes:**
-- `length` is a **property**, not a method, so you don't use parentheses `()`
+- `length` is a **field variable**, not a method, so you don't use parentheses `()`
 - The length is always a positive integer
 - The length is fixed once the array is created
 - The length represents the **capacity** of the array, not how many elements have meaningful values
@@ -55,7 +55,7 @@ students[1] = "Bob";
 
 System.out.println("Array length: " + students.length); // Prints: 5
 System.out.println("First student: " + students[0]);    // Prints: Alice
-System.out.println("Third student: " + students[2]);    // Prints: null
+System.out.println("Third student: " + students[2]);    // Prints: null, Bob is at index 1
 ```
 
 ## Using Length for Safe Array Access

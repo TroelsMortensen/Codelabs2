@@ -1,6 +1,6 @@
 # Array Iteration in Java
 
-Now that you understand arrays and their length property, it's time to learn how to efficiently process all elements in an array. Instead of accessing each element individually by index, we can use loops (typically a for-loop) to iterate through arrays automatically.
+Now that you understand (hopefully) arrays and their length property, it's time to learn how to efficiently process all elements in an array. Instead of accessing each element individually by index, we can use loops (typically a for-loop) to iterate through arrays automatically.
 
 ## Why Iterate Over Arrays?
 
@@ -15,7 +15,9 @@ System.out.println(scores[2]);
 // ... 97 more lines!
 ```
 
-Instead, we can use loops to process all elements with just a few lines of code.
+Or maybe you don't know ahead of time how many elements you have in the array, then you cannot hardcode the print out statements.
+
+Instead, we can use loops to process all elements in the array in turn.
 
 ## For Loop with Index
 

@@ -134,7 +134,7 @@ public class SafeArrayAccess {
 
 </hint>
 
-Understanding array length is fundamental for safe and effective array manipulation in Java. Always remember that the length property helps you avoid index-related errors and write more robust code.
+Understanding array length is important for safe and effective array manipulation in Java. Always remember that the length property helps you avoid index-related errors and write more robust code.
 
 ## Exercise 3: User Determines Array Size and Fills It
 
@@ -168,7 +168,13 @@ int[] numbers = new int[size];
 ```
 </hint>
 
-<hint title="Hint 3>
+<hint title="Hint 3">
+
+You will need a loop to fill the array with the user input.
+
+</hint>
+
+<hint title="Hint 4">
 
 The upper bound of the loop iteration can also be given from a variable:
 

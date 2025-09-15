@@ -59,7 +59,7 @@ String[] cities = new String[]{"Copenhagen", "Stockholm", "Oslo"};
 double[] weights = new double[]{65.5, 70.2, 58.9, 80.1};
 ```
 
-In each of the above examples, the array is created and initialized with specific values. The size of the array is determined by the number of values provided.
+In each of the above examples, the array is created and initialized with specific values. The _size_ of the array is determined by the number of values provided.
 
 ## 3. Mixed Approach: Create Empty, Then Assign Values
 
