@@ -6,10 +6,12 @@ The `contains` method checks if a list contains a specific element. It returns `
 ## Syntax
 
 ```java
-list.contains(element)
+boolean wasFound = list.contains(element)
 ```
 
 ## Example 1: Checking for a String
+
+This example shows how to check if a list contains a specific string.
 
 ```java
 import java.util.ArrayList;
@@ -29,6 +31,8 @@ public class ContainsExample {
 
 ## Example 2: Checking for a Number
 
+This example shows how to check if a list contains a specific number.
+
 ```java
 import java.util.ArrayList;
 
@@ -45,7 +49,7 @@ public class ContainsNumberExample {
 }
 ```
 
-## Exercise 0: Check if a List Contains an Element
+## Exercise: Check if a List Contains an Element
 Redo the exercise on the previous page, but this time use the `contains` method to check if the list contains a specific element.
 
 

@@ -19,6 +19,9 @@ listName.remove(index);
 ```
 
 ### Example 1: Remove by Index
+
+In this example, five fruits are added to the list, and then the element at index 2 is removed, i.e. "Cherry".
+
 ```java
 import java.util.ArrayList;
 
@@ -57,7 +60,7 @@ Before removal:
 |-------|-------|--------|--------|------|------------|
 | Value | Apple | Banana | Cherry | Date | Elderberry |
 
-After `fruits.remove(2)`:
+After `fruits.remove(2)` removes "Cherry":
 
 | Index | 0     | 1      | 2    | 3          |
 |-------|-------|--------|------|------------|
@@ -84,7 +87,7 @@ public class Main {
         colors.add("Red");
         colors.add("Blue");
         colors.add("Green");
-        colors.add("Blue");  // Duplicate
+        colors.add("Blue");  // Duplicate, Blue now exists at indices 1 and 3
         colors.add("Yellow");
 
         System.out.println("Before removal: " + colors);
@@ -109,7 +112,7 @@ After removal again: [Red, Green, Blue, Yellow]  // No change since "Purple" was
 ```
 
 ## A detail
-Above, both remove methods we called the same way, for example: `colors.remove("Blue");` and `colors.remove(2);`.
+Above, both remove methods were called the same way, for example: `colors.remove("Blue");` and `colors.remove(2);`.
 
 However, both methods actally also return a result:
 - `remove(int index)` returns the removed element.
@@ -178,7 +181,7 @@ public class Main {
 }
 ```
 
-***Output:**
+**Output:**
 ```
 Before removal: [Red, Blue, Green, Blue, Yellow]
 After removal: [Red, Green, Blue, Yellow]
@@ -192,37 +195,6 @@ Removed element: Blue
 - **Remove by index**: Returns the removed element
 - **Remove by object**: Returns `true` if element was found and removed, `false` otherwise
 
-### Behavior with Duplicates
-```java
-import java.util.ArrayList;
-
-public class Main {
-    public static void main(String[] args) {
-        ArrayList<Integer> numbers = new ArrayList<>();
-        numbers.add(10);
-        numbers.add(20);
-        numbers.add(10);  // Duplicate
-        numbers.add(30);
-
-        System.out.println("Original: " + numbers);
-        
-        // Remove by object - removes first occurrence only
-        numbers.remove(Integer.valueOf(10));
-        System.out.println("After remove(10): " + numbers);
-        
-        // Remove by index - removes element at specific position
-        numbers.remove(1);  // Removes element at index 1
-        System.out.println("After remove(1): " + numbers);
-    }
-}
-```
-
-**Output:**
-```
-Original: [10, 20, 10, 30]
-After remove(10): [20, 10, 30]
-After remove(1): [20, 30]
-```
 
 ## Working with Integer Lists
 
@@ -270,14 +242,14 @@ After remove(1) by value: [0, 2, 3]
 
 Choose the appropriate method based on whether you know the position or the value of the element you want to remove.
 
-## Exercise 2: Interactive list
+## Exercise: Interactive list
 
 Create a program, which creates a list of strings.
 
 Then, in a loop, ask the user to either add or remove an element from the list. 
 - If add, then request which string to add.
 - If remove, then request which index to remove.
-
-After each operation, display the current state of the list.
+- If print, then print the current state of the list.
+- If exit, then exit the program.
 
 Do this in a while loop, so the user can keep adding or removing until they enter "exit" to stop.

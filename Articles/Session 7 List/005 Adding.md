@@ -4,7 +4,7 @@ On this page we will explore the `add(..)` method of the `ArrayList`, which allo
 
 Elements are automatically added to the end of the list, and the list will grow as needed to accommodate new elements.
 
-I prefer to think of the list as initially having no available cells, and then as we add elements, the list will grow a new cell to accommodate them.
+I prefer to think of the list as initially having no available cells, and then as we add elements, the list will grow a new cell to accommodate them. This is not exactly how it works, but it is a good mental model.
 
 In theory, the List can contain an infinite number of elements, but in practice, it is limited by the available memory of the system.
 
@@ -43,13 +43,28 @@ All this happens automatically behind the scenes, so you don't have to worry abo
 
 ## Add at index
 Using the above explained `add(..)` method, the element is always added to the end of the list.
+For example, if the list has 3 elements:
+
+| 0     | 1      | 2      |
+|-------|--------|--------|
+| Apple | Banana | Cherry |
+
+And you add "Orange" at index 1, the list will look like this:
+
+| 0     | 1      | 2      | 3      |
+|-------|--------|--------|--------|
+| Apple | Banana | Cherry | Orange |
+
 
 But, sometimes you might want to add an element at a specific index in the list.
 
 You can do this by using the `add(int index, E element)` method of the `ArrayList`.
 
 ## Example 2: Adding an element at a specific index
-```java
+
+The following code snippet shows how to add an element at a specific index.
+
+```java{11}
 import java.util.ArrayList;
 
 public class Main {
@@ -90,12 +105,12 @@ After adding "Orange" at index 1, the List looks like this:
 
 | Index | 0     | 1      | 2      | 3      |
 |-------|-------|--------|--------|--------|
-| Value | Apple | Orange | Banana | Cherry |
+| Value | Apple | **Orange** | Banana | Cherry |
 
 All elements after the specified index are shifted to the right to make space for the new element.
 
 ## Exercise 2: Printing a list
-The List has a built in formatting method for printing the contents of the list.
+The List's `toString()` method has a built in formatting method for printing the contents of the list.
 
 Create a program that creates an ArrayList of strings, adds a few elements to it, and then prints the list like this:
 
@@ -130,7 +145,7 @@ Now, your list should look like this:
 You have 5 elements in the list, and the last is at index 4. 
 
 5.\
-Try to insert "kiwi" at index 5. That should work, because it is the next available index after the last element. So, that is a valid position.
+Try to insert "kiwi" at index 5. That should work, because it is the _next available index_ after the last element. So, that is a valid position.
 
 6.\
 Finally, try to insert "melon" at index 8. What happens? Why?

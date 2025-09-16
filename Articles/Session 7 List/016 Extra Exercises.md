@@ -1,5 +1,19 @@
 # Exercises
 
+Extra optional exercises for more practice.
+
+## Exercise -1: Doubling the numbers in a list
+
+Write a program, which instantiates an ArrayList of integers, and then doubles each number in the list using a loop.
+Print out the list.
+
+
+**Output:**
+```
+Before modification: [1, 2, 3, 4, 5]
+After modification: [2, 4, 6, 8, 10]
+```
+
 ## Exercise 0: 
 
 Write a program that continuously reads numbers from the console. You will need to create two ArrayLists: one for positive numbers and one for negative numbers. The program should:
@@ -10,7 +24,7 @@ Write a program that continuously reads numbers from the console. You will need 
     - The number of elements in each list
     - The sum of each list
     - The combined sum of both lists
-  Then terminate the program.
+    - Then terminate the program.
 
 **Example (user input in bold):**
 

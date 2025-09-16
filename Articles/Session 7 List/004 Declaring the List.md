@@ -2,7 +2,7 @@
 
 As you saw in the video, when you declare a List in Java, you need to specify the type of elements it will hold. That is done with for example `ArrayList<String>`, which means that the list will hold `String` elements.
 
-The `< >` are called "angle brackets" or "chevrons". 
+The `< >` are called "angle brackets", or "chevrons". 
 
 ## Exercise 1: Declaring a List of ints
 
@@ -23,7 +23,7 @@ What happens? And what does it mean?
 
 ![Error message when trying to declare an ArrayList of primitive type](Resources/ArrayListOfInts.png)
 
-In Java, you cannot use primitive types (like `int`, `char`, etc.) as type parameters for generic classes (like `ArrayList`). Instead, you must use their wrapper classes (like `Integer`, `Character`, etc.). So, to declare an ArrayList of integers, you should use `ArrayList<Integer>`.
+In Java, you cannot use primitive types (like `int`, `char`, etc.) as type parameters for generic classes (like `ArrayList`). Instead, you must use their [wrapper classes](https://www.w3schools.com/java/java_wrapper_classes.asp) (like `Integer`, `Character`, etc.). So, to declare an ArrayList of integers, you should use `ArrayList<Integer>`.
 
 The `int` is a primitive type, while `Integer` is an object type (wrapper class) that represents an `int` value. The Java Collections Framework (which includes `ArrayList`) works with objects, not primitive types.
 
@@ -55,7 +55,7 @@ public class Main {
 }
 ```
 
-Now, the code should compile without errors. You have successfully declared an `ArrayList` that can hold `Integer` objects.
+Now, the code should compile without errors. You have successfully declared an `ArrayList` that can hold `Integer` objects, or int values.
 
 Try adding some integers to the list:
 

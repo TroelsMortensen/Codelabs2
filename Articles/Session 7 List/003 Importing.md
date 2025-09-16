@@ -4,7 +4,7 @@ In order to use the `ArrayList` in your Java programs, you need to import it fro
 
 Remember, how this needs to be done with the Scanner class to read user input? The same applies here.
 
-```java {1}
+```java{1}
 import java.util.ArrayList;
 
 public class Main {

@@ -7,7 +7,7 @@ As mentioned, eventually, you will be dealing with three types:
 * ArrayList
 * LinkedList
 
-The List is the conceptual part, it defines which methods are available on a list type. It is an interface, and we will come back to interfaces later in the course.
+The List is the conceptual part, it defines which methods are available on a list type. It is an _interface_, and we will come back to interfaces later in the course. You can just ignore it for now.
 
 We will ignore the LinkedList. You may use it instead of the ArrayList, but all examples going forward will be with the ArrayList.
 
