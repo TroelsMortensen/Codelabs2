@@ -9,8 +9,7 @@ The short version is that one object has a reference to another object, i.e. a f
 
 Watch the following video for an overview of the association relationship:
 
-<video src="..."></video>
-
+<video src="https://youtu.be/pnRQPfMuyQY"></video>
 
 
 
