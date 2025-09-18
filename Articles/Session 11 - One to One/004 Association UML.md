@@ -13,9 +13,6 @@ classDiagram
     Person --> Address
 ```
 
-This means `Person` knows about `Address`, but `Address` doesn't necessarily know about Person. It is a one-way association, where only one object knows about the other.\
-If both objects know about each other, it is a two-way, or bidirectional, association. These are quite rare.
-
 And in code, this relationship is implemented by having a field variable of Address in Person. Like this:
 
 ```java
@@ -29,3 +26,7 @@ public class Person {
 ```
 
 The direction of the arrowhead is important. It _starts_ at the class with the field variable. And _points_ to the class that is the _type_ of the field variable.
+
+This means `Person` knows about `Address`, but `Address` doesn't know about `Person`.\
+It is a one-way association, where only one object knows about the other.\
+If both objects know about each other, it is a two-way, or bidirectional, association. These are quite rare.

@@ -12,7 +12,6 @@ Watch the following video for an overview of the association relationship:
 <video src="https://youtu.be/pnRQPfMuyQY"></video>
 
 
-
 ## Key Characteristics
 
 - **Loose coupling**: Objects can exist independently

@@ -1,12 +1,11 @@
 # Aggregation Relationship
 
-**Aggregation** is a "has-a" relationship where one class contains or "owns" another class as a part, but the contained object can exist independently. 
+**Aggregation** is a "has-a" relationship where one class contains or "owns" another class as a part, but the contained object can exist independently. The ownership is stronger than an association.
 
-Consider this example: A car has an engine. The engine is a part of the car, but the engine can exist independently of the car. The engine can be removed from the car, and placedd in another car. But at any given time, there is only one engine in the car. And the engine is used by _only_ one car.\
-This is a one-to-one relationship, and the ownership is stronger than an association.
+Consider this example: A car has an engine. The engine is a part of the car, but the engine can exist independently of the car. The engine can be removed from the car, and placed in another car. But at any given time, there is only one engine in the car. And the engine is used by _only_ one car.\
+This is a one-to-one relationship, and the ownership is stronger than an association. If this was an association, the engine could be used by multiple cars. That does not really make sense, so we need to use aggregation instead.
 
-Honestly, it is difficult to distinguish between aggregation and association in code. We can use aggregation in our designs to imply intent, but generally it has little to no effect on the code we write. 
-
+Honestly, it is difficult to distinguish between aggregation and association in code. We can use aggregation in our designs (UML diagrams) to imply intent, but generally it has little to no effect on the code we write. 
 
 Consider the previous exercise:\
 For the detective and case exercise, it was explained as a 1 to 1 relationship, but it would not be unreasonable to say that multiple detectives can work on the same case. Making this a "many to one" relationship. We deal with these in depth in the next session. But, I would call the relationships between detective and case an association. The ownership is weaker.
@@ -28,11 +27,11 @@ Aggregation is implemented through:
 - **Constructor parameters** that accept existing objects
 - **Setter methods** to assign or change contained objects
 
-
-
-
+So, those points look a lot like association. The only difference is that the ownership is stronger.
 
 ## Example 1: Car and Engine
+
+In this example, the `Car` class has an `Engine` object. The `Engine` object is a part of the `Car` object, but the `Engine` object can exist independently of the `Car` object. The `Engine` object is used by _only_ one `Car` object.
 
 ```java
 public class Engine 
@@ -70,10 +69,22 @@ public class Car
         this.make = make;
         this.model = model;
     }
+
+    public Engine removeEngine()
+    {
+        Engine removedEngine = this.engine; // save the engine to a variable
+        this.engine = null; // set the engine to null, i.e. now the car has no engine
+        return removedEngine;
+    }
     
     public void installEngine(Engine engine) 
     {
-        this.engine = engine;
+        if(this.engine != null)
+        {
+            System.out.println("Cannot install engine - car already has an engine");
+            return; // exit the method
+        }
+        this.engine = engine; // set the engine to the new engine
         System.out.println(make + " " + model + " now has " + engine.getEngineSpecs());
     }
     
@@ -89,13 +100,6 @@ public class Car
             System.out.println("Cannot start car - no engine installed");
         }
     }
-    
-    public void replaceEngine(Engine newEngine) 
-    {
-        System.out.println("Replacing engine in " + make + " " + model);
-        this.engine = newEngine;
-        System.out.println("New engine installed: " + newEngine.getEngineSpecs());
-    }
 }
 ```
 
@@ -106,3 +110,34 @@ public class Car
 - **Aggregation** implies a stronger relationship than association but weaker than composition
 
 Aggregation is useful when you need to model relationships where objects are _components_ of other objects but can exist and be used independently.
+
+
+## Potential issues with aggregation
+This relationship is primarily used in the _modelling_ part, i.e. you can express the intent in UML diagrams as a concept, but we cannot really enforce it in the code.
+
+If you consider the above Car, it receives the engine as a parameter in the constructor:
+
+```java
+public Car(String make, String model, Engine engine)
+{
+    this.make = make;
+    this.model = model;
+    this.engine = engine;
+}
+```
+
+But, given that the `Engine` is created elsewhere, nothing is stopping you from giving that `Engine` instance to another `Car` object. Like this:
+
+```java
+public class CarTest {
+    public static void main(String[] args) {
+        Engine engine = new Engine("V8", 400, "Gasoline");
+        Car car1 = new Car("Ford", "Mustang", engine);
+        Car car2 = new Car("Chevrolet", "Camaro", engine);
+    }
+}
+```
+
+And now we are back to this being an association. There are various hacks to make it more difficult to violate the aggregation, but it is still possible.
+
+So, the association is conceptual, but does not affect your code. And it is therefore rarely used in UML diagrams.

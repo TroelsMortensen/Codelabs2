@@ -76,7 +76,7 @@ Case #2024-001 SOLVED! Detective Holmes can now take on Case #2024-002
 ```
 
 
-## Exercise 3: Detective and Case version 2
+## Exercise 2: Detective and Case version 2
 
 Make a copy of your detective and case classes from the previous exercise.
 
