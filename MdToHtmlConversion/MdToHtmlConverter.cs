@@ -12,6 +12,7 @@ public static class MasterConverter
             new CircleStepNumbersInRed(),
             new FixImageUrls(),
             new AddLinesToCodeBlocks(),
+            new MoveLineHighlightingAttributes(),
             new HintToDetails(), 
             new ConfigureVideoTags()
         ];
