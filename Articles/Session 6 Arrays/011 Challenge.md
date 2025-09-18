@@ -21,6 +21,7 @@ For example:
 Above you have an array with room for 7 elements, but only 5 of them are filled with values. The last two are empty (0).
 
 You want to insert a new number, 30, at index 2, so the array should look like this after the insertion:
+
 | Index | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
 |-------|---|---|---|---|---|---|---|
 | Value | 5 | 10| 30| 15| 20| 25|  0|
