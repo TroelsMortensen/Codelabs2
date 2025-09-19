@@ -1,5 +1,7 @@
 # Garbage Collection in Java
 
+![garbage collector](GarbageCollection.png)
+
 Garbage collection is something that happens behind the scenes, and you do not need to worry about it. But, it is still something, you will probably encounter in your career, so it is important to understand.
 
 ## What is Garbage Collection?

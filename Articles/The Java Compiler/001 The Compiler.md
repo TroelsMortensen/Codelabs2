@@ -1,5 +1,7 @@
 ﻿# The Java Compiler and JVM
 
+![compiler and JVM](Resources/Compiler.png)
+
 This article will provide a simple explanation of the Java Compiler and the Java Virtual Machine (JVM), two essential components of the Java programming language.
 
 You have probably encountered mentions of both already, but now you get a quick explanation.

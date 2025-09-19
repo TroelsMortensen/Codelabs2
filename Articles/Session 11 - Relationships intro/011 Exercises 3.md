@@ -2,6 +2,8 @@
 
 This exercise will practice a composition relationship.
 
+![song](Resources/Song.png)
+
 ## Exercise 3.1: Song with Lyrics and Duration
 
 Create a `Song` class that has a composition relationship with both `Lyrics` and `Duration` objects. The song should create these objects internally and provide getter methods that return copies of the lyrics and duration.

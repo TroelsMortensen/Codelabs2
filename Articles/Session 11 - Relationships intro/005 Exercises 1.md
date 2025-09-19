@@ -1,7 +1,7 @@
 # Association Exercises
 
-Practice implementing association relationships in Java with these fun and interesting exercises.
 
+![detective](Resources/Detective.png)
 
 ## Exercise 1.1: Detective and Case
 

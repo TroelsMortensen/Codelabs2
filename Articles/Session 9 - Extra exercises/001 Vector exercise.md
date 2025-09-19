@@ -1,5 +1,7 @@
 # Vector (2D) Exercise
 
+![vector](Vectors.png)
+
 Implement a 2D `Vector2` class that models a vector in the plane.\
 The class will have instance fields, multiple constructors, and static utility methods.\
 Write a small `main` program to demonstrate and test the features.
