@@ -50,7 +50,7 @@ classDiagram
         + getRacerInfo() String
     }
     
-    FlyingCarpet o--> Racer : has
+    FlyingCarpet o--> Racer 
 ```
 
 ### Why This Is an Aggregation Relationship
@@ -90,6 +90,8 @@ System.out.println("Racer released: " + (releasedRacer != null));
 5. **External Creation**: Racer is created outside and passed to carpet
 
 ## Exercise 4.2: Flying Carpet with Enchantment
+
+![flying carpet with enchantment](Resources/Enchantment.png)
 
 Expand the previous exercise by adding an `Enchantment` class to the `FlyingCarpet` class with a **composition** relationship. The enchantment serves as the "engine" of the carpet and is an integral part of it. Up until now, the carpet was actually just a normal carpet, no magic flying powers about it. But now! Now we enchant the carpet, and it can fly! Or we can at least pretend so.
 
@@ -152,8 +154,8 @@ classDiagram
         + getEnchantmentInfo() String
     }
     
-    FlyingCarpet o--> Racer : has
-    FlyingCarpet *--> Enchantment : powered by
+    FlyingCarpet o--> Racer 
+    FlyingCarpet *--> Enchantment 
 ```
 
 ### Why This Is a Composition Relationship

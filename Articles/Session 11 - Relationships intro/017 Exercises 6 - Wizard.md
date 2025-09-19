@@ -50,7 +50,7 @@ classDiagram
         + getScrollInfo() String
     }
     
-    Wizard ..> Scroll : uses for casting
+    Wizard ..> Scroll
 ```
 
 ### Why This Is a Dependency Relationship
@@ -137,8 +137,8 @@ classDiagram
         + getScrollInfo() String
     }
     
-    Wizard o--> Wand : has
-    Wizard ..> Scroll : uses for casting
+    Wizard o--> Wand 
+    Wizard ..> Scroll 
 ```
 
 ### Why This Is an Aggregation Relationship

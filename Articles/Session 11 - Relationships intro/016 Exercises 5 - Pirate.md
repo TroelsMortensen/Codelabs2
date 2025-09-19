@@ -52,7 +52,7 @@ classDiagram
         + getMapInfo() String
     }
     
-    Pirate o--> TreasureMap : has
+    Pirate o--> TreasureMap
 ```
 
 ### Why This Is an Aggregation Relationship
@@ -147,7 +147,7 @@ classDiagram
     }
     
     Pirate --> Ship : sails on
-    Pirate o--> TreasureMap : has
+    Pirate o--> TreasureMap 
 ```
 
 ### Why This Is an Association Relationship
@@ -241,8 +241,8 @@ classDiagram
     }
     
     Pirate *--> Prosthetic : 0-\*
-    Pirate --> Ship : sails on
-    Pirate o--> TreasureMap : has
+    Pirate --> Ship 
+    Pirate o--> TreasureMap 
 ```
 
 ### Why This Is a Composition Relationship
