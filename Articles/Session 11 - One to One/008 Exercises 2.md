@@ -2,7 +2,7 @@
 
 On this page, we will practice implementing aggregation relationships in Java. You will notice, there is little difference between aggregation and association.
 
-## Exercise 1: Wizard and Wand
+## Exercise 2.1: Wizard and Wand
 
 Create a `Wizard` class and a `Wand` class with a one-to-one association. The wizard can cast spells using their wand, and the wand has magical properties.
 

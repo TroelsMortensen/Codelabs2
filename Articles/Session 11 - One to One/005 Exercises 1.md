@@ -3,7 +3,7 @@
 Practice implementing association relationships in Java with these fun and interesting exercises.
 
 
-## Exercise 1: Detective and Case
+## Exercise 1.1: Detective and Case
 
 Build a `Detective` class and a `Case` class where each detective works on one active case at a time. The case contains evidence and clues.
 
@@ -76,7 +76,7 @@ Case #2024-001 SOLVED! Detective Holmes can now take on Case #2024-002
 ```
 
 
-## Exercise 2: Detective and Case version 2
+## Exercise 1.2: Detective and Case version 2
 
 Make a copy of your detective and case classes from the previous exercise.
 

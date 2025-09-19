@@ -1,23 +1,33 @@
 # Composition Relationship
 
-**Composition** is a "part-of" relationship where one class contains another class as an essential component. The contained object cannot exist independently of the container - it's created, managed, and destroyed by the container. This represents the strongest form of relationship.
+**Composition** is a "part-of" relationship where one class contains another class as an essential component. The contained object cannot exist independently of the container - it's created, managed, and destroyed by the container. This represents the strongest form of relationship. 
+
+Let's assume class `A` contains class `B`, A --> B. When this is a composition, it means only A _knows_ about the instance of B. No other class knows about the instance of B. When A is destroyed, B is also destroyed.
+
+Again, we can use the parent-child terminology to describe this relationship. A is the parent, and B is the child. The child in this case cannot exist without the parent.
 
 ## Key Characteristics
 
-- **"Part-of" relationship**: The contained object is an integral part of the container
-- **Dependent existence**: The contained object cannot exist without the container
-- **Exclusive ownership**: Only one container can own the contained object
-- **Shared lifecycle**: When the container is destroyed, the contained object is also destroyed
+- **"Part-of" relationship**: The child object is an integral part of the parent
+- **Dependent existence**: The child object cannot exist without the parent
+- **Exclusive ownership**: Only one parent can own the child
+- **Shared lifecycle**: When the parent is destroyed, the child is also destroyed
 
 ## How Composition Works in Java
 
 Composition is implemented through:
-- **Instance variables** that hold references to other objects
+- **Instance variables** that hold references to other objects, so, similar to association and aggregation, but with stronger ownership.
 - **Constructor creation** of contained objects within the container
 - **Private access** to prevent external modification
 - **No setter methods** for contained objects (they're created internally)
+- **No external references** to the child object
+- **No getter methods** for the child object. We cannot let others reference the child object. But, we can do something else, to be explained later.
 
 ## Example 1: House and Room
+
+Any given room must always exist within a house. It cannot exist without a house. And when the house is destroyed, the room is also destroyed. Obviously, the room is _very_ dependent on the house.
+
+Consider the code below, first we have the `Room` class.
 
 ```java
 public class Room 
@@ -43,7 +53,15 @@ public class Room
         return area;
     }
 }
+```
 
+And now the `House` class.
+
+Notice how the constructor instantiates the `Room` objects.
+
+**Version 1**
+
+```java	
 public class House 
 {
     private String address;
@@ -76,6 +94,63 @@ public class House
 }
 ```
 
+Alternatively, we can still provide room information from the outside to the house, either through the constructor or a specific method. But, in either case neither constructor nor method takes a `Room` object as a parameter.\
+Instead we pass in relevant information about the rooms, and the house then creates the `Room` objects internally.
+
+Here is an updated example with an `addRoom` method
+
+
+**Version 2**
+
+```java
+public class House 
+{
+    private String address;
+    private List<Room> rooms; // List of rooms - composition
+    
+    public House(String address) 
+    {
+        this.address = address;
+        this.rooms = new ArrayList<>();
+    }
+    
+    // Method to add a new room
+    public void addRoom(String roomType, double area, boolean hasWindow) 
+    {
+        Room newRoom = new Room(roomType, area, hasWindow);
+        this.rooms.add(newRoom);
+        System.out.println("Added " + roomType + " to house at " + address);
+    }
+    
+    public void displayHouseInfo() 
+    {
+        System.out.println("House at: " + address);
+        System.out.println("Rooms:");
+        for (Room room : rooms) 
+        {
+            System.out.println("  " + room.getRoomInfo());
+        }
+        System.out.println("Total area: " + getTotalArea() + " sq ft");
+    }
+    
+    private double getTotalArea() 
+    {
+        double total = 0;
+        for (Room room : rooms) 
+        {
+            total += room.getArea();
+        }
+        return total;
+    }
+    
+    public int getRoomCount() 
+    {
+        return rooms.size();
+    }
+    
+}
+```
+
 ### Usage Example:
 
 ```java
@@ -86,215 +161,13 @@ public class CompositionExample
         House myHouse = new House("123 Oak Street");
         myHouse.displayHouseInfo();
         
-        // Rooms cannot be accessed or modified externally
-        // They exist only as part of the house
+        // Add more rooms using the addRoom method
+        myHouse.addRoom("Bathroom", 80.0, true);
+        myHouse.addRoom("Study", 120.0, false);
+        
+        System.out.println("\nAfter adding more rooms:");
+        myHouse.displayHouseInfo();
+        System.out.println("Total rooms: " + myHouse.getRoomCount());
     }
 }
 ```
-
-## Example 2: Computer and CPU
-
-```java
-public class CPU 
-{
-    private String brand;
-    private String model;
-    private double clockSpeed;
-    private int cores;
-    
-    public CPU(String brand, String model, double clockSpeed, int cores) 
-    {
-        this.brand = brand;
-        this.model = model;
-        this.clockSpeed = clockSpeed;
-        this.cores = cores;
-    }
-    
-    public void process() 
-    {
-        System.out.println("CPU processing: " + brand + " " + model + " @ " + clockSpeed + "GHz");
-    }
-    
-    public String getCPUSpecs() 
-    {
-        return brand + " " + model + " (" + cores + " cores, " + clockSpeed + " GHz)";
-    }
-}
-
-public class Computer 
-{
-    private String computerName;
-    private CPU processor; // Composition - Computer owns a CPU
-    
-    public Computer(String computerName, String cpuBrand, String cpuModel, double clockSpeed, int cores) 
-    {
-        this.computerName = computerName;
-        // CPU is created when computer is created - composition
-        this.processor = new CPU(cpuBrand, cpuModel, clockSpeed, cores);
-        System.out.println("Computer '" + computerName + "' assembled with " + processor.getCPUSpecs());
-    }
-    
-    public void bootUp() 
-    {
-        System.out.println("Booting " + computerName + "...");
-        processor.process();
-        System.out.println(computerName + " is ready!");
-    }
-    
-    public void displaySpecs() 
-    {
-        System.out.println("Computer: " + computerName);
-        System.out.println("Processor: " + processor.getCPUSpecs());
-    }
-    
-    // No method to change CPU - it's an integral part of the computer
-}
-```
-
-## Example 3: Bank Account and Account Number
-
-```java
-public class AccountNumber 
-{
-    private String accountNumber;
-    private String bankCode;
-    private String branchCode;
-    
-    public AccountNumber(String bankCode, String branchCode, String accountNumber) 
-    {
-        this.bankCode = bankCode;
-        this.branchCode = branchCode;
-        this.accountNumber = accountNumber;
-    }
-    
-    public String getFullAccountNumber() 
-    {
-        return bankCode + "-" + branchCode + "-" + accountNumber;
-    }
-    
-    public String getBankCode() 
-    {
-        return bankCode;
-    }
-    
-    public String getBranchCode() 
-    {
-        return branchCode;
-    }
-}
-
-public class BankAccount 
-{
-    private String accountHolderName;
-    private AccountNumber accountNumber; // Composition - Account owns AccountNumber
-    private double balance;
-    
-    public BankAccount(String accountHolderName, String bankCode, String branchCode) 
-    {
-        this.accountHolderName = accountHolderName;
-        // Account number is generated when account is created - composition
-        this.accountNumber = new AccountNumber(bankCode, branchCode, generateAccountNumber());
-        this.balance = 0.0;
-        System.out.println("Account created for " + accountHolderName + 
-                          " with number: " + accountNumber.getFullAccountNumber());
-    }
-    
-    private String generateAccountNumber() 
-    {
-        // Simple account number generation
-        return String.valueOf(System.currentTimeMillis()).substring(8);
-    }
-    
-    public void deposit(double amount) 
-    {
-        balance += amount;
-        System.out.println("Deposited $" + amount + " to account " + accountNumber.getFullAccountNumber());
-    }
-    
-    public void displayAccountInfo() 
-    {
-        System.out.println("Account Holder: " + accountHolderName);
-        System.out.println("Account Number: " + accountNumber.getFullAccountNumber());
-        System.out.println("Balance: $" + balance);
-    }
-    
-    // Account number cannot be changed - it's part of the account identity
-}
-```
-
-## Enforcing Composition Rules
-
-To properly enforce composition in Java:
-
-### 1. Create Objects in Constructor
-```java
-public class Container 
-{
-    private Component component;
-    
-    public Container() 
-    {
-        // Component is created here, not passed in
-        this.component = new Component();
-    }
-}
-```
-
-### 2. Make Components Private
-```java
-public class Container 
-{
-    private Component component; // Private - no external access
-    
-    // No public getter for component
-    // No public setter for component
-}
-```
-
-### 3. No External References
-```java
-public class Container 
-{
-    private Component component;
-    
-    public Container() 
-    {
-        this.component = new Component();
-    }
-    
-    // Don't provide methods that return the component
-    // public Component getComponent() { return component; } // DON'T DO THIS
-}
-```
-
-### 4. Handle Destruction Properly
-```java
-public class Container 
-{
-    private Component component;
-    
-    public Container() 
-    {
-        this.component = new Component();
-    }
-    
-    // When container is destroyed, component is automatically destroyed
-    // No need for explicit cleanup in most cases
-}
-```
-
-## Key Points About Composition
-
-1. **Strong Ownership**: Container completely owns the contained object
-2. **Dependent Lifecycle**: Contained object cannot exist without container
-3. **Exclusive Relationship**: Only one container can own the contained object
-4. **Internal Creation**: Contained objects are created within the container
-5. **No External Access**: Contained objects are not accessible from outside
-
-## Composition vs Aggregation vs Association
-
-- **Association**: Objects work together but are independent
-- **Aggregation**: Objects have a whole-part relationship, but parts can exist independently
-- **Composition**: Objects have a strong whole-part relationship where parts cannot exist without the whole
-
-Composition is the strongest relationship and should be used when the contained object is an essential, inseparable part of the container.
