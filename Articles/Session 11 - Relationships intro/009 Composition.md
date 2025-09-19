@@ -171,3 +171,59 @@ public class CompositionExample
     }
 }
 ```
+
+**Version 3**
+
+Sometimes it is inconvenient to pass in all the information about the room to the house. If the room requires many parameters, the parameter list for the `addRoom` method can become too long.
+
+Instead, you could make the method accept a `Room` object as a parameter:
+
+```java
+public void addRoom(Room room) 
+```
+
+But, now the room object is created somewhere else, outside the house object. Which means two different objects now have a reference to the same room object.
+Remember, this will break the composition relationship, because the room object is now independent of the house object.
+
+How do we fix this? Another application of the copy method.
+
+**The copy concept is further detailed on the next page.**
+
+The idea is that the house accepts a `Room` object as a parameter, and then creates a copy of the room object internally.
+
+Like this:
+
+```java{15}
+public class House 
+{
+    private String address;
+    private List<Room> rooms; // List of rooms - composition
+    
+    public House(String address) 
+    {
+        this.address = address;
+        this.rooms = new ArrayList<>();
+    }
+    
+    // Method to add a new room
+    public void addRoom(Room room) 
+    {
+        Room newRoom = room.copy();  // notice the copy
+        this.rooms.add(newRoom);
+        System.out.println("Added " + roomType + " to house at " + address);
+    }
+// more stuff    
+}    
+```
+
+## Recap
+
+The short version is that we can enforce composition through copying objects.
+
+In the following, parent class is `House`, and child class is `Room`. But I use "parent" and "child" terminology to describe the relationship more generally.
+
+1. The constructor on the parent class creates the child object.
+2. The constructor receives arguments, and uses them to create the child object.
+3. There is a method on the parent class, which:
+   1. Receives the child object as a parameter. And creates a copy. Or,
+   2. Receives relevant data so that the child can be created internally.

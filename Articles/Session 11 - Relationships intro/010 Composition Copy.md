@@ -29,6 +29,8 @@ public class House
 
 Instead of returning the actual child object, we can return a **copy** of it. This preserves the composition relationship while still allowing access to the child's data.
 
+
+
 There are several ways to implement this copy functionality.
 
 ### Method 1: Copy Constructor Approach

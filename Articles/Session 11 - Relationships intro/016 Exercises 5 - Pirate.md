@@ -1,77 +1,8 @@
-# More exercises
+# Even more exercises
 
-## Exercise 4.1: Wizard and Scroll
+![pirate](Resources/Pirate.png)
 
-Create a `Wizard` class and a `Scroll` class with a dependency relationship. The wizard can cast spells by using scrolls for incantations, but the wizard doesn't store scrolls as field variables.
-
-### Requirements
-
-1. **Wizard Class**: 
-   - Contains name, elemental specialty (fire, wind, light, etc), and mastery level
-   - Has a method to cast a spell using a scroll
-   - Does not store scrolls as field variables
-
-2. **Scroll Class**:
-   - Contains title, explanation of effect, incantation, and required magic mastery level
-   - Has methods to get scroll information
-   - Can be used by wizards temporarily
-
-### UML Diagram
-
-```mermaid
-classDiagram
-    class Wizard {
-        - name : String
-        - elementalSpecialty : String
-        - masteryLevel : int
-        + Wizard(name : String, elementalSpecialty : String, masteryLevel : int)
-        + castSpell(scroll : Scroll) void
-        + getName() String
-        + getElementalSpecialty() String
-        + getMasteryLevel() int
-    }
-    
-    class Scroll {
-        - title : String
-        - effectExplanation : String
-        - incantation : String
-        - requiredMasteryLevel : int
-        + Scroll(title : String, effectExplanation : String, incantation : String, requiredMasteryLevel : int)
-        + getTitle() String
-        + getEffectExplanation() String
-        + getIncantation() String
-        + getRequiredMasteryLevel() int
-        + getScrollInfo() String
-    }
-    
-    Wizard ..> Scroll : uses for casting
-```
-
-### Why This Is a Dependency Relationship
-
-The `Wizard` class depends on the `Scroll` class because:
-- Wizards use scrolls as method parameters to cast spells
-- Wizards don't store scrolls as field variables
-- The relationship is temporary - only during spell casting
-- Scrolls can exist independently of wizards
-
-### Implementation Notes
-
-- The `castSpell` method should take a `Scroll` object as a parameter
-- Check if the wizard's mastery level is sufficient for the scroll
-- Display the incantation and effect when casting
-- The wizard should not store any scrolls permanently
-
-### Example Usage
-
-```java
-Wizard gandalf = new Wizard("Gandalf", "Fire", 8);
-Scroll fireballScroll = new Scroll("Fireball", "Creates a ball of fire", "Ignis Flamma", 5);
-
-gandalf.castSpell(fireballScroll);
-```
-
-## Exercise 4.2: Pirate and Treasure Map
+## Exercise 5.1: Pirate and Treasure Map
 
 I recommend making a package for this exercise. Because in later exercises, you will expand on this exercise, by copying it and adding more classes. New versions will then be in different packages.
 
@@ -153,7 +84,7 @@ TreasureMap returnedMap = blackbeard.giveAwayMap();
 System.out.println("Map returned: " + (returnedMap != null));
 ```
 
-## Exercise 4.3: Pirate, Ship, and Treasure Map
+## Exercise 5.2: Pirate, Ship, and Treasure Map
 
 Copy your solution from Exercise 4.2 (Pirate and Treasure Map) and add a `Ship` class with an **association** relationship from the `Pirate` class.
 
@@ -227,7 +158,7 @@ The `Pirate` class has an **association** relationship with `Ship` because:
 - The pirate can change ships (flexible relationship)
 - No strong ownership - just a working relationship
 
-## Exercise 4.4: Pirate with Prosthetics
+## Exercise 5.3: Pirate with Prosthetics
 
 **Task**: Extend your solution from Exercise 4.3 and add a `Prosthetic` class with a **composition** relationship to the `Pirate` class. A pirate can have multiple prosthetics (like peg-leg, eye-patch, hook-for-hand).
 
