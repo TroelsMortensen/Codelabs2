@@ -2,7 +2,7 @@
 
 The following exercises will help you practice reading UML class diagrams and implementing them in Java. For each exercise, you are provided with a UML diagram of a single class. Your task is to implement the class in Java, including its attributes and methods.
 
-## Exercise 1: Book Class
+## Exercise 08.0: Book Class
 
 Observe the UML diagram below.
 
@@ -28,7 +28,7 @@ classDiagram
 
 **Optional**: you may add parameters to the constructor, or you can use the set-methods after a Book object has been created.
 
-## Exercise 2: Car Class
+## Exercise 08.1: Car Class
 
 Observe the UML diagram below.
 
@@ -52,7 +52,7 @@ classDiagram
 
 **Optional**: you may add a constructor with parameters, or you can use the set-methods after a Car object has been created.
 
-## Exercise 3: Student Class
+## Exercise 08.2: Student Class
 
 ### UML Diagram:
 ```mermaid
