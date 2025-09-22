@@ -2,7 +2,7 @@
 
 We will expand on the current `Person` class to practice writing methods with various input and output types.
 
-## Exercise 0: Greeting
+## Exercise 4: Greeting
 
 
 First, create a person class like in the video, include field variables for `name` and `age`. Add a constructor.
@@ -41,7 +41,7 @@ public void greet() {
 
 
 
-## Exercise 1: Update name
+## Exercise 5: Update name
 
 Add a method to your `Person` class that allows you to update the person's name after the object has been created. The method should take a `String` parameter and update the `name` field.
 
@@ -75,7 +75,7 @@ It defines a parameter of type `String`. This is the value, which will be assign
 
 
 
-## Exercise 2: Update age
+## Exercise 6: Update age
 
 Add a method to your `Person` class that allows you to update the person's age after the object has been created. The method should take an `int` parameter and update the `age` field.
 
@@ -95,7 +95,7 @@ public void setAge(int newAge) {
 
 
 
-## Exercise 3: Add hobby
+## Exercise 7: Add hobby
 
 We wish to add information about a persons hobbies. Add an ArrayList containing Strings to the person class. A hobby will just be a piece of text, a String, like "playing guitar".
 
@@ -123,7 +123,7 @@ public class Person {
 
 </hint>
 
-## Exercise 4: Add a hobby
+## Exercise 8: Add a hobby
 
 Create a method in your `Person` class that receives a `String` hobby and adds it to the person's list of hobbies.
 
@@ -144,7 +144,7 @@ public void addHobby(String hobby) {
 
 </hint>
 
-## Exercise 5: To string
+## Exercise 9: To string
 
 We have added several methods to modify the data of the `person` class, but the greeint does not feel like a good place to print this all out.
 
@@ -167,7 +167,7 @@ public String toString() {
 
 </hint>
 
-## Exercise 6: Get age
+## Exercise 10: Get age
 
 Add a method to your `Person` class that returns the person's age. The method should have the signature:
 
@@ -201,7 +201,7 @@ public int getAge() {
 
 </hint>
 
-## Exercise 7: Hobbies as String[]
+## Exercise 11: Hobbies as String[]
 
 Add a method to your `Person` class that returns the person's hobbies as an array of Strings. You currently have the hobbies in an ArrayList. It must be converted to an array instead. How you do that is less important.
 

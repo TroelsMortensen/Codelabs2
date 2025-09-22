@@ -2,13 +2,17 @@
 
 A constructor is a special method in a class that is called when an object is created. 
 
-It is also called in a special way, using the `new` keyword.
+It is also called in a special way, using the `new` keyword. For example:
+
+```java
+Person p = new Person();
+```
 
 Its main job, besides actually creating the object, is to initialize the object's fields.
 
 ## Default Constructor
 
-If you do not write any constructor in your class, Java automatically provides a default constructor with no parameters. This constructor does nothing except create the object.
+If you do not write any constructor in your class, Java automatically provides a _default_ constructor with no parameters. This constructor does nothing except create the object.
 
 ```java
 public class Person {
@@ -69,6 +73,7 @@ public class Person {
     }
 }
 
+// ------------------------------------------------------------
 
 Person p = new Person("Alice", 25); // Calls the custom constructor
 Person p2 = new Person("Bob", 30); // Another object with different values

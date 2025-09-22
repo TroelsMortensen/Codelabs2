@@ -61,7 +61,7 @@ In this example, the `name` field is private and cannot be accessed directly fro
 
 By default all your field variables should be private, and you can then provide public getter and setter methods as needed.
 
-## Exercise - Person
+## Exercise 12: Person
 
 For the `Person` class, implement the following, if you don't already have them:
 
@@ -70,7 +70,7 @@ For the `Person` class, implement the following, if you don't already have them:
 - A method to add a hobby to the list of hobbies. For lists the set method is generally not just setting a new list, meaning it will overwrite the existing entire list. Instead the method will add an element to the list.
 - A method to get the ArrayList of hobbies.
 
-## Exercise - Breaking encapsulation
+## Exercise 13: Breaking encapsulation
 
 As you can read above, the point of encapsulation is to protect the data of the object, so that it is not accidentally modified from the outside.
 

@@ -8,7 +8,7 @@ And we will build a console UI to manage the library system, allowing users to a
 
 The exercise is intentionally vaguely described, to allow for your creativity.
 
-## Exercise 0 - The book
+## Exercise 14: The book
 
 First, the book.
 
@@ -22,7 +22,7 @@ Consider at least
 
 Which methods are necessary for a book class? Maybe it is not entirely clear at this point, but you can add methods, as you need to.
 
-## Exercise 1 - The console UI
+## Exercise 15: The console UI
 
 You will create an ArrayList to contain the books.
 

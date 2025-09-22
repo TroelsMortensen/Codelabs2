@@ -18,7 +18,7 @@ public class Person {
 }
 ```
 
-## Exercise 0
+## Exercise 3
 Create the above `Person` class in IntelliJ, and another class with a `main` method. Print out the `Person` object using `System.out.println(person);`. 
 
 

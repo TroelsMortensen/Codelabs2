@@ -1,7 +1,8 @@
 # The `toString` Method in Java
 
 So far, you have been adding a `display()` method to your classes to print information about the object.\
-However, Java provides a built-in way to achieve similar functionality through the `toString` method. This is a method, you can add to any class, and Java will call it automatically when you try to print the object.
+However, Java provides a built-in way to achieve similar functionality through the `toString` method. This is a method, you can add to any class, and Java will call it automatically when you try to print the object, using `System.out.println(myObject);`.\
+Because Java already knows about a `toString` method, it is preferable to use this, instead of a custom `display()` method.
 
 Remember, in the video, when I first printed out an object, I got a strange output like `Person@6d06d69c`.\
 This is because Java was using the default `toString` method, which returns the class name followed by the object's "hash code".\
@@ -18,7 +19,7 @@ By default, `toString` returns a string that includes the class name and a hash 
 
 ## Example: Overriding `toString`
 
-```java
+```java{10-13}
 public class Person {
     private String name;
     private int age;
@@ -51,13 +52,13 @@ Person[name=Alice, age=25]
 
 In the above `toString()` method, notice the return keyword. We have not covered this yet, but will get to it, when you are introduced to methods on a later page.
 
-The point is that when you call the `toString()` method, you get a string back, which you can assign to a variable, or print directly.\
+The point is that when you call the `toString()` method, you get a string back, which you can assign to a variable, or print directly.
 
 The simple use is just to print the object, like in the example above: `System.out.println(personAlice);`
 
 ## Another comment
 
-It is _very_ important, that the `toString()` methad the correct "signature", which means it must be defined as:
+It is _very_ important, that the `toString()` method has the correct "signature", which means it must be defined as:
 
 ```java
 @Override
@@ -76,9 +77,16 @@ public String toString() {
 }
 ```
 
+Either way, include the `@Override` annotation, to indicate that you are overriding the default `toString` method. If you _method signature_ is incorrect, 
+the compiler will complain, saying you are trying to override something, but it cannot figure out what. This indicates, you have not created a correct `toString` method.\
+
+* Maybe you marked the return type as `void` instead of `String`?
+* Maybe you have a spelling error, like `tostring`, instead of `toString`? Notice the upper case `S`.	
 
 
 ## Example: Default `toString` (not overridden)
+
+If you do not override the `toString` method, Java will use the default implementation, which for most objects returns the class name followed by the object's "hash code".
 
 ```java
 public class Animal {

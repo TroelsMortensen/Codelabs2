@@ -1,4 +1,4 @@
-## Exercises - Round 1
+# Exercises - Round 1
 
 ### Exercise 0: Person class
 

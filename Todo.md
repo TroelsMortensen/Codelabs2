@@ -22,6 +22,7 @@
 * box shadow rundt om hint kasser, når de er foldet ud.
 * Scroll to top ved page skift. Når jeg skifter page, hvad hvis jeg laver en yield Task.wait i 1ms,så den lige når at refresh før ny page indsætte. Scrolle den så til toppen igen? 
 * flyt den der top learning path title hen over steps boksen.
+* Tilføj et <note> tag eller something, til at lave hint boxes eller andet, ligesom michael har på fx sit git learning path stuff.
 
 Kan jeg have tre css
 Basic til alt fælles. 

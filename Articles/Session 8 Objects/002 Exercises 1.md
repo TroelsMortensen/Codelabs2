@@ -10,8 +10,8 @@ Write down the properties and methods you might expect a triangle object to have
 
 For now, keep it in the same format, as you saw in the video:
 
-| TRIANGLE |
-|------------------|
+
+TRIANGLE\
 **properties**
 * ...
 * ...
@@ -19,6 +19,7 @@ For now, keep it in the same format, as you saw in the video:
 **methods**
 * xyz () 
 * ...
+
 
 A bit later, we will look into a more structured way of doing this, called UML.
 
@@ -32,11 +33,3 @@ Write down the properties and methods you would expect a book object to have. Co
 ## Exercise 3: Dog Object
 
 Write down the properties and methods you would expect a dog object to have. Consider aspects like breed, age, and methods for barking or fetching.
-
-## Exercise 4: Door Object
-
-Write down the properties and methods you would expect a door object to have. Consider aspects like material, color, and methods for opening or closing.
-
-## Exercise 5: Car Object
-
-Write down the properties and methods you would expect a car object to have. Consider aspects like make, model, year, and methods for starting the engine or honking the horn.

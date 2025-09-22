@@ -1,6 +1,6 @@
 # Exercises - Round 1
 
-The following exercises will help you practice creating UML class diagrams and implementing them in Java. For each exercise, you are provided with a UML diagram of a single class. Your task is to implement the class in Java, including its attributes and methods.
+The following exercises will help you practice reading UML class diagrams and implementing them in Java. For each exercise, you are provided with a UML diagram of a single class. Your task is to implement the class in Java, including its attributes and methods.
 
 ## Exercise 1: Book Class
 
