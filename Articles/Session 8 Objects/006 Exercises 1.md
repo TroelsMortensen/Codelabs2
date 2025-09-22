@@ -1,6 +1,6 @@
 # Exercises - Round 1
 
-### Exercise 0: Person class
+### Exercise 6.0: Person class
 
 Create a `Person` class with the following field variables:
 - `name` (String)
@@ -17,7 +17,7 @@ Person[name=Alice, age=25]
 
 Create a separate `PersonTest` class with a `main` method to create and print out one or more `Person` objects using your constructor(s).
 
-### Exercise 1: Hobbies in Person class
+### Exercise 6.1: Hobbies in Person class
 
 You will update your `Person` class to include a new field variable.
 
@@ -55,7 +55,7 @@ String s2 = "World";
 String combined = s1 + " " + s2; // combined will be "Hello World"
 ```
 
-### Exercise 2: Rectangle class
+### Exercise 6.2: Rectangle class
 
 Create a `Rectangle` class with the following field variables:
 - `width` (double)

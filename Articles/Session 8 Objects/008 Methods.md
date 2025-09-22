@@ -1,6 +1,6 @@
 # Introducing methods in Java
 
-You have already seen methods in Java, you have used them in the previous sessions, but you have not formally been introduced to them yet. And while you have _used_ methods, you have probably not written that many yourself.
+You have already seen methods in Java, you have used them in the previous sessions, but you have not formally been introduced to them yet. And while you have _used_ methods, you have perhaps not written that many yourself.
 
 Here are a few examples of methods you have seen:
 

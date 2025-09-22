@@ -41,7 +41,7 @@ System.out.println(myString.length()); // Throws NullPointerException
 ```
 
 ### Error Output:
-```
+```javastacktrace
 Exception in thread "main" java.lang.NullPointerException: Cannot invoke "String.length()" because "myString" is null
     at Main.main(Main.java:5)
 ```

@@ -6,7 +6,7 @@ Look at your laptop. It is encased, you cannot directly see the internal compone
 
 Many electronic devices are designed this way, to protect the internal components, so you cannot accidentally do something to the internals, which you are not supposed to do.
 
-We apply the same principle to objects in programming. Given that one object, _A_, can interact with another object, _B_, we want to make sure that _A_ can only interact with _B_ through a well-defined interface, exposing only the necessary methods and properties, while hiding the internal implementation details of _B_. 
+We apply the same principle to objects in programming. Given that one object, _A_, can interact with another object, _B_, we want to make sure that _A_ can only interact with _B_ through a well-defined _interface_, exposing only the necessary methods and properties, while hiding the internal implementation details of _B_. 
 
 Or, put differently, currently you have used a main method, to interact with a person object. Try the following code, and observe the compiler error:
 
@@ -25,7 +25,32 @@ Here is what IntelliJ shows me:
 
 This is called encapsulation.
 
-The core idea is that the `Person` class hides its internal state and only exposes methods to interact with that state. It is then up to the `Person` class itself to manage its internal data, to ensure someone else is not accidentally modifying it in a way that is not allowed.
+The core idea is that the `Person` class hides its internal state, i.e. data, and only exposes methods to interact with that state. It is then up to the `Person` class itself to manage its internal data, to ensure someone else is not accidentally modifying it in a way that is not allowed.
+
+For example, considder the following `setAge()` method:
+
+```java
+public void setAge(int age) {
+    if (age >= 0) {
+        this.age = age;
+    }
+}
+```
+
+The person class now ensures that the age variable is not set to a negative value.
+
+If we could access the field variable directly, like in the above main method, we could set it to a negative value, which would _break the encapsulation_. Like this:
+
+```java
+public static void main(String[] args) {
+    Person person = new Person("Alice", 30);
+    person.age = -1;
+}
+```
+
+The `setAge()` method is public, so it can be called from outside the class. But, it is not just setting the age field variable, it is also checking that the age is not negative, and if it is, it is not setting the age field variable.
+
+This is encapsulation. The `Person` class is hiding its internal state/data, and only exposing methods to interact with that state. These methods can then ensure that the data is not modified in a way that is not allowed.
 
 ## Encapsulation in Java
 
@@ -61,7 +86,7 @@ In this example, the `name` field is private and cannot be accessed directly fro
 
 By default all your field variables should be private, and you can then provide public getter and setter methods as needed.
 
-## Exercise 12: Person
+## Exercise 10.0: Person
 
 For the `Person` class, implement the following, if you don't already have them:
 
@@ -70,11 +95,11 @@ For the `Person` class, implement the following, if you don't already have them:
 - A method to add a hobby to the list of hobbies. For lists the set method is generally not just setting a new list, meaning it will overwrite the existing entire list. Instead the method will add an element to the list.
 - A method to get the ArrayList of hobbies.
 
-## Exercise 13: Breaking encapsulation
+## Exercise 10.1: Breaking encapsulation
 
 As you can read above, the point of encapsulation is to protect the data of the object, so that it is not accidentally modified from the outside.
 
-Pay attention to the last method in the previous exercise, it returns the ArrayList. The ArrayList is an object type, so what is returned is actually reference to the ArrayList object inside the Person class. This means that if you modify the ArrayList outside the class, you are actually modifying the internal state of the Person object, which breaks encapsulation.
+Pay attention to the last method in the previous exercise, it returns the ArrayList. The ArrayList is an object type, so what is returned is actually a reference to the ArrayList object inside the Person class. This means that if you modify the ArrayList outside the class, you are actually modifying the internal state of the Person object, which breaks encapsulation.
 
 To test this, try the following: 
 

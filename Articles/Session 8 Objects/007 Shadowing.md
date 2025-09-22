@@ -4,6 +4,8 @@
 
 ## Example of Shadowing
 
+Notice there is a field variable `name`, and a parameter variable `name` in the constructor. I.e. the same variable name is used in both places. This is called shadowing. You must be careful not to shadow the field variable, or you will get unintended behaviour.
+
 ```java
 public class Person {
     private String name;
@@ -39,11 +41,11 @@ The `name` in the variable assignment is dark grey, because it does not make sen
 
 Now, change the assignment in the constructor to use `this.name = name;`. Notice now, how the color of the first name variable, `this.name`, is different from the second one, which is the parameter variable. 
 
-The `this.name` variable should have the same color as the field variable. Here is a screenshot of the updated code:
+The `this.name` variable should have the same color as the field variable. Here is a screenshot of the updated code. Notice the field variable is bright blue, while the parameter variable is white. Inside the constructor the bright blue field variable is set to the parameter variable.
 
 ![Fixed shadowing](Resources/2025-08-07%2010_30_43-Pro1%20–%20Person.java.png)
 
-Notice how the field variable is bright blue, while the parameter variable is white. This indicates that they are different variables, and the assignment now works as expected.
+The difference in color indicates that they are different variables, and the assignment now works as expected.
 
 All local variables, or parameters, have one color in IntelliJ, while field variables have a different color. This is a visual aid to help you see the difference between them.
 If something is grey, it means it is not used, or not needed. This should make you wonder, if you have made a mistake.
@@ -69,6 +71,8 @@ public class Person {
 ```
 
 Here, `this.name` refers to the field, and `name` refers to the parameter. Using `this` makes it clear which variable you are working with and avoids the shadowing problem.
+
+`this` is a special keyword in Java, that refers to the current object. So, when you access `this`, you are referring to object instance, and when you dot a field variable afterwards, `this.name`, you are referring to the field variable of the object instance.
 
 ## Another solution
 You can also rename the parameter to avoid shadowing. For example, you could change the parameter name to `newName`:

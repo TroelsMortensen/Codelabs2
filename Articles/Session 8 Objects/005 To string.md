@@ -113,7 +113,7 @@ Animal@6d06d69c
 As you can see, the default output is not very informative. Overriding `toString` makes your objects easier to understand when printed.
 
 
-## Exercise: Implement `toString`
+## Exercise 5.0: Implement `toString`
 
 Find one of the exercises from a previous page, either Person, Circle, or another class you have created. The class must have one of those `display()` methods you have created.
 

@@ -25,7 +25,7 @@ public class Person {
 Person p = new Person(); // Calls the default constructor
 ```
 
-## Exercise 0: Circle class
+## Exercise 4.0: Circle class
 
 Create a Circle class, and leave it empty for now. Then create a main method that creates a Circle object using the default constructor.
 
@@ -44,7 +44,7 @@ To format the display output, there are a few "string codes" you can use:
 * "\t" will create a tab space
   
 
-## Exercise 1: Circle properties
+## Exercise 4.1: Circle properties
 
 Add the following field variables to the Circle class:
 
@@ -79,7 +79,7 @@ Person p = new Person("Alice", 25); // Calls the custom constructor
 Person p2 = new Person("Bob", 30); // Another object with different values
 ```
 
-## Exercise 2: Custom constructor
+## Exercise 4.2: Custom constructor
 
 Now, to your circle, you will add a custom constructor that takes the radius and color as parameters. 
 
@@ -125,7 +125,7 @@ Person p3 = new Person("Charlie", 30); // Uses two-argument constructor
 
 Constructor overloading allows you to create objects in different ways, depending on what information you have at the time.
 
-## Exercise 3: Circle with Overloaded Constructors
+## Exercise 4.3: Circle with Overloaded Constructors
 Add another constructor to your Circle class that takes only the diameter as a parameter.
 
 This constructor should calculate and set the radius (radius = diameter / 2) and also set the color to "unknown".
