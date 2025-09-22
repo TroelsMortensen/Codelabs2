@@ -1,5 +1,7 @@
 # Introduction to the List
 
+![list](Resources/ListImage.png)
+
 In the previous session, we learned about arrays, which are fixed-size collections of elements. In this session, we will explore the List in Java, which provides a more flexible way to work with collections of objects, or values.
 
 Generally, you will rarely use the array directly, as it is often inconvenient to work with due to its fixed size, and lack of dedicated methods for common operations. Instead, you will typically use the List, or one of the other collection types found in Java.

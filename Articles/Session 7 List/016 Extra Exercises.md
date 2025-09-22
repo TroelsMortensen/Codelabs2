@@ -169,10 +169,11 @@ has22([2, 1, 2]) → false
 
 Given a list of ints, print true if the number of 1's is greater than the number of 4's
 
-
+```
 more14([1, 4, 1]) → true
 more14([1, 4, 1, 4]) → false
 more14([1, 1]) → true
+```
 
 ### Exercise 8: fizz list
 

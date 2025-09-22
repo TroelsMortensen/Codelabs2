@@ -161,7 +161,7 @@ classDiagram
 ### Why This Is a Composition Relationship
 
 The `FlyingCarpet` class has a **composition** relationship with `Enchantment` because:
-- The enchantment is an integral part of the flying carpet (like an engine)
+- The enchantment is an integral part of the flying carpet 
 - The enchantment cannot exist independently of the carpet
 - The carpet owns the enchantment completely
 - The enchantment is essential for the carpet's functionality
