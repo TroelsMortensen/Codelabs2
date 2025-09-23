@@ -78,7 +78,7 @@ Now, we want to look at the composition, but referencing many. A flying carpet c
 
 ### Code, referencing many
 
-Here is the `FlyingCarpet` class, with an ArrayList of `Enchantment` objects. We'll show two different approaches for adding enchantments:
+Here is the `FlyingCarpet` class, with an ArrayList of `Enchantment` objects. We'll show three different approaches for adding enchantments:
 
 ```java{13-16,19-24,28-30}
 public class FlyingCarpet {
@@ -127,18 +127,17 @@ public class Enchantment {
     public Enchantment createCopy() {
         return new Enchantment(this.enchantmentName, this.powerLevel, this.magicType);
     }
-    
-    public String getEnchantmentName() { return enchantmentName; }
-    public int getPowerLevel() { return powerLevel; }
-    public String getMagicType() { return magicType; }
+    // other methods left out for brevity
 }
 ```
 
-Glancing at the code, it looks very much like an association or aggregation. But the key difference is that enchantments are created internally and cannot exist independently of the carpet.
+Notice that the above `FlyingCarpet` class has three different methods for adding enchantments. Two of them actually has the exact same signature, methods 2 and 3. This is not allowed in Java, when overloading methods, each must have a distinct signature, even though they share names. But I include it here to show different approaches.
+
+I hope the difference in code between composition and the other two methods is clear. 
 
 ### UML, referencing many
 
-We use the composition arrow (filled diamond), and we add a star at the arrow head. This indicates the FlyingCarpet composes many Enchantments.
+We use the composition arrow (filled diamond), and we add a star at the arrow head. This indicates the FlyingCarpet composes many Enchantments. Some methods are left out for brevity.
 
 ```mermaid
 classDiagram
@@ -147,9 +146,7 @@ classDiagram
         - material : String
         - enchantments : ArrayList~Enchantment~
         + FlyingCarpet(carpetName : String, material : String)
-        + addEnchantment(enchantmentName : String, powerLevel : int, magicType : String) void
         + addEnchantment(enchantment : Enchantment) void
-        + getEnchantments() ArrayList~Enchantment~
     }
 
     class Enchantment {
@@ -157,16 +154,12 @@ classDiagram
         - powerLevel : int
         - magicType : String
         + Enchantment(enchantmentName : String, powerLevel : int, magicType : String)
-        + createCopy() Enchantment
-        + getEnchantmentName() String
-        + getPowerLevel() int
-        + getMagicType() String
     }
     FlyingCarpet *--> "*" Enchantment
 ```
 
 ### Conceptual meaning
-For composition, the child objects (in this case the `Enchantment` objects) are integral parts of the parent object (in this case the `FlyingCarpet`), and they cannot exist independently. The parent object has exclusive ownership and creates the child objects internally. No other objects can reference the same child objects. So, the ownership is the strongest of all relationship types.
+For composition, the child objects (in this case the `Enchantment` objects) are integral parts of the parent object (in this case the `FlyingCarpet`), and they cannot exist independently. The parent object has exclusive ownership and creates the child objects internally (or copies). No other objects can reference the same child objects. So, the ownership is the strongest of all relationship types.
 
 ## Conclusion
 
