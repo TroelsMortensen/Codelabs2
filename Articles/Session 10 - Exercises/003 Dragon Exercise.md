@@ -1,5 +1,7 @@
 # Exercise: Implement a Dragon Class
 
+![Dragon Exercise](Resources/Dragon.png)
+
 This exercise models a fantasy dragon creature with magical abilities, flight capabilities, and various actions. You'll create a class that represents a dragon with properties like health, magic power, and the ability to breathe fire, cast spells, and take flight.
 
 Create a Java class called `Dragon` with the following requirements:

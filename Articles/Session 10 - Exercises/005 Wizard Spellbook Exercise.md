@@ -1,5 +1,7 @@
 # Exercise: Implement a Wizard's Spellbook Class
 
+![Wizard Spellbook Exercise](Resources/Spellbook.png)
+
 This exercise models a magical spellbook that belongs to a wizard, containing various spells and managing mana consumption. You'll create a class that represents a spellbook with properties like owner name, mana levels, and the ability to learn, cast, and manage spells while tracking mana usage.
 
 Create a Java class called `Spellbook` with the following requirements:

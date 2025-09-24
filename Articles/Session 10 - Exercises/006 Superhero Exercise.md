@@ -1,5 +1,7 @@
 # Exercise: Implement a Superhero Class
 
+![Superhero Exercise](Resources/Superheroes.png)
+
 This exercise models a superhero character with secret identity, powers, and heroic actions. You'll create a class that represents a superhero with properties like hero name, secret identity, power level, and the ability to fight villains, save civilians, and manage their costume status.
 
 Create a Java class called `Superhero` with the following requirements:

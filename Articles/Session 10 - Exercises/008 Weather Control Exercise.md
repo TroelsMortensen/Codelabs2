@@ -1,5 +1,7 @@
 # Exercise: Implement a Weather Control Device Class
 
+![Weather Control Exercise](Resources/Weathercontroller.png)
+
 This exercise models a futuristic weather control device that can manipulate atmospheric conditions and temperature. You'll create a class that represents a weather control device with properties like energy level, current weather, and the ability to change weather patterns, adjust temperature, and create storms while managing energy consumption.
 
 Create a Java class called `WeatherControlDevice` with the following requirements:

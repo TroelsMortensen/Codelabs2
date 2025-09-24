@@ -1,5 +1,7 @@
 # Exercise: Implement a Time Machine Class
 
+![Time Machine Exercise](Resources/TimeMachine.png)
+
 This exercise models a time travel device that can journey through different eras while managing fuel consumption and travel constraints. You'll create a class that represents a time machine with properties like current year, fuel level, and the ability to travel through time while respecting fuel limits and temporal boundaries.
 
 Create a Java class called `TimeMachine` with the following requirements:

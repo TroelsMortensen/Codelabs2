@@ -1,5 +1,7 @@
 # Exercise: Implement a Treasure Hunter Class
 
+![Treasure Hunter Exercise](Resources/Treasurehunter.png)
+
 This exercise models an adventurous treasure hunter who explores dungeons, battles monsters, and collects valuable items. You'll create a class that represents a treasure hunter with properties like health, gold, inventory, and the ability to explore dungeons, find treasure, and level up through experience.
 
 Create a Java class called `TreasureHunter` with the following requirements:
