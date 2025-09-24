@@ -1,22 +1,22 @@
 # The `extends` Keyword
 
-## What is `extends`?
-
 The `extends` keyword in Java is used to create an inheritance relationship between classes. It tells Java that one class inherits from another class.
 
 ## Syntax
 
 ```java
-class ChildClass extends ParentClass {
+public class ChildClass extends ParentClass {
     // child class code
 }
 ```
 
 ## Basic Example
 
-```java
+This example shows an `Animal` class, and a `Dog` class, which extends the `Animal` class. `protected` is covered on the next page.
+
+```java{16}
 // Parent class
-class Animal {
+public class Animal {
     protected String name;
     protected int age;
     
@@ -30,7 +30,7 @@ class Animal {
 }
 
 // Child class using extends
-class Dog extends Animal {
+public class Dog extends Animal {
     private String breed;
     
     public void bark() {
@@ -43,13 +43,15 @@ class Dog extends Animal {
 }
 ```
 
+The `Dog` class is now a subclass of the `Animal` class. Therefore, the `Dog` class will have all the fields and methods from the `Animal` class.
+
 ## How `extends` Works
 
 ### 1. **Inheritance of Fields**
-The child class automatically gets all the fields from the parent class:
+The child class automatically gets all the (protected or public) fields from the parent class:
 
 ```java
-class Dog extends Animal {
+public class Dog extends Animal {
     // Dog automatically has:
     // - String name (from Animal)
     // - int age (from Animal)
@@ -58,7 +60,7 @@ class Dog extends Animal {
 ```
 
 ### 2. **Inheritance of Methods**
-The child class automatically gets all the methods from the parent class:
+The child class automatically gets all the (protected or public) methods from the parent class:
 
 ```java
 Dog myDog = new Dog();
@@ -78,7 +80,7 @@ myDog.bark();   // "Buddy is barking: Woof! Woof!"
 You can extend a class that already extends another class:
 
 ```java
-class Animal {
+public class Animal {
     protected String name;
     
     public void eat() {
@@ -86,7 +88,7 @@ class Animal {
     }
 }
 
-class Mammal extends Animal {
+public class Mammal extends Animal {
     protected boolean hasFur;
     
     public void giveBirth() {
@@ -94,7 +96,7 @@ class Mammal extends Animal {
     }
 }
 
-class Dog extends Mammal {
+public class Dog extends Mammal {
     private String breed;
     
     public void bark() {
@@ -107,6 +109,10 @@ class Dog extends Mammal {
 - `Dog` extends `Mammal`
 - `Mammal` extends `Animal`
 - So `Dog` inherits from both `Mammal` and `Animal`
+
+```
+Dog ──▷ Mammal ──▷ Animal
+```
 
 ```java
 Dog myDog = new Dog();
@@ -126,7 +132,7 @@ myDog.bark();       // "Rex is barking"
 
 ```java
 // Parent class
-class Vehicle {
+public class Vehicle {
     protected String brand;
     protected int year;
     protected boolean isRunning;
@@ -153,7 +159,7 @@ class Vehicle {
 }
 
 // Child class
-class Car extends Vehicle {
+public class Car extends Vehicle {
     private int numberOfDoors;
     private boolean hasAirConditioning;
     
@@ -204,12 +210,12 @@ Java only allows a class to extend **one** parent class:
 
 ```java
 // ✅ This is allowed
-class Dog extends Animal {
+public class Dog extends Animal {
     // code
 }
 
 // ❌ This is NOT allowed
-class Dog extends Animal, Mammal {
+public class Dog extends Animal, Mammal {
     // code - ERROR!
 }
 ```
@@ -219,11 +225,11 @@ If you don't specify `extends`, your class automatically extends `Object`:
 
 ```java
 // These are equivalent:
-class MyClass {
+public class MyClass {
     // code
 }
 
-class MyClass extends Object {
+public class MyClass extends Object {
     // code
 }
 ```
@@ -234,13 +240,13 @@ class MyClass extends Object {
 - `package-private` members are inherited if in same package
 
 ```java
-class Parent {
+public class Parent {
     private String secret;      // NOT inherited
     protected String shared;    // IS inherited
     public String open;         // IS inherited
 }
 
-class Child extends Parent {
+public class Child extends Parent {
     // Child has: shared, open
     // Child does NOT have: secret
 }
@@ -250,13 +256,13 @@ class Child extends Parent {
 Child classes don't automatically inherit constructors, but they can call parent constructors:
 
 ```java
-class Parent {
+public class Parent {
     public Parent(String name) {
         // constructor code
     }
 }
 
-class Child extends Parent {
+public class Child extends Parent {
     public Child(String name, int age) {
         super(name);  // Must call parent constructor
         // child constructor code
@@ -268,7 +274,7 @@ class Child extends Parent {
 
 ### ❌ Forgetting to Call Parent Constructor
 ```java
-class Child extends Parent {
+public class Child extends Parent {
     public Child() {
         // Missing super() call - ERROR!
     }
@@ -277,7 +283,7 @@ class Child extends Parent {
 
 ### ❌ Wrong Order of Constructor Calls
 ```java
-class Child extends Parent {
+public class Child extends Parent {
     public Child() {
         // Do something first
         super();  // ERROR! super() must be first
@@ -287,7 +293,7 @@ class Child extends Parent {
 
 ### ✅ Correct Way
 ```java
-class Child extends Parent {
+public class Child extends Parent {
     public Child() {
         super();  // Correct! super() is first
         // Do something after

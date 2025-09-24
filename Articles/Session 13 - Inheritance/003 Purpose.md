@@ -1,6 +1,6 @@
 # Purpose and Benefits of Inheritance
 
-## Why Use Inheritance?
+Why Use Inheritance?
 
 Inheritance serves several important purposes in object-oriented programming. Understanding these benefits helps you know when and why to use inheritance in your programs.
 
@@ -34,7 +34,9 @@ class Motorcycle {
 }
 ```
 
-**Solution**: With inheritance, common code is written once:
+**Solution**: With inheritance, common code is written once.\
+Notice the `extends` keyword. This is used to indicate that the `Car` and `Motorcycle` classes inherit from the `Vehicle` class. It is explained further on a later page.\
+Notice also the `protected` keyword. This is also explained further on a later page.
 
 ```java
 // With inheritance - no duplicate code
@@ -57,7 +59,7 @@ class Motorcycle extends Vehicle {
 ```
 
 ### 2. Consistency
-All classes in an inheritance hierarchy share the same interface for common operations.
+All classes in an inheritance hierarchy share the same "interface" for common operations, i.e. the methods that are defined in the superclass.
 
 **Example**: All vehicles can start and stop the same way:
 ```java
@@ -96,12 +98,7 @@ No changes needed to existing `Car` or `Motorcycle` classes!
 - Child classes inherit this functionality automatically
 - Less code to write, test, and maintain
 
-### 2. **Polymorphism**
-- Objects of different classes can be treated uniformly
-- Enables powerful programming patterns
-- Makes code more flexible and reusable
-
-### 3. **Hierarchical Organization**
+### 2. **Hierarchical Organization**
 - Reflects real-world relationships
 - Makes code easier to understand
 - Provides logical structure to your program
@@ -110,44 +107,6 @@ No changes needed to existing `Car` or `Motorcycle` classes!
 - Child classes can add specific features
 - Each class can have unique behavior
 - Maintains the common interface from parent
-
-## Real-World Analogy
-
-Think of inheritance like a **company hierarchy**:
-
-### Company Structure
-```
-Employee (parent class)
-├── Manager (child class)
-├── Developer (child class)
-└── Designer (child class)
-```
-
-### Benefits:
-- **All employees** have basic properties (name, ID, salary)
-- **All employees** can work, take breaks, go home
-- **Managers** can also manage teams
-- **Developers** can also write code
-- **Designers** can also create designs
-
-### If you need to:
-- **Add a new benefit** (like health insurance) → Add it to `Employee` class
-- **Hire a new type** (like `Accountant`) → Create new class extending `Employee`
-- **Change company policy** → Update `Employee` class, affects everyone
-
-## When to Use Inheritance
-
-### ✅ Good Candidates for Inheritance:
-- Classes that share common properties and behaviors
-- Classes that represent a "is a" relationship
-- When you need polymorphism
-- When you want to enforce a common interface
-
-### ❌ Avoid Inheritance When:
-- Classes only share data but not behavior
-- The relationship is "has a" rather than "is a"
-- You're trying to force a relationship that doesn't exist naturally
-- You need multiple inheritance (Java doesn't support this)
 
 ## Summary
 

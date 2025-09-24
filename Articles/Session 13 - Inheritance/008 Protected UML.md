@@ -30,7 +30,7 @@ classDiagram
         +showInfo() void
     }
     
-    Dog --|> Animal : inherits
+    Animal <|-- Dog
 ```
 
 **Explanation:**
@@ -68,8 +68,8 @@ classDiagram
         +rev() void
     }
     
-    Car --|> Vehicle : inherits
-    Motorcycle --|> Vehicle : inherits
+    Vehicle <|-- Car    
+    Vehicle <|-- Motorcycle
 ```
 
 **Protected Fields:**
@@ -107,8 +107,8 @@ classDiagram
         +showDetails() void
     }
     
-    Rectangle --|> Shape : inherits
-    Circle --|> Shape : inherits
+    Shape <|-- Rectangle    
+    Shape <|-- Circle
 ```
 
 **Protected Methods:**
@@ -155,9 +155,9 @@ classDiagram
         +showInfo() void
     }
     
-    Mammal --|> Animal : inherits
-    Dog --|> Mammal : inherits
-    Cat --|> Mammal : inherits
+    Animal <|-- Mammal    
+    Mammal <|-- Dog    
+    Mammal <|-- Cat
 ```
 
 **Protected Members Access:**
@@ -202,8 +202,8 @@ classDiagram
         +placeMark() void
     }
     
-    Chess --|> Game : inherits
-    TicTacToe --|> Game : inherits
+    Game <|-- Chess    
+    Game <|-- TicTacToe
 ```
 
 **Protected Abstract Methods:**
@@ -235,7 +235,7 @@ classDiagram
         +testAccess() void
     }
     
-    Subclass --|> Example : inherits
+    Example <|-- Subclass
 ```
 
 **Access from Subclass:**
@@ -250,12 +250,12 @@ classDiagram
 
 ```mermaid
 classDiagram
-    class <<abstract>> DataProcessor {
+    class DataProcessor {
         #String inputData
         #String outputData
         +DataProcessor(String input)
-        #validateInput()* boolean
-        #processData()* void
+        #validateInput() boolean
+        #processData() void
         #formatOutput() void
         +process() void
         +getOutput() String
@@ -280,8 +280,8 @@ classDiagram
         +getDimensions() String
     }
     
-    TextProcessor --|> DataProcessor : inherits
-    ImageProcessor --|> DataProcessor : inherits
+    DataProcessor <|-- TextProcessor    
+    DataProcessor <|-- ImageProcessor
 ```
 
 **Protected Template Methods:**

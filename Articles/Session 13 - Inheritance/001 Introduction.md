@@ -34,6 +34,8 @@ So, the superclass/generalization/parent has some general properties for a "cate
 
 ## Key Concepts
 
+Inheritance forms a hierarchy of classes, where the superclass is the parent, and the subclass is the child.
+
 ### Parent Class (Superclass)
 - The class that is being inherited from
 - Contains common properties and methods
