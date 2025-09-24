@@ -1,6 +1,6 @@
 # Exercise: Implement a Car Class
 
-![Car Exercise](Resources/Car.png
+![Car Exercise](Resources/Car.png)
 
 Create a Java class called `Car` with the following requirements:
 

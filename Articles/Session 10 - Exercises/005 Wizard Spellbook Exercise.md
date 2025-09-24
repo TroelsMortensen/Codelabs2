@@ -11,7 +11,7 @@ Create a Java class called `Spellbook` with the following requirements:
 - `mana` (int) - private - Example: 100, 75, 50
 - `maxMana` (int) - private - Example: 100, 150, 200
 - `spells` (List<String>) - private - Example: ["Fireball", "Heal", "Lightning"]
-- `lastSpellCast` (String) - private - Example: "Fireball", "Heal", ""
+- `lastSpellCast` (String) - private - Example: "Fireball", "Heal", "Lightning"
 
 ## Methods:
 - Constructor that initializes all fields

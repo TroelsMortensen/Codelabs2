@@ -23,6 +23,7 @@
 * Scroll to top ved page skift. Når jeg skifter page, hvad hvis jeg laver en yield Task.wait i 1ms,så den lige når at refresh før ny page indsætte. Scrolle den så til toppen igen? 
 * flyt den der top learning path title hen over steps boksen.
 * Tilføj et <note> tag eller something, til at lave hint boxes eller andet, ligesom michael har på fx sit git learning path stuff.
+* Bedre struktur på home page. Måske ud fra mappe struktur i articles mappe..?
 
 Kan jeg have tre css
 Basic til alt fælles. 

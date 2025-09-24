@@ -53,7 +53,7 @@ classDiagram
     }
     
     class SubmarineMissionTest {
-        + main(String[] args) void
+        + main(String[] args) void$
     }
     
     Submarine o--> "*" CrewMember

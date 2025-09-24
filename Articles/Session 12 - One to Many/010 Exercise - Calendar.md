@@ -60,7 +60,7 @@ classDiagram
         - id : int
         - name : String
         - email : String
-        - static nextId : int
+        - nextId : int$
         + Contact(name : String, email : String)
         + getId() int
         + getName() String
@@ -69,7 +69,7 @@ classDiagram
     }
     
     class CalendarTest {
-        + main(String[] args) void
+        + main(String[] args) void$
     }
     
     Calendar *--> "*" Meeting

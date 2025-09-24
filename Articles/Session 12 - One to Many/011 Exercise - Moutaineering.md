@@ -47,14 +47,14 @@ classDiagram
     }
     
     class MountainClimbingTest {
-        + main(String[] args) void
+        + main(String[] args) void$
     }
     
-    Mountain o--> "*" Mountaineer : has
-    Mountaineer o--> "*" ClimbingGear : carries
-    MountainClimbingTest ..> Mountain : uses
-    MountainClimbingTest ..> Mountaineer : uses
-    MountainClimbingTest ..> ClimbingGear : uses
+    Mountain o--> "*" Mountaineer
+    Mountaineer o--> "*" ClimbingGear
+    MountainClimbingTest ..> Mountain
+    MountainClimbingTest ..> Mountaineer
+    MountainClimbingTest ..> ClimbingGear
 ```
 
 
