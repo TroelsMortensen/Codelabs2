@@ -1,8 +1,8 @@
 # Implementation Exercise - Mountain Climbing System
 
-Now it is time to actually do some coding.
+In this exercise we will implement a system where a Mountain can have multiple Mountaineers, and each Mountaineer can have multiple pieces of ClimbingGear.
 
-## Exercise 10.0: Mountain with Mountaineers and Climbing Gear
+## Exercise 11.0: Mountain with Mountaineers and Climbing Gear
 
 Create a system where a Mountain can have multiple Mountaineers, and each Mountaineer can have multiple pieces of ClimbingGear. Implement the classes. In the `MountainClimbingTest` class, create a main method which creates various objects and calls various methods on these objects. You should include print outs, these can either be directly in the main method, or you can include them in the various methods.
 
