@@ -17,6 +17,10 @@ Person[name=Alice, age=25]
 
 Create a separate `PersonTest` class with a `main` method to create and print out one or more `Person` objects using your constructor(s).
 
+Is this the first you have created two separate classes, in two separate files, and made them work together?
+
+If the files are in the same package, it should be fairly straight forward.
+
 ### Exercise 6.1: Hobbies in Person class
 
 You will update your `Person` class to include a new field variable.

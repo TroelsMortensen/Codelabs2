@@ -7,3 +7,5 @@ We will start with just defining the object template, with properties, but for n
 Watch the following video:
 
 <video src="https://youtu.be/jhgv0ZnE-8I"></video>
+
+**Note** Each object type (class) in Java will generally exist in its own file. 
