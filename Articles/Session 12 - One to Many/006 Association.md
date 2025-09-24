@@ -3,10 +3,12 @@
 For a quick recap, the association means that one object knows about another object. This is expressed through a field variable. Example:
 
 ## Referencing one
-
+First, a quick recap of referencing one.
 
 ### Code, referencing one
-```java
+Here is the code for a `Person` class, with an `Address` object as a field variable.
+
+```java{4}
 public class Person {
     private String name;
     private int age;
@@ -34,7 +36,7 @@ public class Address {
 
 ### UML, referencing one
 
-And the UML:
+And the UML. Notice the arrow type and direction. 
 
 ```mermaid
 classDiagram
@@ -66,7 +68,7 @@ Now, we want to look at the association, but referencing many. A player can some
 As seen on a previous page, here is the `SoccerTeam` class, with an ArrayList of `Player` objects.\
 I could add methods to the `SoccerTeam` class to add players to the team, and get the players on the team. That is less relevant for the example.	
 
-```java
+```java{3}
 public class SoccerTeam {
     private String teamName;
     private ArrayList<Player> players;
@@ -90,7 +92,7 @@ public class Player {
 
 ### UML, referencing many
 
-We use the association arrow again, and we add a star at the arrow head. This indicates the SoccerTeam references many Players. We do not add a multiplicity on the start of the relationships, as we do not care how many teams a player plays for. In UML Class diagrams, we generally only add multiplicity on the end of the relationships, by the arrow head.
+We use the association arrow again, and we add a star, `*`, at the arrow head. This indicates the SoccerTeam references many Players. We do not add a multiplicity on the start of the relationships, as we do not care how many teams a player plays for. In UML Class diagrams, we generally only add multiplicity on the end of the relationships, by the arrow head.
 
 ```mermaid
 classDiagram
@@ -110,10 +112,3 @@ classDiagram
 
 ### Conceptual meaning
 For the association, the child object (in this case the `Player`) is _not_ part of the parent object (in this case the `SoccerTeam`). It is a separate object, that the parent object knows about. Other objects can also know about the same child object. So, there is no strong ownership.
-
-## Conclusion
-
-We have seen how to express the association, referencing one and many. We have also seen the conceptual meaning of the association.
-
-Now, we will look at the aggregation.
- 

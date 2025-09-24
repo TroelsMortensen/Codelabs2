@@ -10,7 +10,7 @@ First, how does it look composing _one_ other object?
 
 Here we have a `House` class, with a `Room` object as a component. Yeah, the house has only a single room, it's a boring house. The `Room` object is an integral part of the `House` object, and it cannot exist independently. The room is created internally by the house.
 
-```java
+```java{3}
 public class House {
     private String address;
     private Room livingRoom;
@@ -80,7 +80,7 @@ Now, we want to look at the composition, but referencing many. A flying carpet c
 
 Here is the `FlyingCarpet` class, with an ArrayList of `Enchantment` objects. We'll show three different approaches for adding enchantments:
 
-```java{13-16,19-24,28-30}
+```java{13-16,19-24,27-29}
 public class FlyingCarpet {
     private String carpetName;
     private String material;
@@ -135,6 +135,71 @@ Notice that the above `FlyingCarpet` class has three different methods for addin
 
 I hope the difference in code between composition and the other two methods is clear. 
 
+### Code, returning the composed children
+Sometimes we do want to let the outside world get access to the composed children, e.g. `Room` objects. But, we must maintain the strict ownership.\
+Previously, you have seen returning a copy of the child object.\
+Now, we have a list, which complicates things.\
+Step one would be to return a copy of the list, like so:
+
+```java{12}
+public class House {
+    private String address;
+    private ArrayList<Room> rooms;
+    
+    public House(String address) {
+        this.address = address;
+        this.rooms = new ArrayList<>();
+    }
+
+    public ArrayList<Room> getRooms() {
+        // Create a copy of the list
+        return new ArrayList<>(rooms);
+    }
+}
+```
+
+The above code creates a new ArrayList, and passes in the internal list, `rooms`, as a parameter.
+This will correctly create a copy of the list.\
+But is that enough?
+
+The House has a reference to an ArrayList. And the ArrayList has references to multiple Room objects. The new ArrayList has references to the same Room objects.
+I try to illustrate here:
+
+```mermaid
+classDiagram
+    House --> ArrayList
+    ArrayList --> Room
+    ArrayListCopy --> Room
+    OtherClass --> ArrayListCopy
+```
+
+So, in the end, the `OtherClass` still knows about the same Room objects as the House. Not just copies, but the actual same objects.
+
+And why is this a problem? Say the `Room` class has a method to change the data of that room, like `paintRoom(String color)`. If the `OtherClass` calls this method, it will change the data of the Room object, which is not what we want.
+
+What more do we need then? How do we fix this. Essentially, we want this:
+
+```mermaid
+classDiagram
+    House --> ArrayList
+    ArrayList --> Room
+    ArrayListCopy --> RoomCopy
+    OtherClass --> ArrayListCopy
+    House --> ArrayListCopy : creates
+```
+
+So, the code must be updated to create a new list, _and_ create copies of the Room objects. Here is a `getRooms` method that does this:
+
+```java
+public ArrayList<Room> getRooms() {
+    ArrayList<Room> copy = new ArrayList<>();
+    for (Room room : rooms) {
+        copy.add(room.createCopy());
+    }
+    return copy;
+}
+```
+
 ### UML, referencing many
 
 We use the composition arrow (filled diamond), and we add a star at the arrow head. This indicates the FlyingCarpet composes many Enchantments. Some methods are left out for brevity.
@@ -161,8 +226,4 @@ classDiagram
 ### Conceptual meaning
 For composition, the child objects (in this case the `Enchantment` objects) are integral parts of the parent object (in this case the `FlyingCarpet`), and they cannot exist independently. The parent object has exclusive ownership and creates the child objects internally (or copies). No other objects can reference the same child objects. So, the ownership is the strongest of all relationship types.
 
-## Conclusion
-
-We have seen how to express the composition, referencing one and many. We have also seen the conceptual meaning of the composition.
-
-Now, we have covered all three relationship types: association, aggregation, and composition.
+And yes, all the copy stuff to enforce the strong ownership, it can be a bit challenging.

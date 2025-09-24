@@ -1,7 +1,7 @@
 # One to many - Aggregation
 
 We will first recap the aggregation for referencing one. And then "upgrade" it to referencing many.\
-For a quick recap, aggregation means that one object has another object as a component, but the child object can exist independently. This is expressed through a field variable with ownership methods. Example:
+For a quick recap, aggregation means that one object has another object as a component, but the child object can exist independently. This is expressed through a field variable with ownership methods.
 
 ## Referencing one
 
@@ -12,7 +12,7 @@ First, how does it look aggregating one other object?
 Here we have a `Car` class, with an `Engine` object as a component. The `Engine` object is a component of the `Car` object, but it can exist independently. Only one engine per car. And one car per engine at a time. So, it is an aggregation.\
 As has been mentioned before, in actual code, an aggregation is difficult to actually enforce. 
 
-```java
+```java{4}
 public class Car {
     private String make;
     private String model;
@@ -43,7 +43,7 @@ public class Engine {
 
 ### UML, referencing one
 
-And the UML:
+And the UML. Again, notice the arrow type and direction.
 
 ```mermaid
 classDiagram
@@ -75,7 +75,7 @@ Now, we want to look at the aggregation, but referencing many. A library can hav
 
 Here is the `Library` class, with an ArrayList of `Book` objects.
 
-```java
+```java{3}
 public class Library {
     private String libraryName;
     private ArrayList<Book> books;
@@ -132,9 +132,3 @@ classDiagram
 
 ### Conceptual meaning
 For aggregation, the child objects (in this case the `Book` objects) are components of the parent object (in this case the `Library`), but they can exist independently. The parent object has ownership methods to manage the relationships. Only one library at a time has a specific physical copy of a specific book, but that ownership can be transferred to another library. So, the ownship is stronger than association, but weaker than composition.
-
-## Conclusion
-
-We have seen how to express the aggregation, referencing one and many. We have also seen the conceptual meaning of the aggregation.
-
-Now, we will look at the composition.
