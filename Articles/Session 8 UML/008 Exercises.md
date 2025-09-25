@@ -60,7 +60,7 @@ classDiagram
 	class Student {
 		- name : String
 		- id : int
-		- grades : ArrayList<Integer>
+		- grades : ArrayList~Integer~
 		+ getName() String
 		+ setName(name : String) void
 		+ addGrade(grade : int) void
