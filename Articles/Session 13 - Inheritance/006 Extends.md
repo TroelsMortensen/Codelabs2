@@ -130,6 +130,8 @@ myDog.bark();       // "Rex is barking"
 
 ## Complete Example
 
+Remember, in Java, each class generally gets its own file. Below, it is just easier to have them in the same "file".
+
 ```java
 // Parent class
 public class Vehicle {
@@ -234,72 +236,7 @@ public class MyClass extends Object {
 }
 ```
 
-### 3. **Access Modifiers Matter**
-- `private` members are **not inherited**
-- `public` and `protected` members **are inherited**
-- `package-private` members are inherited if in same package
-
-```java
-public class Parent {
-    private String secret;      // NOT inherited
-    protected String shared;    // IS inherited
-    public String open;         // IS inherited
-}
-
-public class Child extends Parent {
-    // Child has: shared, open
-    // Child does NOT have: secret
-}
-```
-
-### 4. **Constructors Are Not Inherited**
-Child classes don't automatically inherit constructors, but they can call parent constructors:
-
-```java
-public class Parent {
-    public Parent(String name) {
-        // constructor code
-    }
-}
-
-public class Child extends Parent {
-    public Child(String name, int age) {
-        super(name);  // Must call parent constructor
-        // child constructor code
-    }
-}
-```
-
-## Common Mistakes
-
-### ❌ Forgetting to Call Parent Constructor
-```java
-public class Child extends Parent {
-    public Child() {
-        // Missing super() call - ERROR!
-    }
-}
-```
-
-### ❌ Wrong Order of Constructor Calls
-```java
-public class Child extends Parent {
-    public Child() {
-        // Do something first
-        super();  // ERROR! super() must be first
-    }
-}
-```
-
-### ✅ Correct Way
-```java
-public class Child extends Parent {
-    public Child() {
-        super();  // Correct! super() is first
-        // Do something after
-    }
-}
-```
+This is also why your classes, by default, have a `toString()` method. And `equals()` and `hashCode()` methods. You have previously seen we could "overwrite" these methods to provide a more meaningful representation of your objects. This is discussed in an upcoming page about "overriding" methods.
 
 ## Summary
 
@@ -308,8 +245,6 @@ The `extends` keyword is the foundation of inheritance in Java:
 1. **Creates parent-child relationships** between classes
 2. **Enables code reuse** by inheriting fields and methods
 3. **Supports multiple levels** of inheritance
-4. **Requires proper constructor handling** with `super()`
-5. **Respects access modifiers** for inheritance
-6. **Allows single inheritance only** (one parent per class)
+4. **Allows single inheritance only** (one parent per class)
 
 Understanding `extends` is crucial for building well-structured, maintainable Java programs using inheritance.

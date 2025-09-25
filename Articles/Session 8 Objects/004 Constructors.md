@@ -27,13 +27,31 @@ Person p = new Person(); // Calls the default constructor
 
 ## Exercise 4.0: Circle class
 
-Create a Circle class, and leave it empty for now. Then create a main method that creates a Circle object using the default constructor.
+Create a Circle class, and leave it empty for now. Then create another class with a main method that creates a Circle object using the default constructor.
+
+You should now have two files in a package, one for the Circle class, and one for the main method:
+
+![Two files in a package](Resources/TwoFiles.png)
+
+
+The Circle class:
 
 ```java
 public class Circle {
     // No constructor defined, so Java provides a default one
 }
 ```
+
+And the CircleTest class:
+
+```java
+public class CircleTest {
+    public static void main(String[] args) {
+        Circle c = new Circle();
+    }
+}
+```
+![Two files in a package](Resources/BothClasses.png)
 
 Add a display() method to the Circle class that prints out "Circle" when called. Call this method from the main method.
 
