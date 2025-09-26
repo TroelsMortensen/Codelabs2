@@ -2,18 +2,21 @@
 
 ## What is an Abstract Class?
 
-An **abstract class** in Java is a class that cannot be instantiated directly. It serves as a blueprint or template for other classes and often contains abstract methods that must be implemented by subclasses.
+An **abstract class** in Java is a class that cannot be instantiated directly. It serves as a blueprint or template for other classes and often contains abstract methods that must be implemented by subclasses.\
+Abstract classes only make sense, if they are extended by other classes.
 
-Think of an abstract class like a recipe template - you can't eat the template itself, but it tells you how to build the actual dish.
+For example, a `Vehicle` class is abstract, because you cannot create a `Vehicle` object. You can only create a `Car`, `Motorcycle`, `Bicycle`, or `Boat` object.
+
 
 ## Creating Abstract Classes
 
 ### The `abstract` Keyword
 
-Use the `abstract` keyword to declare an abstract class:
+Use the `abstract` keyword to declare an abstract class, in the class declaration. Abstact methods are discussed on the next page, so ignore those for now.
 
 ```java
-abstract class Shape {
+public abstract class Shape {
+    // position in 2D space
     protected double x, y;
     
     public Shape(double x, double y) {
@@ -58,6 +61,11 @@ abstract class Animal {
 ```
 
 ### 3. **Can Have Both Abstract and Concrete Methods**
+
+Concrete methods are methods that have a body, i.e. they are implemented.
+
+Abstract methods are methods that have no body, i.e. they are not implemented. Notice that the `accelerate` method is abstract, and does not have a body. There are no `{ }` after the method name, instead there is a semicolon `;`.
+
 ```java
 abstract class Vehicle {
     protected String brand;
@@ -102,177 +110,6 @@ abstract class Employee {
 }
 ```
 
-## Extending Abstract Classes
-
-### Creating Concrete Subclasses
-
-```java
-class Rectangle extends Shape {
-    private double width, height;
-    
-    public Rectangle(double x, double y, double width, double height) {
-        super(x, y);  // Call parent constructor
-        this.width = width;
-        this.height = height;
-    }
-    
-    // Must implement abstract method
-    @Override
-    public double getArea() {
-        return width * height;
-    }
-}
-
-class Circle extends Shape {
-    private double radius;
-    
-    public Circle(double x, double y, double radius) {
-        super(x, y);  // Call parent constructor
-        this.radius = radius;
-    }
-    
-    // Must implement abstract method
-    @Override
-    public double getArea() {
-        return Math.PI * radius * radius;
-    }
-}
-```
-
-### Using Abstract Classes
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        // Can't instantiate abstract class directly
-        // Shape shape = new Shape(0, 0);  // ❌ ERROR!
-        
-        // But can instantiate concrete subclasses
-        Shape rectangle = new Rectangle(0, 0, 5, 3);
-        Shape circle = new Circle(0, 0, 2);
-        
-        // Can call both abstract and concrete methods
-        System.out.println("Rectangle area: " + rectangle.getArea());
-        System.out.println("Circle area: " + circle.getArea());
-        
-        // Can call concrete methods
-        rectangle.move(10, 10);
-        circle.move(5, 5);
-        
-        System.out.println("Rectangle position: " + rectangle.getPosition());
-        System.out.println("Circle position: " + circle.getPosition());
-    }
-}
-```
-
-## Real-World Example: Game Characters
-
-```java
-abstract class GameCharacter {
-    protected String name;
-    protected int health;
-    protected int level;
-    protected boolean isAlive;
-    
-    public GameCharacter(String name, int health, int level) {
-        this.name = name;
-        this.health = health;
-        this.level = level;
-        this.isAlive = true;
-    }
-    
-    // Abstract methods - must be implemented by subclasses
-    public abstract void attack();
-    public abstract void defend();
-    public abstract void specialAbility();
-    
-    // Concrete methods - shared by all characters
-    public void takeDamage(int damage) {
-        health -= damage;
-        if (health <= 0) {
-            health = 0;
-            isAlive = false;
-        }
-        System.out.println(name + " takes " + damage + " damage. Health: " + health);
-    }
-    
-    public void heal(int amount) {
-        if (isAlive) {
-            health += amount;
-            System.out.println(name + " heals for " + amount + ". Health: " + health);
-        }
-    }
-    
-    public boolean isAlive() {
-        return isAlive;
-    }
-    
-    public void levelUp() {
-        if (isAlive) {
-            level++;
-            health += 10;
-            System.out.println(name + " leveled up to level " + level + "!");
-        }
-    }
-}
-
-class Warrior extends GameCharacter {
-    private int strength;
-    
-    public Warrior(String name, int health, int level, int strength) {
-        super(name, health, level);
-        this.strength = strength;
-    }
-    
-    @Override
-    public void attack() {
-        int damage = strength + level;
-        System.out.println(name + " swings sword for " + damage + " damage!");
-    }
-    
-    @Override
-    public void defend() {
-        System.out.println(name + " raises shield and blocks incoming attacks!");
-    }
-    
-    @Override
-    public void specialAbility() {
-        System.out.println(name + " uses Berserker Rage! Attack power doubled!");
-        strength *= 2;
-    }
-}
-
-class Mage extends GameCharacter {
-    private int mana;
-    
-    public Mage(String name, int health, int level, int mana) {
-        super(name, health, level);
-        this.mana = mana;
-    }
-    
-    @Override
-    public void attack() {
-        if (mana >= 10) {
-            int damage = level * 3;
-            mana -= 10;
-            System.out.println(name + " casts fireball for " + damage + " damage! Mana: " + mana);
-        } else {
-            System.out.println(name + " doesn't have enough mana to cast spells!");
-        }
-    }
-    
-    @Override
-    public void defend() {
-        System.out.println(name + " creates a magical barrier!");
-    }
-    
-    @Override
-    public void specialAbility() {
-        System.out.println(name + " casts Meteor! Devastating area damage!");
-        mana -= 20;
-    }
-}
-```
 
 ## When to Use Abstract Classes
 
@@ -282,43 +119,5 @@ class Mage extends GameCharacter {
 2. **Common State** - When subclasses need access to shared fields
 3. **Template Methods** - When you want to define a skeleton algorithm
 4. **Forced Implementation** - When you want to ensure certain methods are implemented
+5. **No objects should be created from this class** - When you want to prevent objects from being created from this class
 
-### ❌ Avoid When:
-
-1. **Only Data Sharing** - If you only need to share data, use regular classes
-2. **Multiple Inheritance** - Java doesn't support multiple inheritance for classes
-3. **Interface-like Behavior** - If you only need method signatures, consider interfaces
-
-## Benefits of Abstract Classes
-
-### 1. **Code Reuse**
-```java
-// Common functionality is written once
-public void takeDamage(int damage) {
-    health -= damage;
-    if (health <= 0) {
-        health = 0;
-        isAlive = false;
-    }
-}
-```
-
-### 2. **Consistency**
-All subclasses follow the same basic structure and behavior.
-
-### 3. **Flexibility**
-Subclasses can add their own unique features while maintaining the common interface.
-
-### 4. **Maintainability**
-Changes to the abstract class automatically affect all subclasses.
-
-## Summary
-
-Abstract classes are powerful tools that allow you to:
-
-- **Define common structure** for related classes
-- **Share implementation** among subclasses
-- **Force specific behavior** through abstract methods
-- **Create flexible, maintainable code**
-
-In the next article, we'll dive deeper into abstract methods and see how they work in detail.

@@ -2,11 +2,22 @@
 
 ## What is Polymorphism in Java?
 
-**Polymorphism** is one of the four fundamental principles of object-oriented programming. The word comes from Greek and means "many forms." In Java, polymorphism allows objects of different types to be treated as objects of a common type, while each object behaves differently based on its actual type.
+**Polymorphism** is a fundamental principle of object-oriented programming. The word comes from Greek and means "many forms." In Java, polymorphism allows objects of different types to be treated as objects of a common type, while each object behaves differently based on its actual type.
 
 ## Key Concepts
 
 ### 1. **Reference Type vs Object Type**
+
+Assume this object hierarchy:
+
+```mermaid
+classDiagram
+    Animal <|-- Dog
+    Animal <|-- Cat
+```
+We can then treat Dog and Cat as Animal objects, because they are both subclasses of Animal.\
+And in code, we call the variable declaration type the "reference type", or "variable type", and the actual type of the object the "object type".
+
 ```java
 Animal animal = new Dog("Buddy");
 // Reference type: Animal
@@ -14,7 +25,7 @@ Animal animal = new Dog("Buddy");
 ```
 
 ### 2. **Method Resolution**
-The method that gets called depends on the **object type** (runtime type), not the reference type:
+The method that gets called depends on the **object type** (here, `Dog`), not the reference type:
 
 ```java
 Animal animal = new Dog("Buddy");
@@ -22,7 +33,7 @@ animal.makeSound();  // Calls Dog's makeSound(), not Animal's
 ```
 
 ### 3. **Access Limitations**
-You can only call methods that are available in the reference type:
+You can only call methods that are available in the reference type (here, `Animal`):
 
 ```java
 Animal animal = new Dog("Buddy");
@@ -80,6 +91,8 @@ class Cat extends Animal {
 
 ## Polymorphism in Action
 
+And here is an example of a main method, that creates objects of different types, and calls the `makeSound` method on them.
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -107,14 +120,3 @@ Polymorphism is powerful because it allows you to:
 2. **Add new types easily** - Without changing existing code
 3. **Maintain consistency** - All objects respond to the same interface
 4. **Enable code reuse** - Write once, use with many different objects
-
-## Connection to Abstract Classes
-
-Polymorphism becomes even more powerful when combined with abstract classes. Abstract classes allow you to:
-
-- **Define common behavior** that all subclasses must have
-- **Force implementation** of specific methods
-- **Provide shared functionality** while allowing customization
-- **Create flexible systems** that can easily accommodate new types
-
-In the next article, we'll look at casting and the `instanceof` operator, which are essential tools for working with polymorphic objects.

@@ -2,9 +2,9 @@
 
 ## Building on Inheritance
 
-In the previous session (Session 13 - Inheritance), you learned the fundamentals of inheritance in Java. You discovered how classes can inherit from other classes using the `extends` keyword, how to override methods, and how polymorphism allows objects of different types to be treated uniformly.
+In the previous learning path (Session 13 - Inheritance), you learned the fundamentals of inheritance in Java. You discovered how classes can inherit from other classes using the `extends` keyword, how to override methods, and how polymorphism allows objects of different types to be treated uniformly. For example, Animal, Dog, and Cat are all animals, and they can all be treated as Animal objects, but they can also be treated as Dog or Cat objects, depending on the context.
 
-Now it's time to explore the next level of inheritance: **abstract classes and methods**. These concepts take inheritance to a new level by allowing you to create classes that cannot be instantiated directly but serve as blueprints for other classes.
+Now it's time to explore the next level of inheritance: **abstract classes and methods**. These concepts take inheritance to a new level by allowing you to create classes that cannot be instantiated directly but serve as blueprints for other classes. Several of the exercises from the previous session would have benefited from using abstract classes. This will now be fixed.
 
 ## What You'll Learn
 
@@ -33,7 +33,7 @@ Abstract classes are powerful because they:
 Think of an abstract class like a **recipe template**. 
 
 - You can't eat the template itself (can't instantiate abstract class)
-- It tells you what ingredients you need (abstract methods)
+- It tells you what ingredients you need
 - It provides some common steps (concrete methods)
 - Each chef must follow the template but can add their own twist (subclass implementation)
 
@@ -42,9 +42,3 @@ For example, a "Cake Recipe" template might specify:
 - You must add sugar (abstract method)
 - You must bake at 350°F (concrete method)
 - But you can choose chocolate, vanilla, or strawberry (subclass choice)
-
-## What's Next
-
-In the following articles, we'll explore each of these concepts in detail, starting with a quick recap of polymorphism and casting, then diving deep into abstract classes and their powerful applications in Java programming.
-
-Get ready to take your inheritance skills to the next level!

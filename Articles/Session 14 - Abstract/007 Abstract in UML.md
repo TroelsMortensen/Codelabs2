@@ -2,15 +2,17 @@
 
 ## Representing Abstract Classes in UML
 
-UML (Unified Modeling Language) provides specific notation to represent abstract classes and methods. In Mermaid class diagrams, we can show abstract classes using the `<<abstract>>` stereotype.
+UML (Unified Modeling Language) provides specific notation to represent abstract classes and methods. In UML class diagrams, both methods and classes are shown with _italics_.\
 
 ## Basic Abstract Class Notation
 
 ### Simple Abstract Class
 
+Notice how the `Shape` class is shown with _italics_, meaning it is an abstract class. And two of the methods are shown with _italics_: `getArea()` and `getPerimeter()`. That means they are abstract methods.
+
 ```mermaid
 classDiagram
-    class <<abstract>> Shape {
+    class _Shape_ {
         - x : double
         - y : double
         + Shape(x : double, y : double)

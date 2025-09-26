@@ -2,11 +2,11 @@
 
 ## What is Casting?
 
-**Casting** in Java is the process of converting one data type to another. When working with inheritance and polymorphism, you often need to cast objects from one type to another to access specific methods or properties.
+**Casting** in Java is the process of converting one data type to another. When working with inheritance and polymorphism, you may need to cast objects from one type to another to access specific methods or properties. Generally, however, you should avoid casting, and instead use polymorphism to access the methods or properties you need. If you _do_ need to cast, your design is _probably_ flawed.
 
 ## The `instanceof` Operator
 
-The `instanceof` operator checks if an object is an instance of a specific class or interface. It returns `true` if the object is an instance of the specified type, `false` otherwise.
+The `instanceof` operator checks if an object is an instance of a specific class. It returns `true` if the object is an instance of the specified type, `false` otherwise.
 
 ### Syntax
 ```java
@@ -35,6 +35,8 @@ Dog dog = new Dog("Buddy");
 Animal animal = dog;  // Upcasting - automatic
 ```
 
+I now have two variables, `dog` and `animal`, both referring to the same object. However, if I access the object through the `animal` variable, I can only call methods that are available in the `Animal` class.
+
 ### Downcasting (Explicit)
 Converting from a superclass to a subclass - requires explicit casting:
 
@@ -43,9 +45,11 @@ Animal animal = new Dog("Buddy");
 Dog dog = (Dog) animal;  // Downcasting - explicit cast required
 ```
 
+This is only possible if the object is actually a `Dog`, otherwise you will get a `ClassCastException`. This is a runtime error, that crashes your program. _Maybe_ IntelliJ is able to give you a warning.
+
 ## Safe Casting with `instanceof`
 
-Always use `instanceof` before casting to avoid `ClassCastException`:
+I recommend using `instanceof` before casting to avoid `ClassCastException`:
 
 ```java
 Animal animal = new Dog("Buddy");
@@ -62,7 +66,9 @@ if (animal instanceof Dog) {
 
 ## Practical Example
 
-```java
+First, a version of the `Animal`, `Dog`, and `Cat` classes, again. With some specific methods for each subclass.
+
+```java{23-25,38-40}
 class Animal {
     protected String name;
     
@@ -104,7 +110,11 @@ class Cat extends Animal {
         System.out.println(name + " is climbing the tree");
     }
 }
+```
 
+And in the main method, I create an array of animals, and then loop through the array, and call the `fetch` or `climb` method, depending on the animal.
+
+```java
 public class Main {
     public static void main(String[] args) {
         Animal[] animals = {
@@ -114,9 +124,8 @@ public class Main {
         };
         
         for (Animal animal : animals) {
-            animal.makeSound();  // Polymorphism - each makes its own sound
-            
-            // Safe casting to access specific methods
+            // Safe casting to access specific methods. 
+            // We are checking if the animal is a Dog or a Cat, and then casting to the appropriate class.
             if (animal instanceof Dog) {
                 Dog dog = (Dog) animal;
                 dog.fetch();
@@ -129,57 +138,7 @@ public class Main {
 }
 ```
 
-## Common Patterns
 
-### 1. **Method Parameter Casting**
-```java
-public void handleAnimal(Animal animal) {
-    if (animal instanceof Dog) {
-        Dog dog = (Dog) animal;
-        dog.fetch();
-    } else if (animal instanceof Cat) {
-        Cat cat = (Cat) animal;
-        cat.climb();
-    }
-}
-```
-
-### 2. **Collection Processing**
-```java
-List<Animal> animals = Arrays.asList(
-    new Dog("Buddy"),
-    new Cat("Whiskers"),
-    new Dog("Rex")
-);
-
-for (Animal animal : animals) {
-    if (animal instanceof Dog) {
-        Dog dog = (Dog) animal;
-        System.out.println("Dog: " + dog.name);
-    }
-}
-```
-
-### 3. **Factory Pattern with Casting**
-```java
-public static Animal createAnimal(String type, String name) {
-    switch (type.toLowerCase()) {
-        case "dog":
-            return new Dog(name);
-        case "cat":
-            return new Cat(name);
-        default:
-            return new Animal(name);
-    }
-}
-
-// Usage
-Animal animal = createAnimal("dog", "Buddy");
-if (animal instanceof Dog) {
-    Dog dog = (Dog) animal;
-    dog.fetch();
-}
-```
 
 ## Important Notes
 
@@ -208,14 +167,3 @@ if (animal instanceof Dog) {  // Returns false for null
     // This won't execute
 }
 ```
-
-## Why This Matters for Abstract Classes
-
-Understanding casting is crucial when working with abstract classes because:
-
-- **Abstract classes cannot be instantiated** - You'll always work with concrete subclasses
-- **Polymorphism is common** - You'll often store subclasses in abstract class references
-- **Specific methods need casting** - To access subclass-specific functionality
-- **Type safety is important** - `instanceof` helps prevent runtime errors
-
-In the next article, we'll explore the conceptual foundation of abstract programming and why it's so powerful in object-oriented design.

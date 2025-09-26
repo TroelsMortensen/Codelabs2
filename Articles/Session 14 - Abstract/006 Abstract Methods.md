@@ -2,15 +2,18 @@
 
 ## What are Abstract Methods?
 
-An **abstract method** is a method that is declared but not implemented in an abstract class. It has no body and must be implemented by any concrete subclass that extends the abstract class.
+An **abstract method** is a method that is declared but not implemented in an abstract class. It has no body and _must_ be implemented by any concrete subclass that extends the abstract class.
 
-Think of abstract methods as "contracts" - they tell subclasses what they must do, but not how to do it.
+Think of abstract methods as "contracts" - they tell subclasses what they must do, but not how to do it. The "how" is up to the subclass to decide, and is provided with the implementation in the subclass.
 
 ## Syntax of Abstract Methods
 
 ### Basic Syntax
+
+Here is another version of the Shape class, with abstract methods. If some class extends Shape, it must implement the abstract methods.
+
 ```java
-abstract class Shape {
+public abstract class Shape {
     // Abstract method - no implementation
     public abstract double getArea();
     
@@ -27,16 +30,18 @@ abstract class Shape {
 
 ### Key Points:
 - **No method body** - Ends with semicolon, no curly braces
-- **Must be in abstract class** - Cannot have abstract methods in concrete classes
+- **Must be in abstract class** - Cannot have abstract methods in concrete classes!
 - **Must be implemented** - Subclasses must provide implementation
-- **Can have access modifiers** - public, protected, package-private
+- **Can have access modifiers** - public, protected, package-private (but not private)
 
 ## Implementing Abstract Methods
 
 ### Example: Shape Hierarchy
 
+Assume the following abstract class:
+
 ```java
-abstract class Shape {
+public abstract class Shape {
     protected double x, y;
     
     public Shape(double x, double y) {
@@ -59,7 +64,11 @@ abstract class Shape {
         return "(" + x + ", " + y + ")";
     }
 }
+```
 
+And the following concrete class, `Rectangle` and `Circle`, that extend the `Shape` class. Notice the `@Override` annotation, which is used to indicate that the method is overridden from the super class. These were the abstract methods in the super class, `Shape`.
+
+```java
 class Rectangle extends Shape {
     private double width, height;
     
@@ -113,170 +122,15 @@ class Circle extends Shape {
     }
 }
 ```
-
-## Abstract Methods with Parameters
-
-### Example: Animal Hierarchy
-
-```java
-abstract class Animal {
-    protected String name;
-    protected int age;
-    
-    public Animal(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-    
-    // Abstract methods with parameters
-    public abstract void makeSound(String intensity);
-    public abstract void move(String direction);
-    public abstract void eat(String food);
-    
-    // Concrete method
-    public void sleep() {
-        System.out.println(name + " is sleeping");
-    }
-}
-
-class Dog extends Animal {
-    private String breed;
-    
-    public Dog(String name, int age, String breed) {
-        super(name, age);
-        this.breed = breed;
-    }
-    
-    @Override
-    public void makeSound(String intensity) {
-        switch (intensity.toLowerCase()) {
-            case "loud":
-                System.out.println(name + " barks loudly: WOOF! WOOF!");
-                break;
-            case "quiet":
-                System.out.println(name + " whimpers softly: woof...");
-                break;
-            default:
-                System.out.println(name + " barks: Woof! Woof!");
-        }
-    }
-    
-    @Override
-    public void move(String direction) {
-        System.out.println(name + " runs " + direction + " on four legs");
-    }
-    
-    @Override
-    public void eat(String food) {
-        System.out.println(name + " eagerly devours " + food);
-    }
-}
-
-class Cat extends Animal {
-    private boolean isIndoor;
-    
-    public Cat(String name, int age, boolean isIndoor) {
-        super(name, age);
-        this.isIndoor = isIndoor;
-    }
-    
-    @Override
-    public void makeSound(String intensity) {
-        switch (intensity.toLowerCase()) {
-            case "loud":
-                System.out.println(name + " meows loudly: MEOOW! MEOOW!");
-                break;
-            case "quiet":
-                System.out.println(name + " purrs softly: purr... purr...");
-                break;
-            default:
-                System.out.println(name + " meows: Meow! Meow!");
-        }
-    }
-    
-    @Override
-    public void move(String direction) {
-        if (isIndoor) {
-            System.out.println(name + " walks " + direction + " around the house");
-        } else {
-            System.out.println(name + " prowls " + direction + " in the garden");
-        }
-    }
-    
-    @Override
-    public void eat(String food) {
-        System.out.println(name + " delicately nibbles on " + food);
-    }
-}
-```
-
-## Abstract Methods with Return Types
-
-### Example: Calculator System
-
-```java
-abstract class Calculator {
-    protected double result;
-    
-    public Calculator() {
-        this.result = 0;
-    }
-    
-    // Abstract methods with different return types
-    public abstract double calculate(double a, double b);
-    public abstract String getOperationName();
-    public abstract boolean isValidInput(double a, double b);
-    
-    // Concrete method
-    public void displayResult() {
-        System.out.println(getOperationName() + " result: " + result);
-    }
-}
-
-class AdditionCalculator extends Calculator {
-    @Override
-    public double calculate(double a, double b) {
-        result = a + b;
-        return result;
-    }
-    
-    @Override
-    public String getOperationName() {
-        return "Addition";
-    }
-    
-    @Override
-    public boolean isValidInput(double a, double b) {
-        return true; // Addition works with any numbers
-    }
-}
-
-class DivisionCalculator extends Calculator {
-    @Override
-    public double calculate(double a, double b) {
-        if (isValidInput(a, b)) {
-            result = a / b;
-            return result;
-        } else {
-            throw new IllegalArgumentException("Cannot divide by zero");
-        }
-    }
-    
-    @Override
-    public String getOperationName() {
-        return "Division";
-    }
-    
-    @Override
-    public boolean isValidInput(double a, double b) {
-        return b != 0; // Cannot divide by zero
-    }
-}
-```
+## Note
+Abstract method can of course have parameters, and return types. Even though this is not shown in the example above, it is perfectly valid to have abstract methods with parameters and return types.
 
 ## Using Abstract Methods
 
 ### Polymorphism with Abstract Methods
+
+The following example shows how to use abstract methods with polymorphism.\
+First, we create an array of various shapes, and then loop through the array, and call the `draw` method. Notice that the `draw` method is implemented differently for each shape.
 
 ```java
 public class Main {
@@ -295,21 +149,6 @@ public class Main {
             System.out.println("Perimeter: " + shape.getPerimeter());
             System.out.println("---");
         }
-        
-        // Create different animals
-        Animal[] animals = {
-            new Dog("Buddy", 3, "Golden Retriever"),
-            new Cat("Whiskers", 2, true),
-            new Dog("Rex", 5, "German Shepherd")
-        };
-        
-        // Polymorphism: same method calls, different behaviors
-        for (Animal animal : animals) {
-            animal.makeSound("loud");
-            animal.move("forward");
-            animal.eat("treats");
-            System.out.println("---");
-        }
     }
 }
 ```
@@ -319,29 +158,29 @@ public class Main {
 ### 1. **Must be in Abstract Class**
 ```java
 // ❌ ERROR - Cannot have abstract methods in concrete class
-class ConcreteClass {
+public class ConcreteClass {
     public abstract void method();  // Compilation error
 }
 
 // ✅ CORRECT - Abstract methods must be in abstract class
-abstract class AbstractClass {
+public abstract class AbstractClass {
     public abstract void method();  // OK
 }
 ```
 
 ### 2. **Must be Implemented by Subclasses**
 ```java
-abstract class Parent {
+public abstract class Parent {
     public abstract void method();
 }
 
 // ❌ ERROR - Must implement abstract method
-class Child extends Parent {
+public class Child extends Parent {
     // Missing implementation of method()
 }
 
 // ✅ CORRECT - Must implement abstract method
-class Child extends Parent {
+public class Child extends Parent {
     @Override
     public void method() {
         System.out.println("Implementation");
@@ -351,7 +190,7 @@ class Child extends Parent {
 
 ### 3. **Cannot be Static**
 ```java
-abstract class Example {
+public abstract class Example {
     // ❌ ERROR - Abstract methods cannot be static
     public abstract static void method();
 }
@@ -359,7 +198,7 @@ abstract class Example {
 
 ### 4. **Cannot be Private**
 ```java
-abstract class Example {
+public abstract class Example {
     // ❌ ERROR - Abstract methods cannot be private
     private abstract void method();
 }
@@ -379,13 +218,23 @@ Allows different implementations to be treated uniformly.
 ### 4. **Improves Maintainability**
 Changes to abstract methods automatically affect all subclasses.
 
-## Summary
+### 5. **Ensures the abstract class is not instantiated**
+An abstract class cannot be instantiated, so it cannot be used to create objects. You _can_ declare a variable of type abstract class, but you cannot create an object of that type.
 
-Abstract methods are powerful tools that:
+```java
+public abstract class Example {
+}
 
-- **Define contracts** that subclasses must follow
-- **Force implementation** of specific functionality
-- **Enable polymorphism** through method overriding
-- **Improve code organization** and maintainability
+public class SubExample extends Example {
+}
 
-In the next article, we'll see how to represent abstract classes and methods in UML diagrams using Mermaid.
+public class Main {
+    public static void main(String[] args) {
+        // ❌ ERROR - Abstract class cannot be instantiated
+        Example e = new Example();
+
+        // ✅ CORRECT - Concrete class SubExample can be instantiated
+        SubExample se = new SubExample();
+    }
+}
+```
