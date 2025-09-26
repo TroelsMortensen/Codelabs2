@@ -1,10 +1,12 @@
 # Method Overriding
 
-## What is Method Overriding?
 
-Method overriding occurs when a child class provides its own implementation of a method that already exists in the parent class. The child class "overrides" the parent's method with its own version.
+Method overriding occurs when a child class provides its own implementation of a method that already exists in the parent class. The child class "overrides" the parent's method with its own version. The methods must have the same signature, i.e. the same name, parameters, and return type.
 
 ## Basic Overriding Example
+
+The `Animal` class has two methods, `makeSound` and `eat`. The `Dog` class overrides the `makeSound` method, and adds a new method, `eat`. Similarly, the `Cat` class overrides the `makeSound` method, and adds a new method, `eat`.
+This way, the subclass can provide a more specialized implementation of the method.
 
 ```java
 class Animal {
@@ -20,6 +22,7 @@ class Animal {
 }
 
 class Dog extends Animal {
+
     @Override
     public void makeSound() {
         System.out.println(name + " barks: Woof! Woof!");
@@ -29,6 +32,7 @@ class Dog extends Animal {
 }
 
 class Cat extends Animal {
+
     @Override
     public void makeSound() {
         System.out.println(name + " meows: Meow! Meow!");
@@ -42,6 +46,8 @@ class Cat extends Animal {
 ```
 
 **Usage:**
+You may put the following code in a main method:
+
 ```java
 Animal animal = new Animal();
 animal.name = "Generic Animal";
@@ -91,10 +97,10 @@ class Child extends Parent {
 
 ## Overriding Object Methods
 
-All classes in Java inherit from the `Object` class, so you can override its methods:
+All classes in Java inherit from the `Object` class, implicitly, by default. We cannot prevent it. So you can override its methods, for example the `toString()` method:
 
 ### 1. **toString() Method**
-```java
+```java{10-13}
 class Person {
     private String name;
     private int age;
@@ -146,83 +152,12 @@ class Person {
 ```
 
 ### 3. **hashCode() Method**
-Always override `hashCode()` when you override `equals()`:
+_Always_ override `hashCode()` when you override `equals()`:
 
 ```java
 @Override
 public int hashCode() {
     return Objects.hash(name, age);
-}
-```
-
-## Complete Example with Object Methods
-
-```java
-import java.util.Objects;
-
-class Vehicle {
-    protected String brand;
-    protected int year;
-    
-    public Vehicle(String brand, int year) {
-        this.brand = brand;
-        this.year = year;
-    }
-    
-    public void start() {
-        System.out.println(brand + " is starting");
-    }
-    
-    @Override
-    public String toString() {
-        return "Vehicle{brand='" + brand + "', year=" + year + "}";
-    }
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        
-        Vehicle vehicle = (Vehicle) obj;
-        return year == vehicle.year && Objects.equals(brand, vehicle.brand);
-    }
-    
-    @Override
-    public int hashCode() {
-        return Objects.hash(brand, year);
-    }
-}
-
-class Car extends Vehicle {
-    private int doors;
-    
-    public Car(String brand, int year, int doors) {
-        super(brand, year);
-        this.doors = doors;
-    }
-    
-    @Override
-    public void start() {
-        System.out.println(brand + " car is starting with " + doors + " doors");
-    }
-    
-    @Override
-    public String toString() {
-        return "Car{brand='" + brand + "', year=" + year + ", doors=" + doors + "}";
-    }
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (!super.equals(obj)) return false;
-        
-        Car car = (Car) obj;
-        return doors == car.doors;
-    }
-    
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), doors);
-    }
 }
 ```
 
@@ -252,6 +187,9 @@ class Child extends Parent {
 ```
 
 ### 2. **Access Modifier Cannot Be More Restrictive**
+
+In order of restrictiveness, the following modifiers are allowed: `public`, `protected`, `default` (package-private), and `private`.
+
 ```java
 class Parent {
     protected void method() {
@@ -273,7 +211,7 @@ class Child extends Parent {
 ```
 
 ### 3. **Return Type Must Be Compatible**
-For reference types, the return type can be a subclass of the parent's return type:
+For reference types, the return type can be a subclass of the parent's return type. See polymorphism on a later page.
 
 ```java
 class Parent {
@@ -350,72 +288,17 @@ child.method();
 
 **Output:**
 ```
-Parent method
-Child method
+Parent method   <-- From the parent class
+Child method    <-- From the child class
 ```
 
-## Common Overriding Patterns
-
-### 1. **Extension Pattern**
-```java
-class Parent {
-    public void doSomething() {
-        System.out.println("Parent doing something");
-    }
-}
-
-class Child extends Parent {
-    @Override
-    public void doSomething() {
-        super.doSomething();  // Do what parent does
-        System.out.println("Child doing something extra");  // Add more
-    }
-}
-```
-
-### 2. **Replacement Pattern**
-```java
-class Parent {
-    public void doSomething() {
-        System.out.println("Parent doing something");
-    }
-}
-
-class Child extends Parent {
-    @Override
-    public void doSomething() {
-        System.out.println("Child doing something completely different");
-        // Don't call super.doSomething()
-    }
-}
-```
-
-### 3. **Conditional Pattern**
-```java
-class Parent {
-    public void doSomething() {
-        System.out.println("Parent doing something");
-    }
-}
-
-class Child extends Parent {
-    @Override
-    public void doSomething() {
-        if (someCondition) {
-            super.doSomething();  // Call parent method
-        } else {
-            System.out.println("Child doing something else");
-        }
-    }
-}
-```
 
 ## Summary
 
 Method overriding is a powerful feature of inheritance:
 
 1. **Allows child classes** to provide their own implementation of parent methods
-2. **Uses `@Override` annotation** for safety and clarity
+2. **Uses `@Override` annotation** for safety and clarity, though it is not required.
 3. **Must follow strict rules** about method signatures and access modifiers
 4. **Commonly used with Object methods** like `toString()`, `equals()`, and `hashCode()`
 5. **Can use `super`** to call the parent's overridden method

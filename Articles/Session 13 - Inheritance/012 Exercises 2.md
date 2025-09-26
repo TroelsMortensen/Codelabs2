@@ -1,6 +1,130 @@
 # Inheritance Practice Exercises
 
-## Exercise 1: Vehicle Hierarchy
+Time for some more exercises. And now we can include polymorphism in the exercises.
+
+## Exercise 12.0 Superhero Team Builder
+
+Design a superhero inheritance system with different power types.\
+Each class goes into its own file.\
+Notice some methods are overridden, and provide a more specialized implementation in the subclasses.\
+The methods should just print out a message to the console.\
+Optionally, create overridden methods in the subclasses, that print out a message to the console.
+
+The purpose of this exercise is mainly to practice inheritance, polymorphism, and method overriding. When in doubt about how something should work, just make a decision, and implement it.
+
+You can start small, with just the Superhero class and SuperheroTeam class. Then gradually add more subclasses.
+
+```mermaid
+classDiagram
+
+    class SuperheroTeam {
+        - teamName : String
+        - superheroes : ArrayList~Superhero~
+        + addSuperhero(superhero : Superhero) void
+        + removeSuperhero(superhero : Superhero) void
+        + getSuperheroes() Superhero[]
+        + getTotalTeamPowerLevel() int
+        + getNumberOfElementalHeroes() int
+        + getNumberOfPhysicalHeroes() int
+        + getNumberOfMentalHeroes() int
+        + teamAttack() void
+        + elementalAttack() void
+        + physicalAttack() void
+        + mentalAttack() void
+        + toString() String
+    }
+
+    class Superhero {
+        - heroName : String
+        - secretIdentity : String
+        - powerLevel : int
+        + attack() void
+        + saveDay() void
+    }
+    
+    class ElementalHero {
+        - element : String
+        - elementalMastery : int
+        + controlElement() void
+        + elementalAttack() void
+    }
+    
+    class PhysicalHero {
+        - strength : int
+        - speed : int
+        + superStrength() void
+        + superSpeed() void
+    }
+    
+    class MentalHero {
+        - psychicPower : int
+        - telepathyRange : double
+        + readMind() void
+        + telekinesis() void
+    }
+    
+    class FireHero {
+        - flameIntensity : int
+        - fireResistance : boolean
+        + fireball() void
+        + fireShield() void
+    }   
+
+    class IceHero {
+        - iceIntensity : int
+        - iceResistance : boolean
+        + iceBlast() void
+        + iceBarrier() void
+    }
+    
+    class Speedster {
+        - maxSpeed : double
+        - timeDilation : boolean
+        + timeTravel() void
+        + speedForce() void
+    }
+    
+    Superhero <|-- ElementalHero
+    Superhero <|-- PhysicalHero
+    Superhero <|-- MentalHero
+    ElementalHero <|-- FireHero
+    ElementalHero <|-- IceHero
+    PhysicalHero <|-- Speedster
+    SuperheroTeam o--> "*" Superhero
+```
+
+Method explanations for the `SuperheroTeam` class:
+
+- `addSuperhero(superhero : Superhero) void`: Adds a superhero to the team
+- `removeSuperhero(superhero : Superhero) void`: Removes a superhero from the team
+- `getSuperheroes() Superhero[]`: Returns an array of all the superheroes in the team
+- `getTotalTeamPowerLevel() int`: Returns the total power level of the team
+- `getNumberOfElementalHeroes() int`: Returns the number of elemental heroes in the team
+- `getNumberOfPhysicalHeroes() int`: Returns the number of physical heroes in the team
+- `getNumberOfMentalHeroes() int`: Returns the number of mental heroes in the team
+- `teamAttack() void`: Should call the attack method of all the superheroes in the team
+- `elementalAttack() void`: Should call the elementalAttack method of all the elemental heroes in the team
+- `physicalAttack() void`: Should call the physicalAttack method of all the physical heroes in the team
+- `mentalAttack() void`: Should call the mentalAttack method of all the mental heroes in the team
+- `toString() String`: Returns a string representation of the team
+
+Now, make a main method that creates a `SuperheroTeam` object, adds some superheroes to it, and calls the methods to test the functionality.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        SuperheroTeam team = new SuperheroTeam("The Avengers");
+        // ... add some superheroes to the team
+        team.teamAttack();
+        team.elementalAttack();
+        team.physicalAttack();
+        team.mentalAttack();
+        System.out.println(team.toString());
+    }
+}
+```
+
+## Exercise 12.1 Vehicle Hierarchy
 
 ### Task
 Implement a vehicle inheritance hierarchy with the following requirements:
@@ -82,7 +206,7 @@ Ford is stopping
 
 ---
 
-## Exercise 2: Animal Kingdom
+## Exercise 12.2 Animal Kingdom
 
 ### Task
 Implement an animal inheritance hierarchy with the following requirements:
@@ -191,7 +315,7 @@ After birthday: Mammal: Generic Mammal, Age: 6
 
 ---
 
-## Exercise 3: Shape Calculator
+## Exercise 12.3 Shape Calculator
 
 ### Task
 Implement a shape inheritance hierarchy with the following requirements:
@@ -290,6 +414,181 @@ Perimeter: 20.0
 === Moving Shapes ===
 Rectangle new position: (5.0, 5.0)
 Circle new position: (10.0, 10.0)
+```
+
+
+## Exercise 12.4 Space Vehicle Fleet
+
+Build spacecraft classes with different propulsion systems:
+
+```mermaid
+classDiagram
+    class Spacecraft {
+        - name : String
+        - maxCrew : int
+        - fuelCapacity : double
+        + launch() void
+        + land() void
+        + communicate() void
+    }
+    
+    class Fighter {
+        - weaponSystems : String[]
+        - maneuverability : int
+        + engageEnemy() void
+        + evasiveManeuver() void
+    }
+    
+    class Transport {
+        - cargoCapacity : double
+        - passengerSeats : int
+        + loadCargo() void
+        + transportPassengers() void
+    }
+    
+    class Explorer {
+        - sensorArray : String[]
+        - researchLabs : int
+        + scanPlanet() void
+        + collectSamples() void
+    }
+    
+    class IonDrive {
+        - ionThrust : double
+        - efficiency : double
+        + ionPropulsion() void
+    }
+    
+    class WarpDrive {
+        - warpFactor : double
+        - subspaceField : boolean
+        + enterWarp() void
+    }
+    
+    Spacecraft <|-- Fighter
+    Spacecraft <|-- Transport
+    Spacecraft <|-- Explorer
+    Fighter <|-- IonDrive
+    Transport <|-- WarpDrive
+```
+
+## Exercise 12.5 Mythical Weapon Forge
+
+Create a weapon crafting system with magical properties:
+
+```mermaid
+classDiagram
+    class Weapon {
+        - name : String
+        - damage : int
+        - durability : int
+        + attack() void
+        + repair() void
+    }
+    
+    class MetalWeapon {
+        - metalType : String
+        - sharpness : int
+        + forge() void
+        + temper() void
+    }
+    
+    class WoodWeapon {
+        - woodType : String
+        - flexibility : int
+        + carve() void
+        + enchant() void
+    }
+    
+    class CrystalWeapon {
+        - crystalType : String
+        - magicResonance : int
+        + charge() void
+        + discharge() void
+    }
+    
+    class Excalibur {
+        - holyPower : int
+        - kinglyAura : boolean
+        + divineStrike() void
+        + banishEvil() void
+    }
+    
+    class StaffOfPower {
+        - spellAmplification : int
+        - manaCapacity : int
+        + castSpell() void
+        + channelEnergy() void
+    }
+    
+    Weapon <|-- MetalWeapon
+    Weapon <|-- WoodWeapon
+    Weapon <|-- CrystalWeapon
+    MetalWeapon <|-- Excalibur
+    CrystalWeapon <|-- StaffOfPower
+```
+
+## Exercise 12.6 Fantasy Pet Evolution
+
+Build a pet system with evolution stages:
+
+```mermaid
+classDiagram
+    class FantasyPet {
+        - name : String
+        - level : int
+        - experience : int
+        + play() void
+        + sleep() void
+        + levelUp() void
+    }
+    
+    class Egg {
+        - incubationTime : int
+        - warmthLevel : int
+        + incubate() void
+        + hatch() void
+    }
+    
+    class BabyPet {
+        - growthRate : double
+        - careNeeds : int
+        + feed() void
+        + cuddle() void
+    }
+    
+    class AdultPet {
+        - specialAbilities : String[]
+        - trainingLevel : int
+        + train() void
+        + battle() void
+    }
+    
+    class LegendaryPet {
+        - legendaryPower : String
+        - auraEffect : boolean
+        + legendaryAbility() void
+        + inspireOthers() void
+    }
+    
+    class DragonEgg {
+        - fireResistance : boolean
+        - scales : String
+        + breatheFire() void
+    }
+    
+    class PhoenixEgg {
+        - rebirthCycle : int
+        - flameColor : String
+        + resurrect() void
+    }
+    
+    FantasyPet <|-- Egg
+    FantasyPet <|-- BabyPet
+    FantasyPet <|-- AdultPet
+    FantasyPet <|-- LegendaryPet
+    Egg <|-- DragonEgg
+    Egg <|-- PhoenixEgg
 ```
 
 ## Tips for Success
