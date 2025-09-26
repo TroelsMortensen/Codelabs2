@@ -95,18 +95,18 @@ classDiagram
 
 Method explanations for the `SuperheroTeam` class:
 
-- `addSuperhero(superhero : Superhero) void`: Adds a superhero to the team
-- `removeSuperhero(superhero : Superhero) void`: Removes a superhero from the team
-- `getSuperheroes() Superhero[]`: Returns an array of all the superheroes in the team
-- `getTotalTeamPowerLevel() int`: Returns the total power level of the team
-- `getNumberOfElementalHeroes() int`: Returns the number of elemental heroes in the team
-- `getNumberOfPhysicalHeroes() int`: Returns the number of physical heroes in the team
-- `getNumberOfMentalHeroes() int`: Returns the number of mental heroes in the team
-- `teamAttack() void`: Should call the attack method of all the superheroes in the team
-- `elementalAttack() void`: Should call the elementalAttack method of all the elemental heroes in the team
-- `physicalAttack() void`: Should call the physicalAttack method of all the physical heroes in the team
-- `mentalAttack() void`: Should call the mentalAttack method of all the mental heroes in the team
-- `toString() String`: Returns a string representation of the team
+- `addSuperhero(superhero : Superhero) : void`: Adds a superhero to the team
+- `removeSuperhero(superhero : Superhero) : void`: Removes a superhero from the team
+- `getSuperheroes() : Superhero[]`: Returns an array of all the superheroes in the team
+- `getTotalTeamPowerLevel() : int`: Returns the total power level of the team
+- `getNumberOfElementalHeroes() : int`: Returns the number of elemental heroes in the team
+- `getNumberOfPhysicalHeroes() : int`: Returns the number of physical heroes in the team
+- `getNumberOfMentalHeroes() : int`: Returns the number of mental heroes in the team
+- `teamAttack() : void`: Should call the attack method of all the superheroes in the team
+- `elementalAttack() : void`: Should call the elementalAttack method of all the elemental heroes in the team
+- `physicalAttack() : void`: Should call the physicalAttack method of all the physical heroes in the team
+- `mentalAttack() : void`: Should call the mentalAttack method of all the mental heroes in the team
+- `toString() : String`: Returns a string representation of the team
 
 Now, make a main method that creates a `SuperheroTeam` object, adds some superheroes to it, and calls the methods to test the functionality.
 
