@@ -2,7 +2,7 @@
 
 ![garbage collector](GarbageCollection.png)
 
-Garbage collection is something that happens behind the scenes, and you do not need to worry about it. But, it is still something, you will probably encounter in your career, so it is important to understand.
+Garbage collection is something that happens behind the scenes, and, generally, you do not need to worry about it. But, it is still something, you will probably encounter in your career, so it is important to understand.
 
 ## What is Garbage Collection?
 
@@ -12,7 +12,7 @@ Notice the "automatically" part. This means you probably don't need to worry abo
 
 ## Why Do We Need Garbage Collection?
 
-In Java, when you create objects using the `new` keyword, memory is allocated on the heap. This is where you store your objects, and there is a limit to how much memory you can use.\
+In Java, when you create objects using the `new` keyword, memory is allocated on the "heap". This is where you store your objects, and there is a limit to how much memory you can use.\
 Like putting items in your backpack. At some point, you will run out of space, and you will need to throw away some items.
 
 Without garbage collection, you would need to manually free this memory when the object is no longer needed. This manual memory management can lead to:

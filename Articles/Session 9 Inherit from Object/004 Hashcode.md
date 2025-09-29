@@ -43,7 +43,7 @@ public class Person {
 ```
 
 
-Common pitfalls and best practices
+**Common pitfalls and best practices**
 - Always override `hashCode` when you override `equals`.
 - Use the same fields in both `equals` and `hashCode`.
 - Use `Objects.hash(...)` or IDE-generated implementations for correctness and simplicity.

@@ -83,7 +83,7 @@ public class Main {
 }
 ```
 
-Pitfalls and advice
+**Pitfalls and advice**
 - Do not use static fields to store per-instance state.
 - Mutable static fields can make testing and reasoning about code harder.
 - Initialize static fields carefully (static initializers or inline initialization) and avoid using instance values when initializing static fields.

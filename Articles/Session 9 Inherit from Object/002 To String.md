@@ -27,7 +27,7 @@ You will get an output like this:
 Person@1a2b3c4d
 ```
 
-This is the default implementation of `toString()`, which returns the class name followed by the object's "hash code". However, you can _override_ this method to provide a more meaningful string representation of your object.
+This is the default implementation of `toString()`, defined in the `Object` class, which returns the class name followed by the object's "hash code" (the `hashCode` method, also defined in the `Object` class). However, you can _override_ this method to provide a more meaningful string representation of your object.
 
 With this method inside the `Person` class:
 
