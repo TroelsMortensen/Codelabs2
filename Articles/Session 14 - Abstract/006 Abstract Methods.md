@@ -2,17 +2,20 @@
 
 ## What are Abstract Methods?
 
-An **abstract method** is a method that is declared but not implemented in an abstract class. It has no body and _must_ be implemented by any concrete subclass that extends the abstract class.
+An **abstract method** is a method that is declared but not _implemented_ in an abstract class. It has no body and _must_ be implemented by any concrete subclass that extends the abstract class.
 
 Think of abstract methods as "contracts" - they tell subclasses what they must do, but not how to do it. The "how" is up to the subclass to decide, and is provided with the implementation in the subclass.
+
+In order to be a vehicle, you must be able to `drive`. How that driving then works, the vehicle neither knows nor cares. That is the responsibility of the subclass to figure out.
 
 ## Syntax of Abstract Methods
 
 ### Basic Syntax
 
-Here is another version of the Shape class, with abstract methods. If some class extends Shape, it must implement the abstract methods.
+Here is another version of the Shape class, with abstract methods. If some class extends Shape, it _must_ implement the abstract methods. Notice the two abstract methods, `getArea` and `getPerimeter`, which are declared but not implemented in the abstract class.\
+The `displayInfo` method is a concrete method, which has an implementation. Still, subclasses _may_ decide to override it, if they want to provide a different implementation. This method makes calls to the two abstract methods, `getArea` and `getPerimeter`, meaning that when the method is called on some subclass of Shape, it will call the implementation of the abstract methods in the subclass.
 
-```java
+```java{3,6}
 public abstract class Shape {
     // Abstract method - no implementation
     public abstract double getArea();
@@ -40,7 +43,7 @@ public abstract class Shape {
 
 Assume the following abstract class:
 
-```java
+```java{10-12}
 public abstract class Shape {
     protected double x, y;
     
@@ -66,7 +69,7 @@ public abstract class Shape {
 }
 ```
 
-And the following concrete class, `Rectangle` and `Circle`, that extend the `Shape` class. Notice the `@Override` annotation, which is used to indicate that the method is overridden from the super class. These were the abstract methods in the super class, `Shape`.
+And the following concrete classes, `Rectangle` and `Circle`, that extend the `Shape` class. Notice the `@Override` annotation, which is used to indicate that the method is overridden from the super class. These were the abstract methods in the super class, `Shape`.
 
 ```java
 class Rectangle extends Shape {
@@ -156,6 +159,8 @@ public class Main {
 ## Rules for Abstract Methods
 
 ### 1. **Must be in Abstract Class**
+If you declare a method as abstract, you must declare the class as abstract as well.
+
 ```java
 // ❌ ERROR - Cannot have abstract methods in concrete class
 public class ConcreteClass {
@@ -169,6 +174,8 @@ public abstract class AbstractClass {
 ```
 
 ### 2. **Must be Implemented by Subclasses**
+If you declare a method as abstract, you must implement it in the subclass.
+
 ```java
 public abstract class Parent {
     public abstract void method();
@@ -197,6 +204,9 @@ public abstract class Example {
 ```
 
 ### 4. **Cannot be Private**
+
+Anything private is not known by any other class. The subclass cannot see the abstract method, and therefore cannot implement it.
+
 ```java
 public abstract class Example {
     // ❌ ERROR - Abstract methods cannot be private
@@ -235,6 +245,7 @@ public class Main {
 
         // ✅ CORRECT - Concrete class SubExample can be instantiated
         SubExample se = new SubExample();
+        Example e2 = new SubExample();
     }
 }
 ```

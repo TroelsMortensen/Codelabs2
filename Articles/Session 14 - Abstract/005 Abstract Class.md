@@ -2,7 +2,7 @@
 
 ## What is an Abstract Class?
 
-An **abstract class** in Java is a class that cannot be instantiated directly. It serves as a blueprint or template for other classes and often contains abstract methods that must be implemented by subclasses.\
+An **abstract class** in Java is a class that cannot be instantiated directly. It serves as a blueprint, or template, for other classes and often contains abstract methods that must be implemented by subclasses.\
 Abstract classes only make sense, if they are extended by other classes.
 
 For example, a `Vehicle` class is abstract, because you cannot create a `Vehicle` object. You can only create a `Car`, `Motorcycle`, `Bicycle`, or `Boat` object.
@@ -93,16 +93,20 @@ abstract class Vehicle {
 ```
 
 ### 4. **Can Have Fields**
+The abstract class can have fields, just like a regular class. These can be both public, protected, or private.
+
 ```java
 abstract class Employee {
     protected String name;
     protected int employeeId;
     protected double salary;
+    private String department;
     
-    public Employee(String name, int employeeId, double salary) {
+    public Employee(String name, int employeeId, double salary, String department) {
         this.name = name;
         this.employeeId = employeeId;
         this.salary = salary;
+        this.department = department;
     }
     
     public abstract void work();
