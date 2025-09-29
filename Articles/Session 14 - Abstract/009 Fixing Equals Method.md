@@ -7,6 +7,11 @@ When working with inheritance hierarchies, implementing the `equals` method corr
 ## Common Issues
 
 ### 1. **Symmetry Violation**
+
+Here is an example of a violation of the symmetry property. This means that if `a.equals(b)` is true, then `b.equals(a)` must also be true. But in the example below, `animal.equals(dog)` is true, but `dog.equals(animal)` is false.
+
+The problem lies in the `equals` method in the `Animal` class. It only checks if the other object is an instance of `Animal`, and if so, it compares the name of the animal. But it does not check if the other object is a `Dog`, and if so, it compares the name and the breed of the dog.
+
 ```java
 // ❌ BAD - Violates symmetry
 class Animal {
@@ -54,6 +59,13 @@ System.out.println(dog.equals(animal));  // false (Dog.equals)
 ```
 
 ### 2. **Transitivity Violation**
+
+Here is an example of a violation of the transitivity property. This means that if `a.equals(b)` is true and `b.equals(c)` is true, then `a.equals(c)` must also be true. But in the example below, `p1.equals(cp1)` is true, `p1.equals(cp2)` is true, but `cp1.equals(cp2)` is false.
+
+The problem lies in the `equals` method in the `ColorPoint` class. It first checks if the other object is an instance of `ColorPoint`, and if so, it compares the color of the color point. But it does not check if the other object is a `Point`, and if so, it compares the x and y coordinates of the point.
+
+Then, it checks if the other object is a `Point`, and if so, it compares the x and y coordinates of the point.
+
 ```java
 // ❌ BAD - Violates transitivity
 class Point {
@@ -108,9 +120,13 @@ System.out.println(cp1.equals(cp2)); // false
 
 ## The Solution: Proper `equals` Implementation
 
+In many cases, the `instanceof` operator is not a good way to check if two objects are of the same type. This is because `dog instanceof Animal` is true, even though we are working with two different object types: `Dog` and `Animal`.
+
 ### 1. **Use `getClass()` Instead of `instanceof`**
 
-```java
+Instead, we should use `getClass()` to check if the other object is of the same type. This is because `dog.getClass() == animal.getClass()` is false, i.e. it is more precise than `dog instanceof Animal`.
+
+```java{11}
 class Animal {
     protected String name;
     
@@ -145,7 +161,7 @@ class Dog extends Animal {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        if (!super.equals(obj)) return false;
+        if (!super.equals(obj)) return false; // call to equals in the super class
         
         Dog dog = (Dog) obj;
         return Objects.equals(breed, dog.breed);
@@ -158,142 +174,10 @@ class Dog extends Animal {
 }
 ```
 
-### 2. **Complete Example: Shape Hierarchy**
-
-```java
-import java.util.Objects;
-
-abstract class Shape {
-    protected double x, y;
-    
-    public Shape(double x, double y) {
-        this.x = x;
-        this.y = y;
-    }
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        
-        Shape shape = (Shape) obj;
-        return Double.compare(shape.x, x) == 0 && Double.compare(shape.y, y) == 0;
-    }
-    
-    @Override
-    public int hashCode() {
-        return Objects.hash(x, y);
-    }
-    
-    public abstract double getArea();
-}
-
-class Rectangle extends Shape {
-    private double width, height;
-    
-    public Rectangle(double x, double y, double width, double height) {
-        super(x, y);
-        this.width = width;
-        this.height = height;
-    }
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        if (!super.equals(obj)) return false;
-        
-        Rectangle rectangle = (Rectangle) obj;
-        return Double.compare(rectangle.width, width) == 0 && 
-               Double.compare(rectangle.height, height) == 0;
-    }
-    
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), width, height);
-    }
-    
-    @Override
-    public double getArea() {
-        return width * height;
-    }
-}
-
-class Circle extends Shape {
-    private double radius;
-    
-    public Circle(double x, double y, double radius) {
-        super(x, y);
-        this.radius = radius;
-    }
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        if (!super.equals(obj)) return false;
-        
-        Circle circle = (Circle) obj;
-        return Double.compare(circle.radius, radius) == 0;
-    }
-    
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), radius);
-    }
-    
-    @Override
-    public double getArea() {
-        return Math.PI * radius * radius;
-    }
-}
-```
-
-### 3. **Testing the Implementation**
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        // Test symmetry
-        Shape shape1 = new Rectangle(0, 0, 5, 3);
-        Shape shape2 = new Rectangle(0, 0, 5, 3);
-        Shape shape3 = new Circle(0, 0, 2);
-        
-        System.out.println("Symmetry test:");
-        System.out.println("shape1.equals(shape2): " + shape1.equals(shape2));  // true
-        System.out.println("shape2.equals(shape1): " + shape2.equals(shape1));  // true
-        
-        System.out.println("\nDifferent types:");
-        System.out.println("shape1.equals(shape3): " + shape1.equals(shape3));  // false
-        System.out.println("shape3.equals(shape1): " + shape3.equals(shape1));  // false
-        
-        // Test transitivity
-        Rectangle rect1 = new Rectangle(0, 0, 5, 3);
-        Rectangle rect2 = new Rectangle(0, 0, 5, 3);
-        Rectangle rect3 = new Rectangle(0, 0, 5, 3);
-        
-        System.out.println("\nTransitivity test:");
-        System.out.println("rect1.equals(rect2): " + rect1.equals(rect2));  // true
-        System.out.println("rect2.equals(rect3): " + rect2.equals(rect3));  // true
-        System.out.println("rect1.equals(rect3): " + rect1.equals(rect3));  // true
-        
-        // Test with collections
-        java.util.List<Shape> shapes = java.util.Arrays.asList(
-            new Rectangle(0, 0, 5, 3),
-            new Circle(0, 0, 2),
-            new Rectangle(0, 0, 5, 3)
-        );
-        
-        System.out.println("\nCollection test:");
-        System.out.println("shapes.get(0).equals(shapes.get(2)): " + 
-                          shapes.get(0).equals(shapes.get(2)));  // true
-        System.out.println("shapes.contains(new Rectangle(0, 0, 5, 3)): " + 
-                          shapes.contains(new Rectangle(0, 0, 5, 3)));  // true
-    }
-}
-```
 
 ## The `equals` Method Template
+
+Generally, many equals methods look like this:
 
 ### For Abstract Classes
 ```java
@@ -361,91 +245,6 @@ public int hashCode() {
 - Handles `null` values gracefully
 - Prevents `NullPointerException`
 
-## Advanced Example: Complex Hierarchy
-
-```java
-abstract class Employee {
-    protected String name;
-    protected int employeeId;
-    protected double salary;
-    
-    public Employee(String name, int employeeId, double salary) {
-        this.name = name;
-        this.employeeId = employeeId;
-        this.salary = salary;
-    }
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        
-        Employee employee = (Employee) obj;
-        return employeeId == employee.employeeId &&
-               Double.compare(employee.salary, salary) == 0 &&
-               Objects.equals(name, employee.name);
-    }
-    
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, employeeId, salary);
-    }
-}
-
-class Manager extends Employee {
-    private String department;
-    private int teamSize;
-    
-    public Manager(String name, int employeeId, double salary, String department, int teamSize) {
-        super(name, employeeId, salary);
-        this.department = department;
-        this.teamSize = teamSize;
-    }
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        if (!super.equals(obj)) return false;
-        
-        Manager manager = (Manager) obj;
-        return teamSize == manager.teamSize &&
-               Objects.equals(department, manager.department);
-    }
-    
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), department, teamSize);
-    }
-}
-
-class Developer extends Employee {
-    private String programmingLanguage;
-    private int yearsOfExperience;
-    
-    public Developer(String name, int employeeId, double salary, String programmingLanguage, int yearsOfExperience) {
-        super(name, employeeId, salary);
-        this.programmingLanguage = programmingLanguage;
-        this.yearsOfExperience = yearsOfExperience;
-    }
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        if (!super.equals(obj)) return false;
-        
-        Developer developer = (Developer) obj;
-        return yearsOfExperience == developer.yearsOfExperience &&
-               Objects.equals(programmingLanguage, developer.programmingLanguage);
-    }
-    
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), programmingLanguage, yearsOfExperience);
-    }
-}
-```
 
 ## Summary
 
