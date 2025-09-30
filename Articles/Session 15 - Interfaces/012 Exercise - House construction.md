@@ -1,4 +1,7 @@
-# Exercise - Flexibility
+# Exercise - House construction
+
+
+## Flexibility with interfaces
 
 Interfaces are often used to create a flexible system. This means, you can change out certain parts of the system, without having to change the whole system.
 
@@ -12,6 +15,10 @@ You want a new kitchen? Normally, you will have to tear down the old kitchen, an
 Essentially, interfaces in programming allows us to swap out certain parts of the system, without having affecting or having to change the rest of the system.
 
 So, let's build a house template, and you will create various houses by putting together the modules.
+
+## Exercise
+
+![house construction](Resources/HouseConstruction.png)
 
 ## UML
 

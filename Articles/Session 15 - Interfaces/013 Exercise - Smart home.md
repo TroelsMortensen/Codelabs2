@@ -1,5 +1,7 @@
 # Exercise: Smart Home Appliance Control
 
+![smart home](Resources/SmartHomeSystem.png)
+
 ## Task
 
 Create a smart home system where different appliances can be controlled through a common interface. Each appliance has unique behaviors, and some have special features that make them interesting and surprising!

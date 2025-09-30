@@ -102,7 +102,7 @@ classDiagram
     
     Animal <|-- FlyingAnimal
     Flyable <|-- FlyingAnimal
-    FlyingAnimal <|-- AmphibiousAnimal
     Swimmable <|-- AmphibiousAnimal
+    FlyingAnimal <|-- AmphibiousAnimal
     Walkable <|-- AmphibiousAnimal
 ```

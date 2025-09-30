@@ -1,5 +1,7 @@
 # Exercise: List Printer Interface
 
+![list printer](Resources/ListPrinter.png)s
+
 ## Task
 
 Create an interface that defines how to print a list of strings, then implement different printing strategies.

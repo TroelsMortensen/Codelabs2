@@ -1,5 +1,8 @@
 # Exercise: Console Racing Game
 
+![racer](Resources/Racers.png)
+
+
 ## Task
 
 Create a console-based racing game where the player competes against AI opponents. The game uses a dice-rolling mechanic where players guess numbers, and different NPC racers use different strategies to make their guesses.
