@@ -88,6 +88,11 @@ Now you're probably thinking, maybe it would be smarter to make `NpcRacer` an ab
     * Ask the NPC racers to guess the target sum (each should generate a number based on their strategy)
     * Based on the guesses, each racer gets its position updated
     * Check if the player or any of the NPC racers have won
+  * Any racer that guesses correctly, moves forward based on the probability of that sum:
+    * 0 or 10: 4 spaces
+    * 1-2 or 8-9: 3 spaces
+    * 3-4 or 6-7: 2 spaces
+    * 5: 1 space
 
 ## Interface Design
 
