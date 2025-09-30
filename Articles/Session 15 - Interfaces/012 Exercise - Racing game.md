@@ -88,11 +88,38 @@ Now you're probably thinking, maybe it would be smarter to make `NpcRacer` an ab
     * Ask the NPC racers to guess the target sum (each should generate a number based on their strategy)
     * Based on the guesses, each racer gets its position updated
     * Check if the player or any of the NPC racers have won
-  * Any racer that guesses correctly, moves forward based on the probability of that sum:
+* Any racer that guesses correctly, moves forward based on the probability of that sum:
     * 0 or 10: 4 spaces
     * 1-2 or 8-9: 3 spaces
     * 3-4 or 6-7: 2 spaces
     * 5: 1 space
+
+## UI
+
+The UI should be console-based. You can create a numbered menu, and then for displaying the game's race track, you can use a simple ASCII art. Something like this:
+
+```
+Player:  ----------------------------| Goal
+Racer 1: ----------------------------|
+Racer 2: ----------------------------|
+Racer 3: ----------------------------|
+Racer 4: ----------------------------|
+Racer 5: ----------------------------|
+```
+
+Then place an X at the position of each racer, to show where they are:
+
+```
+Player:  ---------------------X------| Goal
+Racer 1: -------------X--------------|
+Racer 2: ------X---------------------|
+Racer 3: ----------------X-----------|
+Racer 4: ----------X-----------------|
+Racer 5: -------------------X--------|
+```
+
+Or you can come up with your own ASCII art. IntelliJ can also print various symbols, like 🚗 for a car. Or you can use emojis.
+
 
 ## Interface Design
 
