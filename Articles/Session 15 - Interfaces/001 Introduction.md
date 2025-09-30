@@ -6,22 +6,12 @@ In the previous session (Session 14 - Abstract), you learned about abstract clas
 
 Now it's time to explore **interfaces** - the next step in Java's object-oriented programming toolkit. Interfaces take the concept of abstract classes one step further by allowing a class to implement multiple interfaces, providing even more flexibility in your designs.
 
-## What You'll Learn
+Imagine an abstract class, with only abstract methods, no constructor, and no field variables. That is essentially an interface.
 
-This session will cover:
-
-1. **What are Interfaces** - Understanding the concept and purpose of interfaces
-2. **Interface vs Abstract Class** - When to use each approach
-3. **Defining Interfaces** - How to create and declare interfaces
-4. **Implementing Interfaces** - How classes implement interface contracts
-5. **Multiple Interfaces** - How a class can implement multiple interfaces
-6. **Interface Inheritance** - How interfaces can extend other interfaces
-7. **Polymorphism with Interfaces** - Using interfaces for flexible programming
-8. **Common Interface Patterns** - Real-world examples and best practices
 
 ## What are Interfaces?
 
-An **interface** in Java is a reference type that defines a contract for classes to follow. It's like a blueprint that specifies what methods a class must implement, but it doesn't provide any implementation itself.
+An **interface** in Java is a reference type, like objectts, that defines a _contract_ for classes to follow. It's like a blueprint that specifies what methods a class must implement, but it doesn't provide any implementation itself.
 
 Think of an interface as a **contract** or **agreement**:
 - It defines what a class **must be able to do**
@@ -47,8 +37,8 @@ Interfaces are powerful because they:
 - **Define contracts** - Specify what classes must be able to do
 - **Enable multiple inheritance** - A class can implement multiple interfaces
 - **Promote loose coupling** - Code depends on interfaces, not concrete classes
-- **Enable polymorphism** - Different implementations can be treated uniformly
-- **Improve testability** - Easy to create mock implementations for testing
+- **Enable polymorphism** - Different implementations can be treated uniformly, as the same like. Similar to abstract classes.
+- **Improve testability** - They are heavily used in automated testing. Though, that is outside the scope of this course.
 
 ## The Next Step Beyond Abstract Classes
 
@@ -61,9 +51,3 @@ Interfaces take the concept of abstract classes one step further by:
 - **Removing implementation** - No concrete methods or fields
 - **Allowing multiple inheritance** - A class can implement many interfaces
 - **Focusing purely on contracts** - What a class must be able to do
-
-## What's Next
-
-In the following articles, we'll explore each of these concepts in detail, starting with understanding what interfaces are and how they differ from abstract classes, then diving into practical examples and real-world applications.
-
-Get ready to take your object-oriented programming skills to the next level with interfaces!

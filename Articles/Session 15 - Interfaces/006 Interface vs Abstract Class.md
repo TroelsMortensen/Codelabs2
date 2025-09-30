@@ -22,7 +22,7 @@ Understanding when to use interfaces versus abstract classes is crucial for good
 
 1. **You want to share common implementation**
 ```java
-abstract class Vehicle {
+public abstract class Vehicle {
     protected String brand;
     protected int year;
     
@@ -40,7 +40,7 @@ abstract class Vehicle {
     public abstract void accelerate();
 }
 
-class Car extends Vehicle {
+public class Car extends Vehicle {
     public Car(String brand, int year) {
         super(brand, year);
     }
@@ -54,7 +54,7 @@ class Car extends Vehicle {
 
 2. **You have common state (fields)**
 ```java
-abstract class Employee {
+public abstract class Employee {
     protected String name;
     protected double salary;
     
@@ -73,8 +73,13 @@ abstract class Employee {
 ```
 
 3. **You want to provide a template method pattern**
+
+This is an "advanced topic", but the core point is that you need to execute certain steps in a specific order. For example, you might need to validate the input, process the data, and format the output. You can define the order in an abstract class, and then let the subclasses implement the steps.
+
+Next semester, you will learn about Design Patterns.
+
 ```java
-abstract class DataProcessor {
+public abstract class DataProcessor {
     protected String inputData;
     
     // Template method - defines the algorithm
@@ -97,17 +102,17 @@ abstract class DataProcessor {
 
 1. **You want to define a contract**
 ```java
-interface Drawable {
+public interface Drawable {
     void draw();
     void setColor(String color);
 }
 
-interface Movable {
+public interface Movable {
     void move(int x, int y);
 }
 
 // A class can implement multiple interfaces
-class Circle implements Drawable, Movable {
+public class Circle implements Drawable, Movable {
     private String color;
     private int x, y;
     
@@ -131,19 +136,19 @@ class Circle implements Drawable, Movable {
 
 2. **You need multiple inheritance**
 ```java
-interface Flyable {
+public interface Flyable {
     void fly();
 }
 
-interface Swimmable {
+public interface Swimmable {
     void swim();
 }
 
-interface Walkable {
+public interface Walkable {
     void walk();
 }
 
-class Duck implements Flyable, Swimmable, Walkable {
+public class Duck implements Flyable, Swimmable, Walkable {
     @Override
     public void fly() {
         System.out.println("Duck is flying");
@@ -163,12 +168,12 @@ class Duck implements Flyable, Swimmable, Walkable {
 
 3. **You want loose coupling**
 ```java
-interface PaymentProcessor {
+public interface PaymentProcessor {
     boolean processPayment(double amount);
     String getPaymentMethod();
 }
 
-class CreditCardProcessor implements PaymentProcessor {
+public class CreditCardProcessor implements PaymentProcessor {
     @Override
     public boolean processPayment(double amount) {
         // Credit card processing logic
@@ -181,7 +186,7 @@ class CreditCardProcessor implements PaymentProcessor {
     }
 }
 
-class PayPalProcessor implements PaymentProcessor {
+public class PayPalProcessor implements PaymentProcessor {
     @Override
     public boolean processPayment(double amount) {
         // PayPal processing logic
@@ -195,7 +200,7 @@ class PayPalProcessor implements PaymentProcessor {
 }
 
 // The Order class depends on the interface, not concrete implementations
-class Order {
+public class Order {
     private PaymentProcessor processor;
     
     public Order(PaymentProcessor processor) {
@@ -208,152 +213,16 @@ class Order {
 }
 ```
 
-## Real-World Example: Shape System
 
-### Using Abstract Classes
-```java
-abstract class Shape {
-    protected double x, y;
-    protected String color;
-    
-    public Shape(double x, double y, String color) {
-        this.x = x;
-        this.y = y;
-        this.color = color;
-    }
-    
-    // Common implementation
-    public void move(double newX, double newY) {
-        this.x = newX;
-        this.y = newY;
-    }
-    
-    // Abstract methods - must be implemented
-    public abstract double getArea();
-    public abstract double getPerimeter();
-}
+## Why not both?
 
-class Circle extends Shape {
-    private double radius;
-    
-    public Circle(double x, double y, String color, double radius) {
-        super(x, y, color);
-        this.radius = radius;
-    }
-    
-    @Override
-    public double getArea() {
-        return Math.PI * radius * radius;
-    }
-    
-    @Override
-    public double getPerimeter() {
-        return 2 * Math.PI * radius;
-    }
-}
-```
-
-### Using Interfaces
-```java
-interface Drawable {
-    void draw();
-    void setColor(String color);
-}
-
-interface Movable {
-    void move(double x, double y);
-}
-
-interface Resizable {
-    void resize(double factor);
-}
-
-class Circle implements Drawable, Movable, Resizable {
-    private double x, y, radius;
-    private String color;
-    
-    @Override
-    public void draw() {
-        System.out.println("Drawing circle at (" + x + ", " + y + ")");
-    }
-    
-    @Override
-    public void setColor(String color) {
-        this.color = color;
-    }
-    
-    @Override
-    public void move(double x, double y) {
-        this.x = x;
-        this.y = y;
-    }
-    
-    @Override
-    public void resize(double factor) {
-        this.radius *= factor;
-    }
-}
-```
-
-## Hybrid Approach: Abstract Class + Interface
-
-Often, the best design combines both:
+You can actually have a class, which both extends a class and implements an interface. It looks like below, first the inheritance is declared, then the interfaces.
 
 ```java
-// Interface for the contract
-interface Drawable {
-    void draw();
-    void setColor(String color);
-}
-
-// Abstract class for common implementation
-abstract class Shape implements Drawable {
-    protected double x, y;
-    protected String color;
-    
-    public Shape(double x, double y, String color) {
-        this.x = x;
-        this.y = y;
-        this.color = color;
-    }
-    
-    // Common implementation
-    public void move(double newX, double newY) {
-        this.x = newX;
-        this.y = newY;
-    }
-    
-    // Abstract methods
-    public abstract double getArea();
-    public abstract double getPerimeter();
-}
-
-class Circle extends Shape {
-    private double radius;
-    
-    public Circle(double x, double y, String color, double radius) {
-        super(x, y, color);
-        this.radius = radius;
-    }
-    
+public class Duck extends Animal implements Flyable, Swimmable, Walkable {
     @Override
-    public void draw() {
-        System.out.println("Drawing circle at (" + x + ", " + y + ")");
-    }
-    
-    @Override
-    public void setColor(String color) {
-        this.color = color;
-    }
-    
-    @Override
-    public double getArea() {
-        return Math.PI * radius * radius;
-    }
-    
-    @Override
-    public double getPerimeter() {
-        return 2 * Math.PI * radius;
+    public void fly() {
+        System.out.println("Duck is flying");
     }
 }
 ```

@@ -2,30 +2,30 @@
 
 ## Understanding Interfaces
 
-An **interface** in Java is a reference type that defines a contract for classes to follow. Unlike abstract classes, interfaces cannot contain any implementation - they only define what methods a class must implement.
+An **interface** in Java is a reference type that defines a contract for classes to follow. Unlike abstract classes, interfaces cannot contain any implementation
+(not exact true, but this is how it _should_ be) - they only define what methods a class must implement.
 
 Think of an interface as a **contract** or **agreement** that specifies what a class must be able to do, without saying how it should do it.
-
 ## Key Characteristics of Interfaces
 
 ### 1. **No Implementation**
 Interfaces only contain method signatures - no method bodies:
 
 ```java
-interface Drawable {
-    void draw();
-    void setColor(String color);
-    double getArea();
+public interface Drawable {
+    public void draw();
+    public void setColor(String color);
+    public double getArea();
 }
 ```
 
 ### 2. **All Methods are Public and Abstract**
 By default, all methods in an interface are:
-- `public` - accessible from anywhere
+- `public` - accessible from anywhere, even if you omit the `public` keyword
 - `abstract` - must be implemented by implementing classes
 
 ```java
-interface Playable {
+public interface Playable {
     void play();        // Same as: public abstract void play();
     void pause();       // Same as: public abstract void pause();
     void stop();        // Same as: public abstract void stop();
@@ -33,10 +33,10 @@ interface Playable {
 ```
 
 ### 3. **No Constructors**
-Interfaces cannot have constructors because they cannot be instantiated:
+Interfaces cannot have constructors because they cannot be instantiated. You instantiate a concrete class, and can assign that to a variable of the interface type.
 
 ```java
-interface Shape {
+public interface Shape {
     // No constructors allowed
     double getArea();
     double getPerimeter();
@@ -44,50 +44,31 @@ interface Shape {
 ```
 
 ### 4. **No Instance Variables**
-Interfaces cannot have instance variables, only constants:
+Interfaces cannot have instance variables, so the follow is not allowed:
 
 ```java
-interface Constants {
+public interface Constants {
+    protected int x;
+}
+```
+
+Only constants are allowed. This means if you declare a field variable, you must assign it a value, and that value cannot be changed.
+
+```java
+public interface Constants {
     int MAX_SIZE = 100;        // Same as: public static final int MAX_SIZE = 100;
     String DEFAULT_NAME = "Unknown";  // Same as: public static final String DEFAULT_NAME = "Unknown";
 }
 ```
 
-## Interface vs Abstract Class
-
-### Abstract Class
-```java
-abstract class Animal {
-    protected String name;  // Can have fields
-    
-    public Animal(String name) {  // Can have constructors
-        this.name = name;
-    }
-    
-    public void eat() {  // Can have concrete methods
-        System.out.println(name + " is eating");
-    }
-    
-    public abstract void makeSound();  // Can have abstract methods
-}
-```
-
-### Interface
-```java
-interface Animal {
-    // No fields allowed (except constants)
-    // No constructors allowed
-    // No concrete methods allowed
-    
-    void makeSound();  // Only abstract methods
-    void move();
-    void eat();
-}
-```
-
 ## Real-World Example: Media Player
 
+This is a real-world example of an interface. It declares the contract, but we then have multiple implementations of that contract. One is a music player, and the other is a video player. They can perform the same operations, but do it differently.
+
 ### Interface Definition
+
+First, the definition of what a media player can do, as an interface.
+
 ```java
 interface MediaPlayer {
     void play();
@@ -100,6 +81,13 @@ interface MediaPlayer {
 ```
 
 ### Multiple Implementations
+
+Then, we have multiple implementations of that interface. One is a music player, and the other is a video player. They can perform the same operations, but do it differently.
+
+Notice we use the `implements` keyword to implement the interface. This is similar to the `extends` keyword we used for inheritance.\
+A class _extends_ another class.\
+A class _implements_ interface(s).
+
 ```java
 class MusicPlayer implements MediaPlayer {
     private String currentSong;
@@ -134,7 +122,11 @@ class MusicPlayer implements MediaPlayer {
         return currentSong;
     }
 }
+```
 
+and here is the implementation of the video player.
+
+```java
 class VideoPlayer implements MediaPlayer {
     private String currentVideo;
     
@@ -169,141 +161,3 @@ class VideoPlayer implements MediaPlayer {
     }
 }
 ```
-
-## Interface Constants
-
-Interfaces can contain constants, which are implicitly `public static final`:
-
-```java
-interface MathConstants {
-    double PI = 3.14159;
-    double E = 2.71828;
-    int MAX_ITERATIONS = 1000;
-}
-
-class Calculator implements MathConstants {
-    public double calculateCircleArea(double radius) {
-        return PI * radius * radius;  // Using interface constant
-    }
-}
-```
-
-## Why Use Interfaces?
-
-### 1. **Multiple Inheritance**
-A class can implement multiple interfaces:
-
-```java
-interface Flyable {
-    void fly();
-}
-
-interface Swimmable {
-    void swim();
-}
-
-class Duck implements Flyable, Swimmable {
-    @Override
-    public void fly() {
-        System.out.println("Duck is flying");
-    }
-    
-    @Override
-    public void swim() {
-        System.out.println("Duck is swimming");
-    }
-}
-```
-
-### 2. **Loose Coupling**
-Code depends on interfaces, not concrete classes:
-
-```java
-class MediaController {
-    private MediaPlayer player;  // Depends on interface, not specific implementation
-    
-    public MediaController(MediaPlayer player) {
-        this.player = player;
-    }
-    
-    public void playMedia() {
-        player.play();  // Works with any MediaPlayer implementation
-    }
-}
-```
-
-### 3. **Polymorphism**
-Different implementations can be treated uniformly:
-
-```java
-MediaPlayer[] players = {
-    new MusicPlayer(),
-    new VideoPlayer(),
-    new AudioBookPlayer()
-};
-
-for (MediaPlayer player : players) {
-    player.play();  // Each plays differently, but same interface
-}
-```
-
-## Common Interface Patterns
-
-### 1. **Capability Interfaces**
-Interfaces that define what an object can do:
-
-```java
-interface Drawable {
-    void draw();
-}
-
-interface Movable {
-    void move(int x, int y);
-}
-
-interface Resizable {
-    void resize(double factor);
-}
-```
-
-### 2. **Service Interfaces**
-Interfaces that define services:
-
-```java
-interface DatabaseService {
-    void save(Object data);
-    Object load(String id);
-    void delete(String id);
-}
-
-interface EmailService {
-    void sendEmail(String to, String subject, String body);
-    void sendBulkEmail(String[] recipients, String subject, String body);
-}
-```
-
-### 3. **Listener Interfaces**
-Interfaces for event handling:
-
-```java
-interface ButtonClickListener {
-    void onClick();
-}
-
-interface MouseListener {
-    void onMouseMove(int x, int y);
-    void onMouseClick(int x, int y);
-}
-```
-
-## Summary
-
-Interfaces are powerful tools that:
-
-- **Define contracts** without implementation
-- **Enable multiple inheritance** in Java
-- **Promote loose coupling** and flexibility
-- **Enable polymorphism** with different implementations
-- **Focus purely on what** a class must be able to do
-
-In the next article, we'll explore how interfaces compare to abstract classes and when to use each approach.

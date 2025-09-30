@@ -2,12 +2,21 @@
 
 ## Interface Declaration
 
-Creating an interface in Java is straightforward. You use the `interface` keyword followed by the interface name and a body containing method signatures.
+Creating an interface in Java is straightforward. You have a few options:
+
+1. Just create a class, like you have done many times before. Then change `class` to `interface`.
+2. When adding a new file, IntelliJ will ask you want type you want. Here you can select "interface".
+
+
+![Interface](Resources/CreateInterface.gif)
+
+
+You use the `interface` keyword followed by the interface name and a body containing method signatures.
 
 ## Basic Syntax
 
 ```java
-interface InterfaceName {
+public interface InterfaceName {
     // Method signatures (no implementation)
     returnType methodName(parameters);
     
@@ -19,7 +28,7 @@ interface InterfaceName {
 ## Simple Interface Example
 
 ```java
-interface Drawable {
+public interface Drawable {
     void draw();
     void setColor(String color);
     String getColor();
@@ -28,8 +37,10 @@ interface Drawable {
 
 ## Interface with Constants
 
+Again, remember that all these are actually public, both the fields and the methods.
+
 ```java
-interface MathConstants {
+public interface MathConstants {
     double PI = 3.14159;
     double E = 2.71828;
     int MAX_ITERATIONS = 1000;
@@ -41,21 +52,23 @@ interface MathConstants {
 
 ## Interface Naming Conventions
 
+There are a few recommendations for naming interfaces:
+
 ### 1. **Capability Interfaces** (What something can do)
 ```java
-interface Drawable {
+public interface Drawable {
     void draw();
 }
 
-interface Movable {
+public interface Movable {
     void move(int x, int y);
 }
 
-interface Resizable {
+public interface Resizable {
     void resize(double factor);
 }
 
-interface Playable {
+public interface Playable {
     void play();
     void pause();
     void stop();
@@ -64,18 +77,18 @@ interface Playable {
 
 ### 2. **Service Interfaces** (What services something provides)
 ```java
-interface DatabaseService {
+public interface DatabaseService {
     void save(Object data);
     Object load(String id);
     void delete(String id);
 }
 
-interface EmailService {
+public interface EmailService {
     void sendEmail(String to, String subject, String body);
     void sendBulkEmail(String[] recipients, String subject, String body);
 }
 
-interface PaymentService {
+public interface PaymentService {
     boolean processPayment(double amount);
     String getPaymentMethod();
 }
@@ -83,57 +96,19 @@ interface PaymentService {
 
 ### 3. **Listener Interfaces** (Event handling)
 ```java
-interface ButtonClickListener {
+public interface ButtonClickListener {
     void onClick();
 }
 
-interface MouseListener {
+public interface MouseListener {
     void onMouseMove(int x, int y);
     void onMouseClick(int x, int y);
     void onMouseDoubleClick(int x, int y);
 }
 
-interface KeyListener {
+public interface KeyListener {
     void onKeyPress(char key);
     void onKeyRelease(char key);
-}
-```
-
-## Interface Method Signatures
-
-### Basic Method Signatures
-```java
-interface Calculator {
-    // Simple methods
-    double add(double a, double b);
-    double subtract(double a, double b);
-    double multiply(double a, double b);
-    double divide(double a, double b);
-    
-    // Methods with parameters
-    void setPrecision(int decimalPlaces);
-    String formatResult(double result);
-    
-    // Methods with return types
-    boolean isValidInput(String input);
-    double[] getHistory();
-}
-```
-
-### Complex Method Signatures
-```java
-interface FileManager {
-    // Methods with arrays
-    String[] listFiles(String directory);
-    boolean[] deleteFiles(String[] filePaths);
-    
-    // Methods with objects
-    FileInfo getFileInfo(String filePath);
-    void setFilePermissions(String filePath, Permissions permissions);
-    
-    // Methods with generics (we'll cover this later)
-    List<String> readLines(String filePath);
-    void writeLines(String filePath, List<String> lines);
 }
 ```
 
@@ -142,7 +117,7 @@ interface FileManager {
 All variables in interfaces are implicitly `public static final`:
 
 ```java
-interface GameConstants {
+public interface GameConstants {
     // These are all public static final
     int MAX_PLAYERS = 4;
     int MIN_PLAYERS = 1;
@@ -156,99 +131,6 @@ interface GameConstants {
 }
 ```
 
-## Real-World Example: Media Player Interface
-
-```java
-interface MediaPlayer {
-    // Constants
-    int MAX_VOLUME = 100;
-    int MIN_VOLUME = 0;
-    String DEFAULT_FORMAT = "MP3";
-    
-    // Playback control
-    void play();
-    void pause();
-    void stop();
-    void next();
-    void previous();
-    
-    // Volume control
-    void setVolume(int volume);
-    int getVolume();
-    
-    // Track information
-    String getCurrentTrack();
-    int getCurrentPosition();
-    int getTotalDuration();
-    
-    // Playlist management
-    void addToPlaylist(String trackPath);
-    void removeFromPlaylist(String trackPath);
-    String[] getPlaylist();
-    
-    // Status information
-    boolean isPlaying();
-    boolean isPaused();
-    boolean isStopped();
-}
-```
-
-## Interface for Shape System
-
-```java
-interface Drawable {
-    void draw();
-    void setColor(String color);
-    String getColor();
-}
-
-interface Movable {
-    void move(double x, double y);
-    double getX();
-    double getY();
-}
-
-interface Resizable {
-    void resize(double factor);
-    void setSize(double width, double height);
-    double getWidth();
-    double getHeight();
-}
-
-interface Rotatable {
-    void rotate(double angle);
-    double getRotation();
-    void setRotation(double angle);
-}
-```
-
-## Interface for Animal System
-
-```java
-interface Flyable {
-    void fly();
-    boolean canFly();
-    double getMaxAltitude();
-}
-
-interface Swimmable {
-    void swim();
-    boolean canSwim();
-    double getMaxDepth();
-}
-
-interface Walkable {
-    void walk();
-    boolean canWalk();
-    double getMaxSpeed();
-}
-
-interface Eatable {
-    void eat(String food);
-    boolean isHungry();
-    void setHungry(boolean hungry);
-}
-```
 
 ## Interface Documentation
 
