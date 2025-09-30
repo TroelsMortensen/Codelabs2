@@ -38,7 +38,7 @@ public partial class Article : ComponentBase
     {
         stepIndex += step;
         currentPage = null;
-        await Task.Delay(1);
+        await Task.Delay(1); // gives time to rerender page, with no content, so this causes a scroll to top, when the page is changed
         currentPage = pages[stepIndex];
     }
 
