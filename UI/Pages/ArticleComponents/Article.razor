@@ -40,7 +40,7 @@ else
         <div class="page-card">
             <ArticleButtons StepIndex="stepIndex" MaxSteps="(pages.Count - 1)" OnChangePage="ChangePage" />
             <div class="article-content-container">
-                @currentPage.Html
+                @currentPage?.Html
             </div>
             <ArticleButtons StepIndex="stepIndex" MaxSteps="(pages.Count - 1)" OnChangePage="ChangePage" />
         </div>

@@ -18,7 +18,7 @@ public partial class Article : ComponentBase
 
     private List<ArticlePage> pages = new();
     private int stepIndex = 0;
-    private ArticlePage currentPage = null!;
+    private ArticlePage? currentPage = null!;
     private bool isDropdownVisible = false;
 
     protected override async Task OnInitializedAsync()
@@ -34,10 +34,11 @@ public partial class Article : ComponentBase
                 ? pageNumber - 1
                 : 0;
 
-
-    private void ChangePage(int step)
+    private async Task ChangePage(int step)
     {
         stepIndex += step;
+        currentPage = null;
+        await Task.Delay(1);
         currentPage = pages[stepIndex];
     }
 
