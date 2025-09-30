@@ -13,9 +13,9 @@ Interfaces are shown as rectangles with the `<<interface>>` stereotype:
 classDiagram
     class Drawable {
         <<interface>>
-        + draw() void
-        + setColor(color : String) void
-        + getColor() String
+        _+ draw() void_
+        _+ setColor(color : String) void_
+        _+ getColor() String_
     }
 ```
 
@@ -72,9 +72,9 @@ If a class associates the interface, that class is drawn above or next to the in
 classDiagram
     class Drawable {
         <<interface>>
-        + draw() void
-        + setColor(color : String) void
-        + getColor() String
+        _+ draw() void_
+        _+ setColor(color : String) void_
+        _+ getColor() String_
     }
 
     class PaintApp{
@@ -84,3 +84,27 @@ classDiagram
     PaintApp --> Drawable
     Drawable <|.. Square
 ```
+
+## Only some methods are shown
+
+When dealing with abstract super classes, and subclasses, it was not necessary to repeat all the inherited methods in the subclass. That would just be redundant. 
+
+We do the same for interfaces. If a method is declared on the interface, there is no need to also show it in the class that implements the interface.
+
+Like this:
+
+```mermaid
+classDiagram
+    class SomeInterface {
+        <<interface>>
+        _+ doSomething() void_
+    }
+
+    class SomeClass {
+        + otherMethod() void
+    }
+
+    SomeInterface <|.. SomeClass
+```
+
+The `SomeClass` class has two methods now, one declared only on the class, and another one declared on the interface, but then implemented on the class.

@@ -8,93 +8,96 @@ An interface can extend multiple interfaces.
 classDiagram
     class Drawable {
         <<interface>>
-        + draw() void
-        + setColor(color : String) void
+        _+ draw() void_
+        _+ setColor(color : String) void_
     }
 
     
     class Shape {
         <<interface>>
-        + getArea() double
-        + getPerimeter() double
+        _+ getArea() double_
+        _+ getPerimeter() double_
     }
     
     class DrawableShape {
         <<interface>>
-        + draw() void
-        + setColor(color : String) void
-        + getArea() double
-        + getPerimeter() double
+        _+ draw() void_
+        _+ setColor(color : String) void_
+        _+ getArea() double_
+        _+ getPerimeter() double_
     }
 
     
-    Drawable <|.. DrawableShape
-    Shape <|.. DrawableShape
-    DrawableShape <|-- Square
+    Drawable <|-- DrawableShape
+    Shape <|-- DrawableShape
+    DrawableShape <|.. Square
 ```
 
 ## Complex Interface Hierarchy
 
 Interfaces generally specify what a class must/can do, or what a class _is_. So in order to collect multiple behaviours, a class can implement multiple interfaces.
 
+In the below example, all methods are repeated for clarity, but in practice, you would not repeat the methods in subclasses or sub
+interfaces.
+
 ### Multiple Interface Inheritance
 ```mermaid
 classDiagram
     class Flyable {
         <<interface>>
-        + fly() void
-        + canFly() boolean
+        _+ fly() void_
+        _+ canFly() boolean_
     }
     
     class Swimmable {
         <<interface>>
-        + swim() void
-        + canSwim() boolean
+        _+ swim() void_
+        _+ canSwim() boolean_
     }
     
     class Walkable {
         <<interface>>
-        + walk() void
-        + canWalk() boolean
+        _+ walk() void_
+        _+ canWalk() boolean_
     }
     
     class Animal {
         <<interface>>
-        + eat() void
-        + sleep() void
-        + makeSound() void
+        _+ eat() void_
+        _+ sleep() void_
+        _+ makeSound() void_
     }
     
     class FlyingAnimal {
         <<interface>>
-        + fly() void
-        + canFly() boolean
-        + eat() void
-        + sleep() void
-        + makeSound() void
-        + getMaxAltitude() double
-        + land() void
+        _+ fly() void_
+        _+ canFly() boolean_
+        _+ eat() void_
+        _+ sleep() void_
+        _+ makeSound() void_
+        _+ getMaxAltitude() double_
+        _+ land() void_
     }
     
     class AmphibiousAnimal {
         <<interface>>
-        + fly() void
-        + canFly() boolean
-        + swim() void
-        + canSwim() boolean
-        + walk() void
-        + canWalk() boolean
-        + eat() void
-        + sleep() void
-        + makeSound() void
-        + getMaxAltitude() double
-        + land() void
-        + getMaxDepth() double
-        + surface() void
-        + getMaxSpeed() double
-        + run() void
-        + migrate() void
-        + getHabitat() String
+        _+ fly() void_  
+        _+ canFly() boolean_
+        _+ swim() void_
+        _+ canSwim() boolean_
+        _+ walk() void_
+        _+ canWalk() boolean_
+        _+ eat() void_
+        _+ sleep() void_
+        _+ makeSound() void_
+        _+ getMaxAltitude() double_
+        _+ land() void_
+        _+ getMaxDepth() double_
+        _+ surface() void_
+        _+ getMaxSpeed() double_
+        _+ run() void_
+        _+ migrate() void_
+        _+ getHabitat() String_
     }
     
     Animal <|-- FlyingAnimal

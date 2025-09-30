@@ -9,22 +9,22 @@ A class can implement multiple interfaces.
 classDiagram
     class Drawable {
         <<interface>>
-        + draw() void
-        + setColor(color : String) void
+        _+ draw() void_
+        _+ setColor(color : String) void_
     }
     
     class Movable {
         <<interface>>
-        + move(x : double, y : double) void
-        + getX() double
-        + getY() double
+        _+ move(x : double, y : double) void_
+        _+ getX() double_
+        _+ getY() double_
     }
     
     class Resizable {
         <<interface>>
-        + resize(factor : double) void
-        + getWidth() double
-        + getHeight() double
+        _+ resize(factor : double) void_
+        _+ getWidth() double_
+        _+ getHeight() double_
     }
     
     class Circle {
