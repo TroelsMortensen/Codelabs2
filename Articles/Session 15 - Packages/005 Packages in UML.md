@@ -5,7 +5,7 @@
 UML (Unified Modeling Language) provides specific notation to represent packages and their relationships. 
 
 
-![](Resources/Packages.png)
+![asdf](Resources/Packages.png)
 
 In the above diagram, we see three packages: MyApp, UI, and Data. The latter two are nested inside the MyApp package.
 
