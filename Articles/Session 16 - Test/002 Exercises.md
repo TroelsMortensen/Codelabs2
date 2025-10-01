@@ -25,6 +25,7 @@ Implement the following UML class diagram in Java.
 classDiagram
     class FootballClub {
         - name : String
+        - players : ArrayList~FootballPlayer~
         + FootballClub(name : String)
         + signPlayer(player : FootballPlayer, fieldPosition : String, number : int) void
         + trainGoalkeepers() void
@@ -54,7 +55,7 @@ classDiagram
         + toString() String
     }
     
-    FootballClub o--> FootballPlayer
+    FootballClub o--> "*" FootballPlayer
 ```
 
 Also, include a class with a main method to test the functionality.
@@ -65,3 +66,4 @@ Implement the following UML class diagram in Java.
 
 ![Tv Series](Resources/TvSeries.png)
 
+And then the main method to test the functionality.

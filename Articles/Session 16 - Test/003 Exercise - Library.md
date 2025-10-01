@@ -90,12 +90,6 @@ classDiagram
             + RegularMember(memberId : String, name : String)
         }
         
-        class PremiumMember {
-            - joinDate : LocalDate
-            + PremiumMember(memberId : String, name : String, joinDate : LocalDate)
-            + getJoinDate() LocalDate
-        }
-        
         class StudentMember {
             - studentId : String
             - school : String
@@ -129,11 +123,10 @@ classDiagram
     _LibraryItem_ <|-- DVD
     _LibraryItem_ <|-- Magazine
     _Member_ <|-- RegularMember
-    _Member_ <|-- PremiumMember
     _Member_ <|-- StudentMember
     Library o--> _LibraryItem_
-    Library --> _Member_
-    _LibraryItem_ --> _Member_
+    Library -->  _Member_
+    _LibraryItem_ --> "..1" _Member_
     LibraryTester --> Library
 ```
 

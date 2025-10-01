@@ -22,7 +22,6 @@ classDiagram
         - email : String
         - joinDate : LocalDate
         - isActive : boolean
-        - bookings : ArrayList~Booking~
         + Member(memberId : String, name : String, email : String, joinDate : LocalDate)
         + getMemberId() String
         + getName() String
@@ -30,8 +29,6 @@ classDiagram
         + getJoinDate() LocalDate
         + isActive() boolean
         + setActive(active : boolean) void
-        + addBooking(booking : Booking) void
-        + getBookings() ArrayList~Booking~
         + getMonthlyFee()* double
         + getMaxClassesPerWeek()* int
         + canAccessClass(fitnessClass : FitnessClass)* boolean
@@ -42,10 +39,6 @@ classDiagram
     
     class BasicMember {
         + BasicMember(memberId : String, name : String, email : String, joinDate : LocalDate)
-        + getMonthlyFee() double
-        + getMaxClassesPerWeek() int
-        + canAccessClass(fitnessClass : FitnessClass) boolean
-        + getMembershipType() String
     }
     
     class PremiumMember {
@@ -53,23 +46,6 @@ classDiagram
         + PremiumMember(memberId : String, name : String, email : String, joinDate : LocalDate)
         + getPersonalTrainerSessions() int
         + usePersonalTrainerSession() void
-        + getMonthlyFee() double
-        + getMaxClassesPerWeek() int
-        + canAccessClass(fitnessClass : FitnessClass) boolean
-        + getMembershipType() String
-    }
-    
-    class VIPMember {
-        - guestPassesRemaining : int
-        - hasLockerAccess : boolean
-        + VIPMember(memberId : String, name : String, email : String, joinDate : LocalDate)
-        + getGuestPassesRemaining() int
-        + useGuestPass() boolean
-        + hasLockerAccess() boolean
-        + getMonthlyFee() double
-        + getMaxClassesPerWeek() int
-        + canAccessClass(fitnessClass : FitnessClass) boolean
-        + getMembershipType() String
     }
     
     class _FitnessClass_ {
@@ -77,15 +53,17 @@ classDiagram
         - classId : String
         - className : String
         - trainer : Trainer
-        - schedule : ClassSchedule
+        - dayOfWeek : String
+        - startTime : String
         - maxCapacity : int
         - currentParticipants : ArrayList~Member~
         - requiredLevel : String
-        + FitnessClass(classId : String, className : String, trainer : Trainer, schedule : ClassSchedule, maxCapacity : int, requiredLevel : String)
+        + FitnessClass(classId : String, className : String, trainer : Trainer, dayOfWeek : String, startTime : String, maxCapacity : int, requiredLevel : String)
         + getClassId() String
         + getClassName() String
         + getTrainer() Trainer
-        + getSchedule() ClassSchedule
+        + getDayOfWeek() String
+        + getStartTime() String
         + getMaxCapacity() int
         + getCurrentParticipants() ArrayList~Member~
         + getRequiredLevel() String
@@ -103,49 +81,17 @@ classDiagram
     class YogaClass {
         - yogaStyle : String
         - requiresMat : boolean
-        + YogaClass(classId : String, className : String, trainer : Trainer, schedule : ClassSchedule, maxCapacity : int, yogaStyle : String, requiresMat : boolean)
+        + YogaClass(classId : String, className : String, trainer : Trainer, dayOfWeek : String, startTime : String, maxCapacity : int, yogaStyle : String, requiresMat : boolean)
         + getYogaStyle() String
         + requiresMat() boolean
-        + getDuration() int
-        + getIntensityLevel() String
-        + getClassType() String
-        + getCaloriesBurnedEstimate() int
     }
     
     class SpinningClass {
         - bikeType : String
         - musicGenre : String
-        + SpinningClass(classId : String, className : String, trainer : Trainer, schedule : ClassSchedule, maxCapacity : int, bikeType : String, musicGenre : String)
+        + SpinningClass(classId : String, className : String, trainer : Trainer, dayOfWeek : String, startTime : String, maxCapacity : int, bikeType : String, musicGenre : String)
         + getBikeType() String
         + getMusicGenre() String
-        + getDuration() int
-        + getIntensityLevel() String
-        + getClassType() String
-        + getCaloriesBurnedEstimate() int
-    }
-    
-    class CrossFitClass {
-        - workoutOfDay : String
-        - equipmentNeeded : String
-        + CrossFitClass(classId : String, className : String, trainer : Trainer, schedule : ClassSchedule, maxCapacity : int, workoutOfDay : String, equipmentNeeded : String)
-        + getWorkoutOfDay() String
-        + getEquipmentNeeded() String
-        + getDuration() int
-        + getIntensityLevel() String
-        + getClassType() String
-        + getCaloriesBurnedEstimate() int
-    }
-    
-    class SwimmingClass {
-        - poolLane : int
-        - skillLevel : String
-        + SwimmingClass(classId : String, className : String, trainer : Trainer, schedule : ClassSchedule, maxCapacity : int, poolLane : int, skillLevel : String)
-        + getPoolLane() int
-        + getSkillLevel() String
-        + getDuration() int
-        + getIntensityLevel() String
-        + getClassType() String
-        + getCaloriesBurnedEstimate() int
     }
     
     class Trainer {
@@ -166,48 +112,16 @@ classDiagram
         + toString() String
     }
     
-    class ClassSchedule {
-        - dayOfWeek : String
-        - startTime : String
-        - duration : int
-        + ClassSchedule(dayOfWeek : String, startTime : String, duration : int)
-        + getDayOfWeek() String
-        + getStartTime() String
-        + getDuration() int
-        + getEndTime() String
-        + conflictsWith(other : ClassSchedule) boolean
-        + toString() String
-    }
-    
-    class Booking {
-        - bookingId : String
-        - member : Member
-        - fitnessClass : FitnessClass
-        - bookingDate : LocalDate
-        - attended : boolean
-        + Booking(bookingId : String, member : Member, fitnessClass : FitnessClass, bookingDate : LocalDate)
-        + getBookingId() String
-        + getMember() Member
-        + getFitnessClass() FitnessClass
-        + getBookingDate() LocalDate
-        + hasAttended() boolean
-        + markAttended() void
-        + cancel() void
-        + toString() String
-    }
-    
     class FitnessCenter {
         - centerName : String
         - members : ArrayList~Member~
         - classes : ArrayList~FitnessClass~
         - trainers : ArrayList~Trainer~
-        - bookings : ArrayList~Booking~
         + FitnessCenter(centerName : String)
         + getCenterName() String
         + addMember(member : Member) void
         + addClass(fitnessClass : FitnessClass) void
         + addTrainer(trainer : Trainer) void
-        + addBooking(booking : Booking) void
         + getMembers() ArrayList~Member~
         + getClasses() ArrayList~FitnessClass~
         + getTrainers() ArrayList~Trainer~
@@ -225,22 +139,13 @@ classDiagram
     
     _Member_ <|-- BasicMember
     _Member_ <|-- PremiumMember
-    _Member_ <|-- VIPMember
     _FitnessClass_ <|-- YogaClass
     _FitnessClass_ <|-- SpinningClass
-    _FitnessClass_ <|-- CrossFitClass
-    _FitnessClass_ <|-- SwimmingClass
     _FitnessClass_ --> Trainer
-    _FitnessClass_ --> ClassSchedule
-    _FitnessClass_ --> _Member_
-    Trainer --> _FitnessClass_
-    Booking --> _Member_
-    Booking --> _FitnessClass_
-    _Member_ --> Booking
+    _FitnessClass_ o--> _Member_
     FitnessCenter --> _Member_
     FitnessCenter --> _FitnessClass_
     FitnessCenter --> Trainer
-    FitnessCenter --> Booking
     FitnessTester --> FitnessCenter
 ```
 
@@ -256,7 +161,6 @@ The base class for all fitness center members.
 - `email` - Email address
 - `joinDate` - Date member joined
 - `isActive` - Whether membership is active
-- `bookings` - List of class bookings
 
 **Methods:**
 - `Member(memberId, name, email, joinDate)` - Constructor (sets isActive to true)
@@ -266,8 +170,6 @@ The base class for all fitness center members.
 - `getJoinDate()` - Returns join date
 - `isActive()` - Returns active status
 - `setActive(active)` - Sets active status
-- `addBooking(booking)` - Adds a booking to member's list
-- `getBookings()` - Returns list of bookings
 - `getMonthlyFee()` - Abstract method returning monthly membership fee
 - `getMaxClassesPerWeek()` - Abstract method returning max classes allowed per week
 - `canAccessClass(fitnessClass)` - Abstract method checking if member can access specific class
@@ -301,24 +203,6 @@ Mid-tier membership with additional benefits.
 - `getMaxClassesPerWeek()` - Returns 7
 - `canAccessClass(fitnessClass)` - Returns true for all class types except CrossFit
 - `getMembershipType()` - Returns "Premium"
-
-### Class: VIPMember extends Member
-
-Top-tier membership with full access and perks.
-
-**Fields:**
-- `guestPassesRemaining` - Number of guest passes (starts at 5 per month)
-- `hasLockerAccess` - Whether member has locker access (always true)
-
-**Methods:**
-- `VIPMember(memberId, name, email, joinDate)` - Constructor
-- `getGuestPassesRemaining()` - Returns remaining guest passes
-- `useGuestPass()` - Uses a guest pass if available, returns success
-- `hasLockerAccess()` - Returns true
-- `getMonthlyFee()` - Returns 99.99
-- `getMaxClassesPerWeek()` - Returns unlimited (represented as 999)
-- `canAccessClass(fitnessClass)` - Returns true for all class types
-- `getMembershipType()` - Returns "VIP"
 
 ### Abstract Class: FitnessClass
 
@@ -386,40 +270,6 @@ Indoor cycling class.
 - `getClassType()` - Returns "Spinning"
 - `getCaloriesBurnedEstimate()` - Returns 500
 
-### Class: CrossFitClass extends FitnessClass
-
-High-intensity CrossFit training.
-
-**Fields:**
-- `workoutOfDay` - Description of today's WOD
-- `equipmentNeeded` - Equipment required
-
-**Methods:**
-- `CrossFitClass(...)` - Constructor
-- `getWorkoutOfDay()` - Returns WOD
-- `getEquipmentNeeded()` - Returns equipment list
-- `getDuration()` - Returns 60
-- `getIntensityLevel()` - Returns "Extreme"
-- `getClassType()` - Returns "CrossFit"
-- `getCaloriesBurnedEstimate()` - Returns 700
-
-### Class: SwimmingClass extends FitnessClass
-
-Swimming instruction and exercise.
-
-**Fields:**
-- `poolLane` - Assigned pool lane number
-- `skillLevel` - Required skill level (beginner, intermediate, advanced)
-
-**Methods:**
-- `SwimmingClass(...)` - Constructor
-- `getPoolLane()` - Returns lane number
-- `getSkillLevel()` - Returns skill level
-- `getDuration()` - Returns 50
-- `getIntensityLevel()` - Returns "Medium"
-- `getClassType()` - Returns "Swimming"
-- `getCaloriesBurnedEstimate()` - Returns 400
-
 ### Class: Trainer
 
 Represents a fitness trainer.
@@ -442,46 +292,6 @@ Represents a fitness trainer.
 - `getAssignedClasses()` - Returns assigned classes
 - `getWeeklyClassCount()` - Returns total number of classes taught per week
 - `toString()` - Returns formatted trainer information
-
-### Class: ClassSchedule
-
-Represents a class schedule.
-
-**Fields:**
-- `dayOfWeek` - Day of week (Monday, Tuesday, etc.)
-- `startTime` - Start time (HH:MM format)
-- `duration` - Duration in minutes
-
-**Methods:**
-- `ClassSchedule(dayOfWeek, startTime, duration)` - Constructor
-- `getDayOfWeek()` - Returns day
-- `getStartTime()` - Returns start time
-- `getDuration()` - Returns duration
-- `getEndTime()` - Calculates and returns end time
-- `conflictsWith(other)` - Checks if this schedule conflicts with another
-- `toString()` - Returns formatted schedule
-
-### Class: Booking
-
-Represents a member's class booking.
-
-**Fields:**
-- `bookingId` - Unique booking identifier
-- `member` - The member who booked
-- `fitnessClass` - The booked class
-- `bookingDate` - Date of booking
-- `attended` - Whether member attended
-
-**Methods:**
-- `Booking(bookingId, member, fitnessClass, bookingDate)` - Constructor
-- `getBookingId()` - Returns booking ID
-- `getMember()` - Returns member
-- `getFitnessClass()` - Returns class
-- `getBookingDate()` - Returns booking date
-- `hasAttended()` - Returns attendance status
-- `markAttended()` - Marks booking as attended
-- `cancel()` - Cancels the booking (removes member from class)
-- `toString()` - Returns formatted booking information
 
 ### Class: FitnessCenter
 

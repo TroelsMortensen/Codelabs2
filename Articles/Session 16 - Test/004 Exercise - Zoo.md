@@ -15,116 +15,89 @@ This exercise focuses on:
 
 ```mermaid
 classDiagram
-    class _Animal_ {
-        <<abstract>>
-        - name : String
-        - age : int
-        - weight : double
-        - isHealthy : boolean
-        - enclosure : Enclosure
-        + Animal(name : String, age : int, weight : double)
-        + getName() String
-        + getAge() int
-        + getWeight() double
-        + isHealthy() boolean
-        + setHealthy(healthy : boolean) void
-        + getEnclosure() Enclosure
-        + assignToEnclosure(enclosure : Enclosure) void
-        + feed() void
-        + getDailyFoodAmount()* double
-        + getFoodType()* String
-        + getAnimalType()* String
-        + makeSound()* void
-        + toString() String
-    }
-    
-    class _Mammal_ {
-        <<abstract>>
-        - furColor : String
-        - bodyTemperature : double
-        + Mammal(name : String, age : int, weight : double, furColor : String)
-        + getFurColor() String
-        + getBodyTemperature() double
-        + setBodyTemperature(temp : double) void
-        + checkHealth() void
-    }
-    
-    class Lion {
-        - prideSize : int
-        + Lion(name : String, age : int, weight : double, furColor : String, prideSize : int)
-        + getPrideSize() int
-        + setPrideSize(size : int) void
-        + getDailyFoodAmount() double
-        + getFoodType() String
-        + getAnimalType() String
-        + makeSound() void
-        + toString() String
-    }
-    
-    class Elephant {
-        - tuskLength : double
-        + Elephant(name : String, age : int, weight : double, furColor : String, tuskLength : double)
-        + getTuskLength() double
-        + getDailyFoodAmount() double
-        + getFoodType() String
-        + getAnimalType() String
-        + makeSound() void
-        + toString() String
-    }
-    
-    class _Bird_ {
-        <<abstract>>
-        - wingspan : double
-        - canFly : boolean
-        + Bird(name : String, age : int, weight : double, wingspan : double, canFly : boolean)
-        + getWingspan() double
-        + canFly() boolean
-        + checkHealth() void
-    }
-    
-    class Eagle {
-        - maxAltitude : double
-        + Eagle(name : String, age : int, weight : double, wingspan : double, maxAltitude : double)
-        + getMaxAltitude() double
-        + getDailyFoodAmount() double
-        + getFoodType() String
-        + getAnimalType() String
-        + makeSound() void
-        + toString() String
-    }
-    
-    class Penguin {
-        - swimSpeed : double
-        + Penguin(name : String, age : int, weight : double, wingspan : double, swimSpeed : double)
-        + getSwimSpeed() double
-        + getDailyFoodAmount() double
-        + getFoodType() String
-        + getAnimalType() String
-        + makeSound() void
-        + toString() String
-    }
-    
-    class _Reptile_ {
-        <<abstract>>
-        - scaleType : String
-        - isColdBlooded : boolean
-        + Reptile(name : String, age : int, weight : double, scaleType : String)
-        + getScaleType() String
-        + isColdBlooded() boolean
-        + checkHealth() void
-    }
-    
-    class Snake {
-        - length : double
-        - isVenomous : boolean
-        + Snake(name : String, age : int, weight : double, scaleType : String, length : double, isVenomous : boolean)
-        + getLength() double
-        + isVenomous() boolean
-        + getDailyFoodAmount() double
-        + getFoodType() String
-        + getAnimalType() String
-        + makeSound() void
-        + toString() String
+    namespace animals {
+        class _Animal_ {
+            - name : String
+            - age : int
+            - weight : double
+            - isHealthy : boolean
+            + Animal(name : String, age : int, weight : double)
+            + getName() String
+            + getAge() int
+            + getWeight() double
+            + isHealthy() boolean
+            + setHealthy(healthy : boolean) void
+            + feed() void
+            + getDailyFoodAmount()* double
+            + getFoodType()* String
+            + getAnimalType()* String
+            + makeSound()* void
+            + toString() String
+        }
+        
+        class _Mammal_ {
+            <<abstract>>
+            - furColor : String
+            - bodyTemperature : double
+            + Mammal(name : String, age : int, weight : double, furColor : String)
+            + getFurColor() String
+            + getBodyTemperature() double
+            + setBodyTemperature(temp : double) void
+            + checkHealth() void
+        }
+        
+        class Lion {
+            - prideSize : int
+            + Lion(name : String, age : int, weight : double, furColor : String, prideSize : int)
+            + getPrideSize() int
+            + setPrideSize(size : int) void
+        }
+        
+        class Elephant {
+            - tuskLength : double
+            + Elephant(name : String, age : int, weight : double, furColor : String, tuskLength : double)
+            + getTuskLength() double
+        }
+        
+        class _Bird_ {
+            <<abstract>>
+            - wingspan : double
+            - canFly : boolean
+            + Bird(name : String, age : int, weight : double, wingspan : double, canFly : boolean)
+            + getWingspan() double
+            + canFly() boolean
+            + checkHealth() void
+        }
+        
+        class Eagle {
+            - maxAltitude : double
+            + Eagle(name : String, age : int, weight : double, wingspan : double, maxAltitude : double)
+            + getMaxAltitude() double
+        }
+        
+        class Penguin {
+            - swimSpeed : double
+            + Penguin(name : String, age : int, weight : double, wingspan : double, swimSpeed : double)
+            + getSwimSpeed() double
+        }
+        
+        class _Reptile_ {
+            <<abstract>>
+            - scaleType : String
+            - isColdBlooded : boolean
+            + Reptile(name : String, age : int, weight : double, scaleType : String)
+            + getScaleType() String
+            + isColdBlooded() boolean
+            + checkHealth() void
+        }
+        
+        class Snake {
+            - length : double
+            - isVenomous : boolean
+            + Snake(name : String, age : int, weight : double, scaleType : String, length : double, isVenomous : boolean)
+            + getLength() double
+            + isVenomous() boolean
+        }
     }
     
     class _Enclosure_ {
@@ -152,8 +125,6 @@ classDiagram
         + SavannaEnclosure(enclosureId : String, name : String, hasWaterHole : boolean, grassAreaSize : double)
         + hasWaterHole() boolean
         + getGrassAreaSize() double
-        + getMaxCapacity() int
-        + getEnclosureType() String
     }
     
     class AviaryEnclosure {
@@ -162,8 +133,6 @@ classDiagram
         + AviaryEnclosure(enclosureId : String, name : String, height : double, hasCoverTop : boolean)
         + getHeight() double
         + hasCoverTop() boolean
-        + getMaxCapacity() int
-        + getEnclosureType() String
     }
     
     class ReptileHouse {
@@ -174,8 +143,6 @@ classDiagram
         + setTemperature(temp : double) void
         + getHumidityLevel() int
         + setHumidityLevel(humidity : int) void
-        + getMaxCapacity() int
-        + getEnclosureType() String
     }
     
     class Zoo {
@@ -196,21 +163,21 @@ classDiagram
         + main(args : String[]) void
     }
     
-    _Animal_ <|-- _Mammal_
-    _Animal_ <|-- _Bird_
-    _Animal_ <|-- _Reptile_
-    _Mammal_ <|-- Lion
-    _Mammal_ <|-- Elephant
+
     _Bird_ <|-- Eagle
     _Bird_ <|-- Penguin
     _Reptile_ <|-- Snake
     _Enclosure_ <|-- SavannaEnclosure
     _Enclosure_ <|-- AviaryEnclosure
     _Enclosure_ <|-- ReptileHouse
-    _Animal_ --> _Enclosure_
-    _Enclosure_ --> _Animal_
-    Zoo --> _Enclosure_
+    _Enclosure_ o--> _Animal_
+    Zoo *--> _Enclosure_
     ZooTester --> Zoo
+    _Animal_ <|-- _Mammal_
+    _Animal_ <|-- _Bird_
+    _Animal_ <|-- _Reptile_
+    _Mammal_ <|-- Lion
+    _Mammal_ <|-- Elephant
 ```
 
 ## Class Descriptions
