@@ -13,122 +13,7 @@ This exercise focuses on:
 
 ## Class Diagram
 
-```mermaid
-classDiagram
-
-    namespace items {
-        class _LibraryItem_ {
-            - id : String
-            - title : String
-            - isAvailable : boolean
-            - borrowedBy : Member
-            - dueDate : LocalDate
-            + LibraryItem(id : String, title : String)
-            + getId() String
-            + getTitle() String
-            + isAvailable() boolean
-            + borrow(member : Member) boolean
-            + returnItem() void
-            + getDueDate() LocalDate
-            + isOverdue() boolean
-            + getBorrowingPeriodDays()* int
-            + getItemType()* String
-            + toString() String
-        }
-        
-        class Book {
-            - author : String
-            - isbn : String
-            - pageCount : int
-            + Book(id : String, title : String, author : String, isbn : String, pageCount : int)
-            + getAuthor() String
-            + getIsbn() String
-            + getPageCount() int
-        }
-        
-        class DVD {
-            - director : String
-            - duration : int
-            - genre : String
-            + DVD(id : String, title : String, director : String, duration : int, genre : String)
-            + getDirector() String
-            + getDuration() int
-            + getGenre() String
-        }
-        
-        class Magazine {
-            - issueNumber : int
-            - month : String
-            - year : int
-            + Magazine(id : String, title : String, issueNumber : int, month : String, year : int)
-            + getIssueNumber() int
-            + getMonth() String
-            + getYear() int
-        }
-    }
-
-    namespace members {
-        class _Member_ {
-            <<abstract>>
-            - memberId : String
-            - name : String
-            - borrowedItems : ArrayList~LibraryItem~
-            + Member(memberId : String, name : String)
-            + getMemberId() String
-            + getName() String
-            + getBorrowedItems() ArrayList~LibraryItem~
-            + borrowItem(item : LibraryItem) boolean
-            + returnItem(item : LibraryItem) void
-            + getMaxBorrowLimit()* int
-            + getMemberType()* String
-            + hasOverdueItems() boolean
-            + canBorrow() boolean
-            + toString() String
-        }
-        
-        class RegularMember {
-            + RegularMember(memberId : String, name : String)
-        }
-        
-        class StudentMember {
-            - studentId : String
-            - school : String
-            + StudentMember(memberId : String, name : String, studentId : String, school : String)
-            + getStudentId() String
-            + getSchool() String
-        }
-    }
-    
-    class Library {
-        - name : String
-        - items : ArrayList~LibraryItem~
-        - members : ArrayList~Member~
-        + Library(name : String)
-        + addItem(item : LibraryItem) void
-        + addMember(member : Member) void
-        + findItem(id : String) LibraryItem
-        + findMember(memberId : String) Member
-        + getAllItems() ArrayList~LibraryItem~
-        + getAllMembers() ArrayList~Member~
-        + getAvailableItems() ArrayList~LibraryItem~
-        + getOverdueItems() ArrayList~LibraryItem~
-        + showLibraryStatus() void
-    }
-    
-    class LibraryTester {
-        + main(args : String[]) void
-    }
-    
-    _LibraryItem_ <|-- Book
-    _LibraryItem_ <|-- DVD
-    _LibraryItem_ <|-- Magazine
-    _Member_ <|-- RegularMember
-    _Member_ <|-- StudentMember
-    Library o--> _LibraryItem_
-    Library -->  _Member_
-    _LibraryItem_ --> "..1" _Member_
-    LibraryTester --> Library
-```
+![class diagram](Resources/LibraryClassDiagram.svg)
 
 ## Hint: Working with LocalDate
 
@@ -176,7 +61,7 @@ public boolean isOverdue() {
 The base class for all library items.
 
 **Fields:**
-- `id` - Unique identifier for the item
+- `id` - Unique identifier for the item, how will you generate this?
 - `title` - Title of the item
 - `isAvailable` - Whether the item is currently available
 - `borrowedBy` - The member who currently has the item (null if available)
@@ -187,11 +72,11 @@ The base class for all library items.
 - `getId()` - Returns the item ID
 - `getTitle()` - Returns the item title
 - `isAvailable()` - Returns true if the item is available for borrowing
-- `borrow(member)` - Borrows the item to the given member, sets due date, returns success status
-- `returnItem()` - Returns the item, makes it available again
+- `borrow(member)` - Borrows the item to the given member, sets due date, returns success status. Remember to update the Member as well.
+- `returnItem()` - Returns the item, making it available again
 - `getDueDate()` - Returns the due date (or null if not borrowed)
 - `isOverdue()` - Returns true if the item is overdue (current date is after due date)
-- `getBorrowingPeriodDays()` - Abstract method that returns the borrowing period in days (implemented by subclasses)
+- `getBorrowingPeriodDays()` - Abstract method that returns the borrowing period in days (implemented by subclasses, different types of items have different borrowing periods)
 - `getItemType()` - Abstract method that returns the type of item (implemented by subclasses)
 - `toString()` - Returns a string representation of the item
 
@@ -262,12 +147,13 @@ The base class for all library members.
 - `Member(memberId, name)` - Constructor
 - `getMemberId()` - Returns the member ID
 - `getName()` - Returns the member name
+- `setName(name)` - Sets the member name
 - `getBorrowedItems()` - Returns the list of borrowed items
 - `borrowItem(item)` - Borrows an item if allowed, returns success status
 - `returnItem(item)` - Returns a borrowed item
 - `getMaxBorrowLimit()` - Abstract method that returns the maximum number of items this member can borrow
 - `getMemberType()` - Abstract method that returns the member type
-- `hasOverdueItems()` - Returns true if the member has any overdue items
+- `hasOverdueItems()` - Returns true if the member has any overdue items, i.e. in their `borrowedItems` list.
 - `canBorrow()` - Returns true if the member can borrow more items (hasn't reached limit and has no overdue items)
 - `toString()` - Returns formatted string with member details
 
@@ -279,19 +165,6 @@ Represents a regular library member.
 - `RegularMember(memberId, name)` - Constructor
 - `getMaxBorrowLimit()` - Returns 3 (regular members can borrow up to 3 items)
 - `getMemberType()` - Returns "Regular"
-
-### Class: PremiumMember extends Member
-
-Represents a premium library member with extended privileges.
-
-**Fields:**
-- `joinDate` - Date when the member joined as premium
-
-**Methods:**
-- `PremiumMember(memberId, name, joinDate)` - Constructor
-- `getJoinDate()` - Returns the join date
-- `getMaxBorrowLimit()` - Returns 7 (premium members can borrow up to 7 items)
-- `getMemberType()` - Returns "Premium"
 
 ### Class: StudentMember extends Member
 
@@ -324,10 +197,10 @@ Manages all library items and members.
 - `findItem(id)` - Finds and returns an item by ID (returns null if not found)
 - `findMember(memberId)` - Finds and returns a member by ID (returns null if not found)
 - `getAllItems()` - Returns all items in the library
-- `getAllMembers()` - Returns all members
 - `getAvailableItems()` - Returns only available items
 - `getOverdueItems()` - Returns items that are currently overdue
-- `showLibraryStatus()` - Prints a summary of the library status (total items, available items, total members, overdue items)
+- `getStudentMembers()` - Returns all student members
+- `showLibraryStatus()` - Prints a summary of the library status (total items, available items, total members, overdue items, etc)
 
 ### Class: LibraryTester
 
