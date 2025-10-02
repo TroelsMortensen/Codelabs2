@@ -13,6 +13,8 @@ This exercise focuses on:
 
 ## Class Diagram
 
+Please note the packages, and nested packages. You can right click the image, and "open in new tab" to view it better.
+
 ![class diagram](Resources/LibraryClassDiagram.svg)
 
 ## Hint: Working with LocalDate
