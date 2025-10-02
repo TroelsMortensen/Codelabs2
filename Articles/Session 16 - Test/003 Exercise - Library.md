@@ -204,7 +204,7 @@ Manages all library items and members.
 
 ### Class: LibraryTester
 
-Main testing class to demonstrate the library system.
+Main testing class to demonstrate the library system, by creating and interacting with various objects.
 
 **Methods:**
 - `main(args)` - Creates library, items, members, performs various operations (borrowing, returning, checking status), and displays results
@@ -215,7 +215,7 @@ The `LibraryTester` class should demonstrate:
 1. Creating a library with a name
 2. Creating various types of library items (books, DVDs, magazines)
 3. Adding items to the library
-4. Creating different types of members (regular, premium, student)
+4. Creating different types of members (regular, student)
 5. Adding members to the library
 6. Borrowing items (successful and unsuccessful attempts)
 7. Checking item availability
@@ -223,44 +223,6 @@ The `LibraryTester` class should demonstrate:
 9. Testing borrowing limits
 10. Testing overdue item detection
 11. Displaying library status
-
-## Expected Output Example
-
-```
-=== Library Management System ===
-
-Creating library: City Central Library
-
-Adding items to library...
-Added: Book - "The Great Gatsby" by F. Scott Fitzgerald
-Added: DVD - "Inception" directed by Christopher Nolan
-Added: Magazine - "National Geographic" Issue 5, May 2024
-
-Adding members...
-Added: Regular Member - John Doe (ID: M001)
-Added: Premium Member - Jane Smith (ID: M002)
-Added: Student Member - Alice Johnson (ID: M003)
-
-=== Testing Borrowing ===
-John Doe borrowed "The Great Gatsby" - Due: 2024-06-15
-Jane Smith borrowed "Inception" - Due: 2024-06-01
-Alice Johnson borrowed "National Geographic" - Due: 2024-06-08
-
-=== Library Status ===
-Library: City Central Library
-Total Items: 3
-Available Items: 0
-Total Members: 3
-Overdue Items: 0
-
-=== Testing Returns ===
-John Doe returned "The Great Gatsby"
-
-=== Final Library Status ===
-Available Items: 1
-```
-
-This exercise provides comprehensive practice with inheritance, abstract classes, and object modeling!
 
 
 ## Optional: CLI Application
