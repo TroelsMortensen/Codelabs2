@@ -13,7 +13,9 @@ This exercise focuses on:
 
 ## Class Diagram
 
-```mermaid
+You can right click the image, and "open in new tab" to view it better.
+
+![class diagram](Resources/ZooClassDiagram.svg)
 classDiagram
     namespace animals {
         class _Animal_ {
