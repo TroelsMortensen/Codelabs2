@@ -13,124 +13,7 @@ This exercise focuses on:
 
 ## Class Diagram
 
-```mermaid
-classDiagram
-    class _CelestialBody_ {
-        <<abstract>>
-        - name : String
-        - massKg : double
-        - radiusKm : double
-        - temperature : double
-        + CelestialBody(name : String, massKg : double, radiusKm : double, temperature : double)
-        + getName() String
-        + getMassKg() double
-        + getRadiusKm() double
-        + getTemperature() double
-        + getBodyType()* String
-        + calculateGravity() double
-        + calculateSurfaceArea() double
-        + toString() String
-    }
-    
-    class Star {
-        - luminosity : double
-        - spectralClass : String
-        - age : double
-        + Star(name : String, massKg : double, radiusKm : double, temperature : double, luminosity : double, spectralClass : String, age : double)
-        + getLuminosity() double
-        + getSpectralClass() String
-        + getAge() double
-        + shine() String
-    }
-    
-    class Planet {
-        - orbitingStar : Star
-        - distanceFromStarAU : double
-        - orbitalPeriodDays : double
-        - hasAtmosphere : boolean
-        - numberOfMoons : int
-        + Planet(name : String, massKg : double, radiusKm : double, temperature : double, orbitingStar : Star, distanceFromStarAU : double, orbitalPeriodDays : double, hasAtmosphere : boolean)
-        + getOrbitingStar() Star
-        + getDistanceFromStarAU() double
-        + getOrbitalPeriodDays() double
-        + hasAtmosphere() boolean
-        + getNumberOfMoons() int
-        + setNumberOfMoons(count : int) void
-        + isHabitable() boolean
-    }
-    
-    class Moon {
-        - orbitingPlanet : Planet
-        - distanceFromPlanetKm : double
-        - orbitalPeriodDays : double
-        - tidallyLocked : boolean
-        + Moon(name : String, massKg : double, radiusKm : double, temperature : double, orbitingPlanet : Planet, distanceFromPlanetKm : double, orbitalPeriodDays : double, tidallyLocked : boolean)
-        + getOrbitingPlanet() Planet
-        + getDistanceFromPlanetKm() double
-        + getOrbitalPeriodDays() double
-        + isTidallyLocked() boolean
-    }
-    
-    class Comet {
-        - orbitingStar : Star
-        - perihelionAU : double
-        - aphelionAU : double
-        - orbitalPeriodYears : double
-        - tailLength : double
-        + Comet(name : String, massKg : double, radiusKm : double, temperature : double, orbitingStar : Star, perihelionAU : double, aphelionAU : double, orbitalPeriodYears : double)
-        + getOrbitingStar() Star
-        + getPerihelionAU() double
-        + getAphelionAU() double
-        + getOrbitalPeriodYears() double
-        + getTailLength() double
-        + calculateTailLength() double
-        + isActive() boolean
-    }
-    
-    class StarSystem {
-        - systemName : String
-        - bodies : ArrayList~CelestialBody~
-        + StarSystem(systemName : String)
-        + getSystemName() String
-        + addBody(body : CelestialBody) void
-        + getBodies() ArrayList~CelestialBody~
-        + getCentralStar() Star
-        + getPlanets() ArrayList~Planet~
-        + getComets() ArrayList~Comet~
-        + getMoons() ArrayList~Moon~
-        + getTotalPlanets() int
-        + getTotalMoons() int
-        + findBody(name : String) CelestialBody
-        + showSystemInfo() void
-    }
-    
-    class Galaxy {
-        - galaxyName : String
-        - galaxyType : String
-        - starSystems : ArrayList~StarSystem~
-        + Galaxy(galaxyName : String, galaxyType : String)
-        + getGalaxyName() String
-        + getGalaxyType() String
-        + addStarSystem(system : StarSystem) void
-        + getStarSystems() ArrayList~StarSystem~
-        + getTotalStars() int
-        + getTotalPlanets() int
-        + findStarSystem(name : String) StarSystem
-        + showGalaxyInfo() void
-    }
-    
-    class SolarSystemTester {
-        + main(args : String[]) void
-    }
-    
-    _CelestialBody_ <|-- Star
-    _CelestialBody_ <|-- Planet
-    _CelestialBody_ <|-- Moon
-    _CelestialBody_ <|-- Comet
-    StarSystem o--> _CelestialBody_
-    Galaxy *--> StarSystem
-    SolarSystemTester --> Galaxy
-```
+![class diagram](Resources/SolarSystemClassDiagram.svg)
 
 ## Class Descriptions
 
@@ -146,31 +29,33 @@ The base class for all celestial bodies.
 
 **Methods:**
 - `CelestialBody(name, massKg, radiusKm, temperature)` - Constructor
-- `getName()` - Returns the name
-- `getMassKg()` - Returns the mass
-- `getRadiusKm()` - Returns the radius
-- `getTemperature()` - Returns the temperature
-- `getBodyType()` - Abstract method returning the type of celestial body
-- `calculateGravity()` - Calculates surface gravity using the formula: G * mass / radius²
+- various getters
+- `calculateGravity()` - Calculates surface gravity using the formula: G * mass / radius², where G is the gravitational constant: 6.67430 × 10^-11, also known as the gravitational constant of universal gravitation. In decimal notation, this is 0.0000000000667430.
 - `calculateSurfaceArea()` - Calculates surface area: 4 * π * radius²
 - `toString()` - Returns formatted string with body details
+- _`getBodyType()`_ - Returns the type of celestial body, implemented by the subclasses.
 
 ### Class: Star extends CelestialBody
 
 Represents a star.
 
 **Fields:**
-- `luminosity` - Luminosity (brightness) relative to the Sun
-- `spectralClass` - Spectral classification (O, B, A, F, G, K, M)
-- `age` - Age in billions of years
+- `luminosity` - Luminosity (brightness) relative to the Sun, e.g. 1.0 for the Sun.
+- `spectralClass` - Spectral classification (O, B, A, F, G, K, M), more or less a classification of the star's color.
+- `age` - Age in billions of years, e.g. 4.6 billion years for the Sun.
 
 **Methods:**
 - `Star(name, massKg, radiusKm, temperature, luminosity, spectralClass, age)` - Constructor
-- `getLuminosity()` - Returns luminosity
-- `getSpectralClass()` - Returns spectral class
-- `getAge()` - Returns age
+- various getters
 - `getBodyType()` - Returns "Star"
-- `shine()` - Returns message about the star shining based on its spectral class
+- `shine()` - Returns message about the star shining based on its spectral class, e.g. "The star shines brightly in the sky." Or, "The star shines dimly in the sky." The classifications are:
+  - O: Blue-white
+  - B: Blue
+  - A: White-blue
+  - F: White
+  - G: Yellow-white
+  - K: Yellow
+  - M: Red
 - `toString()` - Returns formatted string with star details
 
 ### Class: Planet extends CelestialBody
