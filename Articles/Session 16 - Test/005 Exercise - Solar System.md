@@ -65,7 +65,7 @@ Represents a star.
   - A: White-blue
   - F: White
   - G: Yellow-white
-  - K: Yellow
+  - K: Orange
   - M: Red
 - `toString()` - Returns formatted string with star details
 
