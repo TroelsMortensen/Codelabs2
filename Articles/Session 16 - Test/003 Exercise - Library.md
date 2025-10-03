@@ -1,5 +1,7 @@
 # Exercise: Library Management System
 
+![image](Resources/library.png)
+
 ## Description
 
 Create a library management system that models different types of library items and library members. The system should handle borrowing and returning items, track due dates, and manage different member types with varying borrowing privileges.
@@ -10,6 +12,9 @@ This exercise focuses on:
 - Modeling real-world entities as objects
 - Managing relationships between objects (members borrowing items)
 - Calculating due dates and overdue status
+
+You may need to add further methods to the classes to complete parts of the exercise.
+
 
 ## Class Diagram
 

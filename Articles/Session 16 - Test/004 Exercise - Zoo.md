@@ -1,5 +1,7 @@
 # Exercise: Zoo Animal Management
 
+![image](Resources/zoo.png)
+
 ## Description
 
 Create a zoo management system that models different types of animals and their enclosures. The system should handle animal feeding, health tracking, and enclosure management. Different animal categories have unique characteristics, and different enclosure types have specific requirements.
@@ -9,6 +11,9 @@ This exercise focuses on:
 - Implementing multiple levels of inheritance (e.g. Animal → Mammal → Lion)
 - Modeling real-world entities with appropriate attributes
 - Managing relationships between animals and their enclosures
+
+You may need to add further methods to the classes to complete parts of the exercise.
+
 
 ## Class Diagram
 
