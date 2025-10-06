@@ -8,7 +8,7 @@ Create a `Wizard` class and a `Wand` class with a one-to-one association. The wi
 
 ### Requirements:
 - `Wand` class with properties: wood type, core material, and power level
-- `Wizard` class with properties: name and associated wand
+- `Wizard` class with properties: name and aggregated wand
 - Method for casting a spell, on the wizard. This method takes a spell name, and the required power level. Check if the wand's power level is sufficient to cast the spell. If it is, cast the spell, and print a message for the effect. If it is not, print some kind of error message.
 - Ability to change wands (showing loose coupling)
 
@@ -61,7 +61,7 @@ Wand changed! Gandalf now wields an Elder wand (Dragon heartstring core, Power: 
 ```
 
 ### Comment
-In this exercise, note that the wand is an object, and the wizard has a reference to it. This is a one-to-one association. It does not make sense for a wizard to have multiple wands, in this example. And each wand is wielded by one wizard at a time. We can change the wand, making this a loosly coupled relationship, and thereby an association.\
+In this exercise, note that the wand is an object, and the wizard has a reference to it. This is a one-to-one aggregation. It does not make sense for a wizard to have multiple wands, in this example. And each wand is wielded by one wizard at a time. We can change the wand, making this a loosly coupled relationship, and thereby an aggregation.\
 This is all _intent_ based. Nothing is stopping anyone from doing the following:
 
 ```java
