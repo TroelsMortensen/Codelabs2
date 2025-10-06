@@ -1,10 +1,12 @@
 # Composition Relationship
 
-**Composition** is a "part-of" relationship where one class contains another class as an essential component. The contained object cannot exist independently of the container - it's created, managed, and destroyed by the container. This represents the strongest form of relationship. 
+**Composition** is a "part-of" relationship where one class contains another class as an essential component. The contained object cannot exist independently of the container object - it's created, managed, and destroyed by the container. This represents the strongest form of relationship. 
 
-Let's assume class `A` contains class `B`, A --> B. When this is a composition, it means only A _knows_ about the instance of B. No other class knows about the instance of B. When A is destroyed, B is also destroyed.
+Let's assume class `A` contains class `B`, A ➜ B. When this is a composition, it means only A _knows_ about the instance of B. No other class knows about the instance of B. When A is destroyed, B is also destroyed.
 
 Again, we can use the parent-child terminology to describe this relationship. A is the parent, and B is the child. The child in this case cannot exist without the parent.
+
+
 
 ## Key Characteristics
 
@@ -15,7 +17,8 @@ Again, we can use the parent-child terminology to describe this relationship. A 
 
 ## How Composition Works in Java
 
-Composition is implemented through:
+Composition is generally implemented through (but there can be other ways):
+
 - **Instance variables** that hold references to other objects, so, similar to association and aggregation, but with stronger ownership.
 - **Constructor creation** of contained objects within the container
 - **Private access** to prevent external modification
@@ -61,7 +64,7 @@ Notice how the constructor instantiates the `Room` objects.
 
 **Version 1**
 
-```java	
+```java{11-12}
 public class House 
 {
     private String address;

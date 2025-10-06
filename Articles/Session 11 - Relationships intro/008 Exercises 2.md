@@ -70,4 +70,4 @@ Wizard wizard = new Wizard("Gandalf", wand);
 Wizard wizard2 = new Wizard("Saruman", wand);
 ```
 
-But when the UML shows aggregation, the intent is that the above should not be done. It is not allowed. So, it's more like a guide line.
+But when the UML shows aggregation, the intent is that the above should not be done. It is not allowed. So, it's more like a guide line, for fellow developers.
