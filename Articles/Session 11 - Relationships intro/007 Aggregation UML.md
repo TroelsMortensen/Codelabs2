@@ -27,4 +27,4 @@ classDiagram
 ```
 
 Notice the empty diamond is at the "owner" side, and the open arrow head is at the "owned" side.
-Here, Car knows about Engine, but Engine does not know about Car.
+Here, Car knows about Engine, but Engine does not know about Car. Notice also the field variable `engine` in the Car class.

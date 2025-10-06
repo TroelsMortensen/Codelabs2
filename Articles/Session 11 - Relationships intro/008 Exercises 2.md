@@ -49,7 +49,7 @@ classDiagram
     WoodType : YEW
     
     
-    Wizard --> Wand 
+    Wizard o--> Wand 
     Wand --> WoodType
 ```
 

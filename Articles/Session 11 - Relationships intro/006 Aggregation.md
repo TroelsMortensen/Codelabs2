@@ -133,7 +133,7 @@ public Car(String make, String model, Engine engine)
 }
 ```
 
-But, given that the `Engine` is created elsewhere, nothing is stopping you from giving that `Engine` instance to another `Car` object. Like this:
+But, given that the `Engine` is created elsewhere, e.g. some main method, nothing is stopping you from giving that `Engine` instance to another `Car` object. Like this:
 
 ```java
 public class CarTest {
@@ -147,4 +147,4 @@ public class CarTest {
 
 And now we are back to this being an association. There are various hacks to make it more difficult to violate the aggregation, but it is still possible.
 
-So, the association is conceptual, but does not affect your code. And it is therefore rarely used in UML diagrams.
+So, the association is conceptual, but does not really affect your code. And it is therefore rarely used.
