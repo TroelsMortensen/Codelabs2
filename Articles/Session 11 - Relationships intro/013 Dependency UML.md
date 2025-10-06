@@ -8,6 +8,7 @@ For example:
 
 ```mermaid
 classDiagram
+    direction LR
     classA ..> classB
 ```
 
@@ -15,11 +16,8 @@ The direction of the arrowhead is important. It _starts_ at the class that depen
 
 This means `classA` depends on `classB`, but `classB` does not know about `classA`.
 
-## Complete Dependency Examples
 
-Here are the three main types of dependency relationships:
-
-### 1. Dependency through Method Parameters
+### Dependency through Method Parameters
 
 ```mermaid
 classDiagram

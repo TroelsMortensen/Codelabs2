@@ -39,7 +39,7 @@ This is the simplest way to implement the copy functionality. We add a copy cons
 
 Notice in the copy constructor, we are receiving a `Room` object as a parameter, called `other`. On the `other` object, we are accessing the fields of the `Room` object.\
 
-```java
+```java{16-21}
 public class Room 
 {
     private String roomType;
@@ -75,7 +75,7 @@ public class Room
 ```
 
 And then the get-method on the `House` class. It returns a copy of its room, instead of the room instance itself.
-```java{15}
+```java{13-16}
 public class House 
 {
     private String address;
@@ -105,7 +105,7 @@ public class House
 
 This approach uses a custom method to create a copy of the child object.
 
-```java{17}
+```java{15-18}
 public class Room 
 {
     private String roomType;
@@ -139,7 +139,7 @@ public class Room
 
 And then the get-method on the `House` class. It returns a _copy_ of its room, instead of the room instance itself. This time using a copy method instead of a copy constructor.
 
-```java{15}
+```java{13-16}
 public class House 
 {
     private String address;

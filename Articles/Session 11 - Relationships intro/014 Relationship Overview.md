@@ -42,7 +42,7 @@ classDiagram
     G *--> H : composition
 ```
 
-- **Dependency** : A uses B temporarily, weakest relationship, we rarely and only selectively show this in diagrams.
+- **Dependency** : A uses B temporarily, weakest relationship, we rarely and only selectively show this in diagrams. Strictly, there is _not_ a field variable involved.
 - **Association** : C knows about D, basic relationship, we show this in diagrams.
 - **Aggregation** : E has F as a part, weak ownership, we show this in diagrams, though it rarely is relevant, as we cannot enforce it.
 - **Composition** : G owns H completely, strongest relationship, we show this in diagrams.

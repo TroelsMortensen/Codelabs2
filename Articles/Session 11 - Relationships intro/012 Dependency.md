@@ -15,7 +15,7 @@ This "knows" can be many things, for example:
 - having a constructor call to the other class
 - having a toString method call to the other class
 
-If you have a class, `Person`, and you in another class can search for the word "Person", and find it, there is probably a dependency.
+If you have a class, `Person`, and you in another class can search for the word "Person", and find it, there is probably a dependency, of some kind. All previous relationships are dependencies. But dependencies are the weakest relationship, and we always show the strongest relationship. So, dependencies are rarely used, and rarely shown in UML diagrams.
 
 ## Key Characteristics
 

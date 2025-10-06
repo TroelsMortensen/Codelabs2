@@ -77,6 +77,8 @@ classDiagram
 
 ### Example Usage
 
+Your main method could look like this, or use other ways to get the copies of the lyrics and duration.
+
 ```java
 Song mySong = new Song("Bohemian Rhapsody", "Queen", 
                       "Is this the real life? Is this just fantasy? Caught in a landslide, no escape from reality", 5, 55);

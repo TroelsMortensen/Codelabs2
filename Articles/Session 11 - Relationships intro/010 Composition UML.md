@@ -1,6 +1,6 @@
 # Composition in UML Diagrams
 
-In UML composition is represented by a solid line with a filled diamond at one end and an "open" arrowhead at the other end, connecting two classes. Notice how aggregation uses a not-filled diagmond.
+In UML composition is represented by a solid line with a **filled diamond** at one end and an "open" arrowhead at the other end, connecting two classes. Notice how aggregation uses a _not-filled diagmond_.
 
 
 For example, composition between House and Room, and aggregation between A and B:

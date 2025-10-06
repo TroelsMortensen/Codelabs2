@@ -70,6 +70,8 @@ The `FlyingCarpet` class has an **aggregation** relationship with `Racer` becaus
 
 ### Example Usage
 
+This code could be in a main method.
+
 ```java
 FlyingCarpet magicCarpet = new FlyingCarpet("Thunderbolt", "Silk", 95);
 Racer speedDemon = new Racer("Aria Windrider", 8);

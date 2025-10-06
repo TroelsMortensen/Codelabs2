@@ -105,7 +105,7 @@ Here is an updated example with an `addRoom` method
 
 **Version 2**
 
-```java
+```java{13-18}
 public class House 
 {
     private String address;
@@ -175,7 +175,7 @@ public class CompositionExample
 }
 ```
 
-**Version 3**
+
 
 Sometimes it is inconvenient to pass in all the information about the room to the house. If the room requires many parameters, the parameter list for the `addRoom` method can become too long.
 
@@ -195,6 +195,8 @@ How do we fix this? Another application of the copy method.
 The idea is that the house accepts a `Room` object as a parameter, and then creates a copy of the room object internally.
 
 Like this:
+
+**Version 3**
 
 ```java{15}
 public class House 
@@ -223,10 +225,12 @@ public class House
 
 The short version is that we can enforce composition through copying objects.
 
-In the following, parent class is `House`, and child class is `Room`. But I use "parent" and "child" terminology to describe the relationship more generally.
+In the above, parent class is `House`, and child class is `Room`. But I use "parent" and "child" terminology to describe the relationship more generally.
 
-1. The constructor on the parent class creates the child object.
-2. The constructor receives arguments, and uses them to create the child object.
+we can then handle composition in several ways:
+
+1. The constructor on the parent class _creates_ the child object.
+2. The _constructor receives arguments_, and uses them to create the child object.
 3. There is a method on the parent class, which:
    1. Receives the child object as a parameter. And creates a copy. Or,
    2. Receives relevant data so that the child can be created internally.
