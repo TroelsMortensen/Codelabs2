@@ -33,6 +33,8 @@ So, those points look a lot like association. The only difference is that the ow
 
 In this example, the `Car` class has an `Engine` object. The `Engine` object is a part of the `Car` object, but the `Engine` object can exist independently of the `Car` object. The `Engine` object is used by _only_ one `Car` object.
 
+First, the `Engine` class:
+
 ```java
 public class Engine 
 {
@@ -57,7 +59,12 @@ public class Engine
         return engineType + " engine, " + horsepower + " HP, " + fuelType;
     }
 }
+```
 
+And then the `Car` class. Notice the field variable `engine` is of type `Engine`, in line 5.\
+Further, there are methods to install and remove the engine.
+
+```java{5}
 public class Car 
 {
     private String make;

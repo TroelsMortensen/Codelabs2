@@ -10,6 +10,7 @@ For example:
 
 ```mermaid
 classDiagram
+    direction LR
     Person --> Address
 ```
 

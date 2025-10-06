@@ -17,6 +17,7 @@ Build a `Detective` class and a `Case` class where each detective works on one a
 
 ```mermaid
 classDiagram
+    direction LR
     class Detective {
         - name : String
         - badgeNumber : String

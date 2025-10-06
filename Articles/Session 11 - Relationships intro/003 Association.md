@@ -112,7 +112,7 @@ Notice the _type_ of the arrow, and that it is pointing from `Person` to `Addres
 Here is an example of how to use the `Person` and `Address` classes.
 Notice how the `Person` constructor receieves an `Address` object, in line 6.
 
-```java
+```java{6}
 public class AssociationExample 
 {
     public static void main(String[] args) 
