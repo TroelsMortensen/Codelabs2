@@ -1,6 +1,6 @@
 # One to many - Association
 
-For a quick recap, the association means that one object knows about another object. This is expressed through a field variable. Example:
+For a quick recap, the association means that one object knows about another object. Or now multiple other objects of the same type. This is expressed through a field variable. Example:
 
 ## Referencing one
 First, a quick recap of referencing one.
@@ -36,7 +36,7 @@ public class Address {
 
 ### UML, referencing one
 
-And the UML. Notice the arrow type and direction. 
+And the UML. Notice the arrow type and direction. Plus the field variable of type `Address` in the `Person` class.
 
 ```mermaid
 classDiagram
@@ -92,7 +92,7 @@ public class Player {
 
 ### UML, referencing many
 
-We use the association arrow again, and we add a star, `*`, at the arrow head. This indicates the SoccerTeam references many Players. We do not add a multiplicity on the start of the relationships, as we do not care how many teams a player plays for. In UML Class diagrams, we generally only add multiplicity on the end of the relationships, by the arrow head.
+We use the association arrow again, and we add a star, `*`, at the arrow head. This indicates the SoccerTeam references many Players. We do not add a multiplicity on the start of the relationships, as we do not care how many teams a player plays for. In UML _Class diagrams_, we generally only add multiplicity on the end of the relationships, by the arrow head.
 
 ```mermaid
 classDiagram

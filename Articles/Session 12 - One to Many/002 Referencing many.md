@@ -66,6 +66,6 @@ Aaaaaaand so on... You get the idea.
 
 When we need to model the real world in our software, we do so by creating objects, which represent real-world objects. And these objects are related to each other. We model these relationships in our code, by creating objects that reference other objects.
 
-You object model of the real world will then become this web of interconnected objects.
+Your object model of the real world will then become this web of interconnected objects. This is sometimes called a _graph_.
 
 So, we will see how to express this in UML, and then code.

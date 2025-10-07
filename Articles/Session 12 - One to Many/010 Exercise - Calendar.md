@@ -79,6 +79,8 @@ classDiagram
     CalendarTest ..> Contact
 ```
 
+We can discuss of it really is an aggregation from Calendar to Contact, given that a Meeting can also reference the same Contact objects. But, I still think there is a kind of strong ownership, as the Contact belongs to a specific Calendar. Furthermore, the Contact cannot really be transferred to another Calendar, which also goes against our current definition of aggregation. Hmm.. An interesting conundrum.
+
 ### Further details
 
 1. **Calendar Class**:

@@ -10,7 +10,7 @@ First, how does it look aggregating one other object?
 ### Code, referencing one
 
 Here we have a `Car` class, with an `Engine` object as a component. The `Engine` object is a component of the `Car` object, but it can exist independently. Only one engine per car. And one car per engine at a time. So, it is an aggregation.\
-As has been mentioned before, in actual code, an aggregation is difficult to actually enforce. 
+As has been mentioned before, in actual code, an aggregation is difficult to enforce. 
 
 ```java{4}
 public class Car {

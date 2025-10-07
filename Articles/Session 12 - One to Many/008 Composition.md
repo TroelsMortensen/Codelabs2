@@ -80,7 +80,7 @@ Now, we want to look at the composition, but referencing many. A flying carpet c
 
 Here is the `FlyingCarpet` class, with an ArrayList of `Enchantment` objects. We'll show three different approaches for adding enchantments:
 
-```java{13-16,19-24,27-29}
+```java{4,13-16,19-24,27-29}
 public class FlyingCarpet {
     private String carpetName;
     private String material;
@@ -158,9 +158,11 @@ public class House {
 }
 ```
 
-The above code creates a new ArrayList, and passes in the internal list, `rooms`, as a parameter.
-This will correctly create a copy of the list.\
-But is that enough?
+The above code creates _a new ArrayList_, and passes in the internal list, `rooms`, as a parameter.
+This will correctly create a copy of the list, with the same elements.\
+But is that enough? 
+
+>NO!
 
 The House has a reference to an ArrayList. And the ArrayList has references to multiple Room objects. The new ArrayList has references to the same Room objects.
 I try to illustrate here:
