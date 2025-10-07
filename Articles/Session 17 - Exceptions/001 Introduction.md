@@ -23,7 +23,7 @@ public class NullPointerDemo {
 **Run this program and observe what happens!**
 
 You should see something like:
-```
+```javastacktrace
 The name is: null
 Exception in thread "main" java.lang.NullPointerException
     at NullPointerDemo.main(NullPointerDemo.java:5)
@@ -48,7 +48,7 @@ public class ArrayBoundsDemo {
 **Run this program and observe what happens!**
 
 You should see something like:
-```
+```javastacktrace
 First number: 10
 Second number: 20
 Third number: 30
@@ -79,7 +79,7 @@ public class InputMismatchDemo {
 **Run this program and enter a letter (like 'a') instead of a number!**
 
 You should see something like:
-```
+```javastacktrace
 Please enter a number: a
 Exception in thread "main" java.util.InputMismatchException
     at java.base/java.util.Scanner.throwFor(Scanner.java:939)
