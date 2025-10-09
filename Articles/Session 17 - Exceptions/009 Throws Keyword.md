@@ -225,3 +225,52 @@ We could mark all methods along the way with the `throws` keyword, to push the c
 Instead, the checked exception is caught in the `DataManager` class, and then rethrown as a custom RuntimeException. This can skip over several classes and methods, and just be caught by the initial method in the GuiClass.
 
 The dotted line indicates the origin of the exception, and where it is caught.
+
+In _very_ simplified form, leaving out details, this is what you might see:
+
+```java{11,41}
+public class GuiClass
+{
+    public void onButtonClick()
+    {
+        try
+        {
+            controller.saveChanges();
+        }
+        catch (CustomException e)
+        {
+            showPopup("Error: " + e.getMessage());
+        }
+    }
+}
+
+public class Controller
+{
+    public void saveChanges()
+    {
+        service.updateOrderInformation();
+    }
+}
+
+public class Service
+{
+    public void updateOrderInformation()
+    {
+        dataManager.save();
+    }
+}
+
+public class DataManager
+{
+    public void save()
+    {
+        try{
+            writeDataToFile();
+        }
+        catch (IOException e)
+        {
+            throw new CustomException("Failed to save data", e);
+        }
+    }
+}
+```

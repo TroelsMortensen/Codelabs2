@@ -157,6 +157,20 @@ public class Calculator {
 }
 ```
 
+## Collapse catch blocks
+
+If you find, you have to catch multiple exceptions, but they are handled the same way, you can collapse them into a single catch block:
+
+```java
+try {
+    // Some code
+} catch (InputMismatchException | ArithmeticException | IllegalArgumentException e) {
+    // Handle all three exceptions the same way
+}
+```
+
+This means "catch either an `InputMismatchException`, an `ArithmeticException`, or an `IllegalArgumentException`, and handle them all the same way".
+
 
 ## Best Practices
 

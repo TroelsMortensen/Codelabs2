@@ -56,6 +56,8 @@ try {
 
 **Why**: Ignoring exceptions makes debugging nearly impossible and can lead to silent failures.
 
+I have spent unreasonable amounts of time helping students debug code, because something did not happen as expected, but no errors were shown in the console. They left a catch block empty, and just ignored the exception.
+
 ## 3. Provide Meaningful Error Messages
 
 ### ❌ Bad Practice
@@ -170,141 +172,13 @@ public void withdraw(double amount) throws InsufficientFundsException {
 
 **Why**: Specific exception types make error handling more precise and code more self-documenting.
 
-## 7. Log Exceptions Appropriately
-
-### ✅ Good Practice
-```java
-import java.util.logging.Logger;
-
-public class DataProcessor {
-    private static final Logger logger = Logger.getLogger(DataProcessor.class.getName());
-    
-    public void processData(String data) {
-        try {
-            validateData(data);
-            performProcessing(data);
-        } catch (ValidationException e) {
-            logger.warning("Data validation failed: " + e.getMessage());
-            throw e; // Re-throw for caller to handle
-        } catch (ProcessingException e) {
-            logger.severe("Processing failed: " + e.getMessage());
-            e.printStackTrace();
-            throw e;
-        }
-    }
-}
-```
-
-**Why**: Proper logging helps with debugging and monitoring application health.
-
-## 8. Handle Exceptions at the Right Level
-
-### ❌ Bad Practice
-```java
-public class UserService {
-    public void createUser(String name, String email) {
-        try {
-            validateEmail(email);
-            saveToDatabase(name, email);
-            sendWelcomeEmail(email);
-        } catch (Exception e) {
-            // Handling all exceptions at the lowest level
-            System.out.println("User creation failed");
-        }
-    }
-}
-```
-
-### ✅ Good Practice
-```java
-public class UserService {
-    public void createUser(String name, String email) throws UserCreationException {
-        try {
-            validateEmail(email);
-            saveToDatabase(name, email);
-            sendWelcomeEmail(email);
-        } catch (ValidationException e) {
-            throw new UserCreationException("Invalid user data", e);
-        } catch (DatabaseException e) {
-            throw new UserCreationException("Failed to save user", e);
-        } catch (EmailException e) {
-            // Email failure shouldn't prevent user creation
-            logger.warning("Failed to send welcome email: " + e.getMessage());
-        }
-    }
-}
-```
-
-**Why**: Handle exceptions at the level where you have the most context and can make the best decisions.
-
-## 9. Use Try-With-Resources for Automatic Cleanup
-
-### ❌ Bad Practice
-```java
-public void readFile(String filename) {
-    Scanner scanner = null;
-    try {
-        scanner = new Scanner(new File(filename));
-        // Process file
-    } catch (FileNotFoundException e) {
-        System.out.println("File not found");
-    } finally {
-        if (scanner != null) {
-            scanner.close();
-        }
-    }
-}
-```
-
-### ✅ Good Practice
-```java
-public void readFile(String filename) {
-    try (Scanner scanner = new Scanner(new File(filename))) {
-        // Process file
-        // Scanner is automatically closed when try block exits
-    } catch (FileNotFoundException e) {
-        System.out.println("File not found: " + e.getMessage());
-    }
-}
-```
-
-**Why**: Try-with-resources automatically handles resource cleanup, reducing boilerplate code and preventing resource leaks.
-
-## 10. Don't Use Exceptions for Control Flow
-
-### ❌ Bad Practice
-```java
-public boolean isUserValid(String userId) {
-    try {
-        findUser(userId);
-        return true;
-    } catch (UserNotFoundException e) {
-        return false;
-    }
-}
-```
-
-### ✅ Good Practice
-```java
-public boolean isUserValid(String userId) {
-    return findUser(userId) != null;
-}
-
-public User findUser(String userId) {
-    // Return null if not found, or use Optional<User>
-    return userRepository.findById(userId);
-}
-```
-
-**Why**: Exceptions should represent exceptional conditions, not normal program flow.
-
-## 11. Validate Input Early
+## 7. Validate Input Early
 
 ### ❌ Bad Practice
 ```java
 public void processUserData(String name, int age, String email) {
     // Process data first
-    saveToDatabase(name, age, email);
+    saveData(name, age, email);
     
     // Validate later (too late!)
     if (age < 0) {
@@ -328,13 +202,13 @@ public void processUserData(String name, int age, String email) {
     }
     
     // Process validated data
-    saveToDatabase(name, age, email);
+    saveData(name, age, email);
 }
 ```
 
 **Why**: Early validation prevents processing invalid data and provides faster feedback.
 
-## 12. Use Custom Exceptions for Business Logic
+## 8. Use Custom Exceptions for Business Logic
 
 ### ✅ Good Practice
 ```java
@@ -376,47 +250,3 @@ public void transferMoney(String fromAccount, String toAccount, double amount)
 ```
 
 **Why**: Custom exceptions make business logic errors explicit and easier to handle.
-
-## 13. Document Exception Behavior
-
-### ✅ Good Practice
-```java
-/**
- * Transfers money between two accounts.
- * 
- * @param fromAccount the source account ID
- * @param toAccount the destination account ID
- * @param amount the amount to transfer
- * @throws InsufficientFundsException if the source account has insufficient funds
- * @throws InvalidAccountException if either account ID is invalid
- * @throws IllegalArgumentException if the amount is negative or zero
- */
-public void transferMoney(String fromAccount, String toAccount, double amount) 
-        throws InsufficientFundsException, InvalidAccountException {
-    // Implementation
-}
-```
-
-**Why**: Documentation helps other developers understand what exceptions a method might throw and when.
-
-## Summary of Best Practices
-
-1. **Catch specific exceptions** rather than generic ones
-2. **Never ignore exceptions** - always handle them meaningfully
-3. **Provide detailed error messages** with context
-4. **Use finally blocks** for resource cleanup
-5. **Only catch what you can handle** - let others propagate
-6. **Use appropriate exception types** for different error conditions
-7. **Log exceptions** for debugging and monitoring
-8. **Handle exceptions at the right level** in your application
-9. **Use try-with-resources** for automatic cleanup
-10. **Don't use exceptions for control flow** - use return values instead
-11. **Validate input early** to prevent processing invalid data
-12. **Create custom exceptions** for business logic errors
-13. **Document exception behavior** in your method signatures
-
-Following these practices will make your code more robust, maintainable, and user-friendly!
-
-## What's Next?
-
-Now that you know the best practices, let's look at some common exception scenarios you'll encounter in real-world applications!

@@ -1,6 +1,6 @@
 # Creating Custom Exceptions
 
-While Java provides many built-in exceptions, sometimes you need to create your own custom exceptions to represent specific error conditions in your application. Custom exceptions make your code more readable and allow for more specific error handling.
+While Java provides many built-in exceptions, sometimes you need to create your own custom exceptions to represent specific error conditions in your application.Instead of using some of the more general purpose exceptions, with a not entirely clear purpose, you can create your own more specialized exceptions. Custom exceptions make your code more readable and allow for more specific error handling.
 
 ## Why Create Custom Exceptions?
 
@@ -18,7 +18,7 @@ They can represent business rule violations that are specific to your applicatio
 
 ## Basic Custom Exception
 
-The simplest custom exception extends `Exception`:
+The simplest custom exception extends `Exception`. Here we define an `InvalidAgeException` that extends `Exception`. It is used in the `AgeValidator` class.
 
 ```java
 // Custom exception class
@@ -53,7 +53,12 @@ public class AgeValidator {
 
 ## Checked vs Unchecked Custom Exceptions
 
+You can extend `Exception` to create a new checked exception. Or, you can extend `RuntimeException` to create a new unchecked exception.
+
 ### Checked Exception (extends Exception)
+
+Here is an example of a checked exception. It carries extra specific information about the error.
+
 ```java
 class InsufficientFundsException extends Exception {
     private double balance;
@@ -73,37 +78,12 @@ class InsufficientFundsException extends Exception {
         return requestedAmount;
     }
 }
-
-public class BankAccount {
-    private double balance;
-    
-    public BankAccount(double initialBalance) {
-        this.balance = initialBalance;
-    }
-    
-    public void withdraw(double amount) throws InsufficientFundsException {
-        if (amount > balance) {
-            throw new InsufficientFundsException(
-                "Insufficient funds", balance, amount);
-        }
-        balance -= amount;
-    }
-    
-    public static void main(String[] args) {
-        BankAccount account = new BankAccount(1000.0);
-        
-        try {
-            account.withdraw(1500.0); // This will throw InsufficientFundsException
-        } catch (InsufficientFundsException e) {
-            System.out.println("Withdrawal failed: " + e.getMessage());
-            System.out.println("Current balance: " + e.getBalance());
-            System.out.println("Requested amount: " + e.getRequestedAmount());
-        }
-    }
-}
 ```
 
 ### Unchecked Exception (extends RuntimeException)
+
+Here is an example of an unchecked exception, because it extends `RuntimeException`.
+
 ```java
 class InvalidPasswordException extends RuntimeException {
     private String password;
@@ -117,107 +97,13 @@ class InvalidPasswordException extends RuntimeException {
         return password;
     }
 }
-
-public class UserValidator {
-    public static void validatePassword(String password) {
-        if (password == null || password.length() < 8) {
-            throw new InvalidPasswordException(
-                "Password must be at least 8 characters long", password);
-        }
-        if (!password.matches(".*[0-9].*")) {
-            throw new InvalidPasswordException(
-                "Password must contain at least one number", password);
-        }
-        System.out.println("Password is valid.");
-    }
-    
-    public static void main(String[] args) {
-        try {
-            validatePassword("weak"); // This will throw InvalidPasswordException
-        } catch (InvalidPasswordException e) {
-            System.out.println("Password validation failed: " + e.getMessage());
-            System.out.println("Invalid password: " + e.getPassword());
-        }
-    }
-}
-```
-
-## Complex Custom Exception with Additional Data
-
-```java
-class StudentRegistrationException extends Exception {
-    private String studentId;
-    private String courseId;
-    private String reason;
-    
-    public StudentRegistrationException(String message, String studentId, 
-                                     String courseId, String reason) {
-        super(message);
-        this.studentId = studentId;
-        this.courseId = courseId;
-        this.reason = reason;
-    }
-    
-    public String getStudentId() {
-        return studentId;
-    }
-    
-    public String getCourseId() {
-        return courseId;
-    }
-    
-    public String getReason() {
-        return reason;
-    }
-    
-    @Override
-    public String toString() {
-        return String.format("StudentRegistrationException: %s (Student: %s, Course: %s, Reason: %s)",
-                           getMessage(), studentId, courseId, reason);
-    }
-}
-
-public class CourseRegistration {
-    public static void registerStudent(String studentId, String courseId, int credits) 
-            throws StudentRegistrationException {
-        
-        // Simulate various validation checks
-        if (studentId == null || studentId.trim().isEmpty()) {
-            throw new StudentRegistrationException(
-                "Invalid student ID", studentId, courseId, "Student ID is null or empty");
-        }
-        
-        if (credits > 18) {
-            throw new StudentRegistrationException(
-                "Too many credits", studentId, courseId, "Exceeds maximum credit limit of 18");
-        }
-        
-        if (courseId.equals("MATH101") && credits < 3) {
-            throw new StudentRegistrationException(
-                "Insufficient credits for course", studentId, courseId, 
-                "MATH101 requires at least 3 credits");
-        }
-        
-        System.out.println("Student " + studentId + " successfully registered for " + courseId);
-    }
-    
-    public static void main(String[] args) {
-        try {
-            registerStudent("S123", "MATH101", 2); // This will throw exception
-        } catch (StudentRegistrationException e) {
-            System.out.println("Registration failed:");
-            System.out.println("  Student: " + e.getStudentId());
-            System.out.println("  Course: " + e.getCourseId());
-            System.out.println("  Reason: " + e.getReason());
-            System.out.println("  Full details: " + e);
-        }
-    }
-}
-```
+``` 
 
 ## Exception Hierarchy Example
 
-You can create a hierarchy of custom exceptions:
+You can create a hierarchy of custom exceptions. Maybe you have superclasses like `ValidationException`, `BusinessRuleViolationException`, and `ResourceNotFoundException`. And then further subclasses like `InvalidEmailException`, `BadInputException`, and `ResourceNotFoundError`.
+
+
 
 ```java
 // Base exception for all banking operations
@@ -243,44 +129,6 @@ class InvalidAccountException extends BankingException {
 class TransactionLimitExceededException extends BankingException {
     public TransactionLimitExceededException(String message) {
         super(message);
-    }
-}
-
-public class BankingSystem {
-    public static void processTransaction(String accountId, double amount) 
-            throws BankingException {
-        
-        if (accountId == null || accountId.trim().isEmpty()) {
-            throw new InvalidAccountException("Account ID cannot be null or empty");
-        }
-        
-        if (amount > 10000) {
-            throw new TransactionLimitExceededException(
-                "Transaction amount exceeds daily limit: " + amount);
-        }
-        
-        // Simulate insufficient funds check
-        double balance = 5000.0; // Simulated balance
-        if (amount > balance) {
-            throw new InsufficientFundsException(
-                "Insufficient funds. Balance: " + balance + ", Requested: " + amount);
-        }
-        
-        System.out.println("Transaction processed successfully: " + amount);
-    }
-    
-    public static void main(String[] args) {
-        try {
-            processTransaction("ACC123", 15000.0); // This will throw TransactionLimitExceededException
-        } catch (InsufficientFundsException e) {
-            System.out.println("Insufficient funds: " + e.getMessage());
-        } catch (InvalidAccountException e) {
-            System.out.println("Invalid account: " + e.getMessage());
-        } catch (TransactionLimitExceededException e) {
-            System.out.println("Transaction limit exceeded: " + e.getMessage());
-        } catch (BankingException e) {
-            System.out.println("Banking error: " + e.getMessage());
-        }
     }
 }
 ```
@@ -338,8 +186,8 @@ Choose names that clearly indicate what went wrong:
 - `InvalidEmailException` ✓
 - `BadInputException` ✗ (too generic)
 
-### 6. **Document Your Exceptions**
-Use JavaDoc to document when and why exceptions are thrown:
+### 6. **Don't go overboard**
+You can quickly end up creating a lot of custom exceptions, and then you will find that all your subclasses of RuntimeException are handled exactly the same way. So, you might end up with a lot of code duplication. This serves no purpose.
 
 ```java
 /**
