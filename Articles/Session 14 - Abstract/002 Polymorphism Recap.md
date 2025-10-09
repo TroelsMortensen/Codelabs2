@@ -120,3 +120,10 @@ Polymorphism is powerful because it allows you to:
 2. **Add new types easily** - Without changing existing code
 3. **Maintain consistency** - All objects respond to the same interface
 4. **Enable code reuse** - Write once, use with many different objects
+
+
+## Video
+
+John here explains polymorphism:
+
+<video src="https://www.youtube.com/watch?v=jhDUxynEQRI"></video>

@@ -1,63 +1,57 @@
 # Types of Exceptions
 
-Java organizes exceptions in a hierarchy. Understanding this hierarchy is crucial for effective exception handling. Let's explore the different types of exceptions and how they're organized.
+Java organizes exceptions in a hierarchy, through inheritance. Understanding this hierarchy is important for effective exception handling. Let's explore the different types of exceptions and how they're organized.
 
 ## The Exception Hierarchy
+
+These are some of the more common exceptions. Though, there are many more.
 
 ```mermaid
 classDiagram
     class Throwable {
-        <<class>>
         +getMessage() String
         +printStackTrace() void
     }
     
     class Error {
-        <<class>>
     }
     
     class Exception {
-        <<class>>
     }
     
     class RuntimeException {
-        <<class>>
     }
     
     class IOException {
-        <<class>>
     }
     
     class NullPointerException {
-        <<class>>
     }
     
     class ArrayIndexOutOfBoundsException {
-        <<class>>
     }
     
     class IllegalArgumentException {
-        <<class>>
     }
     
     class FileNotFoundException {
-        <<class>>
     }
     
     class InputMismatchException {
-        <<class>>
     }
     
     Throwable <|-- Error
     Throwable <|-- Exception
     Exception <|-- RuntimeException
-    Exception <|-- IOException
     RuntimeException <|-- NullPointerException
     RuntimeException <|-- ArrayIndexOutOfBoundsException
     RuntimeException <|-- IllegalArgumentException
     RuntimeException <|-- InputMismatchException
+    Exception <|-- IOException
     IOException <|-- FileNotFoundException
 ```
+
+Notably, we have the `Exception`, and the `RuntimeException`. They divide the exceptions into two categories, with different rules for handling them. This is important to understand, and explained further below.
 
 ## Two Main Categories
 
@@ -67,43 +61,69 @@ classDiagram
 - **Examples**: `IOException`, `FileNotFoundException`, `SQLException`
 - **Purpose**: Expected problems that should be handled
 
+The compiler will enforce that you handle these exceptions, by checking if you have a catch block for them, or if you have declared them with `throws` in the method signature. See later pages for more details. You cannot run your program, if you have not handled these exceptions.
+
 ### 2. **Unchecked Exceptions** (Runtime Exceptions)
 - **Inherit from**: `RuntimeException`
 - **Rule**: Don't need to be caught or declared
 - **Examples**: `NullPointerException`, `ArrayIndexOutOfBoundsException`, `IllegalArgumentException`
 - **Purpose**: Programming errors that could be avoided
 
+The compiler will not enforce that you handle these exceptions, but your program may still throw them. You can handle them, but you are not forced to.
+
+_All_ exceptions should be handled. The main difference is _where_ they must be handled.
+
 ## Checked Exceptions
 
-### Characteristics
-- **Compile-time enforcement**: Java compiler requires you to handle them
-- **Expected problems**: Things that might reasonably go wrong
-- **Must be handled**: Either catch them or declare them with `throws`
+Let's try an example. 
 
-### Common Checked Exceptions
+You can make your program pause execution for a given time, using the `Thread.sleep(..)` method.
 
-#### IOException
 ```java
-// File operations
-File file = new File("data.txt");
-FileInputStream fis = new FileInputStream(file); // Must handle IOException
+Thread.sleep(1000);
 ```
 
-#### FileNotFoundException
+This will pause the program for 1 second.
+
+
+So, let's try and print out numbers from 0 to 10, with a pause of 1 second between each number.
+
 ```java
-// Specific type of IOException
-try {
-    Scanner scanner = new Scanner(new File("nonexistent.txt"));
-} catch (FileNotFoundException e) {
-    System.out.println("File not found!");
+for (int i = 0; i <= 10; i++) {
+    System.out.println(i);
+    Thread.sleep(1000);
 }
 ```
 
-#### SQLException
-```java
-// Database operations
-Connection conn = DriverManager.getConnection(url); // Must handle SQLException
+What happens if you paste this code into IntelliJ? Does it compile? No.
+
+Notice the red squiggly line under the `Thread.sleep(1000);` line. This indicates an error.
+
+When hovering your cursor over the `Thread.sleep(1000);` line, you will see the following error message:
+
 ```
+Unhandled exception: java.lang.InterruptedException
+```
+
+This is a `InterruptedException`. When pausing a program, the pause may be interrupted, and this causes this exception. We are forced to handle this potential problem.
+
+Update your code to catch the exception, though, we don't have to actually do anything with it.
+
+```java
+for (int i = 0; i <= 10; i++) {
+    System.out.println(i);
+    try
+    {
+        Thread.sleep(1000);
+    }
+    catch (InterruptedException e)
+    {
+        // handle exception here
+    }
+}
+```
+
+Now the method call, which may cause an exception, is inside the try-part of a try-catch block. If an exception occurs, the program execution will jump to the catch block, and continue from there.
 
 ## Unchecked Exceptions (Runtime Exceptions)
 
@@ -124,16 +144,6 @@ int length = name.length(); // Throws NullPointerException
 ```java
 int[] numbers = {1, 2, 3};
 int value = numbers[5]; // Throws ArrayIndexOutOfBoundsException
-```
-
-#### IllegalArgumentException
-```java
-public void setAge(int age) {
-    if (age < 0) {
-        throw new IllegalArgumentException("Age cannot be negative");
-    }
-    this.age = age;
-}
 ```
 
 #### InputMismatchException
@@ -180,35 +190,10 @@ public void processArray(int[] array, int index) {
 }
 ```
 
-## The `Error` Class
+## Nullpointer Exception
 
-Errors are serious problems that usually indicate system-level issues:
+These are suuuper common, so you should get intimitely familiar with them. 
 
-### Common Errors
-- **OutOfMemoryError**: Not enough memory
-- **StackOverflowError**: Too many method calls
-- **NoClassDefFoundError**: Class file missing
+You may learn more about them, by watching John's video on nullpointer exceptions:
 
-### Important Note
-**Never catch `Error` or its subclasses!** These indicate serious system problems that your program cannot recover from.
-
-```java
-// DON'T DO THIS!
-try {
-    // Some code
-} catch (Error e) {
-    // This is wrong - errors should not be caught
-}
-```
-
-## Summary
-
-| Type | Inheritance | Must Handle? | Purpose | Examples |
-|------|-------------|--------------|---------|----------|
-| **Checked** | `Exception` (not `RuntimeException`) | Yes | Expected problems | `IOException`, `FileNotFoundException` |
-| **Unchecked** | `RuntimeException` | No | Programming errors | `NullPointerException`, `ArrayIndexOutOfBoundsException` |
-| **Error** | `Error` | Never | System problems | `OutOfMemoryError`, `StackOverflowError` |
-
-## What's Next?
-
-Now that you understand the exception hierarchy, let's learn how to read and understand the stack traces that exceptions provide - this is crucial for debugging!
+<video src="https://www.youtube.com/watch?v=lm72_HCd17s"></video>

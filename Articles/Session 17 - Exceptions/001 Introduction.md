@@ -1,6 +1,8 @@
 # Introduction to Exceptions
 
-Welcome to the world of Java exceptions! Before we dive into how to handle them, let's first experience what happens when things go wrong in our programs. This hands-on introduction will show you exactly why exception handling is so important.
+Welcome to the world of Java exceptions! Before we dive into how to handle them, let's first experience what happens when things go wrong in our programs. You have probably already seen some errors before, but let's just revisit them. 
+
+We start with a hands-on introduction to show you exactly why exception handling is so important.
 
 ## What Happens When Things Go Wrong?
 
@@ -20,13 +22,15 @@ public class NullPointerDemo {
 }
 ```
 
+IntelliJ may even give you a squiggly yellow line under the `name.length()` line, indicating a potential problem. Mouse over it to see the error message.
+
 **Run this program and observe what happens!**
 
 You should see something like:
 ```javastacktrace
 The name is: null
-Exception in thread "main" java.lang.NullPointerException
-    at NullPointerDemo.main(NullPointerDemo.java:5)
+Exception in thread "main" java.lang.NullPointerException: Cannot invoke "String.length()" because "name" is null
+	at session17_exceptions.NullPointerDemo.main(NullPointerDemo.java:10)
 ```
 
 ### Example 2: The ArrayIndexOutOfBoundsException
@@ -45,6 +49,8 @@ public class ArrayBoundsDemo {
 }
 ```
 
+Again, notice the yellow squiggly line under the `numbers[3]` line, indicating a potential problem. Mouse over it to see the error message.
+
 **Run this program and observe what happens!**
 
 You should see something like:
@@ -53,14 +59,14 @@ First number: 10
 Second number: 20
 Third number: 30
 Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3
-    at ArrayBoundsDemo.main(ArrayBoundsDemo.java:7)
+    at ArrayBoundsDemo.main(ArrayBoundsDemo.java:10)
 ```
 
 ### Example 3: The InputMismatchException
 
-Let's try reading user input and see what happens when they don't give us what we expect:
+Let's try reading user input and see what happens when they don't give us what we expect. Notice we are reading an integer in line 8. What happens if we enter a letter instead of a number?
 
-```java
+```java{8}
 import java.util.Scanner;
 
 public class InputMismatchDemo {
@@ -79,30 +85,66 @@ public class InputMismatchDemo {
 **Run this program and enter a letter (like 'a') instead of a number!**
 
 You should see something like:
+
 ```javastacktrace
 Please enter a number: a
 Exception in thread "main" java.util.InputMismatchException
     at java.base/java.util.Scanner.throwFor(Scanner.java:939)
     at java.base/java.util.Scanner.next(Scanner.java:1594)
     at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
-    at InputMismatchDemo.main(InputMismatchDemo.java:7)
+    at InputMismatchDemo.main(InputMismatchDemo.java:11)
 ```
+
+Also notice, we do need see the last print-out of "You entered: 0". When an exception occurs, the program stops further execution.
 
 ## What Just Happened?
 
 In all three examples, our programs **crashed** with an **exception**. The program stopped running completely, and Java gave us an error message that tells us:
 
-1. **What went wrong** (the type of exception)
-2. **Where it happened** (the method and line number)
-3. **How we got there** (the call stack)
+1. **What went wrong** (the type of exception, e.g. `NullPointerException`, `ArrayIndexOutOfBoundsException`, `InputMismatchException`)
+2. **Where it happened** (the method and line number, e.g. `InputMismatchDemo.main(InputMismatchDemo.java:11)`)
+3. **How we got there** (the call stack, i.e. which methods were called at which lines to get to the exception)
+
+
+## Errors
+
+You will and probably have encountered exceptions. They happen regularly. But, there are also errors. These are more severe, and usually indicate serious problems.
+
+Try running the following code:
+
+```java
+public static void main(String[] args)
+{
+    recursionAllTheWayDown();
+}
+
+private static void recursionAllTheWayDown()
+{
+    recursionAllTheWayDown();
+}  
+```
+
+You will see something like this:
+
+```javastacktrace
+Exception in thread "main" java.lang.StackOverflowError
+    at session17_exceptions.RecursionDemo.recursionAllTheWayDown(RecursionDemo.java:19)
+    at session17_exceptions.RecursionDemo.recursionAllTheWayDown(RecursionDemo.java:19)
+    at session17_exceptions.RecursionDemo.recursionAllTheWayDown(RecursionDemo.java:19)
+    at session17_exceptions.RecursionDemo.recursionAllTheWayDown(RecursionDemo.java:19)
+    ...
+```
+
+This is a `StackOverflowError`. It happens with recursive methods, which call themselves over and over again, without stopping. Eventually the program crashes. 
+
 
 ## Why This Matters
 
 In real-world applications, we can't just let our programs crash whenever something unexpected happens. Imagine:
 
 - A banking application crashing every time someone enters invalid data
-- A game stopping completely when a player does something unexpected
-- A web application showing error pages to users instead of handling problems gracefully
+- A game stopping completely when a player does something unexpected (you have probably still encountered this)
+- A web application showing error pages to users instead of handling problems gracefully (this has never happened with my learning path web site!)
 
 ## What We'll Learn
 
@@ -113,9 +155,3 @@ In this session, you'll learn how to:
 - **Create your own custom exceptions** for specific situations
 - **Write robust code** that can deal with unexpected situations
 - **Follow best practices** for exception handling
-
-## The Goal
-
-By the end of this session, you'll be able to write programs that handle errors gracefully, provide meaningful feedback to users, and continue running even when things don't go as planned.
-
-Let's start by understanding what exceptions really are and how Java's exception system works!

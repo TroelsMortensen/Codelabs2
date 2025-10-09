@@ -42,3 +42,10 @@ For example, a "Cake Recipe" template might specify:
 - You must add sugar (abstract method)
 - You must bake at 350°F (concrete method)
 - But you can choose chocolate, vanilla, or strawberry (subclass choice)
+
+
+## Video
+
+This guys gives a brief overview of abstract classes in 7 minutes. We will then go into more detail in upcoming pages. He will talk about intefaces too, which we will cover next session.
+
+<video src="https://www.youtube.com/watch?v=HvPlEJ3LHgE"></video>

@@ -322,3 +322,10 @@ If your method can throw exceptions, document them in comments or method signatu
 ## What's Next?
 
 Now that you can throw exceptions, let's learn about the `throws` keyword, which allows you to declare that a method might throw certain exceptions!
+
+
+## Video
+
+John explains throwing exceptions in 15 minutes.
+
+<video src="https://www.youtube.com/watch?v=OIozDnGYqIU"></video>

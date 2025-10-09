@@ -1,6 +1,6 @@
 # Exception Stack Trace
 
-When an exception occurs, Java provides a **stack trace** - a detailed report showing exactly what happened and where. Understanding stack traces is essential for debugging your programs.
+When an exception occurs, Java provides a **stack trace** - a detailed report showing exactly what happened and where. Understanding stack traces is essential for debugging your programs, and fixing the problems. You must learn how to read the stack trace, find the message explaining what went wrong, and where the problem originated. This is a very important skill to have.
 
 ## What is a Stack Trace?
 
@@ -8,7 +8,7 @@ A stack trace is a list of method calls that led to the exception. It shows the 
 
 ## Anatomy of a Stack Trace
 
-Let's look at a real example:
+Let's look at a real example, run the following code in IntelliJ. You will get a null pointer exception.
 
 ```java
 public class StackTraceDemo {
@@ -38,54 +38,62 @@ public class StackTraceDemo {
 
 **Run this program and observe the stack trace:**
 
-```
+```javastacktrace
 Starting program...
 In methodA
 In methodB
 In methodC
-Exception in thread "main" java.lang.NullPointerException
-    at StackTraceDemo.methodC(StackTraceDemo.java:18)
-    at StackTraceDemo.methodB(StackTraceDemo.java:12)
-    at StackTraceDemo.methodA(StackTraceDemo.java:7)
-    at StackTraceDemo.main(StackTraceDemo.java:3)
+Exception in thread "main" java.lang.NullPointerException: Cannot invoke "String.length()" because "name" is null
+	at session17_exceptions.StackTraceDemo.methodC(StackTraceDemo.java:23)
+	at session17_exceptions.StackTraceDemo.methodB(StackTraceDemo.java:17)
+	at session17_exceptions.StackTraceDemo.methodA(StackTraceDemo.java:12)
+	at session17_exceptions.StackTraceDemo.main(StackTraceDemo.java:6)
 ```
+
 
 ## Reading the Stack Trace
 
 Let's break down each part:
 
 ### 1. **Exception Type and Message**
-```
+
+```javastacktrace
 Exception in thread "main" java.lang.NullPointerException
 ```
-- **Exception in thread "main"**: The exception occurred in the main thread
-- **java.lang.NullPointerException**: The type of exception that occurred
+
+- **Exception in thread "main"**: The exception occurred in the main thread. You don't know about threads yet, so this information is not important.
+- **java.lang.NullPointerException**: The type of exception that occurred. The type indicates what kind of problem occurred.
 
 ### 2. **The Call Stack** (Read from bottom to top)
-```
-    at StackTraceDemo.methodC(StackTraceDemo.java:18)  ← WHERE IT HAPPENED
-    at StackTraceDemo.methodB(StackTraceDemo.java:12)  ← WHO CALLED methodC
-    at StackTraceDemo.methodA(StackTraceDemo.java:7)   ← WHO CALLED methodB
-    at StackTraceDemo.main(StackTraceDemo.java:3)      ← WHO CALLED methodA
+
+```javastacktrace
+    at session17_exceptions.StackTraceDemo.methodC(StackTraceDemo.java:23)  ← WHERE IT HAPPENED
+    at session17_exceptions.StackTraceDemo.methodB(StackTraceDemo.java:17)  ← WHO CALLED methodC
+    at session17_exceptions.StackTraceDemo.methodA(StackTraceDemo.java:12)  ← WHO CALLED methodB
+    at session17_exceptions.StackTraceDemo.main(StackTraceDemo.java:6)      ← WHO CALLED methodA
 ```
 
 **Reading order**: Start from the **bottom** and work your way up to understand the call sequence.
 
+`main` called `methodA`, which called `methodB`, which called `methodC`. In line 23, inside `methodC`, the `name` variable is `null`, and you tried to call the `length` method on it. This is the problem.
+
+Notice you can click on the line number, and IntelliJ will jump to the code. So, you can easily trace through the code, and follow the execution path.
+
 ## Understanding Each Line
 
 Each line in the stack trace follows this format:
-```
+```javastacktrace
 at ClassName.methodName(FileName.java:lineNumber)
 ```
 
-- **ClassName**: The class where the method is defined
+- **ClassName**: The class where the method is defined. Notice the name is the _absolute_ name, i.e. including the package names
 - **methodName**: The method that was executing
 - **FileName.java**: The source file name
 - **lineNumber**: The exact line where the exception occurred
 
 ## More Complex Example
 
-Let's create a more realistic example with multiple classes:
+Let's create a more realistic example with multiple classes. Notice how the three classes below are in different files:
 
 ```java
 // File: Calculator.java
@@ -116,6 +124,8 @@ public class Main {
 }
 ```
 
+Copy the above code into IntelliJ, and run it. Currently, it should work fine.
+
 **What happens if we pass an empty array?** Let's modify the main method:
 
 ```java
@@ -126,48 +136,55 @@ public static void main(String[] args) {
 }
 ```
 
+You get an error. Do you know why?
+
 **Stack trace:**
-```
+
+```javastacktrace
 Exception in thread "main" java.lang.ArithmeticException: / by zero
-    at Calculator.divide(Calculator.java:3)
-    at MathHelper.calculateAverage(MathHelper.java:8)
-    at Main.main(Main.java:4)
+	at session17_exceptions.morecomplexexample.Calculator.divide(Calculator.java:6)
+	at session17_exceptions.morecomplexexample.MathHelper.calculateAverage(MathHelper.java:10)
+	at session17_exceptions.morecomplexexample.Main.main(Main.java:7)
 ```
+
+<hint title="Hint">
+
+The `divide` method is called, in class `Calculator`, and the `b` parameter is 0, because this is the length of the array. So, the division by zero occurs.
+
+</hint>
 
 ## Reading This Stack Trace
 
-1. **Bottom line**: `Main.main(Main.java:4)` - The program started in main method
-2. **Middle line**: `MathHelper.calculateAverage(MathHelper.java:8)` - main called calculateAverage
-3. **Top line**: `Calculator.divide(Calculator.java:3)` - calculateAverage called divide, and that's where the exception occurred
+1. **Bottom line**: `Main.main(Main.java:7)` - The program started in main method
+2. **Middle line**: `MathHelper.calculateAverage(MathHelper.java:10)` - main called calculateAverage
+3. **Top line**: `Calculator.divide(Calculator.java:6)` - calculateAverage called divide, and that's where the exception occurred
 
-## Common Stack Trace Patterns
+## Exceptions from _not_ your code
 
-### 1. **NullPointerException**
-```
-Exception in thread "main" java.lang.NullPointerException
-    at MyClass.processData(MyClass.java:25)
-    at MyClass.main(MyClass.java:10)
-```
-**What to look for**: Line 25 in MyClass.processData() - something is null
+Sometimes, you are using existing code. This happens all the time, for example when you are using an ArrayList, i.e. an existing class in Java.\
+And you may try to use this in an inappropriate way, which will cause an exception.\
+Now, part of the stack trace will involve _your_ code, and part of the stack trace will involve the _existing_ java code.\
+Generally, you can ignore the not-your-code part, and focus on your code.
 
-### 2. **ArrayIndexOutOfBoundsException**
-```
-Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 5 out of bounds for length 3
-    at MyClass.accessArray(MyClass.java:15)
-    at MyClass.main(MyClass.java:8)
-```
-**What to look for**: Line 15 in MyClass.accessArray() - trying to access index 5 in an array of size 3
+Take the following example:
 
-### 3. **FileNotFoundException**
+```java
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Hello");
+        list.get(1);
+    }
+}
 ```
-Exception in thread "main" java.io.FileNotFoundException: data.txt (The system cannot find the file specified)
-    at java.base/java.io.FileInputStream.open0(Native Method)
-    at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
-    at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
-    at MyClass.readFile(MyClass.java:12)
-    at MyClass.main(MyClass.java:6)
-```
-**What to look for**: The file "data.txt" doesn't exist
+
+I get this in the console: 
+
+![stacktrace](Resources/NotYourCode.png)
+
+Notice how some of the lines are blue, and some are grey. The blue is your code, and the grey is the code from the ArrayList class.
 
 ## Debugging Tips
 
@@ -205,7 +222,7 @@ public class PracticeStackTrace {
     
     public static void convertToNumber(String text) {
         System.out.println("Converting: " + text);
-        int number = Integer.parseInt(text); // This will fail!
+        int number = Integer.parseInt(text); 
         System.out.println("Converted to: " + number);
     }
 }

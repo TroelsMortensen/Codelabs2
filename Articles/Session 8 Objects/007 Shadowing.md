@@ -88,3 +88,10 @@ public class Person {
 ```
 
 This way, there is no shadowing, and you can directly assign the parameter to the field without confusion.
+
+
+## Want another explanation on `this`?
+
+John explains the `this` keyword in 8 minutes:
+
+<video src="https://www.youtube.com/watch?v=ETLHbHenW44"></video>

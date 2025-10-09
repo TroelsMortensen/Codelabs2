@@ -258,6 +258,10 @@ if (animal instanceof Dog) {
 
 If I try to cast an object to a type that it is not, I will get a `ClassCastException`.
 
+John explains casting in 8 minutes:
+
+<video src="https://www.youtube.com/watch?v=HpuH7n9VOYk"></video>
+
 ## Summary
 
 Polymorphism is a powerful feature that allows:

@@ -31,3 +31,10 @@ The following pages will introduce each type in detail, but for now, here is a b
 | `short`   | 16          | Small integer value, e.g., 1000      |
 | `long`    | 64          | Large integer value, e.g., 100000L   |  
 | `float`   | 32          | Single-precision floating-point, e.g., 3.14f |
+
+
+## Video
+
+John here explains the different data types in 10 minutes.
+
+<video src="https://www.youtube.com/watch?v=WQ7mvQFSmYc"></video>

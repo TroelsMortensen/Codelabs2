@@ -82,6 +82,12 @@ Garbage collection runs automatically when:
 - The JVM decides it's time to clean up
 - You explicitly call `System.gc()` (though this is not recommended)
 
+## And as a video
+
+You may watch this guy explaining it in about 10 minutes:
+
+<video src="https://www.youtube.com/watch?v=Mlbyft_MFYM"></video>
+
 ## Summary
 
 Garbage collection in Java:

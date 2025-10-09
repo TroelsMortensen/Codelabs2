@@ -155,3 +155,8 @@ Circle c2 = new Circle(10.0);
 c2.display();
 ```
 
+## Video
+
+Want a different angle on constructors? John explains them in 8 minutes:
+
+<video src="https://www.youtube.com/watch?v=pgBk8HC7jbU"></video>

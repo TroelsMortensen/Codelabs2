@@ -181,3 +181,10 @@ The `super` keyword is essential for inheritance in Java:
 4. **Always refers to immediate super class** in inheritance chain
 
 Understanding `super` is crucial for building proper inheritance hierarchies and maintaining the relationship between super class and subclass.
+
+
+## Video
+
+John explains the `super` keyword in 11 minutes, if you need to learn about it in a different way:
+
+<video src="https://www.youtube.com/watch?v=Qb_NUn0TSAU"></video>

@@ -47,3 +47,10 @@ Or you select a specific file (with a main method) in the drop down at the top r
 ![Running main method](Resources/RunSelectedFile.png)
 
 There are even more ways, but now you have enough options. It does not matter which you pick.
+
+
+## Video
+
+Here is John explaining the main method in 7 minutes. John has many fine videos, I will use him occasionally.
+
+<video src="https://www.youtube.com/watch?v=P-_Nzi_mCRo"></video>

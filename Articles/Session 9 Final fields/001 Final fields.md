@@ -80,3 +80,8 @@ public final class Rectangle {
 ```
 
 
+## Video
+
+This guy explains the concept of final fields in 10 minutes.
+
+<video src="https://www.youtube.com/watch?v=r9CMJZ4T__8"></video>
