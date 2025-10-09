@@ -16,7 +16,7 @@ try {
 
 ## Simple Example
 
-Let's see the `finally` block in action:
+Let's see the `finally` block in action. This snippet will divide 10 by 2, and print the result. There are no problems, no exceptions thrown, and the `finally` block is executed.
 
 ```java
 public class FinallyDemo {
@@ -46,7 +46,7 @@ Program continues...
 
 ## Finally with Exception
 
-Now let's see what happens when an exception occurs:
+Now let's see what happens when an exception occurs. This snippet will divide 10 by 0, and print the result. There is an exception thrown, and the `finally` block is executed.
 
 ```java
 public class FinallyWithException {
@@ -104,11 +104,13 @@ Exception in thread "main" java.lang.ArithmeticException: / by zero
 
 ## Real-World Example: File Operations
 
-The most common use of `finally` is for resource cleanup:
+The most common use of `finally` is for resource cleanup. Ideally, the Scanner object should actually be closed, when we are done with it.
+We have not really done that in our small programs, as it is cleared when the program end anyway.
 
 ```java
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class FileReaderWithFinally {
@@ -116,21 +118,18 @@ public class FileReaderWithFinally {
         Scanner scanner = null;
         
         try {
-            File file = new File("data.txt");
-            scanner = new Scanner(file);
+            scanner = new Scanner(System.in);
             
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                System.out.println(line);
-            }
+            int number = scanner.nextInt();
+            System.out.println("You entered: " + number);
             
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found: " + e.getMessage());
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input: " + e.getMessage());
         } finally {
             // Always close the scanner, even if an exception occurs
             if (scanner != null) {
                 scanner.close();
-                System.out.println("Scanner closed successfully.");
+                System.out.println("Scanner closed.");
             }
         }
         
@@ -139,101 +138,15 @@ public class FileReaderWithFinally {
 }
 ```
 
-## Database Connection Example
-
-```java
-public class DatabaseExample {
-    public static void main(String[] args) {
-        // Simulating a database connection
-        String connection = null;
-        
-        try {
-            System.out.println("Connecting to database...");
-            connection = "DatabaseConnection"; // Simulate connection
-            System.out.println("Connected successfully!");
-            
-            // Simulate some database operations
-            System.out.println("Performing database operations...");
-            // This might throw an exception
-            if (Math.random() > 0.5) {
-                throw new RuntimeException("Database operation failed!");
-            }
-            
-            System.out.println("Operations completed successfully!");
-            
-        } catch (RuntimeException e) {
-            System.out.println("Database error: " + e.getMessage());
-        } finally {
-            // Always close the connection
-            if (connection != null) {
-                System.out.println("Closing database connection...");
-                connection = null; // Simulate closing
-                System.out.println("Connection closed.");
-            }
-        }
-        
-        System.out.println("Program continues...");
-    }
-}
-```
-
-## Multiple Scenarios Example
-
-Let's see how `finally` behaves in different scenarios:
-
-```java
-public class FinallyScenarios {
-    public static void main(String[] args) {
-        System.out.println("=== Scenario 1: No Exception ===");
-        scenario1();
-        
-        System.out.println("\n=== Scenario 2: Caught Exception ===");
-        scenario2();
-        
-        System.out.println("\n=== Scenario 3: Uncaught Exception ===");
-        try {
-            scenario3();
-        } catch (RuntimeException e) {
-            System.out.println("Caught in main: " + e.getMessage());
-        }
-    }
-    
-    public static void scenario1() {
-        try {
-            System.out.println("  Try block - no exception");
-        } finally {
-            System.out.println("  Finally block executes");
-        }
-        System.out.println("  After try-finally");
-    }
-    
-    public static void scenario2() {
-        try {
-            System.out.println("  Try block - about to throw exception");
-            throw new RuntimeException("Test exception");
-        } catch (RuntimeException e) {
-            System.out.println("  Caught: " + e.getMessage());
-        } finally {
-            System.out.println("  Finally block executes");
-        }
-        System.out.println("  After try-catch-finally");
-    }
-    
-    public static void scenario3() {
-        try {
-            System.out.println("  Try block - about to throw uncaught exception");
-            throw new RuntimeException("Uncaught exception");
-        } finally {
-            System.out.println("  Finally block executes even with uncaught exception");
-        }
-        System.out.println("  This line will NOT execute");
-    }
-}
-```
+Okay, but... we could just close the scanner after the try-block, and then the `finally` block would not be needed. So, what's the point of the `finally` block?
+Well, there may be cases, though I don't have that many great examples. But, look at the next example.
 
 ## Try-Finally Without Catch
 
-You can use `try-finally` without a `catch` block:
+You can use `try-finally` without a `catch` block. When you run this, you will see that the `finally` block is executed, but the exception is not caught, and the program crashes. So, there is something in the ordering of when things happens:
+1. The exception is thrown
+2. The `finally` block is executed
+3. The exception "escapes" the try-block, and the program crashes
 
 ```java
 public class TryFinallyOnly {
@@ -250,6 +163,8 @@ public class TryFinallyOnly {
 }
 ```
 
+This means, we could do some clean up one place, e.g. close a scanner, and then actually catch the exception in another place, e.g. print an error message to the user.
+
 **Output:**
 ```
 Inside try block
@@ -259,6 +174,8 @@ Exception in thread "main" java.lang.ArithmeticException: / by zero
 ```
 
 ## Common Use Cases for Finally
+
+And none of these will make sense to you yet. But, finally can be used for clean up operations, that must be done regardless of whether an exception occurs or not.
 
 ### 1. **Closing Files**
 ```java
@@ -326,7 +243,3 @@ Avoid using `return` statements in the `finally` block as it can mask exceptions
 
 ### 4. **Resource Management**
 The `finally` block is essential for proper resource management and preventing resource leaks.
-
-## What's Next?
-
-Now that you understand how to catch and handle exceptions with try-catch-finally, let's learn how to throw your own exceptions using the `throw` keyword!

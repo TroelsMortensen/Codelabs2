@@ -14,9 +14,28 @@ The `throw` keyword is used to explicitly throw an exception. You can throw eith
 throw new ExceptionType("Error message");
 ```
 
+Try running the following code:
+
+```java
+public static void main(String[] args) {
+    throw new RuntimeException("Oops");
+}
+```
+
+And you will get 
+
+```javastacktrace
+Exception in thread "main" java.lang.RuntimeException: Oops
+	at session17_exceptions.Test.main(Test.java:10)
+```
+
+Notice the `Oops` message, which was provided in the code, and shown in the console.
+
 ## Simple Examples
 
 ### Throwing IllegalArgumentException
+
+Here we do some basic validation, and in case of a invalid `age` value, we throw an `IllegalArgumentException` with a message.
 
 ```java
 public class AgeValidator {
@@ -43,6 +62,8 @@ public class AgeValidator {
 
 ### Throwing RuntimeException
 
+If you can't find an existing exception, with a name that fits your need, the simple solution is to throw a `RuntimeException` with a message.
+
 ```java
 public class Calculator {
     public static double divide(double a, double b) {
@@ -66,151 +87,10 @@ public class Calculator {
 }
 ```
 
-## Real-World Example: Bank Account
-
-```java
-public class BankAccount {
-    private double balance;
-    private String accountNumber;
-    
-    public BankAccount(String accountNumber, double initialBalance) {
-        if (accountNumber == null || accountNumber.trim().isEmpty()) {
-            throw new IllegalArgumentException("Account number cannot be null or empty");
-        }
-        if (initialBalance < 0) {
-            throw new IllegalArgumentException("Initial balance cannot be negative");
-        }
-        
-        this.accountNumber = accountNumber;
-        this.balance = initialBalance;
-    }
-    
-    public void withdraw(double amount) {
-        if (amount <= 0) {
-            throw new IllegalArgumentException("Withdrawal amount must be positive");
-        }
-        if (amount > balance) {
-            throw new RuntimeException("Insufficient funds. Balance: " + balance + ", Requested: " + amount);
-        }
-        
-        balance -= amount;
-        System.out.println("Withdrew " + amount + ". New balance: " + balance);
-    }
-    
-    public void deposit(double amount) {
-        if (amount <= 0) {
-            throw new IllegalArgumentException("Deposit amount must be positive");
-        }
-        
-        balance += amount;
-        System.out.println("Deposited " + amount + ". New balance: " + balance);
-    }
-    
-    public double getBalance() {
-        return balance;
-    }
-    
-    public static void main(String[] args) {
-        try {
-            // Valid account creation
-            BankAccount account = new BankAccount("12345", 1000.0);
-            System.out.println("Account created with balance: " + account.getBalance());
-            
-            // Valid operations
-            account.deposit(500.0);
-            account.withdraw(200.0);
-            
-            // Invalid operations that will throw exceptions
-            account.withdraw(2000.0); // Insufficient funds
-            
-        } catch (IllegalArgumentException e) {
-            System.out.println("Invalid input: " + e.getMessage());
-        } catch (RuntimeException e) {
-            System.out.println("Operation failed: " + e.getMessage());
-        }
-    }
-}
-```
-
-## String Validation Example
-
-```java
-public class StringValidator {
-    public static void validateEmail(String email) {
-        if (email == null) {
-            throw new IllegalArgumentException("Email cannot be null");
-        }
-        if (email.trim().isEmpty()) {
-            throw new IllegalArgumentException("Email cannot be empty");
-        }
-        if (!email.contains("@")) {
-            throw new IllegalArgumentException("Email must contain @ symbol");
-        }
-        if (email.length() < 5) {
-            throw new IllegalArgumentException("Email must be at least 5 characters long");
-        }
-        
-        System.out.println("Email '" + email + "' is valid.");
-    }
-    
-    public static void main(String[] args) {
-        String[] emails = {
-            "user@example.com",    // Valid
-            "",                    // Invalid - empty
-            "invalid-email",       // Invalid - no @
-            "a@b",                 // Invalid - too short
-            null                   // Invalid - null
-        };
-        
-        for (String email : emails) {
-            try {
-                validateEmail(email);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Invalid email '" + email + "': " + e.getMessage());
-            }
-        }
-    }
-}
-```
-
-## Array Operations Example
-
-```java
-public class ArrayOperations {
-    public static int getElement(int[] array, int index) {
-        if (array == null) {
-            throw new IllegalArgumentException("Array cannot be null");
-        }
-        if (index < 0) {
-            throw new IllegalArgumentException("Index cannot be negative: " + index);
-        }
-        if (index >= array.length) {
-            throw new IllegalArgumentException("Index " + index + " is out of bounds for array of length " + array.length);
-        }
-        
-        return array[index];
-    }
-    
-    public static void main(String[] args) {
-        int[] numbers = {10, 20, 30, 40, 50};
-        
-        try {
-            System.out.println("Element at index 2: " + getElement(numbers, 2));
-            System.out.println("Element at index 5: " + getElement(numbers, 5)); // Out of bounds
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-        
-        try {
-            System.out.println("Element from null array: " + getElement(null, 0)); // Null array
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
-}
-```
 
 ## When to Throw Exceptions
+
+Some languages have very ingrained exception usage, like Java or C#. These languages use exceptions in case of errors. Other languages, F#, will return values to indicate errors instead.
 
 ### 1. **Input Validation**
 Throw exceptions when input doesn't meet your requirements:
@@ -225,7 +105,7 @@ public void setAge(int age) {
 ```
 
 ### 2. **Business Logic Violations**
-Throw exceptions when business rules are violated:
+Throw exceptions when business rules are violated, i.e. the user is trying to get the program to do something that is not allowed.
 
 ```java
 public void withdraw(double amount) {
@@ -252,11 +132,11 @@ public void connectToDatabase() {
 Throw exceptions when an object is in an invalid state:
 
 ```java
-public void startEngine() {
-    if (isEngineRunning) {
-        throw new RuntimeException("Engine is already running");
+public void driveCar() {
+    if (!isEngineRunning) {
+        throw new RuntimeException("Engine is not running");
     }
-    isEngineRunning = true;
+    // Drive the car
 }
 ```
 
@@ -278,13 +158,6 @@ if (!isInitialized) {
 }
 ```
 
-### UnsupportedOperationException
-Use when an operation is not supported:
-```java
-public void remove() {
-    throw new UnsupportedOperationException("Remove operation not supported");
-}
-```
 
 ### RuntimeException
 Use for general runtime errors:
@@ -307,25 +180,19 @@ throw new IllegalArgumentException("Age cannot be negative: " + age);
 throw new IllegalArgumentException("Invalid input");
 ```
 
+
+
 ### 2. **Choose Appropriate Exception Types**
 Use the most specific exception type that fits your situation.
 
-### 3. **Throw Early, Catch Late**
+### 3. **Throw Early**
 Validate inputs and throw exceptions as early as possible.
 
-### 4. **Don't Throw for Expected Conditions**
-Don't throw exceptions for normal program flow - use return values or other mechanisms instead.
-
-### 5. **Document Exceptions**
-If your method can throw exceptions, document them in comments or method signatures.
-
-## What's Next?
-
-Now that you can throw exceptions, let's learn about the `throws` keyword, which allows you to declare that a method might throw certain exceptions!
-
+### 4. **Document Exceptions**
+If your method can throw exceptions, document them in comments or method signatures. See next page about the `throws` keyword.
 
 ## Video
 
-John explains throwing exceptions in 15 minutes.
+John explains throwing exceptions in 15 minutes, if you need a different perspective on this.
 
 <video src="https://www.youtube.com/watch?v=OIozDnGYqIU"></video>

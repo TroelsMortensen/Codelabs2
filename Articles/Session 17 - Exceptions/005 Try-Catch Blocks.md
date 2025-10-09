@@ -1,6 +1,10 @@
 # Try-Catch Blocks
 
-Now that you understand what exceptions are and how to read stack traces, let's learn how to handle them using **try-catch blocks**. This is the fundamental mechanism for exception handling in Java.
+First, something important:
+
+# Don't leave your catch blocks empty
+
+Now that you understand what exceptions are (right? You do understand, right?) and how to read stack traces, let's learn how to handle them using **try-catch blocks**. This is the fundamental mechanism for exception handling in Java.
 
 ## Basic Syntax
 
@@ -14,21 +18,25 @@ try {
 
 ## How Try-Catch Works
 
-1. **Try block**: Contains code that might throw an exception
-2. **Catch block**: Contains code that handles the exception if it occurs
-3. **Exception object**: The caught exception is available as a variable in the catch block
+1. **Try block**: Contains code that might throw an exception, between the braces `{}`
+2. **Catch block**: Contains code that handles the exception if it occurs, between the braces `{}`
+3. **Exception object**: The caught exception is available as a variable in the catch block, in the above example, that variable is called `e`. You can give it any name you want, but `e` is a common convention.
 
 ## Simple Example
 
-Let's start with a basic example:
+Let's start with a basic example. Below we declare a variable `name` and set it to `null`, line 4.\
+Then, we try to call the `length` method on it, line 5. This will throw a `NullPointerException`. Because there is no String object to call the method on.\
+When an exception occurs, the program execution jumps to the catch block, line 7-9. That means the print out in line 6 is _skipped_. 
+
+All the rest of the try-block is skipped, execution continues in the catch block, and then the program execution continues after the try-catch block.
 
 ```java
 public class TryCatchDemo {
     public static void main(String[] args) {
         try {
             String name = null;
-            int length = name.length(); // This will throw NullPointerException
-            System.out.println("Length: " + length);
+            int length = name.length();                 // This will throw NullPointerException
+            System.out.println("Length: " + length);    // This line is skipped
         } catch (NullPointerException e) {
             System.out.println("Oops! Something was null: " + e.getMessage());
         }
@@ -48,7 +56,7 @@ Program continues after the exception was handled!
 
 1. **Try block executes**: Code runs normally until an exception occurs
 2. **Exception thrown**: When `name.length()` is called, a `NullPointerException` is thrown
-3. **Catch block executes**: The exception is caught and handled
+3. **Catch block executes**: The exception is caught and "handled", by just printing something out, but at least the program does not crash
 4. **Program continues**: Execution continues after the try-catch block
 
 ## Without Try-Catch (Program Crashes)
@@ -72,7 +80,9 @@ Exception in thread "main" java.lang.NullPointerException
 
 ## Practical Example: User Input
 
-Let's handle the `InputMismatchException` we saw earlier:
+Let's handle the `InputMismatchException` we saw earlier. We put the code that may throw an exception, inside the try-block, i.e. the `nextInt()` method, and the code that handles the exception, inside the catch block.
+
+We also have a print out in the try-block, because this should only be printed if the input is valid. If an exception occurs, the program execution jumps to the catch block, and the print out in the try-block is skipped.
 
 ```java
 import java.util.Scanner;
@@ -80,9 +90,10 @@ import java.util.Scanner;
 public class SafeInputDemo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
+
+        System.out.print("Enter your age: ");
+
         try {
-            System.out.print("Enter your age: ");
             int age = scanner.nextInt();
             System.out.println("You are " + age + " years old.");
         } catch (InputMismatchException e) {
@@ -91,26 +102,6 @@ public class SafeInputDemo {
         
         System.out.println("Thank you for using our program!");
         scanner.close();
-    }
-}
-```
-
-## Array Access Example
-
-```java
-public class SafeArrayAccess {
-    public static void main(String[] args) {
-        int[] numbers = {10, 20, 30};
-        
-        try {
-            int index = 5; // This index doesn't exist
-            int value = numbers[index];
-            System.out.println("Value at index " + index + ": " + value);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Index is out of bounds! Array has " + numbers.length + " elements.");
-        }
-        
-        System.out.println("Program continues normally.");
     }
 }
 ```
@@ -127,7 +118,7 @@ public class SafeDivision {
             int result = a / b;
             System.out.println("Result: " + result);
         } catch (ArithmeticException e) {
-            System.out.println("Cannot divide by zero!");
+            System.out.println("Cannot divide by zero, you absolute fool!");
         }
         
         System.out.println("Calculation complete.");
@@ -160,7 +151,9 @@ Full exception: java.lang.NumberFormatException: For input string: "abc"
 ## Common Exception Object Methods
 
 ### `getMessage()`
-Returns a detailed message about the exception:
+
+Returns a detailed message about the exception. This is often somewhat user friendly, and is a good place to start, when trying to give feedback to the user.
+
 ```java
 catch (Exception e) {
     System.out.println("Error: " + e.getMessage());
@@ -168,7 +161,9 @@ catch (Exception e) {
 ```
 
 ### `printStackTrace()`
-Prints the full stack trace:
+
+Prints the full stack trace. This should _always_ (nearly) be printed, as it is otherwise _very_ difficult to find the problem.
+
 ```java
 catch (Exception e) {
     System.out.println("Something went wrong:");
@@ -184,45 +179,16 @@ catch (Exception e) {
 }
 ```
 
-## Real-World Example: File Reading
-
-```java
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
-public class FileReader {
-    public static void main(String[] args) {
-        try {
-            File file = new File("data.txt");
-            Scanner scanner = new Scanner(file);
-            
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                System.out.println(line);
-            }
-            
-            scanner.close();
-            System.out.println("File read successfully!");
-            
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found: " + e.getMessage());
-            System.out.println("Please make sure 'data.txt' exists in the current directory.");
-        }
-    }
-}
-```
-
-## Key Points to Remember
 
 ### 1. **Try-catch prevents crashes**
 Without try-catch, exceptions cause your program to terminate immediately.
 
 ### 2. **Only catch what you can handle**
-Don't catch exceptions just to ignore them - always provide meaningful handling.
+Don't catch exceptions just to ignore them - always provide meaningful handling. For now, this usually means printing an error to the console. Later this will often include showing a message to the user.
+_Sometimes_, you can try something else, in the case of a caught exception.
 
 ### 3. **Be specific with exception types**
-Catch specific exceptions rather than the general `Exception` class when possible.
+Catch specific exceptions rather than the general `Exception` class when possible. We will see this on the next page.
 
 ### 4. **Provide helpful error messages**
 Give users clear information about what went wrong and how to fix it.
@@ -230,6 +196,4 @@ Give users clear information about what went wrong and how to fix it.
 ### 5. **Program continues after catch**
 After an exception is caught and handled, execution continues normally.
 
-## What's Next?
-
-Now that you understand basic try-catch blocks, let's learn how to handle multiple different types of exceptions in the same try block!
+# Don't leave your catch blocks empty

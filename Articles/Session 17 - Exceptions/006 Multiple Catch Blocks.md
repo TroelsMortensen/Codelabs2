@@ -2,25 +2,29 @@
 
 Often, a single try block can throw different types of exceptions. Java allows you to have multiple catch blocks to handle each type of exception appropriately.
 
+Depending on the exception, you may want to handle it differently. Or, maybe all exceptions are handled the same way, which can be simplfied to a single catch block, later.
+
 ## Basic Syntax
 
 ```java
 try {
     // Code that might throw different types of exceptions
-} catch (ExceptionType1 e1) {
-    // Handle ExceptionType1
-} catch (ExceptionType2 e2) {
-    // Handle ExceptionType2
-} catch (ExceptionType3 e3) {
-    // Handle ExceptionType3
+} catch (SomeException e1) {
+    // Handle SomeException
+} catch (AnotherException e2) {
+    // Handle AnotherException
+} catch (AndThisException e3) {
+    // Handle AndThisException
 }
 ```
 
 ## Simple Example
 
-Let's create a program that can throw multiple different exceptions:
+Let's create a program that can throw multiple different exceptions. We will use the `Scanner` class to get user input, and the `ArrayIndexOutOfBoundsException` and `ArithmeticException` exceptions.
 
-```java
+Notice how the `nextInt()` method can throw a `InputMismatchException`, and the `[]` operator can throw an `ArrayIndexOutOfBoundsException`. Finally, the `/` operator can throw an `ArithmeticException`.
+
+```java{9,12,15,17}
 import java.util.Scanner;
 
 public class MultipleExceptionsDemo {
@@ -49,7 +53,6 @@ public class MultipleExceptionsDemo {
         }
         
         System.out.println("Program continues...");
-        scanner.close();
     }
 }
 ```
@@ -63,7 +66,8 @@ public class MultipleExceptionsDemo {
 
 ## Exception Hierarchy and Catch Order
 
-**Important**: Catch blocks are checked in order, and more specific exceptions must come before more general ones.
+**Important**: Catch blocks are checked in order, from top to bottom, and more specific exceptions must come before more general ones. This is because the first catch block that matches the exception type will be executed, and the rest of the catch blocks will be skipped.\
+By specific and general exceptions, I mean inheritance. In the below, `Exception` is a superclass of the other exceptions. If I were to move that catch block up to be first, it will catch all exceptions, including `FileNotFoundException`, and the other catch blocks will never be reached.
 
 ### Correct Order (Specific to General)
 ```java
@@ -79,6 +83,9 @@ try {
 ```
 
 ### Incorrect Order (General to Specific)
+
+Don't flip it around, and catch the general exception first.
+
 ```java
 try {
     // Some code
@@ -91,66 +98,14 @@ try {
 
 **Why this is wrong**: `FileNotFoundException` is a subclass of `Exception`, so the first catch block will always catch it, and the second catch block will never be reached.
 
-## Real-World Example: File Processing
-
-```java
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
-public class FileProcessor {
-    public static void main(String[] args) {
-        try {
-            File file = new File("data.txt");
-            Scanner scanner = new Scanner(file);
-            
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                int number = Integer.parseInt(line);
-                System.out.println("Number: " + number);
-            }
-            
-            scanner.close();
-            
-        } catch (FileNotFoundException e) {
-            System.out.println("File 'data.txt' not found. Please create the file first.");
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid number format in file: " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("An unexpected error occurred: " + e.getMessage());
-        }
-    }
-}
-```
-
-## Array and String Processing Example
-
-```java
-public class DataProcessor {
-    public static void main(String[] args) {
-        String[] data = {"10", "20", "abc", "30"};
-        
-        for (int i = 0; i <= data.length; i++) { // Intentionally go one too far
-            try {
-                String text = data[i];
-                int number = Integer.parseInt(text);
-                System.out.println("Processed: " + number);
-                
-            } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Reached end of array at index " + i);
-                break; // Exit the loop
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid number format: " + data[i]);
-                // Continue processing other elements
-            }
-        }
-        
-        System.out.println("Processing complete.");
-    }
-}
-```
 
 ## Calculator Example
+
+Consider the use of exceptions below, to handle:
+- `InputMismatchException`. This is thrown when the user enters an invalid number.
+- `ArithmeticException`. This is thrown when the user tries to divide by zero.
+- `IllegalArgumentException`. This is thrown when the user enters an invalid operator.
+- `Exception`. This is thrown when an unexpected error occurs, whatever that may be. It's just a catch all, similar to the `default` case in a switch statement.
 
 ```java
 import java.util.Scanner;
@@ -202,44 +157,6 @@ public class Calculator {
 }
 ```
 
-## Common Patterns
-
-### 1. **Input Validation**
-```java
-try {
-    int age = scanner.nextInt();
-    // Process age
-} catch (InputMismatchException e) {
-    System.out.println("Please enter a valid number for age.");
-} catch (Exception e) {
-    System.out.println("An unexpected error occurred.");
-}
-```
-
-### 2. **File Operations**
-```java
-try {
-    File file = new File(filename);
-    Scanner scanner = new Scanner(file);
-    // Process file
-} catch (FileNotFoundException e) {
-    System.out.println("File not found: " + filename);
-} catch (IOException e) {
-    System.out.println("Error reading file: " + e.getMessage());
-}
-```
-
-### 3. **Array Operations**
-```java
-try {
-    int value = array[index];
-    // Process value
-} catch (ArrayIndexOutOfBoundsException e) {
-    System.out.println("Index " + index + " is out of bounds.");
-} catch (NullPointerException e) {
-    System.out.println("Array is null.");
-}
-```
 
 ## Best Practices
 
@@ -253,11 +170,7 @@ Catch specific exceptions when you know what might go wrong.
 Give users clear information about what went wrong and how to fix it.
 
 ### 4. **Don't Catch What You Can't Handle**
-If you can't meaningfully handle an exception, let it propagate up.
+If you can't meaningfully handle an exception, let it propagate up. This can happen in two ways: if it is an unchecked exception, just don't handle it. If it is a checked exception, read about "throws" keyword in a few pages.
 
 ### 5. **Use Finally for Cleanup**
-We'll learn about the `finally` block next, which is perfect for cleanup operations.
-
-## What's Next?
-
-Now that you can handle multiple types of exceptions, let's learn about the `finally` block, which allows you to execute code regardless of whether an exception occurs!
+We'll learn about the `finally` block next, which is perfect for cleanup operations. Sometimes something must be done regardless of whether an exception occurs or the try-block executed successfully.

@@ -1,6 +1,8 @@
 # Throws Keyword
 
-The `throws` keyword is used in method signatures to declare that a method might throw certain types of exceptions. This is especially important for **checked exceptions**, which the Java compiler requires you to either catch or declare.
+The `throws` keyword is used in _method signatures_ to declare that a method might throw certain types of exceptions. This is especially important for **checked exceptions**, which the Java compiler requires you to either catch or declare.
+
+But it is also important to declare _unchecked exceptions_ with the `throws` keyword. This will let other programmers, who use your code, know that the method might throw an exception, and they should/can handle it.
 
 ## Basic Syntax
 
@@ -14,91 +16,118 @@ public void methodName() throws ExceptionType1, ExceptionType2 {
 
 ### 1. **Compiler Requirement for Checked Exceptions**
 Java requires you to handle checked exceptions. You have two options:
-- **Catch** the exception in a try-catch block
+- **Catch** the exception in a try-catch block, we have seen this already
 - **Declare** it with `throws` in the method signature
 
 ### 2. **Documentation**
 The `throws` clause documents what exceptions a method might throw, making your code more readable and maintainable.
 
 ### 3. **Method Contracts**
-It establishes a contract: "This method might fail in these specific ways."
+It establishes a contract: "This method might fail in these specific ways." It tells other programmers, who use your code, that the method might throw an exception, and they should/can handle it.
 
-## Simple Example
+## A simple test
+
+Let's explore what the throws keyword does to our code, and the information about that code.
+
+### First, unchecked exceptions
+
+Consider the following code snippet.
 
 ```java
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+public static void main(String[] args) {
+    doSomething();
+}
 
-public class FileReader {
-    // This method declares that it might throw FileNotFoundException
-    public static void readFile(String filename) throws FileNotFoundException {
-        File file = new File(filename);
-        Scanner scanner = new Scanner(file);
-        
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            System.out.println(line);
-        }
-        
-        scanner.close();
+private static void doSomething()
+{
+    throw new RuntimeException();
+}
+```
+
+If I mouse over the `doSomething()` call in the `main()` method, I will se this:
+
+![throws keyword](Resources/NoThrows.png)
+
+We can actually see in the "contract" part, that this may cause an exception. But, if I add a "throws" to the method, we get this:
+
+![throws keyword](Resources/NowThrows.png)
+
+The method information is much clearer now.
+
+This was for runtime exceptions. Let's see what happens with a checked exception.
+
+### Second, checked exceptions
+
+Here, as you have seen, the compiler will force you to handle the exception with catch. Or, you can declare a throws, and not handle it. That responsibility is now on the caller of the method. Try this:
+
+```java
+public static void main(String[] args) {
+    doSomething();
+}
+
+private static void doSomething() 
+{
+    Thread.sleep(1000);
+} 
+```
+
+And observe the compiler error:
+
+```javastacktrace
+java: unreported exception java.lang.InterruptedException; must be caught or declared to be thrown
+```
+
+Or if you mouse over the sleep method, it tells you that you must handle the exception.
+
+You can surround it with try-catch:
+
+```java
+private static void doSomething() 
+{
+    try
+    {
+        Thread.sleep(1000);
     }
-    
-    public static void main(String[] args) {
-        try {
-            readFile("data.txt");
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found: " + e.getMessage());
-        }
+    catch (InterruptedException e)
+    {
+        throw new RuntimeException(e);
     }
 }
 ```
+
+Or, you can declare that the methods throws the exception:
+
+```java
+private static void doSomething() throws InterruptedException
+{
+    Thread.sleep(1000);
+}
+```
+
+Update your code, and observe the compiler error has moved to the main method:
+
+![throws keyword](Resources/CompilerError.png)
+
+Now, that method call must be wrapped in a try-catch. Or the main method must declare that it throws the exception. So, there is a snow-ball effect with checked exceptions, until you at some point handle it. Or the program crashes.
 
 ## Multiple Exceptions
 
 You can declare multiple exceptions in the `throws` clause:
 
 ```java
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Scanner;
-
-public class FileProcessor {
-    // This method can throw multiple types of exceptions
-    public static void processFile(String filename) 
-            throws FileNotFoundException, IOException {
-        
-        File file = new File(filename);
-        Scanner scanner = new Scanner(file);
-        
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            // Some processing that might cause IOException
-            if (line.length() > 1000) {
-                throw new IOException("Line too long: " + line.length());
-            }
-            System.out.println(line);
-        }
-        
-        scanner.close();
-    }
-    
-    public static void main(String[] args) {
-        try {
-            processFile("data.txt");
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found: " + e.getMessage());
-        } catch (IOException e) {
-            System.out.println("IO error: " + e.getMessage());
-        }
-    }
+public static void processFile(String filename) 
+        throws FileNotFoundException, IOException 
+{
+    // method body
 }
 ```
 
 ## Checked vs Unchecked Exceptions
 
+Checked exceptions must be declared, or try-catch must be used.
+
 ### Checked Exceptions (Must be declared)
+
 ```java
 import java.io.FileNotFoundException;
 
@@ -120,6 +149,9 @@ public class CheckedExceptionExample {
 ```
 
 ### Unchecked Exceptions (Optional to declare)
+
+Unchecked exceptions are optional to declare. Nor does the compiler force you to handle it with try-catch.
+
 ```java
 public class UncheckedExceptionExample {
     // RuntimeException is unchecked - optional to declare
@@ -144,216 +176,22 @@ public class UncheckedExceptionExample {
 }
 ```
 
-## Method Overriding with `throws`
-
-When overriding a method, you have specific rules about the `throws` clause:
-
-### Rule 1: You can throw fewer exceptions
-```java
-class Parent {
-    public void method() throws IOException, SQLException {
-        // Parent method throws two exceptions
-    }
-}
-
-class Child extends Parent {
-    @Override
-    public void method() throws IOException {
-        // Child method only throws one exception - this is allowed
-    }
-}
-```
-
-### Rule 2: You can throw more specific exceptions
-```java
-class Parent {
-    public void method() throws Exception {
-        // Parent method throws general Exception
-    }
-}
-
-class Child extends Parent {
-    @Override
-    public void method() throws IOException {
-        // Child method throws more specific IOException - this is allowed
-    }
-}
-```
-
-### Rule 3: You cannot throw more general exceptions
-```java
-class Parent {
-    public void method() throws IOException {
-        // Parent method throws specific IOException
-    }
-}
-
-class Child extends Parent {
-    @Override
-    public void method() throws Exception { // COMPILER ERROR!
-        // Cannot throw more general Exception
-    }
-}
-```
-
-## Real-World Example: Database Operations
-
-```java
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-public class DatabaseManager {
-    // This method declares multiple SQL-related exceptions
-    public static void executeQuery(String query) 
-            throws SQLException, ClassNotFoundException {
-        
-        // Load database driver
-        Class.forName("com.mysql.jdbc.Driver");
-        
-        // Create connection
-        Connection conn = DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/mydb", "username", "password");
-        
-        try {
-            Statement stmt = conn.createStatement();
-            stmt.executeQuery(query);
-        } finally {
-            conn.close();
-        }
-    }
-    
-    public static void main(String[] args) {
-        try {
-            executeQuery("SELECT * FROM users");
-        } catch (SQLException e) {
-            System.out.println("Database error: " + e.getMessage());
-        } catch (ClassNotFoundException e) {
-            System.out.println("Driver not found: " + e.getMessage());
-        }
-    }
-}
-```
-
-## Network Operations Example
-
-```java
-import java.io.IOException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.Scanner;
-
-public class NetworkReader {
-    // This method declares that it might throw IOException
-    public static String readFromUrl(String urlString) throws IOException {
-        URL url = new URL(urlString);
-        URLConnection connection = url.openConnection();
-        
-        Scanner scanner = new Scanner(connection.getInputStream());
-        StringBuilder content = new StringBuilder();
-        
-        while (scanner.hasNextLine()) {
-            content.append(scanner.nextLine()).append("\n");
-        }
-        
-        scanner.close();
-        return content.toString();
-    }
-    
-    public static void main(String[] args) {
-        try {
-            String content = readFromUrl("http://example.com");
-            System.out.println("Content length: " + content.length());
-        } catch (IOException e) {
-            System.out.println("Network error: " + e.getMessage());
-        }
-    }
-}
-```
-
-## Custom Exception with `throws`
-
-```java
-// Custom exception class
-class InsufficientFundsException extends Exception {
-    public InsufficientFundsException(String message) {
-        super(message);
-    }
-}
-
-class BankAccount {
-    private double balance;
-    
-    public BankAccount(double initialBalance) {
-        this.balance = initialBalance;
-    }
-    
-    // This method declares that it might throw our custom exception
-    public void withdraw(double amount) throws InsufficientFundsException {
-        if (amount > balance) {
-            throw new InsufficientFundsException(
-                "Insufficient funds. Balance: " + balance + ", Requested: " + amount);
-        }
-        balance -= amount;
-    }
-    
-    public static void main(String[] args) {
-        BankAccount account = new BankAccount(1000.0);
-        
-        try {
-            account.withdraw(500.0);  // This will work
-            account.withdraw(800.0);  // This will throw exception
-        } catch (InsufficientFundsException e) {
-            System.out.println("Withdrawal failed: " + e.getMessage());
-        }
-    }
-}
-```
-
 ## Best Practices
 
 ### 1. **Only Declare What You Actually Throw**
-Don't declare exceptions that your method doesn't actually throw.
+Don't declare exceptions that your method doesn't actually throw. Obviously.
 
 ### 2. **Be Specific**
 Declare specific exception types rather than the general `Exception` class.
 
-### 3. **Document the Exceptions**
-Use JavaDoc comments to explain when and why exceptions are thrown:
-
-```java
-/**
- * Reads data from a file.
- * @param filename the name of the file to read
- * @throws FileNotFoundException if the file doesn't exist
- * @throws IOException if there's an error reading the file
- */
-public void readFile(String filename) throws FileNotFoundException, IOException {
-    // Method implementation
-}
-```
-
-### 4. **Consider Your Callers**
+### 3. **Consider Your Callers**
 Think about whether callers should handle the exception or if you should handle it internally.
 
-### 5. **Use Unchecked Exceptions for Programming Errors**
-Use unchecked exceptions (RuntimeException subclasses) for programming errors that should be fixed in the code.
+## Rethrowing
 
-## Common Patterns
+A common practice is to catch a checked exception, and then rethrow it as a custom RuntimeException. This is useful if you want to add more information to the exception, or if you want to change the exception type. We will use this more next semester. For now, just know that it is a common practice.
 
-### Pattern 1: Propagate the Exception
-```java
-public void methodA() throws IOException {
-    methodB(); // Let IOException propagate up
-}
 
-public void methodB() throws IOException {
-    // Some operation that might throw IOException
-}
-```
-
-### Pattern 2: Catch and Re-throw
 ```java
 public void methodA() throws CustomException {
     try {
@@ -364,6 +202,26 @@ public void methodA() throws CustomException {
 }
 ```
 
-## What's Next?
+This is useful if you have a longer chain of methods, and the last method throws a checked exception, but you cannot really handle it. You just want to show an error popup message to the user. 
 
-Now that you understand the `throws` keyword, let's learn how to create your own custom exception classes for specific situations in your applications!
+You catch the checked exception, and then rethrow it as a custom RuntimeException. That custom exception can skip over several classes and methods, and just be caught by the initial method. Yeah, it's probably a bit convoluted right now.
+
+Consider this. The user clicks a button in the UI, which triggers a method in the GuiClass. That method calls a method in the Controller class. That method calls a method in the Service class. That method calls a method in the DataManager class. That method tries to read data from a file, and that fails. 
+
+```mermaid
+classDiagram
+    direction LR
+    
+    GuiClass --> Controller : "calls"
+    Controller --> Service : "calls"
+    Service --> DataManager : "calls"
+    DataManager "origin"..> "caught" GuiClass : "exception"  
+```
+
+Maybe the DataManager class tries to read data from a file, and that fails. This will be a checked exception.\
+But the way to handle this is to have the `GuiClass` show a popup message to the user.\
+So, the exception happens one place, but the handling happens far away, somewhere else, in the `GuiClass`.\
+We could mark all methods along the way with the `throws` keyword, to push the catch block to the GuiClass. But that would be a lot of code to write.\
+Instead, the checked exception is caught in the `DataManager` class, and then rethrown as a custom RuntimeException. This can skip over several classes and methods, and just be caught by the initial method in the GuiClass.
+
+The dotted line indicates the origin of the exception, and where it is caught.
