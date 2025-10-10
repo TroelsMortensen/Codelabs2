@@ -1,6 +1,6 @@
 # One to many - Composition
 
-For a quick recap, composition means that one object has another object as an integral part, and the child object cannot exist independently. Nor can the child object be referenced by other objects. This is expressed through a field variable with "exclusive ownership". Example:
+For a quick recap, composition means that one object has another object as an integral part, and the child object cannot exist independently. Nor can the child object be referenced by other objects. This is expressed through a field variable with "exclusive ownership". 
 
 ## Referencing one
 
@@ -74,7 +74,7 @@ For composition, the child object (in this case the `Room`) is an integral part 
 
 ## Referencing many
 
-Now, we want to look at the composition, but referencing many. A flying carpet can have many enchantments, and these enchantments are integral parts of the carpet. The enchantments cannot exist independently of the carpet. You can imagine the enchantment is read from a scroll, but once it takes effect, it is bound to the carpet. Or.. somethign like that. Either way, it sounds like a composition.
+Now, we want to look at the composition, but referencing many. A flying carpet can have many enchantments, and these enchantments are integral parts of the carpet. The enchantments cannot exist independently of the carpet. You can imagine the enchantment is read from a scroll, but once it takes effect, it is bound to the carpet. Or.. something like that. Either way, it sounds like a composition. Because I say so.
 
 ### Code, referencing many
 
@@ -201,6 +201,10 @@ public ArrayList<Room> getRooms() {
     return copy;
 }
 ```
+
+And what if the `Room` class has a reference to some composed object, like a `Window` object? Then we need to create a copy of the `Window` object as well. . Here, the copy-method or copy-constructor is good, because then the class itself knows how to copy itself. Rather than you extracting data, and just creating a new object with the normal constructor. Have you then copied the internal parts correctly? **COPY** COPY Copy copy <sub>copy</sub>, all the way down.
+
+![copy](Resources/TurtlesAllTheWayDown.jpg)
 
 ### UML, referencing many
 

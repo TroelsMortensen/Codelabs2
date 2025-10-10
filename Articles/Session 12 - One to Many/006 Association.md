@@ -1,6 +1,6 @@
 # One to many - Association
 
-For a quick recap, the association means that one object knows about another object. Or now multiple other objects of the same type. This is expressed through a field variable. Example:
+For a quick recap, the association means that one object knows about another object. Or now multiple other objects of the same type. This is expressed through a field variable. 
 
 ## Referencing one
 First, a quick recap of referencing one.
