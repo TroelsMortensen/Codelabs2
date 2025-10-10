@@ -1,12 +1,16 @@
 # Implementation Exercise - Mountain Climbing System
 
+![Mountain](Resources/Mountaineers.jpg)
+
 In this exercise we will implement a system where a Mountain can have multiple Mountaineers, and each Mountaineer can have multiple pieces of ClimbingGear.
 
 ## Exercise 11.0: Mountain with Mountaineers and Climbing Gear
 
 Create a system where a Mountain can have multiple Mountaineers, and each Mountaineer can have multiple pieces of ClimbingGear. Implement the classes. In the `MountainClimbingTest` class, create a main method which creates various objects and calls various methods on these objects. You should include print outs, these can either be directly in the main method, or you can include them in the various methods.
 
-**Implementation Tip:** The easiest approach to implementing this system is to start with the simplest class and work your way up to the more complex ones. Implement the classes in this order: ClimbingGear first, then Mountaineer, then Mountain. This way, each class can use the previously implemented classes as dependencies. You are allowed to add further details (e.g., additional methods or fields) as needed to make your implementation work properly.
+**Implementation Tip:** The easiest approach to implementing this system is to start with the simplest class and work your way up to the more complex ones. Implement the classes in this order: ClimbingGear first, then Mountaineer, then Mountain. This way, each class can use the previously implemented classes as dependencies. 
+
+You are allowed to add further details (e.g., additional methods or fields) as needed to make your implementation work properly.
 
 ### UML Diagram
 

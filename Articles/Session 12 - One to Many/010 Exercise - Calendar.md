@@ -1,5 +1,7 @@
 # Implementation Exercise - Calendar Management System
 
+![Calendar](Resources/Calendar.jpg)
+
 Now it is time to actually do some coding.
 
 ## Exercise 10.0: Calendar with Meetings and Contacts
@@ -36,7 +38,7 @@ classDiagram
         + addContact(contact : Contact) void
         + editContact(id : int, newName : String, newEmail : String) void
         + removeContactById(id : int) void
-        + createMeeting(title : String, date : String, startTime : String, endTime : String, place : String, attendeeNames : String[]) Meeting
+        + createMeeting(title : String, date : String, startTime : String, endTime : String, place : String, attendeeNames : String[]) void
         + editMeeting(title : String, newDate : String, newStartTime : String, newEndTime : String, newPlace : String) void
         + deleteMeeting(title : String) void
         + viewAllContacts() void

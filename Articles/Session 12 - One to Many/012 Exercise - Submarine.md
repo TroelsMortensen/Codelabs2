@@ -1,5 +1,7 @@
 # Implementation Exercise - Submarine Scientific Mission
 
+![Submarine](Resources/Submarine.jpg)
+
 This exercise will be about implementing a system where a Submarine can have multiple Crew Members, and each Crew Member can make multiple Scientific Recordings. It is described "simple", but you can expand it with more details if you want to. For example, making it run in a loop, so you can move the submarine to different locations, recording scientific data at different depths, adding or removing crew members, etc.
 
 ## Exercise 12.0: Submarine with Crew Members and Scientific Recordings

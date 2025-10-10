@@ -1,6 +1,6 @@
 # Streams: The Flow of Data
 
-Streams are Java's way of handling the flow of data to and from files. Think of streams as **pipes** that connect your program to files, allowing data to flow in one direction.
+Streams are Java's way of handling the flow of data to and from files. Think of streams as **pipes** that connect your program to files, allowing data to flow in one direction. It is not all in one go, but rather in chunks.
 
 ## What are Streams?
 
@@ -20,14 +20,14 @@ Imagine streams like **water pipes**:
 Data flows **FROM** a source **TO** your program:
 
 ```
-File ──→ InputStream ──→ Your Program
+File ──> InputStream ──> Your Program
 ```
 
 ### **Output Streams** (Writing Data)
 Data flows **FROM** your program **TO** a destination:
 
 ```
-Your Program ──→ OutputStream ──→ File
+Your Program ──> OutputStream ──> File
 ```
 
 ## Stream Hierarchy in Java
