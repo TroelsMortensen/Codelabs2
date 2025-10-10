@@ -2,10 +2,10 @@
 
 In the previous session, you learned about different types of relationships between objects:
 
-- depedency
-- association
-- aggregation
-- composition
+- Depedency -->
+- Association ──>
+- Aggregation ◇──>
+- Composition ◆──>
 
 And you learned about how these were expressed in code and UML.
 
