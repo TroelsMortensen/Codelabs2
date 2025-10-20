@@ -11,7 +11,6 @@ public class FixImageUrls : ITransformer
 
     public static string PrependBaseUrlToRelativeImgUrl(string articleName, string input)
     {
-        
         string prefix = "https://raw.githubusercontent.com/TroelsMortensen/Codelabs2/refs/heads/master/Articles/" + articleName + "/"; // TODO put this somewhere better
 
         string patternWhichTargetsSrcAndValue = @"(<img[^>]*\bsrc\s*=\s*"")([^""]+)(""[^>]*>)";
@@ -22,10 +21,11 @@ public class FixImageUrls : ITransformer
             string originalSrc = GetCurrentUrl(m);
             string after = GetAfterSrcUrl(m);
 
-            if (originalSrc.StartsWith("http") )
+            if (originalSrc.StartsWith("http"))
             {
                 return $"{before}{originalSrc}{after}";
             }
+
             return $"{before}{prefix}{originalSrc}{after}";
         }, RegexOptions.IgnoreCase);
 
@@ -34,7 +34,7 @@ public class FixImageUrls : ITransformer
 
     private static string GetBeforeSrcUrl(Match m) => m.Groups[1].Value;
 
-    private static string GetAfterSrcUrl(Match m) => m.Groups[3].Value;
-
     private static string GetCurrentUrl(Match m) => m.Groups[2].Value;
+
+    private static string GetAfterSrcUrl(Match m) => m.Groups[3].Value;
 }
