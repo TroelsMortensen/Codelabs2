@@ -8,11 +8,12 @@ public class HintToDetails : ITransformer
     {
         string pattern = @"<hint\s+title=""(.*?)"">\s*\r?\n(.*?)\r?\n?</hint>";
         string replacement = 
-@"
-<details>
-    <summary>$1</summary>
-$2
-</details>";
+            """
+            <details>
+                <summary>$1</summary>
+            $2
+            </details>
+            """;
 
         return Regex.Replace(html, pattern, replacement, RegexOptions.Singleline);
     }
