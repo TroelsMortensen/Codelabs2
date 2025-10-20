@@ -118,7 +118,7 @@ classDiagram
     Spacecraft o--> Drive
     Drive <|-- IonDrive
     Drive <|-- WarpDrive
-    Fighter *-- "*" Weapon
+    Fighter *--> "*" Weapon
     Weapon <|-- LaserCannon
     Weapon <|-- MissileLauncher
 ```
