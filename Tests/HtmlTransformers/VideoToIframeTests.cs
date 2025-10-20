@@ -1,7 +1,7 @@
 ﻿using MdToHtmlConversion.Transformers;
 using Xunit.Abstractions;
 
-namespace Tests;
+namespace Tests.HtmlTransformers;
 
 public class VideoToIframeTests
 {
