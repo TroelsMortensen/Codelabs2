@@ -189,4 +189,12 @@ John explains the `super` keyword in 11 minutes, if you need to learn about it i
 
 <video src="https://www.youtube.com/watch?v=Qb_NUn0TSAU"></video>
 
+<video src="https://youtu.be/Qb_NUn0TSAU"></video>
+
 You may optionally watch this video.
+
+This is a test:
+
+<video src="https://youtu.be/aK1hu_LXYs8"></video>
+
+That was a test
