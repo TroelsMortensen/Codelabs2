@@ -88,7 +88,9 @@ public class Dog extends Animal {
 
 This example how the `Car` class can access the protected fields of the `Vehicle` class. This happens in the `displayInfo()` method.
 
-```java{27-29}
+First the `Vehicle` super class:
+
+```java{2-3}
 public class Vehicle {
     protected String brand;     // Accessible to subclasses
     protected int year;         // Accessible to subclasses
@@ -104,7 +106,11 @@ public class Vehicle {
         return vin;  // Public method to access private field
     }
 }
+```
 
+Then the `Car` subclass, notice how `brand` and `year` are protected in `Vehicle`, and are therefore accessible in the `Car` class.
+
+```java{11-12}
 public class Car extends Vehicle {
     private int doors;
     
