@@ -72,8 +72,22 @@ Here is an example of a violation of the transitivity property. This means that
 - if `a.equals(b)` is true 
 - and `b.equals(c)` is true, 
 - then `a.equals(c)` must also be true. 
+
+Basically, if you have three objects `a`, `b`, and `c`, and some of them are equal to each other, then all of them must be equal to each other.
+
+```mermaid
+classDiagram
+    direction LR
+    a <--> b : equals
+    b <--> c : equals
+    a <--> c : equals
+```
+
+We cannot have any of the above lines be true, if others are false. This violates the transitivity property.
  
-But in the example below, `p1.equals(cp1)` is true, `p1.equals(cp2)` is true, but `cp1.equals(cp2)` is false.
+#### Example
+
+In the example below, `p1.equals(cp1)` is true, `p1.equals(cp2)` is true, but `cp1.equals(cp2)` is false.
 
 The problem lies in the `equals` method in the `ColorPoint` class.\
 It first checks if the other object is an instance of `ColorPoint`, and if so, it compares the color of the color point.\

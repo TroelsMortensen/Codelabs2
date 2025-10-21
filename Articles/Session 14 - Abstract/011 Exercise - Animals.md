@@ -1,5 +1,7 @@
 # Exercises
 
+![Animals](Resources/Animals.jpg)
+
 
 This this exercise, you will implement four classes in a hierarchy: `Animal`, `Dog`, `Cat`, and `Bird`.
 

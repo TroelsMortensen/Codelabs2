@@ -1,5 +1,7 @@
 # Exercise: Restaurant Food Ordering System
 
+![Restaurant](Resources/Restaurant.jpg)
+
 ## Overview
 
 In this exercise, you'll implement a restaurant food ordering system using abstract classes and inheritance. The system will handle different types of menu items with varying preparation methods, costs, and ingredient management.
