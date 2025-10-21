@@ -1,6 +1,6 @@
 # Introduction to File I/O
 
-Welcome to the world of file input and output in Java! In this learning path, you'll learn how to work with files - reading data from them, writing data to them, and understanding the different ways computers store information.
+Welcome to the world of file input and output in Java! In this learning path, you'll learn how to work with files - reading data from them, writing data to them, and understanding (some of) the different ways computers store information.
 
 ## What are Files?
 
@@ -21,7 +21,9 @@ This is how we organize data on our computer, and we will learn how to work with
 
 Let's start with the definition:
 
-> Persistence means that the data is stored for a longer period of time, than the program's lifetime. You can close your program, restart it, and the data will still be there. 
+> Persistence means that data is stored for a longer period of time, than the program's lifetime.
+
+You can close your program, restart it, and the data will still be there. Or, loaded from a file. But for all your applications until now, if you create objects, put them in lists, etc, when you restart your program, all that data will be gone.
 
 Persistence is usually done with databases, but you will have to wait until next semester for that. This semester, we will focus on files.
 
@@ -49,11 +51,13 @@ Files allow different programs to share data:
 Program A writes data → File → Program B reads data
 ```
 
+You could also put the file on OneDrive, and share it between your devices.
+
 ### 3. **Large Amounts of Data**
 Files can store much more data than memory:
 
 - **Memory**: Limited (usually 4-16 GB)
-- **Files**: Can be gigabytes or terabytes in size
+- **Files**: Can be gigabytes or terabytes in size. That's a lot of data!
 
 ### 4. **Backup and Recovery**
 Files can be backed up, copied, and restored if something goes wrong.

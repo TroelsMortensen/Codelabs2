@@ -56,6 +56,8 @@ Numbers: 12345
 - .class files (compiled Java code)
 ```
 
+Depending on what program tries to read a binary file, it will be able to interpret the data. For example, a photo viewer will be able to show you the photo, but a text editor will not.
+
 And, as you will see, we can take an object in Java, convert it to binary, and save that to a file. This will be good for your semester project.
 
 ### What Binary Data Looks Like:
@@ -63,6 +65,8 @@ If you opened a binary file in a text editor, you might see:
 ```
 ÿØÿàJFIFHHÿÛC           !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ÿÛC
 ```
+
+Not super meaningful, and that's because the binary data may not even represent text. It could be a photo, or a video, or an executable program, or a compressed archive, or a compiled Java code, or anything else.
 
 ## Key Differences
 
