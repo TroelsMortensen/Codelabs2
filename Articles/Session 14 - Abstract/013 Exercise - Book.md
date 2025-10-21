@@ -1,8 +1,12 @@
 # Exercise: Book Hierarchy with Abstract Classes
 
+![Book](Resources/BookVersions.jpg)
+
+
 ## Overview
 
-In this exercise, you'll implement a book hierarchy using abstract classes.
+In this exercise, you'll implement a book hierarchy using abstract classes. There are three different types of books: PrintedBook, EBook, and AudioBook.
+
 
 ## The Problem
 
@@ -10,8 +14,11 @@ You need to create a book management system that can handle different types of b
 
 ## UML Class Diagram
 
+I have toppled over the diagram, otherwise the text was too small. Yes, I have decided to violently violate the conventions of UML class diagrams. What HERESY!!!
+
 ```mermaid
 classDiagram
+    direction LR
     class _Book_ {
         - title : String
         - isbn : String

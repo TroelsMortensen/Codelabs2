@@ -10,8 +10,10 @@ You need to create a food ordering system for a restaurant that can handle diffe
 
 ## UML Class Diagram
 
+
 ```mermaid
 classDiagram
+    direction LR
     class _MenuItem_ {
         - name : String
         - basePrice : double
