@@ -6,6 +6,8 @@
 
 ## Key Concepts
 
+First, let's get a definition in place.
+
 ### 1. **Reference Type vs Object Type**
 
 Assume this object hierarchy:
@@ -16,7 +18,8 @@ classDiagram
     Animal <|-- Cat
 ```
 We can then treat Dog and Cat as Animal objects, because they are both subclasses of Animal.\
-And in code, we call the variable declaration type the "reference type", or "variable type", and the actual type of the object the "object type".
+And in code, we call the variable declaration type the "reference type", or "variable type". That's the `Animal animal` part.\
+And the _actual_ type of the object the "object type", that's the `new Dog("Buddy")` part.
 
 ```java
 Animal animal = new Dog("Buddy");
@@ -32,6 +35,18 @@ Animal animal = new Dog("Buddy");
 animal.makeSound();  // Calls Dog's makeSound(), not Animal's
 ```
 
+Basically, Java will try to find the most specific method that matches the object type. If you have several classes in the hierarchy, between Animal and Dog, Java will look for the `makeSound()` method from the `Dog` class, and search upwards in the hierarchy, until it finds an implementation. For example:
+
+```mermaid
+classDiagram
+    Animal <|-- Mammal
+    Mammal <|-- Quadruped
+    Quadruped <|-- Canine
+    Canine <|-- Dog
+```
+
+Is there an implementation in Dog? No. Is there an implementation in Canine? Yes. So, Java will call the `makeSound()` method from the `Canine` class. Even if there are also implementations in Mammal and Animal, Java will not look there.
+
 ### 3. **Access Limitations**
 You can only call methods that are available in the reference type (here, `Animal`):
 
@@ -41,9 +56,11 @@ animal.makeSound();  // ✅ OK - makeSound() is in Animal
 // animal.fetch();   // ❌ ERROR - fetch() is not in Animal
 ```
 
+`fetch()` is not in the `Animal` class, so we cannot call it on the `animal` variable.
+
 ## Short Example
 
-Here's a simple example to refresh your memory:
+Here's a simple example to refresh your memory. First the `Animal` class:	
 
 ```java
 class Animal {
@@ -57,7 +74,11 @@ class Animal {
         System.out.println(name + " makes a sound");
     }
 }
+```
 
+Then the `Dog` class:
+
+```java
 class Dog extends Animal {
     public Dog(String name) {
         super(name);
@@ -73,6 +94,11 @@ class Dog extends Animal {
     }
 }
 
+```
+	
+Then the `Cat` class:
+
+```java
 class Cat extends Animal {
     public Cat(String name) {
         super(name);
@@ -88,6 +114,8 @@ class Cat extends Animal {
     }
 }
 ```
+
+We can then treat cats and dogs as animals, because they are both subclasses of the `Animal` class.
 
 ## Polymorphism in Action
 

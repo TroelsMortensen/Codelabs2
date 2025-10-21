@@ -2,7 +2,7 @@
 
 ## What is Casting?
 
-**Casting** in Java is the process of converting one data type to another. When working with inheritance and polymorphism, you may need to cast objects from one type to another to access specific methods or properties. Generally, however, you should avoid casting, and instead use polymorphism to access the methods or properties you need. If you _do_ need to cast, your design is _probably_ flawed.
+**Casting** in Java is the process of converting one data type to another. When working with inheritance and polymorphism, you can cast objects from one type to another to access specific methods or properties. Generally, however, you should avoid casting, and instead use polymorphism to access the methods or properties you need. If you _do_ need to cast, your design is _probably_ flawed, as you are breaking the polymorphism.
 
 ## The `instanceof` Operator
 
@@ -35,10 +35,12 @@ Dog dog = new Dog("Buddy");
 Animal animal = dog;  // Upcasting - automatic
 ```
 
-I now have two variables, `dog` and `animal`, both referring to the same object. However, if I access the object through the `animal` variable, I can only call methods that are available in the `Animal` class.
+I now have two variables, `dog` and `animal`, both referring to the same object in memory. However, if I access the object through the `animal` variable, I can only call methods that are available in the `Animal` class.
+
+It's like looking at the same object from two different perspectives. Or with different glasses on. Or with different lenses on a camera. Or... Point is, it's the same object we are working with, just with different kinds of access to it.
 
 ### Downcasting (Explicit)
-Converting from a superclass to a subclass - requires explicit casting:
+Converting from a superclass to a subclass - requires explicit casting, notice the `(Dog)` before the `animal` variable. This is to _force_ the variable to be of the `Dog` type. It will fail at runtime if the object is not a `Dog`.
 
 ```java
 Animal animal = new Dog("Buddy");
@@ -158,12 +160,4 @@ Dog dog = (Dog) animal;  // Unsafe!
 Animal animal = new Dog("Buddy");
 Dog dog = (Dog) animal;  // dog and animal refer to the same object
 // Both variables point to the same Dog object in memory
-```
-
-### 3. **Null Safety**
-```java
-Animal animal = null;
-if (animal instanceof Dog) {  // Returns false for null
-    // This won't execute
-}
 ```
