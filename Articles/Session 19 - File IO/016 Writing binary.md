@@ -1,4 +1,4 @@
-### Writing Objects to Binary Files
+# Writing Objects to Binary Files
 
 Now that we have an object, the ever-present serializable `Person` object, we can write it to a file.
 
@@ -30,6 +30,7 @@ public class ObjectSerializer {
 }
 ```
 
+That's actually pretty simple. The `ObjectOutputStream` object is responsible for converting the `Person` object to a binary stream, and writing it to the file.
 
 ## Complete Serialization Example
 
@@ -60,3 +61,24 @@ public class CompleteSerializationExample {
     }
 }
 ```
+
+## Text vs Binary
+
+In the above example, we could just directly write the `Person` objects to the file. 
+
+However, we could also have come up with our own format, some string representation of the `Person` object. Maybe a comma-separated string, like this:
+
+```
+John Doe,25,john@example.com
+Bob Smith,35,bob@example.com
+```
+
+And then, we could read back the text, and convert this into a `Person` object again. However, what about the `Address` object? And what about the `Country` object? Quickly, representing the object, or list of objects, as a plain text, can become rather complicated.\
+Every update to the data format requires a new version of the converter. It is tedious to maintain, and super error-prone.
+
+So, it's much easier to just write the binary data to the file. And since the data is in binary format, it can be read back by any program that knows how to interpret the binary data.
+
+![atually](Resources/actually.jpg)
+
+Well, _aacchually_, there is a convention for writing plain text representations of objects, called `JSON`. JSON is a lightweight data-interchange format that is easy for humans to read and write, and easy for machines to parse and generate. But, we don't deal with that here.\
+For now, I recommend storing the data in binary format.
