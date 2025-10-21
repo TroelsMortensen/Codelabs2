@@ -4,6 +4,39 @@ Now let's learn how to read binary data from files and reconstruct Java objects.
 
 ## Reading Primitive Data Types
 
+
+
+### Reading Objects from Binary Files
+
+```java
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+public class ObjectDeserializer {
+    public static Person loadPerson(String filename) {
+        try (ObjectInputStream inputStream = new ObjectInputStream(
+                new FileInputStream(filename))) {
+            
+            Person person = (Person) inputStream.readObject();
+            System.out.println("Person loaded from " + filename);
+            return person;
+            
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Error loading person: " + e.getMessage());
+            return null;
+        }
+    }
+    
+    public static void main(String[] args) {
+        Person person = loadPerson("person.bin");
+        if (person != null) {
+            System.out.println("Loaded: " + person);
+        }
+    }
+}
+```
+
 ### Using DataInputStream
 
 ```java
