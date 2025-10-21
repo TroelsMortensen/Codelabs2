@@ -29,6 +29,7 @@ src/
     │   ├── Explorer.java
     │   └── Encounter.java
     ├── persistence/
+    │   ├── FileDataManager.java
     │   ├── DataManager.java
     │   └── DataContainer.java
     └── ui/
@@ -82,7 +83,8 @@ The above diagram shows the data, but not any methods. That is up to you to deci
 ## Persistence Classes
 
 Now, let's create the persistence classes. I have shown two classes:
-- `DataManager` - The class responsible for saving and loading the data.
+- `FileDataManager` - The class responsible for saving and loading the data to/from a file.
+- `DataManager` - This is an interface representing what the data manager can do.
 - `DataContainer` - The class responsible for storing the data in a container. This is a wrapper class that contains one or more lists of objects.
 
 Why the DataContainer class? You have seen that we can serialize a list of objects, and write that to a file. But what about two or more lists of objects? We probably need a list for discovered planets, and a list for explorers. Maybe even a list for aliens.\
