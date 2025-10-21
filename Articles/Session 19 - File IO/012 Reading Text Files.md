@@ -6,54 +6,15 @@ Now let's learn how to read text data from files. Java provides several ways to 
 
 ### Using FileReader
 
-`FileReader` is the simplest way to read text from a file:
-
-```java
-import java.io.FileReader;
-import java.io.IOException;
-
-public class BasicTextReader {
-    public static void main(String[] args) {
-        try {
-            FileReader reader = new FileReader("data.txt");
-            
-            int character;
-            while ((character = reader.read()) != -1) {
-                System.out.print((char) character);
-            }
-            
-            reader.close();
-        } catch (IOException e) {
-            System.out.println("Error reading file: " + e.getMessage());
-        }
-    }
-}
-```
-
-### Using Try-With-Resources (Recommended)
-
-```java
-import java.io.FileReader;
-import java.io.IOException;
-
-public class SafeTextReader {
-    public static void main(String[] args) {
-        try (FileReader reader = new FileReader("data.txt")) {
-            int character;
-            while ((character = reader.read()) != -1) {
-                System.out.print((char) character);
-            }
-        } catch (IOException e) {
-            System.out.println("Error reading file: " + e.getMessage());
-        }
-        // Reader is automatically closed here
-    }
-}
-```
+LoL, you can use this class, but that's just annoying. Let's skip it.
 
 ## Better Approach: Using BufferedReader
 
-`BufferedReader` provides more convenient methods for reading text:
+`BufferedReader` provides more convenient methods for reading text. It allows you to read text from a file line by line.
+This will not read all the content at once, but instead scan the text file line by line, basically only looking at one line at a time. This is how we can read massively large files, without running out of memory. Only one line at a time is loaded into memory.
+
+Again, we use the try-with-resources approach, where we create a new BufferedReader object, and pass a FileReader object to the constructor. The FileReader object is responsible for reading the file, and the BufferedReader object is responsible for reading the file line by line.\
+The BufferedReader adds that extra level of abstraction and usability, making things easier for us, the developers.
 
 ```java
 import java.io.BufferedReader;
@@ -74,90 +35,21 @@ public class BetterTextReader {
 }
 ```
 
-## Reading Different Data Types
-
-### Reading Structured Data
-
-```java
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-public class StructuredDataReader {
-    public static void main(String[] args) {
-        List<String> lines = new ArrayList<>();
-        
-        try (BufferedReader reader = new BufferedReader(new FileReader("students.csv"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                lines.add(line);
-            }
-        } catch (IOException e) {
-            System.out.println("Error reading file: " + e.getMessage());
-        }
-        
-        // Process the data
-        System.out.println("=== Student Data ===");
-        for (int i = 0; i < lines.size(); i++) {
-            if (i == 0) {
-                System.out.println("Header: " + lines.get(i));
-            } else {
-                System.out.println("Student " + i + ": " + lines.get(i));
-            }
-        }
-    }
-}
-```
-
-### Reading Configuration Files
-
-```java
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-public class ConfigReader {
-    public static void main(String[] args) {
-        Map<String, String> config = new HashMap<>();
-        
-        try (BufferedReader reader = new BufferedReader(new FileReader("config.properties"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                // Skip empty lines and comments
-                if (line.trim().isEmpty() || line.trim().startsWith("#")) {
-                    continue;
-                }
-                
-                // Parse key=value pairs
-                int equalIndex = line.indexOf('=');
-                if (equalIndex > 0) {
-                    String key = line.substring(0, equalIndex).trim();
-                    String value = line.substring(equalIndex + 1).trim();
-                    config.put(key, value);
-                }
-            }
-        } catch (IOException e) {
-            System.out.println("Error reading config: " + e.getMessage());
-        }
-        
-        // Display configuration
-        System.out.println("=== Configuration ===");
-        for (Map.Entry<String, String> entry : config.entrySet()) {
-            System.out.println(entry.getKey() + " = " + entry.getValue());
-        }
-    }
-}
-```
-
 ## Modern Approach: Files.readAllLines()
 
-Java 8+ provides convenient methods for reading entire files:
+Java 8+ provides convenient methods for reading entire files. This can simplify the above example, but if the file is too large, it will still cause memory issues.
 
-```java
+You have two methods:
+- 
+- `Files.readAllLines()` - reads all lines at once and returns a list of strings
+- `Files.readString()` - reads the entire file as a single string
+
+
+### Reading all lines at once
+
+Let's use the `Files.readAllLines()` method for this example.
+
+```java{10}
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -183,7 +75,9 @@ public class ModernFileReader {
 
 ### Reading Entire File as String
 
-```java
+This is a very similar example, but we use the `Files.readString()` method instead to get the entire file content as a single string.
+
+```java{9}
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -195,12 +89,7 @@ public class StringFileReader {
             String content = Files.readString(Paths.get("data.txt"));
             System.out.println("File content:");
             System.out.println(content);
-            
-            // Get file statistics
-            long lineCount = content.split("\n").length;
-            System.out.println("Total lines: " + lineCount);
-            System.out.println("Total characters: " + content.length());
-            
+             
         } catch (IOException e) {
             System.out.println("Error reading file: " + e.getMessage());
         }
@@ -208,200 +97,7 @@ public class StringFileReader {
 }
 ```
 
-## Reading with Error Handling
 
-### Comprehensive Error Handling
-
-```java
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-public class RobustFileReader {
-    public static void main(String[] args) {
-        String filename = "data.txt";
-        Path filePath = Paths.get(filename);
-        
-        // Check if file exists
-        if (!Files.exists(filePath)) {
-            System.out.println("Error: File '" + filename + "' does not exist!");
-            return;
-        }
-        
-        // Check if file is readable
-        if (!Files.isReadable(filePath)) {
-            System.out.println("Error: File '" + filename + "' is not readable!");
-            return;
-        }
-        
-        // Check file size
-        try {
-            long fileSize = Files.size(filePath);
-            System.out.println("File size: " + fileSize + " bytes");
-            
-            if (fileSize == 0) {
-                System.out.println("Warning: File is empty!");
-                return;
-            }
-            
-        } catch (IOException e) {
-            System.out.println("Error getting file size: " + e.getMessage());
-            return;
-        }
-        
-        // Read the file
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-            System.out.println("\n=== File Content ===");
-            
-            String line;
-            int lineNumber = 1;
-            while ((line = reader.readLine()) != null) {
-                System.out.printf("%3d: %s%n", lineNumber, line);
-                lineNumber++;
-            }
-            
-            System.out.println("\nFile read successfully!");
-            
-        } catch (IOException e) {
-            System.out.println("Error reading file: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-## Reading Different File Formats
-
-### Reading CSV Files
-
-```java
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-public class CSVReader {
-    public static void main(String[] args) {
-        List<String[]> data = new ArrayList<>();
-        
-        try (BufferedReader reader = new BufferedReader(new FileReader("students.csv"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                // Split by comma and trim whitespace
-                String[] row = line.split(",");
-                for (int i = 0; i < row.length; i++) {
-                    row[i] = row[i].trim();
-                }
-                data.add(row);
-            }
-        } catch (IOException e) {
-            System.out.println("Error reading CSV: " + e.getMessage());
-            return;
-        }
-        
-        // Display CSV data
-        System.out.println("=== CSV Data ===");
-        for (int i = 0; i < data.size(); i++) {
-            System.out.print("Row " + (i + 1) + ": ");
-            for (int j = 0; j < data.get(i).length; j++) {
-                System.out.print(data.get(i)[j]);
-                if (j < data.get(i).length - 1) {
-                    System.out.print(" | ");
-                }
-            }
-            System.out.println();
-        }
-    }
-}
-```
-
-### Reading Log Files
-
-```java
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-public class LogReader {
-    public static void main(String[] args) {
-        try (BufferedReader reader = new BufferedReader(new FileReader("application.log"))) {
-            String line;
-            int totalLines = 0;
-            int errorLines = 0;
-            int warningLines = 0;
-            
-            while ((line = reader.readLine()) != null) {
-                totalLines++;
-                
-                if (line.contains("[ERROR]")) {
-                    errorLines++;
-                    System.out.println("ERROR: " + line);
-                } else if (line.contains("[WARNING]")) {
-                    warningLines++;
-                    System.out.println("WARNING: " + line);
-                }
-            }
-            
-            System.out.println("\n=== Log Summary ===");
-            System.out.println("Total lines: " + totalLines);
-            System.out.println("Error lines: " + errorLines);
-            System.out.println("Warning lines: " + warningLines);
-            
-        } catch (IOException e) {
-            System.out.println("Error reading log file: " + e.getMessage());
-        }
-    }
-}
-```
-
-## Performance Considerations
-
-### Reading Large Files
-
-For very large files, reading everything at once might cause memory issues:
-
-```java
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-
-public class LargeFileReader {
-    public static void main(String[] args) {
-        String filename = "large_file.txt";
-        
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-            String line;
-            int lineCount = 0;
-            
-            // Process file line by line to save memory
-            while ((line = reader.readLine()) != null) {
-                lineCount++;
-                
-                // Process each line (e.g., search for specific content)
-                if (line.contains("search_term")) {
-                    System.out.println("Found at line " + lineCount + ": " + line);
-                }
-                
-                // Print progress every 1000 lines
-                if (lineCount % 1000 == 0) {
-                    System.out.println("Processed " + lineCount + " lines...");
-                }
-            }
-            
-            System.out.println("Total lines processed: " + lineCount);
-            
-        } catch (IOException e) {
-            System.out.println("Error reading large file: " + e.getMessage());
-        }
-    }
-}
-```
 
 ## Common Reading Methods Summary
 

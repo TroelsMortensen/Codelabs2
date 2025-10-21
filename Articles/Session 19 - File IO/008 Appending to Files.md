@@ -5,12 +5,18 @@ Sometimes you want to **add content** to an existing file instead of overwriting
 ## Appending vs Overwriting
 
 ### Overwriting (Default Behavior)
+
+This deletes the original content, and writes the new content.
+
+First, we create a file with some content:
 ```java
 // Original file content
 try (PrintWriter writer = new PrintWriter(new FileWriter("log.txt"))) {
     writer.println("2024-01-15 10:00:00 - Application started");
 }
 ```
+
+Then, we overwrite the file with new content:
 
 ```java
 // Overwrite - original content is lost
@@ -24,13 +30,22 @@ try (PrintWriter writer = new PrintWriter(new FileWriter("log.txt"))) {
 2024-01-15 11:00:00 - Application restarted
 ```
 
+Notice the timestamp is from the write operation, not the original content.
+
 ### Appending (Preserves Existing Content)
+
+To append, i.e. add new content to the end of the file, while preserving the original content, we use the second parameter in the `FileWriter` constructor: `true`.
+
+First, we create a file with some content:
+
 ```java
 // Original file content
 try (PrintWriter writer = new PrintWriter(new FileWriter("log.txt"))) {
     writer.println("2024-01-15 10:00:00 - Application started");
 }
 ```
+
+Then, we append to the file. Notice the second parameter is `true`, which means append to the file.
 
 ```java
 // Append - original content is preserved
@@ -56,145 +71,11 @@ FileWriter(String filename, boolean append)
 - `append = false` (default): **Overwrite** the file
 - `append = true`: **Append** to the file
 
-## Basic Appending Examples
+## Log files
 
-### Example 1: Simple Text Appending
-```java
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.io.IOException;
+It is often useful to append rather than overwrite. Log files are often used in systems, to store data about what has happened, especially in case of crashes. Have you ever had an application crash on you, and a popup asking if you would like to send the log file to the developer? That's because the log file contains information about the actions that led to the crash, as well as information about any exceptions or stacktraces.
 
-public class SimpleAppend {
-    public static void main(String[] args) {
-        // Create initial file
-        try (PrintWriter writer = new PrintWriter(new FileWriter("notes.txt"))) {
-            writer.println("=== MY NOTES ===");
-            writer.println("Meeting notes from Monday");
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-        
-        // Append to the file
-        try (PrintWriter writer = new PrintWriter(new FileWriter("notes.txt", true))) {
-            writer.println();
-            writer.println("Additional notes from Tuesday");
-            writer.println("Remember to follow up on project");
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
-}
-```
-
-**Final file content:**
-```
-=== MY NOTES ===
-Meeting notes from Monday
-
-Additional notes from Tuesday
-Remember to follow up on project
-```
-
-### Example 2: Log File Appending
-```java
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-public class LogAppender {
-    private static final String LOG_FILE = "application.log";
-    private static final DateTimeFormatter FORMATTER = 
-        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    
-    public static void logInfo(String message) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(LOG_FILE, true))) {
-            writer.println(LocalDateTime.now().format(FORMATTER) + " [INFO] " + message);
-        } catch (IOException e) {
-            System.err.println("Error writing to log: " + e.getMessage());
-        }
-    }
-    
-    public static void logError(String message) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(LOG_FILE, true))) {
-            writer.println(LocalDateTime.now().format(FORMATTER) + " [ERROR] " + message);
-        } catch (IOException e) {
-            System.err.println("Error writing to log: " + e.getMessage());
-        }
-    }
-    
-    public static void main(String[] args) {
-        logInfo("Application started");
-        logInfo("Database connection established");
-        logError("Failed to load configuration file");
-        logInfo("Application shutdown");
-    }
-}
-```
-
-**Log file content:**
-```
-2024-01-15 10:30:15 [INFO] Application started
-2024-01-15 10:30:16 [INFO] Database connection established
-2024-01-15 10:30:17 [ERROR] Failed to load configuration file
-2024-01-15 10:30:20 [INFO] Application shutdown
-```
-
-### Example 3: Data Collection Appending
-```java
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.io.IOException;
-import java.util.Scanner;
-
-public class DataCollector {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String filename = "survey_data.csv";
-        
-        // Write header if file doesn't exist
-        if (!new java.io.File(filename).exists()) {
-            try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
-                writer.println("Name,Age,City,Occupation");
-            } catch (IOException e) {
-                System.out.println("Error creating file: " + e.getMessage());
-                return;
-            }
-        }
-        
-        // Collect and append data
-        while (true) {
-            System.out.println("Enter survey data (or 'quit' to exit):");
-            System.out.print("Name: ");
-            String name = scanner.nextLine();
-            
-            if (name.equalsIgnoreCase("quit")) {
-                break;
-            }
-            
-            System.out.print("Age: ");
-            String age = scanner.nextLine();
-            
-            System.out.print("City: ");
-            String city = scanner.nextLine();
-            
-            System.out.print("Occupation: ");
-            String occupation = scanner.nextLine();
-            
-            // Append to file
-            try (PrintWriter writer = new PrintWriter(new FileWriter(filename, true))) {
-                writer.printf("%s,%s,%s,%s%n", name, age, city, occupation);
-                System.out.println("Data saved!");
-            } catch (IOException e) {
-                System.out.println("Error saving data: " + e.getMessage());
-            }
-        }
-        
-        scanner.close();
-    }
-}
-```
+In case of log files, we clearly want to keep appending data, rather than overwriting all the time.
 
 ## Appending vs Creating New Files
 
@@ -211,25 +92,44 @@ public class DataCollector {
 - **Temporary files** - should be replaced each time
 - **Data processing** - intermediate results should be overwritten
 
-## Advanced Appending Patterns
+## PrintWriter vs FileWriter
 
-### Pattern 1: Conditional Appending
+The above shows examples with the FileWriter class. The PrintWriter class is a wrapper around the FileWriter class, and it provides more convenient methods for writing text to a file.
+
+The PrintWriter can also append text to a file, using it's `append` method. You can explore this yourself, if you want to.
+
+## Insertion?
+
+What about inserting a new line, in the middle of the file? This is not really possible, and instead we can read the file into a list of lines, insert the new line, and then write the list back to the file. Here is an example:
+
 ```java
-public class ConditionalAppender {
-    public static void appendIfNew(String filename, String content) {
+import java.io.PrintWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
+public class InsertInMiddle {
+    public static void main(String[] args) {
+        String filename = "data.txt";
+        
         try {
-            // Read existing content
-            String existingContent = "";
-            if (new File(filename).exists()) {
-                existingContent = Files.readString(Paths.get(filename));
-            }
+            // Read all lines from the file
+            List<String> lines = Files.readAllLines(Paths.get(filename));
             
-            // Only append if content is not already there
-            if (!existingContent.contains(content)) {
-                try (PrintWriter writer = new PrintWriter(new FileWriter(filename, true))) {
-                    writer.println(content);
+            // Insert new line at position 2 (0-based index)
+            lines.add(2, "This line was inserted in the middle!");
+            
+            // Write all lines back to the file
+            try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
+                for (String line : lines) {
+                    writer.println(line);
                 }
             }
+            
+            System.out.println("Line inserted successfully!");
+            
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -237,109 +137,6 @@ public class ConditionalAppender {
 }
 ```
 
-### Pattern 2: Structured Appending
-```java
-public class StructuredAppender {
-    public static void appendWithSeparator(String filename, String content) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(filename, true))) {
-            // Add separator if file has content
-            if (new File(filename).length() > 0) {
-                writer.println("---");
-            }
-            writer.println(content);
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
-}
-```
+If the file is very large, you may need to use a stream instead, which can read one line at a time. This way you can line by line transfer a line from one file (source) to another (destination). At the right point, you can insert the new line in the destination file, and then continue transferring the rest of the lines.
 
-### Pattern 3: Timestamped Appending
-```java
-public class TimestampedAppender {
-    public static void appendWithTimestamp(String filename, String content) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(filename, true))) {
-            String timestamp = LocalDateTime.now().format(
-                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-            writer.printf("[%s] %s%n", timestamp, content);
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
-}
-```
-
-## File Appending Best Practices
-
-### 1. **Always Use Try-With-Resources**
-```java
-// Good
-try (PrintWriter writer = new PrintWriter(new FileWriter("file.txt", true))) {
-    writer.println("New content");
-} catch (IOException e) {
-    // Handle error
-}
-
-// Bad - resource leak
-PrintWriter writer = new PrintWriter(new FileWriter("file.txt", true));
-writer.println("New content");
-// Missing close()!
-```
-
-### 2. **Handle File Creation**
-```java
-public static void safeAppend(String filename, String content) {
-    try {
-        // Create parent directories if they don't exist
-        File file = new File(filename);
-        file.getParentFile().mkdirs();
-        
-        // Append content
-        try (PrintWriter writer = new PrintWriter(new FileWriter(filename, true))) {
-            writer.println(content);
-        }
-    } catch (IOException e) {
-        System.out.println("Error appending to file: " + e.getMessage());
-    }
-}
-```
-
-### 3. **Add Appropriate Separators**
-```java
-public static void appendWithSeparator(String filename, String content) {
-    try (PrintWriter writer = new PrintWriter(new FileWriter(filename, true))) {
-        File file = new File(filename);
-        
-        // Add newline before content if file exists and has content
-        if (file.exists() && file.length() > 0) {
-            writer.println();
-        }
-        
-        writer.println(content);
-    } catch (IOException e) {
-        System.out.println("Error: " + e.getMessage());
-    }
-}
-```
-
-### 4. **Consider File Size**
-```java
-public static void appendWithSizeCheck(String filename, String content) {
-    File file = new File(filename);
-    
-    // Check if file is getting too large (e.g., 10MB)
-    if (file.exists() && file.length() > 10 * 1024 * 1024) {
-        System.out.println("Warning: File is getting large (" + file.length() + " bytes)");
-    }
-    
-    try (PrintWriter writer = new PrintWriter(new FileWriter(filename, true))) {
-        writer.println(content);
-    } catch (IOException e) {
-        System.out.println("Error: " + e.getMessage());
-    }
-}
-```
-
-## What's Next?
-
-Now that you understand how to append to files, let's practice with an exercise that combines file writing, overwriting, and appending! You'll create a more sophisticated file manager that can handle all these operations.
+I leave this as an exercise for you to explore.
