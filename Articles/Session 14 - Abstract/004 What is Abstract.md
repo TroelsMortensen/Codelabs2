@@ -13,8 +13,9 @@ Consider a blueprint for "Vehicle":
 - **Required components**: Must have a way to move, must have a way to stop
 - **Specific implementations**: Car, motorcycle, truck, bicycle
 
-Each vehicle follows the blueprint but has unique characteristics.\
-You will not go out into the real world and see "just a vehicle", that does not make sense. "Vehicle" is an abstract concept. It is a _category_ of things, that have something in common. That commonality is expressed in the blueprint, i.e. a super class, which is called "Vehicle".
+Each concrete vehicle follows the blueprint but has unique characteristics.\
+You will not go out into the real world and see "just a vehicle", that does not make sense. "Vehicle" is an abstract concept. It is a _category_ of things, that have something in common. That commonality is expressed in the blueprint, i.e. a super class, which is called "Vehicle".\
+For example, a `Car` is a vehicle, a `Motorcycle` is a vehicle, a `Truck` is a vehicle, and a `Bicycle` is a vehicle. All of these are concrete vehicles, and they all follow the blueprint of "Vehicle".
 
 ### 2. **Musical Instrument**
 Think about "Musical Instrument":
@@ -23,7 +24,7 @@ Think about "Musical Instrument":
 - **Required methods**: Play, tune, maintain
 - **Specific types**: Guitar, piano, violin, drums
 
-Each instrument makes music differently but follows the same basic principles. 
+Each instrument makes music differently but follows the same basic principles. For example, a `GuitarPlayedByCasper` is a concrete instrument, and it follows the blueprint of "Instrument". A `HurdyGurdy` is a concrete instrument, and it follows the blueprint of "Instrument".
 
 ## Why is Abstract Interesting in Programming?
 
@@ -43,7 +44,7 @@ But HOW they do these things can be different:
 ```
 
 ### 2. **Prevents Incomplete Implementations**
-Without abstract concepts, you might create incomplete or inconsistent implementations:
+Without abstract concepts, you might create incomplete or inconsistent implementations, if you forget to override relevant methods in the subclass.
 
 ```
 ❌ Bad: Some vehicles can start but can't stop
@@ -149,6 +150,8 @@ Adding new implementations doesn't require changing existing code:
 * Want to add a new shape? Just create a new class that extends Shape.
 * Want to add a new payment method? Just create a new class that extends PaymentMethod.
 * Want to add a new vehicle? Just create a new class that extends Vehicle.
+
+Ideally, you would not need to change the existing code, but rather add a new class that extends the abstract class. This is the power of polymorphism.
 
 ### 3. **Maintainability**
 Changes to the abstract concept automatically affect all implementations:

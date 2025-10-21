@@ -2,7 +2,7 @@
 
 ## Representing Abstract Classes in UML
 
-UML (Unified Modeling Language) provides specific notation to represent abstract classes and methods. In UML class diagrams, both methods and classes are shown with _italics_.
+UML (Unified Modeling Language) provides specific notation to represent abstract classes and methods. In UML class diagrams, both abstract methods and abstract classes are shown with _italics_.
 
 ## Basic Abstract Class Notation
 
@@ -32,8 +32,8 @@ Notice how the subclasses also have the methods, `getArea()`, `getPerimeter()`, 
 ```mermaid
 classDiagram
     class _Shape_ {
-        - x : double
-        - y : double
+        # x : double
+        # y : double
         + Shape(x : double, y : double)
         + move(newX : double, newY : double) void
         + getPosition() String
@@ -84,7 +84,7 @@ classDiagram
 
 ### 3. **Inheritance Arrows**
 - Use `──▷` to show inheritance
-- Abstract class is typically at the top, subclasses are below. This is convention.
+- Abstract class is typically at the top, subclasses are below. This is convention. We do not mess with convention, this vexes Troels.
 - Concrete classes inherit from abstract classes. Or abstract classes inherit from abstract classes. But at some point at the bottom, there must be a concrete class.
 
 

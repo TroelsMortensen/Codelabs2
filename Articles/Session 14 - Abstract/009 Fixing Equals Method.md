@@ -2,17 +2,24 @@
 
 ## The Problem with `equals` in Inheritance
 
-When working with inheritance hierarchies, implementing the `equals` method correctly becomes more complex. The main challenge is ensuring that the `equals` method works correctly when comparing objects of different types in the same hierarchy.
+When working with inheritance hierarchies, implementing the `equals` method correctly becomes more complex. The main challenge is ensuring that the `equals` method works correctly when comparing objects of different types in the same hierarchy. `instanceof` is not a good way to check if two objects are of the same type, if they exist in the same hierarchy.
 
 ## Common Issues
+
+When comparing objects we must respect both symmetry and transitivity.
+- Symmetry: If `a.equals(b)` is true, then `b.equals(a)` must also be true.
+- Transitivity: If `a.equals(b)` is true and `b.equals(c)` is true, then `a.equals(c)` must also be true.
+
+If we violate either of these properties, the `equals` method will not work correctly when comparing objects of different types in the same hierarchy.
 
 ### 1. **Symmetry Violation**
 
 Here is an example of a violation of the symmetry property. This means that if `a.equals(b)` is true, then `b.equals(a)` must also be true. But in the example below, `animal.equals(dog)` is true, but `dog.equals(animal)` is false.
 
-The problem lies in the `equals` method in the `Animal` class. It only checks if the other object is an instance of `Animal`, and if so, it compares the name of the animal. But it does not check if the other object is a `Dog`, and if so, it compares the name and the breed of the dog.
+The problem lies in the `equals` method in the `Animal` class. It only checks if the other object is an instance of `Animal`, and if so, it compares the name of the animal. But it does not check if the other object is a `Dog`.\
+In the `Dog` class the equals method checks if the other object is a `Dog`, and if so, it compares the name and the breed of the dog.
 
-```java
+```java{9-16,28-34}
 // ❌ BAD - Violates symmetry
 class Animal {
     protected String name;
@@ -60,9 +67,17 @@ System.out.println(dog.equals(animal));  // false (Dog.equals)
 
 ### 2. **Transitivity Violation**
 
-Here is an example of a violation of the transitivity property. This means that if `a.equals(b)` is true and `b.equals(c)` is true, then `a.equals(c)` must also be true. But in the example below, `p1.equals(cp1)` is true, `p1.equals(cp2)` is true, but `cp1.equals(cp2)` is false.
+Here is an example of a violation of the transitivity property. This means that
 
-The problem lies in the `equals` method in the `ColorPoint` class. It first checks if the other object is an instance of `ColorPoint`, and if so, it compares the color of the color point. But it does not check if the other object is a `Point`, and if so, it compares the x and y coordinates of the point.
+- if `a.equals(b)` is true 
+- and `b.equals(c)` is true, 
+- then `a.equals(c)` must also be true. 
+ 
+But in the example below, `p1.equals(cp1)` is true, `p1.equals(cp2)` is true, but `cp1.equals(cp2)` is false.
+
+The problem lies in the `equals` method in the `ColorPoint` class.\
+It first checks if the other object is an instance of `ColorPoint`, and if so, it compares the color of the color point.\
+But it does not check if the other object is a `Point`, and if so, it compares the x and y coordinates of the point.
 
 Then, it checks if the other object is a `Point`, and if so, it compares the x and y coordinates of the point.
 
@@ -112,11 +127,23 @@ Point p1 = new Point(1, 2);
 ColorPoint cp1 = new ColorPoint(1, 2, "red");
 ColorPoint cp2 = new ColorPoint(1, 2, "blue");
 
-System.out.println(p1.equals(cp1));  // true
-System.out.println(p1.equals(cp2));  // true
-System.out.println(cp1.equals(cp2)); // false
+System.out.println(p1.equals(cp1));  // true, should be false
+System.out.println(p1.equals(cp2));  // true, should be false
+System.out.println(cp1.equals(cp2)); // false, correctly so
 // This violates the transitivity requirement!
 ```
+
+To be fair, the above violation of the transitivity property is reordered a little bit, I try to illustrate the problem here in a diagram:
+
+```mermaid
+classDiagram
+    direction LR
+    p1 --> cp1 : equals
+    p1 --> cp2 : equals
+    cp1 --> cp2 : not equals
+```
+
+But, given that `p1` equals both `cp1` and `cp2`, we have that `cp1` should also equal `cp2`, but it does not.
 
 ## The Solution: Proper `equals` Implementation
 
@@ -126,7 +153,9 @@ In many cases, the `instanceof` operator is not a good way to check if two objec
 
 Instead, we should use `getClass()` to check if the other object is of the same type. This is because `dog.getClass() == animal.getClass()` is false, i.e. it is more precise than `dog instanceof Animal`.
 
-```java{11}
+Notice the update in line 11 and line 34.
+
+```java{11,34}
 class Animal {
     protected String name;
     
@@ -174,6 +203,8 @@ class Dog extends Animal {
 }
 ```
 
+The `Objects.equals` method used in lines 14 and 38 is a helper method that checks if two objects are equal. It is a static method in the `Objects` class. It is a null-safe comparison, meaning that it will not throw a `NullPointerException` if either of the objects is `null`.
+
 
 ## The `equals` Method Template
 
@@ -183,13 +214,16 @@ Generally, many equals methods look like this:
 ```java
 @Override
 public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (obj == null || getClass() != obj.getClass()) return false;
+    // same object in memory
+    if (this == obj) return true; 
     
-    // Cast to the current class
+    // null or different class
+    if (obj == null || getClass() != obj.getClass()) return false; 
+    
+    // cast to the current class
     CurrentClass other = (CurrentClass) obj;
     
-    // Compare all fields
+    // compare all fields
     return Objects.equals(field1, other.field1) &&
            Objects.equals(field2, other.field2) &&
            // ... compare all fields
@@ -201,18 +235,25 @@ public int hashCode() {
 }
 ```
 
+And we remember to override the `hashCode` method, to ensure that equal objects produce the same hash code.
+
 ### For Concrete Classes
+
+It could look like this:
+
 ```java
 @Override
 public boolean equals(Object obj) {
     if (this == obj) return true;
     if (obj == null || getClass() != obj.getClass()) return false;
-    if (!super.equals(obj)) return false;  // Check parent class equality
     
-    // Cast to the current class
+    // check parent class equality
+    if (!super.equals(obj)) return false;  
+    
+    // cast to the current class
     CurrentClass other = (CurrentClass) obj;
     
-    // Compare only the fields specific to this class
+    // compare only the fields specific to this class
     return Objects.equals(specificField1, other.specificField1) &&
            Objects.equals(specificField2, other.specificField2);
 }

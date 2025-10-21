@@ -2,19 +2,23 @@
 
 ## What is an Abstract Class?
 
-An **abstract class** in Java is a class that cannot be instantiated directly. It serves as a blueprint, or template, for other classes and often contains abstract methods that must be implemented by subclasses.\
+An **abstract class** in Java is a class that _cannot be instantiated directly_. It serves as a blueprint, or template, for other classes and often contains abstract methods that must be implemented by subclasses.\
 Abstract classes only make sense, if they are extended by other classes.
+
+You can declare a variable of an abstract class type, but you cannot create an object of that type! You must instead create an object of a concrete subclass of the abstract class.
 
 For example, a `Vehicle` class is abstract, because you cannot create a `Vehicle` object. You can only create a `Car`, `Motorcycle`, `Bicycle`, or `Boat` object.
 
 
 ## Creating Abstract Classes
 
+It is very easy to create an abstract class. Just use the `abstract` keyword in the class declaration.
+
 ### The `abstract` Keyword
 
 Use the `abstract` keyword to declare an abstract class, in the class declaration. Abstact methods are discussed on the next page, so ignore those for now.
 
-```java
+```java{1}
 public abstract class Shape {
     // position in 2D space
     protected double x, y;
@@ -42,12 +46,18 @@ public abstract class Shape {
 ## Key Characteristics of Abstract Classes
 
 ### 1. **Cannot be Instantiated**
+
+If `Shape` was an abstract class, the following code would cause a compilation error.
+
 ```java
 // This will cause a compilation error
 Shape shape = new Shape(0, 0);  // ❌ ERROR!
 ```
 
 ### 2. **Can Have Constructors**
+
+You use this if you want to initialize the abstract class with some data. For example, if you want to initialize the `Animal` class with a name, you can do the following. This will force you to pass a name to the constructor of the `Animal` class, when you create an object of the `Animal` class, using the `super(name)` call, as the first statement in the constructor of the concrete subclass.
+
 ```java
 abstract class Animal {
     protected String name;
@@ -62,7 +72,7 @@ abstract class Animal {
 
 ### 3. **Can Have Both Abstract and Concrete Methods**
 
-Concrete methods are methods that have a body, i.e. they are implemented.
+Concrete methods are methods that have a body, i.e. they are implemented. This is what you are used to doing.
 
 Abstract methods are methods that have no body, i.e. they are not implemented. Notice that the `accelerate` method is abstract, and does not have a body. There are no `{ }` after the method name, instead there is a semicolon `;`.
 
@@ -92,8 +102,10 @@ abstract class Vehicle {
 }
 ```
 
+We will see more concrete methods on the next page.
+
 ### 4. **Can Have Fields**
-The abstract class can have fields, just like a regular class. These can be both public, protected, or private.
+The abstract class can have field variables, just like a regular class. These can be both public, protected, or private.
 
 ```java
 abstract class Employee {

@@ -12,8 +12,9 @@ In order to be a vehicle, you must be able to `drive`. How that driving then wor
 
 ### Basic Syntax
 
-Here is another version of the Shape class, with abstract methods. If some class extends Shape, it _must_ implement the abstract methods. Notice the two abstract methods, `getArea` and `getPerimeter`, which are declared but not implemented in the abstract class.\
-The `displayInfo` method is a concrete method, which has an implementation. Still, subclasses _may_ decide to override it, if they want to provide a different implementation. This method makes calls to the two abstract methods, `getArea` and `getPerimeter`, meaning that when the method is called on some subclass of Shape, it will call the implementation of the abstract methods in the subclass.
+Here is another version of the Shape class, with abstract methods. If some class extends Shape, it _must_ implement the abstract methods. Notice the two abstract methods, `getArea` and `getPerimeter`, which are declared but not implemented in the abstract class.
+
+The `displayInfo` method is a concrete method, which has an implementation. Still, subclasses _may_ decide to `@Override` it, if they want to provide a different implementation. This method makes calls to the two abstract methods, `getArea` and `getPerimeter`, meaning that when the method is called on some subclass of Shape, it will call the implementation of the abstract methods in the subclass. This 
 
 ```java{3,6}
 public abstract class Shape {
@@ -41,7 +42,7 @@ public abstract class Shape {
 
 ### Example: Shape Hierarchy
 
-Assume the following abstract class:
+Assume the following abstract class, with three abstract methods: `getArea`, `getPerimeter`, and `draw`.
 
 ```java{10-12}
 public abstract class Shape {
@@ -125,10 +126,15 @@ class Circle extends Shape {
     }
 }
 ```
+
+If you forget to implement one of the abstract methods, you will get a compilation error. This is powerful, as we cannot forget to implement one of the abstract methods, which might be the case, if the superclass is concrete, rather than abstract.
+
 ## Note
-Abstract method can of course have parameters, and return types. Even though this is not shown in the example above, it is perfectly valid to have abstract methods with parameters and return types.
+Abstract methods can of course have parameters, and return types. Even though this is not shown in the example above, it is perfectly valid to have abstract methods with parameters and return types.
 
 ## Using Abstract Methods
+
+There isn't really much to say about using abstract methods. From the outside they look like regular methods.
 
 ### Polymorphism with Abstract Methods
 
@@ -196,6 +202,9 @@ public class Child extends Parent {
 ```
 
 ### 3. **Cannot be Static**
+
+Abstract methods cannot be static, because static methods are not bound to any specific object. They are bound to the class itself.
+
 ```java
 public abstract class Example {
     // ❌ ERROR - Abstract methods cannot be static
