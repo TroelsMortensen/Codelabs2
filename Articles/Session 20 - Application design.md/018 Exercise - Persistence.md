@@ -88,4 +88,14 @@ Now, let's create the persistence classes. I have shown two classes:
 Why the DataContainer class? You have seen that we can serialize a list of objects, and write that to a file. But what about two or more lists of objects? We probably need a list for discovered planets, and a list for explorers. Maybe even a list for aliens.\
 We cannot separately write each list to the same file.
 
-Instead, we write a single object, containing _all_ data for the application. Is this a good idea? Generally no. But this is where we start. Then on second semester, you get to add an actual database.
+Instead, we write a single object, containing _all_ data for the application.\
+Is this a good idea? Generally no, it requires us to load _all_ the data into memory at once. But this is where we start. Then on second semester, you get to add an actual database.\
+On third semester you will see a different approach to structure your data across multiple files, but it builds upon database theory.
+
+This approach will also be useful for your first æsemester project.
+
+Let's begin with the DataContainer class.
+
+### DataContainer class
+
+### DataManager class
