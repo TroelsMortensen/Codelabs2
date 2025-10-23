@@ -16,13 +16,13 @@ In this learning path, we will have the following layers:
 - Persistence layer
 - Domain layer
 
-These are common terminology, but you may encounter other names for these layers.
+This is a common terminology, but you may encounter other names for these layers.
 
 Layers are some kind of grouping. For you, at this point, think of packages. You would have a package for everything related to your living room, another package for everything related to your kitchen, another package for everything related to your bathroom, etc.
 
 We have packages in our application code, and these packages represent layers. Later, you should use moduls instead, or something simalar. But that is not important for now.
 
-We usually draw a layered architecture as boxes on top of each other, with arrows between them, indicating that the classes from one layer uses the classes from another layer.
+We usually draw a layered architecture as boxes on top of each other, with arrows between them, indicating that the classes from one layer uses the classes from a _lower_ layer. There is a strong convention of the ordering of the layers. Arrows point **downwards**. Don't mess with me!
 
 ```mermaid
 graph TD

@@ -50,7 +50,7 @@ classDiagram
     class Planet {
         - name : String
         - climateDescription : String
-        - distanceFromSunAU : double
+        - distanceFromStarAU : double
         - hasAtmosphere : boolean
         - hasLife : boolean
     }
@@ -94,5 +94,5 @@ src/
     │   ├── Explorer.java
     │   └── Encounter.java
     ├── persistence/
-    └── ui/
+    └── presentation/
 ```

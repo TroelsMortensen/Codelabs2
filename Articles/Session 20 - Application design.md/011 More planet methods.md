@@ -8,7 +8,7 @@ classDiagram
         <<interface>>
         + addPlanet(planet : Planet)* void
         + updatePlanet(planet : Planet)* void
-        + deletePlanet(planet : Planet)* void
+        + deletePlanet(id : int)* void
         + getPlanet(id : int)* Planet
         + getAllPlanets()* List~Planet~
     }
@@ -26,7 +26,8 @@ Find the `deletePlanet()` method in the FileDataManager class, to fill it out. T
 4) Remove the planet from the list
 5) Save the DataContainer object to the file again
 
-I know you have a getPlanet() method, but you can't use that here to find the planet. That is because the get method will load data, find the planet, and return it. The delete planet method will also load data, so you cannot easily use the returned planet to remove it from the list, as the objects will be different. Is this confusing? Probably. 
+I know you have a getPlanet() method, but you can't use that here to find the planet. That is because the get method will load data, find the planet, and return it. The delete planet method will also load data, i.e. new objects, so you cannot easily use the returned planet to remove it from the list, as the objects will be different. Is this confusing? Probably. Do what I say.\
+Or use the remove method on the list which takes in a predicate. You have, however, not learned about this.
 
 ## Updating a planet
 
@@ -39,6 +40,9 @@ Find the `updatePlanet()` method in the FileDataManager class, to fill it out. T
 So, it is not really an update, it is a delete and an add. Or replace. This is a common approach, and simpler than retrieving the existing planet, and updating all the fields. Though, slightly less efficient, as we are loading and saving the data twice.
 
 You may do the "update" by retrieving the existing planet, and updating all the fields. This will just require more code. 
+
+The suggested approach is slightly less safe, but just simpler. It is good enough for your current level.\
+The problem that may occur is that the deletion will succeed, but the saving data after adding will fail. We have now just removed a planet, instead of updating it. This will not happen to you, so don't worry about it.
 
 ## Getting all planets
 

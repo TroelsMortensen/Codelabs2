@@ -19,8 +19,8 @@ src/
     │   ├── DataContainer.java
     │   ├── DataManager.java
     │   └── FileDataManager.java
-    └── ui/
-        └── ConsoleUI.java
+    └── presentation/
+        └── MainMenu.java
 ```
 
 I include some of the classes just to give you an idea of the structure. But don't create any classes yet. Just the packages for now.

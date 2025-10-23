@@ -67,7 +67,7 @@ public class FileDataManager implements DataManager {
 }
 ```
 
-This will cause a compiler error, because the interface has methods that are not implemented. You can use IntelliJ's quick fix feature to automatically add the methods. Then you get empty method bodies, which we can fill in below.
+This will cause a compiler error, because the interface has abstractmethods that are not implemented. You can use IntelliJ's quick fix feature to automatically add the methods. Then you get empty method bodies, which we can fill in later.
 
 ## 3. Making sure there is empty data
 
@@ -104,7 +104,7 @@ This will ensure that there is some initial data, even if there are no entities.
 
 ## 4. Implement the first methods
 
-Let's implement the methods for the FileDataManager class.
+Let's now start on the methods for the FileDataManager class.
 
 ### 4.1 Add a planet
 
@@ -122,22 +122,22 @@ This method should:
 
 1) Receive a planet object as a parameter
 2) Read the DataContainer object from the file (create a readMethod similar to the saveData method above)
-3) Figure out the largest id of all the current planets, and add 1 to it, to get the new id for the planet
+3) Figure out the largest id of all the current planets, and add 1 to it, to get the new id for the planet. This is probably the simplest to get the next available id.
 4) Set the id of the planet object to the new id
 5) Add the planet object to the DataContainer object, either by:
    1) getting the list of planets from the DataContainer object and adding the planet object to it, or
    2) using an `addPlanet()` method of the DataContainer object
-6) Save the DataContainer object to the file (use the same `saveData()` method as in the constructor). This will overwrite the content of the existing file, that's is intended.
+6) Save the DataContainer object to the file (use the same `saveData()` method as in the constructor). This will overwrite the content of the existing file, that's intended.
 
 You have to add a try-catch to handle IOException. You then have two options for handling this:
-1) Print out the stack trace, and do no further. This is the simpler approach, but not ideal from a user point of view.
-2) Create your own custom Runtime exception, and throw that instead with a message. This exception will be caught in the presentation layer, and you can print out the message to the user. This is the better approach.
+1) Print out the stack trace, and do no further. This is the simpler approach, but not ideal from a user point of view. When adding a GUI, and something fails, they will not see the stack trace, and not know that their intended action failed.
+2) Create your own custom Runtime exception, and throw that instead with a message. This exception will eventually be caught in the presentation layer, and you can print out the message to the user. This is the better approach.
 
 ### 4.2 Get a planet
 
 Now, let's see if we can retrieve a planet  from the storage. After this method, we will be able to test if the saving and loading actually works.
 
-Find the getPlanet() method in the FileDataManager, to fill it out. The method should:
+Find the `getPlanet()` method in the FileDataManager, to fill it out. The method should:
 
 1) Receive an id as a parameter
 2) Read the DataContainer object from the file. Again, you have a read method from above, you can reuse here.
@@ -145,5 +145,7 @@ Find the getPlanet() method in the FileDataManager, to fill it out. The method s
 4) Find the planet with the given id in the list
 5) Return the planet object
 
-The DataContainer will be lost and collected by the garbage collector, when the method returns. So, we don't have to do anything special with it.
+The DataContainer object will be lost and collected by the garbage collector, when the method returns. So, we don't have to do anything special with it.
+
+What happens if the planet is not found? You can either return null, or throw an exception. I will let you decide. Returning null is perhaps simpler, but may result in a lot of null checks in the calling code. Throwing an exception is more robust, but may result in more complex code.
 
