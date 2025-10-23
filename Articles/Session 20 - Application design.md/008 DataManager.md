@@ -2,7 +2,7 @@
 
 Next, let's do the interface for the DataManager. This is the interface that will be implemented by the FileDataManager class.
 
-Here is the UML:
+Here is the full-scale UML:
 
 ```mermaid
 classDiagram
@@ -68,4 +68,4 @@ src/
 
 Notice the DataContainer class is also in the persistence package. This is because the DataManager class will need to use the DataContainer class to store the data.
 
-Once you have the reduced interface in place, we can move on to the implementation of the DataManager interface.
+Once you have the initial interface in place, we can move on to the implementation of the DataManager interface.

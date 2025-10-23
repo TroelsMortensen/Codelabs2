@@ -1,8 +1,17 @@
 # The FileDataManager class
 
-Conventionally, the interface is named for what it does. This interface manages data, so it is called DataManager. It is a generalization. Then, the implementation of the interface is named for how it does, what the interface promises. Since it is a file-based data manager, it is called FileDataManager. You might also have an `InMemoryDataManager`, which just keeps the data in a list in memory. That's what we have done most of the time so far. Then, you might also have a `PostgresDataManager`, which uses a postgres database, to store the data. That's for next semester. 
+Here we will start on the FileDataManager class.
+But first, why do we have the interface?
 
-For a quick overview:
+## Separating layers with interfaces
+
+Conventionally, the interface is named for _what it does_. This interface manages data, so it is called DataManager. It is a generalization. Then, the _implementation_ of the interface is named for _how it does_, what the interface promises. Since it is a file-based data manager, it is called FileDataManager.\
+You might also have an `InMemoryDataManager`, which just keeps the data in a list in memory. That's what we have done most of the time so far.\
+Then, you might also have a `PostgresDataManager`, which uses a postgres database, to store the data. That's for next semester. 
+
+When developing applications it can be beneficial to start out with some simple dummy version of the data storage, even just a list. That allows you to focus on implementing and trying out features. Later, you can swap in a more persistent version of the data storage.
+
+For a quick overview of the different possible implementations, here is the UML:
 
 ```mermaid
 classDiagram
@@ -26,7 +35,7 @@ classDiagram
 
 All the implementations promises to manage data, but they do it in different ways.
 
-In this session, we will focus on the FileDataManager class.
+In this learning path, we will focus on the FileDataManager class.
 
 Let's begin.
 

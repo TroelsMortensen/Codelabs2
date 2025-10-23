@@ -4,8 +4,8 @@ Next, we have the persistence layer. This layer is responsible for saving and lo
 
 ```mermaid
 graph TD
-    A[Presentation] --> B[Persistence]
-    A --> C[Domain]
+    A[<font color=black>Presentation] --> B[<font color=black>Persistence]
+    A --> C[<font color=black>Domain]
     B --> C
     
     style A fill:#F5BB27
@@ -83,9 +83,13 @@ classDiagram
     FileDataManager ..> DataContainer 
 ```
 
-Yeah, that's a lot of methods on the interface. You may not need all of them initially. You can add them later if you need them.
+Yeah, that's a lot of methods on the interface. **You may not need all of them initially**. You can add them later if you need them.
 
-The point is, the DataManager interface defines what the data manager can do. And generally, what the persistence layer can do, is to perform "CRUD" operations on our model classes. What are CRUD?
+The point is, the DataManager interface defines what the data manager can do. And generally, what the persistence layer can do, is to perform "CRUD" operations on our model classes. 
+
+## What are CRUD operations?
+
+That is an acronym for Create, Read, Update and Delete. It is a common way to describe the basic operations that can be performed on a data store.
 
 - **C**reate - add a new object to the data store
 - **R**ead - read an object from the data store

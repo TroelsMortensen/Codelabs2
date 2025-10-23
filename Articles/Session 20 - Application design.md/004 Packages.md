@@ -4,7 +4,7 @@ We start by creating the packages for the application. We will leave them empty 
 
 Somewhere, in your current project, or a new, create a new package for the application. Call it `spaceexplorer`.
 
-The structure of the packages should look like this:
+The structure of the packages should look like this (don't create any classes yet):
 
 ```
 src/
@@ -12,13 +12,13 @@ src/
     ├── RunApplication.java
     ├── model/
     │   ├── Alien.java
-    │   ├── Planet.java
+    │   ├── Encounter.java
     │   ├── Explorer.java
-    │   └── Encounter.java
+    │   └── Planet.java
     ├── persistence/
-    │   ├── FileDataManager.java
+    │   ├── DataContainer.java
     │   ├── DataManager.java
-    │   └── DataContainer.java
+    │   └── FileDataManager.java
     └── ui/
         └── ConsoleUI.java
 ```

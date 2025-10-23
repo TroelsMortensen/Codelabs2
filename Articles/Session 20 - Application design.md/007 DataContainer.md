@@ -14,10 +14,10 @@ classDiagram
         + getPlanets() List~Planet~
         + getExplorers() List~Explorer~
         + getEncounters() List~Encounter~
-        # setAliens(aliens : List~Alien~) void
-        # setPlanets(planets : List~Planet~) void
-        # setExplorers(explorers : List~Explorer~) void
-        # setEncounters(encounters : List~Encounter~) void
+        + addAlien(alien : Alien) void
+        + addPlanet(planet : Planet) void
+        + addExplorer(explorer : Explorer) void
+        + addEncounter(encounter : Encounter) void
     }
 ```
 
@@ -37,8 +37,8 @@ src/
 
 There is nothing about copying anything here, no composition. This class will be read from the file, and you (or the FileDataManager class) can then extract necessary model objects from it. 
 
-You may also sometimes need to just overwrite the existing list. 
+You may also sometimes need to just overwrite an existing list.
 
-If you need other methods, feel free to add them. Maybe methods about adding single objects to the list.
+If you need other methods, feel free to add them.
 
-Ensure the lists are initialized as empty lists, either in the constructor, or directly at the field declaration.~~
+Ensure the lists are initialized as empty lists, either in the constructor, or directly at the field declaration.

@@ -92,3 +92,5 @@ If you have just one test class with one main method, you will either:
 - Keep expanding and have the class test more and more and more. Maybe something fails before you even get to the stuff you are actually testing. It's just easier to keep things focused.
 
 If you create multiple test classes, you can always go back and re-run a previous test, if needed. Maybe you are worring about a new feature potentially having broken something else. You can just re-run the previous test.
+
+We will explore this further next semester, and add a good deal of automation to the testing process as well. That will be great.

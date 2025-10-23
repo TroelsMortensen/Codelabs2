@@ -41,6 +41,8 @@ We divide the requirements into two parts:
 - The system should be designed using the layered architecture (see previous page).
 - The system should be well organized, with a clear separation of concerns.
 
+Yes, this seems like a lot of requirements. And it is. I will guide you through implementing the application to support the requirements related to planets. By then you should hopefully see the pattern, and be able to implement the other features yourself. I do not expect you to finish everything, but what is taught here will be very relevant for your semester project.
+
 ## Tutorial style
 
 On the next pages, you will be tasked with implementing the application step by step. We will do a layer at a time.

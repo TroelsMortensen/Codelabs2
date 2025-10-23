@@ -4,8 +4,8 @@ We start with the domain layer. This is easier because it does not depend on any
 
 ```mermaid
 graph TD
-    A[Presentation] --> B[Persistence]
-    A --> C[Domain]
+    A[<font color=black>Presentation] --> B[<font color=black>Persistence]
+    A --> C[<font color=black>Domain]
     B --> C
     
     style A fill:#F5BB27
@@ -83,7 +83,7 @@ The above diagram shows the data, but not any methods. That is up to you to deci
 
 ## Current snapshot
 
-Your current project structure should look like this:
+Your current project structure should now look like this:
 
 ```
 src/

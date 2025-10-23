@@ -2,7 +2,11 @@
 
 Your house (should you have one) is divided into rooms. Most rooms have a specific purpose. When you add new stuff to your house, you will probably add it to a specific room.
 
-You don't have a toilet in your living room, or a kitchen in your bedroom. There is a place for everything, and everything is in its place.
+You don't have a toilet in your living room, or a stove in your bedroom. There is a place for everything, and everything is in its place.
+
+![chaotic house](Resources/ChaoticHouse.jpg)
+
+## Design in software
 
 In software, instead of rooms, we have layers. Each layer has a specific purpose. This is a _very_ common approach, even if the layers may look slightly different in different applications.
 
@@ -22,8 +26,8 @@ We usually draw a layered architecture as boxes on top of each other, with arrow
 
 ```mermaid
 graph TD
-    A[Presentation] --> B[Persistence]
-    A --> C[Domain]
+    A[<font color=black>Presentation] --> B[<font color=black>Persistence]
+    A --> C[<font color=black>Domain]
     B --> C
     
     style A fill:#F5BB27
@@ -38,6 +42,7 @@ So, we are working with three layers, what goes where?
 - **The presentation layer** is responsible for displaying the data to the user. It is the layer that the user interacts with. It is the layer that the user sees and uses.
   - In our applications so far, we have used the console. So, classes writing to the console, and classes reading from the console, would belong to the presentation layer.
   - Later, we will use a graphical user interface (GUI), using JavaFX.
+  - Even more later, you will do other things, maybe serve websites.
 - **The persistence layer** is responsible for saving and loading the data. It is the layer that deals with the database.
 - **The domain layer** is responsible for the business logic. It is the layer that contains the classes that represent the real-world objects.
 
