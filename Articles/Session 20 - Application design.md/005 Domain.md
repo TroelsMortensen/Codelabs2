@@ -24,6 +24,17 @@ We need to create the classes that represent the real-world objects. In our case
 - Explorer
 - Encounter
 
+## Entity
+
+What is an entity? 
+
+- An entity is an object that has a unique identity. Even if two objects have the same data, if they have different identities, they are different entities.
+- It is an object that can be uniquely identified. This is typically done by an ID, either an integer, or a string of random characters.
+- It is an object that has a life cycle. That means the entity changes over time, its data changes.
+- It is created, used, and then destroyed. 
+
+Most of your model classes are entities. This is the data, your system works with over time. You have a planet object, an alien object, an explorer object, and an encounter object. These are all entities.
+
 ## Class diagram
 
 Here is a sort of complete UML class diagram for the domain classes.
