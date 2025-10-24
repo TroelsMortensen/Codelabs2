@@ -23,7 +23,7 @@ public partial class Home : ComponentBase
     private CourseOverview OverviewData { get; } =
         new CourseOverview(
             [
-                new Course("PRO1", Color.Aquamarine.ToArgb().ToString(),
+                new Course("PRO1", "#7FFFD4",
                     [
                         new Session(1, "Basic Java",
                             [
@@ -40,7 +40,7 @@ public partial class Home : ComponentBase
                         )
                     ]
                 ),
-                new Course("UML", Color.Coral.ToArgb().ToString(),
+                new Course("UML", "#FF7F50",
                     [
                         new Session(1, "Class Diagram",
                             [
