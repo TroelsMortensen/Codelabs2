@@ -8,7 +8,7 @@ You don't have a toilet in your living room, or a stove in your bedroom. There i
 
 ## Design in software
 
-In software, instead of rooms, we have layers. Each layer has a specific purpose. This is a _very_ common approach, even if the layers may look slightly different in different applications.
+In software, instead of rooms, we have _layers_. Each layer has a specific purpose. This is a _very_ common approach, even if the layers may look slightly different in different applications.
 
 In this learning path, we will have the following layers:
 
@@ -49,10 +49,10 @@ So, we are working with three layers, what goes where?
 To show this as a package structure, we would have the following:
 
 ```
-src/
-├── presentation/
-├── persistence/
-└── domain/
+📁src/
+├── 📁presentation/
+├── 📁persistence/
+└── 📁domain/
 ```
 
 When you get to your semester project, you can follow a similar approach. Next semester will add more layers, and you will learn about more advanced design approaches.

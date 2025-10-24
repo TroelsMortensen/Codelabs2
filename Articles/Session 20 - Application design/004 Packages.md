@@ -7,20 +7,20 @@ Somewhere, in your current project, or a new, create a new package for the appli
 The structure of the packages should look like this (don't create any classes yet):
 
 ```
-src/
-└── extraterrestrialexploration/
+📁src/
+└── 📁extraterrestrialexploration/
     ├── RunApplication.java
-    ├── model/
-    │   ├── Alien.java
-    │   ├── Encounter.java
-    │   ├── Explorer.java
-    │   └── Planet.java
-    ├── persistence/
-    │   ├── DataContainer.java
-    │   ├── DataManager.java
-    │   └── FileDataManager.java
-    └── presentation/
-        └── MainMenu.java
+    ├── 📁model/
+    │   ├── 📄Alien.java
+    │   ├── 📄Encounter.java
+    │   ├── 📄Explorer.java
+    │   └── 📄Planet.java
+    ├── 📁persistence/
+    │   ├── 📄DataContainer.java
+    │   ├── 📄DataManager.java
+    │   └── 📄FileDataManager.java
+    └── 📁presentation/
+        └── 📄MainMenu.java
 ```
 
 I include some of the classes just to give you an idea of the structure. But don't create any classes yet. Just the packages for now.

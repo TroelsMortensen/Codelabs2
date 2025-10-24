@@ -9,26 +9,27 @@ We will start with the class, and add the method for handling the planet managem
 Start by creating the class in the `presentation` package. Here is your current application structure:
 
 ```
-src/
-├── presentation/
-│   ├── MainMenu.java
-│   ├── RunApplication.java
-│   └── planetmanagement/
-│       └── PlanetMenu.java
-├── persistence/
-│   ├── DataContainer.java
-│   ├── DataManager.java
-│   └── FileDataManager.java
-├── domain/
-│    ├── Alien.java
-│    ├── Encounter.java
-│    ├── Explorer.java
-│    └── Planet.java
-└── test/
-    ├── TestSaveAndLoadPlanet.java
-    ├── TestDeletePlanet.java
-    ├── TestUpdatePlanet.java
-    └── TestGetAllPlanets.java
+📁src/
+├── 📁presentation/
+│   ├── 📄MainMenu.java
+│   ├── 📄RunApplication.java
+│   └── 📁planetmanagement/
+│       └── 📄PlanetMenu.java
+├── 📁persistence/
+│   ├── 📄DataContainer.java
+│   ├── 📄DataManager.java
+│   └── 📄FileDataManager.java
+├── 📁domain/
+│    ├── 📄Alien.java
+│    ├── 📄Encounter.java
+│    ├── 📄Explorer.java
+│    └── 📄Planet.java
+└── 📁test/
+    └── 📁persistence/
+        ├── 📄TestSaveAndLoadPlanet.java
+        ├── 📄TestDeletePlanet.java
+        ├── 📄TestUpdatePlanet.java
+        └── 📄TestGetAllPlanets.java
 ``` 
 
 ## Adding the method for the planet management menu

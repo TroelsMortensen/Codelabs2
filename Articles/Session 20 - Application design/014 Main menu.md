@@ -47,23 +47,24 @@ So, let's start with the main menu. Create a new class called `MainMenu`, in the
 Here is your current application structure:
 
 ```
-src/
-├── presentation/
-│   └── MainMenu.java
-├── persistence/
-│   ├── DataContainer.java
-│   ├── DataManager.java
-│   └── FileDataManager.java
-├── domain/
-│    ├── Alien.java
-│    ├── Encounter.java
-│    ├── Explorer.java
-│    └── Planet.java
-└── test/
-    ├── TestSaveAndLoadPlanet.java
-    ├── TestDeletePlanet.java
-    ├── TestUpdatePlanet.java
-    └── TestGetAllPlanets.java
+📁src/
+├── 📁presentation/
+│   └── 📄MainMenu.java
+├── 📁persistence/
+│   ├── 📄DataContainer.java
+│   ├── 📄DataManager.java
+│   └── 📄FileDataManager.java
+├── 📁domain/
+│    ├── 📄Alien.java
+│    ├── 📄Encounter.java
+│    ├── 📄Explorer.java
+│    └── 📄Planet.java
+└── 📁test/
+    └── 📁persistence/
+        ├── 📄TestSaveAndLoadPlanet.java
+        ├── 📄TestDeletePlanet.java
+        ├── 📄TestUpdatePlanet.java
+        └── 📄TestGetAllPlanets.java
 ```
 
 ## Filling out the class
@@ -131,24 +132,25 @@ Now, to test this, we should create a class to actually run the program, and sho
 Here is your current application structure:
 
 ```
-src/
-├── presentation/
-│   ├── MainMenu.java
-│   └── RunApplication.java
-├── persistence/
-│   ├── DataContainer.java
-│   ├── DataManager.java
-│   └── FileDataManager.java
-├── domain/
-│    ├── Alien.java
-│    ├── Encounter.java
-│    ├── Explorer.java
-│    └── Planet.java
-└── test/
-    ├── TestSaveAndLoadPlanet.java
-    ├── TestDeletePlanet.java
-    ├── TestUpdatePlanet.java
-    └── TestGetAllPlanets.java
+📁src/
+├── 📁presentation/
+│   ├── 📄MainMenu.java
+│   └── 📄RunApplication.java
+├── 📁persistence/
+│   ├── 📄DataContainer.java
+│   ├── 📄DataManager.java
+│   └── 📄FileDataManager.java
+├── 📁domain/
+│    ├── 📄Alien.java
+│    ├── 📄Encounter.java
+│    ├── 📄Explorer.java
+│    └── 📄Planet.java
+└── 📁test/
+    └── 📁persistence/
+        ├── 📄TestSaveAndLoadPlanet.java
+        ├── 📄TestDeletePlanet.java
+        ├── 📄TestUpdatePlanet.java
+        └── 📄TestGetAllPlanets.java
 ```
 
 The RunApplication class should have a main method, which creates a new MainMenu object, and calls the handleMainMenu() method. 

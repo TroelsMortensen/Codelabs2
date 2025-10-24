@@ -86,13 +86,13 @@ The above diagram shows the data, but not any methods. That is up to you to deci
 Your current project structure should now look like this:
 
 ```
-src/
-└── extraterrestrialexploration/
-    ├── model/
-    │   ├── Alien.java
-    │   ├── Planet.java
-    │   ├── Explorer.java
-    │   └── Encounter.java
-    ├── persistence/
-    └── presentation/
+📁src/
+└── 📁extraterrestrialexploration/
+    ├── 📁model/
+    │   ├── 📄Alien.java
+    │   ├── 📄Planet.java
+    │   ├── 📄Explorer.java
+    │   └── 📄Encounter.java
+    ├── 📁persistence/
+    └── 📁presentation/
 ```

@@ -57,22 +57,23 @@ Find the `getAllPlanets()` method in the FileDataManager class, to fill it out. 
 I recommend you create new test classes for the above methods:
 
 ```
-src/
-├── presentation/
-├── persistence/
-│   ├── DataContainer.java
-│   ├── DataManager.java
-│   └── FileDataManager.java
-├── domain/
-│    ├── Alien.java
-│    ├── Encounter.java
-│    ├── Explorer.java
-│    └── Planet.java
-└── test/
-    ├── TestSaveAndLoadPlanet.java
-    ├── TestDeletePlanet.java
-    ├── TestUpdatePlanet.java
-    └── TestGetAllPlanets.java
+📁src/
+├── 📁presentation/
+├── 📁persistence/
+│   ├── 📄DataContainer.java
+│   ├── 📄DataManager.java
+│   └── 📄FileDataManager.java
+├── 📁domain/
+│    ├── 📄Alien.java
+│    ├── 📄Encounter.java
+│    ├── 📄Explorer.java
+│    └── 📄Planet.java
+└── 📁test/
+    └── 📁persistence/
+        ├── 📄TestSaveAndLoadPlanet.java
+        ├── 📄TestDeletePlanet.java
+        ├── 📄TestUpdatePlanet.java
+        └── 📄TestGetAllPlanets.java
 ```
 
 The test classes should have a main method, which tests the relevant method. Consider how to setup the test data first, e.g. by adding necessary data to the DataContainer object before calling the method you are testing.

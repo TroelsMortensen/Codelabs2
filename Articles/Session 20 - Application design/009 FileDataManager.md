@@ -44,17 +44,17 @@ Let's begin.
 This class also belongs in the persistence package, here:
 
 ```{6}
-src/
-├── presentation/
-├── persistence/
-│   ├── DataContainer.java
-│   ├── DataManager.java
-│   └── FileDataManager.java
-└── domain/
-    ├── Alien.java
-    ├── Encounter.java
-    ├── Explorer.java
-    └── Planet.java
+📁src/
+├── 📁presentation/
+├── 📁persistence/
+│   ├── 📄DataContainer.java
+│   ├── 📄DataManager.java
+│   └── 📄FileDataManager.java
+└── 📁domain/
+    ├── 📄Alien.java
+    ├── 📄Encounter.java
+    ├── 📄Explorer.java
+    └── 📄Planet.java
 ```
 
 ## 2. Implement the interface

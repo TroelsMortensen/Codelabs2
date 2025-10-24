@@ -54,16 +54,16 @@ If you put _all_ the methods in the interface, your implementing class will just
 Put the interface in the persistence package:
 
 ```{5}
-src/
-├── presentation/
-├── persistence/
-│   ├── DataContainer.java
-│   └── DataManager.java
-└── domain/
-    ├── Alien.java
-    ├── Encounter.java
-    ├── Explorer.java
-    └── Planet.java
+📁src/
+├── 📁presentation/
+├── 📁persistence/
+│   ├── 📄DataContainer.java
+│   └── 📄DataManager.java
+└── 📁domain/
+    ├── 📄Alien.java
+    ├── 📄Encounter.java
+    ├── 📄Explorer.java
+    └── 📄Planet.java
 ```
 
 Notice the DataContainer class is also in the persistence package. This is because the DataManager class will need to use the DataContainer class to store the data.

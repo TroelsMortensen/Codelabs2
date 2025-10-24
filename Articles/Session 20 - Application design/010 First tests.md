@@ -12,19 +12,19 @@ Generally, we will separate tests from the rest of the code. On second semester,
 For now, create a new package called "test" in the src directory, and a new package called "persistence" in the test package:
 
 ```{12}
-src/
-├── presentation/
-├── persistence/
-│   ├── DataContainer.java
-│   ├── DataManager.java
-│   └── FileDataManager.java
-├── domain/
-│    ├── Alien.java
-│    ├── Encounter.java
-│    ├── Explorer.java
-│    └── Planet.java
-└── test/
-    └── persistence/
+📁src/
+├── 📁presentation/
+├── 📁persistence/
+│   ├── 📄DataContainer.java
+│   ├── 📄DataManager.java
+│   └── 📄FileDataManager.java
+├── 📁domain/
+│    ├── 📄Alien.java
+│    ├── 📄Encounter.java
+│    ├── 📄Explorer.java
+│    └── 📄Planet.java
+└── 📁test/
+    └── 📁persistence/
 ```
 
 I now realize the packages above are not ordered alphabetically. This annoys me slightly, but it is what it is. I will _probably_ survive this.
@@ -33,20 +33,20 @@ In the `test/persistence` package, create a new class called "TestSaveAndLoadPla
 Just catch `Exception` in the catch blocks.
 
 ```{13}
-src/
-├── presentation/
-├── persistence/
-│   ├── DataContainer.java
-│   ├── DataManager.java
-│   └── FileDataManager.java
-├── domain/
-│    ├── Alien.java
-│    ├── Encounter.java
-│    ├── Explorer.java
-│    └── Planet.java
-└── test/
-    └── persistence/
-        └── TestSaveAndLoadPlanet.java
+📁src/
+├── 📁presentation/
+├── 📁persistence/
+│   ├── 📄DataContainer.java
+│   ├── 📄DataManager.java
+│   └── 📄FileDataManager.java
+├── 📁domain/
+│    ├── 📄Alien.java
+│    ├── 📄Encounter.java
+│    ├── 📄Explorer.java
+│    └── 📄Planet.java
+└── 📁test/
+    └── 📁persistence/
+        └── 📄TestSaveAndLoadPlanet.java
 ```
 
 
