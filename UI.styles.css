@@ -312,11 +312,89 @@ main[b-mr0ddkk2zs] {
     left: 10px;
 }
 /* /Pages/Home.razor.rz.scp.css */
-.tutorials-card[b-uyo0foee1o]{
-    background-color: #77b8f4;
-    border-radius: 0.5rem;
+/* Container for all courses - creates a responsive grid */
+.CoursesBoxLayout[b-uyo0foee1o] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem;
     padding: 1rem;
+}
+
+/* Individual course column styling */
+.CourseBox[b-uyo0foee1o] {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    align-self: flex-start;
+    height: fit-content;
+}
+
+/* Course title styling */
+.CourseBox h1[b-uyo0foee1o] {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* Session container */
+.SessionBox[b-uyo0foee1o] {
+    margin-bottom: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+}
+
+/* Session title */
+.SessionBox h3[b-uyo0foee1o] {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    color: black;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Learning path container */
+.LearningPathBox[b-uyo0foee1o] {
+    margin-bottom: 0.5rem;
+}
+
+/* Learning path button styling */
+.LearningPathButton[b-uyo0foee1o] {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 0.25rem;
     cursor: pointer;
-    display:inline-block;
-    margin: 15px;
+    font-size: 0.9rem;
+    text-align: left;
+    transition: background-color 0.2s ease;
+}
+
+.LearningPathButton:hover[b-uyo0foee1o] {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.LearningPathButton:active[b-uyo0foee1o] {
+    transform: translateY(1px);
+}
+
+/* Remove default list styling */
+.SessionBox ol[b-uyo0foee1o] {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.SessionBox li[b-uyo0foee1o] {
+    margin: 0;
+    padding: 0;
 }
