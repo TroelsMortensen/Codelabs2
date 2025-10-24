@@ -16,12 +16,13 @@ They built a system of aqueducts, which are still standing today. These aqueduct
 
 Because of these aqueducts, the water channel would drop only one meter in height, over a distance of up to [several kilometers](https://www.earthdate.org/episodes/roman-aqueducts#:~:text=Most%20aqueducts%20have%20overall%20slopes,for%20precise%20measurement%20of%20angles.).
 
-But, the aqueducts were not just a simple bridge. They were a complex system of engineering. The romans needed a stable structure so that these aqueducts would last for centuries. See the image above?  They are designed to be able to support the weight of the water, and the weight of the structure above it.\
-Instead of stacking blocks on blocks, they would cut the blocks in a more triangle shape, allowing them to build this arched structure. The weight of the stones, and their shape, would direct the forces to help stabilize the structure.
+But, the aqueducts were not just a simple bridge. They were a complex system of engineering. The romans needed a stable structure so that these aqueducts would last for centuries. See the image above?  The arches are designed to be able to support the weight of the water, and the weight of the structure above it.
+
+Instead of stacking blocks on blocks, they would cut the blocks in a more triangular shape, allowing them to build this arched structure. The weight of the stones, and their shape, would direct the forces to help stabilize the structure.
 
 ![arch](Resources/arch.jpg)
 
-No, the weight pressing down on the arch would stabalize it, and the arch was able to carry the weight of the structure above it.
+Now, the weight pressing down on the arch would stabalize it, and the arch was able to carry the weight of the structure above it.
 
 ## Modern times
 
@@ -44,7 +45,7 @@ In software, we have similar problems.
 As our system grows larger and larger, with more and more features, more complex object models for increasingly complex real world scenarios, we again and again and again face similar problems. 
 
 - How do we structure our code, so that it does not become a huge unmanageable mess?
-- How do we keep our code clean, readable, and maintainable?
+- How do we keep our code clean and readable?
 - How do we keep our code efficient, so that it does not become a performance bottleneck?
 - How do we keep our code scalable, so that it does not become a performance bottleneck as we add more features?
 - How do we keep our code maintainable, so that it does not become a maintenance nightmare? With maintainance I am talking about changes to the code, new features, bug fixes, etc. Keeping the software alive, and running smoothly.

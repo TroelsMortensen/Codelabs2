@@ -70,3 +70,10 @@ src/
 I have a class diagram below, though, without any methods or fields.
 
 ![cd](Resources/ClassDiagram.svg)
+
+Now, with this approach, every class has a pretty distinct responsibility. If you ever need to update something in a particular feature, fix a bug, or something, it should be evident which class to look at.
+
+Need to change the prompt for the aliens species, when adding a new alien? Look at the `AddAlien` class.\
+Need to change the way explorers are displayed? Look at the `ListExplorers` class.\
+
+And so on. The more focused a class is, the easier it is to understand and maintain.
