@@ -85,7 +85,7 @@ The above diagram shows the data, but not any methods. That is up to you to deci
 
 Your current project structure should now look like this:
 
-```
+```console
 📁src/
 └── 📁extraterrestrialexploration/
     ├── 📁model/
