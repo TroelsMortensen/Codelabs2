@@ -381,10 +381,11 @@ main[b-mr0ddkk2zs] {
 .LearningPathButton:hover[b-uyo0foee1o] {
     background-color: rgba(255, 255, 255, 1);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
 }
 
 .LearningPathButton:active[b-uyo0foee1o] {
-    transform: translateY(1px);
+    transform: translateY(2px);
 }
 
 /* Remove default list styling */
@@ -398,3 +399,5 @@ main[b-mr0ddkk2zs] {
     margin: 0;
     padding: 0;
 }
+
+/* totally not ai generated */
