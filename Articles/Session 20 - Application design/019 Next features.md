@@ -15,7 +15,7 @@ I recommend doing: Explorer, then Alien, then Encounter. Not necessarily _all_ f
 
 I suspect your application structure will then look something like this:
 
-```
+```console
 📁src/
 ├── 📁domain/
 │   ├── 📄Alien.java
