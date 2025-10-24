@@ -5,7 +5,7 @@ This learning path will task you with building a slightly more complex console a
 
 ## Background
 
-The application will manage space exploration. Explorers will discover new planets, and may encounter aliens on these planets. We need to document this information, so we can later analyze it.
+The application will manage space exploration. Explorers will discover new planets, and travel between planets. Aliens can be discovered, and the Explorers may have physical encounters with Aliens on these planets. We need to document this information, so we can later analyze it.
 
 ## Requirements
 
@@ -16,7 +16,7 @@ We divide the requirements into two parts:
 ### Functional requirements
 
 - The system should allow users to add new planets (discover them)
-- The system should allow users to add new encounters (a physical encounter with an alien)
+- The system should allow users to add new encounters (a physical encounter with an alien on a planet)
 - The system should allow users to add new aliens (discover a new alien species)
 - The system should allow users to add new explorers
 - The system should allow users to update the information about a planet
@@ -31,6 +31,11 @@ We divide the requirements into two parts:
 - The system should allow users to view all information about an encounter
 - The system should allow users to view all information about an alien
 - The system should allow users to view all information about an explorer
+- The system should allow users to move an explorer to a different planet
+- The system should allow users to delete a planet
+- The system should allow users to delete an encounter
+- The system should allow users to delete an alien
+- The system should allow users to delete an explorer
 
 
 ### Non-functional requirements

@@ -23,7 +23,7 @@ classDiagram
 
 Create this class in the persistence package.
 
-```
+```{}
 📁src/
 ├── 📁presentation/
 ├── 📁persistence/

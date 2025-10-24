@@ -27,7 +27,7 @@ Why do we have the interface?\
 This is a common approach, you separate layers with interfaces. This helps with various things, you will learn more about during your studies, such as:
 
 - **Loose coupling** - The layers are not tightly coupled, they can change independently.
-- **Polymorphism** - You can change the concrete class without having to change the code that uses the interface.
+- **Polymorphism** - You can change the concrete class without having to change the code that uses the interface, ideally, if you use "dependency injection" correctly. We will slack on this for now, and save it for next semester.
 - **Testability** - You can easily test the persistence layer without having to test the concrete class.
 
 Interfaces create seems in your software, making it easier to test the software from various points.

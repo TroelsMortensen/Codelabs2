@@ -9,8 +9,8 @@ The structure of the packages should look like this (don't create any classes ye
 ```
 📁src/
 └── 📁extraterrestrialexploration/
-    ├── RunApplication.java
-    ├── 📁model/
+    ├── 📄RunApplication.java
+    ├── 📁domain/
     │   ├── 📄Alien.java
     │   ├── 📄Encounter.java
     │   ├── 📄Explorer.java

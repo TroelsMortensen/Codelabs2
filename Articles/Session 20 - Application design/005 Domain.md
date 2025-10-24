@@ -33,7 +33,7 @@ What is an entity?
 - It is an object that has a life cycle. That means the entity changes over time, its data changes.
 - It is created, used, and then destroyed. 
 
-Most of your model classes are entities. This is the data, your system works with over time. You have a planet object, an alien object, an explorer object, and an encounter object. These are all entities.
+In general, most of your model classes are entities. This is the data, your system works with over time. You have a planet object, an alien object, an explorer object, and an encounter object. These are all entities.
 
 ## Class diagram
 
@@ -68,10 +68,10 @@ classDiagram
         - currentPlanet : Planet
     }
 
-    Encounter --> Planet
     Encounter --> Alien
+    Encounter --> Planet
     Explorer <-- Encounter
-    Explorer --> Planet
+    Explorer --> Planet : "currently on"
 ```
 
 The above diagram shows the data, but not any methods. That is up to you to decide. You may start with the above, and then add methods as needed.
