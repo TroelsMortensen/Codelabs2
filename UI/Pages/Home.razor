@@ -1,7 +1,5 @@
 ﻿@page "/"
 
-@using UI.Data.Models
-
 <PageTitle>Home</PageTitle>
 
 @if (OverviewData is null)
@@ -27,7 +25,7 @@ else
                                         <button
                                             type="button"
                                             class="LearningPathButton"
-                                            @onclick='() => NavigateToArticle("TroelsMortensen",learningPath.Url)'>
+                                            @onclick='() => NavigateToArticle("TroelsMortensen", learningPath.Url)'>
                                             @learningPath.Title
                                         </button>
                                     </div>
