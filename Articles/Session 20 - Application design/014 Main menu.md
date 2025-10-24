@@ -69,7 +69,7 @@ Here is your current application structure:
 
 ## Filling out the class
 
-Let's add a method to the MainMenu class, called `handleMainMenu()`.\
+Let's add a method to the MainMenu class, called `handleMainMenu()`.
 
 This method should:
 

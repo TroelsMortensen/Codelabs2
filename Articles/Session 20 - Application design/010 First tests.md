@@ -11,7 +11,7 @@ Generally, we will separate tests from the rest of the code. On second semester,
 
 For now, create a new package called "test" in the src directory, and a new package called "persistence" in the test package:
 
-```{12}
+```{12-13}
 📁src/
 ├── 📁presentation/
 ├── 📁persistence/
@@ -29,10 +29,10 @@ For now, create a new package called "test" in the src directory, and a new pack
 
 I now realize the packages above are not ordered alphabetically. This annoys me slightly, but it is what it is. I will _probably_ survive this.
 
-In the `test/persistence` package, create a new class called "TestSaveAndLoadPlanet" with a main method. This main method should have two try catch blocks. The first block will add data, the second will load it.
+In the `test/persistence` package, create a new class called `TestSaveAndLoadPlanet` with a main method. This main method should have two try catch blocks. The first block will add data, the second will load it.
 Just catch `Exception` in the catch blocks.
 
-```{13}
+```{14}
 📁src/
 ├── 📁presentation/
 ├── 📁persistence/
