@@ -17,7 +17,8 @@ public static class ArticlePagesRequester
             .Select((content, index) => new ArticlePage(
                 RemoveLeadingNumberAndSuffixThenAddPageNumber(content.Name, index),
                 new MarkupString(MasterConverter.ConvertMarkdownToHtml(content.Markdown, articleName))
-            )).ToList();
+            ))
+            .ToList();
 
         return articlePages;
     }

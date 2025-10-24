@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Text.RegularExpressions;
+using System.Web;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using UI.Data;
 using UI.Data.Models;
 using UI.State;
 
@@ -15,6 +16,10 @@ public partial class Article : ComponentBase
     [Inject] public NavigationManager NavMgr { get; set; } = null!;
     [Inject] public IJSRuntime JsRuntime { get; set; } = null!;
     [Inject] public ArticlesState ArticlesState { get; set; } = null!;
+
+    private string CleanedTutorialsName => HttpUtility.UrlDecode(TutorialsName)
+        .Substring(TutorialsName.LastIndexOf('/') + 1)
+        .RemoveFirst("Session \\d{1,2} ");
 
     private List<ArticlePage> pages = new();
     private int stepIndex = 0;
@@ -38,7 +43,7 @@ public partial class Article : ComponentBase
     {
         stepIndex += step;
         currentPage = null;
-        await Task.Delay(1); // gives time to rerender page, with no content, so this causes a scroll to top, when the page is changed
+        await Task.Delay(1); // gives time to rerender page, with no content, so this causes a scroll to top, when the page is changed. Beautiful hack.
         currentPage = pages[stepIndex];
     }
 
@@ -63,4 +68,10 @@ public partial class Article : ComponentBase
 
     private void CloseDropdown() =>
         isDropdownVisible = false;
+}
+
+public static class RegexExtensions
+{
+    public static string RemoveFirst(this string text, string pattern) =>
+        Regex.Replace(text, pattern, "");
 }

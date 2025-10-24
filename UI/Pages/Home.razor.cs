@@ -1,25 +1,15 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System.Web;
+using Microsoft.AspNetCore.Components;
 
 namespace UI.Pages;
 
 public partial class Home : ComponentBase
 {
-    // [Inject] public HttpClient Client { get; set; }
     [Inject] public NavigationManager NavMgr { get; set; } = null!;
-    // [Inject] public ArticlesState ArticlesState { get; set; }
-
-
-    // private List<ArticleHeader>? articles;
-
-    // protected override async Task OnInitializedAsync()
-    // {
-    //     articles = await ArticlesState.GetArticleHeaders();
-    // }
 
     private void NavigateToArticle(string owner, string tutorialName) =>
-        NavMgr.NavigateTo($"article/{owner}/{tutorialName}");
+        NavMgr.NavigateTo($"article/{owner}/{HttpUtility.UrlEncode(tutorialName)}");
 
-    
     // Todo yes yes i know put this somewhere else. In a separate json file somewhere, probably.
     private CourseOverview OverviewData { get; } =
         new CourseOverview(
@@ -158,12 +148,24 @@ public partial class Home : ComponentBase
                             ]
                         )
                     ]
+                ),
+                new Course("SEP1", "#03BAFC",
+                    [
+                        new Session(1, "Actors",
+                            [
+                                new LearningPath("Actors", "SEP1%2FActors")
+                            ]
+                            )
+                    ]
                 )
             ]
         );
 }
 
 internal record CourseOverview(IEnumerable<Course> Courses);
+
 internal record Course(string Title, string Color, IEnumerable<Session> Sessions);
+
 internal record Session(int SessionNumber, string Title, IEnumerable<LearningPath> LearningPaths);
+
 internal record LearningPath(string? Title, string Url);
