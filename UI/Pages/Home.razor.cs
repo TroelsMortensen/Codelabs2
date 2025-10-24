@@ -5,7 +5,7 @@ namespace UI.Pages;
 public partial class Home : ComponentBase
 {
     // [Inject] public HttpClient Client { get; set; }
-    [Inject] public NavigationManager NavMgr { get; set; }
+    [Inject] public NavigationManager NavMgr { get; set; } = null!;
     // [Inject] public ArticlesState ArticlesState { get; set; }
 
 
@@ -61,6 +61,6 @@ record CourseOverview(IEnumerable<Course> Courses);
 
 record Course(string Title, string Color, IEnumerable<Session> Sessions);
 
-record Session(int SessionNumber, String Title, IEnumerable<LearningPath> LearningPaths);
+record Session(int SessionNumber, string Title, IEnumerable<LearningPath> LearningPaths);
 
-record LearningPath(String Title, String Url);
+record LearningPath(string? Title, string Url);
