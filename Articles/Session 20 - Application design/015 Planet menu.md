@@ -48,7 +48,7 @@ public class PlanetMenu {
 
 Back in the MainMenu class, add a new menu item to the main menu, called "Planet Management". This should instantiate a new PlanetMenu object, and call the handlePlanetMenu() method:
 
-```Java{20,30,31}
+```java{20,30,31}
 public class MainMenu {
     private Scanner scanner;
     

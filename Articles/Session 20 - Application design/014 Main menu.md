@@ -46,7 +46,7 @@ So, let's start with the main menu. Create a new class called `MainMenu`, in the
 
 Here is your current application structure:
 
-```
+```console
 📁src/
 ├── 📁presentation/
 │   └── 📄MainMenu.java

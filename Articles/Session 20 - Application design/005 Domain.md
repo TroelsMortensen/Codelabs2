@@ -88,7 +88,7 @@ Your current project structure should now look like this:
 ```console
 📁src/
 └── 📁extraterrestrialexploration/
-    ├── 📁model/
+    ├── 📁domain/
     │   ├── 📄Alien.java
     │   ├── 📄Planet.java
     │   ├── 📄Explorer.java

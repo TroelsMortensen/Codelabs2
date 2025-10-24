@@ -6,7 +6,7 @@ Somewhere, in your current project, or a new, create a new package for the appli
 
 The structure of the packages should look like this (don't create any classes yet):
 
-```
+```console
 📁src/
 └── 📁extraterrestrialexploration/
     ├── 📄RunApplication.java
