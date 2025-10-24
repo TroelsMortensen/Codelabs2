@@ -4,21 +4,39 @@
 
 <PageTitle>Home</PageTitle>
 
-@if (articles is null)
+@if (OverviewData is null)
 {
     <h2>Loading articles..</h2>
 }
 else
 {
-    <div>
-        <h2>Articles</h2>
-        <ul>
-            @foreach (ArticleHeader header in articles)
-            {
-                <div class="tutorials-card" @onclick="() => NavigateToArticle(header.Owner, header.Name)">
-                    <h3>@header.Name</h3>
-                </div>
-            }
-        </ul>
+    <div class="CoursesBoxLayout">
+        @foreach (var course in OverviewData.Courses)
+        {
+            <div class="CourseBox" style="background-color: @course.Color">
+                <h1>@course.Title</h1>
+                @foreach (var session in course.Sessions)
+                {
+                    <div class="SessionBox">
+                        <h3>@(session.SessionNumber). @session.Title</h3>
+                        <ol>
+                            @foreach (var learningPath in session.LearningPaths)
+                            {
+                                <li>
+                                    <div class="LearningPathBox">
+                                        <button
+                                            type="button"
+                                            class="LearningPathButton"
+                                            @onclick='() => NavigateToArticle("TroelsMortensen",learningPath.Url)'>
+                                            @learningPath.Title
+                                        </button>
+                                    </div>
+                                </li>
+                            }
+                        </ol>
+                    </div>
+                }
+            </div>
+        }
     </div>
 }
