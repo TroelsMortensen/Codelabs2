@@ -1,6 +1,6 @@
 # Exercises
 
-Below you will find descriptions of systems in different domains. You should try to identify the actors in each system, and name them.
+Below you will find ~~descriptions~~ titles of systems in different domains. Think about which kinds of actors are present in each system, and name them.
 
 - Exercise 1: A system for a library
 - Exercise 2: A system for a bank
