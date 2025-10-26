@@ -10,7 +10,7 @@ public partial class Home : ComponentBase
     private void NavigateToArticle(string owner, string tutorialName) =>
         NavMgr.NavigateTo($"article/{owner}/{HttpUtility.UrlEncode(tutorialName)}");
 
-    // Todo yes yes i know put this somewhere else. In a separate json file somewhere, probably.
+    // Todo yes yes i know put this somewhere else. In a separate json file somewhere, probably. That can be auto-generated perhaps?
     private CourseOverview OverviewData { get; } =
         new CourseOverview(
             [
