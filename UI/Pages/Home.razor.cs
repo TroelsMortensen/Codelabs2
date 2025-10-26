@@ -155,7 +155,12 @@ public partial class Home : ComponentBase
                             [
                                 new LearningPath("Actors", "SEP1%2FActors")
                             ]
-                            )
+                        ),
+                        new Session(2, "Requirements",
+                            [
+                                new LearningPath("Requirements", "SEP1%2FRequirements")
+                            ]
+                        ),
                     ]
                 )
             ]
