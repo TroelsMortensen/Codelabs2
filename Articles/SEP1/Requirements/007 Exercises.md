@@ -21,13 +21,14 @@ _Here's the thing - we want to make this feel legitimate. We're not selling fake
 
 _Actually, speaking of going live, we need a draft system. Sellers should be able to work on their listings and save them as drafts before publishing. That way they don't lose their work._
 
-_For pricing, we take a commission like normal real estate platforms - 5% of the sale price. We're still figuring out payment processing, but for now, we just need to track the sale price and calculate the commission._
-
 _Oh, and we definitely need filtering for safety. Some hauntings are extremely dangerous - like Class 10 entities that can physically harm people. We want to make sure buyers are informed about the danger level, and we might even require a waiver for the really intense ones. Safety first, you know?_
 
 _We're launching in the next month, so we're keeping this simple to start. Just the core functionality. Maybe later we'll add things like chat between buyers and sellers, or integration with paranormal investigation services, but for now, let's keep it focused on the listings and search functionality."_
 
-**Your task:** Extract and identify the functional requirements from Sarah's description. You should be able to find at least 10 key requirements. 
+
+### Your task
+
+Extract and identify the functional requirements from Sarah's description. You should be able to find at least 10 key requirements. 
 
 ## Exercise 2: Cloud Spotting Platform
 
@@ -42,20 +43,16 @@ _First thing - we need a way for users to register and create profiles. Some peo
 
 _The core feature is cloud uploads. When someone takes a picture of a cloud, they need to provide basic information: the date and time, location - GPS would be great if we can get that from the photo metadata. Maybe weather conditions at the time. But here's what makes us special - we need detailed classification. What type of cloud is it? Cumulus, stratus, cirrus, the specific subcategories. Unusual formations like mammatus clouds or lenticular formations get bonus points._
 
-_We need a verification system. Not everyone's photo is legit, you know? So when someone uploads a cloud, it should go into a pending state. Other users or moderators can verify it - like, is this actually what they say it is? Is the photo real or doctored? We'll need some basic image analysis to detect fakes. Once verified, it gets added to the user's collection._
+_We need a verification system. Not everyone's photo is legit, you know? So when someone uploads a cloud, it should go into a pending state. Other users or moderators can verify it - like, is this actually what they say it is? Is the photo real or doctored?  Once verified, it gets added to the user's collection._
 
 _Now, the rarity system is huge. Some cloud formations are incredibly rare. Like, a perfectly formed fallstreak hole might appear once every few years in a specific region. We need to calculate rarity based on multiple factors - the formation type, location, time of year, weather conditions. We can assign rarity scores from common to legendary. This creates value._
 
 _For search and discovery, users need to browse by multiple criteria. Filter by cloud type, rarity level, location, date range. Maybe they want to see all the verified 'mammatus' clouds in their state. Or they're looking for the rarest formations ever uploaded. We should have trending clouds, most liked formations, that kind of social stuff too._
 
-_The community aspect is important. Users should be able to follow each other, like formations, leave comments. We'll need notification systems - 'Your cloud was verified!', 'Someone liked your formation', 'A new rare cloud was spotted near you'. 
+_The community aspect is important. Users should be able to follow each other, like formations, leave comments._
 
-_Profiles need to showcase achievements. Badges for milestones like '100 verified uploads', 'Spotted a legendary formation', 'Verified 50 others' formations'. Leaderboards showing who has the rarest collection._
+_Profiles need to showcase achievements. Badges for milestones like '100 verified uploads', 'Spotted a legendary formation', 'Verified 50 others' formations'. Leaderboards showing who has the rarest collection._"_
 
-_Actually, we're planning to add predictions in the future - machine learning that can predict where and when rare formations might appear based on weather data. But let's not worry about that for now. For the MVP, focus on the upload, verification, classification, and discovery features. 
+### Your task
 
-_One more thing - we need user behavior tracking. Analytics like which regions are most active, which cloud types are trending, seasonal patterns. This helps us understand our community and could be valuable data down the line._
-
-_We want this to feel premium and trustworthy. So we'll need content moderation - flagging inappropriate uploads, dealing with fake submissions. Maybe a report system. But also reward good behavior - users with high verification accuracy get elevated status."_
-
-**Your task:** Extract and identify the functional requirements from Marcus's description. You should be able to find at least 10 key requirements.
+Extract and identify the functional requirements from Marcus's description. You should be able to find at least 10 key requirements.
