@@ -22,7 +22,7 @@ So, let's build a house template, and you will create various houses by putting 
 
 ## UML
 
-Here is a diagram for the house template:
+Here is a diagram for inspiration:
 
 ```mermaid
 classDiagram
@@ -33,24 +33,33 @@ classDiagram
         - bathroom : ArrayList~Bathroom~
         - rooms : ArrayList~Room~
         + House()
-        + display() void
-        + addRoom(room : Room) void
+        + addGeneralRoom(room : Room) void
         + addBathroom(bathroom : Room) void
         + setGarage(garage : Room) void
         + setKitchen(kitchen : Room) void
         + setLivingRoom(livingRoom : Room) void
+        + getTotalArea() double
+        + getNumberOfBathRooms() int
+        + getNumberOfGeneralRooms() int
+        + toString() String
     }
 
     class Room {
         <<interface>>
-        + getName() String
-        + getDescription() String
+        + getName()* String
+        + getDescription()* String
+        + getArea()* double	
     }
 
     House --> "*" Room
+    Room <|-- Kitchen
+    Room <|-- Bathroom
+    Room <|-- Garage
+    Room <|-- LivingRoom
+    Room <|-- GeneralRoom
 ```
 
-Yes, the above will allow you to add a bathroom as a kitchen. Feel free to come up with a better design yourself.
+Yes, the above will allow you to add a bathroom as a kitchen. We will just accept that in our super modular house.
 
 
 Imagine the description of a room is similar to what you might read in real estate listings. Here are different living room descriptions:
@@ -75,10 +84,10 @@ public class Main {
         house.setBathroom(new Bathroom("Bathroom", "A bathroom with a small window. Just a toilet and a sink. You will have to wash yourself in the sink."));
         house.setGarage(new Garage("Garage", "This is actually just a drive way."));
 
-        house.addRoom(new Room("Office", "A room with a small window. Great as an office."));
-        house.addRoom(new Room("Kids Room", "The perfect kids room with pink colored walls."));
+        house.addGeneralRoom(new GeneralRoom("Office", "A room with a small window. Great as an office."));
+        house.addGeneralRoom(new GeneralRoom("Kids Room", "The perfect kids room with pink colored walls."));
 
-        house.display();
+        System.out.println(house.toString());
     }
 }
 ```

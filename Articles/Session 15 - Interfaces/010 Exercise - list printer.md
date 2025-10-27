@@ -36,7 +36,7 @@ classDiagram
         - names : ArrayList~String~
         + NameList()
         + addName(name : String) void
-        + printNames(printer : ListPrinter) void
+        + printNames(printer : ListPrinterStrategy) void
         + getNames() ArrayList~String~
     }
     
