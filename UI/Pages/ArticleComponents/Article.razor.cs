@@ -19,7 +19,8 @@ public partial class Article : ComponentBase
 
     private string CleanedTutorialsName => HttpUtility.UrlDecode(TutorialsName)
         .Substring(TutorialsName.LastIndexOf('/') + 1)
-        .RemoveFirst("Session \\d{1,2} ");
+        .RemoveFirst("Session \\d{1,2} ")
+        .Replace(" - ", "");
 
     private List<ArticlePage> pages = new();
     private int stepIndex = 0;
