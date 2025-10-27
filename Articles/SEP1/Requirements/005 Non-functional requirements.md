@@ -18,4 +18,5 @@ Later semester projects will have more non-functional requirements, like adding 
 
 ## How to tell if a requirement is functional or non-functional?
 
-Generally, if the requirement is about the system as a whole, it is a non-functional requirement. If the requirement is about a specific piece of functionality, performed by a user of the system,it is a functional requirement.
+Generally, if the requirement is about the system _as a whole_, it is a **non**-functional requirement.\
+If the requirement is about a specific piece of functionality, performed by a user of the system, is a functional requirement.
