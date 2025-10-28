@@ -159,28 +159,20 @@ public partial class Home : ComponentBase
                         )
                     ]
                 ),
-                new Course("SEP1", "#03BAFC",
+                new Course("SEP", "#03BAFC",
                     [
-                        new Session(1, "Actors",
+                        new Session(1, "SEP1",
                             [
-                                new LearningPath("Actors", "SEP1%2FActors")
-                            ]
-                        ),
-                        new Session(2, "Requirements",
-                            [
-                                new LearningPath("Requirements", "SEP1%2FRequirements")
-                            ]
-                        ),
-                        new Session(3, "Use case diagram",
-                            [
-                                new LearningPath("Use case diagram", "SEP1%2FUse%20case%20diagrams")
-                            ]
-                        ),
-                        new Session(4, "Use case descriptions",
-                            [
+                                new LearningPath("Requirements", "SEP1%2FRequirements"),
+                                new LearningPath("Actors", "SEP1%2FActors"), 
+                                new LearningPath("Use case diagrams", "SEP1%2FUse%20case%20diagrams"),
                                 new LearningPath("Use case descriptions", "SEP1%2FUse%20case%20descriptions")
                             ]
                         ),
+                        // new Session(2, "SEP2",
+                        //     [
+                        //     ])
+                        
                     ]
                 )
             ]
