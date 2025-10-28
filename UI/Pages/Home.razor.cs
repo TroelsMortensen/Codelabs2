@@ -161,6 +161,16 @@ public partial class Home : ComponentBase
                                 new LearningPath("Requirements", "SEP1%2FRequirements")
                             ]
                         ),
+                        new Session(3, "Use case diagram",
+                            [
+                                new LearningPath("Use case diagram", "SEP1%2FUse%20case%20diagrams")
+                            ]
+                        ),
+                        new Session(4, "Use case descriptions",
+                            [
+                                new LearningPath("Use case descriptions", "SEP1%2FUse%20case%20descriptions")
+                            ]
+                        ),
                     ]
                 )
             ]
