@@ -37,3 +37,6 @@ SMART is an acronym for five different criteria, which your user stories should 
 - **Relevant**: The user story should be relevant to the system. It should be a feature that is needed by the system.
 - **Time-bound**: The user story should have a deadline. It should be possible to track and measure the progress of the user story.
 
+Once you have written a user story, you should check if it fulfills the SMART criteria.
+
+(You may find variations on SMART, where the letters mean other things: **T**racable, or **R**ealizable, etc. But the core idea is the same.)

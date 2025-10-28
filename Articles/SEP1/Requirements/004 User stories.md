@@ -14,7 +14,7 @@ Sometimes it can actually be somewhat difficult to identify the business value o
 
 However, it _is_ the most important part, and thorough thought should be put into it.
 
-# Example user stories
+## Example user stories
 
 - As a _librarian_, I want to be able to _add a new book to the library_, so that I can _be able to loan out books_.
 - As a _librarian_, I want to be able to _search for a book by title_, so that I can _find a book quickly_.
@@ -24,3 +24,13 @@ However, it _is_ the most important part, and thorough thought should be put int
 - As a _librarian_, I want to be able to _mark a book as returned_, so that I can _keep track of available books_.
 
 And so on.
+
+## Ordering
+
+There are several ways to order user stories, you should pick one (or maybe some can be combined).
+
+1) **By importance**: The most important user stories first.
+2) **By actor**: Group the user stories by actor. Secondarily, you can then order by importance.
+
+
+Notice, that if you re-order the user stories, the numbers (IDs) should not change!
