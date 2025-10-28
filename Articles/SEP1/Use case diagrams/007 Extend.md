@@ -30,7 +30,7 @@ graph BT
     UC1([<font color=black>Apply Gift Card])
     UC2([<font color=black>Process Payment])
     
-    UC1 -.->|&lt;&lt;extend&gt;&gt;| UC2
+    UC1 -.->|«extend»| UC2
     
     style UC1 fill:#ffffcc,stroke:#000,stroke-width:2px
     style UC2 fill:#ffffcc,stroke:#000,stroke-width:2px
@@ -49,7 +49,7 @@ graph BT
     UC1([<font color=black>Login with Biometrics])
     UC2([<font color=black>Login to System])
     
-    UC1 -.->|<font color=black>&lt;&lt;extend&gt;&gt;| UC2
+    UC1 -.->|<font color=black>«extend»| UC2
     
     style UC1 fill:#ffffcc,stroke:#000,stroke-width:2px
     style UC2 fill:#ffffcc,stroke:#000,stroke-width:2px
@@ -68,7 +68,7 @@ graph BT
     UC1([<font color=black>Apply Advanced Filters])
     UC2([<font color=black>Search Books])
     
-    UC1 -.->|<font color=black>&lt;&lt;extend&gt;&gt;| UC2
+    UC1 -.->|<font color=black>«extend»| UC2
     
     style UC1 fill:#ffffcc,stroke:#000,stroke-width:2px
     style UC2 fill:#ffffcc,stroke:#000,stroke-width:2px
@@ -87,7 +87,7 @@ graph BT
     UC1([<font color=black>Add Gift Message])
     UC2([<font color=black>Place Order])
     
-    UC1 -.->|<font color=black>&lt;&lt;extend&gt;&gt;| UC2
+    UC1 -.->|<font color=black>«extend»| UC2
     
     style UC1 fill:#ffffcc,stroke:#000,stroke-width:2px
     style UC2 fill:#ffffcc,stroke:#000,stroke-width:2px
@@ -106,7 +106,7 @@ graph BT
     UC1([<font color=black>Scan for Viruses])
     UC2([<font color=black>Upload File])
     
-    UC1 -.->|<font color=black>&lt;&lt;extend&gt;&gt;| UC2
+    UC1 -.->|<font color=black>«extend»| UC2
     
     style UC1 fill:#ffffcc,stroke:#000,stroke-width:2px
     style UC2 fill:#ffffcc,stroke:#000,stroke-width:2px

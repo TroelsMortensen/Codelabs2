@@ -15,3 +15,7 @@ The relationships are:
 Include is about one use case always requiring another use case to be executed first.
 
 Extend is about one use case can sometimes proceed into another use case.
+
+**Include** relationships are **mandatory** - the base use case cannot complete without the included functionality.
+
+**Extend** relationships are **optional** - the base use case can complete successfully without the extension.
