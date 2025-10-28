@@ -1,1 +1,0 @@
-there should be a table showing the connection between use cases and user stories.
