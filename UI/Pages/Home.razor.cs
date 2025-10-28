@@ -139,12 +139,22 @@ public partial class Home : ComponentBase
                     [
                         new Session(1, "Class Diagram",
                             [
-                                new LearningPath("Documentation", "UML%20Class%20Diagrams")
+                                new LearningPath("Documentation", "UML%2FClass%20Diagrams")
                             ]
                         ),
                         new Session(2, "Domain Model",
                             [
-                                new LearningPath("Documentation", "UML%20Domain%20Model")
+                                new LearningPath("Documentation", "UML%2FDomain%20Model")
+                            ]
+                        ),
+                        new Session(2, "Domain Model",
+                            [
+                                new LearningPath("Documentation", "UML%2FUse%20Case%20Diagrams")
+                            ]
+                        ),
+                        new Session(2, "Domain Model",
+                            [
+                                new LearningPath("Documentation", "UML%2FUse%20Case%20Descriptions")
                             ]
                         )
                     ]
