@@ -8,9 +8,7 @@ You can use Astah to build the diagram. Or you can use [draw.io](https://app.dia
 From the previous page, we have the following use case titles:
 
 - (Librarian) Add Book
-- (Librarian) Search Book by Title
-- (Librarian) Search Book by Author
-- (Librarian) Search Book by ISBN
+- (Librarian) Search Book
 - (Librarian) Mark Book as Loaned
 - (Librarian) Mark Book as Returned
 - (Student) Create Account
@@ -24,9 +22,9 @@ From the previous page, we have the following use case titles:
 
 ## Step 1
 
-Go through the user stories, one by one, and convert them to use case bubbles. Plop these bubbles in the middle of the diagram.
+Go through your use cases, one by one, and convert them to use case bubbles. Plop these bubbles in the middle of the diagram.
 
-You should really aim to keep the bubbles in a vertical allignement, as you have seen in previous examples.
+You should really aim to keep (most of) the bubbles in a vertical allignement, as you have seen in previous examples.
 
 ![Step 1](Resources/Step1.png)
 
@@ -40,7 +38,7 @@ In this case we have three actors: Librarian, Student, and Administrator.
 
 ## Step 3
 
-Add the relationships between the actors and the use cases. We do this by drawing a _straight_ line from the actor to the use case. Try to organize actors and use cases in a way which minimizes the number of crossing lines. This will improve readability.
+Add the relationships between the actors and the use cases, i.e. who can do what. We do this by drawing a _straight_, full drawn line from the actor to the use case. Try to organize actors and use cases in a way which minimizes the number of crossing lines. This will improve readability.
 
 Note that sometimes, multiple actors can use the same use case. Then you just draw a line from each actor to the use case.
 
@@ -48,5 +46,5 @@ Note that sometimes, multiple actors can use the same use case. Then you just dr
 
 ## Step 4
 
-Add the secondary actors to the right of the diagram. Again, they are stacked vertically. On the right hand side.\
+Add the supporting actors to the right of the diagram, if you have any. Again, they are stacked vertically. On the right hand side.\
 Draw lines from use cases to the secondary actors, as needed.

@@ -1,18 +1,16 @@
 # Merging bubbles
 
 I started out by explaining that the purpose of the use case diagram is to provide a high-level overview of the system.\
-Then I recommended that you convert each user story into a bubble.
+It should show a bubble for each use case.
 
 This is a good start, but sometimes, you will want to merge two or more bubbles into one. Why?
 
 - It makes the diagram more readable.
-- Several user stories are related and can be combined into one use case.
-- You have so many user stories, that the diagram becomes incomprehensible, neglecting its original purpose.
-- Several user stories together form a full use case. I.e. each user story is one or more steps in the use case.
+- You have so many use cases, that the diagram becomes incomprehensible, neglecting its original purpose.
 
 ## Example: Merging Create, View, Update, Delete
 
-You will often have user stories that are related to creating, viewing, updating, and deleting a resource.
+You will often have use cases that are related to creating, viewing, updating, and deleting a resource.
 
 Generally, you can then merge these bubbles into one, called something like "Manage [Resource]".
 
@@ -155,3 +153,4 @@ Merge user stories into one use case when:
 - The difference is just a **parameter** (search by X, filter by Y, export as Z)
 - The **workflow steps** fits together into a longer sequence of steps that form a use case.
 - Merging improves **diagram readability**
+

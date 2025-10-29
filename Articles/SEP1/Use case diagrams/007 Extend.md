@@ -1,6 +1,6 @@
 # Extend relationship
 
-One use case can **extend** another use case. This is a way to add new/alternative behavior to a use case, without modifying the original use case.
+One use case can **extend** another use case, or worded slightly better: add an extension to another use case. This is a way to add new/extra/alternative behavior to a use case, without modifying the original use case.
 
 There are several cases:
 
@@ -14,7 +14,7 @@ I don't see how this will be relevant for any of your semester projects.
 
 Instead, I will generally recommend just modifying the original use case, and adding the new behavior.
 
-Consider the below examples, and **I am sorry for making the use cases pill-shaped rather the ovals**. I will eventually update this.
+But, consider the below examples, and **I am sorry for making the use cases pill-shaped rather the ovals**. I will eventually update this.
 
 ## Example 1: Payment Processing
 

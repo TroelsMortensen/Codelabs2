@@ -4,7 +4,7 @@
 One use case can **include** another use case. 
 
 It is common to have some _partial behavior_ that is common across several use cases.
-For example, the description of paying by credit may occur in several use cases, including Process Sale, Process Rental, Contribute to Lay-away Plan, and so forth.
+For example, the description of paying by credit card may occur in several use cases, including Process Sale, Process Rental, and so forth.
 
 
 Consider the following example:

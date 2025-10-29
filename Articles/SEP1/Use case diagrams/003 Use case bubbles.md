@@ -1,4 +1,4 @@
-# What is a use case?
+# The use case bubbles
 
 In the use case diagram, use cases are represented as oval bubbles, with a title inside.
 
@@ -20,16 +20,18 @@ There is a general format, which will fit for most use case titles:
 
 ## Where do they come from?
 
-The first step is simple to take each of the user stories, and convert it to a use case bubble for the diagam.
+The use cases shown in the diagram first come from the use cases you have identified. For each use case, you put a bubble in the diagram, with the title of the use case.
 
-Here's how user stories map to use case titles:
+You will probably often find that each user story maps to a single use case. Though, there are cases, where this is not true.
+
+Here's an example of how user stories map to use case titles in a library system. Notice how multiple user stories about searching for a book are merged into a single use case, "Search Book".
 
 | User Story | Use Case Title |
 |------------|----------------|
 | As a _librarian_, I want to be able to _add a new book to the library_, so that I can _be able to loan out books_. | Add Book |
-| As a _librarian_, I want to be able to _search for a book by title_, so that I can _find a book quickly_. | Search Book by Title |
-| As a _librarian_, I want to be able to _search for a book by author_, so that I can _find a book quickly_. | Search Book by Author |
-| As a _librarian_, I want to be able to _search for a book by ISBN_, so that I can _find a book quickly_. | Search Book by ISBN |
+| As a _librarian_, I want to be able to _search for a book by title_, so that I can _find a book quickly_. | Search Book |
+| As a _librarian_, I want to be able to _search for a book by author_, so that I can _find a book quickly_. | Search Book |
+| As a _librarian_, I want to be able to _search for a book by ISBN_, so that I can _find a book quickly_. | Search Book |
 | As a _librarian_, I want to be able to _mark a book as loaned out_, so that I can _keep track of unavailable books_. | Mark Book as Loaned |
 | As a _librarian_, I want to be able to _mark a book as returned_, so that I can _keep track of available books_. | Mark Book as Returned |
 | As a _student_, I want to be able to _create an account_, so that I can _borrow books from the library_. | Create Account |

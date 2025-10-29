@@ -3,7 +3,6 @@
 Your use case diagram will often have more than one actor.
 
 Sometimes different actors do completely different things in the system.
-
 But sometimes, one actor can perform certain use cases, and then another actor can do the same, plus _some extra_ use cases.
 
 For example, two actors A and B can do the following use cases:
