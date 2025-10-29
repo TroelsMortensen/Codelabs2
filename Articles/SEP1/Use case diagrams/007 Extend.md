@@ -14,7 +14,7 @@ I don't see how this will be relevant for any of your semester projects.
 
 Instead, I will generally recommend just modifying the original use case, and adding the new behavior.
 
-Consider the below examples, and I am sorry for making the use cases pill-shaped rather the ovals.
+Consider the below examples, and **I am sorry for making the use cases pill-shaped rather the ovals**. I will eventually update this.
 
 ## Example 1: Payment Processing
 
@@ -30,7 +30,7 @@ graph BT
     UC1([<font color=black>Apply Gift Card])
     UC2([<font color=black>Process Payment])
     
-    UC1 -.->|«extend»| UC2
+    UC1 -.->|<font color=black>«extend»| UC2
     
     style UC1 fill:#ffffcc,stroke:#000,stroke-width:2px
     style UC2 fill:#ffffcc,stroke:#000,stroke-width:2px
