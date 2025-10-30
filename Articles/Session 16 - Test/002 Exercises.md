@@ -453,7 +453,7 @@ Implement the following UML class diagram in Java.
 
 ```mermaid
 classDiagram
-    direction LR
+    direction TD
     class TVSeries {
         - title : String
         - numberOfEpisodes : int
