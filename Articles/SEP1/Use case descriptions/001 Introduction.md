@@ -10,4 +10,4 @@ They actually come in three forms:
 
 The two former requires little explanation, but the fully dressed one requires a bit of explanation. That's the focus.
 
-But first, we are talking about a _use case_ description. What is this _use case_, we must describe?
+In another learning path, I already defined what a use case is. Here I focus on how to describe them.
