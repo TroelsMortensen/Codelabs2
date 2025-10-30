@@ -192,6 +192,8 @@ classDiagram
 
 **Note:** An apartment is available if it has no tenant. The `rentedFrom` date indicates when the tenant moved in.
 
+Note that the relationships between _Apartment and Tenant_ is association. There is then no need to do copies of Tenants, when an Apartment is returned by the `getApartment()`, or similar methods. 
+
 Include a class with a main method to test the functionality. See below for an example.
 
 ### Example Main Method
