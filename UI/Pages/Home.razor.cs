@@ -165,6 +165,7 @@ public partial class Home : ComponentBase
                             [
                                 new LearningPath("Actors", "SEP1%2FActors"),
                                 new LearningPath("Requirements", "SEP1%2FRequirements"),
+                                new LearningPath("Use case explanation", "SEP1%2Use%20cases"),
                                 new LearningPath("Use case diagrams", "SEP1%2FUse%20case%20diagrams"),
                                 new LearningPath("Use case descriptions", "SEP1%2FUse%20case%20descriptions")
                             ]
