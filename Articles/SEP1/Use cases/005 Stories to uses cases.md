@@ -10,6 +10,8 @@ So, as a next step after defining your user stories, you figure out which use ca
 
 There are several guidelines to help you decide when to merge user stories into a single use case. But for all cases, those user stories must be clearly related.
 
+I will below present some examples of when user stories can be merged into a single use case. But there are probably more cases.
+
 It may also depend on how fine grained your user stories are. If you have very fine grained user stories, you may need to merge them into a single use case. If you have very coarse grained user stories, you may find it ends up with a one to one relationship between user stories and use cases.
 
 ### Sequential steps

@@ -14,6 +14,7 @@ A use case is a collection of detailed descriptions of related success and failu
 We must describe a piece of functionality in the system, both in terms of how to perform it correctly, but also what happens when something goes wrong. We call these success and failure scenarios.
 
 ## The definition
+
 Informally then, a use case is a collection of related success and failure _scenarios_ that describe an actor using a system to support a goal.
 
 And then, 
