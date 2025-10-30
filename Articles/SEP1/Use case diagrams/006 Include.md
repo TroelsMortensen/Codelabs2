@@ -13,16 +13,16 @@ Consider the following example:
 
 This means that if the user wants to "delete a reservation", or "edit a reservation", they **_must_** first find it. You **_cannot_** delete/edit a reservation, without first finding it.
 
+It is performed from right to left. It reads "Before Delete Reservertion, you must perform Find Reservation".
+
 
 ## When to Use Include
 
 Use include when:
-- Multiple use cases share **common functionality**
-- You want to avoid **duplicating** behavior across use cases
-- The included use case is **mandatory** for the base use case to complete
 - You want to **reuse** a piece of functionality across different use cases
+- The included use case is **mandatory** for the base use case to complete
 
-Consider the below examples, and I am sorry for making the use cases pill-shaped rather than ovals.
+Consider the below examples, and I am sorry for making the use cases pill-shaped rather than ovals. I will eventually, probably, fix it.
 
 ## Example 1: User Authentication
 

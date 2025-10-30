@@ -1,15 +1,15 @@
 # Use case table
 
 A use case table provides an overview of which user stories are included in which use cases (of the use case diagram).\
-This is useful when you have merged bubbles into one use case, and this way we can better ensure that all user stories are included in the use case, one way or another.
+This is useful when you have merged multiple user stories into fewer use cases, and this way we can better ensure that all user stories are included in a use case, one way or another.
 
-The purpose of the use case table is to ensure that all user stories are included in the use case diagram, one way or another.
+The purpose of the use case table is to ensure that all user stories are included in the use case model (the set of all use cases), one way or another.
 
 We can structure the table in two ways:
 - A use case includes the following user stories, or
 - This user story is included in the following use case(s).
 
-Which do you prefer? Maybe both?
+Which do you prefer? Maybe both? It depends a bit on what kind of overview, you want to show.
 
 
 ## Use case --> User stories
@@ -32,16 +32,12 @@ For example:
 - **Borrow Book** merges sequential steps that together form the complete borrowing process
 - **Manage Member Account** merges CRUD operations on member accounts
 
-This table serves as a traceability matrix, ensuring that:
-- Every user story is accounted for in at least one use case
-- No user stories are forgotten or overlooked
-- Stakeholders can see how their requirements (user stories) map to the system design (use cases)
+This table gives you an overview of which user stories are included in which use cases. You should also have this information in each use case description, but here we have the overview.
 
 ## User stories --> Use cases
 
-Consider the following use case table with the same data as the previous table, but with the user story name on the left, and the included use cases in the right column.\
+Now, consider the following use case table with the same data as the previous table, but with the user story name on the left, and the included use cases in the right column.\
 This is the reverse mapping of the previous table.
-
 
 | User Story | Use Cases |
 |----------|-------------|
@@ -72,5 +68,6 @@ This is the reverse mapping of the previous table.
 
 This reverse mapping helps you:
 - Verify that every user story is assigned to at least one use case
+- Ensure no user stories are forgotten or overlooked
 - Identify orphaned user stories that haven't been included
 - See which user stories might belong to multiple use cases (if any, it's probably rare)

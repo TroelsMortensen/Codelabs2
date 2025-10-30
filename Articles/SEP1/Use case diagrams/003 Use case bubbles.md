@@ -22,7 +22,7 @@ There is a general format, which will fit for most use case titles:
 
 The use cases shown in the diagram first come from the use cases you have identified. For each use case, you put a bubble in the diagram, with the title of the use case.
 
-You will probably often find that each user story maps to a single use case. Though, there are cases, where this is not true.
+You will probably often find that each user story maps to a single use case. But other times, multiple user stories are related to the same use case.
 
 Here's an example of how user stories map to use case titles in a library system. Notice how multiple user stories about searching for a book are merged into a single use case, "Search Book".
 
@@ -42,5 +42,5 @@ Here's an example of how user stories map to use case titles in a library system
 | As a _student_, I want to be able to _view my borrowing history_, so that I can _remember which books I've read_. | View Borrowing History |
 | As a _administrator_, I want to be able to _manage librarian accounts_, so that I can _control system access_. | Manage Librarian Accounts |
 
-Notice how the use case titles extract the core action from the user story, following the **[Verb] [Object]** format.
+Notice how the use case titles extract the core action from the user story, mostly following the **[Verb] [Object]** format.
 

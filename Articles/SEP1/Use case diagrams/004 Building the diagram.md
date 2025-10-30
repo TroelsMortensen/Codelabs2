@@ -32,7 +32,7 @@ You should really aim to keep (most of) the bubbles in a vertical allignement, a
 
 Add the primary actors to the left of the diagram. Again, they are stacked vertically. Don't mess with convention, unless you have a _really_ good reason. Which you don't. 
 
-In this case we have three actors: Librarian, Student, and Administrator.
+In this case we have three actors: Librarian, Student, and Administrator. The ordering of the actors is not strictly important, but on a later page I discuss inheritance, where you may want to put the general actor above the specific ones.
 
 ![Step 2](Resources/Step2.png)
 

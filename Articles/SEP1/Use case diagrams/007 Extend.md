@@ -112,6 +112,8 @@ graph BT
     style UC2 fill:#ffffcc,stroke:#000,stroke-width:2px
 ```
 
+## 
+
 ## When to Use Extend
 
 Use extend when:

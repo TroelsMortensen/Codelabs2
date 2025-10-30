@@ -13,7 +13,7 @@ So, there is clearly an overlap.
 
 ## Draw all the lines
 
-We can already represent this thing, one actor can , with our current knowledge, just draw all the lines:
+We can already represent the goals, one actor can achieve, with our current knowledge, by just drawing all the lines:
 
 ![Extending actors](Resources/NoExtendActor.png)
 
@@ -21,7 +21,7 @@ However, as the diagram grows, this becomes impractical.
 
 ## Extend
 
-You know about this _concept_ already, one java class extending another. And we use the same arrow. 
+You know about this _concept_ already, one java class extending another. And we use the same arrow. It is about having base behaviour, and extending or adding to it.
 
 Consider the following example:
 
