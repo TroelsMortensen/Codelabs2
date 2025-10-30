@@ -241,19 +241,7 @@ Error: Invalid input! Please enter a number between 0-2.
 
 Consider adding these optional enhancements:
 - **Play Again**: Ask if players want to play another game
-- **Score Tracking**: Keep track of wins for each player across multiple games
 - **Player Names**: Allow players to enter their names
-- **Computer Player**: Add an AI opponent for single-player mode
+- **Computer Player**: Add an AI opponent for single-player mode (maybe place piece randomly, or actually implement some kind of strategy)
 - **Move History**: Display the sequence of moves made during the game
 
-## Learning Objectives
-
-After completing this exercise, you should be able to:
-- Create and use custom exception classes effectively
-- Handle multiple types of exceptions in a complex application
-- Validate user input and provide meaningful error messages
-- Design a complete console application with proper error handling
-- Implement game logic with robust exception handling
-- Create user-friendly interfaces that handle edge cases gracefully
-
-Good luck with your Tic-Tac-Toe implementation!

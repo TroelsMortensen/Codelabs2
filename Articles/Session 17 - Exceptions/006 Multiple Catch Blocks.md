@@ -18,11 +18,13 @@ try {
 }
 ```
 
+Maybe you want to show different messages to the user. Maybe some exceptions should be logged to a file. Maybe some exceptions should basically just be ignored. Maybe some can be handled right away, and others should cause a custom RuntimeException to be thrown, to be caught somewhere else.
+
 ## Simple Example
 
 Let's create a program that can throw multiple different exceptions. We will use the `Scanner` class to get user input, and the `ArrayIndexOutOfBoundsException` and `ArithmeticException` exceptions.
 
-Notice how the `nextInt()` method can throw a `InputMismatchException`, and the `[]` operator can throw an `ArrayIndexOutOfBoundsException`. Finally, the `/` operator can throw an `ArithmeticException`.
+Notice how the `nextInt()` method can throw an `InputMismatchException`, and the `[]` operator can throw an `ArrayIndexOutOfBoundsException`. Finally, the `/` operator can throw an `ArithmeticException`.
 
 ```java{9,12,15,17}
 import java.util.Scanner;
@@ -66,8 +68,8 @@ public class MultipleExceptionsDemo {
 
 ## Exception Hierarchy and Catch Order
 
-**Important**: Catch blocks are checked in order, from top to bottom, and more specific exceptions must come before more general ones. This is because the first catch block that matches the exception type will be executed, and the rest of the catch blocks will be skipped.\
-By specific and general exceptions, I mean inheritance. In the below, `Exception` is a superclass of the other exceptions. If I were to move that catch block up to be first, it will catch all exceptions, including `FileNotFoundException`, and the other catch blocks will never be reached.
+**Important**: Catch blocks are checked in order, from top to bottom, and more specific exceptions must come before more general ones. This is because the first catch block that matches the exception type will be executed, and the rest of the catch blocks will be ignored.\
+By specific and general exceptions, I mean inheritance. In the below, `Exception` is a superclass of the other exceptions. If I were to move that catch block (`Exception e`) up to be first, it will catch _all_ exceptions, including `FileNotFoundException`, and the other catch blocks will never be reached.
 
 ### Correct Order (Specific to General)
 ```java
@@ -81,22 +83,6 @@ try {
     // Handle any other exception
 }
 ```
-
-### Incorrect Order (General to Specific)
-
-Don't flip it around, and catch the general exception first.
-
-```java
-try {
-    // Some code
-} catch (Exception e) {
-    // This will catch ALL exceptions, including FileNotFoundException!
-} catch (FileNotFoundException e) {
-    // This will NEVER be reached!
-}
-```
-
-**Why this is wrong**: `FileNotFoundException` is a subclass of `Exception`, so the first catch block will always catch it, and the second catch block will never be reached.
 
 
 ## Calculator Example
@@ -159,7 +145,7 @@ public class Calculator {
 
 ## Collapse catch blocks
 
-If you find, you have to catch multiple exceptions, but they are handled the same way, you can collapse them into a single catch block:
+If you find, you have to catch multiple exceptions, but they are handled the same way, you can collapse them into a single catch block. IntelliJ will sometimes suggest this.
 
 ```java
 try {
@@ -184,7 +170,4 @@ Catch specific exceptions when you know what might go wrong.
 Give users clear information about what went wrong and how to fix it.
 
 ### 4. **Don't Catch What You Can't Handle**
-If you can't meaningfully handle an exception, let it propagate up. This can happen in two ways: if it is an unchecked exception, just don't handle it. If it is a checked exception, read about "throws" keyword in a few pages.
-
-### 5. **Use Finally for Cleanup**
-We'll learn about the `finally` block next, which is perfect for cleanup operations. Sometimes something must be done regardless of whether an exception occurs or the try-block executed successfully.
+If you can't meaningfully handle an exception, let it propagate up (see Exception Propagation page). This can happen in two ways: if it is an unchecked exception, just don't catch it. If it is a checked exception, read about "throws" keyword in a few pages.

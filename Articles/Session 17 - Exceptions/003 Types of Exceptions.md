@@ -13,33 +13,6 @@ classDiagram
         +printStackTrace() void
     }
     
-    class Error {
-    }
-    
-    class Exception {
-    }
-    
-    class RuntimeException {
-    }
-    
-    class IOException {
-    }
-    
-    class NullPointerException {
-    }
-    
-    class ArrayIndexOutOfBoundsException {
-    }
-    
-    class IllegalArgumentException {
-    }
-    
-    class FileNotFoundException {
-    }
-    
-    class InputMismatchException {
-    }
-    
     Throwable <|-- Error
     Throwable <|-- Exception
     Exception <|-- RuntimeException
@@ -62,6 +35,16 @@ Notably, we have the `Exception`, and the `RuntimeException`. They divide the ex
 - **Purpose**: Expected problems that should be handled
 
 The compiler will enforce that you handle these exceptions, by checking if you have a catch block for them, or if you have declared them with `throws` in the method signature. See later pages for more details. You cannot run your program, if you have not handled these exceptions.
+
+You can try the following code, and see that it does not compile. There is a red squiggly line under the `Thread.sleep(1000);` line.
+
+```java
+public static void main(String[] args) {
+    Thread.sleep(1000);
+}
+```
+
+This will pause the program for 1 second. But the `sleep()` method may throw an `InterruptedException`, which is a checked exception. Therefore, you are forced to handle it, with either a try-catch block, or by declaring it with `throws` in the method signature.
 
 ### 2. **Unchecked Exceptions** (Runtime Exceptions)
 - **Inherit from**: `RuntimeException`
@@ -89,10 +72,13 @@ This will pause the program for 1 second.
 So, let's try and print out numbers from 0 to 10, with a pause of 1 second between each number.
 
 ```java
-for (int i = 0; i <= 10; i++) {
-    System.out.println(i);
-    Thread.sleep(1000);
+public static void main(String[] args) {
+    for (int i = 0; i <= 10; i++) {
+        System.out.println(i);
+        Thread.sleep(1000);
+    }
 }
+
 ```
 
 What happens if you paste this code into IntelliJ? Does it compile? No.
@@ -105,9 +91,9 @@ When hovering your cursor over the `Thread.sleep(1000);` line, you will see the 
 Unhandled exception: java.lang.InterruptedException
 ```
 
-This is a `InterruptedException`. When pausing a program, the pause may be interrupted, and this causes this exception. We are forced to handle this potential problem.
+This is an `InterruptedException`. When pausing a program, the pause may be interrupted, and this causes this exception. We are forced to handle this potential problem.
 
-Update your code to catch the exception, though, we don't have to actually do anything with it.
+Update your code to catch the exception, though, we don't have to actually do anything with it in this example.
 
 ```java
 for (int i = 0; i <= 10; i++) {
@@ -177,7 +163,12 @@ public void readFile(String filename) throws FileNotFoundException {
 }
 ```
 
+The `throws` keyword is used to declare that the method might throw an exception. It is elaborated upon in a later page.
+
 ### Unchecked Exceptions
+
+When used by code you are using, but have not written yourself, you are not forced to handle it.
+
 - **Don't clutter your code** with unnecessary error handling
 - **Indicate programming errors** that should be fixed
 - **Allow for cleaner code** when errors are truly unexpected
@@ -189,6 +180,8 @@ public void processArray(int[] array, int index) {
     // But this is a programming error, not an expected failure
 }
 ```
+
+However, you may often want to throw RuntimeExceptions yourself, to indicate errors to the user of the application. This is discussed later.
 
 ## Nullpointer Exception
 

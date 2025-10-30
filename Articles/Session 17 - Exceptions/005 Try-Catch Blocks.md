@@ -2,9 +2,9 @@
 
 First, something important:
 
-# Don't leave your catch blocks empty
+> Don't leave your catch blocks empty. Never. Ever. Please.
 
-Now that you understand what exceptions are (right? You do understand, right?) and how to read stack traces, let's learn how to handle them using **try-catch blocks**. This is the fundamental mechanism for exception handling in Java.
+Now that you understand what exceptions are (right? You do understand, RIGHT?) and how to read stack traces, let's learn how to handle them using **try-catch blocks**. This is the fundamental mechanism for exception handling in Java.
 
 ## Basic Syntax
 
@@ -25,8 +25,8 @@ try {
 ## Simple Example
 
 Let's start with a basic example. Below we declare a variable `name` and set it to `null`, line 4.\
-Then, we try to call the `length` method on it, line 5. This will throw a `NullPointerException`. Because there is no String object to call the method on.\
-When an exception occurs, the program execution jumps to the catch block, line 7-9. That means the print out in line 6 is _skipped_. 
+Then, we try to call the `length` method on it, line 5. This will throw a `NullPointerException`. Because there is no String object to call the method on. The variable was assigned `null`, and you cannot call a method on a `null` object.\
+When an exception occurs, the program execution jumps to the catch block, lines 7-9. That means the print out in line 6 is _skipped_. All the code in the try-block, _after_ the exception occurred, is skipped.
 
 All the rest of the try-block is skipped, execution continues in the catch block, and then the program execution continues after the try-catch block.
 
@@ -80,11 +80,12 @@ Exception in thread "main" java.lang.NullPointerException
 
 ## Practical Example: User Input
 
-Let's handle the `InputMismatchException` we saw earlier. We put the code that may throw an exception, inside the try-block, i.e. the `nextInt()` method, and the code that handles the exception, inside the catch block.
+In the below example, the user is asked to enter their age, as a number. What if the user types a letter?\
+We put the code that may throw an exception, inside the try-block, i.e. the `nextInt()` method, and the code that handles the exception, inside the catch block.
 
 We also have a print out in the try-block, because this should only be printed if the input is valid. If an exception occurs, the program execution jumps to the catch block, and the print out in the try-block is skipped.
 
-```java
+```java{10}
 import java.util.Scanner;
 
 public class SafeInputDemo {
@@ -97,7 +98,7 @@ public class SafeInputDemo {
             int age = scanner.nextInt();
             System.out.println("You are " + age + " years old.");
         } catch (InputMismatchException e) {
-            System.out.println("Please enter a valid number for your age!");
+            System.out.println("You did not enter a valid number for your age! ");
         }
         
         System.out.println("Thank you for using our program!");
@@ -106,31 +107,12 @@ public class SafeInputDemo {
 }
 ```
 
-## Division by Zero Example
-
-```java
-public class SafeDivision {
-    public static void main(String[] args) {
-        int a = 10;
-        int b = 0;
-        
-        try {
-            int result = a / b;
-            System.out.println("Result: " + result);
-        } catch (ArithmeticException e) {
-            System.out.println("Cannot divide by zero, you absolute fool!");
-        }
-        
-        System.out.println("Calculation complete.");
-    }
-}
-```
 
 ## The Exception Object
 
 The exception object (`e` in our examples) contains useful information:
 
-```java
+```java{4}
 try {
     String text = "abc";
     int number = Integer.parseInt(text); // Throws NumberFormatException
@@ -140,6 +122,8 @@ try {
     System.out.println("Full exception: " + e);
 }
 ```
+
+The exception object exposes several methods, which can be used to get information about the exception.
 
 **Output:**
 ```
@@ -179,6 +163,7 @@ catch (Exception e) {
 }
 ```
 
+## Recap
 
 ### 1. **Try-catch prevents crashes**
 Without try-catch, exceptions cause your program to terminate immediately.
@@ -191,9 +176,9 @@ _Sometimes_, you can try something else, in the case of a caught exception.
 Catch specific exceptions rather than the general `Exception` class when possible. We will see this on the next page.
 
 ### 4. **Provide helpful error messages**
-Give users clear information about what went wrong and how to fix it.
+Give users clear information about what went wrong and how to fix it. Consider if the user should be allowed to try again.
 
 ### 5. **Program continues after catch**
 After an exception is caught and handled, execution continues normally.
 
-# Don't leave your catch blocks empty
+> Don't leave your catch blocks empty

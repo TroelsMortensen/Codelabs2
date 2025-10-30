@@ -1,6 +1,6 @@
 # Throwing Exceptions
 
-So far, we've learned how to catch and handle exceptions that Java throws automatically. Now let's learn how to throw our own exceptions using the `throw` keyword. This allows you to signal that something has gone wrong in your code and let other parts of your program handle it.
+So far, we've learned how to catch and handle exceptions that Java throws when you abuse it. Now let's learn how to throw our own exceptions using the `throw` keyword. This allows you to signal that something has gone wrong in your code and let other parts of your program handle it.
 
 ## The `throw` Keyword
 
@@ -35,7 +35,7 @@ Notice the `Oops` message, which was provided in the code, and shown in the cons
 
 ### Throwing IllegalArgumentException
 
-Here we do some basic validation, and in case of a invalid `age` value, we throw an `IllegalArgumentException` with a message.
+Here we do some basic validation, and in case of an invalid `age` value, we throw an `IllegalArgumentException` with a message.
 
 ```java
 public class AgeValidator {
@@ -62,7 +62,7 @@ public class AgeValidator {
 
 ### Throwing RuntimeException
 
-If you can't find an existing exception, with a name that fits your need, the simple solution is to throw a `RuntimeException` with a message.
+If you can't find an existing exception, with a name that fits your need, the simple solution is to throw a `RuntimeException` or `Exception` with a message.
 
 ```java
 public class Calculator {
@@ -90,7 +90,7 @@ public class Calculator {
 
 ## When to Throw Exceptions
 
-Some languages have very ingrained exception usage, like Java or C#. These languages use exceptions in case of errors. Other languages, F#, will return values to indicate errors instead.
+Some languages have very ingrained exception usage, like Java or C#. These languages use exceptions in case of errors. Other languages, F#, will return values to indicate errors instead. That's out of scope for this course. We have an elective course, if you are curious.
 
 ### 1. **Input Validation**
 Throw exceptions when input doesn't meet your requirements:
@@ -116,19 +116,7 @@ public void withdraw(double amount) {
 }
 ```
 
-### 3. **Resource Unavailability**
-Throw exceptions when required resources aren't available:
-
-```java
-public void connectToDatabase() {
-    if (!isNetworkAvailable()) {
-        throw new RuntimeException("Network connection required");
-    }
-    // Connect to database
-}
-```
-
-### 4. **State Validation**
+### 3. **State Validation**
 Throw exceptions when an object is in an invalid state:
 
 ```java
@@ -189,7 +177,7 @@ Use the most specific exception type that fits your situation.
 Validate inputs and throw exceptions as early as possible.
 
 ### 4. **Document Exceptions**
-If your method can throw exceptions, document them in comments or method signatures. See next page about the `throws` keyword.
+If your method can throw exceptions, document them in comments, [java doc](https://www.baeldung.com/javadoc), or method signatures. See next page about the `throws` keyword.
 
 ## Video
 

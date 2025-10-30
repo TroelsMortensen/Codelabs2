@@ -1,6 +1,6 @@
 # Creating Custom Exceptions
 
-While Java provides many built-in exceptions, sometimes you need to create your own custom exceptions to represent specific error conditions in your application.Instead of using some of the more general purpose exceptions, with a not entirely clear purpose, you can create your own more specialized exceptions. Custom exceptions make your code more readable and allow for more specific error handling.
+While Java provides many built-in exceptions, sometimes you need to create your own custom exceptions to represent specific error conditions in your application. Instead of using some of the more general purpose exceptions, with a not entirely clear purpose, you can create your own more specialized exceptions. Custom exceptions make your code more readable and allow for more specific error handling.
 
 ## Why Create Custom Exceptions?
 
@@ -53,11 +53,11 @@ public class AgeValidator {
 
 ## Checked vs Unchecked Custom Exceptions
 
-You can extend `Exception` to create a new checked exception. Or, you can extend `RuntimeException` to create a new unchecked exception.
+You can extend `Exception` to create a new checked exception. Or, you can extend `RuntimeException` to create a new unchecked exception. I will generally recommend the latter, i.e. extend `RuntimeException`.
 
 ### Checked Exception (extends Exception)
 
-Here is an example of a checked exception. It carries extra specific information about the error.
+Here is an example of a checked exception. It carries extra specific information about the error. (This could obviously also be a RuntimeException, if you wanted to.)
 
 ```java
 class InsufficientFundsException extends Exception {
@@ -99,39 +99,9 @@ class InvalidPasswordException extends RuntimeException {
 }
 ``` 
 
-## Exception Hierarchy Example
-
-You can create a hierarchy of custom exceptions. Maybe you have superclasses like `ValidationException`, `BusinessRuleViolationException`, and `ResourceNotFoundException`. And then further subclasses like `InvalidEmailException`, `BadInputException`, and `ResourceNotFoundError`.
+Again, I will generally recommend the latter, i.e. extend `RuntimeException`. But you may have good reasons to extend `Exception`.
 
 
-
-```java
-// Base exception for all banking operations
-class BankingException extends Exception {
-    public BankingException(String message) {
-        super(message);
-    }
-}
-
-// Specific exceptions for different banking operations
-class InsufficientFundsException extends BankingException {
-    public InsufficientFundsException(String message) {
-        super(message);
-    }
-}
-
-class InvalidAccountException extends BankingException {
-    public InvalidAccountException(String message) {
-        super(message);
-    }
-}
-
-class TransactionLimitExceededException extends BankingException {
-    public TransactionLimitExceededException(String message) {
-        super(message);
-    }
-}
-```
 
 ## Best Practices for Custom Exceptions
 
@@ -189,20 +159,7 @@ Choose names that clearly indicate what went wrong:
 ### 6. **Don't go overboard**
 You can quickly end up creating a lot of custom exceptions, and then you will find that all your subclasses of RuntimeException are handled exactly the same way. So, you might end up with a lot of code duplication. This serves no purpose.
 
-```java
-/**
- * Thrown when a user attempts to perform an operation they don't have permission for.
- * 
- * @param message the detail message
- * @param userId the ID of the user who attempted the operation
- * @param operation the operation that was attempted
- */
-public UnauthorizedOperationException(String message, String userId, String operation) {
-    super(message);
-    this.userId = userId;
-    this.operation = operation;
-}
-```
+So, do consider categories of exceptions, like `InvalidInputException`, or `InvalidRequestException`, etc.
 
 ## Common Custom Exception Patterns
 

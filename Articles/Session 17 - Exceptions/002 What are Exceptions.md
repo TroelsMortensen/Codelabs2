@@ -26,7 +26,7 @@ Java distinguishes between two types of problems:
 - **Unexpected** - Things that shouldn't happen in normal operation
 - **Examples**: Out of memory, stack overflow, system crashes
 
-These are rare, and usually indicate serious problems.
+These are rare, and usually indicate serious problems. You probably messed up really bad.
 
 ## Real-World Analogy
 
@@ -48,17 +48,19 @@ You're driving to work → Car engine explodes (error!) → You can't continue (
 ```
 
 ## Happy paths
-When the code executes with success, it is called a happy path. Or success flow. Or normal flow. Or the main flow. Many names.
+When the code executes with success, it is called a _happy path_. Or success flow. Or normal flow. Or the main flow. Many names.
 
-Similarly we can talk about the unhappy path, or error flow, or exception flow. This is where something goes wrong. Whatever that is, it can take many forms. 
+Similarly we can talk about the _unhappy path_, or error flow, or exception flow. This is where something goes wrong. Whatever that is, it can take many forms. 
 
 As programmers, we always need to consider both flows, and make sure that the code is robust enough to handle both.
 
+> You must expect your users to abuse your program
+
 ## Why Do We Need Exceptions?
 
-You have already written programs, which tried to handle invalid input, or actions. Like the user selecting a menu option, which is not valid. Or the user entering an invalid number. or trying to divide by zero.
+You have already written programs, which tried to handle invalid input, or actions. Like the user selecting a menu option, which is not valid. Or the user entering an invalid number. Or trying to divide by zero.
 
-So far, this was handled by using if-statements, and just printing an error message to the console. But, this is not a good solution. It is not robust, and it is not user-friendly.
+So far, this was handled by using if-statements, and just printing an error message to the console. But, this is not a good solution. It is not robust, and it is not user-friendly. When you have a real application, not running in IntelliJ, there is rarely a console for the user to see. They want an error message or popup in the UI.
 
 ### 1. **User-Friendly Messages**
 Instead of technical error messages, users get helpful feedback:
@@ -82,7 +84,7 @@ Exception in thread "main" java.lang.NullPointerException
 ```
 
 This tells us:
-- **What**: NullPointerException
+- **What**: NullPointerException, i.e. you tried to call a method on a null object
 - **Where**: Line 25 in MyClass.processData()
 - **How we got there**: Called from line 10 in MyClass.main()
 

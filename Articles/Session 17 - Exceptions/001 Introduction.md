@@ -108,7 +108,7 @@ In all three examples, our programs **crashed** with an **exception**. The progr
 
 ## Errors
 
-You will and probably have encountered exceptions. They happen regularly. But, there are also errors. These are more severe, and usually indicate serious problems.
+You will and probably have encountered exceptions. They happen regularly. But, there are also _errors_. These are more severe, and usually indicate serious problems.
 
 Try running the following code:
 
@@ -135,7 +135,7 @@ Exception in thread "main" java.lang.StackOverflowError
     ...
 ```
 
-This is a `StackOverflowError`. It happens with recursive methods, which call themselves over and over again, without stopping. Eventually the program crashes. 
+This is a `StackOverflowError`. Notice the last part of the name is `Error`, instead of `Exception`. It happens with recursive methods, which call themselves over and over again, without stopping. Eventually the program crashes. 
 
 
 ## Why This Matters

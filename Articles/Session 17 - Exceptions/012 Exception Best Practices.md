@@ -2,32 +2,6 @@
 
 Now that you understand the fundamentals of exception handling, let's learn the best practices that will help you write robust, maintainable, and user-friendly code. Following these practices will make your applications more reliable and easier to debug.
 
-## 1. Catch Specific Exceptions
-
-### ❌ Bad Practice
-```java
-try {
-    // Some operations
-} catch (Exception e) {
-    // Too generic - catches everything
-    System.out.println("Something went wrong");
-}
-```
-
-### ✅ Good Practice
-```java
-try {
-    // Some operations
-} catch (FileNotFoundException e) {
-    System.out.println("File not found: " + e.getMessage());
-} catch (IOException e) {
-    System.out.println("IO error: " + e.getMessage());
-} catch (NumberFormatException e) {
-    System.out.println("Invalid number format: " + e.getMessage());
-}
-```
-
-**Why**: Specific exceptions allow for targeted error handling and better user experience.
 
 ## 2. Don't Ignore Exceptions
 
@@ -113,102 +87,22 @@ public void readFile(String filename) {
 
 **Why**: Finally blocks ensure resources are always cleaned up, preventing resource leaks.
 
-## 5. Don't Catch What You Can't Handle
 
-### ❌ Bad Practice
+Or use the try-with-resources statement:
+
 ```java
-public void processData() {
-    try {
-        connectToDatabase();
-        performComplexOperation();
-        saveResults();
-    } catch (Exception e) {
-        // Can't meaningfully handle all possible exceptions
-        System.out.println("Error occurred");
+public void readFile(String filename) {
+    try (Scanner scanner = new Scanner(new File(filename))) {
+        // Process file
+    }
+    catch (FileNotFoundException e) {
+        System.out.println("File not found: " + e.getMessage());
     }
 }
 ```
 
-### ✅ Good Practice
-```java
-public void processData() throws DatabaseException, ProcessingException {
-    try {
-        connectToDatabase();
-    } catch (SQLException e) {
-        throw new DatabaseException("Failed to connect to database", e);
-    }
-    
-    try {
-        performComplexOperation();
-    } catch (IllegalArgumentException e) {
-        throw new ProcessingException("Invalid data for processing", e);
-    }
-    
-    saveResults();
-}
-```
 
-**Why**: Only catch exceptions that you can meaningfully handle. Let others propagate to appropriate handlers.
-
-## 6. Use Appropriate Exception Types
-
-### ❌ Bad Practice
-```java
-public void withdraw(double amount) {
-    if (amount > balance) {
-        throw new Exception("Insufficient funds"); // Too generic
-    }
-}
-```
-
-### ✅ Good Practice
-```java
-public void withdraw(double amount) throws InsufficientFundsException {
-    if (amount > balance) {
-        throw new InsufficientFundsException("Insufficient funds. Balance: " + balance + ", Requested: " + amount);
-    }
-}
-```
-
-**Why**: Specific exception types make error handling more precise and code more self-documenting.
-
-## 7. Validate Input Early
-
-### ❌ Bad Practice
-```java
-public void processUserData(String name, int age, String email) {
-    // Process data first
-    saveData(name, age, email);
-    
-    // Validate later (too late!)
-    if (age < 0) {
-        throw new IllegalArgumentException("Invalid age");
-    }
-}
-```
-
-### ✅ Good Practice
-```java
-public void processUserData(String name, int age, String email) {
-    // Validate input first
-    if (name == null || name.trim().isEmpty()) {
-        throw new IllegalArgumentException("Name cannot be null or empty");
-    }
-    if (age < 0 || age > 150) {
-        throw new IllegalArgumentException("Age must be between 0 and 150");
-    }
-    if (email == null || !email.contains("@")) {
-        throw new IllegalArgumentException("Invalid email format");
-    }
-    
-    // Process validated data
-    saveData(name, age, email);
-}
-```
-
-**Why**: Early validation prevents processing invalid data and provides faster feedback.
-
-## 8. Use Custom Exceptions for Business Logic
+## 5. Use Custom Exceptions where relevant
 
 ### ✅ Good Practice
 ```java

@@ -102,10 +102,12 @@ Exception in thread "main" java.lang.ArithmeticException: / by zero
     at FinallyWithUncaughtException.main(FinallyWithUncaughtException.java:4)
 ```
 
-## Real-World Example: File Operations
+## Real-World Example: I/O Operations
 
 The most common use of `finally` is for resource cleanup. Ideally, the Scanner object should actually be closed, when we are done with it.
-We have not really done that in our small programs, as it is cleared when the program end anyway.
+We have not really done that in our small programs, as it is cleared when the program ends anyway.
+
+But, below, the Scanner object is closed in the `finally` block, whether an exception occurs or not.
 
 ```java
 import java.io.File;
@@ -163,7 +165,7 @@ public class TryFinallyOnly {
 }
 ```
 
-This means, we could do some clean up one place, e.g. close a scanner, and then actually catch the exception in another place, e.g. print an error message to the user.
+This means, we could do some clean up in one place, e.g. close a scanner, and then actually catch the exception in another place, e.g. print an error message to the user.
 
 **Output:**
 ```
@@ -173,73 +175,4 @@ Exception in thread "main" java.lang.ArithmeticException: / by zero
     at TryFinallyOnly.main(TryFinallyOnly.java:4)
 ```
 
-## Common Use Cases for Finally
 
-And none of these will make sense to you yet. But, finally can be used for clean up operations, that must be done regardless of whether an exception occurs or not.
-
-### 1. **Closing Files**
-```java
-Scanner scanner = null;
-try {
-    scanner = new Scanner(new File("data.txt"));
-    // Process file
-} finally {
-    if (scanner != null) {
-        scanner.close();
-    }
-}
-```
-
-### 2. **Closing Database Connections**
-```java
-Connection conn = null;
-try {
-    conn = DriverManager.getConnection(url);
-    // Database operations
-} finally {
-    if (conn != null) {
-        conn.close();
-    }
-}
-```
-
-### 3. **Releasing Locks**
-```java
-Lock lock = new ReentrantLock();
-try {
-    lock.lock();
-    // Critical section
-} finally {
-    lock.unlock();
-}
-```
-
-### 4. **Cleanup Operations**
-```java
-try {
-    // Some operation
-} finally {
-    // Cleanup temporary files
-    // Reset variables
-    // Log completion
-}
-```
-
-## Important Notes
-
-### 1. **Finally Always Executes**
-The `finally` block executes in all scenarios:
-- When no exception occurs
-- When an exception is caught
-- When an exception is not caught
-- When a `return` statement is in the try block
-- When a `return` statement is in the catch block
-
-### 2. **Finally Can't Prevent Exception Propagation**
-If an exception is not caught, it will still propagate even after the `finally` block executes.
-
-### 3. **Don't Return from Finally**
-Avoid using `return` statements in the `finally` block as it can mask exceptions.
-
-### 4. **Resource Management**
-The `finally` block is essential for proper resource management and preventing resource leaks.

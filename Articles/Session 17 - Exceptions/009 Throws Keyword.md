@@ -1,13 +1,17 @@
 # Throws Keyword
 
-The `throws` keyword is used in _method signatures_ to declare that a method might throw certain types of exceptions. This is especially important for **checked exceptions**, which the Java compiler requires you to either catch or declare.
+The `throws` (notice the _s_ at the end) keyword is used in _method signatures_ to declare that a method might throw certain types of exceptions. This is especially important for **checked exceptions**, which the Java compiler requires you to either catch or declare.
 
-But it is also important to declare _unchecked exceptions_ with the `throws` keyword. This will let other programmers, who use your code, know that the method might throw an exception, and they should/can handle it.
+But you can aslo declare _unchecked exceptions_ with the `throws` keyword. This will let other programmers, who use your code, know that the method might throw an exception, and they should/can handle it.
 
 ## Basic Syntax
 
 ```java
-public void methodName() throws ExceptionType1, ExceptionType2 {
+public void methodName() throws ExceptionType1 {
+    // Method body
+}
+
+public void otherMethodName() throws ExceptionType1, ExceptionType3 {
     // Method body
 }
 ```
@@ -17,7 +21,7 @@ public void methodName() throws ExceptionType1, ExceptionType2 {
 ### 1. **Compiler Requirement for Checked Exceptions**
 Java requires you to handle checked exceptions. You have two options:
 - **Catch** the exception in a try-catch block, we have seen this already
-- **Declare** it with `throws` in the method signature
+- **Declare** it with `throws` in your method signature, and catch it elsewhere
 
 ### 2. **Documentation**
 The `throws` clause documents what exceptions a method might throw, making your code more readable and maintainable.
@@ -95,7 +99,7 @@ private static void doSomething()
 }
 ```
 
-Or, you can declare that the methods throws the exception:
+Or, you can declare that the `doSomething()` method throws the `InterruptedException`	:
 
 ```java
 private static void doSomething() throws InterruptedException
@@ -104,7 +108,7 @@ private static void doSomething() throws InterruptedException
 }
 ```
 
-Update your code, and observe the compiler error has moved to the main method:
+Update your code, and observe the compiler error has moved to the main method, where the `doSomething()` method is called:
 
 ![throws keyword](Resources/CompilerError.png)
 
@@ -176,16 +180,6 @@ public class UncheckedExceptionExample {
 }
 ```
 
-## Best Practices
-
-### 1. **Only Declare What You Actually Throw**
-Don't declare exceptions that your method doesn't actually throw. Obviously.
-
-### 2. **Be Specific**
-Declare specific exception types rather than the general `Exception` class.
-
-### 3. **Consider Your Callers**
-Think about whether callers should handle the exception or if you should handle it internally.
 
 ## Rethrowing
 
@@ -221,7 +215,8 @@ classDiagram
 Maybe the DataManager class tries to read data from a file, and that fails. This will be a checked exception.\
 But the way to handle this is to have the `GuiClass` show a popup message to the user.\
 So, the exception happens one place, but the handling happens far away, somewhere else, in the `GuiClass`.\
-We could mark all methods along the way with the `throws` keyword, to push the catch block to the GuiClass. But that would be a lot of code to write.\
+We could mark all methods along the way with the `throws` keyword, to push the catch block to the GuiClass. But that would be a lot of code to write, and just clutter your code base unnecessarily.
+
 Instead, the checked exception is caught in the `DataManager` class, and then rethrown as a custom RuntimeException. This can skip over several classes and methods, and just be caught by the initial method in the GuiClass.
 
 The dotted line indicates the origin of the exception, and where it is caught.

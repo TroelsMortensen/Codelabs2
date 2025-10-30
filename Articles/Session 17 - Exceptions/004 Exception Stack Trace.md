@@ -1,6 +1,6 @@
 # Exception Stack Trace
 
-When an exception occurs, Java provides a **stack trace** - a detailed report showing exactly what happened and where. Understanding stack traces is essential for debugging your programs, and fixing the problems. You must learn how to read the stack trace, find the message explaining what went wrong, and where the problem originated. This is a very important skill to have.
+When an exception occurs, Java provides a **stack trace** - a detailed report showing exactly what happened and where. Understanding stack traces is essential for debugging (figuring out the error in) your programs, and fixing the problems. You must learn how to read the stack trace, find the message explaining what went wrong, and where the problem originated. This is a very important skill to have.
 
 ## What is a Stack Trace?
 
@@ -8,7 +8,7 @@ A stack trace is a list of method calls that led to the exception. It shows the 
 
 ## Anatomy of a Stack Trace
 
-Let's look at a real example, run the following code in IntelliJ. You will get a null pointer exception.
+Let's look at a simple example. Run the following code in IntelliJ. You will get a null pointer exception.
 
 ```java
 public class StackTraceDemo {
@@ -61,16 +61,16 @@ Let's break down each part:
 Exception in thread "main" java.lang.NullPointerException
 ```
 
-- **Exception in thread "main"**: The exception occurred in the main thread. You don't know about threads yet, so this information is not important.
+- **Exception in thread "main"**: The exception occurred in the main thread. You don't know about threads yet, so this information is not currently relevant.
 - **java.lang.NullPointerException**: The type of exception that occurred. The type indicates what kind of problem occurred.
 
 ### 2. **The Call Stack** (Read from bottom to top)
 
 ```javastacktrace
     at session17_exceptions.StackTraceDemo.methodC(StackTraceDemo.java:23)  ← WHERE IT HAPPENED
-    at session17_exceptions.StackTraceDemo.methodB(StackTraceDemo.java:17)  ← WHO CALLED methodC
-    at session17_exceptions.StackTraceDemo.methodA(StackTraceDemo.java:12)  ← WHO CALLED methodB
-    at session17_exceptions.StackTraceDemo.main(StackTraceDemo.java:6)      ← WHO CALLED methodA
+    at session17_exceptions.StackTraceDemo.methodB(StackTraceDemo.java:17)  ← where methodC was called from
+    at session17_exceptions.StackTraceDemo.methodA(StackTraceDemo.java:12)  ← where methodB was called from
+    at session17_exceptions.StackTraceDemo.main(StackTraceDemo.java:6)      ← where methodA was called from
 ```
 
 **Reading order**: Start from the **bottom** and work your way up to understand the call sequence.
@@ -93,7 +93,7 @@ at ClassName.methodName(FileName.java:lineNumber)
 
 ## More Complex Example
 
-Let's create a more realistic example with multiple classes. Notice how the three classes below are in different files:
+Let's create a more realistic example with multiple classes. Notice how the three classes below are supposed to be in different files, when you put the code in IntelliJ:
 
 ```java
 // File: Calculator.java
@@ -124,7 +124,7 @@ public class Main {
 }
 ```
 
-Copy the above code into IntelliJ, and run it. Currently, it should work fine.
+Copy the above code into IntelliJ, and run it. Currently, it should work fine, and print out the average of the numbers in the array defined on the first line of the main method.
 
 **What happens if we pass an empty array?** Let's modify the main method:
 
@@ -151,18 +151,20 @@ Exception in thread "main" java.lang.ArithmeticException: / by zero
 
 The `divide` method is called, in class `Calculator`, and the `b` parameter is 0, because this is the length of the array. So, the division by zero occurs.
 
+Notice how the stack trace includes class name and method from that class.
+
 </hint>
 
 ## Reading This Stack Trace
 
-1. **Bottom line**: `Main.main(Main.java:7)` - The program started in main method
+1. **Bottom line**: `Main.main(Main.java:7)` - The program started in main method, in line 7 the main method called a method.
 2. **Middle line**: `MathHelper.calculateAverage(MathHelper.java:10)` - main called calculateAverage
-3. **Top line**: `Calculator.divide(Calculator.java:6)` - calculateAverage called divide, and that's where the exception occurred
+3. **Top line**: `Calculator.divide(Calculator.java:6)` - calculateAverage called divide, and that's where the exception occurred, in line 6.
 
 ## Exceptions from _not_ your code
 
 Sometimes, you are using existing code. This happens all the time, for example when you are using an ArrayList, i.e. an existing class in Java.\
-And you may try to use this in an inappropriate way, which will cause an exception.\
+And you may try to use this in an _inappropriate_ way, which will cause an exception.\
 Now, part of the stack trace will involve _your_ code, and part of the stack trace will involve the _existing_ java code.\
 Generally, you can ignore the not-your-code part, and focus on your code.
 
@@ -184,7 +186,8 @@ I get this in the console:
 
 ![stacktrace](Resources/NotYourCode.png)
 
-Notice how some of the lines are blue, and some are grey. The blue is your code, and the grey is the code from the ArrayList class.
+Notice how some of the lines are blue, and some are grey. The blue is your code, and the grey is the code from the ArrayList class. The exception occurred deep inside the ArrayList class, at line 428, which called the `checkIndex` method on the Objects class. I have no idea, what is going on in there. So, focus on your own code.\
+Trust that the code _you are using_ is correct, but you are just using that code wrong.
 
 ## Debugging Tips
 
@@ -203,33 +206,4 @@ Focus on lines that mention your classes, not Java library classes.
 ### 5. **Use IDE Features**
 Most IDEs allow you to click on stack trace lines to jump directly to the code.
 
-## Practice Exercise
 
-Create this program and run it to see a stack trace:
-
-```java
-public class PracticeStackTrace {
-    public static void main(String[] args) {
-        System.out.println("Starting...");
-        processUserInput("hello");
-        System.out.println("Finished.");
-    }
-    
-    public static void processUserInput(String input) {
-        System.out.println("Processing: " + input);
-        convertToNumber(input);
-    }
-    
-    public static void convertToNumber(String text) {
-        System.out.println("Converting: " + text);
-        int number = Integer.parseInt(text); 
-        System.out.println("Converted to: " + number);
-    }
-}
-```
-
-**Run this and analyze the stack trace. What went wrong and where?**
-
-## What's Next?
-
-Now that you can read stack traces, let's learn how to catch and handle exceptions using try-catch blocks!

@@ -59,80 +59,7 @@ Main method continues...
 
 In the output, you can see the stack trace, which shows the method calls that led to the exception. This sequence of methods is called the **"call stack"**.
 
-## Partial Propagation (Caught and Re-thrown)
 
-Sometimes you want to catch an exception, do some processing, and then re-throw it:
-
-```java{17}
-public class PartialPropagation {
-    public static void main(String[] args) {
-        try {
-            processData("invalid-data");
-        } catch (IllegalArgumentException e) {
-            System.out.println("Caught in main: " + e.getMessage());
-        }
-    }
-    
-    public static void processData(String data) throws IllegalArgumentException {
-        try {
-            validateData(data);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Caught in processData: " + e.getMessage());
-            System.out.println("Logging error and re-throwing...");
-            // Re-throw the same exception
-            throw e;
-        }
-        System.out.println("Data processed successfully");
-    }
-    
-    public static void validateData(String data) throws IllegalArgumentException {
-        if (data == null || data.trim().isEmpty()) {
-            throw new IllegalArgumentException("Data cannot be null or empty");
-        }
-        System.out.println("Data validation passed");
-    }
-}
-```
-
-## Exception Wrapping
-
-You can catch one exception and throw a different one, notice the last argument to the `BusinessException` constructor is the original exception.
-
-```java{14}
-public class ExceptionWrapping {
-    public static void main(String[] args) {
-        try {
-            performOperation("test");
-        } catch (BusinessException e) {
-            System.out.println("Business error: " + e.getMessage());
-            System.out.println("Original cause: " + e.getCause().getMessage());
-        }
-    }
-    
-    public static void performOperation(String input) throws BusinessException {
-        try {
-            riskyOperation(input);
-        } catch (IllegalArgumentException e) {
-            // Wrap the original exception in a new business exception
-            throw new BusinessException("Operation failed due to invalid input", e);
-        }
-    }
-    
-    public static void riskyOperation(String input) throws IllegalArgumentException {
-        if (input.length() < 3) {
-            throw new IllegalArgumentException("Input too short: " + input);
-        }
-        System.out.println("Operation completed successfully");
-    }
-}
-
-// Custom business exception
-class BusinessException extends Exception {
-    public BusinessException(String message, Throwable cause) {
-        super(message, cause);
-    }
-}
-```
 
 ## Key Points About Propagation
 
@@ -146,61 +73,24 @@ When an exception is thrown, the current method stops executing immediately.
 Java unwinds the call stack, looking for an appropriate catch block.
 
 ### 4. **Finally Blocks Always Execute**
-Finally blocks execute even when exceptions propagate.
+Finally blocks execute even when exceptions propagate. You could have multiple try-finally (without catch) blocks, and the finally blocks will execute in the order they are written.
 
 ### 5. **Checked Exceptions Must Be Declared**
-If a method might throw a checked exception, it must be declared with `throws`.
+If a method might throw a _checked exception_ (i.e. not a RuntimeException), it must be declared with `throws`.
 
 ### 6. **Unchecked Exceptions Don't Need Declaration**
-Runtime exceptions can propagate without being declared.
+Runtime exceptions can propagate without being declared with `throws`.
 
-### 7. **Careful when wrapping exceptions**
-When you wrap an exception, the original exception is lost. This is why you should only wrap exceptions if you are sure you can handle the original exception. When you lose the original exception, you potentially also lose crucial information.
 
-### 8. **Careful when rethrowing exceptions**
-The same potential loss of information happens when you rethrow, or catch-and-throw another exception.
+### 7. **Careful when rethrowing exceptions**
+Potential loss of information happens when you rethrow, or catch-and-throw another exception.
 
 ## Propagation Strategies
 
-### 1. **Let It Propagate**
-```java
-public void methodA() throws IOException {
-    methodB(); // Let IOException propagate up
-}
-```
+In larger application, you may find that all your own error exceptions, are actually handled the exact same way: Catch it and show a message to the user. No matter where the exception happened, or what happened.
 
-### 2. **Catch and Handle**
-```java
-public void methodA() {
-    try {
-        methodB();
-    } catch (IOException e) {
-        // Handle the exception locally
-        System.out.println("IO error handled: " + e.getMessage());
-    }
-}
-```
+This means at the top level, i.e. the method handling the button click, or console input, should have a try-catch(Exception e) block, to just catch all exceptions, and show a message.
 
-### 3. **Catch and Re-throw**
-```java
-public void methodA() throws BusinessException {
-    try {
-        methodB();
-    } catch (IOException e) {
-        throw new BusinessException("Business operation failed", e);
-    }
-}
-```
+You can then use RuntimeExceptions (or sub-types) for most error messaging in your system.
 
-### 4. **Catch, Process, and Re-throw**
-```java
-public void methodA() throws IOException {
-    try {
-        methodB();
-    } catch (IOException e) {
-        logError(e); // Do some processing
-        e.printStackTrace();
-        throw e;     // Re-throw the same exception
-    }
-}
-```
+With this approach, you will catch checked exceptions, as soon as possible, and throw a RuntimeException instead.
