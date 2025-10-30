@@ -20,8 +20,12 @@ public partial class Article : ComponentBase
     private string CleanedTutorialsName => HttpUtility.UrlDecode(TutorialsName)
         .Substring(TutorialsName.LastIndexOf('/') + 1)
         .RemoveFirst("Session \\d{1,2} ")
-        .Replace(" - ", "");
+        .Trim()
+        .Trim('-')
+        .Trim(); // This looks funky..
 
+    
+    
     private List<ArticlePage> pages = new();
     private int stepIndex = 0;
     private ArticlePage? currentPage = null!;
