@@ -8,8 +8,7 @@ public partial class Home : ComponentBase
     [Inject] public NavigationManager NavMgr { get; set; } = null!;
 
     private void NavigateToArticle(string owner, string tutorialName) =>
-        NavMgr.NavigateTo($"article/{owner}/{HttpUtility.UrlEncode(tutorialName)}");
-
+        NavMgr.NavigateTo($"article/{owner}/{Uri.EscapeDataString(tutorialName)}");
 
     private CourseOverview OverviewData { get; } =
         new CourseOverview(
@@ -18,104 +17,104 @@ public partial class Home : ComponentBase
                     [
                         new Session(1, "Basic Java",
                             [
-                                new LearningPath("Introduction", "Session%201%20Learning%20Path")
+                                new LearningPath("Introduction", "Session 1 Learning Path")
                             ]
                         ),
                         new Session(2, "Input",
                             [
-                                new LearningPath("Default Values", "Session%202%20Default%20Values"),
-                                new LearningPath("String methods", "Session%202%20String%20methods"),
-                                new LearningPath("Console input", "Session%202%20Console%20Input"),
-                                new LearningPath("The Java Compiler", "The%20Java%20Compiler"),
-                                new LearningPath("IntelliJ shortcuts", "IntelliJ%20Shortcuts%201"),
-                                new LearningPath("Extra exercises", "Session%202%20-%20live"),
+                                new LearningPath("Default Values", "Session 2 Default Values"),
+                                new LearningPath("String methods", "Session 2 String methods"),
+                                new LearningPath("Console input", "Session 2 Console Input"),
+                                new LearningPath("The Java Compiler", "The Java Compiler"),
+                                new LearningPath("IntelliJ shortcuts", "IntelliJ Shortcuts 1"),
+                                new LearningPath("Extra exercises", "Session 2 - live"),
                             ]
                         ),
                         new Session(3, "If-statement",
                             [
-                                new LearningPath("Boolean logic recap", "Session%203%20Boolean%20logic"),
-                                new LearningPath("The if-statement", "Session%203%20If%20statement"),
-                                new LearningPath("Extra exercises", "Session%203%20-%20live"),
+                                new LearningPath("Boolean logic recap", "Session 3 Boolean logic"),
+                                new LearningPath("The if-statement", "Session 3 If statement"),
+                                new LearningPath("Extra exercises", "Session 3 - live"),
                             ]
                         ),
                         new Session(4, "Switch-statement",
                             [
-                                new("Enums", "Session%204%20Enums"),
-                                new("The switch statement", "Session%204%20Switch%20statement")
+                                new("Enums", "Session 4 Enums"),
+                                new("The switch statement", "Session 4 Switch statement")
                             ]
                         ),
                         new Session(5, "Loops",
                             [
-                                new("Increment and decrement", "Session%205%20Inc%20and%20Dec"),
-                                new("For-loop", "Session%205%20For%20loop"),
-                                new("While-loop", "Session%205%20While%20loop"),
+                                new("Increment and decrement", "Session 5 Inc and Dec"),
+                                new("For-loop", "Session 5 For loop"),
+                                new("While-loop", "Session 5 While loop"),
                             ]
                         ),
                         new Session(6, "Arrays",
                             [
-                                new("Arrays", "Session%206%20Arrays")
+                                new("Arrays", "Session 6 Arrays")
                             ]
                         ),
                         new Session(7, "Lists",
                             [
-                                new("ArrayList", "Session%207%20List")
+                                new("ArrayList", "Session 7 List")
                             ]
                         ),
                         new Session(8, "Introducing Objects",
                             [
-                                new("Objects", "Session%208%20Objects"),
-                                new("UML", "Session%208%20UML")
+                                new("Objects", "Session 8 Objects"),
+                                new("UML", "Session 8 UML")
                             ]
                         ),
                         new Session(9, "More about Objects",
                             [
-                                new("Inheriting from Object", "Session%209%20Inherit%20from%20Object"),
-                                new("Final keyword", "Session%209%20Final%20fields"),
-                                new("Static keyword", "Session%209%20Static"),
-                                new("Overloading methods", "Session%209%20Method%20overloading"),
-                                new("Extra exercises", "Session%209%20-%20Extra%20exercises")
+                                new("Inheriting from Object", "Session 9 Inherit from Object"),
+                                new("Final keyword", "Session 9 Final fields"),
+                                new("Static keyword", "Session 9 Static"),
+                                new("Overloading methods", "Session 9 Method overloading"),
+                                new("Extra exercises", "Session 9 - Extra exercises")
                             ]
                         ),
                         new Session(10, "Object exercises",
                             [
-                                new("Garbage collection in Java", "Session%2010%20-%20Garbage%20collection"),
-                                new("Extra exercises", "Session%2010%20-%20Exercises")
+                                new("Garbage collection in Java", "Session 10 - Garbage collection"),
+                                new("Extra exercises", "Session 10 - Exercises")
                             ]
                         ),
                         new Session(11, "Relationships part 1",
                             [
-                                new("Relations between objects", "Session%2011%20-%20Relationships%20intro")
+                                new("Relations between objects", "Session 11 - Relationships intro")
                             ]
                         ),
                         new Session(12, "Relationships part 2",
                             [
-                                new("One to many relationships", "Session%2012%20-%20One%20to%20Many")
+                                new("One to many relationships", "Session 12 - One to Many")
                             ]
                         ),
                         new Session(13, "Inheritance part 1",
                             [
-                                new("Introducing Inheritance", "Session%2013%20-%20Inheritance")
+                                new("Introducing Inheritance", "Session 13 - Inheritance")
                             ]
                         ),
                         new Session(14, "Abstract classes",
                             [
-                                new("Abstract keyword", "Session%2014%20-%20Abstract")
+                                new("Abstract keyword", "Session 14 - Abstract")
                             ]
                         ),
                         new Session(15, "Interfaces",
                             [
-                                new("Packages", "Session%2015%20-%20Packages"),
-                                new("Interfaces", "Session%2015%20-%20Interfaces")
+                                new("Packages", "Session 15 - Packages"),
+                                new("Interfaces", "Session 15 - Interfaces")
                             ]
                         ),
                         new Session(16, "Exercises",
                             [
-                                new("Extra exercises", "Session%2016%20-%20Test")
+                                new("Extra exercises", "Session 16 - Test")
                             ]
                         ),
                         new Session(17, "Exceptions",
                             [
-                                new("Exceptions", "Session%2017%20-%20Exceptions")
+                                new("Exceptions", "Session 17 - Exceptions")
                             ]
                         ),
                         new Session(18, "Robocode",
@@ -125,13 +124,13 @@ public partial class Home : ComponentBase
                         ),
                         new Session(19, "Introducing files",
                             [
-                                new("File I/O", "Session%2019%20-%20File%20IO"),
+                                new("File I/O", "Session 19 - File IO"),
                             ]
                         ),
                         new Session(20, "Application design",
                             [
-                                new("Java documentation", "Java%20Doc"),
-                                new("Application design", "Session%2020%20-%20Application%20design")
+                                new("Java documentation", "Java Doc"),
+                                new("Application design", "Session 20 - Application design")
                             ]
                         )
                     ]
@@ -140,14 +139,14 @@ public partial class Home : ComponentBase
                     [
                         new Session(1, "Analysis artefacts",
                             [
-                                new LearningPath("Domain model", "Analysis%20artefacts%2UML%2FDomain%20Model"),
-                                new LearningPath("Use case diagrams", "Analysis%20artefacts%2UML%2FUse%20Case%20Diagrams"),
-                                new LearningPath("Use case descriptions", "Analysis%20artefacts%2UML%2FUse%20case%descriptions"),
+                                new LearningPath("Domain model", "UML/Analysis artefacts/Domain Model"),
+                                new LearningPath("Use case diagrams", "UML/Analysis artefacts/Use Case Diagrams"),
+                                new LearningPath("Use case descriptions", "UML/Analysis artefacts/Use case descriptions"),
                             ]
                         ),
                         new Session(2, "Design artefacts",
                             [
-                                new LearningPath("Class diagram", "Design%20artefacts%2UML%2FClass%20Diagrams")
+                                new LearningPath("Class diagram", "UML/Design artefacts/Class Diagrams")
                             ]
                         ), 
                     ]
@@ -156,11 +155,11 @@ public partial class Home : ComponentBase
                     [
                         new Session(1, "SEP1",
                             [
-                                new LearningPath("Actors", "SEP1%2FActors"),
-                                new LearningPath("Requirements", "SEP1%2FRequirements"),
-                                new LearningPath("What is a use case", "SEP1%2Use%20cases"),
-                                new LearningPath("Use case diagrams", "SEP1%2FUse%20case%20diagrams"),
-                                new LearningPath("Use case descriptions", "SEP1%2FUse%20case%20descriptions")
+                                new LearningPath("Actors", "SEP1/Actors"),
+                                new LearningPath("Requirements", "SEP1/Requirements"),
+                                new LearningPath("What is a use case", "SEP1/Use cases"),
+                                new LearningPath("Use case diagrams", "SEP1/Use case diagrams"),
+                                new LearningPath("Use case descriptions", "SEP1/Use case descriptions")
                             ]
                         ),
                         // new Session(2, "SEP2",
