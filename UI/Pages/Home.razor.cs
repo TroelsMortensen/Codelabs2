@@ -130,7 +130,7 @@ public partial class Home : ComponentBase
                         ),
                         new Session(20, "Application design",
                             [
-                                new("Java documentaion", "Java%20Doc"),
+                                new("Java documentation", "Java%20Doc"),
                                 new("Application design", "Session%2020%20-%20Application%20design")
                             ]
                         )
@@ -138,24 +138,16 @@ public partial class Home : ComponentBase
                 ),
                 new Course("UML", "#FF7F50",
                     [
-                        new Session(1, "Class Diagram",
+                        new Session(1, "Analysis artefacts",
                             [
-                                new LearningPath("Documentation", "UML%2FClass%20Diagrams")
+                                new LearningPath("Domain model", "UML%2FDomain%20Model"),
+                                new LearningPath("Use case diagrams", "UML%2FUse%20Case%20Diagrams"),
+                                new LearningPath("Use case descriptions", "UML%2FUse%20Case%20Descriptions")
                             ]
                         ),
-                        new Session(2, "Domain Model",
+                        new Session(2, "Design artefacts",
                             [
-                                new LearningPath("Documentation", "UML%2FDomain%20Model")
-                            ]
-                        ),
-                        new Session(2, "Use case diagrams",
-                            [
-                                new LearningPath("Documentation", "UML%2FUse%20Case%20Diagrams")
-                            ]
-                        ),
-                        new Session(2, "Domain Model",
-                            [
-                                new LearningPath("Documentation", "UML%2FUse%20Case%20Descriptions")
+                                new LearningPath("Class diagram", "UML%2FClass%20Diagrams")
                             ]
                         )
                     ]
@@ -174,7 +166,6 @@ public partial class Home : ComponentBase
                         // new Session(2, "SEP2",
                         //     [
                         //     ])
-                        
                     ]
                 )
             ]
