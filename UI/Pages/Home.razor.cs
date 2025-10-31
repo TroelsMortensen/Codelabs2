@@ -140,13 +140,13 @@ public partial class Home : ComponentBase
                     [
                         new Session(1, "Analysis artefacts",
                             [
-                                new LearningPath("Domain model", "UML%2FDomain%20Model"),
-                                new LearningPath("Use case diagrams", "UML%2FUse%20Case%20Diagrams"),
+                                new LearningPath("Domain model", "Analysis%20artefacts%2UML%2FDomain%20Model"),
+                                new LearningPath("Use case diagrams", "Analysis%20artefacts%2UML%2FUse%20Case%20Diagrams"),
                             ]
                         ),
                         new Session(2, "Design artefacts",
                             [
-                                new LearningPath("Class diagram", "UML%2FClass%20Diagrams")
+                                new LearningPath("Class diagram", "Design%20artefacts%2UML%2FClass%20Diagrams")
                             ]
                         ), 
                     ]
