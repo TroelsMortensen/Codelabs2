@@ -2,6 +2,19 @@
 
 Writing good JavaDoc is an art. Follow these best practices to create documentation that is clear, useful, and maintainable.
 
+## Summary of Best Practices
+
+1. ✅ Write clear, concise descriptions
+2. ✅ Document what and why, not how
+3. ✅ Keep documentation up to date with code changes
+4. ✅ Document all public APIs thoroughly
+5. ✅ Use consistent formatting and style
+6. ✅ Avoid redundant or obvious comments
+7. ✅ Document assumptions, constraints, and edge cases
+8. ✅ Be explicit about null handling
+9. ✅ Use proper grammar and complete sentences
+10. ✅ Make the first sentence meaningful
+
 ## Write Clear, Concise Descriptions
 
 ### Be Direct and Specific
@@ -390,18 +403,7 @@ public String getMiddleName() {
 }
 ```
 
-## Summary of Best Practices
 
-1. ✅ Write clear, concise descriptions
-2. ✅ Document what and why, not how
-3. ✅ Keep documentation up to date with code changes
-4. ✅ Document all public APIs thoroughly
-5. ✅ Use consistent formatting and style
-6. ✅ Avoid redundant or obvious comments
-7. ✅ Document assumptions, constraints, and edge cases
-8. ✅ Be explicit about null handling
-9. ✅ Use proper grammar and complete sentences
-10. ✅ Make the first sentence meaningful
 
 Good JavaDoc helps other developers (and your future self) understand and use your code effectively. Invest the time to write it well!
 

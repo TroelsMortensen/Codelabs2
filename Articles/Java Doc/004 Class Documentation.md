@@ -13,9 +13,13 @@ public class BankAccount {
 }
 ```
 
+Here is the (some of) the JavaDoc for the `ArrayList` class:
+
+![JavaDoc for ArrayList class](Resources/ArrayListClassDoc.png)
+
 ## @author Tag
 
-The `@author` tag identifies who wrote the class. This can be useful in large projects or open-source software.
+The `@author` tag identifies who wrote the class. This can be useful in large projects or open-source software. Though, in modern times, git also has this information, and it is more common to use git to track who has contributed to the code.
 
 **Syntax:** `@author name`
 
@@ -44,42 +48,6 @@ public class CustomerManager {
 }
 ```
 
-## @version Tag
-
-The `@version` tag indicates the version of the class or API.
-
-**Syntax:** `@version version-string`
-
-```java
-/**
- * Represents a bank account with basic deposit and withdrawal operations.
- * 
- * @author John Smith
- * @version 1.2
- */
-public class BankAccount {
-    // class content
-}
-```
-
-## @since Tag
-
-The `@since` tag indicates when this class was first added to the API. This is particularly useful when maintaining backward compatibility.
-
-**Syntax:** `@since version-number`
-
-```java
-/**
- * Represents a savings account with interest calculation.
- * 
- * @author Jane Doe
- * @version 2.0
- * @since 1.5
- */
-public class SavingsAccount extends BankAccount {
-    // class content
-}
-```
 
 The `@since` tag tells users that this class has been available since version 1.5 of the library.
 

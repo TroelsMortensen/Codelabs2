@@ -53,3 +53,11 @@ JavaDoc can be used to document:
 - Packages
 
 In the following pages, you'll learn how to write effective JavaDoc comments and generate professional HTML documentation from them.
+
+## Java Doc in IntelliJ
+
+In IntelliJ, you can mouse over variable or method, or click it and press <kbd>CTRL</kbd> + <kbd>Q</kbd>. This will show you the JavaDoc for that variable or method. This can be _very_ useful when you are unsure about the parameters, return type of a method, or what a method actually does.
+
+For example, this is the Java Doc for the `get()` method in the `ArrayList` class:
+
+![JavaDoc in IntelliJ](Resources/IntelliJ-Example.png)

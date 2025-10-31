@@ -76,28 +76,6 @@ public User registerUser(String email, String password)
 }
 ```
 
-### Emphasis - `<b>`, `<i>`, `<em>`, `<strong>`
-
-Use these tags to emphasize important words:
-
-```java
-/**
- * Deletes a user account permanently.
- * <p>
- * <b>Warning:</b> This operation cannot be undone. All user data,
- * including purchase history and saved preferences, will be
- * permanently deleted.
- * <p>
- * <i>Note:</i> Active subscriptions must be cancelled before
- * account deletion.
- * 
- * @param userId the ID of the user to delete
- * @throws ActiveSubscriptionException if user has active subscriptions
- */
-public void deleteUser(int userId) throws ActiveSubscriptionException {
-    // implementation
-}
-```
 
 ### Code - `<code>` and `<pre>`
 
@@ -119,26 +97,6 @@ public LocalDate parseDate(String dateString) {
 }
 ```
 
-Use `<pre>` and `<code>` together for multi-line code examples:
-
-```java
-/**
- * Exports data to CSV format.
- * <p>
- * Example output:
- * <pre><code>
- * Name,Age,City
- * John Smith,25,New York
- * Jane Doe,30,London
- * </code></pre>
- * 
- * @param data the data to export
- * @return CSV formatted string
- */
-public String exportToCSV(List<Person> data) {
-    // implementation
-}
-```
 
 ### Line Breaks - `<br>`
 

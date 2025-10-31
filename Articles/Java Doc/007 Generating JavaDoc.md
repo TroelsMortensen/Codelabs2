@@ -103,39 +103,7 @@ IntelliJ IDEA provides a convenient way to generate JavaDoc without using the co
 2. Select `Tools` → `Generate JavaDoc...`
 3. The file will be pre-selected in the scope
 
-## Generating JavaDoc in Eclipse
 
-Eclipse also has built-in JavaDoc generation.
-
-### Steps:
-
-1. **Open Project Menu**
-   - Go to `Project` → `Generate Javadoc...`
-
-2. **Select Javadoc Command**
-   - Browse to your JDK's `bin/javadoc` executable
-   - Usually at `C:\Program Files\Java\jdk-XX\bin\javadoc.exe` on Windows
-
-3. **Select What to Document**
-   - Select the project, package, or specific files
-   - Choose visibility level (public, protected, private)
-
-4. **Configure Output**
-   - **Destination**: Choose output directory
-   - **Use standard doclet**: Keep this checked
-   - **Document title**: Set a title for your documentation
-
-5. **Configure Additional Options**
-   - Next screen: Configure standard doclet options
-     - Check `@author`
-     - Check `@version`
-     - Check `@deprecated`
-   - Next screen: Add custom VM options if needed
-
-6. **Finish**
-   - Click `Finish` to generate
-   - Console shows generation progress
-   - Check for errors or warnings
 
 ## Understanding the Generated Output
 
@@ -163,46 +131,6 @@ Each package gets its own HTML file:
 Each class gets its own HTML file:
 - `com/mycompany/banking/BankAccount.html`
 
-### Supporting Files
-
-- **`stylesheet.css`** - Styling for the documentation
-- **`script.js`** - JavaScript for interactive features
-- **`search.js`** - Search functionality
-
-## Viewing the Generated Documentation
-
-### Open in Browser
-
-Simply open `index.html` in a web browser:
-
-```bash
-# Windows
-start docs/index.html
-
-# Mac
-open docs/index.html
-
-# Linux
-xdg-open docs/index.html
-```
-
-### Navigate the Documentation
-
-- **Package List** (top-left): Click to see classes in that package
-- **Class List** (bottom-left): Click to open class documentation
-- **Class Documentation** (right): Shows:
-  - Class description
-  - Field summary
-  - Constructor summary
-  - Method summary
-  - Detailed field/constructor/method documentation
-
-### Using Search
-
-Modern JavaDoc includes a search box:
-- Type class names, method names, or keywords
-- Press Enter or click suggestions
-- Quickly jump to any documented element
 
 ## Best Practices
 
@@ -216,10 +144,6 @@ Pay attention to warnings during generation:
 - Broken links
 - Invalid HTML
 
-### Version Control
-Consider whether to commit generated documentation:
-- **Don't commit** for internal projects (regenerate as needed)
-- **Do commit** for published libraries or if hosting documentation separately
 
 ### Customize Appearance
 For professional projects, consider customizing:
@@ -228,22 +152,4 @@ For professional projects, consider customizing:
 - CSS stylesheet
 - Overview page
 
-## Example: Complete Generation Command
-
-```bash
-javadoc \
-  -d docs \
-  -sourcepath src \
-  -subpackages com.mycompany \
-  -author \
-  -version \
-  -use \
-  -windowtitle "My Banking System API" \
-  -doctitle "Banking System API Documentation" \
-  -header "<b>Banking System v2.0</b>" \
-  -footer "<i>Copyright © 2024 My Company</i>" \
-  -bottom "<i>Generated on 2024-03-15</i>"
-```
-
-This creates comprehensive, professional-looking documentation with custom branding and information.
 
