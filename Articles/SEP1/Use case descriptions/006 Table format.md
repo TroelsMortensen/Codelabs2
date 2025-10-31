@@ -14,7 +14,7 @@ First, the single column version:
 
 ---
 
-| Use Case | Reserve a Vehicle |
+| Use Case | UC-6: Reserve a Vehicle |
 |----------|-------------------|
 | **Summary** | The employee reserves a vehicle for a customer. |
 | **User stories** | This use case covers<br>- (US-4)<br>- (US-13)<br>- (US-19) |
