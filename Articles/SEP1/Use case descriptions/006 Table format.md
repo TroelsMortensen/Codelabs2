@@ -2,9 +2,9 @@
 
 The previous page was written in a section-based format. An alternative is a table format, which actually has two sub-categories.
 
-The main point is where the element header is located. And I think perhaps the outer box surrounding everything can help with readability.
+The main difference between section-based and table format is where the element header is located. And I think perhaps the outer box surrounding everything can help with readability.
 
-The two versions of the table format differ only when describing the scenarios
+The two versions of the table format differ only when describing the scenarios.
 
 My main issue with the table format is that students will often make the right side column too slim, making it annoying to read.
 
@@ -27,6 +27,8 @@ First, the single column version:
 | **Notes** | To make a reservation, the customer must be known to the system. See: (UC-3) Add a customer. |
 
 ---
+
+And now, the same information, almost the same table, but with "swimlanes" in the main scenario.
 
 ## Swimlane table format
 

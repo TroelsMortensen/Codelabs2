@@ -1,23 +1,16 @@
-# Use case description example 1
+# Section-based format
 
-Let's now take a look at an example of a use case description.
+Below is an example of a use case description in the "section-based" format.
 
-The domain we are looking at is a vehicle rental system. And the particular use case we are looking at is the "Rent a Vehicle" use case.
 
-I will first show the section-based structure, and on the next page I will show the table.
 
-## UC-6: Reserve a Vehicle
-
-Here is an example. 
-
-User stories have an id prefixed with "US", and use cases have an id prefixed with "UC". You can see this in action in the "user stories" and "includes" sections.
 
 Notice in the main scenario, at the end of some steps, you will find [ALT3], or some other number. This is a reference to an alternative scenario. It means that at this step, the sequence of steps may differ from the main scenario. Usually in case of some error, or some user action.
 
 ---
 
-### Use case
-UC-6. Reserve a vehicle.
+## UC-6: Reserve a Vehicle
+
 
 ### Summary
 
