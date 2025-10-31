@@ -1,17 +1,30 @@
-# Exercise 10 - File Manager
+# Exercise - File Manager
 
 Create a console application that allows users to manage files in a single working directory. 
+
+Yes, this is just a slightly larger version of a previous exercise. You could just copy the code from the previous exercise, and modify it to suit your needs. But _do_ make a copy of the previous exercise.
 
 ## Requirements
 
 Your file manager should provide the following functionality:
 
-### Core Features
+### Functional requirements
 
 1. **Create a new file** - Create a new text file with user-provided content
 2. **Overwrite a file** - Replace the entire content of an existing file
-3. **Append text to a file** - Add new content to the end of an existing file
+3. **Append text to a file** - Add new content to the end of an existing file (this is perhaps tricky with binary files, consider it a challenge)
 4. **List existing files** - Show all files in the working directory
+5. **View file content** - Show the content of a file
+
+
+Can you think of any other features that would be useful?
+
+Extra features, could be:
+- Delete a file
+- Rename a file
+
+### Non-functional requirements
+You decide whether to use binary or text files.
 
 ### User Interface
 
@@ -22,8 +35,9 @@ The application should present a menu-driven interface:
 
 1. Create new file
 2. Overwrite existing file
-3. Append to existing file
+3. Append to existing file 
 4. List all files
+5. View file content
 5. Exit
 
 Choose an option (1-5):
@@ -37,6 +51,7 @@ Choose an option (1-5):
 - **Overwrite file**: Ask for filename and new content, replace all existing content
 - **Append to file**: Ask for filename and additional content, add to the end
 - **List files**: Show all files in the current directory with basic information
+- **View file content**: Show the content of a file
 
 Handle potential errors gracefully.
 

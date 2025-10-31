@@ -69,7 +69,7 @@ This is line 2
 This is line 3
 ```
 
-## Better Approach: Using PrintWriter
+## Easier Approach: Using PrintWriter
 
 Another class is the `PrintWriter` class. This is a more flexible way to write text to a file. It _uses_ a `FileWriter` internally, but it provides more convenient methods for writing formatted text.
 

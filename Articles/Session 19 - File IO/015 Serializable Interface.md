@@ -4,7 +4,7 @@ The `Serializable` interface is a [marker interface](https://www.geeksforgeeks.o
 
 A marker interface is an interface that does not contain any methods. It is used to sort of put a label on an object.
 
-**This interface already exists in Java!!!**
+**This interface already exists in Java!!!** Don't create it yourself.
 
 ## What is Serialization?
 

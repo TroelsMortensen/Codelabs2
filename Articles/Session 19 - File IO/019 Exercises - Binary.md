@@ -1,12 +1,12 @@
-# Exercise 18 - Binary Data Exercises
-
-This exercise will help you practice working with binary data, object serialization, and file I/O operations. You'll create several classes and learn how to save and load Java objects to/from binary files.
+# Binary data exercises
 
 ## Setup
 
-Create a new package called `binaryexercises` in your project. All classes should be placed in this package.
+Create a new package called `binaryexercises` in your project. All classes for this page should be placed in this package.
 
-## Exercise 18.1: MyData Class
+## Exercise 19.1: MyData Class
+
+It is simpler to read data from binary file, if we can deserialize it into an object. So, we create a class that represents the data we want to store.
 
 Create a class called `MyData` with the following requirements:
 
@@ -46,13 +46,15 @@ classDiagram
     Serializable ()-- MyData
 ```
 
+Notice that `MyData` implements the `Serializable` interface. This is necessary for the object to be serialized.
+
 ### Example Output
 
 ```
 MyData{name='John Doe', age=25, salary=50000.0, isActive=true, grade='A'}
 ```
 
-## Exercise 18.2: Single Object Serialization
+## Exercise 19.2: Single Object Serialization
 
 Create a class called `SingleObjectTest` with a main method that:
 
@@ -82,7 +84,7 @@ Now, why are they not the same object? Is it not the same we put into the file a
 This is why `==` returns false, and `.equals()` returns false as well (unless overridden).
 
 
-## Exercise 18.3: ArrayList Serialization
+## Exercise 19.3: ArrayList Serialization
 
 Create a class called `ArrayListTest` with a main method that:
 
@@ -113,9 +115,9 @@ Retrieved list:
   MyData{name='Bob Johnson', age=35, salary=70000.0, isActive=true, grade='C'}
 ```
 
-## Exercise 18.4: DataContainer Class
+## Exercise 19.4: DataContainer Class
 
-This time, we step up the game. Imagine in a larger application, you will have to save multiple kinds of objects. We can do this to a single file. But, we cannot write a list of `MyData` objects to a file, and a list of `MyOtherData` objects to a file. We need to write a _single object_ to the file, that contains both lists.
+This time, we step up the game. Imagine in a larger application (like your semester project), you will have to save multiple types of objects. We can do this to a single file. But, we cannot write a list of `MyData` objects to a file, and a list of `MyOtherData` objects to that same file. We need to write a _single object_ to the file, that contains both lists.
 
 So, we create a container class, which will contain _all_ data for the application.
 
@@ -131,16 +133,12 @@ So, we create a container class, which will contain _all_ data for the applicati
 2. **Create DataContainer class** with:
    - `List<MyData> myDataList`
    - `List<MyOtherData> myOtherDataList`
-   - Constructor, getters, setters, toString
-
-3. **Create ContainerTest class** with main method that:
-   - Creates instances of both data types
-   - Adds them to a DataContainer
-   - Writes the container to a file
-   - Reads it back and prints the results
+   - Constructor, whatever getters and setters you need, and a `toString()` method
 
 
 ### DataContainer Class
+
+Here is an incomplete implementation of the `DataContainer` class:
 
 ```java
 package binaryexercises;
@@ -166,32 +164,10 @@ public class DataContainer implements Serializable {
 ### Main method
 
 Create a main method that:
-- Creates several instances of both data types
+- Creates several instances of both data types, i.e. `MyData` and `MyOtherData` objects
 - Adds them to a DataContainer
-- Writes the container to a file
+- Writes the DataContainer to a file
 - Reads it back and prints the results
 
 ## Why Use DataContainer?
-
-### Discussion Points
-
-**Why do we need the DataContainer class instead of writing two separate lists?**
-
-1. **Atomic Operations**: All data is saved/loaded together as one unit
-2. **Data Integrity**: Ensures both lists are always in sync
-3. **Single File**: One file contains all related data
-4. **Easier Management**: One object to handle instead of multiple files
-5. **Consistency**: If one list fails to save/load, the entire operation fails
-6. **Relationship Preservation**: Maintains the relationship between the two data types
-
-### But then the drawbacks
-
-It is not all rainbows and unicorns. There are some drawbacks to this approach.
-- **Performance**: Loading all data into memory at once can be slow.
-- **Memory usage**: Loading all data into memory at once can use a lot of memory.
-- **Data integrity**: If one list is corrupted, the entire operation fails.
-- **Data consistency**: If one list is out of sync, the entire operation fails.
-- **Data management**: If you have a lot of data, it is hard to manage.
-
-So, this is not a good approach for large datasets. But it is a good approach for small datasets, which is what you will be doing in this course. And your semester project.
 

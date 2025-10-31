@@ -31,8 +31,8 @@ It can be illustrated in a tree structure, like this:
 
 ```
 parent/
-├── child/
-│   └── grandchild/
+└── child/
+    └── grandchild/
 ```
 
 This terminology is relative to which folder we are talking about. In the above, the "parent" folder is the one that contains the "child" folder, and the "child" folder is the one that contains the "grandchild" folder.
@@ -41,8 +41,8 @@ We could focus on the most nested folder, and rename things like this:
 
 ```
 grandparent/
-├── parent/
-│   └── child/
+└── parent/
+   └── child/
 ```
 
 It is essentially the same thing, just depending on which folder we are talking about. Or where you stand. Similar to left and right are relative to you, and not the universe. Unless you are the center of the universe. Which you are. You are very important. Which is why you are the center of the universe. Everything else is relative to you, because you are so VIP. Anyway...

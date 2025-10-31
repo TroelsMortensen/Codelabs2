@@ -80,5 +80,5 @@ So, it's much easier to just write the binary data to the file. And since the da
 
 ![atually](Resources/actually.jpg)
 
-Well, _aacchually_, there is a convention for writing plain text representations of objects, called `JSON`. JSON is a lightweight data-interchange format that is easy for humans to read and write, and easy for machines to parse and generate. But, we don't deal with that here.\
+Well, _aakcchyually_, there is a convention for writing plain text representations of objects, called `JSON`. JSON is a lightweight data-interchange format that is easy for humans to read and write, and easy for machines to parse and generate. But, we don't deal with that here.\
 For now, I recommend storing the data in binary format.

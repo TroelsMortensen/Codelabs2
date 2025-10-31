@@ -108,6 +108,3 @@ public class StringFileReader {
 | `Files.readAllLines()` | Entire file at once | High | Fast (small files) |
 | `Files.readString()` | Entire file as string | High | Fast (small files) |
 
-## What's Next?
-
-Now that you understand how to read text files, let's practice with an exercise that combines file reading with your previous file writing exercises. You'll create a file viewer and analyzer that can read and display file contents in different ways!
