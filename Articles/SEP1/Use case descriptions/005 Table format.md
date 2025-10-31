@@ -1,15 +1,18 @@
 # Table format for example 1
 
-The previous page was written in a textual section structured format. An alternive is a table format, which actually has two sub-categories.
+The previous page was written in a section-based format. An alternative is a table format, which actually has two sub-categories.
 
 The main point is where the element header is located. And I think perhaps the outer box surrounding everything can help with readability.
 
-The two versions of the table format differ only when describing the scenarios. Notice how the interaction between the user and the system goes back and forth.\
-One might wish to clarify further which parts the actor does, and which parts the system does. We can make this more explicit by adding a column for "Actor" and "System". So called swimlanes.
+The two versions of the table format differ only when describing the scenarios
+
+My main issue with the table format is that students will often make the right side column too slim, making it annoying to read.
 
 First, the single column version:
 
 ## Standard table format
+
+---
 
 | Use Case | Reserve a Vehicle |
 |----------|-------------------|
@@ -23,9 +26,16 @@ First, the single column version:
 | **Alternative scenarios** | [ALT0] The process can be cancelled at any time.<br><br>[ALT1] No matching customers found.<br>1. The system shows a message "No matching customers found."<br>2. The user can choose to create a new customer (UC-3), or cancel the process.<br><br>[ALT2] Invalid date interval. If either date is before current date, or delivery date is before pick up date.<br>1. The system shows an error message.<br>2. The user can choose to input the date interval again.<br>3. Proceed from step 6.<br><br>[ALT3] Select optional search criteria, like vehicle type, number of seats, size of trunk.<br><br>[ALT4] Employee can choose to view further details of the vehicle, like fuel type, transmission type, color, number of doors, trunk size.<br><br>[ALT5] The list of vehicles is empty.<br>1. The system shows a message "No vehicles available for the chosen date interval."<br>2. The user can choose to input the date interval again from step 6, or cancel the process.<br><br>[ALT6] Employee can choose to manually alter the price of the reservation. |
 | **Notes** | To make a reservation, the customer must be known to the system. See: (UC-3) Add a customer. |
 
+---
+
 ## Swimlane table format
 
-Notice the main difference here is the sub-table for the main sequence of steps. You _could_ do this for the alternate scenarios as well, but I think that is less relevant.
+One might wish to clarify further which parts the actor does, and which parts the system does. We can make this more explicit by adding a column for "Actor" and "System". So called "swimlanes".
+
+Notice in the below table format how the interaction between the user and the system goes back and forth between the two columns. Notice how in a single row, only one of the two columns is used. It is important for readability to keep this structure.
+
+The main difference here is the sub-table for the main sequence of steps. You _could_ do this for the alternate scenarios as well, but I think that is less relevant.
+
 
 | Use Case | Reserve a Vehicle |
 |----------|-------------------|

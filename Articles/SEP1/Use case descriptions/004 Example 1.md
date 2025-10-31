@@ -6,7 +6,7 @@ The domain we are looking at is a vehicle rental system. And the particular use 
 
 I will first show the section-based structure, and on the next page I will show the table.
 
-## Reserve a Vehicle
+## UC-6: Reserve a Vehicle
 
 Here is an example. 
 
@@ -14,8 +14,10 @@ User stories have an id prefixed with "US", and use cases have an id prefixed wi
 
 Notice in the main scenario, at the end of some steps, you will find [ALT3], or some other number. This is a reference to an alternative scenario. It means that at this step, the sequence of steps may differ from the main scenario. Usually in case of some error, or some user action.
 
+---
+
 ### Use case
-Reserve a vehicle.
+UC-6. Reserve a vehicle.
 
 ### Summary
 
@@ -67,7 +69,7 @@ The selected vehicle is reserved for the chosen customer, at the given date inte
 [ALT2] Invalid date interval. If either date is before current date, or delivery date is before pick up date.
 1. The system shows an error message.
 2. The user can choose to input the date interval again.
-3. Proceed from step 6.
+3. Proceed from step 6 in main scenario.
 
 [ALT3] Select optional search criteria, like vehicle type, number of seats, size of trunk.
 
@@ -75,9 +77,12 @@ The selected vehicle is reserved for the chosen customer, at the given date inte
 
 [ALT5] The list of vehicles is empty.
 1. The system shows a message "No vehicles available for the chosen date interval."
-2. The user can choose to input the date interval again from step 6, or cancel the process.
+2. The user can choose to input the date interval again from step 6 in main scenario, or cancel the process.
 
 [ALT6] Employee can choose to manually alter the price of the reservation.
+
+---
+
 
 ### Notes
 

@@ -142,7 +142,6 @@ public partial class Home : ComponentBase
                             [
                                 new LearningPath("Domain model", "UML%2FDomain%20Model"),
                                 new LearningPath("Use case diagrams", "UML%2FUse%20Case%20Diagrams"),
-                                new LearningPath("Use case descriptions", "UML%2FUse%20Case%20Descriptions")
                             ]
                         ),
                         new Session(2, "Design artefacts",
