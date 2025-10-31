@@ -10,7 +10,7 @@ public partial class Home : ComponentBase
     private void NavigateToArticle(string owner, string tutorialName) =>
         NavMgr.NavigateTo($"article/{owner}/{HttpUtility.UrlEncode(tutorialName)}");
 
-    // Todo yes yes i know put this somewhere else. In a separate json file somewhere, probably. That can be auto-generated perhaps?
+
     private CourseOverview OverviewData { get; } =
         new CourseOverview(
             [
@@ -142,6 +142,7 @@ public partial class Home : ComponentBase
                             [
                                 new LearningPath("Domain model", "Analysis%20artefacts%2UML%2FDomain%20Model"),
                                 new LearningPath("Use case diagrams", "Analysis%20artefacts%2UML%2FUse%20Case%20Diagrams"),
+                                new LearningPath("Use case descriptions", "Analysis%20artefacts%2UML%2FUse%20case%descriptions"),
                             ]
                         ),
                         new Session(2, "Design artefacts",
@@ -169,6 +170,7 @@ public partial class Home : ComponentBase
                 )
             ]
         );
+    // Todo yes yes i know put this somewhere else. In a separate json file somewhere, probably. That can be auto-generated perhaps?
 }
 
 internal record CourseOverview(IEnumerable<Course> Courses);
