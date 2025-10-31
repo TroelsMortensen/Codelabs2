@@ -2,7 +2,7 @@
 
 Create a new package for the exercises in this page.
 
-## Exercis 18.1 - Simple console file writing app
+## Exercise 15.1 - Simple console file writing app
 
 Create a console application that allows users to write different types of text data to files. 
 
@@ -132,7 +132,7 @@ This is my first note!
 Remember to call mom at 3 PM today
 ```
 
-## Exercise 18.2 - Read files
+## Exercise 15.2 - Read files
 
 Expand the above exercise, to now allow the user to
 - get a list of existing files, and then 

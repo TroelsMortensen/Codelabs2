@@ -4,7 +4,7 @@
 
 Create a new package called `binaryexercises` in your project. All classes for this page should be placed in this package.
 
-## Exercise 19.1: MyData Class
+## Exercise 16.1: MyData Class
 
 It is simpler to read data from binary file, if we can deserialize it into an object. So, we create a class that represents the data we want to store.
 
@@ -54,7 +54,7 @@ Notice that `MyData` implements the `Serializable` interface. This is necessary 
 MyData{name='John Doe', age=25, salary=50000.0, isActive=true, grade='A'}
 ```
 
-## Exercise 19.2: Single Object Serialization
+## Exercise 16.2: Single Object Serialization
 
 Create a class called `SingleObjectTest` with a main method that:
 
@@ -84,7 +84,7 @@ Now, why are they not the same object? Is it not the same we put into the file a
 This is why `==` returns false, and `.equals()` returns false as well (unless overridden).
 
 
-## Exercise 19.3: ArrayList Serialization
+## Exercise 16.3: ArrayList Serialization
 
 Create a class called `ArrayListTest` with a main method that:
 
@@ -115,7 +115,7 @@ Retrieved list:
   MyData{name='Bob Johnson', age=35, salary=70000.0, isActive=true, grade='C'}
 ```
 
-## Exercise 19.4: DataContainer Class
+## Exercise 16.4: DataContainer Class
 
 This time, we step up the game. Imagine in a larger application (like your semester project), you will have to save multiple types of objects. We can do this to a single file. But, we cannot write a list of `MyData` objects to a file, and a list of `MyOtherData` objects to that same file. We need to write a _single object_ to the file, that contains both lists.
 
