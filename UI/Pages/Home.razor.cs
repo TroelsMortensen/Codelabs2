@@ -148,7 +148,7 @@ public partial class Home : ComponentBase
                             [
                                 new LearningPath("Class diagram", "UML%2FClass%20Diagrams")
                             ]
-                        )
+                        ), 
                     ]
                 ),
                 new Course("SEP", "#03BAFC",

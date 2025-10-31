@@ -1,3 +1,3 @@
-This will eventually explain how to draw use case diagrams in Astah.
+# Drawing use case diagrams
 
-What they are is explained elsewhere. Here I focus on Astah, and how to draw them.
+As with all the other artefacts, you can use just about any tool to draw them. But, I will focus on Astah, and how to draw them.
