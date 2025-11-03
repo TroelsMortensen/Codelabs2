@@ -143,6 +143,7 @@ public partial class Home : ComponentBase
                                 new LearningPath("Domain model", "UML/Analysis artefacts/Domain Model"),
                                 new LearningPath("Use case diagrams", "UML/Analysis artefacts/Use Case Diagrams"),
                                 new LearningPath("Use case descriptions", "UML/Analysis artefacts/Use case descriptions"),
+                                new LearningPath("Activity diagrams", "UML/Analysis artefacts/Activity diagrams"),
                             ]
                         ),
                         new Session(2, "Design artefacts",
@@ -162,6 +163,7 @@ public partial class Home : ComponentBase
                                 new LearningPath("Use case diagrams", "SEP1/Use case diagrams"),
                                 new LearningPath("Use case descriptions", "SEP1/Use case descriptions"),
                                 new LearningPath("Activity diagrams",  "SEP1/Activity diagrams"),
+                                new LearningPath("Domain models",  "SEP1/Domain models"),
                             ]
                         ),
                         // new Session(2, "SEP2",
