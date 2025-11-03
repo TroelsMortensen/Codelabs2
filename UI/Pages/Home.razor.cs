@@ -17,12 +17,12 @@ public partial class Home : ComponentBase
                     [
                         new Session(1, "Basic Java",
                             [
-                                new LearningPath("Introduction", "Session 1 Learning Path")
+                                new LearningPath("Introduction", "Session 1 Learning Path"),
+                                new LearningPath("Default Values", "Session 2 Default Values"),
                             ]
                         ),
                         new Session(2, "Input",
                             [
-                                new LearningPath("Default Values", "Session 2 Default Values"),
                                 new LearningPath("String methods", "Session 2 String methods"),
                                 new LearningPath("Console input", "Session 2 Console Input"),
                                 new LearningPath("The Java Compiler", "The Java Compiler"),
