@@ -65,3 +65,11 @@ Note that some of these entities might be questionable or depend on the specific
 
 
 These decisions depend on the specific needs of your system and how detailed your model needs to be.
+
+## UML
+
+In UML, an entity is represented by a box. And the name of the entity is written in the box.
+
+![Entity in UML](Resources/Entity.svg)
+
+There is a very slim compartment at the bottom of the box. This is where the attributes of the entity are written. On the next page.
