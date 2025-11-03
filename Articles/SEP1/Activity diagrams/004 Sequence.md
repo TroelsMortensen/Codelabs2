@@ -12,9 +12,11 @@ And here is the diagram, which shows the sequence of activities.
 
 ```mermaid
 flowchart TD
-    A[Do this] --> B[Then do this]
+    Start((( ))) --> A[Do this]
+    A --> B[Then do this]
     B --> C[And then do that]
 
     classDef activityBox fill:#ffffe0,stroke:#000000,stroke-width:2px,color:#000000,rx:10,ry:10
     class A,B,C activityBox
+    style Start fill:#000000,stroke:#000000
 ```

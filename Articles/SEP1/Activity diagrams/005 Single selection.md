@@ -5,11 +5,11 @@ This represents what you know from Java as an if-statement: Conditionally do som
 In Java it could look like this:
 
 ```java
-// do stuff
+doStuff();
 if (condition) {
-    // do something
+    doSomething();
 }
-// do more stuff
+doMoreStuff();
 ```
 
 Or in a textual form:
@@ -22,10 +22,13 @@ And finally, in the diagram. This branching is drawn as a diamond, with at least
 
 We put the condition inside brackets `[ ]`, close to the arrow that represent the true branch. You generally put something like `[otherwise]` on the other arrow, which means "if the condition is false".
 
+Often, these `[condition]` are called **"guards"**. 
+
 It looks like this:
 
 ```mermaid
 flowchart TD
+    Start((( ))) --> A(Do stuff)
     A(Do stuff) --> B{ }
     B -- [condition] --> C(Do something)
     C --> E{ }
@@ -34,6 +37,7 @@ flowchart TD
 
     classDef activityBox fill:#ffffe0,stroke:#000000,stroke-width:2px,color:#000000,rx:10,ry:10
     class A,C,D activityBox
+    style Start fill:#000000,stroke:#000000
 ```
 
 
@@ -41,7 +45,8 @@ Let's try an example with more meaningful steps, it's a rough and partial outlin
 
 ```mermaid
 flowchart TD
-    A(Fill out shipping details) --> B{ }
+    Start((( ))) --> A(Fill out shipping details)
+    A --> B{ }
     B -- [has discount code] --> C(Apply discount)
     C --> E{ }
     B -- [otherwise] --> E
@@ -49,4 +54,5 @@ flowchart TD
 
     classDef activityBox fill:#ffffe0,stroke:#000000,stroke-width:2px,color:#000000,rx:10,ry:10
     class A,C,D activityBox
+    style Start fill:#000000,stroke:#000000
 ```
