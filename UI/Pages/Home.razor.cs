@@ -159,7 +159,8 @@ public partial class Home : ComponentBase
                                 new LearningPath("Requirements", "SEP1/Requirements"),
                                 new LearningPath("What is a use case", "SEP1/Use cases"),
                                 new LearningPath("Use case diagrams", "SEP1/Use case diagrams"),
-                                new LearningPath("Use case descriptions", "SEP1/Use case descriptions")
+                                new LearningPath("Use case descriptions", "SEP1/Use case descriptions"),
+                                new LearningPath("Activity diagrams",  "SEP1/Activity diagrams"),
                             ]
                         ),
                         // new Session(2, "SEP2",
