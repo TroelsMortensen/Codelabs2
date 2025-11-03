@@ -130,7 +130,7 @@ public partial class Home : ComponentBase
                         new Session(20, "Application design",
                             [
                                 new("Java documentation", "Java Doc"),
-                                new("Automated testing",  "Automated Testing"),
+                                new("Automated testing",  "Automated testing"),
                                 new("Application design", "Session 20 - Application design")
                             ]
                         )
