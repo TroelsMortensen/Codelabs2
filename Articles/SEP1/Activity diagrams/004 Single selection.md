@@ -37,3 +37,16 @@ flowchart TD
 ```
 
 
+Let's try an example with more meaningful steps, it's a rough and partial outline of checking out a shopping cart in some online store. The condition is about whether the user has a discount code.
+
+```mermaid
+flowchart TD
+    A(Fill out shipping details) --> B{ }
+    B -- [has discount code] --> C(Apply discount)
+    C --> E{ }
+    B -- [otherwise] --> E
+    E --> D(Place order)
+
+    classDef activityBox fill:#ffffe0,stroke:#000000,stroke-width:2px,color:#000000,rx:10,ry:10
+    class A,C,D activityBox
+```
