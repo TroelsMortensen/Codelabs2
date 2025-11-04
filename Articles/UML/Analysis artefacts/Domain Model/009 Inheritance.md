@@ -1,0 +1,1 @@
+# Drawing inheritance in Domain Models
