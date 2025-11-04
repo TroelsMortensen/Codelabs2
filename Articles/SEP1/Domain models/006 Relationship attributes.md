@@ -73,3 +73,22 @@ Here is how we solve the problem of expressing the ordering of the authors for e
 
 > Relationship attributes are _only_ relevant for many-to-many relationships! ***ONLY!!***
 
+You do not need them for one-to-one or one-to-many relationships.
+
+# **PAY ATTENTION!!**
+
+> This is very important!
+
+The relationship attribute box **IS NOT AN ENTITY!!**
+
+> It is not!
+
+Dude, don't do it!
+
+You _cannot_ make a relationship from the relationship attribute box to an entity!
+
+> You cannot!
+
+I will not put in a picture of this abonimation, out of fear that you may be inspired to do something so horrible, and potentially, even worse! show your foul creation to me. I would be forced to destroy it, with fire.
+
+> May the gods have mercy on your soul, should you decide to even try.
