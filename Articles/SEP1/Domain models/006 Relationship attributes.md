@@ -92,3 +92,5 @@ You _cannot_ make a relationship from the relationship attribute box to an entit
 I will not put in a picture of this abonimation, out of fear that you may be inspired to do something so horrible, and potentially, even worse! show your foul creation to me. I would be forced to destroy it, with fire.
 
 > May the gods have mercy on your soul, should you decide to even try.
+
+![Create abomination](Resources/CreateAbomination.png)
