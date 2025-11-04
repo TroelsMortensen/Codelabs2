@@ -15,4 +15,10 @@ The name of the association class become the name of the relationship. I do not 
 It is important that the syntax is correct. The line between two entities should be a solid line. The line from the association class to the entities should be a dotted line.
 In Astah, this should be straight forward. In other drawing tools, you may need to try to create your own lines, which may not be convenient.
 
+![Association class](Resources/AssociationClass.gif)
+
 ## Convert to association class
+
+If you draw a normal relationship first, between two entities, you can convert it to an association class.
+
+![Convert to association class](Resources/AssociationClass2.gif)
