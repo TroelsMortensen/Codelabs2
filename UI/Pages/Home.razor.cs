@@ -130,10 +130,15 @@ public partial class Home : ComponentBase
                         new Session(20, "Application design",
                             [
                                 new("Java documentation", "Java Doc"),
-                                new("Automated testing",  "Automated testing"),
+                                new("Automated testing", "Automated testing"),
                                 new("Application design", "Session 20 - Application design")
                             ]
-                        )
+                        ),
+                        new Session(21, "JavaFX introduction",
+                            [
+                                new("Lambdas and method references", "Lambda expressions")
+                            ]
+                        ),
                     ]
                 ),
                 new Course("UML", "#FF7F50",
@@ -150,7 +155,7 @@ public partial class Home : ComponentBase
                             [
                                 new LearningPath("Class diagram", "UML/Design artefacts/Class Diagrams")
                             ]
-                        ), 
+                        ),
                     ]
                 ),
                 new Course("SEP", "#03BAFC",
@@ -162,8 +167,8 @@ public partial class Home : ComponentBase
                                 new LearningPath("What is a use case", "SEP1/Use cases"),
                                 new LearningPath("Use case diagrams", "SEP1/Use case diagrams"),
                                 new LearningPath("Use case descriptions", "SEP1/Use case descriptions"),
-                                new LearningPath("Activity diagrams",  "SEP1/Activity diagrams"),
-                                new LearningPath("Domain models",  "SEP1/Domain models"),
+                                new LearningPath("Activity diagrams", "SEP1/Activity diagrams"),
+                                new LearningPath("Domain models", "SEP1/Domain models"),
                             ]
                         ),
                         // new Session(2, "SEP2",
