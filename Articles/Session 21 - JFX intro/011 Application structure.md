@@ -17,4 +17,12 @@ In short, your JavaFX application should have three main parts:
 └── 📄StartUp.java
 ```
 
-This structure is also relevant for your semester project, though you may also want a domain layer (package), for your domain entities.
+This structure is also relevant for your semester project, though you may also want a domain layer (package), for your domain entities:
+
+```console
+📁src/
+├── 📁domain/
+├── 📁presentation/
+├── 📁persistence/
+└── 📄StartUp.java
+```

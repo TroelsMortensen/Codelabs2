@@ -2,6 +2,10 @@
 
 JavaFX offers many more UI elements beyond what we've covered. Here's a list of commonly used components you might encounter or need in your applications.
 
+Below is a list. I have intentionally _not included_ layout elements, as we will cover those in the next section. You have seen the AnchorPane, VBox, and HBox.
+
+Just as you can add ui elements to these containers, you can also add containers to containers. E.g. put two VBoxes inside an AnchorPane, to create two columns.
+
 ## Additional Input Controls
 
 **Slider** - A control that allows users to select a numeric value by dragging a thumb along a track. Useful for settings like volume, brightness, or zoom level.
