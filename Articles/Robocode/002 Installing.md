@@ -10,6 +10,8 @@ It took about 30 minutes for me.
 
 Watch my video here on how I install Robocode.
 
+You may have problems opening the downloaded jar file, see the next section for a solution.
+
 You don't need to make the same setup choice as me, but I will argue my choice.
 
 <video src="https://youtu.be/blTsMIoXog0"></video>
