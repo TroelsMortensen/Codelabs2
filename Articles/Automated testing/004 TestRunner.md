@@ -2,7 +2,7 @@
 
 This class is responsible for running each of the test cases (methods), one after the other, and printing the results to the console.
 
-There are a few things going on, which we must take about.
+There are a few things going on, which we must talk about.
 
 ## Runnable interface
 
@@ -16,7 +16,7 @@ Your variables generally is either a value, i.e. simple type, or a _reference_ t
 
 However, Java also allows you to reference a method, instead of an object. This is called a "method reference". Behind the scenes, Java will still do some conversion to wrap the method reference into a class or interface. Sort of.
 
-If I define a method, with no arguments, and no return value, I can create a variable of type `Runnable`, and assign it to the method.
+If I define a method, with no arguments, and no return valu, i.e. `void`, I can create a variable of type `Runnable`, and assign it to the method.
 
 The example below shows how to do this. Notice the `::` operator. This is used to reference the `myMethod` method. The left of that operator is the class name, and the left is the method name.
 
@@ -62,7 +62,8 @@ public class TestRunner {
 }
 ```
 
-Notice that, for simplicity, I am making the field variables public. It just reduces the amount of code you have to write, no getters or setters.
+Notice that, for simplicity, I am making the field variables public. It just reduces the amount of code you have to write, no getters or setters.\
+Even better, I should have used a Record type, but I don't want to explain that.
 
 ## The test cases
 
@@ -127,13 +128,11 @@ public class TestRunner {
 }
 ```
 
-The main method is pretty simple. It loops over the `testCases` array, and for each test case, it tries to execute the test case.\
+The main method is pretty simple. It loops over the `testCases` array, and for each test case, it tries to execute the test case (method), see line 10 above.\
 Notice the `testCase.testCase.run()` line. This is where the test case is executed.
 
 If the test case executes without any exceptions escaping it, it prints a success message right after. If an exception escapes the test case, the success-message print out is skipped, and execution jumps to the catch block, where it prints a failure message.
 
-The `try-catch` block is used to catch both `Exception`. This is because `Exception` is the base class for all exceptions.
-
-The `Throwable` type is used to catch both `Exception` and `Error` exceptions. This is because `Throwable` is the base class for all exceptions and errors.
+The `try-catch` block is used to catch all `Exception`, including the `AssertionFailure` exception. This is because `Exception` is the base class for all exceptions.
 
 The `e.getMessage()` is used to get the message of the exception. This is often somewhat user friendly, and is a good place to start, when trying to give feedback to the user.
