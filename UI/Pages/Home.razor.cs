@@ -136,7 +136,8 @@ public partial class Home : ComponentBase
                         ),
                         new Session(21, "JavaFX introduction",
                             [
-                                new("Lambdas and method references", "Lambda expressions")
+                                new("Lambdas and method references", "Lambda expressions"),
+                                new("Java FX introduction", "Session 21 - JFX intro")
                             ]
                         ),
                     ]
