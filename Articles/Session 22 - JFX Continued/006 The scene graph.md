@@ -1,6 +1,6 @@
 # The scene graph
 
-fxml is an xml or html like file that describes your UI. And you may have heard that this kind of approach is a tree-structure. Similar to the DOM of html in the browser.
+fxml is an xml- or html-like file that describes your UI. And you may have heard that this kind of approach is a tree-structure. Similar to the DOM of html in the browser.
 
 And just like the DOM in the browser, we can manipulate the tree structure of the JavaFX UI, after the app has started. For each of the Panes, we can add or remove elements, making it possible to change the UI dynamically. We will explore this later.
 
@@ -14,7 +14,7 @@ We have several things going on here, layouts using multiple panes, there are bu
 The above can be represented as a tree structure like this:
 
 ```mermaid
-graph TB
+graph LR
     BP[BorderPane]
     
     BP --> Pane
@@ -43,15 +43,15 @@ graph TB
 ```
 
 ## SceneBuilder tree
-The image above was made in the scene builder. The following image is how the UI is represented, as a vertical tree structure, in SceneBuilder:
+The image was made in the scene builder. The following image is how the UI is represented, as a vertical tree structure, in SceneBuilder:
 
 ![scene builder tree](Resources/VerticalTree.png)
 
-Pay attention to the order of the elements, and their indentation. The `BorderPane` contains a `Pane`, a `VBox`, and a `GridPane`. Each of these contains various elements.
+Pay attention to the order of the elements, and their indentation, those are relevant for the layout. The `BorderPane` contains a `Pane`, a `VBox`, and a `GridPane`. Each of these contains various elements.
 
 ## fxml code
 
-The fxml code for the above is:
+And a (simplified) fxml code for the above is:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -90,7 +90,7 @@ The fxml code for the above is:
 </BorderPane>
 ```
 
-Notice how the fxml structure mirrors the tree structure shown above. The `BorderPane` is the root element, with `top`, `left`, and `center` regions containing the `Pane`, `VBox`, and `GridPane` respectively. Each child element is nested within its parent, creating the hierarchical tree structure.
+Notice how the fxml structure mirrors the tree structure shown above, to no-ones surprise. The `BorderPane` is the root element, wrapping all the others, with `top`, `left`, and `center` regions containing the `Pane`, `VBox`, and `GridPane` respectively. Each child element is nested within its parent, creating the hierarchical tree structure.
 
 The above code is actually reduced quite a lot. fxml tend to include a lot of extra stuff, because you can control so much about the layout. There are so many properties you can set, which results in a lot of attributes on the elements in the fxml file.
 
@@ -98,7 +98,8 @@ The actual code can be seen in the [ExampleUi.fxml](Resources/ExampleUi.fxml) fi
 
 ## Coding the UI
 
-Of couse, as you have seen previously, the UI can be coded manually. The following code is an attempt to recreate the UI above, matching the fxml file as closely as possible:
+Of couse, as you have seen previously, the UI can be coded manually. The following code is an attempt to recreate the UI above, matching the fxml file as closely as possible\
+You don't really need to study this code in detail, it's just here to show you that you can do it manually if you want to. But you probably don't want to. Unless you're a masochist.
 
 ```java
 // Create top section
@@ -165,4 +166,4 @@ borderPane.setCenter(gridPane);
 
 Imagine coding this by hand, having to re-run your application every time you make a change, to verify the result. That will quickly become tedious.
 
-So, the SceneBuilder is a great tool to help you create your UI. It is a drag-and-drop tool that allows you to visually create your UI, and then generate the fxml code for you.
+So, the SceneBuilder is a great drag-and-drop tool that allows you to visually create your UI, and then generate the fxml code for you. You'll love it.

@@ -27,9 +27,10 @@ We can describe this in an fxml file like this:
 </VBox>
 ```
 
-This is much more readable and maintainable.
-
 The tags should be clear, I trust. We have a VBox element, which contains a TextField, a Button, a Label, and another Button.
+
+Is this better? Well, maybe.. 
+
 
 ## SceneBuilder
 

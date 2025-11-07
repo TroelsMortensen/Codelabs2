@@ -29,4 +29,4 @@ There are more, but you can explore those on your own.
 
 I won't go into further detail about these here. You can read more about them in the [JavaFX documentation](https://docs.oracle.com/javafx/2/layout/builtin_layouts.htm) or [here on Tutorialspoint](https://www.tutorialspoint.com/javafx/javafx_layout_panes.htm).
 
-[This video](https://www.youtube.com/watch?v=GH-3YRAuHs0) also gives a decent overview of the different layouts.
+[This video](https://www.youtube.com/watch?v=GH-3YRAuHs0) also gives a decent overview of the different layouts, it's a bit long, double-speed it.
