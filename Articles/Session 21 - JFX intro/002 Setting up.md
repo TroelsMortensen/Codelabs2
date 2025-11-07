@@ -6,6 +6,8 @@ I have created a new project dedicated to my JavaFX stuff, but you can probably 
 
 <video src="https://youtu.be/LsxLAjTXROw"></video>
 
+[The code is on GitHub](https://github.com/TroelsMortensen/JavaFxExamples/tree/master/FirstApp)
+
 ## Exercise 2.1
 
 Redo the example from the video, again, just to ensure you can make stuff work. 

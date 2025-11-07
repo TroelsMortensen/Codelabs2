@@ -8,6 +8,8 @@ Watch the below video to see how to structure your application into three parts:
 
 <video src="https://youtu.be/tjq0XfaY6Zg"></video>
 
+[The code is on GitHub](https://github.com/TroelsMortensen/JavaFxExamples/tree/master/SimpleAppStructure)
+
 In short, your JavaFX application should have three main parts:
 
 ```console

@@ -6,6 +6,8 @@ Watch the video below to see how to create a text field in JavaFX.
 
 <video src="https://youtu.be/pv4pZx7ewww"></video>
 
+[The code is on GitHub](https://github.com/TroelsMortensen/JavaFxExamples/tree/master/YourFirstTextField)
+
 ## Exercise 4.1 - Print the text field value
 
 Create a gui application, with a text field and a button. When the button is clicked, the text field value should be printed to the console.

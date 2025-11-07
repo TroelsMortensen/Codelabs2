@@ -31,21 +31,6 @@ This is much more readable and maintainable.
 
 The tags should be clear, I trust. We have a VBox element, which contains a TextField, a Button, a Label, and another Button.
 
-## The fxml file, and the controller
-
-Going forward, we will use fxml files to set up our UI. The point is that a specific FXML helper class will load the fxml file, and create the UI elements for us.
-
-But what about the behaviour? The actions for the buttons, the events for the text fields, etc.? We will use _controllers_ to handle this.
-
-So, with this approach your views come in two parts: the fxml file, and the controller class. The fxml file describes the UI, and the controller class handles the behaviour.
-
-You have seen somewhat similar approach with html and javascript. The html file describes the UI, and the javascript file handles the behaviour.
-
-And, actually, in both cases, you can style the UI with css. But, I won't go into that here.
-
-![fxml and controller](Resources/FxmlAndController.png)
-
-
 ## SceneBuilder
 
 So, do you have to manually write out the fxml file? No, you can use a tool to help you. There is a drag-and-drop tool called SceneBuilder, which can help you visually setup a scene, and then produce the fxml file for you.

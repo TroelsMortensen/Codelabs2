@@ -8,6 +8,9 @@ Watch the video below to see how to create a button in JavaFX, and how to attach
 
 <video src="https://youtu.be/_jEooKZFWkI"></video>
 
+[The code is on GitHub](https://github.com/TroelsMortensen/JavaFxExamples/tree/master/YourFirstButton)
+
+
 ## Excercise 3.1 - Create a button
 
 In this exercise, write an application, which shows a button, with the text "Click me". When the button is clicked, the application should print "Button clicked" to the console.
