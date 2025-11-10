@@ -48,12 +48,10 @@ public class CompleteSerializationExample {
         people.add(new Person("Bob Smith", 35, "bob@example.com"));
         people.add(new Person("Carol Davis", 22, "carol@example.com"));
         
-        try (ObjectOutputStream outputStream = new ObjectOutputStream(
-                new FileOutputStream(filename))) {
-            
+        try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(filename))) 
+        {
             outputStream.writeObject(people);
             System.out.println("Saved " + people.size() + " people to " + filename);
-            
         } catch (IOException e) {
             System.out.println("Error saving people: " + e.getMessage());
         }
