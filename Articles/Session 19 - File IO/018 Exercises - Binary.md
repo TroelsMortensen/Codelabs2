@@ -171,3 +171,6 @@ Create a main method that:
 
 ## Why Use DataContainer?
 
+In your application, you may eventually need to store multiple types of entities: Person, Reservation, Car, etc. With this binary approach, you cannot write multiple lists to a single file. You need to write a single object to the file, that contains all the lists. That's the DataContainer class. It's a wrapper class that contains one or more lists of objects.
+
+Using this, we then save _all_ data at once, or we read _all_ data at once. For your first semester, this is fine. But, it will not scale well, as this clump of data can become large, which will cause the reading and writing to take longer and longer.
