@@ -6,7 +6,7 @@ The plan is to use the Files class to handle all these operations. We just wrap 
 
 Similar to how the PrintWriter wraps the FileWriter class.
 
-## Exercise 23.1 - Create Directories class
+## Exercise 19.1 - Create Directories class
 First, create a new class called `Directories`. Yeah, that's it, quickly done.
 
 You _might_ actually want to create a new package for this, outside of the `session19` package. This helper class could become useful in other exercises.
@@ -20,7 +20,7 @@ src/
 ... all the other sessionX packages...
 ```
 
-## Exercise 23.2 - Create single directory
+## Exercise 19.2 - Create single directory
 
 ### A - relative directory
 
@@ -52,7 +52,7 @@ This should create a directory called `test` in the `C:\Users\YourUsername\Docum
 
 Remember to verify that the parent directory exists! You can use the `Files.exists` method to check if a directory exists. Otherwise throw an exception, either an `IOException` or your own custom exception. Should this be a checked exception, or an unchecked exception?
 
-## Exercise 23.3 - Create nested directories
+## Exercise 19.3 - Create nested directories
 
 Create two new methods: `createRelativeDirectories` and `createAbsoluteDirectories`. They should create all necessary parent directories.
 
@@ -74,7 +74,7 @@ This should create a directory called `test` in the `C:\Users\YourUsername\Docum
 
 Again, there are relevant methods on the `Files` class to help you with this.
 
-## Exercise 23.4 - Check if directory exists
+## Exercise 19.4 - Check if directory exists
 
 Add a method called `exists` that takes a String argument and returns a boolean indicating whether the directory exists.
 
@@ -90,7 +90,7 @@ if (Directories.exists("test")) {
 
 Consider handling both relative and absolute directories with the same method. `Files` has a method called `exists` that can be used to check if a directory exists.
 
-## Exercise 23.5 - Delete directory
+## Exercise 19.5 - Delete directory
 
 Add a method called `delete` that takes a String argument and deletes the directory. The directory must be empty for this to work!!!!
 
@@ -102,7 +102,7 @@ Directories.delete("test");
 
 **Hint**: Use `Files.delete()` method. Handle the case where the directory is not empty - you might want to throw a custom exception or return a boolean indicating success/failure. Figure out how to check if the directory is empty.
 
-## Exercise 23.6 - List directory contents
+## Exercise 19.6 - List directory contents
 
 Add a method called `listContents` that takes a String argument (directory path) and returns a list of all files and directories in that directory.
 
@@ -117,7 +117,7 @@ for (String item : contents) {
 
 **Hint**: Use `Files.list()` or `Files.walk()` methods. Return just the names, not the full paths. Append a (file) or (directory) to the name, to indicate if it is a file or a directory.
 
-## Exercise 23.7 - Console application for directory management
+## Exercise 19.7 - Console application for directory management
 
 Create a console application that allows users to manage directories. The application should have a menu with the following options:
 
