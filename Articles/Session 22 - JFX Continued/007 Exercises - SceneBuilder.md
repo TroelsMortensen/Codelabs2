@@ -2,6 +2,8 @@
 
 The following exercises will present you with a UI screenshot, and you should try to recreate it using SceneBuilder. It's not super important, that you get it 100% correct, the main purpose is just to play around with the SceneBuilder.
 
+Remember, you can use the _preview_ to do some basic testing of the UI.
+
 ## Exercise 1 - Login Form
 
 Create a simple login form with the following layout:
