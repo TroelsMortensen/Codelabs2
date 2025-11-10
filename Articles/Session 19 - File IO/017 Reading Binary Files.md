@@ -5,18 +5,17 @@ Now let's look at how to read binary data from files, and reconstruct Java objec
 
 ## Reading Objects from Binary Files
 
-Notice line 11, where we read the `Person` object from the file. Since the `readObject` method returns an `Object`, we need to cast it to a `Person` object.\
+Notice line 9, where we read the `Person` object from the file. Since the `readObject` method returns an `Object`, we need to cast it to a `Person` object.\
 That also mean we need to know what class we are reading, so we can cast it to the correct type. And we need to deal with the possibility of a `ClassNotFoundException`.
 
-```java{11}
+```java{9}
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
 public class ObjectDeserializer {
     public static void main(String[] args) {
-        try (ObjectInputStream inputStream = new ObjectInputStream(
-                new FileInputStream("person.bin"))) 
+        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("person.bin"))) 
         {
             Person person = (Person) inputStream.readObject();
             System.out.println("Person loaded from person.bin");
