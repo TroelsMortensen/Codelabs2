@@ -12,6 +12,3 @@ This app will be
 
 <video src="https://youtu.be/8OO5-p2mBjs"></video>
 
-## Exercise
-
-Let's follow up with an exercise, just to make sure you understand the concept.
