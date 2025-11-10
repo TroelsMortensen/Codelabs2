@@ -34,7 +34,7 @@ public class ObjectDeserializer {
 
 If you stored a List of `Person` objects to a file, you can read it back into a List of `Person` objects.
 
-```java
+```java{11}
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -42,9 +42,8 @@ import java.util.List;
 
 public class CollectionReader {
     public static void main(String[] args) {
-        try (ObjectInputStream inputStream = new ObjectInputStream(
-                new FileInputStream("people.dat"))) {
-            
+        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("people.dat"))) 
+        {
             // Read the list of people
             List<Person> people = (List<Person>) inputStream.readObject();
             
