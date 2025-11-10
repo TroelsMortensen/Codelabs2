@@ -18,7 +18,6 @@ public class ObjectSerializer {
         try (ObjectOutputStream outputStream = new ObjectOutputStream(
                 new FileOutputStream("person.bin"))) 
         {
-            
             outputStream.writeObject(person);
             System.out.println("Person saved to " + "person.bin");
         } 
