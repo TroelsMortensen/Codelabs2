@@ -4,6 +4,8 @@ The following exercises will present you with a UI screenshot, and you should tr
 
 Remember, you can use the _preview_ to do some basic testing of the UI.
 
+![preview](Resources/Preview.png)
+
 ## Exercise 1 - Login Form
 
 Create a simple login form with the following layout:

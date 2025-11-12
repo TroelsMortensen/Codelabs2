@@ -4,7 +4,7 @@ So far, you have set up your UI with layout and elements through code. Creating 
 
 While doable, this is tedious. There is a better way.
 
-You can use an fxml file to set up your UI. An fxml file is a XML file that describes your UI. It is a declarative way to describe your UI, rather than imperative, like you have been doing so far.
+You can use an fxml file to set up your UI. An fxml file is an XML file that describes your UI. 
 
 Let's take the following code. Multiple ui elements are created, and added to a VBox.
 

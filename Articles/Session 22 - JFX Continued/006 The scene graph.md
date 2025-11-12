@@ -43,7 +43,7 @@ graph LR
 ```
 
 ## SceneBuilder tree
-The image was made in the scene builder. The following image is how the UI is represented, as a vertical tree structure, in SceneBuilder:
+The ui design was made in the scene builder. The following image is how the UI is represented, as a vertical tree structure, in SceneBuilder:
 
 ![scene builder tree](Resources/VerticalTree.png)
 
@@ -94,7 +94,7 @@ Notice how the fxml structure mirrors the tree structure shown above, to no-ones
 
 The above code is actually reduced quite a lot. fxml tend to include a lot of extra stuff, because you can control so much about the layout. There are so many properties you can set, which results in a lot of attributes on the elements in the fxml file.
 
-The actual code can be seen in the [ExampleUi.fxml](Resources/ExampleUi.fxml) file.
+The actual code can be seen in the [ExampleUi.fxml](https://github.com/TroelsMortensen/Codelabs2/blob/master/Articles/Session%2022%20-%20JFX%20Continued/Resources/ExampleUi.fxml) file.
 
 ## Coding the UI
 

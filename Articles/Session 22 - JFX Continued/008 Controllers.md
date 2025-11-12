@@ -1,6 +1,8 @@
 # Controllers
 
-Okay, that's great, we can create a view with elements and layouts and all. But what about the ***behaviour***? The ***actions*** for the buttons, the ***events*** for the text fields, etc.? We will use ***controllers*** to handle this.
+Okay, that's great, we can create a view with elements and layouts and all. But what about the ***behaviour***? The ***actions*** for the buttons, the ***events*** for the text fields, etc.? 
+
+We will use ***controllers*** to handle this.
 
 Controllers are classes that contain the logic for the behaviour of the view. They are responsible for handling the events from the view, and figuring out what and how to present data to the user.
 
