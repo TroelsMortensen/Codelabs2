@@ -7,3 +7,4 @@ We need to manage this in a somewhat consistent way.
 The below video introduces the concept of a "View Manager", which is responsible for switching between the different views.
 
 <video src="https://youtu.be/peZT8Fv6MzE"></video>
+
