@@ -40,8 +40,9 @@ Here is an example of the package structure:
 │       │   └── 📄FileDataManager.java
 │       └── 📁presentation/
 │           ├── 📄ViewManager.java
+│           ├── 📄AcceptsStringArgument.java
 │           ├── 📁mainmenu/
-│           │   └── 📄MainMenuController.java
+│           │   └── 📄MainViewController.java
 │           └── 📁planetmanagement/
 │               ├── 📄AddPlanetController.java
 │               ├── 📄ListPlanetsController.java
@@ -50,9 +51,8 @@ Here is an example of the package structure:
 └── 📁resources/
     └── 📁spaceexplorer/
         └── 📁presentation/
-            ├── 📁mainmenu/
-            │   └── 📄MainMenu.fxml
-            └── 📁planetmanagement/
+            └── 📁views/
+                ├── 📄MainView.fxml
                 ├── 📄AddPlanet.fxml
                 ├── 📄ListPlanets.fxml
                 ├── 📄ShowPlanet.fxml
