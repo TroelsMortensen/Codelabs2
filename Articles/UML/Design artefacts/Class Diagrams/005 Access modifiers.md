@@ -10,7 +10,7 @@ In UML, access modifiers are used to specify the visibility of class members (at
 These modifiers are represented in the class diagram as prefixes to the member names. 
 
 In this example, the `name` and `age` attributes are private (indicated by the `-` prefix), while the `getName()` and `getAge()` methods are public (indicated by the `+` prefix).
-The `ssn` attribute is protected (indicated by the `#` prefix), and the `internalId` attribute is package protected (indicated by the `~` prefix).
+The `ssn` attribute is protected (indicated by the `#` prefix), and the `internalId` attribute is _package_ protected (indicated by the `~` prefix, this is a "tilde" symbol).
 
 
 ```mermaid
@@ -84,4 +84,14 @@ Notice all four access modifiers in the above snippet: private (-), public (+), 
 
 ## Access modifiers in Astah
 
-Video here..
+In Astah, you just write the symbol first, then the name of the field or method. Astah should format this correctly.
+
+Alternatively, you can pick an option in the left side panel.
+
+Here I just type in the symbol manually, when creating the field or method.
+
+![Access modifiers in Astah](Resources/SetVisibility1.gif)
+
+And here is the option in the left side panel:
+
+![Access modifiers in Astah](Resources/SetVisibility2.gif)

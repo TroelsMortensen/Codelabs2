@@ -1,6 +1,6 @@
 # Static methods and field variables
 
-Static methods and field variables are underlined in UML class diagrams.
+Static methods and field variables are <u>underlined</u> in UML class diagrams.
 
 Here is an example:
 

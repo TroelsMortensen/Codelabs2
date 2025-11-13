@@ -15,13 +15,14 @@ We will dig into what the various things mean, by starting with this overview he
 
 ## Creating a new class in Astah
 
-video here..
+The class box is the default element in a class diagram in Astah. If you double click anywhere on empty space, you will get a new entity.
 
-script
-* I can create it by double clicking.
-* Or by selecting the "Class" icon.
-* It now appears to the left.
-* If I remove the class from the diagram, it is still in the project.
-* If I try to create a class again, with the same name, I get an error.
-* Instead, I can drag it out, from the project, to the diagram.
-* I can remove it from the project, and it will be completely gone.
+Or you can select the "Class" icon from the toolbar, and click anywhere on the diagram.
+
+First, the double click option:
+
+![Creating a new class in Astah](Resources/CreateClass1.gif)
+
+Or, select the "Class" icon from the toolbar, and click anywhere on the diagram.
+
+![Creating a new class in Astah](Resources/CreateClass2.gif)

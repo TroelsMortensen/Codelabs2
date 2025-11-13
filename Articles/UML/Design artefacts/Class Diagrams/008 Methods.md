@@ -27,6 +27,27 @@ Notice the public visibility of the methods in the above snippet.
 
 Methods can also be private in Java, in which case you just mark them with `-` in UML.
 
+## UML Format
+
+The format of a method in UML is:
+```
+visibility name(parameters) : return type
+```
+
+Where:
+- `visibility` is the access modifier, one of `+`, `-`, `#`, or `~`.
+- `name` is the name of the method.
+- `parameters` is a comma separated list of parameters, in the format `parameterName : parameterType`.
+- `return type` is the type of the return value.
+
+Example:
+```
++ getName() : String
++ getAge() : int
++ setName(name : String) : void
++ setAge(age : int) : void
+```
+
 ## Adding methods to a class in Astah
 
-video here...
+This is the same as with constructors, you just also have the return type. Go to the previous page to see how to add a method.
