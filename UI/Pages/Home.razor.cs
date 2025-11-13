@@ -164,9 +164,9 @@ public partial class Home : ComponentBase
                         ),
                     ]
                 ),
-                new Course("SEP", "#03BAFC",
+                new Course("SEP1", "#03BAFC",
                     [
-                        new Session(1, "SEP1",
+                        new Session(1, "Analysis",
                             [
                                 new LearningPath("Actors", "SEP1/Actors"),
                                 new LearningPath("Requirements", "SEP1/Requirements"),
@@ -177,6 +177,11 @@ public partial class Home : ComponentBase
                                 new LearningPath("Domain models", "SEP1/Domain models"),
                             ]
                         ),
+                        new Session(2, "Design",
+                            [
+                                new LearningPath("Class diagrams", "SEP1/Class diagrams"),
+                            ]
+                        )
                         // new Session(2, "SEP2",
                         //     [
                         //     ])
