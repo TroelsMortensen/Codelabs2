@@ -63,8 +63,8 @@ classDiagram
     }
 
     class FileDataManager {
-        + save(data : DataContainer) void
-        + load() DataContainer
+        - save(data : DataContainer) void
+        - load() DataContainer
     }
 
     class DataContainer {
