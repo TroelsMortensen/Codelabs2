@@ -7,3 +7,6 @@ Later in the course, we will add a GUI, using JavaFX. But the design ideas here 
 On your second semester, we will base further design improvements on the work presented here. We will expand upon the layered architecture, but the core idea remains the same: separate the concerns of your application.
 
 ![bye bye](Resources/bye.jpg)
+
+
+You may find inspiration for the code in [this generated solution suggestion](https://github.com/TroelsMortensen/Codelabs2/tree/master/Articles/Session%2020%20-%20Application%20design/Solution).
