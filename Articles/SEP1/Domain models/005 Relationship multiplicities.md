@@ -71,7 +71,7 @@ And a member could have a library card, but not borrow any books, i.e. zero.
 Why can a book be borrowed by more than one member? It's a physical object, only one Member can have it. _At a time_. That's important, we generally consider _time_. Not a _single point_ in time, but the history. Generally. But again, that depends on the context, and what you actually need to model.\
 In this case, we assume we have some kind of borrow history, so we can track, for example, popularity of books and see if we need to buy more copies.
 
-![Member and Book multiplicity](Resources/MemberBook.svg)ww
+![Member and Book multiplicity](Resources/MemberBook.svg)
 
 ### Generalizing
 

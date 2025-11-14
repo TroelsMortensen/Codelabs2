@@ -1,13 +1,15 @@
-A _dynamic diagram_ is a diagram that shows a flow through the system over time. It is a _temporal_ representation of the system.
+# Introduction to sequence diagrams
 
-It is a _design artefact_, a way to represent the behaviour of the system over time.
+This type of diagram is a _dynamic diagram_. It is a diagram that shows a flow through the system _over time_. It is a _temporal_ representation of the system.
 
-> It is a design of your solution
+It is a _design artefact_, a way to represent the behaviour of the system..
 
-You have been through various analysis artefacts, which were used to understand the problem domain, elaborate on that understanding, and what the system should do, the behaviour, and to create a domain model.
-So, analysis is more about the "what". While design is more about the "how".
+I basically shows that 
+- user clicks button
+- that activates a method in the controller
+- that calls another method in the data manager
+- that updates the file system
+- that returns a result
+- that updates the UI
 
-
-The sequence diagram is a _dynamic_ representation of the system. It shows the flow of the system over time.
-
-It is a _temporal_ representation of the system.
+So, it is a sequence of actions, one after another. It shows _a path_ through the system. That sounds like the activity diagram? Yes, and no. The sequence diagram is more focused on the _flow_ of the _code_ of your system. So, it is very specific for your particular implementation. An activity diagram could be implemented in many different ways.
