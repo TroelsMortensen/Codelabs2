@@ -6,7 +6,7 @@ This is a box, found in the toolbar menu.
 
 ## Coloring packages
 
-This is strictly speaking not a requirement.
+This is, strictly speaking, not a requirement.
 
 I like to color code my packages, so I can easily identify them. Generally, when I have packages inside packages, for each nested package I use a slightly darker color.
 

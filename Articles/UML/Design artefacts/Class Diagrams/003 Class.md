@@ -13,6 +13,12 @@ We will dig into what the various things mean, by starting with this overview he
 
 ![Class Diagram Overview](Resources/Class-example-with-explanation.png)
 
+## Coloring classes
+
+Generally, if your diagram is just white on white on white, it is not very readable.\
+I like to color code various elements in the diagram, so I can easily identify them.\
+My classes are typically just white. Packages blue, enums green, interfaces yellow. Pick your own theme, but make it consistent.
+
 ## Creating a new class in Astah
 
 The class box is the default element in a class diagram in Astah. If you double click anywhere on empty space, you will get a new entity.
