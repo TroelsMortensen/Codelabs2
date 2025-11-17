@@ -48,11 +48,11 @@ Something like this:
 ```
 
 ```java
-VBox row1 = new VBox(10, ...);
-VBox row2 = new VBox(10, ...);
-VBox row3 = new VBox(10, ...);
+HBox row1 = new HBox(10, ...);
+HBox row2 = new HBox(10, ...);
+HBox row3 = new HBox(10, ...);
 
-HBox hbox = new HBox(10, row1, row2, row3);
+VBox vbox = new VBox(10, row1, row2, row3);
 ```
 
 ## Tips
