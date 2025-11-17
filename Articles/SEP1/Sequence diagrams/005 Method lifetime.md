@@ -41,4 +41,4 @@ Notice how the activation bar on OtherClass::someMethod extends _beyond_ the das
 
 Or sometimes, the arrows are out of order, which I cannot make Astah do either. 
 
-Just... erh... don't try so hard to mess up the diagram, ok?
+Just... erh... don't try so hard to mess up the diagram, ok? It seems to actually be quite difficult to do so.

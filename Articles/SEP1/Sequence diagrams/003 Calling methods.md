@@ -53,4 +53,16 @@ public class OtherClass {
 }
 ```
 
+## Common mistakes
 
+The activation bars are important. They show the life time of a method. If you mess up the timing, the diagram will be incorrect.
+
+Here is a classic blunder:
+
+![Timing mistake](Resources/Blunder.svg)
+
+Notice how the activation bar for `FirstClass` is fragmented. This is strictly speaking not wrong, but usually this is not what you want to show.\
+This says a method on `FirstClass` is executed, which calls `firstMethodCall()`, and then the method on `FirstClass` terminates.\
+Then a second method on `FirstClass` is executed, which calls `secondMethodCall()`, and then the method on `FirstClass` terminates.
+
+_Usually_, it is actually the same method on `FirstClass`, that calls two methods in its lifetime.
