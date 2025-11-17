@@ -19,8 +19,8 @@ The calculator should have the following features:
 
 
 ## UI Layout
-I recommend creating 3 HBoxes inside a VBox.\
-The first HBox should contain the two text fields, the second HBox should contain the four buttons, and the third HBox should contain the result label.
+I recommend creating 3 VBoxes inside a HBox.\
+The first VBox should contain the two text fields, the second HBox should contain the four buttons, and the third HBox should contain the result label.
 
 Something like this:
 
@@ -50,7 +50,7 @@ Something like this:
 ```java
 VBox row1 = new VBox(10, ...);
 VBox row2 = new VBox(10, ...);
-VBox row3= new VBox(10, ...);
+VBox row3 = new VBox(10, ...);
 
 HBox hbox = new HBox(10, row1, row2, row3);
 ```
