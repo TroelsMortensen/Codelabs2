@@ -159,7 +159,8 @@ public partial class Home : ComponentBase
                         ),
                         new Session(2, "Design artefacts",
                             [
-                                new LearningPath("Class diagram", "UML/Design artefacts/Class Diagrams")
+                                new LearningPath("Class diagrams", "UML/Design artefacts/Class Diagrams"),
+                                new LearningPath("Sequence diagrams", "UML/Design artefacts/Sequence Diagrams")
                             ]
                         ),
                     ]
@@ -180,6 +181,7 @@ public partial class Home : ComponentBase
                         new Session(2, "Design",
                             [
                                 new LearningPath("Class diagrams", "SEP1/Class diagrams"),
+                                new LearningPath("Sequence diagrams", "SEP1/Sequence diagrams"),
                             ]
                         )
                         // new Session(2, "SEP2",
