@@ -147,7 +147,7 @@ public partial class Home : ComponentBase
                         ),
                     ]
                 ),
-                new Course("UML", "#FF7F50",
+                new Course("Astah and UML", "#FF7F50",
                     [
                         new Session(1, "Analysis artefacts",
                             [
