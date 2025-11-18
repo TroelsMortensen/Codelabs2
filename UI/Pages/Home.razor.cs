@@ -180,7 +180,7 @@ public partial class Home : ComponentBase
                         ),
                         new Session(2, "Design",
                             [
-                                new LearningPath("Class diagrams", "SEP1/Class diagrams"),
+                                new LearningPath("Class diagrams", "SEP1/Class Diagrams"),
                                 new LearningPath("Sequence diagrams", "SEP1/Sequence diagrams"),
                             ]
                         )

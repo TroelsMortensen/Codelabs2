@@ -1,6 +1,6 @@
 # Introduction to JFX Application
 
-In this learning path, we will combine previous theory with what we have learned about JavaFX, to build an application, which will reflect what you will be doing in your first semester project.
+In this learning path, we will combine previous theory with what we have learned about JavaFX, so that you can build application, which will reflect what you will be doing in your first semester project.
 
 This requires some structure for your application, organizing your code into packages, putting fxml files in the right places, and so on.
 
@@ -20,9 +20,11 @@ Each area has it's own package, and you may have sub-packages within each area.
 
 We will also put the fxml files in a Resources package, to keep them separate from the code. This is common practice. So far we have just thrown everything together in the same package, but that does not scale well.
 
+Generally, the above will be called a "two-layered" architecture. The Startup and Domain are not counted as layers. A very common approach is called a "three-layered" architecture, which has an extra layer sandwiched in between the Presentation and Persistence layers. We will explore this next semester.
+
 ## Example package structure
 
-Here is an example of the package structure:
+Here is an example of the package structure. Notice the fxml files are now in a separate folder, called "resources". This is the recommended way to store fxml files. We have just cheated until now, and kept everything together.
 
 ```console
 🟦SpaceExplorer/
@@ -39,8 +41,10 @@ Here is an example of the package structure:
 │       │   ├── 📄DataManager.java
 │       │   └── 📄FileDataManager.java
 │       └── 📁presentation/
-│           ├── 📄ViewManager.java
-│           ├── 📄AcceptsStringArgument.java
+│           ├── 📁core/
+│           │   ├── 📄ViewManager.java
+│           │   ├── 📄AcceptsStringArgument.java
+│           │   └── 📄AcceptsObjectArgument.java
 │           ├── 📁mainmenu/
 │           │   └── 📄MainViewController.java
 │           └── 📁planetmanagement/
@@ -58,3 +62,4 @@ Here is an example of the package structure:
                 ├── 📄ShowPlanet.fxml
                 └── 📄UpdatePlanet.fxml
 ```
+
