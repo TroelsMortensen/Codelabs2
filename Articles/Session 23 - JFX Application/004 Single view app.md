@@ -49,3 +49,201 @@ Here is the top menu bar:
 We will still use the `ViewManager`, as you have seen previously, but instead of swapping out the root on the scene, we will set the view to the center of the BorderPane.
 
 Watch the below video to see how this is done.
+
+<video src="https://youtu.be/8eIY_xsRm2A"></video>
+
+What I have shown in the video is directly applicable to your semester project.\
+Even though I keep the data in a list, it should be easy enough to adapt it to write to a binary file, as you have seen in the previous sessions.
+
+## OkayReads Class Diagram Example
+
+Below is a complete class diagram for the OkayReads book management application, demonstrating the layered architecture with BorderPane layout:
+
+```mermaid
+classDiagram
+    %% Startup Layer
+    class RunOkayReads {
+        + start(Stage primaryStage) void
+        + main(String[] args) void$
+    }
+    
+    %% Presentation Core
+    class ViewManager {
+        - mainLayout : BorderPane$
+        - fxmlDirectoryPath : String$
+        + init(Stage primaryStage, String initialView) void$
+        + showView(String viewName) void$
+        + showView(String viewName, String argument) void$
+        + showView(String viewName, Object argument) void$
+    }
+    
+    class AcceptsStringArgument {
+        <<interface>>
+        + setArgument(String argument)* void
+    }
+    
+    %% Controllers
+    class MainViewController {
+        + initialize() void
+        - handleAddAuthor() void
+        - handleAddBook() void
+        - handleAddShelf() void
+        - handleViewShelves() void
+    }
+    note for MainViewController "📄 MainView.fxml"
+    
+    class AddAuthorController {
+        - nameField : TextField
+        - messageLabel : Label
+        - dataManager : DataManager
+        + initialize() void
+        - handleAddAuthor() void
+        - handleCancel() void
+    }
+    note for AddAuthorController "📄 AddAuthor.fxml"
+    
+    class AddBookController {
+        - isbnField : TextField
+        - titleField : TextField
+        - yearField : TextField
+        - authorComboBox : ComboBox~String~
+        - shelfComboBox : ComboBox~String~
+        - messageLabel : Label
+        - dataManager : DataManager
+        + initialize() void
+        - loadAuthors() void
+        - loadShelves() void
+        - handleAddBook() void
+        - handleCancel() void
+    }
+    note for AddBookController "📄 AddBook.fxml"
+    
+    class AddShelfController {
+        - nameField : TextField
+        - messageLabel : Label
+        - dataManager : DataManager
+        + initialize() void
+        - handleAddShelf() void
+        - handleCancel() void
+    }
+    note for AddShelfController "📄 AddShelf.fxml"
+    
+    class SelectShelfController {
+        - shelfListView : ListView~String~
+        - messageLabel : Label
+        - dataManager : DataManager
+        + initialize() void
+        - loadShelves() void
+        - handleViewShelf() void
+        - handleBack() void
+    }
+    note for SelectShelfController "📄 SelectShelf.fxml"
+    
+    class ViewShelfController {
+        - shelfTitleLabel : Label
+        - booksTable : TableView~Book~
+        - isbnColumn : TableColumn~Book,String~
+        - titleColumn : TableColumn~Book,String~
+        - authorColumn : TableColumn~Book,String~
+        - yearColumn : TableColumn~Book,Integer~
+        - dataManager : DataManager
+        - shelfName : String
+        + initialize() void
+        + setArgument(String shelfName) void
+        - loadBooks() void
+        - handleBack() void
+    }
+    note for ViewShelfController "📄 ViewShelf.fxml"
+    
+    %% Persistence Layer
+    class DataManager {
+        <<interface>>
+        + addAuthor(Author author)* void
+        + getAllAuthors()* List~Author~
+        + addBook(Book book)* void
+        + getAllBooks()* List~Book~
+        + addShelf(Shelf shelf)* void
+        + getAllShelves()* List~Shelf~
+        + getShelfByName(String name)* Shelf
+    }
+    
+    class ListDataManager {
+        - data : DataContainer$
+        + addAuthor(Author author) void
+        + getAllAuthors() List~Author~
+        + addBook(Book book) void
+        + getAllBooks() List~Book~
+        + addShelf(Shelf shelf) void
+        + getAllShelves() List~Shelf~
+        + getShelfByName(String name) Shelf
+    }
+    
+    class DataContainer {
+        - authors : List~Author~
+        - books : List~Book~
+        - shelves : List~Shelf~
+        + DataContainer()
+        + getAuthors() List~Author~
+        + getBooks() List~Book~
+        + getShelves() List~Shelf~
+    }
+    
+    %% Domain Layer
+    class Author {
+        - name : String
+        + Author(String name)
+        + getName() String
+    }
+    
+    class Book {
+        - isbn : String
+        - title : String
+        - publicationYear : int
+        - writtenBy : Author
+        + Book(String isbn, String title, int publicationYear, Author writtenBy)
+        + getIsbn() String
+        + getTitle() String
+        + getPublicationYear() int
+        + getWrittenBy() Author
+        + getAuthorName() String
+    }
+    
+    class Shelf {
+        - name : String
+        - books : List~Book~
+        + Shelf(String name)
+        + getName() String
+        + getBooks() List~Book~
+        + addBook(Book book) void
+    }
+    
+    %% Relationships
+    _Application_ <|-- RunOkayReads
+    RunOkayReads ..> ViewManager
+    
+    MainViewController ..> ViewManager
+    AddAuthorController ..> ViewManager
+    AddBookController ..> ViewManager
+    AddShelfController ..> ViewManager
+    SelectShelfController ..> ViewManager
+    ViewShelfController ..> ViewManager
+    
+    AcceptsStringArgument <|.. ViewShelfController
+    
+    AddAuthorController ..> DataManager
+    AddBookController ..> DataManager
+    AddShelfController ..> DataManager
+    SelectShelfController ..> DataManager
+    ViewShelfController ..> DataManager
+    
+    DataManager <|.. ListDataManager
+    ListDataManager --> DataContainer 
+    
+    DataContainer --> "*" Author
+    DataContainer --> "*" Book
+    DataContainer --> "*" Shelf
+    
+    Book --> "1" Author : writtenBy
+    Shelf --> "*" Book : contains
+```
+
