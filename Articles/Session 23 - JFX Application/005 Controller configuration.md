@@ -34,7 +34,7 @@ In this case, `SomeClass` is dependent on `OtherClass`. And it is given `OtherCl
 
 This page explains how to configure the controllers in the JavaFX application, using dependency injection. Watch the below video to see how this is done.
 
-<video src=""></video>
+<video src="https://youtu.be/AUNqzm4AJxo"></video>
 
 This approach is a small step up from the previous page, and it may not be all that relevant for your semester project.
 
