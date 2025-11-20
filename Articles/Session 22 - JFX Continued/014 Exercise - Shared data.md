@@ -213,6 +213,8 @@ You may also be inspired by [this example](https://github.com/TroelsMortensen/Ja
 
 ```java
 // Get the list of people from DataManager and add them to the ListView
+// It just uses the toString() on the person object, to get the name to show in the list.
+// There is another method, where you can specify your own string to show in the list.
 personListView.getItems().addAll(DataManager.getPeople());
 
 // Get the selected person
