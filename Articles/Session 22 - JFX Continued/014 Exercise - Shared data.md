@@ -174,7 +174,7 @@ classDiagram
         - email : String
         - phone : String
         - address : String
-        + Person(int id, String name, int age, String email, String phone, String address)
+        + Person(String name, int age, String email, String phone, String address)
 
     }
 
