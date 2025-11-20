@@ -145,6 +145,11 @@ public partial class Home : ComponentBase
                                 new("JavaFX - Multiple views", "Session 22 - JFX Continued")
                             ]
                         ),
+                        new Session(23, "JavaFX - Application",
+                            [
+                                new("JavaFX - application design", "Session 23 - JFX Application")
+                            ]
+                        ),
                     ]
                 ),
                 new Course("Astah and UML", "#FF7F50",
