@@ -168,6 +168,11 @@ public partial class Home : ComponentBase
                                 new LearningPath("Sequence diagrams", "UML/Design artefacts/Sequence diagrams")
                             ]
                         ),
+                        new Session(3, "Reports and diagrams",
+                            [
+                                new("Export diagram", "UML/Export to svg")
+                            ]
+                        )
                     ]
                 ),
                 new Course("SEP1", "#03BAFC",
