@@ -6,6 +6,10 @@ This requires some structure for your application, organizing your code into pac
 
 The basic concept will be similar to session 20's application design, but we will use JavaFX instead of console.
 
+The purpose of this learning path is to give you an inspiration for your semester project, how to structure your code, and how to use JavaFX, and set up everything.
+
+There is one larger exercise at the end, which will be very similar to how you can do things in your semester project.
+
 ## Architecture
 
 We again define four areas of responsibility for our application:
