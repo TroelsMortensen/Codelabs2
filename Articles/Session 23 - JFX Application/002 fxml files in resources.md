@@ -7,3 +7,5 @@ Watch the video below to see how this is done.
 <video src="https://youtu.be/KVD12NS8VQg"></video>
 
 We will aim to use this approach going forward.
+
+[Here is the code from the video](https://github.com/TroelsMortensen/JavaFxExamples/tree/master/FxmlFilesInResourceFolder)

@@ -36,6 +36,8 @@ This page explains how to configure the controllers in the JavaFX application, u
 
 <video src="https://youtu.be/AUNqzm4AJxo"></video>
 
+[Here is the code from the video](https://github.com/TroelsMortensen/JavaFxExamples/tree/master/ControllerConfiguratorExample)
+
 This approach is a small step up from the previous page, and it may not be all that relevant for your semester project.
 
 It _does_ allow you to start out with a ListDataManager, and later swap it out for the FileDataManager, should you require so.

@@ -55,6 +55,8 @@ Watch the below video to see how this is done.
 What I have shown in the video is directly applicable to your semester project.\
 Even though I keep the data in a list, it should be easy enough to adapt it to write to a binary file, as you have seen in the previous sessions.
 
+[Here is the code from the video](https://github.com/TroelsMortensen/JavaFxExamples/tree/master/SingleViewApplication)
+
 ## OkayReads Class Diagram Example
 
 Below is a complete class diagram for the OkayReads book management application, demonstrating the layered architecture with BorderPane layout:
