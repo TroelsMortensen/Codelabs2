@@ -188,7 +188,103 @@
     display: block; /* or unset, if you don't want it to be flex itself */
 }
 
+pre.mermaid {
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    position: relative;
+}
+
+pre.mermaid:hover {
+    opacity: 0.9;
+}
+
+pre.mermaid::after {
+    content: "🔍 Click to view fullscreen";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+pre.mermaid:hover::after {
+    opacity: 1;
+}
+
 pre.mermaid svg {
     display: block;
     margin: 0 auto;
+}
+
+/* Fullscreen Mermaid Modal */
+.mermaid-fullscreen-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.mermaid-fullscreen-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    transition: background-color 0.2s ease;
+}
+
+.mermaid-close-btn:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-diagram {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-diagram svg {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
 }
