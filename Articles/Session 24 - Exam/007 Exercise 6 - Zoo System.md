@@ -12,18 +12,19 @@ classDiagram
         + allFurryMammals() ArrayList~Mammal~
     }
     
-    class Animal {
+    class _Animal_ {
         - numberOfLegs : int
         + getNumberOfLegs() int
         + toString() String
         + equals(obj : Object) boolean
     }
     
-    class Vertebrate {
-        + givesLiveBirth() boolean
+    class _Vertebrate_ {
+        + givesLiveBirth()* boolean
     }
     
     class Insect {
+        - numberOfLegs : int
     }
     
     class Mammal {
@@ -38,14 +39,13 @@ classDiagram
         + givesLiveBirth() boolean
     }
     
-    Zoo --> "*" Animal : animals
-    Vertebrate --|> Animal
-    Insect --|> Animal
-    Mammal --|> Vertebrate
-    Fish --|> Vertebrate
+    Zoo --> "*" _Animal_ 
+    _Animal_ <|-- _Vertebrate_
+    _Animal_ <|-- Insect
+    _Vertebrate_ <|-- Mammal
+    _Vertebrate_ <|-- Fish
 ```
 
 ## Notes:
 - Some fish (not all) gives livebirth
-- This exercise does not require date handling
 

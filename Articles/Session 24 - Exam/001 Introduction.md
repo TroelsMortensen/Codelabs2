@@ -12,5 +12,6 @@ You will notice they are intentionally a bit "slim", which is because at the exa
 - equals() method
 - other methods
 - other fields
+- implement a relationship (association, aggregation, composition)
 
 You may have to add more than what the diagram shows, for you code to work.

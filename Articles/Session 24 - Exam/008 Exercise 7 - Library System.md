@@ -12,7 +12,7 @@ classDiagram
         + totalLateFees() double
     }
     
-    class LibraryItem {
+    class _LibraryItem_ {
         - itemId : String
         - title : String
         - dueDate : LocalDate
@@ -20,7 +20,7 @@ classDiagram
         + getItemId() String
         + getTitle() String
         + getDueDate() LocalDate
-        + calculateLateFee() double
+        + calculateLateFee()* double
         + isOverdue() boolean
     }
     
@@ -32,6 +32,7 @@ classDiagram
     
     class Magazine {
         - issueNumber : int
+        - year : int
         + calculateLateFee() double
     }
     
@@ -40,10 +41,19 @@ classDiagram
         + calculateLateFee() double
     }
     
-    Library --> "*" LibraryItem : items
-    Book --|> LibraryItem
-    Magazine --|> LibraryItem
-    DVD --|> LibraryItem
+    class Borrower {
+        - borrowerId : String
+        - name : String
+        - email : String
+        - phoneNumber : String
+    }
+    
+    Library --> "*" _LibraryItem_
+    Library --> "*" Borrower : members
+    _LibraryItem_ --> "0..1" Borrower 
+    _LibraryItem_ <|-- Book
+    _LibraryItem_ <|-- Magazine
+    _LibraryItem_ <|-- DVD
 ```
 
 ## Notes:

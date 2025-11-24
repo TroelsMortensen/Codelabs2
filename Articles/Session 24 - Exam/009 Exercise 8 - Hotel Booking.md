@@ -46,11 +46,11 @@ classDiagram
         + getPricePerNight() double
     }
     
-    Hotel --> "*" Room : rooms
-    Room --> "*" Booking : bookings
-    StandardRoom --|> Room
-    DeluxeRoom --|> Room
-    Suite --|> Room
+    Hotel --> "*" Room 
+    Room --> "*" Booking
+    Room <|-- StandardRoom
+    Room <|-- DeluxeRoom
+    Room <|-- Suite
 ```
 
 ## Notes:

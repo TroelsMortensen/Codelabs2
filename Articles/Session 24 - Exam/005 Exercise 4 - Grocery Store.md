@@ -40,6 +40,8 @@ classDiagram
     }
     
     class NonFood {
+        - isFragile : boolean
+        + isFragile() boolean
     }
     
     class Toy {
@@ -49,7 +51,7 @@ classDiagram
     
     GroceryStore --> "*" Aisle
     Aisle --> "*" Product
-    Product *--> Placement
+    Product --> Placement
     Placement --> Shelf
     Product <|-- PerishableFood
     Product <|-- NonFood
