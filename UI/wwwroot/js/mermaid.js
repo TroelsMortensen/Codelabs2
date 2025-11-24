@@ -49,8 +49,9 @@ function handleMermaidClick(event) {
     modal.className = "mermaid-fullscreen-modal";
     modal.innerHTML = `
         <div class="mermaid-fullscreen-content">
-            <button class="mermaid-close-btn" aria-label="Close">&times;</button>
-            <div class="mermaid-fullscreen-diagram"></div>
+            <div class="mermaid-fullscreen-diagram">
+                <button class="mermaid-close-btn" aria-label="Close">&times;</button>
+            </div>
         </div>
     `;
     
