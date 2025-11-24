@@ -7,21 +7,23 @@ classDiagram
     class College {
         - name : String
         + getCourseByCode(code : char[]) Course
-        + codeCheck(code1 : char[], code2 : char[]) boolean
+        + addCourse(course : Course) void
     }
     
     class Course {
         - code : char[]
-        + Course(code : char[], maxNoStudentSeatsAvailable : int, teacher : Teacher)
+        - maxNoStudentSeatsAvailable : int
+        - semester : int
+        + Course(code : char[], maxNoStudentSeatsAvailable : int, semester : int, teacher : Teacher)
         + getCode() char[]
     }
     
-    class Person {
+    class _Person_ {
         - firstName : String
         - lastName : String
         + getFirstName() String
         + getLastName() String
-        + addressedAsName() String
+        + addressedAsName()* String
     }
     
     class Teacher {
@@ -36,10 +38,10 @@ classDiagram
     }
     
     College --> "*" Course
-    Course --> "1" Teacher : teacher
+    Course --> "1" Teacher 
     Course --> "*" Student
-    Teacher --|> Person
-    Student --|> Person
+    _Person_ <|-- Teacher
+    _Person_ <|-- Student
 ```
 
 ## Notes:
@@ -49,5 +51,4 @@ classDiagram
   - 2nd year: Sophomore
   - 3rd year: Junior
   - 4th year: Senior
-- This exercise does not require date handling
 

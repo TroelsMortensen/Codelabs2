@@ -45,7 +45,7 @@ classDiagram
     }
     
     BankCustomer --> "*" Account 
-    Account --> "*" Deposit 
+    Account *--> "*" Deposit 
     Account <|-- Loan
     Account <|-- CreditcardAccount
     CreditcardAccount *--> Creditcard

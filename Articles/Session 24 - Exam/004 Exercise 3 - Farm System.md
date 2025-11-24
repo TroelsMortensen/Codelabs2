@@ -10,13 +10,13 @@ classDiagram
         + totalSize() int
     }
     
-    class Field {
-        - sizeInSqMeters : int
+    class _Field_ {
+        # sizeInSqMeters : int
         + getSizeInSqMeters() int
     }
     
-    class GrainField {
-        + yieldPrSqMeterInKg() double
+    class _GrainField_ {
+        + yieldPrSqMeterInKg()* double
     }
     
     class CornField {
@@ -32,11 +32,11 @@ classDiagram
         - lettucesPrSqMeter : int
     }
     
-    Farm --> "*" Field : fields
-    GrainField --|> Field
-    LettuceField --|> Field
-    CornField --|> GrainField
-    WheatField --|> GrainField
+    Farm --> "*" _Field_ 
+    _Field_ <|-- _GrainField_
+    _Field_ <|-- LettuceField
+    _GrainField_ <|-- CornField
+    _GrainField_ <|-- WheatField
 ```
 
 ## Notes:

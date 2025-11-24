@@ -150,6 +150,11 @@ public partial class Home : ComponentBase
                                 new("JavaFX - application design", "Session 23 - JFX Application")
                             ]
                         ),
+                        new Session(24, "Exam",
+                            [
+                                new("Exam practice exercises", "Session 24 - Exam")
+                            ]
+                        )
                     ]
                 ),
                 new Course("Astah and UML", "#FF7F50",
@@ -172,7 +177,7 @@ public partial class Home : ComponentBase
                             [
                                 new("Export diagram", "UML/Export to svg")
                             ]
-                        )
+                        ),
                     ]
                 ),
                 new Course("SEP1", "#03BAFC",

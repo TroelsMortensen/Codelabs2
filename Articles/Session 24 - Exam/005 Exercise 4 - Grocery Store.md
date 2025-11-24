@@ -5,7 +5,14 @@ Implement the following class diagram in Java:
 ```mermaid
 classDiagram
     class GroceryStore {
-        + getExpiredFoodStuff() ArrayList~FoodStuff~
+        + getExpiredPerishableFood() ArrayList~PerishableFood~
+    }
+    
+    class Aisle {
+        - aisleNumber : int
+        - category : String
+        + getAisleNumber() int
+        + getProducts() ArrayList~Product~
     }
     
     class Product {
@@ -15,12 +22,19 @@ classDiagram
     }
     
     class Placement {
-        - aisle : int
-        - shelf : int
-        + Placement(placement : Placement)
+        - shelf : Shelf
+        + Placement(shelf : Shelf)
+        + getShelf() Shelf
     }
     
-    class FoodStuff {
+    class Shelf {
+        <<enumeration>>
+        BOTTOM
+        MIDDLE
+        TOP
+    }
+    
+    class PerishableFood {
         - expirationDate : LocalDate
         + getExpirationDate() LocalDate
     }
@@ -28,10 +42,18 @@ classDiagram
     class NonFood {
     }
     
-    GroceryStore --> "*" Product
-    Product --> "1" Placement
-    Product <|-- FoodStuff
+    class Toy {
+        - recommendedAge : int
+        + getRecommendedAge() int
+    }
+    
+    GroceryStore --> "*" Aisle
+    Aisle --> "*" Product
+    Product *--> Placement
+    Placement --> Shelf
+    Product <|-- PerishableFood
     Product <|-- NonFood
+    Product <|-- Toy
 ```
 
 ## Notes:
