@@ -146,10 +146,11 @@ main[b-mr0ddkk2zs] {
     margin-right: 20px;
     padding-left: 40px;
     padding-right: 40px;
-    max-width: 100%;
+    flex: 1 1 120ch;
+    max-width: 120ch;
+    min-width: 0;
     border-radius: 25px;
     box-shadow: 0px 1px 2px 0px rgb(60 64 67), 0px 2px 16px 12px rgba(60, 64, 67, 0.5);
-    min-width: 0;
 }
 
 /* Responsive Design */
