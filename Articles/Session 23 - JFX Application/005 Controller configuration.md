@@ -33,6 +33,8 @@ public class SomeClass
 
 In this case, `SomeClass` is dependent on `OtherClass`. And it is given `OtherClass` as a constructor parameter. This is dependency injection.
 
+I can then create a sub-class of `OtherClass`, with slightly different behaviour, and pass that in instead. This is the power of polymorphism. Still, `SomeClass` will still only know about the `OtherClass` class, so nothing needs change in the `SomeClass` class.
+
 This page explains how to configure the controllers in the JavaFX application, using dependency injection. Watch the below video to see how this is done.
 
 ## Controller configuration
