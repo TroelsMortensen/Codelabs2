@@ -19,12 +19,6 @@ classDiagram
         - departureTime : LocalDateTime
         - arrivalTime : LocalDateTime
         - aircraft : Aircraft
-        + Flight(flightNumber : String, origin : String, destination : String, departureTime : LocalDateTime, arrivalTime : LocalDateTime, aircraft : Aircraft)
-        + getFlightNumber() String
-        + getOrigin() String
-        + getDestination() String
-        + getAvailableSeats() int
-        + getDuration() int
     }
     
     class Aircraft {
@@ -32,9 +26,6 @@ classDiagram
         - model : String
         - totalSeats : int
         + Aircraft(registrationNumber : String, model : String, totalSeats : int)
-        + getRegistrationNumber() String
-        + getModel() String
-        + getTotalSeats() int
     }
     
     class Booking {
@@ -43,27 +34,24 @@ classDiagram
         - passengerName : String
         - passengerEmail : String
         + Booking(bookingReference : String, passengerName : String, passengerEmail : String)
-        + getBookingReference() String
-        + getTotalPrice() double
     }
     
-    class Seat {
+    class _Seat_ {
         - seatNumber : String
-        - seatClass : String
-        - basePrice : double
+        # basePrice : double
         - isBooked : boolean
-        + Seat(seatNumber : String, seatClass : String, basePrice : double)
         + getSeatNumber() String
-        + getSeatClass() String
-        + getPrice() double
+        + getPrice()* double
         + book() void
     }
     
     class EconomyClass {
+        - hasExtraLegRoom : boolean
         + getPrice() double
     }
     
     class BusinessClass {
+        - numberOfMeals : int
         + getPrice() double
     }
     
@@ -74,16 +62,17 @@ classDiagram
     Airline --> "*" Flight : flights
     Flight --> "1" Aircraft : aircraft
     Flight --> "*" Booking : bookings
-    Booking --> "*" Seat : seats
-    EconomyClass --|> Seat
-    BusinessClass --|> Seat
-    FirstClass --|> Seat
+    Booking --> "*" _Seat_ : seats
+    _Seat_ <|-- EconomyClass
+    _Seat_ <|-- BusinessClass
+    _Seat_ <|-- FirstClass
 ```
 
 ## Notes:
-- Economy class seats cost the base price
-- Business class seats cost 2.5 times the base price
+- Economy class seats cost the base price, plus 50 kr extra if `hasExtraLegRoom` is true
+- Business class seats cost 2.5 times the base price, plus 100 kr per meal (based on `numberOfMeals`)
 - First class seats cost 4 times the base price
 - Use `java.time.LocalDateTime` for flight times and `java.time.LocalDate` for booking dates
 - Use `Duration.between()` to calculate flight duration
+- The `getPrice()` method in `Seat` is abstract (marked with *)
 
