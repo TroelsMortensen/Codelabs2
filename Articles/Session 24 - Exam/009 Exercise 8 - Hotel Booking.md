@@ -9,14 +9,13 @@ classDiagram
         - starRating : int
         + addRoom(room : Room) void
         + getAvailableRooms(checkIn : Date, checkOut : Date) ArrayList~Room~
-        + getTotalRevenue() double
     }
     
-    class Room {
+    class _Room_ {
         - roomNumber : int
         - pricePerNight : double
         + getRoomNumber() int
-        + getPricePerNight() double
+        + getPricePerNight()* double
         + isAvailable(checkIn : LocalDate, checkOut : LocalDate) boolean
     }
     
@@ -46,11 +45,11 @@ classDiagram
         + getPricePerNight() double
     }
     
-    Hotel --> "*" Room 
-    Room --> "*" Booking
-    Room <|-- StandardRoom
-    Room <|-- DeluxeRoom
-    Room <|-- Suite
+    Hotel --> "*" _Room_ 
+    _Room_ --> "*" Booking
+    _Room_ <|-- StandardRoom
+    _Room_ <|-- DeluxeRoom
+    _Room_ <|-- Suite
 ```
 
 ## Notes:

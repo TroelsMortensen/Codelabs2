@@ -19,12 +19,9 @@ classDiagram
         - email : String
         - phoneNumber : String
         + Member(memberId : int, name : String, email : String, phoneNumber : String)
-        + getMemberId() int
-        + getName() String
-        + getEmail() String
     }
     
-    class Membership {
+    class _Membership_ {
         - startDate : LocalDate
         - endDate : LocalDate
         - autoRenew : boolean
@@ -35,6 +32,7 @@ classDiagram
     }
     
     class BasicMembership {
+        - canJoinClasses : boolean
         + getMonthlyFee() double
     }
     
@@ -48,15 +46,15 @@ classDiagram
         + getMonthlyFee() double
     }
     
-    Gym --> "*" Member : members
-    Member --> "1" Membership : membership
-    BasicMembership --|> Membership
-    PremiumMembership --|> Membership
-    FamilyMembership --|> Membership
+    Gym --> "*" Member 
+    Member --> _Membership_ 
+    _Membership_ <|-- BasicMembership
+    _Membership_ <|-- PremiumMembership
+    _Membership_ <|-- FamilyMembership
 ```
 
 ## Notes:
-- Basic membership costs 299 kr per month
+- Basic membership costs 299 kr per month, or 50% more if `canJoinClasses` is true
 - Premium membership costs 499 kr per month plus 50 kr for each personal trainer session included
 - Family membership costs 199 kr per person per month
 - Use `java.time.LocalDate` for date handling

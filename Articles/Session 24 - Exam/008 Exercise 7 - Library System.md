@@ -49,7 +49,7 @@ classDiagram
     }
     
     Library --> "*" _LibraryItem_
-    Library --> "*" Borrower : members
+    Library --> "*" Borrower
     _LibraryItem_ --> "0..1" Borrower 
     _LibraryItem_ <|-- Book
     _LibraryItem_ <|-- Magazine

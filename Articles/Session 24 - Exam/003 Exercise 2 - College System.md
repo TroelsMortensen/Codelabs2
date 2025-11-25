@@ -38,7 +38,7 @@ classDiagram
     }
     
     College --> "*" Course
-    Course --> "1" Teacher 
+    Course -->  Teacher 
     Course --> "*" Student
     _Person_ <|-- Teacher
     _Person_ <|-- Student

@@ -4,76 +4,69 @@ Implement the following class diagram in Java:
 
 ```mermaid
 classDiagram
-    class Hospital {
-        - hospitalName : String
-        - address : String
-        + addPatient(patient : Patient) void
-        + addDoctor(doctor : Doctor) void
-        + scheduleAppointment(patient : Patient, doctor : Doctor, dateTime : Date) Appointment
-        + getPatientsByDoctor(doctorId : int) ArrayList~Patient~
+    class OperatingSchedule {
+        - scheduleDate : LocalDate
+        - operatingRoom : String
+        + addOperation(operation : Operation) void
+        + getOperations() ArrayList~Operation~
+        + getTotalDuration() int
     }
     
-    class Person {
-        - id : int
-        - firstName : String
-        - lastName : String
-        - dateOfBirth : LocalDate
-        - phoneNumber : String
-        + Person(id : int, firstName : String, lastName : String, dateOfBirth : LocalDate, phoneNumber : String)
-        + getId() int
-        + getFullName() String
-        + getAge() int
+    class Operation {
+        - operationType : String
+        - startTime : String
+        - durationMinutes : int
+        + getOperationType() String
+        + addDoctor(doctor : Doctor) void
+        + getDoctors() ArrayList~Doctor~
     }
     
     class Patient {
+        - name : String
+        - dateOfBirth : LocalDate
         - bloodType : String
         - allergies : String
-        + Patient(id : int, firstName : String, lastName : String, dateOfBirth : LocalDate, phoneNumber : String, bloodType : String, allergies : String)
-        + getBloodType() String
-        + getAllergies() String
+
     }
     
-    class Doctor {
-        - specialization : String
+    class _Doctor_ {
+        - doctorId : int
+        - name : String
         - licenseNumber : String
-        + Doctor(id : int, firstName : String, lastName : String, dateOfBirth : LocalDate, phoneNumber : String, specialization : String, licenseNumber : String)
-        + getSpecialization() String
-        + getLicenseNumber() String
+        # yearsExperience : int
+
+        + getSalary()* double
     }
     
-    class Appointment {
-        - appointmentId : int
-        - appointmentDateTime : LocalDateTime
-        - duration : int
-        - status : String
-        + Appointment(appointmentId : int, appointmentDateTime : LocalDateTime, duration : int)
-        + getAppointmentDateTime() LocalDateTime
-        + getStatus() String
-        + setStatus(status : String) void
-        + cancel() void
+    class Orthopedic {
+        - surgerySpecialty : String
+        + getSalary() double
     }
     
-    class Prescription {
-        - prescriptionId : int
-        - medicationName : String
-        - dosage : String
-        - dateIssued : LocalDate
-        + Prescription(prescriptionId : int, medicationName : String, dosage : String, dateIssued : LocalDate)
-        + getMedicationName() String
-        + getDosage() String
+    class Anesthesiologist {
+        - certifications : String
+        + getSalary() double
     }
     
-    Hospital --> "*" Patient : patients
-    Hospital --> "*" Doctor : doctors
-    Patient --|> Person
-    Doctor --|> Person
-    Appointment --> "1" Patient : patient
-    Appointment --> "1" Doctor : doctor
-    Appointment --> "*" Prescription : prescriptions
+    class Endocrinologist {
+        - hormonalDisorders : String
+        + getSalary() double
+    }
+    
+    OperatingSchedule --> "*" Operation
+    Operation --> "1" Patient
+    Operation --> "1..*" _Doctor_
+    _Doctor_ <|-- Orthopedic
+    _Doctor_ <|-- Anesthesiologist
+    _Doctor_ <|-- Endocrinologist
 ```
 
 ## Notes:
-- Use `java.time.LocalDate` for dates and `java.time.LocalDateTime` for appointment times
-- Appointment status can be: "Scheduled", "Completed", "Cancelled"
-- Use `Period.between()` to calculate age from date of birth
-
+- Use `java.time.LocalDate` for dates
+- The `addDoctor()` method throws an `IllegalStateException` if a doctor of the same type (class) is already assigned to the operation
+  - For example, you cannot add two Orthopedic doctors to the same operation, but you can have one Orthopedic and one Anesthesiologist
+- Operation types can be: "Knee Replacement", "Hip Surgery", "Appendectomy", "Thyroidectomy", etc.
+- Orthopedic surgery specialties can be: "Knees", "Elbows", "Hips", "Spine", etc.
+- Orthopedic doctors earn 800,000 kr per year base salary + 50,000 kr per year of experience
+- Anesthesiologists earn 900,000 kr per year base salary + 60,000 kr per year of experience
+- Endocrinologists earn 750,000 kr per year base salary + 45,000 kr per year of experience, and an extra bonus of 10,000 per 5 years of experience

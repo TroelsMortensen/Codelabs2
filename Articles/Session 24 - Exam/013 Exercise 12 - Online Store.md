@@ -22,16 +22,13 @@ classDiagram
         + getShippingAddress() String
     }
     
-    class Product {
+    class _Product_ {
         - productId : int
         - name : String
-        - basePrice : double
+        # basePrice : double
         - category : String
         - stockQuantity : int
-        + Product(productId : int, name : String, basePrice : double, category : String, stockQuantity : int)
-        + getProductId() int
-        + getName() String
-        + getPrice() double
+        + getPrice()* double
         + isInStock() boolean
     }
     
@@ -41,7 +38,6 @@ classDiagram
         + ShoppingCart(cartId : int)
         + addProduct(product : Product, quantity : int) void
         + removeProduct(productId : int) void
-        + calculateSubtotal() double
         + calculateTotal() double
     }
     
@@ -55,15 +51,14 @@ classDiagram
         - weight : double
         - dimensions : String
         + getPrice() double
-        + getShippingCost() double
     }
     
-    OnlineStore --> "*" Product : products
-    OnlineStore --> "*" Customer : customers
-    Customer --> "*" ShoppingCart : orders
-    ShoppingCart --> "*" Product : items
-    DigitalProduct --|> Product
-    PhysicalProduct --|> Product
+    OnlineStore --> "*" _Product_ 
+    OnlineStore --> "*" Customer 
+    Customer --> "*" ShoppingCart 
+    ShoppingCart --> "*" _Product_ 
+    _Product_ <|-- DigitalProduct
+    _Product_ <|-- PhysicalProduct
 ```
 
 ## Notes:
