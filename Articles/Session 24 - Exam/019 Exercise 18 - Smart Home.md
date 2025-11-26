@@ -4,26 +4,30 @@ Implement the following class diagram in Java:
 
 ```mermaid
 classDiagram
-    class SmartHome {
-        - homeAddress : String
+    class House {
+        - address : String
         - owner : String
-        + addDevice(device : SmartDevice) void
-        + removeDevice(deviceId : String) void
+        + addRoom(room : Room) void
         + getAllDevices() ArrayList~SmartDevice~
         + getTotalPowerConsumption() double
-        + getDevicesByRoom(room : String) ArrayList~SmartDevice~
+    }
+    
+    class Room {
+        - roomName : String
+        - floorNumber : int
+        + addDevice(device : SmartDevice) void
+        + removeDevice(deviceId : String) void
+        + getDevices() ArrayList~SmartDevice~
+        + getRoomPowerConsumption() double
     }
     
     class SmartDevice {
         - deviceId : String
         - deviceName : String
-        - room : String
         - isOn : boolean
         - installationDate : LocalDate
-        + SmartDevice(deviceId : String, deviceName : String, room : String, installationDate : LocalDate)
         + getDeviceId() String
         + getDeviceName() String
-        + getRoom() String
         + turnOn() void
         + turnOff() void
         + isOn() boolean
@@ -66,17 +70,21 @@ classDiagram
         + getPowerConsumption() double
     }
     
-    SmartHome --> "*" SmartDevice : devices
-    SmartLight --|> SmartDevice
-    SmartThermostat --|> SmartDevice
-    SmartCamera --|> SmartDevice
-    SmartLock --|> SmartDevice
+    House --> "*" Room
+    Room --> "*" SmartDevice
+    SmartDevice <|-- SmartLight
+    SmartDevice <|-- SmartThermostat
+    SmartDevice <|-- SmartCamera
+    SmartDevice <|-- SmartLock
 ```
 
 ## Notes:
+- A house can have multiple rooms (e.g., "Living Room", "Bedroom", "Kitchen")
+- Each room can have multiple smart devices
 - Smart lights consume 10W when on, reduced by (100-brightness)/100
 - Smart thermostats consume 500W when heating, 300W when cooling, 5W in standby mode
 - Smart cameras consume 5W when off, 15W when recording
 - Smart locks consume 2W continuously
+- `getTotalPowerConsumption()` in House calculates the sum of all devices across all rooms
 - Use `java.time.LocalDate` for installation dates
 

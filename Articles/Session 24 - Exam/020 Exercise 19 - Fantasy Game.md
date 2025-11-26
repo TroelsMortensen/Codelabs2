@@ -6,20 +6,28 @@ Implement the following class diagram in Java:
 classDiagram
     class Game {
         - gameName : String
-        + addCharacter(character : Character) void
-        + getCharactersByClass(className : String) ArrayList~Character~
-        + battle(char1 : Character, char2 : Character) Character
-        + getTotalCharacters() int
+        + addParty(party : Party) void
+        + getPartyByName(partyName : String) Party
+        + battle(party1 : Party, party2 : Party) Party
     }
     
-    class Character {
+    class Party {
+        - partyName : String
+        - maxSize : int
+        + addCharacter(character : Character) boolean
+        + removeCharacter(characterId : int) void
+        + getCharacters() ArrayList~Character~
+        + getTotalHealth() int
+        + isDefeated() boolean
+    }
+    
+    class _Character_ {
         - characterId : int
         - name : String
         - level : int
         - health : int
         - maxHealth : int
         - experience : int
-        + Character(characterId : int, name : String, level : int)
         + getName() String
         + getLevel() int
         + getHealth() int
@@ -27,8 +35,8 @@ classDiagram
         + heal(amount : int) void
         + gainExperience(xp : int) void
         + isAlive() boolean
-        + attack() int
-        + defend() int
+        + attack()* int
+        + defend()* int
     }
     
     class Warrior {
@@ -86,17 +94,22 @@ classDiagram
         + use(character : Character) void
     }
     
-    Game --> "*" Character : characters
-    Character --> "1" Inventory : inventory
-    Warrior --|> Character
-    Mage --|> Character
-    Rogue --|> Character
-    Inventory --> "*" Item : items
-    Weapon --|> Item
-    Potion --|> Item
+    Game --> "*" Party
+    Party --> "*" _Character_
+    _Character_ --> "1" Inventory
+    _Character_ <|-- Warrior
+    _Character_ <|-- Mage
+    _Character_ <|-- Rogue
+    Inventory --> "*" Item
+    Item <|-- Weapon
+    Item <|-- Potion
 ```
 
 ## Notes:
+- `Character` is abstract with abstract `attack()` and `defend()` methods (marked with *)
+- A party can have multiple characters (typical max size: 4-6 characters)
+- `isDefeated()` returns true if all characters in the party have health <= 0
+- `getTotalHealth()` sums the health of all characters in the party
 - Warriors attack with base damage = strength * 2 + armor
 - Mages attack with base damage = intelligence * 3 (costs 10 mana)
 - Rogues attack with base damage = agility * 2, critical strike does triple damage

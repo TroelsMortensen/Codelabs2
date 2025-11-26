@@ -13,7 +13,7 @@ classDiagram
         + assignCrewMember(missionId : int, crewMember : CrewMember) boolean
     }
     
-    class Mission {
+    class _Mission_ {
         - missionId : int
         - missionName : String
         - launchDate : LocalDate
@@ -24,7 +24,7 @@ classDiagram
         + getMissionName() String
         + getStatus() String
         + setStatus(status : String) void
-        + getCost() double
+        + getCost()* double
         + isActive() boolean
     }
     
@@ -67,12 +67,12 @@ classDiagram
         + getCost() double
     }
     
-    SpaceAgency --> "*" Mission : missions
-    Mission --> "1" Spacecraft : spacecraft
-    Mission --> "*" CrewMember : crew
-    SatelliteDeployment --|> Mission
-    SpaceWalk --|> Mission
-    PlanetaryLanding --|> Mission
+    SpaceAgency --> "*" _Mission_
+    _Mission_ --> "1" Spacecraft
+    _Mission_ --> "*" CrewMember
+    _Mission_ <|-- SatelliteDeployment
+    _Mission_ <|-- SpaceWalk
+    _Mission_ <|-- PlanetaryLanding
 ```
 
 ## Notes:
