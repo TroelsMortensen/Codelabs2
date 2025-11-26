@@ -118,5 +118,4 @@ classDiagram
 - Rogues defend by dodging (50% chance to take no damage based on agility)
 - Characters level up every 100 experience points
 - Health potions heal for their potency value, mana potions restore mana
-- This exercise does not require date handling
 
