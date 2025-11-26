@@ -1,5 +1,6 @@
 # Exercise 16 - Music Streaming System
 
+
 Implement the following class diagram in Java:
 
 ```mermaid
@@ -9,7 +10,6 @@ classDiagram
         + addUser(user : User) void
         + addSong(song : Song) void
         + searchSongs(query : String) ArrayList~Song~
-        + getTotalRevenue() double
     }
     
     class User {
@@ -23,34 +23,24 @@ classDiagram
         + createPlaylist(name : String) Playlist
     }
     
-    class Subscription {
+    class _Subscription_ {
         - startDate : LocalDate
         - endDate : LocalDate
-        - isActive : boolean
         + Subscription(startDate : LocalDate, endDate : LocalDate)
         + getMonthlyFee() double
         + isActive() boolean
-        + hasAds() boolean
-        + getMaxQuality() String
+        + hasAds()* boolean
     }
     
     class FreeSubscription {
         + getMonthlyFee() double
         + hasAds() boolean
-        + getMaxQuality() String
-    }
-    
-    class PremiumSubscription {
-        + getMonthlyFee() double
-        + hasAds() boolean
-        + getMaxQuality() String
     }
     
     class FamilySubscription {
         - numberOfUsers : int
         + getMonthlyFee() double
         + hasAds() boolean
-        + getMaxQuality() String
     }
     
     class Song {
@@ -59,11 +49,6 @@ classDiagram
         - artist : String
         - duration : int
         - genre : String
-        + Song(songId : int, title : String, artist : String, duration : int, genre : String)
-        + getSongId() int
-        + getTitle() String
-        + getArtist() String
-        + getDuration() int
     }
     
     class Playlist {
@@ -77,19 +62,18 @@ classDiagram
         + getSongs() ArrayList~Song~
     }
     
-    StreamingService --> "*" User : users
-    StreamingService --> "*" Song : songs
-    User --> "1" Subscription : subscription
-    User --> "*" Playlist : playlists
-    Playlist --> "*" Song : songs
-    FreeSubscription --|> Subscription
-    PremiumSubscription --|> Subscription
-    FamilySubscription --|> Subscription
+    StreamingService --> "*" User
+    StreamingService --> "*" Song
+    User --> "1" _Subscription_
+    User --> "*" Playlist
+    Playlist --> "*" Song
+    _Subscription_ <|-- FreeSubscription
+    _Subscription_ <|-- FamilySubscription
 ```
 
 ## Notes:
-- Free subscription costs 0 kr, has ads, max quality is 128 kbps
-- Premium subscription costs 99 kr per month, no ads, max quality is 320 kbps
-- Family subscription costs 149 kr per month for up to 6 users, no ads, max quality is 320 kbps
+- Free subscription costs 0 kr, has ads
+- Family subscription costs 149 kr per month for up to 6 users, no ads
+- `isActive()` returns true if the current date is between startDate and endDate
 - Use `java.time.LocalDate` for date handling
 
