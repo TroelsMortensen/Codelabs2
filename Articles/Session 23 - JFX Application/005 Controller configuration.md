@@ -135,7 +135,7 @@ Watch the below video to see how this is done.
 
 <video src="https://youtu.be/AUNqzm4AJxo"></video>
 
-[Here is the code from the video](https://github.com/TroelsMortensen/JavaFxExamples/tree/master/ControllerConfiguratorExample)
+[Here is the code from the video](https://github.com/TroelsMortensen/JavaFxExamples/tree/master/16_ControllerConfiguratorExample)
 
 This approach is a small step up from the previous page, and it may not be all that relevant for your semester project.
 
