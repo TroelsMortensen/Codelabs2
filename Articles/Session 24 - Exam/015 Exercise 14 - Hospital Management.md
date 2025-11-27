@@ -7,6 +7,9 @@ classDiagram
     class OperatingSchedule {
         - scheduleDate : LocalDate
         - operatingRoom : String
+        + OperatingSchedule(scheduleDate : LocalDate, operatingRoom : String)
+        + getScheduleDate() LocalDate
+        + getOperatingRoom() String
         + addOperation(operation : Operation) void
         + getOperations() ArrayList~Operation~
         + getTotalDuration() int
@@ -16,7 +19,10 @@ classDiagram
         - operationType : String
         - startTime : String
         - durationMinutes : int
+        + Operation(operationType : String, startTime : String, durationMinutes : int)
         + getOperationType() String
+        + getStartTime() String
+        + getDurationMinutes() int
         + addDoctor(doctor : Doctor) void
         + getDoctors() ArrayList~Doctor~
     }
@@ -26,7 +32,11 @@ classDiagram
         - dateOfBirth : LocalDate
         - bloodType : String
         - allergies : String
-
+        + Patient(name : String, dateOfBirth : LocalDate, bloodType : String, allergies : String)
+        + getName() String
+        + getDateOfBirth() LocalDate
+        + getBloodType() String
+        + getAllergies() String
     }
     
     class _Doctor_ {
@@ -34,31 +44,41 @@ classDiagram
         - name : String
         - licenseNumber : String
         # yearsExperience : int
-
+        + Doctor(doctorId : int, name : String, licenseNumber : String, yearsExperience : int)
+        + getDoctorId() int
+        + getName() String
+        + getLicenseNumber() String
+        + getYearsExperience() int
         + getSalary()* double
     }
     
     class Orthopedic {
         - surgerySpecialty : String
+        + Orthopedic(doctorId : int, name : String, licenseNumber : String, yearsExperience : int, surgerySpecialty : String)
+        + getSurgerySpecialty() String
         + getSalary() double
     }
     
     class Anesthesiologist {
         - certifications : String
+        + Anesthesiologist(doctorId : int, name : String, licenseNumber : String, yearsExperience : int, certifications : String)
+        + getCertifications() String
         + getSalary() double
     }
     
     class Endocrinologist {
         - hormonalDisorders : String
+        + Endocrinologist(doctorId : int, name : String, licenseNumber : String, yearsExperience : int, hormonalDisorders : String)
+        + getHormonalDisorders() String
         + getSalary() double
     }
     
     OperatingSchedule --> "*" Operation
-    Operation --> "1" Patient
+    Patient <-- Operation
     Operation --> "1..*" _Doctor_
     _Doctor_ <|-- Orthopedic
     _Doctor_ <|-- Anesthesiologist
-    _Doctor_ <|-- Endocrinologist
+    Endocrinologist --|> _Doctor_
 ```
 
 ## Notes:
