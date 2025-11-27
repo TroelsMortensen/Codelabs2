@@ -28,14 +28,13 @@ classDiagram
         + incrementListens() void
     }
     
-    class Episode {
+    class _Episode_ {
         - episodeNumber : int
         - title : String
         - duration : int
         - releaseDate : LocalDate
         - description : String
         - listens : int
-        + Episode(episodeNumber : int, title : String, duration : int, releaseDate : LocalDate, description : String)
         + getEpisodeNumber() int
         + getTitle() String
         + getDuration() int
@@ -43,53 +42,42 @@ classDiagram
         + getListens() int
     }
     
+    class AudioEpisode {
+        - audioQuality : String
+        - fileSize : double
+        + getAudioQuality() String
+    }
+    
+    class VideoEpisode {
+        - resolution : String
+        - hasSubtitles : boolean
+        + getResolution() String
+    }
+    
     class User {
         - userId : int
         - username : String
         - email : String
         - registrationDate : LocalDate
-        + User(userId : int, username : String, email : String, registrationDate : LocalDate)
         + getUserId() int
         + getUsername() String
         + subscribe(podcast : Podcast) void
         + getSubscriptions() ArrayList~Podcast~
-        + createPlaylist(name : String) Playlist
     }
     
-    class Playlist {
-        - playlistId : int
-        - name : String
-        - createdDate : LocalDate
-        + Playlist(playlistId : int, name : String, createdDate : LocalDate)
-        + addEpisode(episode : Episode) void
-        + removeEpisode(episodeNumber : int) void
-        + getEpisodes() ArrayList~Episode~
-        + getTotalDuration() int
-    }
-    
-    class ListeningHistory {
-        - historyId : int
-        - listenDate : LocalDateTime
-        - episode : Episode
-        - completionPercentage : int
-        + ListeningHistory(historyId : int, episode : Episode, listenDate : LocalDateTime, completionPercentage : int)
-        + getListenDate() LocalDateTime
-        + getEpisode() Episode
-        + isCompleted() boolean
-    }
-    
-    PodcastPlatform --> "*" Podcast : podcasts
-    PodcastPlatform --> "*" User : users
-    Podcast --> "*" Episode : episodes
+    PodcastPlatform --> "*" Podcast 
+    PodcastPlatform --> "*" User 
+    Podcast --> "*" _Episode_ 
     User --> "*" Podcast : subscriptions
-    User --> "*" Playlist : playlists
-    User --> "*" ListeningHistory : history
-    Playlist --> "*" Episode : episodes
+    _Episode_ <|-- AudioEpisode
+    _Episode_ <|-- VideoEpisode
 ```
 
 ## Notes:
-- Episodes are considered "completed" if completion percentage >= 90%
+- `Episode` is abstract (marked with italic)
+- Audio episodes can have quality settings like "128kbps", "256kbps", "320kbps"
+- Video episodes can have resolutions like "720p", "1080p", "4K"
 - Trending podcasts are those with more than 10000 total listens
 - Duration is measured in seconds
-- Use `java.time.LocalDate` for dates and `java.time.LocalDateTime` for listening timestamps
+- Use `java.time.LocalDate` for dates
 

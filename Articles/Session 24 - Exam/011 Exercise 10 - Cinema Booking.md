@@ -6,6 +6,8 @@ Implement the following class diagram in Java:
 classDiagram
     class Cinema {
         - name : String
+        + Cinema(name : String)
+        + getName() String
         + addScreening(screening : Screening) void
         + getScreeningsByMovie(movieTitle : String) ArrayList~Screening~
         + getTotalRevenue() double
@@ -17,6 +19,10 @@ classDiagram
         - genre : String
         - ageRating : int
         + Movie(title : String, duration : int, genre : String, ageRating : int)
+        + getTitle() String
+        + getDuration() int
+        + getGenre() String
+        + getAgeRating() int
     }
     
     class Screening {
@@ -26,32 +32,38 @@ classDiagram
         - nextSeatNumber : int
         + Screening(movie : Movie, screeningTime : LocalDateTime, screenNumber : int, availableSeats : int)
         + getAvailableSeats() int
-        + bookSeats(numberOfSeats : int, type : String) ArrayList~Ticket~
+        + getScreenNumber() int
         + getScreeningTime() LocalDateTime
+        + bookSeats(numberOfSeats : int, type : String) ArrayList~Ticket~
     }
     
     class _Ticket_ {
         - seatNumber : int
         # price : double
         + Ticket(seatNumber : int)
+        + getSeatNumber() int
         + getPrice()* double
     }
     
     class StandardTicket {
+        + StandardTicket(seatNumber : int)
         + getPrice() double
     }
     
     class StudentTicket {
+        + StudentTicket(seatNumber : int)
         + getPrice() double
     }
     
     class ChildTicket {
         - includesSeat : boolean
+        + ChildTicket(seatNumber : int, includesSeat : boolean)
+        + includesSeat() boolean
         + getPrice() double
     }
     
     Cinema --> "*" Screening 
-    Screening --> Movie 
+    Movie <-- Screening
     Screening --> "*" _Ticket_ 
     _Ticket_ <|-- StandardTicket
     _Ticket_ <|-- StudentTicket

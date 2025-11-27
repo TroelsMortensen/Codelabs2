@@ -28,9 +28,6 @@ classDiagram
         - health : int
         - maxHealth : int
         - experience : int
-        + getName() String
-        + getLevel() int
-        + getHealth() int
         + takeDamage(damage : int) void
         + heal(amount : int) void
         + gainExperience(xp : int) void
@@ -55,20 +52,11 @@ classDiagram
         + castSpell(spellName : String) int
     }
     
-    class Rogue {
-        - agility : int
-        - stealth : int
-        + attack() int
-        + defend() int
-        + criticalStrike() int
-    }
-    
-    class Inventory {
+    class _Inventory_ {
         - maxCapacity : int
         + addItem(item : Item) boolean
         + removeItem(itemName : String) void
         + getItems() ArrayList~Item~
-        + getTotalWeight() double
     }
     
     class Item {
@@ -85,22 +73,19 @@ classDiagram
         - damage : int
         - durability : int
         + getDamage() int
-        + use() void
     }
     
     class Potion {
         - effect : String
         - potency : int
-        + use(character : Character) void
     }
     
     Game --> "*" Party
     Party --> "*" _Character_
-    _Character_ --> "1" Inventory
+    _Character_ --> "1" _Inventory_
     _Character_ <|-- Warrior
     _Character_ <|-- Mage
-    _Character_ <|-- Rogue
-    Inventory --> "*" Item
+    _Inventory_ --> "*" Item
     Item <|-- Weapon
     Item <|-- Potion
 ```

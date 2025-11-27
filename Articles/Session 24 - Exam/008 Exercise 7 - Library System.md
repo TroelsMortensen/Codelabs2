@@ -6,9 +6,12 @@ Implement the following class diagram in Java:
 classDiagram
     class Library {
         - name : String
+        + Library(name : String)
+        + getName() String
         + addItem(item : LibraryItem) void
         + removeItem(itemId : String) void
         + getOverdueItems() ArrayList~LibraryItem~
+        + getAllBooks() ArrayList~Book~
         + totalLateFees() double
     }
     
@@ -20,6 +23,7 @@ classDiagram
         + getItemId() String
         + getTitle() String
         + getDueDate() LocalDate
+        + setDueDate(dueDate : LocalDate) void
         + calculateLateFee()* double
         + isOverdue() boolean
     }
@@ -27,17 +31,18 @@ classDiagram
     class Book {
         - author : String
         - isbn : String
+        + Book(itemId : String, title : String, dueDate : LocalDate, author : String, isbn : String)
+        + getAuthor() String
+        + getIsbn() String
         + calculateLateFee() double
     }
     
     class Magazine {
         - issueNumber : int
         - year : int
-        + calculateLateFee() double
-    }
-    
-    class DVD {
-        - duration : int
+        + Magazine(itemId : String, title : String, dueDate : LocalDate, issueNumber : int, year : int)
+        + getIssueNumber() int
+        + getYear() int
         + calculateLateFee() double
     }
     
@@ -46,6 +51,13 @@ classDiagram
         - name : String
         - email : String
         - phoneNumber : String
+        + Borrower(borrowerId : String, name : String, email : String, phoneNumber : String)
+        + getBorrowerId() String
+        + getName() String
+        + getEmail() String
+        + setEmail(email : String) void
+        + getPhoneNumber() String
+        + setPhoneNumber(phoneNumber : String) void
     }
     
     Library --> "*" _LibraryItem_
@@ -53,13 +65,12 @@ classDiagram
     _LibraryItem_ --> "0..1" Borrower 
     _LibraryItem_ <|-- Book
     _LibraryItem_ <|-- Magazine
-    _LibraryItem_ <|-- DVD
 ```
 
 ## Notes:
+- `getAllBooks()` returns all library items that are instances of the Book class
 - Books have a late fee of 2 kr per day overdue
 - Magazines have a late fee of 1 kr per day overdue
-- DVDs have a late fee of 5 kr per day overdue
 - Use `java.time.LocalDate` for date handling
 - Use `ChronoUnit.DAYS.between()` to calculate days between dates
 

@@ -7,6 +7,9 @@ classDiagram
     class Hotel {
         - name : String
         - starRating : int
+        + Hotel(name : String, starRating : int)
+        + getName() String
+        + getStarRating() int
         + addRoom(room : Room) void
         + getAvailableRooms(checkIn : Date, checkOut : Date) ArrayList~Room~
     }
@@ -14,6 +17,7 @@ classDiagram
     class _Room_ {
         - roomNumber : int
         - pricePerNight : double
+        + Room(roomNumber : int)
         + getRoomNumber() int
         + getPricePerNight()* double
         + isAvailable(checkIn : LocalDate, checkOut : LocalDate) boolean
@@ -25,28 +29,35 @@ classDiagram
         - checkOutDate : LocalDate
         - guestName : String
         + Booking(bookingId : int, checkInDate : LocalDate, checkOutDate : LocalDate, guestName : String)
+        + getBookingId() int
         + getCheckInDate() LocalDate
         + getCheckOutDate() LocalDate
+        + getGuestName() String
         + calculateTotalPrice() double
         + getNumberOfNights() int
     }
     
     class StandardRoom {
+        + StandardRoom(roomNumber : int)
         + getPricePerNight() double
     }
     
     class DeluxeRoom {
         - hasBalcony : boolean
+        + DeluxeRoom(roomNumber : int, hasBalcony : boolean)
+        + hasBalcony() boolean
         + getPricePerNight() double
     }
     
     class Suite {
         - numberOfRooms : int
+        + Suite(roomNumber : int, numberOfRooms : int)
+        + getNumberOfRooms() int
         + getPricePerNight() double
     }
     
     Hotel --> "*" _Room_ 
-    _Room_ --> "*" Booking
+    Booking "*" <-- _Room_
     _Room_ <|-- StandardRoom
     _Room_ <|-- DeluxeRoom
     _Room_ <|-- Suite
