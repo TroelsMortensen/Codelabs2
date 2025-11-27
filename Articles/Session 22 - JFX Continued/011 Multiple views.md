@@ -8,4 +8,4 @@ The below video introduces the concept of a "View Manager", which is responsible
 
 <video src="https://youtu.be/peZT8Fv6MzE"></video>
 
-[The code is on GitHub](https://github.com/TroelsMortensen/JavaFxExamples/tree/master/IntroducingTheViewManager)
+[The code is on GitHub](https://github.com/TroelsMortensen/JavaFxExamples/tree/master/11_IntroducingTheViewManager)

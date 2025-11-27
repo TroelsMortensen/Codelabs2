@@ -8,7 +8,7 @@ Watch the video below to see how this is done.
 
 We will aim to use this approach going forward.
 
-[Here is the code from the video](https://github.com/TroelsMortensen/JavaFxExamples/tree/master/14_FxmlFilesInResourceFolder)
+[Here is the code from the video](https://github.com/TroelsMortensen/JavaFxExamples/tree/master/13_ViewManagerV3)
 
 ## Is this necessary?
 

@@ -7,4 +7,4 @@ In the following video, I show how you can pass data between the views:
 <video src="https://youtu.be/jSXD3-rg8P0"></video>
 
 
-[The code is on GitHub](https://github.com/TroelsMortensen/JavaFxExamples/tree/master/PassingDataBetweenViews)
+[The code is on GitHub](https://github.com/TroelsMortensen/JavaFxExamples/tree/master/12_PassingDataBetweenViews)
