@@ -7,10 +7,13 @@ classDiagram
     class SpaceAgency {
         - agencyName : String
         - budget : double
+        + SpaceAgency(agencyName : String, budget : double)
+        + getAgencyName() String
+        + getBudget() double
+        + setBudget(budget : double) void
         + addMission(mission : Mission) void
         + getActiveMissions() ArrayList~Mission~
         + getTotalCost() double
-        + assignCrewMember(missionId : int, crewMember : CrewMember) boolean
     }
     
     class _Mission_ {
@@ -22,8 +25,11 @@ classDiagram
         + Mission(missionId : int, missionName : String, launchDate : LocalDate, duration : int)
         + getMissionId() int
         + getMissionName() String
+        + getLaunchDate() LocalDate
+        + getDuration() int
         + getStatus() String
         + setStatus(status : String) void
+        + assignCrewMember(crewMember : CrewMember) boolean
         + getCost()* double
         + isActive() boolean
     }
@@ -36,6 +42,8 @@ classDiagram
         + CrewMember(memberId : int, name : String, nationality : String, trainingHours : int)
         + getMemberId() int
         + getName() String
+        + getNationality() String
+        + getTrainingHours() int
         + isQualified() boolean
     }
     
@@ -46,39 +54,40 @@ classDiagram
         - fuelCapacity : double
         + Spacecraft(name : String, model : String, maxCrewCapacity : int, fuelCapacity : double)
         + getName() String
+        + getModel() String
         + getMaxCrewCapacity() int
+        + getFuelCapacity() double
     }
     
     class SatelliteDeployment {
         - satelliteName : String
         - orbit : String
+        + SatelliteDeployment(missionId : int, missionName : String, launchDate : LocalDate, duration : int, satelliteName : String, orbit : String)
+        + getSatelliteName() String
+        + getOrbit() String
         + getCost() double
     }
     
     class SpaceWalk {
         - plannedDuration : int
         - objective : String
-        + getCost() double
-    }
-    
-    class PlanetaryLanding {
-        - targetPlanet : String
-        - landingSite : String
+        + SpaceWalk(missionId : int, missionName : String, launchDate : LocalDate, duration : int, plannedDuration : int, objective : String)
+        + getPlannedDuration() int
+        + getObjective() String
         + getCost() double
     }
     
     SpaceAgency --> "*" _Mission_
-    _Mission_ --> "1" Spacecraft
-    _Mission_ --> "*" CrewMember
+    Spacecraft <-- _Mission_
+    CrewMember "*" <-- _Mission_
     _Mission_ <|-- SatelliteDeployment
     _Mission_ <|-- SpaceWalk
-    _Mission_ <|-- PlanetaryLanding
 ```
 
 ## Notes:
+- `getCost()` in `Mission` is abstract (marked with *)
 - Satellite deployment missions cost 500 million kr
-- Space walk missions cost 200 million kr plus 10 million kr per hour of duration
-- Planetary landing missions cost 2 billion kr for Mars, 5 billion kr for other planets
+- Space walk missions cost 200 million kr plus 10 million kr per hour of planned duration
 - Crew members need at least 1000 training hours to be qualified
 - Mission status can be: "Planned", "Active", "Completed", "Aborted"
 - Use `java.time.LocalDate` for launch dates
