@@ -58,7 +58,29 @@ vs
 
 Your stakeholder does not care about (or may not understand) the implementation details. They only care about the outcome.
 
+You describe _input_ and _output_.
+
+### What vs how
+
+You should never explain anything related to _how_ the system does a thing.\
+And if you have to explain _what_ the system does, keep it focused on what the user can see.
+
 We focus on _what_ the system does, not _how_ it does it.
+
+- This means you should explain what the system _shows_ the user, or, what the user can see as a system-reaction to their input.
+- You should not explain _how_ the system does a thing. And generally, nor should you explain _that_ a system does a thing internally, if the user cannot see it happen.
+
+### The system validates the input
+
+This is a classis step in a use case description. But it is not needed.\
+In the happy path, from the user's perspective, the system just accepts the input, no need to explain that anything extra happens with it.\
+In an alternate scenario, you can descripe that "_x_ is invalid, and the system shows an error message to the user." The user goes back to a previous step, and tries again.
+
+
+### The system saves the changes.
+
+This is also an often seen step. At the end of the main scenario, the user has modified some data, and the system saves the changes.\
+However, this is also explained as the post condition. So, you don't need a step in the main scenario to explain that the system saves the changes.
 
 ## 6. Should provide value
 
