@@ -59,12 +59,40 @@ classDiagram
         + getFuelCapacity() double
     }
     
-    class SatelliteDeployment {
-        - satelliteName : String
+    class Satellite {
+        - satelliteId : int
+        - name : String
         - orbit : String
-        + SatelliteDeployment(missionId : int, missionName : String, launchDate : LocalDate, duration : int, satelliteName : String, orbit : String)
-        + getSatelliteName() String
+        - purpose : String
+        - launchDate : LocalDate
+        + Satellite(satelliteId : int, name : String, orbit : String, purpose : String, launchDate : LocalDate)
+        + getSatelliteId() int
+        + getName() String
         + getOrbit() String
+        + getPurpose() String
+        + getLaunchDate() LocalDate
+        + addEquipment(equipment : SatelliteEquipment) void
+        + getEquipment() ArrayList~SatelliteEquipment~
+    }
+    
+    class SatelliteEquipment {
+        - equipmentId : int
+        - name : String
+        - type : String
+        - weight : double
+        - isOperational : boolean
+        + SatelliteEquipment(equipmentId : int, name : String, type : String, weight : double)
+        + getEquipmentId() int
+        + getName() String
+        + getType() String
+        + getWeight() double
+        + isOperational() boolean
+        + setOperational(operational : boolean) void
+    }
+    
+    class SatelliteDeployment {
+        + SatelliteDeployment(missionId : int, missionName : String, launchDate : LocalDate, duration : int, satellite : Satellite)
+        + getSatellite() Satellite
         + getCost() double
     }
     
@@ -82,6 +110,8 @@ classDiagram
     CrewMember "*" <-- _Mission_
     _Mission_ <|-- SatelliteDeployment
     _Mission_ <|-- SpaceWalk
+    SatelliteDeployment --> "1" Satellite
+    Satellite --> "*" SatelliteEquipment
 ```
 
 ## Notes:
@@ -91,6 +121,7 @@ classDiagram
 - Crew members need at least 1000 training hours to be qualified
 - Mission status can be: "Planned", "Active", "Completed", "Aborted"
 - Use `java.time.LocalDate` for launch dates
+- Satellite equipment types can be: "Communication", "Imaging", "Navigation", "Scientific", "Power", "Propulsion"
 
 ## Extensions:
 
@@ -112,9 +143,17 @@ classDiagram
 - **Current fields:** `name : String`, `model : String`, `maxCrewCapacity : int`, `fuelCapacity : double`
 - **Possible extensions:** `manufacturer : String`, `launchYear : int`, `status : String`, `totalMissions : int`, `weight : double`, `maxSpeed : double`, `equipment : ArrayList<String>`
 
+### Satellite
+- **Current fields:** `satelliteId : int`, `name : String`, `orbit : String`, `purpose : String`, `launchDate : LocalDate`
+- **Possible extensions:** `satelliteType : String`, `expectedLifespan : int`, `powerSource : String`, `communicationBand : String`, `status : String`, `operator : String`, `altitude : double`
+
+### SatelliteEquipment
+- **Current fields:** `equipmentId : int`, `name : String`, `type : String`, `weight : double`, `isOperational : boolean`
+- **Possible extensions:** `manufacturer : String`, `powerConsumption : double`, `lastMaintenanceDate : LocalDate`, `warrantyExpiry : LocalDate`, `specifications : String`
+
 ### SatelliteDeployment
-- **Current fields:** `satelliteName : String`, `orbit : String`
-- **Possible extensions:** `satelliteType : String`, `purpose : String`, `expectedLifespan : int`, `powerSource : String`, `communicationBand : String`
+- **Current fields:** `satellite : Satellite`
+- **Possible extensions:** `deploymentMethod : String`, `deploymentAltitude : double`, `deploymentSuccess : boolean`
 
 ### SpaceWalk
 - **Current fields:** `plannedDuration : int`, `objective : String`

@@ -8,6 +8,7 @@ classDiagram
         - publisherName : String
         - foundedYear : int
         + addJournalist(journalist : Journalist) void
+        + addReader(reader : Reader) void
         + publishArticle(article : Article) void
         + getArticlesByCategory(category : String) ArrayList~Article~
         + getTrendingArticles() ArrayList~Article~
@@ -70,23 +71,28 @@ classDiagram
         + assignStory(journalist : Journalist, topic : String) void
     }
     
-    class Subscription {
-        - subscriptionId : int
-        - subscriberName : String
-        - subscriberEmail : String
-        - startDate : LocalDate
-        - endDate : LocalDate
-        - tier : String
-        + Subscription(subscriptionId : int, subscriberName : String, subscriberEmail : String, startDate : LocalDate, endDate : LocalDate, tier : String)
-        + isActive() boolean
-        + getMonthlyFee() double
-        + hasAccessTo(article : Article) boolean
+    class Reader {
+        - readerId : int
+        - name : String
+        - email : String
+        - readArticles : ArrayList~Article~
+        - articlesToRead : ArrayList~Article~
+        + Reader(readerId : int, name : String, email : String)
+        + getReaderId() int
+        + getName() String
+        + getEmail() String
+        + setEmail(email : String) void
+        + markAsRead(article : Article) void
+        + addToReadingList(article : Article) void
+        + removeFromReadingList(article : Article) void
+        + getReadArticles() ArrayList~Article~
+        + getArticlesToRead() ArrayList~Article~
     }
     
     NewsPublisher --> "*" Article : articles
     NewsPublisher --> "*" Journalist : journalists
     NewsPublisher --> "*" Editor : editors
-    NewsPublisher --> "*" Subscription : subscriptions
+    NewsPublisher --> "*" Reader : readers
     Article --> "1" Journalist : author
     Article --> "1" Editor : editor
     NewsArticle --|> Article
@@ -99,16 +105,15 @@ classDiagram
 - Engagement score = (views * 1) + (likes * 5)
 - Breaking news articles get 2x engagement multiplier
 - Trending articles have engagement score > 1000
-- Subscription tiers: "Free" (0 kr, access to 5 articles/month), "Basic" (99 kr, unlimited news), "Premium" (199 kr, all content including investigations)
 - Journalist salary: 30,000 kr base + 1,000 kr per year of experience
 - Investigations require minimum 5 years experience
-- Use `java.time.LocalDateTime` for publish dates and `java.time.LocalDate` for subscriptions
+- Use `java.time.LocalDateTime` for publish dates
 
 ## Extensions:
 
 ### NewsPublisher
 - **Current fields:** `publisherName : String`, `foundedYear : int`
-- **Possible extensions:** `headquarters : String`, `totalArticles : int`, `monthlySubscribers : int`, `revenue : double`, `editorialPolicy : String`, `awards : ArrayList<String>`
+- **Possible extensions:** `headquarters : String`, `totalArticles : int`, `totalReaders : int`, `revenue : double`, `editorialPolicy : String`, `awards : ArrayList<String>`, `website : String`
 
 ### Article
 - **Current fields:** `articleId : int`, `headline : String`, `content : String`, `category : String`, `publishDate : LocalDateTime`, `views : int`, `likes : int`
@@ -136,8 +141,8 @@ classDiagram
 - **Current fields:** `editorId : int`, `name : String`, `department : String`
 - **Possible extensions:** `email : String`, `yearsExperience : int`, `articlesEdited : int`, `teamSize : int`, `budget : double`, `specialization : String`
 
-### Subscription
-- **Current fields:** `subscriptionId : int`, `subscriberName : String`, `subscriberEmail : String`, `startDate : LocalDate`, `endDate : LocalDate`, `tier : String`
-- **Possible extensions:** `paymentMethod : String`, `autoRenew : boolean`, `articlesReadThisMonth : int`, `preferredCategories : ArrayList<String>`, `newsletterSubscribed : boolean`, `discountCode : String`
+### Reader
+- **Current fields:** `readerId : int`, `name : String`, `email : String`, `readArticles : ArrayList<Article>`, `articlesToRead : ArrayList<Article>`
+- **Possible extensions:** `registrationDate : LocalDate`, `preferredCategories : ArrayList<String>`, `favoriteAuthors : ArrayList<Journalist>`, `readingStreak : int`, `totalReadingTime : int`, `notificationsEnabled : boolean`
 
 

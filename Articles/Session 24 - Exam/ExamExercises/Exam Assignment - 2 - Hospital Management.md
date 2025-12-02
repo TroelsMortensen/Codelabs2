@@ -6,23 +6,48 @@ Implement the following class diagram in Java:
 classDiagram
     class OperatingSchedule {
         - scheduleDate : LocalDate
-        - operatingRoom : String
-        + OperatingSchedule(scheduleDate : LocalDate, operatingRoom : String)
+        + OperatingSchedule(scheduleDate : LocalDate)
         + getScheduleDate() LocalDate
-        + getOperatingRoom() String
         + addOperation(operation : Operation) void
         + getOperations() ArrayList~Operation~
         + getTotalDuration() int
     }
     
+    class OperatingRoom {
+        - roomNumber : String
+        - capacity : int
+        - equipment : ArrayList~String~
+        + OperatingRoom(roomNumber : String, capacity : int)
+        + getRoomNumber() String
+        + getCapacity() int
+        + addEquipment(equipment : String) void
+        + getEquipment() ArrayList~String~
+        + isAvailable(date : LocalDate, time : String) boolean
+    }
+    
+    class OperationType {
+        <<enumeration>>
+        ORTHOPEDIC
+        CARDIAC
+        NEUROSURGERY
+        GENERAL
+        EMERGENCY
+        PLASTIC_SURGERY
+        UROLOGY
+        GYNECOLOGY
+        OPHTHALMOLOGY
+        ENT
+    }
+    
     class Operation {
-        - operationType : String
+        - operationType : OperationType
         - startTime : String
         - durationMinutes : int
-        + Operation(operationType : String, startTime : String, durationMinutes : int)
-        + getOperationType() String
+        + Operation(operationType : OperationType, startTime : String, durationMinutes : int, operatingRoom : OperatingRoom)
+        + getOperationType() OperationType
         + getStartTime() String
         + getDurationMinutes() int
+        + getOperatingRoom() OperatingRoom
         + addDoctor(doctor : Doctor) void
         + getDoctors() ArrayList~Doctor~
     }
@@ -75,6 +100,8 @@ classDiagram
     
     OperatingSchedule --> "*" Operation
     Patient <-- Operation
+    Operation --> "1" OperatingRoom
+    Operation --> "1" OperationType
     Operation --> "1..*" _Doctor_
     _Doctor_ <|-- Orthopedic
     _Doctor_ <|-- Anesthesiologist
@@ -85,7 +112,7 @@ classDiagram
 - Use `java.time.LocalDate` for dates
 - The `addDoctor()` method throws an `IllegalStateException` if a doctor of the same type (class) is already assigned to the operation
   - For example, you cannot add two Orthopedic doctors to the same operation, but you can have one Orthopedic and one Anesthesiologist
-- Operation types can be: "Knee Replacement", "Hip Surgery", "Appendectomy", "Thyroidectomy", etc.
+- `OperationType` is an enum with values: `ORTHOPEDIC`, `CARDIAC`, `NEUROSURGERY`, `GENERAL`, `EMERGENCY`, `PLASTIC_SURGERY`, `UROLOGY`, `GYNECOLOGY`, `OPHTHALMOLOGY`, `ENT`
 - Orthopedic surgery specialties can be: "Knees", "Elbows", "Hips", "Spine", etc.
 - Orthopedic doctors earn 800,000 kr per year base salary + 50,000 kr per year of experience
 - Anesthesiologists earn 900,000 kr per year base salary + 60,000 kr per year of experience
@@ -93,12 +120,24 @@ classDiagram
 
 ## Extensions:
 
+### New classes
+- Operating room
+- Equipment
+
 ### OperatingSchedule
-- **Current fields:** `scheduleDate : LocalDate`, `operatingRoom : String`
-- **Possible extensions:** `shift : String`, `supervisor : String`, `availableSlots : int`, `equipmentRequired : ArrayList<String>`, `notes : String`
+- **Current fields:** `scheduleDate : LocalDate`
+- **Possible extensions:** `shift : String`, `supervisor : String`, `availableSlots : int`, `notes : String`
+
+### OperatingRoom
+- **Current fields:** `roomNumber : String`, `capacity : int`, `equipment : ArrayList<String>`
+- **Possible extensions:** `floor : int`, `wing : String`, `isSterile : boolean`, `lastCleanedDate : LocalDate`, `maintenanceSchedule : ArrayList<LocalDate>`, `specialFeatures : ArrayList<String>`
+
+### OperationType
+- **Current values:** `ORTHOPEDIC`, `CARDIAC`, `NEUROSURGERY`, `GENERAL`, `EMERGENCY`, `PLASTIC_SURGERY`, `UROLOGY`, `GYNECOLOGY`, `OPHTHALMOLOGY`, `ENT`
+- **Possible extensions:** `ONCOLOGY`, `DERMATOLOGY`, `PEDIATRIC`, `TRANSPLANT`, `TRAUMA`, `MINIMALLY_INVASIVE`
 
 ### Operation
-- **Current fields:** `operationType : String`, `startTime : String`, `durationMinutes : int`
+- **Current fields:** `operationType : OperationType`, `startTime : String`, `durationMinutes : int`, `operatingRoom : OperatingRoom`
 - **Possible extensions:** `endTime : String`, `priority : String`, `anesthesiaType : String`, `estimatedCost : double`, `status : String`, `complications : String`
 
 ### Patient
