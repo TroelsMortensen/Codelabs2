@@ -74,4 +74,28 @@ classDiagram
 - Use `java.time.LocalDate` for date handling
 - Use `ChronoUnit.DAYS.between()` to calculate days between dates
 
+## Extensions:
+
+### Library
+- **Current fields:** `name : String`
+- **Possible extensions:** `address : String`, `phoneNumber : String`, `email : String`, `openingHours : String`, `totalItems : int`, `maxBorrowLimit : int`
+
+### LibraryItem (abstract)
+- **Current fields:** `itemId : String`, `title : String`, `dueDate : LocalDate`
+- **Possible extensions:** `purchaseDate : LocalDate`, `condition : String`, `location : String`, `isReserved : boolean`, `reservationDate : LocalDate`, `borrowCount : int`
+- **Current subclasses:** `Book`, `Magazine`
+- **Possible subclasses:** `DVD`, `Audiobook`, `EBook`, `ReferenceBook`, `Textbook`, `ComicBook`
+
+### Book
+- **Current fields:** `author : String`, `isbn : String`
+- **Possible extensions:** `publisher : String`, `publicationYear : int`, `numberOfPages : int`, `language : String`, `edition : int`, `isHardcover : boolean`
+
+### Magazine
+- **Current fields:** `issueNumber : int`, `year : int`
+- **Possible extensions:** `publisher : String`, `month : int`, `volume : int`, `isPeriodical : boolean`
+
+### Borrower
+- **Current fields:** `borrowerId : String`, `name : String`, `email : String`, `phoneNumber : String`
+- **Possible extensions:** `address : String`, `dateOfBirth : LocalDate`, `registrationDate : LocalDate`, `maxBorrowLimit : int`, `currentBorrowedCount : int`, `membershipType : String`
+
 

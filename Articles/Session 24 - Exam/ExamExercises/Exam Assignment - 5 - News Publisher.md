@@ -104,4 +104,40 @@ classDiagram
 - Investigations require minimum 5 years experience
 - Use `java.time.LocalDateTime` for publish dates and `java.time.LocalDate` for subscriptions
 
+## Extensions:
+
+### NewsPublisher
+- **Current fields:** `publisherName : String`, `foundedYear : int`
+- **Possible extensions:** `headquarters : String`, `totalArticles : int`, `monthlySubscribers : int`, `revenue : double`, `editorialPolicy : String`, `awards : ArrayList<String>`
+
+### Article
+- **Current fields:** `articleId : int`, `headline : String`, `content : String`, `category : String`, `publishDate : LocalDateTime`, `views : int`, `likes : int`
+- **Possible extensions:** `subtitle : String`, `tags : ArrayList<String>`, `readingTime : int`, `imageUrl : String`, `videoUrl : String`, `comments : ArrayList<String>`, `shares : int`, `bookmarks : int`
+- **Current subclasses:** `NewsArticle`, `OpinionPiece`, `Investigation`
+- **Possible subclasses:** `FeatureArticle`, `Review`, `Interview`, `Editorial`, `Column`, `PhotoEssay`, `VideoArticle`
+
+### NewsArticle
+- **Current fields:** `location : String`, `isBreakingNews : boolean`
+- **Possible extensions:** `source : String`, `verified : boolean`, `updateCount : int`, `relatedArticles : ArrayList<Article>`
+
+### OpinionPiece
+- **Current fields:** `author : String`, `stance : String`
+- **Possible extensions:** `argumentStrength : int`, `opposingViews : ArrayList<String>`, `citationCount : int`
+
+### Investigation
+- **Current fields:** `researchDuration : int`, `sources : ArrayList<String>`
+- **Possible extensions:** `budget : double`, `teamSize : int`, `awardsWon : ArrayList<String>`, `impact : String`, `followUpArticles : ArrayList<Article>`
+
+### Journalist
+- **Current fields:** `journalistId : int`, `name : String`, `specialization : String`, `experience : int`
+- **Possible extensions:** `email : String`, `phoneNumber : String`, `awards : ArrayList<String>`, `articlesPublished : int`, `beat : String`, `socialMedia : ArrayList<String>`, `education : String`
+
+### Editor
+- **Current fields:** `editorId : int`, `name : String`, `department : String`
+- **Possible extensions:** `email : String`, `yearsExperience : int`, `articlesEdited : int`, `teamSize : int`, `budget : double`, `specialization : String`
+
+### Subscription
+- **Current fields:** `subscriptionId : int`, `subscriberName : String`, `subscriberEmail : String`, `startDate : LocalDate`, `endDate : LocalDate`, `tier : String`
+- **Possible extensions:** `paymentMethod : String`, `autoRenew : boolean`, `articlesReadThisMonth : int`, `preferredCategories : ArrayList<String>`, `newsletterSubscribed : boolean`, `discountCode : String`
+
 

@@ -140,4 +140,48 @@ classDiagram
 - Minimum 2 quality checks per batch required
 - Use `java.time.LocalDate` for dates
 
+## Extensions:
+
+### Brewery
+- **Current fields:** `breweryName : String`, `location : String`, `foundedDate : LocalDate`, `capacity : int`
+- **Possible extensions:** `owner : String`, `employeeCount : int`, `annualProduction : double`, `awards : ArrayList<String>`, `website : String`, `socialMedia : ArrayList<String>`, `toursAvailable : boolean`
+
+### Beer
+- **Current fields:** `beerId : int`, `name : String`, `style : String`, `abv : double`, `ibu : int`, `description : String`
+- **Possible extensions:** `color : String`, `servingTemperature : int`, `glassware : String`, `foodPairings : ArrayList<String>`, `awards : ArrayList<String>`, `seasonal : boolean`, `limitedEdition : boolean`
+- **Current subclasses:** `Lager`, `Ale`, `Stout`, `IPA`
+- **Possible subclasses:** `Pilsner`, `WheatBeer`, `Porter`, `SourBeer`, `BelgianAle`, `BarleyWine`, `Saison`
+
+### Lager
+- **Current fields:** `fermentationTemp : int`, `lagingPeriod : int`
+- **Possible extensions:** `yeastStrain : String`, `clarity : String`, `carbonationLevel : int`
+
+### Ale
+- **Current fields:** `fermentationStyle : String`, `hopVariety : String`
+- **Possible extensions:** `yeastType : String`, `maltProfile : String`, `bitternessLevel : int`
+
+### Stout
+- **Current fields:** `roastLevel : int`, `addedFlavors : String`
+- **Possible extensions:** `chocolateNotes : boolean`, `coffeeNotes : boolean`, `nitrogenated : boolean`, `viscosity : String`
+
+### IPA
+- **Current fields:** `hopIntensity : int`, `ipaStyle : String`
+- **Possible extensions:** `hopVarieties : ArrayList<String>`, `dryHopped : boolean`, `hazy : boolean`, `alcoholContent : double`
+
+### Batch
+- **Current fields:** `batchId : int`, `beer : Beer`, `brewDate : LocalDate`, `volumeLiters : double`, `status : String`, `expectedCompletionDate : LocalDate`
+- **Possible extensions:** `actualCompletionDate : LocalDate`, `brewer : String`, `equipmentUsed : ArrayList<String>`, `notes : String`, `wastePercentage : double`, `productionCost : double`
+
+### Ingredient
+- **Current fields:** `ingredientId : int`, `name : String`, `type : String`, `quantity : double`, `unit : String`, `costPerUnit : double`
+- **Possible extensions:** `supplier : String`, `origin : String`, `qualityGrade : String`, `expirationDate : LocalDate`, `storageConditions : String`
+
+### Sale
+- **Current fields:** `saleId : int`, `beer : Beer`, `saleDate : LocalDate`, `volumeSold : double`, `customer : String`, `saleType : String`
+- **Possible extensions:** `unitPrice : double`, `discount : double`, `paymentMethod : String`, `invoiceNumber : String`, `deliveryAddress : String`, `orderStatus : String`
+
+### QualityCheck
+- **Current fields:** `checkId : int`, `batch : Batch`, `checkDate : LocalDate`, `specificGravity : double`, `ph : double`, `passed : boolean`, `notes : String`
+- **Possible extensions:** `inspector : String`, `temperature : double`, `color : String`, `aroma : String`, `taste : String`, `clarity : String`, `recommendations : String`
+
 

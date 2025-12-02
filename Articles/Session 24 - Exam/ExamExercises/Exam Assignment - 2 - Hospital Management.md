@@ -90,3 +90,35 @@ classDiagram
 - Orthopedic doctors earn 800,000 kr per year base salary + 50,000 kr per year of experience
 - Anesthesiologists earn 900,000 kr per year base salary + 60,000 kr per year of experience
 - Endocrinologists earn 750,000 kr per year base salary + 45,000 kr per year of experience, and an extra bonus of 10,000 per 5 years of experience
+
+## Extensions:
+
+### OperatingSchedule
+- **Current fields:** `scheduleDate : LocalDate`, `operatingRoom : String`
+- **Possible extensions:** `shift : String`, `supervisor : String`, `availableSlots : int`, `equipmentRequired : ArrayList<String>`, `notes : String`
+
+### Operation
+- **Current fields:** `operationType : String`, `startTime : String`, `durationMinutes : int`
+- **Possible extensions:** `endTime : String`, `priority : String`, `anesthesiaType : String`, `estimatedCost : double`, `status : String`, `complications : String`
+
+### Patient
+- **Current fields:** `name : String`, `dateOfBirth : LocalDate`, `bloodType : String`, `allergies : String`
+- **Possible extensions:** `patientId : String`, `address : String`, `phoneNumber : String`, `emergencyContact : String`, `medicalHistory : ArrayList<String>`, `insuranceNumber : String`, `gender : String`
+
+### Doctor (abstract)
+- **Current fields:** `doctorId : int`, `name : String`, `licenseNumber : String`, `yearsExperience : int` (protected)
+- **Possible extensions:** `email : String`, `phoneNumber : String`, `department : String`, `specialization : String`, `schedule : ArrayList<LocalDate>`, `maxOperationsPerDay : int`
+- **Current subclasses:** `Orthopedic`, `Anesthesiologist`, `Endocrinologist`
+- **Possible subclasses:** `Cardiologist`, `Neurologist`, `Pediatrician`, `Surgeon`, `Radiologist`, `Dermatologist`, `Oncologist`
+
+### Orthopedic
+- **Current fields:** `surgerySpecialty : String`
+- **Possible extensions:** `certifications : ArrayList<String>`, `surgeriesPerformed : int`, `successRate : double`
+
+### Anesthesiologist
+- **Current fields:** `certifications : String`
+- **Possible extensions:** `anesthesiaTypes : ArrayList<String>`, `casesHandled : int`, `emergencyAvailability : boolean`
+
+### Endocrinologist
+- **Current fields:** `hormonalDisorders : String`
+- **Possible extensions:** `researchAreas : ArrayList<String>`, `patientLoad : int`, `clinicDays : ArrayList<String>`
