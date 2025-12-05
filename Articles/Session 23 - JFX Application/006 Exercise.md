@@ -338,10 +338,6 @@ classDiagram
     
     class ListDataManager {
         - data : DataContainer
-        + addPlanet(Planet planet) void
-        + getAllPlanets() List~Planet~
-        + getPlanetByName(String name) Planet
-        + deletePlanet(Planet planet) void
     }
     
     class DataContainer {
@@ -459,11 +455,11 @@ Create a `ViewPlanets.fxml` file. It could look like this:
 │  ┌─────────────────────────────────────────────────┐       │
 │  │ Name    │ Climate    │ Distance │ Atmos. │ Life │       │
 │  ├─────────┼────────────┼──────────┼────────┼──────┤       │
-│  │ Earth   │ Temperate  │ 1.0 AU   │   ✓    │  ✓   │      │
+│  │ Earth   │ Temperate  │ 1.0 AU   │   ✓    │  ✓  │       │
 │  ├─────────┼────────────┼──────────┼────────┼──────┤       │
-│  │ Mars    │ Cold/Dry   │ 1.52 AU  │   ✓    │  ✗   │      │
+│  │ Mars    │ Cold/Dry   │ 1.52 AU  │   ✓    │  ✗  │       │
 │  ├─────────┼────────────┼──────────┼────────┼──────┤       │
-│  │ Venus   │ Hot        │ 0.72 AU  │   ✓    │  ✗   │      │
+│  │ Venus   │ Hot        │ 0.72 AU  │   ✓    │  ✗  │       │
 │  └─────────┴────────────┴──────────┴────────┴──────┘       │
 │                                                            │
 │                    ┌──────────┐                            │
