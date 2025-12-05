@@ -140,10 +140,6 @@ classDiagram
     
     class ListDataManager {
         - data : DataContainer
-        + addPlanet(Planet planet) void
-        + getAllPlanets() List~Planet~
-        + getPlanetByName(String name) Planet
-        + deletePlanet(Planet planet) void
     }
     
     class DataContainer {
