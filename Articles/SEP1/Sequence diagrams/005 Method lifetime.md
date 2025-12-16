@@ -8,7 +8,7 @@ This is represented by a vertical box on a class' dashed, vertical line.
 - `MyClass` is active during the entire sequence, it's box is the longest, spanning all other boxes (there is only one other box)
 - `OtherClass:otherClass` is only active while executing `someMethod()`. Notice how this vertical box is shorter than the one for `MyClass`. 
 
-![Method lifetime](Resources/MethodLifetime.svg)
+![Method lifetime](Resources/MethodLifeTime.svg)
 
 So, this diagram shows that the first thing that happens is that `MyClass` calls `otherClass.someMethod()` (solid arrow).\
 Then, `otherClass` is active, and `someMethod()` is executed (activation bar).\
