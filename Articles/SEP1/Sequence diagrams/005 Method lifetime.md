@@ -10,6 +10,8 @@ This is represented by a vertical box on a class' dashed, vertical line.
 
 ![Method lifetime](Resources/MethodLifeTime.svg)
 
+![Method lifetime](Resources/MethodLifeTime%20copy.svg)
+
 So, this diagram shows that the first thing that happens is that `MyClass` calls `otherClass.someMethod()` (solid arrow).\
 Then, `otherClass` is active, and `someMethod()` is executed (activation bar).\
 Eventually, `someMethod()` is finished, and execution continues in `MyClass` (the dashed arrow).\
