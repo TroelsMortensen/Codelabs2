@@ -15,7 +15,6 @@ public class Explorer
     
     public Explorer(String name, Spacecraft spacecraft) 
     {
-        this.id = nextId++;
         this.name = name;
         this.spacecraft = spacecraft;
     }

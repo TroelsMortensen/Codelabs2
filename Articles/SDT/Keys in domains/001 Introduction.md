@@ -2,7 +2,9 @@
 
 When building software systems, we create objects that represent real-world things. These are commonly called domain entities. 
 
-> An entity is a key concept or "thing" in the problem domain that has distinct identity and attributes. Entities become classes in your domain model. Examples: `Book`, `Member`, `Loan`, `Author`. Each entity has attributes (properties) like `Book` has `title`, `ISBN`, and `author`.
+> An entity is a key concept or "thing" in the problem domain that has distinct identity and attributes. Entities become classes in your domain model. 
+> 
+> Examples: `Book`, `Member`, `Loan`, `Author`. Each entity has attributes (properties) like `Book` has `title`, `ISBN`, and `author`.
 > 
 > An entity is uniquely identifiable, usually by an identifier, i.e. some ID attribute.
 > 
