@@ -203,6 +203,15 @@ public partial class Home : ComponentBase
                         //     [
                         //     ])
                     ]
+                ),
+                new Course("SDT", "#FFA756",
+                    [
+                        new Session(1, "Learning paths",
+                            [
+                                new LearningPath("Keys in the domain model", "SDT/Keys in domains")
+                            ]
+                        )
+                    ]
                 )
             ]
         );
