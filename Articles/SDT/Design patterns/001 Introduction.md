@@ -27,3 +27,4 @@ The concept of design patterns in software was popularized by the "Gang of Four"
 This book cataloged 23 common design patterns and established a vocabulary that software developers around the world now use to communicate design ideas.
 
 Over the last 30 years, many more design patterns have been discovered, and many more books have been written about them.
+
