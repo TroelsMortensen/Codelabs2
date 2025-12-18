@@ -206,7 +206,12 @@ public partial class Home : ComponentBase
                 ),
                 new Course("SDT", "#FFA756",
                     [
-                        new Session(1, "Learning paths",
+                        new Session(1, "Assignments",
+                            [
+                                new LearningPath("Assignment 1", "SDT/Assignments/Assignment1")
+                            ]
+                        ),
+                        new Session(2, "Learning paths",
                             [
                                 new LearningPath("Keys in the domain model", "SDT/Keys in domains")
                             ]
