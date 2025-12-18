@@ -213,7 +213,8 @@ public partial class Home : ComponentBase
                         ),
                         new Session(2, "Learning paths",
                             [
-                                new LearningPath("Keys in the domain model", "SDT/Keys in domains")
+                                new LearningPath("Keys in the domain model", "SDT/Keys in domains"),
+                                new LearningPath("Data Transfer Objects", "SDT/DTOs"),
                             ]
                         )
                     ]
