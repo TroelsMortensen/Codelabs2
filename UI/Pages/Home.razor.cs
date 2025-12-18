@@ -214,7 +214,7 @@ public partial class Home : ComponentBase
                         new Session(2, "Learning paths",
                             [
                                 new LearningPath("Keys in the domain model", "SDT/Keys in domains"),
-                                new LearningPath("Design Patterns", "SDT/Design patterns"),
+                                new LearningPath("Design Patterns", "SDT/What are Design Patterns"),
                                 new LearningPath("Design Principles", "SDT/Design Principles"),
                                 new LearningPath("Data Transfer Objects", "SDT/DTOs"),
                                 new LearningPath("Records",  "SDT/Records"),
