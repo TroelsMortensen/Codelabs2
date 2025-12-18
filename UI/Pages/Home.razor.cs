@@ -215,6 +215,7 @@ public partial class Home : ComponentBase
                             [
                                 new LearningPath("Keys in the domain model", "SDT/Keys in domains"),
                                 new LearningPath("Design Patterns", "SDT/Design Patterns"),
+                                new LearningPath("Design Patterns", "SDT/Design Principles"),
                                 new LearningPath("Data Transfer Objects", "SDT/DTOs"),
                                 new LearningPath("Records",  "SDT/Records"),
                             ]
