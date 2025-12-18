@@ -62,7 +62,6 @@ classDiagram
     Portfolio "1" -- "*" Transaction : includes >
     Stock "1" -- "*" StockPriceHistory
 ```
-/* End of Selection */
 
 
 ## Task
