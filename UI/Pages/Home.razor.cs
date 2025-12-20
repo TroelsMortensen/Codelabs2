@@ -217,7 +217,7 @@ public partial class Home : ComponentBase
                                 new LearningPath("Design Patterns", "SDT/What are Design Patterns"),
                                 new LearningPath("Design Principles", "SDT/Design Principles"),
                                 new LearningPath("Mountains and Islands", "SDT/Mountains and Islands"),
-                                new LearningPath("Table of Contents Principle", "SDT/Table of Contents Principle"),
+                                new LearningPath("The Orchestrator Principle", "SDT/The Orchestrator Principle"),
                                 new LearningPath("Data Transfer Objects", "SDT/DTOs"),
                                 new LearningPath("Records",  "SDT/Records"),
                             ]

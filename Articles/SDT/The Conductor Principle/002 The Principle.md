@@ -1,6 +1,6 @@
 # The Principle
 
-Let's dive deeper into what the "Table of Contents" principle means and how to apply it.
+Let's dive deeper into what the "Orchestrator" principle means and how to apply it.
 
 ## The Rule
 
@@ -66,25 +66,9 @@ private void sendConfirmationEmail(Order order) {
 
 **Solution:** You can read `processOrder` and understand the entire business logic without looking at helper definitions. Control is maintained at the top level.
 
-## The Table of Contents Metaphor
+## The Orchestrator Metaphor
 
-A table of contents in a book:
-- Lists all chapters in order
-- Shows the flow of the book
-- Doesn't contain the text of the chapters
-- Tells you what happens, not how it happens
-
-Similarly, an orchestrated method:
-- Lists all steps in order
-- Shows the flow of the operation
-- Doesn't contain all the implementation details
-- Tells you what happens, with details in helper methods
-
-**Slogan:** *Read the steps, not the details.*
-
-## The Conductor Metaphor
-
-A conductor in an orchestra:
+An orchestrator (conductor) in an orchestra:
 - Coordinates when different sections play
 - Maintains control of the tempo and sequence
 - Doesn't play the instruments themselves
@@ -97,6 +81,26 @@ Similarly, an orchestrating method:
 - Can see and control the entire flow
 
 **Slogan:** *Don't let the violin tell the drums when to start.*
+
+## The Conductor Metaphor (Alternative)
+
+The term "conductor" is often used interchangeably with "orchestrator" - both refer to the person who coordinates the orchestra. The orchestrator metaphor emphasizes the active coordination and sequencing of operations.
+
+## The Table of Contents Metaphor (Alternative)
+
+A table of contents in a book:
+- Lists all chapters in order
+- Shows the flow of the book
+- Doesn't contain the text of the chapters
+- Tells you what happens, in which order, but not how it happens
+
+Similarly, an orchestrated method:
+- Lists all steps in order
+- Shows the flow of the operation
+- Doesn't contain all the implementation details
+- Tells you what happens, with details in helper methods
+
+**Slogan:** *Read the steps, not the details.*
 
 ## Hub-and-Spoke Model
 
@@ -152,7 +156,7 @@ Method D (Level 3)
 
 ## Relationship to Single Responsibility Principle
 
-The Table of Contents principle aligns with SRP:
+The Orchestrator principle aligns with SRP:
 
 - **Orchestrator** = Coordinates the sequence (one responsibility)
 - **Helper methods** = Do one specific task (one responsibility each)
@@ -199,7 +203,7 @@ However, even in these cases, orchestration is often clearer.
 - **Rule:** High-level method should be a Coordinator, not a link in a chain
 - **Orchestration:** Coordinator maintains control and visibility
 - **Chaining:** Methods pass control down, losing visibility
-- **Metaphors:** Table of Contents, Conductor, Hub-and-Spoke
+- **Metaphors:** Orchestrator, Conductor, Table of Contents, Hub-and-Spoke
 - **Goal:** Shallow stacks, visible flow, maintainable control
 
 Next, we'll examine what chaining looks like in practice and the problems it causes.

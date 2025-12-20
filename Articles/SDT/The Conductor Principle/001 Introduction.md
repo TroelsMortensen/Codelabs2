@@ -1,10 +1,18 @@
-# Introduction to the Table of Contents Principle
+# Introduction to the Orchestrator Principle
 
-Welcome to the "Table of Contents" design principle! This principle addresses a common pitfall that occurs when refactoring code - trading one problem for another.
+Welcome to the "Orchestrator" design principle! This principle addresses a common pitfall that occurs when refactoring code - trading one problem for another.
 
-## What is the "Table of Contents" Principle?
+**Other names**\
+I am not sure this principle has a formal name, or maybe there are many. Alternatives you might encounter are:
+* **Orchestrator**
+* **Conductor**
+* **Coordinator**
+* **Table of Contents**
+* **Flow Coordinator**
 
-The **"Table of Contents"** principle states that a high-level method should be a **Coordinator** (orchestrator), not a link in a chain. It should look like a table of contents for the operation - showing the flow of logic at the surface while delegating details to helper methods.
+## What is the "Orchestrator" Principle?
+
+The **"Orchestrator"** principle states that a high-level method should be an **Orchestrator** (coordinator) of method calls, not a link in a chain of method calls. It should orchestrate operations like a conductor orchestrates an orchestra - showing the flow of logic at the surface while delegating details to helper methods. Or a high-level overview of the algorithm.
 
 ## The Problem: Trading Mountains for Rabbit Holes
 
@@ -12,11 +20,13 @@ When developers break up a "Mountain" method (deeply nested code), they often ju
 
 To understand what `Method A` ultimately achieves, you have to jump down four levels of abstraction. You've traded a mountain for a deep, dark cave - a **"Rabbit Hole"**.
 
+I called this "the swim" in the Mountains and Islands learning path. You start on Island 1, and swim to Island 2, and so on, until you reach the end.
+
 ## The Core Philosophy
 
 **Orchestration over Chaining.**
 
-A high-level method should coordinate operations like a conductor coordinates an orchestra. It keeps the flow of logic at the surface, delegating details to helper methods but retaining control of the sequence.
+A high-level method should coordinate operations like a conductor coordinates an orchestra. It keeps the flow of logic at the surface (the top level method), delegating details to helper methods but retaining control of the sequence.
 
 ## Visual Metaphors
 
@@ -32,17 +42,17 @@ When methods chain together, it's like a line of falling dominoes:
 
 You push the first one (call Method A), and you lose control until the last one falls. You can't see what will happen until you follow the entire chain.
 
-### Orchestration (Good): The Conductor
+### Orchestration (Good): The Orchestrator
 
-When methods are orchestrated, it's like a conductor in front of an orchestra:
+When methods are orchestrated, it's like an orchestrator (conductor) in front of an orchestra:
 
 ```
-        [Orchestrator Method]
-              /    |    \
+          [Orchestrator Method]
+           ↓         ↓      ↓
         [Violins] [Brass] [Percussion]
 ```
 
-The conductor points to the violins, then the brass, then the percussion. The violins do not tell the brass when to play. The orchestrator maintains control and visibility of the entire sequence.
+The orchestrator points to the violins, then the brass, then the percussion. The violins do not tell the brass when to play. The orchestrator maintains control and visibility of the entire sequence.
 
 ## Connection to Mountains and Islands
 
@@ -73,7 +83,7 @@ Chaining methods creates several problems:
 By the end of this learning path, you'll be able to:
 
 - Recognize "chaining" code (the rabbit hole)
-- Transform chains into orchestrated code (table of contents)
+- Transform chains into orchestrated code (orchestrator pattern)
 - Write high-level methods that coordinate operations
 - Maintain control and visibility of the flow
 - Write code that's easier to test and understand
@@ -84,7 +94,7 @@ In this learning path, we'll explore:
 
 1. **The Principle** - Understanding orchestration vs chaining
 2. **Chaining** - Recognizing the rabbit hole problem
-3. **Orchestration** - Learning the table of contents structure
+3. **Orchestration** - Learning the orchestrator structure
 4. **Example** - Seeing a real-world transformation
 
 Let's begin by understanding the principle in more detail.

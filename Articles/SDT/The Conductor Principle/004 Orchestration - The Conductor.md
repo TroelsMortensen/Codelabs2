@@ -1,6 +1,6 @@
-# Orchestration - The Table of Contents
+# Orchestration - The Orchestrator
 
-Now let's learn how to transform chains into orchestrated code - code that reads like a table of contents.
+Now let's learn how to transform chains into orchestrated code - code that orchestrates operations like an orchestrator coordinates an orchestra.
 
 ## What is Orchestration?
 
@@ -8,9 +8,9 @@ Now let's learn how to transform chains into orchestrated code - code that reads
 
 The orchestrator maintains control and visibility of the entire sequence.
 
-## The Visual: The Conductor
+## The Visual: The Orchestrator
 
-Orchestration is like a conductor in front of an orchestra:
+Orchestration is like an orchestrator (conductor) in front of an orchestra:
 
 ```
         [Orchestrator Method]
@@ -18,7 +18,7 @@ Orchestration is like a conductor in front of an orchestra:
         [Violins] [Brass] [Percussion]
 ```
 
-The conductor:
+The orchestrator:
 - Points to the violins (calls helper method)
 - Waits for them to finish (gets return value)
 - Points to the brass (calls next helper)
@@ -26,7 +26,7 @@ The conductor:
 
 The violins do not tell the brass when to play. The orchestrator coordinates everything.
 
-## Example: The Table of Contents
+## Example: The Orchestrator
 
 Here's the same operation, but orchestrated:
 
@@ -60,15 +60,15 @@ private void sendConfirmationEmail(Order order) {
 }
 ```
 
-## The Table of Contents Structure
+## The Orchestrator Structure
 
-When you read `processOrder()`, it's like reading a table of contents:
+When you read `processOrder()`, it's like watching an orchestrator coordinate an orchestra:
 
-1. **Validation** - Check if order is valid
-2. **Persistence** - Save the order
-3. **Notification** - Send confirmation email
+1. **Validation** - Check if order is valid (orchestrator points to violins)
+2. **Persistence** - Save the order (orchestrator points to brass)
+3. **Notification** - Send confirmation email (orchestrator points to percussion)
 
-You can see the entire flow without looking at the helper methods. The helpers contain the details, but the orchestrator shows the structure.
+You can see the entire flow without looking at the helper methods. The helpers contain the details, but the orchestrator shows the structure and sequence.
 
 ## Techniques for Orchestration
 
@@ -301,7 +301,7 @@ private void logRegistration(User user) {
 - Can see the full flow without reading helpers
 - No hidden side effects
 
-## The Table of Contents Metaphor
+## The Table of Contents Metaphor (Alternative)
 
 Like a table of contents in a book:
 - **Lists chapters in order** - Shows steps in sequence
@@ -309,7 +309,7 @@ Like a table of contents in a book:
 - **Doesn't contain details** - Details are in helper methods
 - **Easy to navigate** - You know where to find what you need
 
-The orchestrator method is your table of contents - it shows you the structure without burying you in details.
+The orchestrator method is like a table of contents - it shows you the structure without burying you in details. The orchestrator metaphor best captures the active coordination and sequencing aspect of the principle.
 
 ## Summary
 

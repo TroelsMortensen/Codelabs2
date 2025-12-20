@@ -1,6 +1,6 @@
 # Example - Order Processing
 
-Let's see a complete example of transforming a chain (rabbit hole) into orchestrated code (table of contents).
+Let's see a complete example of transforming a chain (rabbit hole) into orchestrated code (orchestrator pattern).
 
 ## The Chain (Violation)
 
@@ -101,15 +101,15 @@ private void sendConfirmationEmail(Order order) {
 4. **No hidden side effects** - Each method does exactly what its name says
 5. **Maintains control** - Can stop, add logic, or handle errors between steps
 
-### The Table of Contents
+### The Orchestrator Pattern
 
-When you read `processOrder()`, it's like reading a table of contents:
+When you read `processOrder()`, it's like watching an orchestrator coordinate an orchestra:
 
-1. **Validation** - Check if order is valid
-2. **Persistence** - Save the order
-3. **Notification** - Send confirmation email
+1. **Validation** - Check if order is valid (orchestrator points to first section)
+2. **Persistence** - Save the order (orchestrator points to next section)
+3. **Notification** - Send confirmation email (orchestrator points to final section)
 
-You can see the entire flow without looking at helper methods!
+You can see the entire flow without looking at helper methods! The orchestrator coordinates the sequence.
 
 ### The Call Stack
 
@@ -205,7 +205,7 @@ This creates the orchestrator - all steps visible, control maintained.
 - **Control:** Maintained at top level
 - **Testability:** Easy - can test each step independently
 - **Side effects:** Explicit in orchestrator
-- **Readability:** Excellent - reads like table of contents
+- **Readability:** Excellent - reads like orchestrator coordinating sections
 
 ## The Swim (Connection to Mountains and Islands)
 
@@ -305,7 +305,7 @@ This example demonstrates:
 - **Improving testability** through isolation
 - **Maintaining control** at the surface level
 
-The code went from a deep rabbit hole to a clear table of contents. You can see the entire flow at the top level, and each step can be tested and understood independently.
+The code went from a deep rabbit hole to a clear orchestrator pattern. You can see the entire flow at the top level, and each step can be tested and understood independently.
 
 ## Connection to Mountains and Islands
 
@@ -322,5 +322,5 @@ Together, these principles help you create code that is:
 - **Testable** (isolated steps)
 - **Maintainable** (clear flow)
 
-Remember: **Keep your code at the surface. Make table of contents, not rabbit holes!**
+Remember: **Keep your code at the surface. Be an orchestrator, not a chain link!**
 
