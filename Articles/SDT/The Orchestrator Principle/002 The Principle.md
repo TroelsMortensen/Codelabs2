@@ -82,77 +82,7 @@ Similarly, an orchestrating method:
 
 **Slogan:** *Don't let the violin tell the drums when to start.*
 
-## The Conductor Metaphor (Alternative)
 
-The term "conductor" is often used interchangeably with "orchestrator" - both refer to the person who coordinates the orchestra. The orchestrator metaphor emphasizes the active coordination and sequencing of operations.
-
-## The Table of Contents Metaphor (Alternative)
-
-A table of contents in a book:
-- Lists all chapters in order
-- Shows the flow of the book
-- Doesn't contain the text of the chapters
-- Tells you what happens, in which order, but not how it happens
-
-Similarly, an orchestrated method:
-- Lists all steps in order
-- Shows the flow of the operation
-- Doesn't contain all the implementation details
-- Tells you what happens, with details in helper methods
-
-**Slogan:** *Read the steps, not the details.*
-
-## Hub-and-Spoke Model
-
-Think of the main method as a **Hub** and helper methods as **Spokes**:
-
-```
-        [Hub: Orchestrator Method]
-              /    |    \
-        [Spoke 1] [Spoke 2] [Spoke 3]
-              \    |    /
-        [Hub: Returns control]
-```
-
-Data travels:
-- **Out** to a spoke (call helper method)
-- **Back** to the hub (return from helper)
-- **Out** to next spoke (call next helper)
-
-Rather than:
-- Spoke to spoke to spoke (chaining)
-
-**Slogan:** *Centralize the flow, distribute the work.*
-
-## Shallow Stack Principle
-
-"Mountains" create high vertical complexity (deep nesting). "Chains" create deep stack complexity (deep call stacks).
-
-This principle argues for keeping the call stack shallow by returning to the surface after every operation:
-
-```
-Orchestrator (Level 0)
-  ↓
-Helper A (Level 1) → return to Orchestrator
-  ↓
-Helper B (Level 1) → return to Orchestrator
-  ↓
-Helper C (Level 1) → return to Orchestrator
-```
-
-Instead of:
-
-```
-Method A (Level 0)
-  ↓
-Method B (Level 1)
-  ↓
-Method C (Level 2)
-  ↓
-Method D (Level 3)
-```
-
-**Slogan:** *Dive down, do the work, come up for air.*
 
 ## Relationship to Single Responsibility Principle
 
@@ -172,15 +102,6 @@ Use orchestration when:
 - You need to make decisions between steps
 - You want to test steps independently
 
-## When Chaining Might Be Acceptable
-
-Chaining can be acceptable when:
-- Operations are truly independent and composable
-- The chain is short (2-3 methods max)
-- Each method is a pure transformation (no side effects)
-- The flow is obvious from method names
-
-However, even in these cases, orchestration is often clearer.
 
 ## Key Characteristics
 

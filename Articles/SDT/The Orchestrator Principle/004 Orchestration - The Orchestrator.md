@@ -8,24 +8,6 @@ Now let's learn how to transform chains into orchestrated code - code that orche
 
 The orchestrator maintains control and visibility of the entire sequence.
 
-## The Visual: The Orchestrator
-
-Orchestration is like an orchestrator (conductor) in front of an orchestra:
-
-```
-        [Orchestrator Method]
-              /    |    \
-        [Violins] [Brass] [Percussion]
-```
-
-The orchestrator:
-- Points to the violins (calls helper method)
-- Waits for them to finish (gets return value)
-- Points to the brass (calls next helper)
-- Maintains control of the tempo and sequence
-
-The violins do not tell the brass when to play. The orchestrator coordinates everything.
-
 ## Example: The Orchestrator
 
 Here's the same operation, but orchestrated:
@@ -94,7 +76,7 @@ All steps are visible at the top level.
 
 ### 2. Helper Methods Are "Leaf Nodes"
 
-Helper methods do one thing and return:
+Helper methods do one thing and return. They do not call further helper methods (ideally):
 
 ```java
 private boolean validate(Order order) {
@@ -109,8 +91,6 @@ private void sendEmail(Order order) {
     emailService.send(order);  // One thing: send email
 }
 ```
-
-They don't call other helpers. They're "leaf nodes" in the call tree.
 
 ### 3. Return to Orchestrator After Each Operation
 
@@ -244,55 +224,7 @@ processOrder()        (Level 0)
 
 Each helper returns to the orchestrator, keeping the stack shallow.
 
-## Connection to Mountains and Islands
 
-If we use the topographical map analogy from the Mountains and Islands principle:
-
-**Orchestration is a Helicopter View:**
-- You hover above the archipelago (the orchestrator)
-- You dip down to Island A to pick up a package (call helper)
-- You fly back up to the sky (return to orchestrator)
-- You dip down to Island B to drop it off (call next helper)
-- You always return to the "Sky" (the orchestrator) between tasks
-
-You maintain a high-level view while performing detailed work.
-
-## Real-World Example
-
-Here's the same user registration, but orchestrated:
-
-```java
-public void handleUserRegistration(String username, String email, String password) {
-    // Step 1: Create user
-    User user = createUser(username, email, password);
-    
-    // Step 2: Save user
-    User savedUser = saveUser(user);
-    
-    // Step 3: Send welcome email
-    sendWelcomeEmail(savedUser);
-    
-    // Step 4: Log registration
-    logRegistration(savedUser);
-}
-
-// Leaf nodes - one thing each
-private User createUser(String username, String email, String password) {
-    return new User(username, email, password);
-}
-
-private User saveUser(User user) {
-    return userRepository.save(user);
-}
-
-private void sendWelcomeEmail(User user) {
-    emailService.send(user);
-}
-
-private void logRegistration(User user) {
-    logger.log("User registered: " + user.getUsername());
-}
-```
 
 **Benefits:**
 - `handleUserRegistration()` shows all 4 steps clearly
@@ -301,15 +233,7 @@ private void logRegistration(User user) {
 - Can see the full flow without reading helpers
 - No hidden side effects
 
-## The Table of Contents Metaphor (Alternative)
 
-Like a table of contents in a book:
-- **Lists chapters in order** - Shows steps in sequence
-- **Shows the flow** - Tells you what happens
-- **Doesn't contain details** - Details are in helper methods
-- **Easy to navigate** - You know where to find what you need
-
-The orchestrator method is like a table of contents - it shows you the structure without burying you in details. The orchestrator metaphor best captures the active coordination and sequencing aspect of the principle.
 
 ## Summary
 

@@ -95,7 +95,7 @@ In this learning path, we'll explore:
 1. **The Principle** - Understanding orchestration vs chaining
 2. **Chaining** - Recognizing the rabbit hole problem
 3. **Orchestration** - Learning the orchestrator structure
-4. **Example** - Seeing a real-world transformation
+4. **Example** - Seeing an example of a transformation
 
 Let's begin by understanding the principle in more detail.
 

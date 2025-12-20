@@ -2,27 +2,7 @@
 
 Let's examine what "chaining" looks like in code and understand why it creates a "Rabbit Hole" problem.
 
-## What is Chaining?
 
-**Chaining** occurs when methods call each other in sequence, passing control down a chain:
-
-```java
-Method A → calls → Method B → calls → Method C → calls → Method D
-```
-
-To understand what `Method A` does, you must follow the entire chain down to `Method D`. This is like falling down a rabbit hole - you keep going deeper and deeper.
-
-## The Visual: Falling Dominoes
-
-Chaining is like a line of falling dominoes:
-
-```
-[Method A] → [Method B] → [Method C] → [Method D]
-    ↓           ↓           ↓           ↓
-  Push        Falls       Falls       Falls
-```
-
-You push the first one (call Method A), and you lose control until the last one falls. You can't see what will happen until you follow the entire chain.
 
 ## Example: The Rabbit Hole
 
@@ -66,7 +46,7 @@ You've fallen down a rabbit hole - three levels deep just to understand what `pr
 
 ## Problems Caused by Chaining
 
-### 1. Temporal Coupling
+### 1. Hidden Temporal Coupling
 
 **Temporal coupling** means methods depend on being called in a specific order, but this dependency is hidden in the chain.
 
@@ -95,7 +75,7 @@ You can't test validation without:
 - Setting up an email service
 - Dealing with side effects
 
-### 3. Hidden Side Effects
+### 3. Hidden Side Effects 
 
 A method that looks innocent might trigger unexpected side effects:
 
@@ -152,78 +132,6 @@ To understand the complete operation, you must:
 - Understand how they connect
 
 This is mentally exhausting!
-
-## Connection to Mountains and Islands
-
-If we use the topographical map analogy from the Mountains and Islands principle:
-
-**Chaining is "Island Hopping":**
-- You swim to Island A
-- Once there, you find a map telling you to swim to Island B
-- On Island B, you find a map telling you to swim to Island C
-- You can't see the destination from the start
-- You must visit each island to know where to go next
-
-This is like following a chain of method calls - you can't see the full journey until you've made it.
-
-## Real-World Example
-
-Here's another common chaining pattern:
-
-```java
-public void handleUserRegistration(String username, String email, String password) {
-    createUser(username, email, password);
-}
-
-private void createUser(String username, String email, String password) {
-    User user = new User(username, email, password);
-    saveUser(user);
-}
-
-private void saveUser(User user) {
-    userRepository.save(user);
-    sendWelcomeEmail(user);  // Hidden side effect!
-    logRegistration(user);   // Another hidden side effect!
-}
-
-private void sendWelcomeEmail(User user) {
-    emailService.send(user);
-}
-
-private void logRegistration(User user) {
-    logger.log("User registered: " + user.getUsername());
-}
-```
-
-**Problems:**
-- `handleUserRegistration()` looks simple but does 4 things
-- `createUser()` doesn't just create - it also saves and sends emails
-- `saveUser()` doesn't just save - it also sends emails and logs
-- Can't test creation without triggering emails and logging
-- Can't see the full flow without reading 4 methods
-
-## Recognizing Chaining
-
-Signs that you have chaining:
-
-1. **Method A calls B, B calls C, C calls D** - Deep call chains
-2. **Can't see the full flow** - Must read multiple methods to understand
-3. **Hidden side effects** - Methods do more than their names suggest
-4. **Hard to test** - Can't test one method without triggering the chain
-5. **Loss of control** - Once you call the first method, you lose control
-6. **Temporal coupling** - Order matters but isn't visible
-
-## The Rabbit Hole Effect
-
-When you have chaining:
-1. You start at the surface (Method A)
-2. You fall down one level (Method B)
-3. You fall down another level (Method C)
-4. You keep falling (Method D, E, F...)
-5. You lose track of where you started
-6. You can't see the big picture
-
-This is the "Rabbit Hole" - you keep going deeper and deeper, losing sight of the surface.
 
 ## Summary
 
