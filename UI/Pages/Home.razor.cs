@@ -214,12 +214,20 @@ public partial class Home : ComponentBase
                         new Session(2, "Learning paths",
                             [
                                 new LearningPath("Keys in the domain model", "SDT/Keys in domains"),
-                                new LearningPath("Design Patterns", "SDT/What are Design Patterns"),
+                                new LearningPath("Data Transfer Objects", "SDT/DTOs"),
+                                new LearningPath("Records", "SDT/Records"),
+                            ]
+                        ),
+                        new Session(3, "Design Principles",
+                            [
                                 new LearningPath("Design Principles", "SDT/Design Principles"),
                                 new LearningPath("Mountains and Islands", "SDT/Mountains and Islands"),
                                 new LearningPath("The Orchestrator Principle", "SDT/The Orchestrator Principle"),
-                                new LearningPath("Data Transfer Objects", "SDT/DTOs"),
-                                new LearningPath("Records",  "SDT/Records"),
+                            ]
+                        ),
+                        new Session(4, "Design Patterns",
+                            [
+                                new LearningPath("Design Patterns", "SDT/What are Design Patterns"),
                             ]
                         )
                     ]
