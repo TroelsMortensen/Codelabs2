@@ -24,6 +24,8 @@
 * flyt den der top learning path title hen over steps boksen.
 * Tilføj et <note> tag eller something, til at lave hint boxes eller andet, ligesom michael har på fx sit git learning path stuff.
 * Bedre struktur på home page. Måske ud fra mappe struktur i articles mappe..?
+* Auto generated section numbers
+* Link to specific section id, så page scroller ned?
 
 Kan jeg have tre css
 Basic til alt fælles. 

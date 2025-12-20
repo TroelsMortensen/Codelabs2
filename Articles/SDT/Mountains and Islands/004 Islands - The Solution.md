@@ -156,7 +156,7 @@ Each method operates at one level - you don't mix high-level coordination with l
 
 Each island is small and focused. You can understand it without climbing a mountain.
 
-### 2. Easy to Test
+### 2. Easy to Test (maybe)
 
 Each island can be tested independently:
 
@@ -168,6 +168,8 @@ public void testProcessItem() {
     // validate result
 }
 ```
+
+This _may_ require that you also read a follow up principle: **Table of Contents Principle**.
 
 ### 3. Easy to Navigate
 
