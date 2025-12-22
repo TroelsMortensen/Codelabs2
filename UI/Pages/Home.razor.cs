@@ -5,6 +5,8 @@ namespace UI.Pages;
 
 public partial class Home : ComponentBase
 {
+    // Todo yes yes i know put this somewhere else. In a separate json file somewhere, probably. That can be auto-generated perhaps?
+    
     private CourseOverview OverviewData { get; } =
         new CourseOverview(
             [
@@ -241,7 +243,6 @@ public partial class Home : ComponentBase
     private void NavigateToArticle(string owner, string tutorialName) =>
         NavMgr.NavigateTo($"article/{owner}/{Uri.EscapeDataString(tutorialName)}");
 
-    // Todo yes yes i know put this somewhere else. In a separate json file somewhere, probably. That can be auto-generated perhaps?
 }
 
 internal record CourseOverview(IEnumerable<Course> Courses);
