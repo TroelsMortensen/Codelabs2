@@ -5,11 +5,6 @@ namespace UI.Pages;
 
 public partial class Home : ComponentBase
 {
-    [Inject] public NavigationManager NavMgr { get; set; } = null!;
-
-    private void NavigateToArticle(string owner, string tutorialName) =>
-        NavMgr.NavigateTo($"article/{owner}/{Uri.EscapeDataString(tutorialName)}");
-
     private CourseOverview OverviewData { get; } =
         new CourseOverview(
             [
@@ -221,9 +216,10 @@ public partial class Home : ComponentBase
                         new Session(3, "Design Principles",
                             [
                                 new LearningPath("Design Principles", "SDT/Design Principles/What are Design Principles"),
+                                new LearningPath("SOLID principles", "SDT/Design Principles/SOLID"),
                                 new LearningPath("Mountains and Islands", "SDT/Design Principles/Mountains and Islands"),
                                 new LearningPath("The Orchestrator Principle", "SDT/Design Principles/The Orchestrator Principle"),
-                                new LearningPath("SOLID principles", "SDT/Design Principles/SOLID"),
+                                new LearningPath("SOLID principles", "SDT/Design Principles/The Broken Window"),
                             ]
                         ),
                         new Session(4, "Design Patterns",
@@ -235,6 +231,12 @@ public partial class Home : ComponentBase
                 )
             ]
         );
+
+    [Inject] public NavigationManager NavMgr { get; set; } = null!;
+
+    private void NavigateToArticle(string owner, string tutorialName) =>
+        NavMgr.NavigateTo($"article/{owner}/{Uri.EscapeDataString(tutorialName)}");
+
     // Todo yes yes i know put this somewhere else. In a separate json file somewhere, probably. That can be auto-generated perhaps?
 }
 
