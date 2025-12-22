@@ -2,11 +2,9 @@
 
 These are the anti principles of the SOLID principles, i.e. things we should avoid.
 
-This is a great adjustment. Moving to **FLUID** gets rid of the extra letter and allows for a tighter mapping.
-
 Here is the **FLUID** methodology. Each letter is the direct antagonist to the corresponding **SOLID** letter.
 
----
+I include these because I commonly see them, even with arguments in favor of the FLUID principles.
 
 ## The Core Theme
 
@@ -18,7 +16,7 @@ FLUID is faster for the first hour; SOLID is faster for the next year.
 *(The opposite of **S**ingle Responsibility)*
 
 **The Principle:** *Don't separate concerns; melt them together.*
-Why have a `User`, a `UserRepository`, and a `UserValidator` when you can just have one massive `User` class? If logic is spread out, you have to look in multiple files. Fuse it all into one giant block of code. If a class has fewer than 2,000 lines, it isn't trying hard enough.
+Why have a `User`, a `UserDAO`, and a `UserValidator` when you can just have one massive `User` class? If logic is spread out, you have to look in multiple files. Fuse it all into one giant block of code. If a class has fewer than 2,000 lines, it isn't trying hard enough.
 
 *   **The Anti-Pattern:** The "God Object" or "Frankenstein Class."
 *   **The "Fluid" visual:** Logic flows and mixes together like molten metal; there are no boundaries.

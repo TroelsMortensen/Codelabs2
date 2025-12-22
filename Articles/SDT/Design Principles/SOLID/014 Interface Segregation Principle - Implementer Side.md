@@ -30,9 +30,17 @@ Granular interfaces allow the implementer to say, "I am a `ReadOnlyRepository`. 
 
 **Partial Implementation** allows classes to pick and choose traits rather than being forced into a rigid hierarchy. A class can implement multiple small interfaces, selecting only the capabilities it actually has.
 
+## Example -1: The ReadOnly list in Java
+
+Java has a `ReadOnlyList` interface, which is a list that cannot be modified. It is a read-only list. It is a list that can only be read from, not written to. Still, this implementation also implements the `List` interface, because it is a list.
+
+So, there is a method called `add(E e)` in the `List` interface, and therefore the ReadOnlyList implementation has the method, but cannot support it. Caling this method will throw an `UnsupportedOperationException`.
+
+This is a clear violation of Liskov's Substitution Principle, and also a problem with the Interface Segregation Principle, as the ReadOnlyList is forced to implement the `List` interface, even though it cannot support all the methods.
+
 ## Example 0: javafx.Application
 
-This class is the abstract base class for your JavaFX application. The architects of this class has certainly done some consideration.
+This class is the abstract super class for your JavaFX application. The architects of this class has certainly done some consideration.
 
 The class is abstract, so you extend it, rather the implementing an interface, but it is still worth looking at how the class is designed.
 
@@ -143,7 +151,7 @@ public class InvisibleTrigger implements IPhysicsEntity {
 
 ## Example 2: Application Event System
 
-Imagine you're building a system where objects can "listen" to what is happening in the main application window.
+Imagine you're building a system where objects can "listen" to what is happening in the main application window. You remember this concept from WEB1, yes? JavaScript event listeners?
 
 ### Bad ISP: The "God" Listener
 
@@ -379,6 +387,8 @@ public class ArchivedColdStorage implements IReadable {
 
 ## Visualizing the Implementer Side
 
+The bad approach:
+
 ```mermaid
 classDiagram
     class FatInterface {
@@ -398,25 +408,34 @@ classDiagram
         +void method5() "Throws exception - tax"
     }
     
-    class SegregatedInterface1 {
-        <<interface>>
-        +void method1()
-    }
+    FatInterface <|.. Implementer
+    
+    note for Implementer "Forced to implement\nunused methods"
+```
+
+The good approach:
+
+```mermaid
+classDiagram
+    note for HonestImplementer "Only implements\nwhat it can do"
     
     class SegregatedInterface2 {
         <<interface>>
         +void method3()
     }
+
+    class SegregatedInterface1 {
+        <<interface>>
+        +void method1()
+    }
+
     
     class HonestImplementer {
         +void method1() "Only what I can do"
     }
     
-    FatInterface <|.. Implementer
     SegregatedInterface1 <|.. HonestImplementer
     
-    note for Implementer "Forced to implement\nunused methods"
-    note for HonestImplementer "Only implements\nwhat it can do"
 ```
 
 ## The "Resume" Metaphor

@@ -76,7 +76,7 @@ classDiagram
     
     UserService --> MySQLDatabase : depends on
     
-    note for UserService "High-level depends\non low-level"
+    note for UserService "High-level depends on low-level"
     note for MySQLDatabase "Concrete implementation"
 ```
 
@@ -107,7 +107,7 @@ Testing `UserService` requires a real MySQL database:
 ```java
 @Test
 public void testSaveUser() {
-    UserService service = new UserService();  // Needs real MySQL!
+    UserService service = new UserService(...);  // Needs real MySQL!
     // Test code...
 }
 ```
@@ -189,82 +189,6 @@ public class OrderService {
 
 **Problem:** `OrderService` is coupled to `FileLogger`. Cannot switch to console logging, database logging, or cloud logging without modifying `OrderService`.
 
-## Example 4: Payment Processor Direct Dependency
-
-```java
-public class StripePaymentProcessor {
-    private String apiKey;
-    
-    public StripePaymentProcessor(String apiKey) {
-        this.apiKey = apiKey;
-    }
-    
-    public boolean processPayment(double amount) {
-        System.out.println("Processing payment via Stripe: $" + amount);
-        return true;
-    }
-}
-
-public class OrderProcessor {
-    private StripePaymentProcessor paymentProcessor;
-    
-    public OrderProcessor() {
-        this.paymentProcessor = new StripePaymentProcessor("sk_test_...");
-    }
-    
-    public void checkout(Order order) {
-        if (paymentProcessor.processPayment(order.getTotal())) {
-            // Complete order
-        }
-    }
-}
-```
-
-**Problem:** `OrderProcessor` is coupled to Stripe. Cannot switch to PayPal, Square, or other payment processors without modifying `OrderProcessor`.
-
-## Visualizing Multiple Violations
-
-```mermaid
-classDiagram
-    class UserService {
-        -MySQLDatabase database
-    }
-    
-    class NotificationService {
-        -SMTPEmailSender emailSender
-    }
-    
-    class OrderService {
-        -FileLogger logger
-    }
-    
-    class OrderProcessor {
-        -StripePaymentProcessor paymentProcessor
-    }
-    
-    class MySQLDatabase {
-        +void save(Object data)
-    }
-    
-    class SMTPEmailSender {
-        +void sendEmail(String to, String subject, String body)
-    }
-    
-    class FileLogger {
-        +void log(String message)
-    }
-    
-    class StripePaymentProcessor {
-        +boolean processPayment(double amount)
-    }
-    
-    UserService --> MySQLDatabase
-    NotificationService --> SMTPEmailSender
-    OrderService --> FileLogger
-    OrderProcessor --> StripePaymentProcessor
-    
-    note for UserService "All high-level modules\ndepend on low-level\nconcrete classes"
-```
 
 ## Recognizing DIP Violations
 

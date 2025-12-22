@@ -2,6 +2,8 @@
 
 The **Single Responsibility Principle (SRP)** is the first principle in SOLID. It's a fundamental guideline for organizing code.
 
+> Gather together the things that change for the same reasons. Separate things that change for different reasons.
+
 ## Definition
 
 **A class should have only one reason to change.**

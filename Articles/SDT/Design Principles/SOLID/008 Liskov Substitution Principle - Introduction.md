@@ -8,7 +8,9 @@ Original definition:
 
 > "Subtypes must be substitutable for their base types"
 
-This is more about inheritance, and not about interfaces. It is still relevant, but the modern understanding is more about interfaces.
+This is more about inheritance, and not about interfaces. It is still relevant, but the modern understanding is more about interfaces. Here is an updated "paraphrase" of the principle:
+
+> A program that uses an interface must not be confused by an implementation of that interface.
 
 ## Definition
 

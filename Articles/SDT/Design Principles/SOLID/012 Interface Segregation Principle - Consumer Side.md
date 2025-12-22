@@ -2,6 +2,10 @@
 
 The **Consumer Side** of the Interface Segregation Principle focuses on the perspective of classes that *use* interfaces. This is often called the **Client-Owned Interfaces** or **Role Interfaces** approach.
 
+This is actually the most common perspective, as the principle states:
+
+
+
 ## The Consumer Perspective
 
 > **"I only want to depend on the small slice of behavior I actually use."**
@@ -10,7 +14,7 @@ When you're writing a class that needs some functionality, you should define an 
 
 ## The Pressure: Coupling
 
-The main concern from the consumer's perspective is **coupling**. If an interface is too large, the consumer becomes coupled to methods it doesn't call.
+The main concern from the consumer's perspective is **coupling**. If an interface is too large, the consumer becomes coupled to methods it doesn't call, or shouldn't have access to.
 
 ### The Problem
 
@@ -160,14 +164,14 @@ classDiagram
         +void method5()
     }
     
-    Consumer --> FatInterface : "Bad: Coupled to\nunused methods"
-    Consumer --> RoleInterface : "Good: Only depends\non what it uses"
+    Consumer --> FatInterface : "Bad - Coupled to unused methods"
+    Consumer --> RoleInterface : "Good - Only depends on what it uses"
     FatInterface <|.. Provider
     RoleInterface <|.. Provider
     
-    note for Consumer "Consumer only needs\nmethod1()"
-    note for FatInterface "Too many methods\nfor consumer's needs"
-    note for RoleInterface "Focused on\nconsumer's role"
+    note for Consumer "Consumer only needs method1()"
+    note for FatInterface "Too many methods for consumer's needs"
+    note for RoleInterface "Focused on consumer's role"
 ```
 
 ## The Mindset
@@ -175,7 +179,7 @@ classDiagram
 When following the consumer-side approach:
 
 - **Think:** "I am a class doing a job. I need a helper. I don't care who the helper is, but they must be able to do *X*."
-- **Result:** You define an interface based on what the client needs, not what the supplier has.
+- **Result:** You define an interface based on what the consumer needs, not what the provider has.
 - **Outcome:** This naturally results in small, focused interfaces that satisfy ISP.
 
 ## Benefits

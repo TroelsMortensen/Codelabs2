@@ -8,6 +8,7 @@ The **Dependency Inversion Principle (DIP)** is the fifth and final principle in
 
 Additionally: **Abstractions should not depend on details. Details should depend on abstractions.**
 
+
 ## The Core Idea
 
 Instead of high-level code depending directly on low-level implementations, both should depend on abstractions (interfaces or abstract classes). This "inverts" the typical dependency direction.
@@ -16,25 +17,46 @@ Instead of high-level code depending directly on low-level implementations, both
 
 In traditional design, high-level modules depend directly on low-level modules:
 
-```
-High-Level Module → Low-Level Module
+```mermaid
+classDiagram
+    class UserService {
+        - database : PostgreSQLDatabase
+    }
+    
+    class PostgreSQLDatabase {
+    }
+
+    UserService --> PostgreSQLDatabase : depends on
 ```
 
 **Example:**
-- A `UserService` (high-level) directly depends on `MySQLDatabase` (low-level)
+- A `UserService` (high-level) directly depends on `PostgreSQLDatabase` (low-level)
 - If you want to switch to `PostgreSQLDatabase`, you must modify `UserService`
 
 ## Inverted Dependency Direction (Right)
 
 With DIP, both depend on abstractions:
 
-```
-High-Level Module → Abstraction ← Low-Level Module
+```mermaid
+classDiagram
+    class UserService {
+        - database : Database
+    }
+
+    class Database {
+        <<interface>>
+    }
+
+    class PostgreSQLDatabase {
+    }
+
+    UserService --> Database : depends on
+    Database <|.. PostgreSQLDatabase : implements
 ```
 
 **Example:**
 - `UserService` depends on `Database` interface (abstraction)
-- `MySQLDatabase` implements `Database` interface
+- `PostgreSQLDatabase` implements `Database` interface
 - `PostgreSQLDatabase` implements `Database` interface
 - To switch databases, you only change which implementation is used
 
@@ -51,10 +73,10 @@ Examples:
 
 ### Low-Level Modules
 
-**Low-level modules** contain implementation details and infrastructure code. They define how things are done.
+**Low-level modules** contain implementation details and "infrastructure" code, like databases, file systems, network connections, etc. They define how things are done.
 
 Examples:
-- `MySQLDatabase` - Database implementation
+- `PostgreSQLDatabase` - Database implementation
 - `FileLogger` - Logging implementation
 - `EmailSender` - Email sending implementation
 
@@ -118,7 +140,7 @@ classDiagram
     note for MySQLDatabase "Low-level implementation"
 ```
 
-**Problem:** High-level `UserService` depends directly on low-level `MySQLDatabase`.
+**Problem:** High-level `UserService` depends directly on low-level `MySQLDatabase`. If you want to switch to `PostgreSQLDatabase`, you must modify `UserService`.
 
 ```mermaid
 classDiagram
@@ -149,7 +171,7 @@ classDiagram
     note for MySQLDatabase "Low-level depends\non abstraction"
 ```
 
-**Solution:** Both high-level and low-level depend on the `Database` abstraction.
+**Solution:** Both high-level and low-level depend on the `Database` abstraction. If you want to switch to `PostgreSQLDatabase`, you only need to change the implementation of `PostgreSQLDatabase`. `UserService` does not need to be modified.
 
 ## How to Apply DIP
 
@@ -236,5 +258,4 @@ DIP works closely with:
 - **Benefits:** Flexibility, testability, loose coupling, maintainability
 - **Question to ask:** "Does this high-level code depend on a concrete implementation?"
 
-Next, we'll look at examples of DIP violations and the problems they cause.
 

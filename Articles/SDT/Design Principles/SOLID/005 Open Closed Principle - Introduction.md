@@ -2,6 +2,8 @@
 
 The **Open Closed Principle (OCP)** is the second principle in SOLID. It guides how to design software that can be extended without modification.
 
+> A Module should be open for extension but closed for modification.
+
 ## Definition
 
 **Software entities (classes, modules, functions) should be open for extension but closed for modification.**

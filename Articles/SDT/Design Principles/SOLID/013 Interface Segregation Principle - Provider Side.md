@@ -1,6 +1,8 @@
 # Interface Segregation Principle - Provider Side
 
-The **Provider Side** of the Interface Segregation Principle focuses on the perspective of those who *design* and *expose* interfaces - the API designers, library authors, and system architects.
+The **Provider Side** of the Interface Segregation Principle focuses on the perspective of those who *design* and *expose* interfaces - the API designers, library authors, and system architects. Basically:
+
+**You write some code, that someone else will use.**
 
 ## The Provider Perspective
 
@@ -46,7 +48,7 @@ Imagine you're the architect designing the core library for a **Document Managem
 
 ```java
 // One massive interface with everything
-public interface IDocumentService {
+public interface DocumentService {
     // Authentication
     void login(String username, String password);
     void logout();
@@ -97,14 +99,14 @@ public interface IDocumentService {
 
 ```java
 // Authentication - separate concern
-public interface IAuthentication {
+public interface Authentication {
     void login(String username, String password);
     void logout();
     boolean isAuthenticated();
 }
 
 // Document CRUD operations
-public interface IDocumentRepository {
+public interface DocumentRepository {
     Document createDocument(String name);
     Document readDocument(String id);
     void updateDocument(String id, Document doc);
@@ -112,7 +114,7 @@ public interface IDocumentRepository {
 }
 
 // Document editing
-public interface IDocumentEditor {
+public interface DocumentEditor {
     void editDocument(String id);
     void saveDocument(String id);
     void undo(String id);
@@ -120,27 +122,27 @@ public interface IDocumentEditor {
 }
 
 // Document archiving
-public interface IDocumentArchiver {
+public interface DocumentArchiver {
     void archiveDocument(String id);
     Document retrieveArchived(String id);
     List<Document> listArchived();
 }
 
 // Document printing
-public interface IDocumentPrinter {
+public interface DocumentPrinter {
     void printDocument(String id);
     void printPreview(String id);
     void setPrintSettings(String id, PrintSettings settings);
 }
 
 // Document encryption
-public interface IDocumentEncryption {
+public interface DocumentEncryption {
     void encryptDocument(String id, String key);
     void decryptDocument(String id, String key);
 }
 
 // Document sharing
-public interface IDocumentSharing {
+public interface DocumentSharing {
     void shareDocument(String id, String userId);
     void revokeAccess(String id, String userId);
     List<String> getSharedWith(String id);
@@ -149,46 +151,13 @@ public interface IDocumentSharing {
 
 **Benefits:**
 1. **Clear purpose** - Each interface has a single, well-defined responsibility
-2. **Easy to mock** - Test only what you need (e.g., mock `IDocumentRepository` for repository tests)
+2. **Easy to mock** - Test only what you need (e.g., mock `DocumentRepository` for repository tests)
 3. **Easy to understand** - The API structure communicates the system's organization
 4. **Flexible implementation** - Classes can implement only the interfaces they need
 
 ## Example: Testing and Mocking
 
-The provider-side perspective becomes especially important when considering testing:
-
-### Bad ISP: Difficult Mocking
-
-```java
-// Testing document reading functionality
-public class DocumentReaderTest {
-    @Test
-    public void testReadDocument() {
-        // Must mock ALL 50 methods, even though we only use readDocument()
-        IDocumentService mockService = mock(IDocumentService.class);
-        when(mockService.readDocument("123")).thenReturn(new Document());
-        
-        // But we still had to set up mocks for login, logout, create, update, 
-        // delete, edit, save, archive, print, encrypt, share, etc.
-    }
-}
-```
-
-### Good ISP: Easy Mocking
-
-```java
-// Testing document reading functionality
-public class DocumentReaderTest {
-    @Test
-    public void testReadDocument() {
-        // Only mock what we need
-        IDocumentRepository mockRepo = mock(IDocumentRepository.class);
-        when(mockRepo.readDocument("123")).thenReturn(new Document());
-        
-        // Clean, focused test
-    }
-}
-```
+The provider-side perspective becomes especially important when considering testing. We will cover this later in the course. But sometimes, when testing your code, you might have to swap out the concrete implementation of the interface with a "mock", or fake, implementation. If you have a large interface, this can be a pain. 
 
 ## Visualizing the Provider Side
 
@@ -227,10 +196,10 @@ classDiagram
         +void method7()
     }
     
-    note for KitchenSinkInterface "Bad: Unrelated methods\nbundled together"
-    note for CohesiveInterface1 "Good: Related methods\ngrouped logically"
-    note for CohesiveInterface2 "Good: Different concern\nseparate interface"
-    note for CohesiveInterface3 "Good: Clear purpose\nand responsibility"
+    note for KitchenSinkInterface "Bad: Unrelated methods bundled together"
+    note for CohesiveInterface1 "Good: Related methods grouped logically"
+    note for CohesiveInterface2 "Good: Different concern, separate interface"
+    note for CohesiveInterface3 "Good: Clear purpose and responsibility"
 ```
 
 ## The Mindset

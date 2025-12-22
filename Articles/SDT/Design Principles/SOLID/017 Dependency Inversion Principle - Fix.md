@@ -311,9 +311,9 @@ classDiagram
     Database <|.. MySQLDatabase
     Database <|.. PostgreSQLDatabase
     
-    note for UserService "High-level depends\non abstraction"
+    note for UserService "High-level depends on abstraction"
     note for Database "Abstraction"
-    note for MySQLDatabase "Low-level depends\non abstraction"
+    note for MySQLDatabase "Low-level depends on abstraction"
 ```
 
 ### Complete System Fix
@@ -357,7 +357,6 @@ classDiagram
     OrderService --> Logger
     OrderProcessor --> PaymentProcessor
     
-    note for UserService "All high-level modules\ndepend on abstractions"
 ```
 
 ## Benefits of the Fixes

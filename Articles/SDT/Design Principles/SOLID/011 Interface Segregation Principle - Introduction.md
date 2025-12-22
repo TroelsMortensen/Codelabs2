@@ -2,6 +2,8 @@
 
 The **Interface Segregation Principle (ISP)** is the fourth principle in SOLID. It guides how to design interfaces that are focused and easy to use. It is closely related to the Single Responsibility Principle, but focused on interfaces instead of classes.
 
+> Keep interfaces small so that users don’t end up depending on things they don’t need.
+
 ## The contract
 
 An interface is often considered a _contract_ between the class using the interface and the class implementing the interface. The class using the interface can expect certain methods to be implemented with certain behaviour. The class implementing the interface is the _provider_ of the contract, and has to fulfil the agreed upon behaviour.
