@@ -205,7 +205,8 @@ public partial class Home : ComponentBase
                     [
                         new Session(1, "Assignments",
                             [
-                                new LearningPath("Assignment 1", "SDT/Assignments/Assignment1")
+                                new LearningPath("Assignment 1", "SDT/Assignments/Assignment1"),
+                                new LearningPath("Assignment 2", "SDT/Assignments/Assignment2")
                             ]
                         ),
                         new Session(2, "Learning paths",
