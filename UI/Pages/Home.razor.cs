@@ -226,7 +226,7 @@ public partial class Home : ComponentBase
                                 new LearningPath("SOLID principles", "SDT/Design Principles/Coupling and Cohesion"),
                                 new LearningPath("SOLID principles", "SDT/Design Principles/Dependency Injection"),
                                 new LearningPath("SOLID principles", "SDT/Design Principles/Law of Demeter"),
-                                new LearningPath("SOLID principles", "SDT/Design Principles/what is Refactoring"),
+                                new LearningPath("SOLID principles", "SDT/Design Principles/What is Refactoring"),
                             ]
                         ),
                         new Session(4, "Design Patterns",
