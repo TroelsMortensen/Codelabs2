@@ -18,9 +18,9 @@ The **"Orchestrator"** principle states that a high-level method should be an **
 
 When developers break up a "Mountain" method (deeply nested code), they often just slice it horizontally. The result is that `Method A` calls `Method B`, which calls `Method C`, which calls `Method D`. 
 
-To understand what `Method A` ultimately achieves, you have to jump down four levels of abstraction. You've traded a mountain for a deep, dark cave - a **"Rabbit Hole"**.
+To understand what `Method A` ultimately achieves, you have to jump down four levels of method calls. You've traded a mountain for a deep, dark cave - a **"Rabbit Hole"**.
 
-I called this "the swim" in the Mountains and Islands learning path. You start on Island 1, and swim to Island 2, and so on, until you reach the end.
+I called this "the swim" in the _Mountains and Islands_ learning path. You start on Island 1, and swim to Island 2, and so on, until you reach the end.
 
 ## The Core Philosophy
 
@@ -34,10 +34,19 @@ A high-level method should coordinate operations like a conductor coordinates an
 
 When methods chain together, it's like a line of falling dominoes:
 
-```
-[Method A] → [Method B] → [Method C] → [Method D]
-    ↓           ↓           ↓           ↓
-  Push        Falls       Falls       Falls
+```mermaid
+sequenceDiagram
+    participant Client
+    participant MethodA
+    participant MethodB
+    participant MethodC
+    participant MethodD
+    
+    Client->>MethodA: call
+    MethodA->>MethodB: calls
+    MethodB->>MethodC: calls
+    MethodC->>MethodD: calls
+    Note over MethodA,MethodD: Control is lost - chain continues automatically
 ```
 
 You push the first one (call Method A), and you lose control until the last one falls. You can't see what will happen until you follow the entire chain.
@@ -46,10 +55,23 @@ You push the first one (call Method A), and you lose control until the last one 
 
 When methods are orchestrated, it's like an orchestrator (conductor) in front of an orchestra:
 
-```
-          [Orchestrator Method]
-           ↓         ↓      ↓
-        [Violins] [Brass] [Percussion]
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Orchestrator
+    participant MethodB
+    participant MethodC
+    participant MethodD
+
+    Client->>Orchestrator: call
+    Orchestrator->>MethodB: calls
+    MethodB-->>Orchestrator: returns
+    Orchestrator->>MethodC: calls
+    MethodC-->>Orchestrator: returns
+    Orchestrator->>MethodD: calls
+    MethodD-->>Orchestrator: returns
+    Orchestrator-->>Client: returns
+    Note over Orchestrator: Control maintained - orchestrator coordinates sequence
 ```
 
 The orchestrator points to the violins, then the brass, then the percussion. The violins do not tell the brass when to play. The orchestrator maintains control and visibility of the entire sequence.
@@ -88,14 +110,5 @@ By the end of this learning path, you'll be able to:
 - Maintain control and visibility of the flow
 - Write code that's easier to test and understand
 
-## What You'll Learn
 
-In this learning path, we'll explore:
-
-1. **The Principle** - Understanding orchestration vs chaining
-2. **Chaining** - Recognizing the rabbit hole problem
-3. **Orchestration** - Learning the orchestrator structure
-4. **Example** - Seeing an example of a transformation
-
-Let's begin by understanding the principle in more detail.
 

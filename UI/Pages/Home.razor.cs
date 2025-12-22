@@ -223,6 +223,7 @@ public partial class Home : ComponentBase
                                 new LearningPath("Design Principles", "SDT/Design Principles"),
                                 new LearningPath("Mountains and Islands", "SDT/Mountains and Islands"),
                                 new LearningPath("The Orchestrator Principle", "SDT/The Orchestrator Principle"),
+                                new LearningPath("SOLID principles", "SDT/SOLID"),
                             ]
                         ),
                         new Session(4, "Design Patterns",

@@ -135,6 +135,31 @@ You can:
 - Handle errors between steps
 - See what's happening at each step
 
+### 5. Minimize use of global state
+
+To simplify the code, and make it easier to understand, you should minimize the use of global state. That means you should avoid using static variables, or variables that are shared between multiple methods, e.g. instance field variables.
+
+Your helper method should receive, as parameters, the data it needs to operate on. And then return a result. 
+
+Even if your helper method needs to read a field variable, it should receive it as a parameter, and not read it directly from the field variable. For example:
+
+```java
+private int someField;
+
+public String orchestrator() {
+    String result = someHelper(someField); // passing in the field variable
+    return result;
+}
+
+private String someHelper(int theNumber) {
+    return "The number is " + theNumber;
+}
+```
+
+Things are getting a little advanced here, but you can now, without problems, make the `someHelper()` method, and static, and you can test this method in isolation. Maybe whatever it is doing, is slightly more complex, than just returning a concatenated string.
+
+
+
 ## Benefits of Orchestration
 
 ### 1. Easy to Understand the Full Flow
@@ -233,7 +258,49 @@ Each helper returns to the orchestrator, keeping the stack shallow.
 - Can see the full flow without reading helpers
 - No hidden side effects
 
+Here is how the **Orchestrator Principle** directly reinforces the **SOLID** principles, particularly **SRP** and **DIP**.
 
+### Connection to SOLID
+
+#### 1. S — Single Responsibility Principle (SRP)
+*   **The Violation (Monolith):** The original `registerUser` method had **5 reasons to change**: if validation rules changed, if the database changed, if the hashing algorithm changed, if the email text changed, or if the logging format changed.
+*   **The Fix (Orchestrator):** The Orchestrator now has only **one responsibility**: **Coordination**. It manages the *policy* (the order of events). The helper methods (or extracted classes) handle the *mechanism* (how those events happen).
+    *   *Result:* If you need to change the email text, you go to `sendWelcomeEmail`. You don't risk breaking the registration logic or the database logic.
+
+#### 2. D — Dependency Inversion Principle (DIP)
+*   **The Concept:** DIP states that **High-level modules should not depend on low-level modules.**
+*   **The Fix:**
+    *   **High-Level Module:** The `registerUser` method. It represents the *Business Rule* ("To register a user, we must validate, save, and notify").
+    *   **Low-Level Module:** The specific SQL queries, Regex patterns, and SMTP sockets.
+    *   **The Orchestrator:** By pushing the "how" into helper methods, the `registerUser` method no longer contains low-level pollution. It reads like a high-level contract.
+
+#### 3. O — Open/Closed Principle (OCP)
+*   **The Potential:** Although this simple example uses private methods, this structure paves the way for OCP.
+*   **The Fix:** If `saveToDatabase` and `sendWelcomeEmail` were moved into separate classes (e.g., `UserRepository`, `EmailService`) and injected into the constructor, you could swap `SqlUserRepository` for `MongoUserRepository` without ever touching the `registerUser` Orchestrator code. The Orchestrator is "Closed" for modification but the system is "Open" for extension.
+
+### Summary Code Comment
+
+You could add this Javadoc to the Orchestrator method to explain the intent to future developers:
+
+```java
+/**
+ * Orchestrates the user registration flow.
+ * 
+ * <p><strong>Architectural Note:</strong> This method acts as a high-level 
+ * Coordinator (following the Orchestrator Principle). It defines the 
+ * <em>policy</em> of registration but delegates the <em>implementation details</em> 
+ * to helper methods.
+ * 
+ * <p><strong>SOLID Alignment:</strong>
+ * <ul>
+ *   <li><strong>SRP:</strong> Separates the workflow logic from business rules.</li>
+ *   <li><strong>DIP:</strong> High-level policy does not contain low-level code (SQL/Regex).</li>
+ * </ul>
+ */
+public void registerUser(String username, String password, String email) {
+    // ... flow ...
+}
+```
 
 ## Summary
 
