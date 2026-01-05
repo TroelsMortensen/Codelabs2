@@ -1,6 +1,6 @@
 # User stories
 
-Requirements can take many forms. One of the more common forms is the _user story_. A user story is a short, simple description of a feature told from the perspective of the user of the system, with a focus on the business value of the feature.
+Functional requirements can take many forms. One of the more common forms is the _user story_. A user story is a short, simple description of a feature, told from the perspective of the user of the system, with a focus on the business value of the feature.
 
 We have a commonly used template for user stories:
 
