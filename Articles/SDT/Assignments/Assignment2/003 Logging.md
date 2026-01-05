@@ -8,7 +8,7 @@ Have you ever had a program crash on you, and you were asked if you wanted to se
 
 ## Explanation
 
-You will create a new class called `Logger`. We want to be able to eventually change the output of the logging, but for now we will just log to the console.
+You will create a new class called `Logger`. We want to be able to eventually change the output-destination of the logging, but for now we will just log to the console. We do still need a future-safe design, though.
 
 ## Package
 
@@ -16,8 +16,7 @@ Inside the "shared" package, create a new package called "logging".
 
 ## Design
 
-
-The `Logger` classshould be a singleton.
+The `Logger` class should be a singleton.
 
 You will also need a `LogOutput` interface, which will be _used by_ the `Logger` class, i.e. the `Logger` has an association to the `LogOutput` interface.
 
@@ -78,8 +77,15 @@ logger.log("ERROR", "Failed to save data: " + exception.getMessage());
 
 The application will eventually be multi-threaded, so the `Logger` class must be thread-safe.
 
+### Thread safe access
+
 If you are unlucky, then having multiple threads trying to access the `Logger` class at the same time, will potentially result in multiple instances of the `Logger` class being created. This is not what we want.
 
-Research how to make a singleton thread-safe. There are at least five different ways to do this.
+Research how to make a singleton thread-safe. There are at least five different ways to do this, you can pick your favorite.
 
 Apply this to the `Logger` class. 
+
+### Thread safe output
+
+You may also encounter a problem, if two threads are trying to log to the console, at the same time. This will result in the messages being interleaved, which is not what we want.\
+Therefore, you also need to make this part thread-safe.

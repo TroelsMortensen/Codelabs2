@@ -218,7 +218,7 @@ public partial class Home : ComponentBase
                         ),
                         new Session(3, "Design Principles",
                             [
-                                new LearningPath("Design Principles", "SDT/Design Principles/What are Design Principles"),
+                                new LearningPath("What are Design Principles", "SDT/Design Principles/What are design principles"),
                                 new LearningPath("SOLID principles", "SDT/Design Principles/SOLID"),
                                 new LearningPath("Mountains and Islands", "SDT/Design Principles/Mountains and Islands"),
                                 new LearningPath("The Orchestrator Principle", "SDT/Design Principles/The Orchestrator Principle"),

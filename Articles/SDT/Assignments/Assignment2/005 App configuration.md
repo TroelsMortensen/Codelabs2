@@ -1,6 +1,6 @@
 # Application configuration
 
-Your application will require various settings, which may be used from different parts of the application. We will use the Singleton pattern to implement this.
+Your application will require various settings, which may be used from different parts of the application. You must use the Singleton pattern to implement this.
 
 Settings could be:
 - The starting balance when starting a new game
@@ -27,14 +27,22 @@ Implement the `AppConfig` class as a singleton.
 Include the following field variables:
 
 ```java
-    private final int startingBalance;
-    private final double transactionFee;
-    private final int updateFrequencyInMs;
-    private final double stockResetValue;
+private final int startingBalance;
+private final double transactionFee;
+private final int updateFrequencyInMs;
+private final double stockResetValue;
 ```
 
-More may come later.
+More may come later. Maybe you need to add more fields yourself. 
 
 ### Methods
 
 Create get-methods for all the field variables.
+
+## Testing
+
+Not much to test here, I will leave this optional.
+
+## Thread safety
+
+Is it important to make this thread-safe? Why or why not? Maybe we will talk about this at the exam.

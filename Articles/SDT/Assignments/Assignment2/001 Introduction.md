@@ -9,7 +9,7 @@ We will use the Singleton pattern for both cases.
 
 ## Assignment 2 deliverables
 
-- Logging classes
+- Logging-related classes
 - AppConfig class
 - Version 2 of the class diagram
 
