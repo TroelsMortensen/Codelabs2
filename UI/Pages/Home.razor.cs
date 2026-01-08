@@ -232,6 +232,7 @@ public partial class Home : ComponentBase
                         new Session(4, "Design Patterns",
                             [
                                 new LearningPath("Design Patterns", "SDT/Design Patterns/What are Design Patterns"),
+                                new LearningPath("Option Pattern", "SDT/Design Patterns/Option Pattern"),
                             ]
                         )
                     ]
