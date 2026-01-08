@@ -31,30 +31,22 @@ public String getCity(User user) {
 ```java
 public class UserService {
     public void sendWelcomeEmail(String userId) {
-        User user = userRepository.findById(userId);  // Might return null
+        User user = userDAO.findById(userId);  // Might return null
         String email = user.getEmail();  // NullPointerException if user is null!
         emailService.send(email, "Welcome!");
+    }
+}
+
+public class UserDAO {
+    // Could return null, but it's not in the signature
+    public User findById(String id) {
+        User user = ... // Fetch user from database
+        return user;
     }
 }
 ```
 
 **The bug:** If the user doesn't exist, `findById` returns `null`, and the code crashes.
-
-## Problem 2: Not Explicit
-
-`null` is **not explicit** in method signatures:
-
-```java
-// Does this return null? We don't know!
-public User findUser(String id) {
-    // Could return null, but it's not in the signature
-    return userRepository.findById(id);
-}
-
-// Caller doesn't know if they need to check for null
-User user = findUser("123");
-String name = user.getName();  // Is this safe? We don't know!
-```
 
 **Problems:**
 - Method signature doesn't tell you if `null` is possible
@@ -179,7 +171,7 @@ Here's a common scenario that causes bugs:
 ```java
 public class OrderService {
     public void processOrder(String orderId) {
-        Order order = orderRepository.findById(orderId);  // Might be null
+        Order order = orderDAO.findById(orderId);  // Might be null
         User customer = order.getCustomer();  // NullPointerException if order is null
         String email = customer.getEmail();  // NullPointerException if customer is null
         Address address = customer.getAddress();  // Might be null
@@ -215,8 +207,8 @@ graph TD
     C -->|forgot check| E[NullPointerException]
     C -->|checked| F[Handle Null Case]
     
-    style E fill:#ffcccc
-    style C fill:#ffcccc
+    style E fill:#ffaaaa,color:#000000
+    style C fill:#ffaaaa,color:#000000
     note1[Null is implicit<br/>Easy to forget<br/>Runtime error]
 ```
 

@@ -141,6 +141,8 @@ String cityName = city.orElse("Unknown");
 
 The Option pattern is simple enough that you can implement your own. The basic concept is straightforward: a container that either holds a value or is empty. While Java provides `Optional`, understanding that you can create your own helps you appreciate the simplicity of the pattern.
 
+It does require a bit of knowledge about _generics_, but it is not too complex.
+
 For a complete implementation with advanced features, see the Advanced Features section.
 
 ## Optional vs Null: The Comparison
