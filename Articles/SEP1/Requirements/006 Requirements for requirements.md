@@ -40,3 +40,13 @@ SMART is an acronym for five different criteria, which your user stories should 
 Once you have written a user story, you should check if it fulfills the SMART criteria.
 
 (You may find variations on SMART, where the letters mean other things: **T**racable, or **R**ealizable, etc. But the core idea is the same.)
+
+## INVEST
+
+Eventually, I will describe this as well. 
+
+Independent, Negotiable, Valuable, Estimable, Small, Testable. Maybe these are a bit redundant.
+
+## FURPS+
+
+And this. Other principles to help structure, define, organize your requirements.

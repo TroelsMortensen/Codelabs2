@@ -23,6 +23,8 @@ A use case description contains (at least) the following elements.
   - Who is the primary actor? Librarian, Customer, etc.
 - Preconditions
   - What are the preconditions for the use case? Some use cases only make sense or can only be started if certain conditions are met.
+  - State _what must_ always be true before a scenario is begun in the use case. Preconditions are not tested within the use case; rather, they are conditions that are assumed to be true.
+  - Note that there are conditions that must be true, but are not worth writing, such as "the system has power." 
 - Includes
   - List the other use cases that are included in this use case. These must be executed before this use case can be started. List them in the order they must be executed.
 - Post conditions
