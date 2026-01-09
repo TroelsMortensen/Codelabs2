@@ -27,6 +27,17 @@ String email = user.getEmail();  // NullPointerException if not found!
 ```java
 // Good: Returns Optional
 public Optional<User> findUser(String id) {
+    for (User user : users) {
+        if (user.getId().equals(id)) {
+            return Optional.of(user);
+        }
+    }
+    return Optional.empty();
+}
+
+
+// Alternative with stream:
+public Optional<User> findUser(String id) {
     return users.stream()
         .filter(user -> user.getId().equals(id))
         .findFirst();  // Returns Optional<User>
