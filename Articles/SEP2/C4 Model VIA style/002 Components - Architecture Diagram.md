@@ -58,6 +58,7 @@ flowchart TB
     ... INSERT ASTAH DIAGRAM!!
 </div>
 
+Dette kan enten bare være kasser, eller mere tydelige icons (se mit bpr projekt)
 
 ### Component Descriptions
 
