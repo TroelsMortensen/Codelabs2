@@ -54,6 +54,11 @@ flowchart TB
 ```
 
 
+<div style="font-size: 2em; color: red; font-weight: bold; text-align: center;">
+    ... INSERT ASTAH DIAGRAM!!
+</div>
+
+
 ### Component Descriptions
 
 **Console Client**
@@ -91,6 +96,10 @@ The diagram shows:
 1. **User → Console Client**: User interacts with the console interface
 2. **Console Client ↔ Application Server**: Bidirectional communication for requests and responses
 3. **Application Server ↔ File Storage**: Bidirectional data access for reading and writing
+
+## Components in Astah
+
+... INSERT IMAGE OF ASTAH !!
 
 ## Key Characteristics
 
