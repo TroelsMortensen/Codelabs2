@@ -40,8 +40,16 @@ public partial class WheelOfFortune : ComponentBase, IDisposable
     
     // Animation state
     private double CurrentAngle { get; set; } = InitialAngle;
-    private double AngularVelocity { get; set; } = 0;
     private bool IsSpinning { get; set; } = false;
+    
+    // Deterministic rotation properties
+    private double TotalRotationRemaining { get; set; } = 0;
+    private double TotalRotationInitial { get; set; } = 0;
+    private double TargetAngle { get; set; } = 0;
+    private double MaxRotationPerFrame { get; set; } = 0.3; // Maximum rotation per frame in radians (calculated dynamically)
+    private const double EaseFactor = 0.75; // Ease-out curve factor (0.5 = gradual deceleration)
+    private const double TargetDurationSeconds = 5.0; // Target duration for spin in seconds
+    private const double FramesPerSecond = 60.0; // Animation frame rate
     
     // Computed properties for UI
     private string CurrentSectorLabel => GetCurrentSectorLabel();
@@ -140,16 +148,65 @@ public partial class WheelOfFortune : ComponentBase, IDisposable
 
         SelectedQuestionNumber = GetQuestion() + 1;
         ShowSpinText = false; // Hide "SPIN" text, will show selected number
-        AngularVelocity = Random.Shared.NextDouble() * 2.0 + 4.0; // Random between 4.0 and 6.0
-        IsSpinning = true;
         
+        // Calculate target sector angle range
+        int targetSectorIndex = SelectedQuestionNumber - 1;
+        double sectorArc = TAU / Sectors.Count;
+        
+        // Reverse-engineer GetCurrentSectorIndex() logic to find the correct target angle
+        // GetCurrentSectorIndex() uses: index = (int)Math.Floor(Sectors.Count - adjustedAngle / TAU * Sectors.Count)
+        // For target index i, the adjustedAngle range is:
+        // (Sectors.Count - i - 1) / Sectors.Count * TAU < adjustedAngle <= (Sectors.Count - i) / Sectors.Count * TAU
+        
+        // Pick a random point within the target sector's range in adjusted coordinate system
+        double random = Random.Shared.NextDouble();
+        double adjustedAngle = (Sectors.Count - targetSectorIndex - 1 + random) / Sectors.Count * TAU;
+        
+        // Convert from adjusted coordinate system back to CurrentAngle coordinate system
+        // adjustedAngle = (normalizedAngle - InitialAngle + TAU) % TAU
+        // So: normalizedAngle = (adjustedAngle + InitialAngle) % TAU
+        double normalizedAngle = (adjustedAngle + InitialAngle + TAU) % TAU;
+        TargetAngle = normalizedAngle;
+        
+        // Calculate angle difference from current to target
+        double currentNormalized = (CurrentAngle % TAU + TAU) % TAU;
+        double angleToTarget = TargetAngle - currentNormalized;
+        
+        // Normalize angle difference to shortest path (-PI to PI range)
+        if (angleToTarget > PI) angleToTarget -= TAU;
+        if (angleToTarget < -PI) angleToTarget += TAU;
+        
+        // Add 15-20 full rotations (random between 15-20)
+        int extraRotations = 15 + Random.Shared.Next(6); // 15 to 20 inclusive
+        double extraRotationAmount = extraRotations * TAU;
+        
+        // If angleToTarget is negative, we need to go the other way, so add extra rotations first
+        if (angleToTarget < 0)
+        {
+            angleToTarget += TAU; // Make it positive by going the long way
+        }
+        
+        // Calculate total rotation needed
+        TotalRotationRemaining = angleToTarget + extraRotationAmount;
+        TotalRotationInitial = TotalRotationRemaining;
+        
+        // Calculate MaxRotationPerFrame to complete in approximately TargetDurationSeconds
+        // For ease-out curve, we need to account for the deceleration
+        // Approximate: with ease-out factor, average speed ≈ maxSpeed * (1 / (1 + easeFactor))
+        double targetFrames = TargetDurationSeconds * FramesPerSecond;
+        double averageRotationPerFrame = TotalRotationInitial / targetFrames;
+        // Adjust for ease-out curve: average ≈ max * (1 / (1 + easeFactor))
+        MaxRotationPerFrame = averageRotationPerFrame * (1 + EaseFactor);
+        
+        IsSpinning = true;
         StartAnimationLoop();
     }
 
     private void ResetPosition()
     {
         IsSpinning = false;
-        AngularVelocity = 0;
+        TotalRotationRemaining = 0;
+        TotalRotationInitial = 0;
         CurrentAngle = InitialAngle;
         ShowSpinText = true; // Show "SPIN" text again
         StateHasChanged();
@@ -210,63 +267,39 @@ public partial class WheelOfFortune : ComponentBase, IDisposable
 
     private void OnAnimationFrame(object? sender, System.Timers.ElapsedEventArgs e)
     {
-        if (!IsSpinning) return;
+        if (!IsSpinning || TotalRotationRemaining <= 0) return;
 
-        // Apply friction based on velocity - fine-grained levels for smooth deceleration
-        if (AngularVelocity > 0.3)
+        // Calculate progress (starts at 1.0, goes to 0.0)
+        double progress = TotalRotationRemaining / TotalRotationInitial;
+        
+        // Apply ease-out curve: gradual deceleration
+        double easeProgress = Math.Pow(progress, EaseFactor);
+        
+        // Calculate rotation amount for this frame
+        double rotationThisFrame = MaxRotationPerFrame * easeProgress;
+        
+        // Ensure we don't overshoot
+        if (rotationThisFrame > TotalRotationRemaining)
         {
-            AngularVelocity *= 0.975; // Very hard friction
+            rotationThisFrame = TotalRotationRemaining;
         }
-        else if (AngularVelocity > 0.2)
+        
+        // Rotate the wheel
+        CurrentAngle += rotationThisFrame;
+        CurrentAngle %= TAU;
+        
+        // Subtract from remaining rotation
+        TotalRotationRemaining -= rotationThisFrame;
+        
+        // Stop when we've completed the rotation
+        if (TotalRotationRemaining <= 0)
         {
-            AngularVelocity *= 0.98; // Hard friction
-        }
-        else if (AngularVelocity > 0.15)
-        {
-            AngularVelocity *= 0.985; // Medium-hard friction
-        }
-        else if (AngularVelocity > 0.1)
-        {
-            AngularVelocity *= 0.99; // Medium friction
-        }
-        else if (AngularVelocity > 0.075)
-        {
-            AngularVelocity *= 0.992; // Medium-soft friction
-        }
-        else if (AngularVelocity > 0.05)
-        {
-            AngularVelocity *= 0.995; // Soft friction
-        }
-        else if (AngularVelocity > 0.035)
-        {
-            AngularVelocity *= 0.9965; // Softer friction
-        }
-        else if (AngularVelocity > 0.025)
-        {
-            AngularVelocity *= 0.9975; // Very soft friction
-        }
-        else
-        {
-            AngularVelocity *= 0.9999; // Minimal friction
-            
-            // Increase friction when over target sector
-            var currentSector = GetCurrentSectorIndex();
-            if (currentSector == SelectedQuestionNumber - 1)
-            {
-                double scaledFriction = Sectors.Count / 100.0;
-                AngularVelocity *= 0.95 - scaledFriction;
-            }
-        }
-
-        if (AngularVelocity < 0.002)
-        {
-            AngularVelocity = 0;
+            TotalRotationRemaining = 0;
+            // Ensure we end exactly at the target angle
+            CurrentAngle = TargetAngle;
             IsSpinning = false;
             animationTimer?.Stop();
         }
-
-        CurrentAngle += AngularVelocity;
-        CurrentAngle %= TAU;
 
         InvokeAsync(StateHasChanged);
     }
