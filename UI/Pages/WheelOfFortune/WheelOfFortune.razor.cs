@@ -177,7 +177,7 @@ public partial class WheelOfFortune : ComponentBase, IDisposable
         if (angleToTarget < -PI) angleToTarget += TAU;
         
         // Add 15-20 full rotations (random between 15-20)
-        int extraRotations = 15 + Random.Shared.Next(6); // 15 to 20 inclusive
+        int extraRotations = 10 + Random.Shared.Next(6); // 15 to 20 inclusive
         double extraRotationAmount = extraRotations * TAU;
         
         // If angleToTarget is negative, we need to go the other way, so add extra rotations first
