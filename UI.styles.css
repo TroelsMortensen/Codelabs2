@@ -402,3 +402,191 @@ main[b-mr0ddkk2zs] {
 }
 
 /* totally not ai generated */
+/* /Pages/WheelOfFortune/WheelOfFortune.razor.rz.scp.css */
+.header-container[b-4w30kd5qce] {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.home-link[b-4w30kd5qce] {
+    cursor: pointer;
+    font-size: 50px;
+    position: absolute;
+    left: 0;
+    padding: 0 1rem;
+    color: #333;
+    transition: color 0.2s;
+}
+
+.home-link:hover[b-4w30kd5qce] {
+    color: #0071c1;
+}
+
+.wheel-container[b-4w30kd5qce] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 100vh;
+    max-height: 100vh;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.weight-distribution-container[b-4w30kd5qce] {
+    width: 100%;
+    max-width: min(81vh, 81vw);
+    margin-bottom: 20px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.weight-distribution-bar[b-4w30kd5qce] {
+    display: flex;
+    width: 100%;
+    height: 10px;
+    border: 1px solid #333;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.weight-segment[b-4w30kd5qce] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    transition: opacity 0.2s;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.weight-segment:last-child[b-4w30kd5qce] {
+    border-right: none;
+}
+
+.weight-segment:hover[b-4w30kd5qce] {
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.weight-segment-label[b-4w30kd5qce] {
+    display: none; /* Hide labels on 10px bar */
+}
+
+.wheel-wrapper[b-4w30kd5qce] {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(81vh, 81vw);
+    height: min(81vh, 81vw);
+    max-width: min(81vh, 81vw);
+    max-height: min(81vh, 81vw);
+    aspect-ratio: 1;
+}
+
+.wheel-of-fortune[b-4w30kd5qce] {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0px 1px 2px 0px rgb(60 64 67), 0px 2px 6px 2px rgb(60 64 67);
+}
+
+#wheel[b-4w30kd5qce], .wheel-canvas[b-4w30kd5qce] {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: none;
+}
+
+.spin-button[b-4w30kd5qce] {
+    font: 1.5em/0 sans-serif;
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15%;
+    height: 15%;
+    margin: -7.5%;
+    background: #fff;
+    color: #000;
+    box-shadow: 0 0 0 8px currentColor, 0 0px 15px 5px rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    transition: 0.8s;
+    z-index: 10;
+}
+
+.spin-button[b-4w30kd5qce]::after {
+    content: "";
+    position: absolute;
+    top: -30px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 30px solid currentColor;
+    border-top: none;
+}
+
+.controls-container[b-4w30kd5qce] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    padding: 10px;
+    flex-shrink: 0;
+}
+
+.control-group[b-4w30kd5qce] {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-group label[b-4w30kd5qce] {
+    font-weight: bold;
+}
+
+.control-group input[type="number"][b-4w30kd5qce] {
+    width: 80px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.button-group[b-4w30kd5qce] {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.reset-button[b-4w30kd5qce], .toggle-button[b-4w30kd5qce] {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.reset-button:hover[b-4w30kd5qce], .toggle-button:hover[b-4w30kd5qce] {
+    background-color: #f0f0f0;
+}
+
+.reset-button:active[b-4w30kd5qce], .toggle-button:active[b-4w30kd5qce] {
+    transform: translateY(1px);
+}
