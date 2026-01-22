@@ -6,6 +6,7 @@ namespace UI.Pages.WheelOfFortune;
 public partial class WheelOfFortune : ComponentBase, IDisposable
 {
     [Inject] public IJSRuntime JSRuntime { get; set; } = null!;
+    [Inject] public NavigationManager NavMgr { get; set; } = null!;
 
     private ElementReference canvasElement;
     private System.Timers.Timer? animationTimer;
@@ -35,6 +36,7 @@ public partial class WheelOfFortune : ComponentBase, IDisposable
     private List<double> Weights { get; set; } = new();
     private int SelectedQuestionNumber { get; set; } = 0;
     private bool ShowSpinText { get; set; } = true;
+    private bool ShowWeightBar { get; set; } = false;
     
     // Animation state
     private double CurrentAngle { get; set; } = InitialAngle;
@@ -153,6 +155,12 @@ public partial class WheelOfFortune : ComponentBase, IDisposable
         StateHasChanged();
     }
 
+    private void ToggleWeightBar()
+    {
+        ShowWeightBar = !ShowWeightBar;
+        StateHasChanged();
+    }
+
     private int GetQuestion()
     {
         // Calculate total weight
@@ -216,6 +224,10 @@ public partial class WheelOfFortune : ComponentBase, IDisposable
         else if (AngularVelocity > 0.05)
         {
             AngularVelocity *= 0.995; // Soft friction
+        }
+        else if (AngularVelocity > 0.025)
+        {
+            AngularVelocity *= 0.9975; // Softer friction
         }
         else
         {

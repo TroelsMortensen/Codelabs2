@@ -2,19 +2,26 @@
 
 <PageTitle>Wheel of Fortune</PageTitle>
 
+<div class="header-container">
+    <i class="fa fa-home home-link" @onclick='() => NavMgr.NavigateTo(NavMgr.BaseUri)'></i>
+</div>
+
 <div class="wheel-container">
-    <div class="weight-distribution-container">
-        <div class="weight-distribution-bar">
-            @foreach (var segment in WeightDistributionSegments)
-            {
-                <div class="weight-segment" 
-                     style="width: @($"{segment.WidthPercentage:F2}%"); background-color: @segment.Color;"
-                     title="Sector @segment.Label: @($"{segment.Weight:F3}")">
-                    <span class="weight-segment-label">@segment.Label</span>
-                </div>
-            }
+    @if (ShowWeightBar)
+    {
+        <div class="weight-distribution-container">
+            <div class="weight-distribution-bar">
+                @foreach (var segment in WeightDistributionSegments)
+                {
+                    <div class="weight-segment" 
+                         style="width: @($"{segment.WidthPercentage:F2}%"); background-color: @segment.Color;"
+                         title="Sector @segment.Label: @($"{segment.Weight:F3}")">
+                        <span class="weight-segment-label">@segment.Label</span>
+                    </div>
+                }
+            </div>
         </div>
-    </div>
+    }
     <div class="wheel-wrapper">
         <div id="wheelOfFortune" class="wheel-of-fortune">
             <canvas id="wheel" 
@@ -40,6 +47,11 @@
                    value="@NumberOfSlices"
                    @onchange="OnSliceCountChanged" />
         </div>
-        <button class="reset-button" @onclick="ResetPosition">Reset Position</button>
+        <div class="button-group">
+            <button class="reset-button" @onclick="ResetPosition">Reset Position</button>
+            <button class="toggle-button" @onclick="ToggleWeightBar">
+                @(ShowWeightBar ? "Hide" : "Show") Weight Bar
+            </button>
+        </div>
     </div>
 </div>

@@ -1,3 +1,23 @@
+.header-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.home-link {
+    cursor: pointer;
+    font-size: 50px;
+    position: absolute;
+    left: 0;
+    padding: 0 1rem;
+    color: #333;
+    transition: color 0.2s;
+}
+
+.home-link:hover {
+    color: #0071c1;
+}
+
 .wheel-container {
     display: flex;
     flex-direction: column;
@@ -140,21 +160,28 @@
     font-size: 1em;
 }
 
-.reset-button {
+.button-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.reset-button, .toggle-button {
     padding: 10px 20px;
     font-size: 1em;
-    background-color: #0071c1;
-    color: white;
-    border: none;
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
-.reset-button:hover {
-    background-color: #005a9e;
+.reset-button:hover, .toggle-button:hover {
+    background-color: #f0f0f0;
 }
 
-.reset-button:active {
+.reset-button:active, .toggle-button:active {
     transform: translateY(1px);
 }
