@@ -246,6 +246,9 @@ public partial class Home : ComponentBase
     private void NavigateToArticle(string owner, string tutorialName) =>
         NavMgr.NavigateTo($"article/{owner}/{Uri.EscapeDataString(tutorialName)}");
 
+    private void NavigateToWheel() =>
+        NavMgr.NavigateTo("/wheeloffortune");
+
 }
 
 internal record CourseOverview(IEnumerable<Course> Courses);
