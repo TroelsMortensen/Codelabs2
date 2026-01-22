@@ -212,26 +212,42 @@ public partial class WheelOfFortune : ComponentBase, IDisposable
     {
         if (!IsSpinning) return;
 
-        // Apply friction based on velocity
-        if (AngularVelocity > 0.2)
+        // Apply friction based on velocity - fine-grained levels for smooth deceleration
+        if (AngularVelocity > 0.3)
+        {
+            AngularVelocity *= 0.975; // Very hard friction
+        }
+        else if (AngularVelocity > 0.2)
         {
             AngularVelocity *= 0.98; // Hard friction
+        }
+        else if (AngularVelocity > 0.15)
+        {
+            AngularVelocity *= 0.985; // Medium-hard friction
         }
         else if (AngularVelocity > 0.1)
         {
             AngularVelocity *= 0.99; // Medium friction
         }
+        else if (AngularVelocity > 0.075)
+        {
+            AngularVelocity *= 0.992; // Medium-soft friction
+        }
         else if (AngularVelocity > 0.05)
         {
             AngularVelocity *= 0.995; // Soft friction
         }
+        else if (AngularVelocity > 0.035)
+        {
+            AngularVelocity *= 0.9965; // Softer friction
+        }
         else if (AngularVelocity > 0.025)
         {
-            AngularVelocity *= 0.9975; // Softer friction
+            AngularVelocity *= 0.9975; // Very soft friction
         }
         else
         {
-            AngularVelocity *= 0.9999; // Super soft friction
+            AngularVelocity *= 0.9999; // Minimal friction
             
             // Increase friction when over target sector
             var currentSector = GetCurrentSectorIndex();
