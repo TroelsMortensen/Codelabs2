@@ -62,6 +62,7 @@ public partial class Home : ComponentBase
                                 new("Objects", "Session 8 Objects"),
                                 new("UML", "Session 8 UML"), 
                                 new("Encapsulation", "Session 8 Encapsulation"), 
+                                new("Shadowing", "Session 8 Shadowing"), 
                             ]
                         ),
                         new Session(9, "More about Objects",
