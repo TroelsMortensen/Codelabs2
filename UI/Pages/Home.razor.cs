@@ -247,7 +247,7 @@ public partial class Home : ComponentBase
         NavMgr.NavigateTo($"article/{owner}/{Uri.EscapeDataString(tutorialName)}");
 
     private void NavigateToWheel() =>
-        NavMgr.NavigateTo("/wheeloffortune");
+        NavMgr.NavigateTo("wheeloffortune");
 
 }
 
