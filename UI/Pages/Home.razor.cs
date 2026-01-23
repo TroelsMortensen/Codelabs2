@@ -97,7 +97,8 @@ public partial class Home : ComponentBase
                         ),
                         new Session(14, "Abstract classes",
                             [
-                                new("Abstract keyword", "Session 14 - Abstract")
+                                new("Abstract keyword", "Session 14 - Abstract"),
+                                new("Polymorphism", "Session 14 - Polymorphism")
                             ]
                         ),
                         new Session(15, "Interfaces",
