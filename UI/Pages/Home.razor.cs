@@ -243,6 +243,56 @@ public partial class Home : ComponentBase
 
     [Inject] public NavigationManager NavMgr { get; set; } = null!;
 
+    // State management for collapsible courses and sessions
+    private Dictionary<string, bool> CourseExpandedState { get; set; } = new();
+    private Dictionary<string, bool> SessionExpandedState { get; set; } = new();
+
+    private string GetCourseKey(Course course) => course.Title;
+    private string GetSessionKey(Course course, Session session) => $"{course.Title}_{session.SessionNumber}";
+
+    private bool IsCourseExpanded(Course course)
+    {
+        var key = GetCourseKey(course);
+        return CourseExpandedState.TryGetValue(key, out var expanded) && expanded;
+    }
+
+    private bool IsSessionExpanded(Course course, Session session)
+    {
+        var key = GetSessionKey(course, session);
+        return SessionExpandedState.TryGetValue(key, out var expanded) && expanded;
+    }
+
+    private void ToggleCourse(Course course)
+    {
+        var key = GetCourseKey(course);
+        CourseExpandedState[key] = !IsCourseExpanded(course);
+        StateHasChanged();
+    }
+
+    private void ExpandAll(Course course)
+    {
+        var courseKey = GetCourseKey(course);
+        bool shouldExpand = !IsCourseExpanded(course);
+        
+        CourseExpandedState[courseKey] = shouldExpand;
+        
+        // Expand/collapse all sessions in this course
+        foreach (var session in course.Sessions)
+        {
+            var sessionKey = GetSessionKey(course, session);
+            SessionExpandedState[sessionKey] = shouldExpand;
+        }
+        
+        StateHasChanged();
+    }
+
+    private void ToggleSession(Course course, Session session)
+    {
+        var key = GetSessionKey(course, session);
+        SessionExpandedState[key] = !IsSessionExpanded(course, session);
+        StateHasChanged();
+    }
+
     private void NavigateToArticle(string owner, string tutorialName) =>
         NavMgr.NavigateTo($"article/{owner}/{Uri.EscapeDataString(tutorialName)}");
 

@@ -20,14 +20,69 @@
     height: fit-content;
 }
 
-/* Course title styling */
-.CourseBox h1 {
+/* Course header styling */
+.CourseHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: 0 0 1rem 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.CourseTitle {
     font-size: 1.5rem;
     font-weight: bold;
     color: black;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    flex: 1;
     text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.2s ease;
+}
+
+.CourseTitle:hover {
+    opacity: 0.8;
+}
+
+.CourseHeaderIcons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.CourseToggleIcon {
+    font-size: 1rem;
+    color: black;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0.7;
+    padding: 0.25rem;
+}
+
+.ExpandAllIcon {
+    font-size: x-large;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0.7;
+    padding: 0.25rem;
+}
+
+.CourseToggleIcon:hover,
+.ExpandAllIcon:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* Course content with smooth collapse animation */
+.CourseContent {
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    max-height: 5000px; /* Large enough for content */
+    opacity: 1;
 }
 
 /* Session container */
@@ -38,12 +93,50 @@
     padding: 0.75rem;
 }
 
-/* Session title */
-.SessionBox h3 {
+/* Session header styling */
+.SessionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
     margin: 0 0 0.5rem 0;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s ease;
+}
+
+.SessionHeader:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.SessionHeader h3 {
+    margin: 0;
     font-size: 1.1rem;
     color: black;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    flex: 1;
+}
+
+.SessionToggleIcon {
+    font-size: 0.9rem;
+    color: black;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0.7;
+    margin-left: 0.5rem;
+}
+
+.SessionHeader:hover .SessionToggleIcon {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* Session content with smooth collapse animation */
+.SessionContent {
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    max-height: 2000px; /* Large enough for content */
+    opacity: 1;
 }
 
 /* Learning path container */
