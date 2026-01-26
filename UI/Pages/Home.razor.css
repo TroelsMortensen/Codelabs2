@@ -13,7 +13,14 @@
     border-radius: 1.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     height: fit-content;
-    transition: top 0.3s ease, left 0.3s ease;
+    position: absolute;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    z-index: 1;
+}
+
+.CourseBox.expanded {
+    z-index: 10;
 }
 
 /* Course header styling */

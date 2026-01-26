@@ -5,12 +5,19 @@ window.masonryLayout = (containerClass) => {
     const boxes = Array.from(container.querySelectorAll('.CourseBox'));
     if (boxes.length === 0) return;
 
-    // Reset positions temporarily to measure natural widths
+    // Ensure all boxes are absolutely positioned and get their natural width
+    // We'll measure width first, then apply transforms
     boxes.forEach(box => {
-        box.style.position = 'static';
-        box.style.top = 'auto';
-        box.style.left = 'auto';
+        // Ensure box is positioned for measurement
+        if (!box.style.position || box.style.position === 'static') {
+            box.style.position = 'absolute';
+            box.style.left = '0';
+            box.style.top = '0';
+        }
     });
+
+    // Force reflow to ensure measurements are accurate
+    void container.offsetHeight;
 
     // Calculate column width (use first box's width + gap)
     const firstBox = boxes[0];
@@ -24,8 +31,8 @@ window.masonryLayout = (containerClass) => {
     // Initialize column heights
     const columnHeights = new Array(actualColumns).fill(0);
 
-    // Position each box
-    boxes.forEach((box, index) => {
+    // Calculate target positions for all boxes
+    const targetPositions = boxes.map((box, index) => {
         // Find the shortest column
         const shortestColumnIndex = columnHeights.indexOf(Math.min(...columnHeights));
         
@@ -33,19 +40,31 @@ window.masonryLayout = (containerClass) => {
         const left = containerPadding + (shortestColumnIndex * (boxWidth + gap));
         const top = columnHeights[shortestColumnIndex];
 
-        // Apply position
-        box.style.position = 'absolute';
-        box.style.left = `${left}px`;
-        box.style.top = `${top}px`;
-        box.style.width = `${boxWidth}px`;
-
         // Update column height
         columnHeights[shortestColumnIndex] += box.offsetHeight + gap;
+
+        return { left, top, width: boxWidth };
     });
 
-    // Set container height to accommodate all boxes
-    const maxHeight = Math.max(...columnHeights);
-    container.style.height = `${maxHeight}px`;
+    // Use requestAnimationFrame to ensure smooth animation start
+    requestAnimationFrame(() => {
+        boxes.forEach((box, index) => {
+            const pos = targetPositions[index];
+            
+            // Ensure box is absolutely positioned
+            box.style.position = 'absolute';
+            box.style.left = '0';
+            box.style.top = '0';
+            box.style.width = `${pos.width}px`;
+            
+            // Apply transform for smooth animation
+            box.style.transform = `translate(${pos.left}px, ${pos.top}px)`;
+        });
+
+        // Set container height to accommodate all boxes
+        const maxHeight = Math.max(...columnHeights);
+        container.style.height = `${maxHeight}px`;
+    });
 };
 
 window.initializeMasonry = (containerClass) => {

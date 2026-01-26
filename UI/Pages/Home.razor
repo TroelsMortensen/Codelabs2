@@ -6,7 +6,7 @@
 <div class="CoursesBoxLayout">
     @foreach (var course in OverviewData.Courses)
     {
-        <div class="CourseBox" style="background-color: @course.Color">
+        <div class="CourseBox @(IsCourseExpanded(course) ? "expanded" : "")" style="background-color: @course.Color">
             <div class="CourseHeader" @onclick:stopPropagation="true">
                 <span class="CourseTitle" @onclick='() => ToggleCourse(course)'>@course.Title</span>
                 <div class="CourseHeaderIcons">
@@ -59,7 +59,7 @@
     @{
         var stuffExpanded = IsCourseExpanded(new Course("Stuff", "#ffe17f", []));
     }
-    <div class="CourseBox" style="background-color: #ffe17f">
+    <div class="CourseBox @(stuffExpanded ? "expanded" : "")" style="background-color: #ffe17f">
         <div class="CourseHeader" @onclick:stopPropagation="true">
             <span class="CourseTitle" @onclick="ToggleStuff">Stuff</span>
             <div class="CourseHeaderIcons">
