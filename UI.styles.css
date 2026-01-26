@@ -313,26 +313,29 @@ main[b-mr0ddkk2zs] {
     left: 10px;
 }
 /* /Pages/Home.razor.rz.scp.css */
-/* Container for all courses - creates a responsive grid */
+/* Container for all courses - masonry layout */
 .CoursesBoxLayout[b-uyo0foee1o] {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 1rem;
+    position: relative;
     padding: 1rem;
 }
 
 /* Individual course column styling */
 .CourseBox[b-uyo0foee1o] {
-    flex: 1;
     min-width: 300px;
     max-width: 400px;
+    width: 100%;
     padding: 1.5rem;
     border-radius: 1.5rem;
-    margin-bottom: 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    align-self: flex-start;
     height: fit-content;
+    position: absolute;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    z-index: 1;
+}
+
+.CourseBox.expanded[b-uyo0foee1o] {
+    z-index: 10;
 }
 
 /* Course header styling */
