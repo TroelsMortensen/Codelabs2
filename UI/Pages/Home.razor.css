@@ -1,23 +1,19 @@
-﻿/* Container for all courses - creates a responsive grid */
+﻿/* Container for all courses - masonry layout */
 .CoursesBoxLayout {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 1rem;
+    position: relative;
     padding: 1rem;
 }
 
 /* Individual course column styling */
 .CourseBox {
-    flex: 1;
     min-width: 300px;
     max-width: 400px;
+    width: 100%;
     padding: 1.5rem;
     border-radius: 1.5rem;
-    margin-bottom: 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    align-self: flex-start;
     height: fit-content;
+    transition: top 0.3s ease, left 0.3s ease;
 }
 
 /* Course header styling */

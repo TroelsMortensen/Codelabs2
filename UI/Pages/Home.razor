@@ -2,99 +2,97 @@
 
 <PageTitle>Home</PageTitle>
 
-@if (OverviewData is null)
-{
-    <h2>Loading articles..</h2>
-}
-else
-{
-    <div class="CoursesBoxLayout">
-        @foreach (var course in OverviewData.Courses)
-        {
-            <div class="CourseBox" style="background-color: @course.Color">
-                <div class="CourseHeader" @onclick:stopPropagation="true">
-                    <span class="CourseTitle" @onclick='() => ToggleCourse(course)'>@course.Title</span>
-                    <div class="CourseHeaderIcons">
-                        <i class="fa fa-chevron-@(IsCourseExpanded(course) ? "down" : "right") CourseToggleIcon"
-                           @onclick='() => ToggleCourse(course)'
-                           title="Toggle course"></i>
-                        <i class="fa fa-angle-double-@(IsCourseExpanded(course) ? "down" : "right") ExpandAllIcon"
-                           @onclick='() => ExpandAll(course)'
-                           title="Expand/Collapse all"></i>
-                    </div>
-                </div>
-                @if (IsCourseExpanded(course))
-                {
-                    <div class="CourseContent">
-                        @foreach (var session in course.Sessions)
-                        {
-                            <div class="SessionBox">
-                                <div class="SessionHeader" @onclick='() => ToggleSession(course, session)'>
-                                    <h3>@(session.SessionNumber). @session.Title</h3>
-                                    <i class="fa fa-chevron-@(IsSessionExpanded(course, session) ? "down" : "right") SessionToggleIcon"></i>
-                                </div>
-                                @if (IsSessionExpanded(course, session))
-                                {
-                                    <div class="SessionContent">
-                                        <ol>
-                                            @foreach (var learningPath in session.LearningPaths)
-                                            {
-                                                <li>
-                                                    <div class="LearningPathBox">
-                                                        <button
-                                                            type="button"
-                                                            class="LearningPathButton"
-                                                            @onclick='() => NavigateToArticle("TroelsMortensen", learningPath.Url)'>
-                                                            @learningPath.Title
-                                                        </button>
-                                                    </div>
-                                                </li>
-                                            }
-                                        </ol>
-                                    </div>
-                                }
-                            </div>
-                        }
-                    </div>
-                }
-            </div>
-        }
-        @{
-            var stuffExpanded = IsCourseExpanded(new Course("Stuff", "#ffe17f", []));
-        }
-        <div class="CourseBox" style="background-color: #ffe17f">
+
+<div class="CoursesBoxLayout">
+    @foreach (var course in OverviewData.Courses)
+    {
+        <div class="CourseBox" style="background-color: @course.Color">
             <div class="CourseHeader" @onclick:stopPropagation="true">
-                <span class="CourseTitle" @onclick='() => { CourseExpandedState["Stuff"] = !stuffExpanded; StateHasChanged(); }'>Stuff</span>
+                <span class="CourseTitle" @onclick='() => ToggleCourse(course)'>@course.Title</span>
                 <div class="CourseHeaderIcons">
-                    <i class="fa fa-chevron-@(stuffExpanded ? "down" : "right") CourseToggleIcon"
-                       @onclick='() => { CourseExpandedState["Stuff"] = !stuffExpanded; StateHasChanged(); }'
-                       title="Toggle course"></i>
-                    <i class="fa fa-angle-double-@(stuffExpanded ? "down" : "right") ExpandAllIcon"
-                       @onclick='() => { CourseExpandedState["Stuff"] = !stuffExpanded; StateHasChanged(); }'
-                       title="Expand/Collapse all"></i>
+                    <i class="fa fa-chevron-@(IsCourseExpanded(course) ? "down" : "right") CourseToggleIcon"
+                       @onclick='() => ToggleCourse(course)'
+                       title="Toggle course">
+                    </i>
+                    <i class="fa fa-angle-double-@(IsCourseExpanded(course) ? "down" : "right") ExpandAllIcon"
+                       @onclick='() => ExpandAll(course)'
+                       title="Expand/Collapse all">
+                    </i>
                 </div>
             </div>
-            @if (stuffExpanded)
+            @if (IsCourseExpanded(course))
             {
                 <div class="CourseContent">
-                    <div class="SessionBox">
-                        <div class="SessionContent">
-                            <ol>
-                                <li>
-                                    <div class="LearningPathBox">
-                                        <button
-                                            type="button"
-                                            class="LearningPathButton"
-                                            @onclick="NavigateToWheel">
-                                            Wheel of Fortune
-                                        </button>
-                                    </div>
-                                </li>
-                            </ol>
+                    @foreach (var session in course.Sessions)
+                    {
+                        <div class="SessionBox">
+                            <div class="SessionHeader" @onclick='() => ToggleSession(course, session)'>
+                                <h3>@(session.SessionNumber). @session.Title</h3>
+                                <i class="fa fa-chevron-@(IsSessionExpanded(course, session) ? "down" : "right") SessionToggleIcon"></i>
+                            </div>
+                            @if (IsSessionExpanded(course, session))
+                            {
+                                <div class="SessionContent">
+                                    <ol>
+                                        @foreach (var learningPath in session.LearningPaths)
+                                        {
+                                            <li>
+                                                <div class="LearningPathBox">
+                                                    <button
+                                                        type="button"
+                                                        class="LearningPathButton"
+                                                        @onclick='() => NavigateToArticle("TroelsMortensen", learningPath.Url)'>
+                                                        @learningPath.Title
+                                                    </button>
+                                                </div>
+                                            </li>
+                                        }
+                                    </ol>
+                                </div>
+                            }
                         </div>
-                    </div>
+                    }
                 </div>
             }
         </div>
+    }
+    @{
+        var stuffExpanded = IsCourseExpanded(new Course("Stuff", "#ffe17f", []));
+    }
+    <div class="CourseBox" style="background-color: #ffe17f">
+        <div class="CourseHeader" @onclick:stopPropagation="true">
+            <span class="CourseTitle" @onclick="ToggleStuff">Stuff</span>
+            <div class="CourseHeaderIcons">
+                <i class="fa fa-chevron-@(stuffExpanded ? "down" : "right") CourseToggleIcon"
+                   @onclick="ToggleStuff"
+                   title="Toggle course">
+                </i>
+                <i class="fa fa-angle-double-@(stuffExpanded ? "down" : "right") ExpandAllIcon"
+                   @onclick="ToggleStuff"
+                   title="Expand/Collapse all">
+                </i>
+            </div>
+        </div>
+        @if (stuffExpanded)
+        {
+            <div class="CourseContent">
+                <div class="SessionBox">
+                    <div class="SessionContent">
+                        <ol>
+                            <li>
+                                <div class="LearningPathBox">
+                                    <button
+                                        type="button"
+                                        class="LearningPathButton"
+                                        @onclick="NavigateToWheel">
+                                        Wheel of Fortune
+                                    </button>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
-}
+</div>

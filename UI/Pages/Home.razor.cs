@@ -1,5 +1,5 @@
-﻿using System.Web;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace UI.Pages;
 
@@ -245,10 +245,20 @@ public partial class Home : ComponentBase
         );
 
     [Inject] public NavigationManager NavMgr { get; set; } = null!;
+    [Inject] public IJSRuntime JsRuntime { get; set; } = null!;
 
     // State management for collapsible courses and sessions
     private Dictionary<string, bool> CourseExpandedState { get; set; } = new();
     private Dictionary<string, bool> SessionExpandedState { get; set; } = new();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+        await Task.Delay(100); // Wait for DOM to be ready
+        await JsRuntime.InvokeVoidAsync("initializeMasonry", "CoursesBoxLayout");
+        }
+    }
 
     private string GetCourseKey(Course course) => course.Title;
     private string GetSessionKey(Course course, Session session) => $"{course.Title}_{session.SessionNumber}";
@@ -265,14 +275,16 @@ public partial class Home : ComponentBase
         return SessionExpandedState.TryGetValue(key, out var expanded) && expanded;
     }
 
-    private void ToggleCourse(Course course)
+    private async Task ToggleCourse(Course course)
     {
         var key = GetCourseKey(course);
         CourseExpandedState[key] = !IsCourseExpanded(course);
         StateHasChanged();
+        await Task.Delay(50); // Wait for DOM update
+        await JsRuntime.InvokeVoidAsync("masonryLayout", "CoursesBoxLayout");
     }
 
-    private void ExpandAll(Course course)
+    private async Task ExpandAll(Course course)
     {
         var courseKey = GetCourseKey(course);
         bool shouldExpand = !IsCourseExpanded(course);
@@ -287,13 +299,25 @@ public partial class Home : ComponentBase
         }
         
         StateHasChanged();
+        await Task.Delay(50); // Wait for DOM update
+        await JsRuntime.InvokeVoidAsync("masonryLayout", "CoursesBoxLayout");
     }
 
-    private void ToggleSession(Course course, Session session)
+    private async Task ToggleSession(Course course, Session session)
     {
         var key = GetSessionKey(course, session);
         SessionExpandedState[key] = !IsSessionExpanded(course, session);
         StateHasChanged();
+        await Task.Delay(50); // Wait for DOM update
+        await JsRuntime.InvokeVoidAsync("masonryLayout", "CoursesBoxLayout");
+    }
+
+    private async Task ToggleStuff()
+    {
+        CourseExpandedState["Stuff"] = !CourseExpandedState.GetValueOrDefault("Stuff", false);
+        StateHasChanged();
+        await Task.Delay(50); // Wait for DOM update
+        await JsRuntime.InvokeVoidAsync("masonryLayout", "CoursesBoxLayout");
     }
 
     private void NavigateToArticle(string owner, string tutorialName) =>
