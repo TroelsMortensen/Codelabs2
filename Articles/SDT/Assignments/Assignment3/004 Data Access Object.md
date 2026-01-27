@@ -8,7 +8,9 @@ Do keep in mind if there are relevant exceptions, you should log them. You have 
 
 ## The interface
 
-For each entity type, you should create an interface. The interface should contain the methods you will need to perform CRUD operations on the entity type.
+For each entity type, you should create an interface. You could call it `EntityDao`, e.g. `StockDao`.
+
+The interface should contain the methods you will need to perform CRUD operations on the entity type.
 
 You will need to get an entity by ID, get all entities, add an entity, update an entity, and delete an entity.
 
@@ -16,7 +18,7 @@ For the "get all entities" method, just keep it simple for now. As your system g
 
 ## The implementation
 
-For each entity type you should create a class implementing the interface.
+For each entity type you should create a class implementing the interface. You could call it `FileEntityDao`, e.g. `FileStockDao`. If/when you swap to Postgres, you could call it `PostgresEntityDao`, e.g. `PostgresStockDao`.
 
 ## The constructor
 

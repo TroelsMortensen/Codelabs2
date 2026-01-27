@@ -8,11 +8,11 @@ Do keep in mind if there are relevant exceptions, you should log them. You have 
 
 ## The interface
 
-Start by defining the interface, with the three methods you will need.
+Start by defining the interface, with the three methods you will need. You could call it `UnitOfWork`.
 
 ## The implementation
 
-Then create the class implementing the interface.
+Then create the class implementing the interface. You could call it `FileUnitOfWork`, as it is a file-based implementation of the Unit of Work pattern. If/when you swap to Postgres, you could call it `PostgresUnitOfWork`.
 
 ## Collections
 

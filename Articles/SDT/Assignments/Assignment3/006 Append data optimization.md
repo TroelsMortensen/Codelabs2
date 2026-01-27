@@ -55,3 +55,23 @@ private void appendLinesToFile(String filePath, List<String> list)
 ### rollback method
 
 To this method just add a line to clear the buffer list. Or assign it to a new, empty list.
+
+## Data Access Object
+
+In the DAO classes, add a new method, to append the entity to the buffer.
+
+### Interface
+
+You should add a new method to the interface: `append(entity)`.
+
+### Implementation
+
+This should be implemented in the relevant implementing DAO class.
+
+The method should retrieve the buffer list from the UoW, and add the entity to the list.
+
+When the UoW is committed, the data is appended to the end of the file.
+
+## Create entity
+
+Do you still need this method? Maybe not, maybe it can just be removed. Or, you could leave it, just in case. And just remember to use the append method when relevant.
