@@ -1,4 +1,4 @@
-![Stock game image](Resources/StockGame.png)
+![Stock game image](Resources/GameImage.png)
 
 # Assignment 1: Introduction
 
@@ -17,5 +17,7 @@ This project is about a stock trading game. You will simulate stocks changing in
 See itslearning.
 
 ## Handing in
+
+Handing in is optional.
 
 On itslearning, you will just submit a link to your GitHub repository.

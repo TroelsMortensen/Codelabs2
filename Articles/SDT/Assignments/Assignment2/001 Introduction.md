@@ -19,4 +19,6 @@ See itslearning.
 
 ## Handing in
 
+Handing in is optional.
+
 On itslearning, you will just submit a link to the sub-folder containing your code.
