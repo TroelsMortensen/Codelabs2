@@ -199,9 +199,6 @@ public partial class Home : ComponentBase
                                 new LearningPath("Sequence diagrams", "SEP1/Sequence diagrams"),
                             ]
                         )
-                        // new Session(2, "SEP2",
-                        //     [
-                        //     ])
                     ]
                 ),
                 new Course("SDT", "#FFA756",
