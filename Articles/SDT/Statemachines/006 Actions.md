@@ -102,7 +102,7 @@ These actions run whenever the character leaves the given state, no matter which
 Actions are often used together with **guards**:
 
 ```
-State1 ──── Event[Guard] / Action ───→ State2
+State1 ──── Event[Guard] / Action ───> State2
 ```
 
 - The **guard** controls **whether** the transition is allowed.
