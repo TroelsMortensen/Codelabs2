@@ -7,6 +7,8 @@ This time we will solve the following problem:
 - Unit of Work pattern
 
 
+I recommend you read through the entire assignment before you start, just so you know what you are getting into.
+
 ## Assignment 3 deliverables
 
 - Data Access Object pattern implementation

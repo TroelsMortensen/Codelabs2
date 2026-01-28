@@ -26,6 +26,16 @@ The constructor should receive a FileUnitOfWork object, i.e. the implementation,
 
 I recommend also getting all the entities from the UoW, finding the highest ID, and storing that in a static field variable. This will make it easier to assign new IDs to new entities.
 
+```java
+private static int nextId = 1;
+
+public StockPurchaseFileDAO(FileUnitOfWork uow)
+{
+    this.uow = uow;
+    findNextId();
+}
+```
+
 ## Create method
 
 This method accepts an entity as a parameter.
@@ -44,7 +54,7 @@ You have three options here:
 
 1. Delete the entity from the list, and add the new entity.
 2. Find the entity in the list and update the fields.
-3. Set the entity. The List interface has a `set(index, element)` method, which overwrites the element at the given index with the new element.
+3. Set the entity. The List interface has a `set(index, element)` method, which overwrites the element at the given index with the new element. 
 
 Either way, you first need to get the list of entities from the UoW.
 
@@ -74,7 +84,7 @@ Consider what to do if the entity is not found in the list. Should you throw an 
 
 ## Get by something else method
 
-For some of your entity types, you may want to find an entity by something other than ID. You add methods for this as needed.
+For some of your entity types, you may want to find an entity by something other than ID. You can add methods for this as needed.
 
 ## Get all method
 
@@ -82,7 +92,7 @@ This method returns a list of all entities.
 
 **Optional challenge:** Returning a list of entities gives the caller the option to do something with the entities, like modifying an entity or deleting an entity. This is not ideal, as there are specific methods for such modifications. 
 
-You may consider returning an immutable list. You may consider copying each entity in the list to a new immutable list. This will break the connection to the data held in the UoW.
+You may consider returning an immutable list. You may consider copying each entity in the list to a new immutable list. This will break the connection to the data held in the UoW, ensuring other classes cannot misuse the List.
 
 For this project I am fine with just accepting this potential problem.
 

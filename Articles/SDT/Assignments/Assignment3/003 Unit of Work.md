@@ -20,7 +20,18 @@ It should contain a List for each entity type in your system.
 
 ## Constructor
 
-The constructor should verify that the relevant files exist, and if not, create them. Remember, you will need a file per entity type.
+The constructor
+
+* Will receive a String argument, which is the directory path where the files are located.
+* Should verify that the relevant files exist, and if not, create them. Remember, you will need a file per entity type.
+
+```java
+public FileUnitOfWork(String directoryPath)
+{
+    this.directoryPath = directoryPath;
+    ensureFilesExist();
+}
+```
 
 ## Get methods
 
@@ -56,7 +67,7 @@ A similar approach can be used to write to a file.
 You may choose your text format, but adhere to the following requirements:
 - It must be text-based, i.e. readable when opening the file. Not binary.
 - It must be line-based, i.e. each entity is on a separate line.
-- It must be entity-based, i.e. each entity is represented by a string.
+- It must be entity-based, i.e. each entity is represented by a line of string.
 
 I will explain the PSV format. You may pick CSV, JSON, XML, or invent your own format.
 
@@ -93,7 +104,7 @@ This method should simply set all lists to null. This will essentially undo all 
 
 For each List, check if it is not null. If it is not null, convert each entity to a Pipe Separated Value string, and write it to the file.
 
-There is a catch here: Multithreading. You will eventually have multiple threads in your system, each thread can use the Unit of Work. To avoid race conditions when writing to the files, you must synchronize the writing to the files.
+There is a catch here: **Multithreading**. You will eventually have multiple threads in your system, each thread can use a Unit of Work. To avoid race conditions when writing to the files, you must synchronize the writing to the files.
 
 You will need an Object field variable to use as lock.
 
