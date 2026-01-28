@@ -216,6 +216,7 @@ public partial class Home : ComponentBase
                                 new LearningPath("Data Transfer Objects", "SDT/DTOs"),
                                 new LearningPath("Records", "SDT/Records"),
                                 new LearningPath("Transactions", "SDT/Transactions"),
+                                new LearningPath("State Machines", "SDT/Statemachines"),
                             ]
                         ),
                         new Session(3, "Design Principles",
