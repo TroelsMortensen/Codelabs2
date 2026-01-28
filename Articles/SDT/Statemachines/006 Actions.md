@@ -97,6 +97,13 @@ An **exit action** runs automatically whenever a state is left, regardless of wh
 
 These actions run whenever the character leaves the given state, no matter which target state it goes to.
 
+## Example: Elevator
+
+Here is a diagram of an elevator.
+
+![elevator](Resources/Elevator.svg)
+
+
 ## Combining Guards and Actions
 
 Actions are often used together with **guards**:
