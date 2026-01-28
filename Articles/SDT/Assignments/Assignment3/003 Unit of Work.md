@@ -62,6 +62,7 @@ private List<String> readAllLines(String filePath)
 
 A similar approach can be used to write to a file.
 
+
 ## To text (PSV)
 
 You may choose your text format, but adhere to the following requirements:
