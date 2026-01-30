@@ -2,9 +2,20 @@
 
 Next, we will implement the Data Access Object pattern.
 
+## Required
+
+Some DAOs are required. These are the DAOs for the following entities:
+- Stock
+- Portfolio
+- OwnedStock
+
+Then the domain model from assignment 1 also included entities for StockPriceHistory and Transaction.\
+These are less important for the core game play, and you may choose to not implement them.
+
 ## Logging
 
 Do keep in mind if there are relevant exceptions, you should log them. You have that functionality from the previous assignment.
+
 
 ## The interface
 
