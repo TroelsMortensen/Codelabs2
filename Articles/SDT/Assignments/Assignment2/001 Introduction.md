@@ -1,4 +1,4 @@
-# Introduction to Assignment 2
+# Introduction to Assignment 2 - Singleton pattern
 
 This time we will solve to problems:
 

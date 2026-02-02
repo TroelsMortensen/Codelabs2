@@ -1,4 +1,4 @@
-# Introduction to Assignment 3
+# Introduction to Assignment 3 - Persistence
 
 This time we will solve the following problem:
 
