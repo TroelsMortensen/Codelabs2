@@ -10,7 +10,7 @@ We must simulate a stock market, with stocks fluctuating in price. The Stock pri
 - LiveStock implementation using the State Design Pattern
 - StockMarket singleton
 - Market update thread
-- Updated class diagram
+- New, updated class diagram
 
 ## Deadline
 
