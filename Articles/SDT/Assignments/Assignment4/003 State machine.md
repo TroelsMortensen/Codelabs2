@@ -12,4 +12,4 @@ You must decide upon valid transitions between states. From which state can you 
 
 Where will the state go after being bankrupt? 
 
-Personally, I have included a Reset state. When Brankrupt, the state will go to Reset, just to reset the price, and then to the next state to be part of the game again.
+Personally, I have included a Reset state. When Bankrupt, the state will go to Reset, just to reset the price, and then to the next state to be part of the game again.

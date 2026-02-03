@@ -12,9 +12,13 @@ You may also need a reference to a `Logger`, to print out information about the 
 
 The class should have a while(true) loop, and inside it, it should call the `StockMarket.updateAllStocks()` method.
 
-Then the loop should sleep for the update frequency.
+Then the loop should sleep for the update frequency, i.e. pause this thread for the update frequency:
 
-This must be run in a separate thread, one way or another.
+```java
+Thread.sleep(updateFrequency);
+```
+
+This must be run in a separate thread, one way or another, started from the main method.
 
 ## The flow
 

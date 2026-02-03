@@ -1,103 +1,126 @@
 # Applying the Pattern
 
-We now apply the Observer pattern to the problem from the second file: a data source (e.g. stock price) that multiple components—dashboard, log panel, alert widget—must react to when the value changes.
+We now apply the Observer pattern to the problem from the second file: a weather sensor that multiple components—current conditions display, forecast panel, history log, frost alert—must react to when the readings change.
 
 ## Before: The Poor Solution
 
 Previously, the source class held direct references to each concrete display and called them explicitly:
 
 ```java
-public void setPrice(double newPrice) {
-    this.price = newPrice;
-    dashboard.update(price);
-    logPanel.update(price);
-    alertWidget.update(price);
+public void setReading(double temperature, double humidity) {
+    this.temperature = temperature;
+    this.humidity = humidity;
+    currentConditions.update(temperature, humidity);
+    forecastPanel.update(temperature, humidity);
+    historyLog.update(temperature, humidity);
+    frostAlert.update(temperature, humidity);
 }
 ```
 
-The source was tightly coupled to `DashboardDisplay`, `LogPanel`, and `AlertWidget`. Adding or removing a listener required changing this class.
+The source was tightly coupled to `CurrentConditionsDisplay`, `ForecastPanel`, `HistoryLog`, and `FrostAlert`. Adding or removing a listener required changing this class.
 
 ## After: Subject and Listeners
 
 The source becomes a **ConcreteSubject** that extends the abstract **Subject**. The displays become **ConcreteListener**s that implement **Listener**. The source no longer knows their concrete types; it only calls `notifyListeners()`.
 
-### ConcreteSubject: StockPrice
+### ConcreteSubject: WeatherSensor
 
 ```java
-public class StockPrice extends Subject {
-    private double price;
+public class WeatherSensor extends Subject {
+    private double temperature;
+    private double humidity;
 
-    public double getPrice() {
-        return price;
+    public double getTemperature() {
+        return temperature;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public double getHumidity() {
+        return humidity;
+    }
+
+    public void setReading(double temperature, double humidity) {
+        this.temperature = temperature;
+        this.humidity = humidity;
         notifyListeners();
     }
 }
 ```
 
-When the price changes, `setPrice` calls `notifyListeners()`. Every attached listener (dashboard, log, alert, or any future listener) is notified through the Listener interface.
+When the readings change, `setReading` calls `notifyListeners()`. Every attached listener (current conditions, forecast, history, frost alert, or any future listener) is notified through the Listener interface.
 
-### ConcreteListeners: Dashboard, Log, Alert
+### ConcreteListeners: Current Conditions, Forecast, History, Frost Alert
 
 Each component implements Listener and reacts in `update`:
 
 ```java
-public class DashboardDisplay implements Listener {
+public class CurrentConditionsDisplay implements Listener {
     @Override
     public void update(Subject source) {
-        if (source instanceof StockPrice stockPrice) {
-            System.out.println("Dashboard: price = " + stockPrice.getPrice());
+        if (source instanceof WeatherSensor sensor) {
+            System.out.println("Current: " + sensor.getTemperature() + " °C, "
+                + sensor.getHumidity() + "% humidity");
         }
     }
 }
 
-public class LogPanel implements Listener {
+public class ForecastPanel implements Listener {
     @Override
     public void update(Subject source) {
-        if (source instanceof StockPrice stockPrice) {
-            System.out.println("Log: price changed to " + stockPrice.getPrice());
+        if (source instanceof WeatherSensor sensor) {
+            System.out.println("Forecast: temp=" + sensor.getTemperature()
+                + ", humidity=" + sensor.getHumidity());
         }
     }
 }
 
-public class AlertWidget implements Listener {
-    private static final double THRESHOLD = 100.0;
+public class HistoryLog implements Listener {
+    @Override
+    public void update(Subject source) {
+        if (source instanceof WeatherSensor sensor) {
+            System.out.println("History: temp=" + sensor.getTemperature()
+                + ", humidity=" + sensor.getHumidity());
+        }
+    }
+}
+
+public class FrostAlert implements Listener {
+    private static final double FROST_THRESHOLD = 0.0;
 
     @Override
     public void update(Subject source) {
-        if (source instanceof StockPrice stockPrice) {
-            if (stockPrice.getPrice() > THRESHOLD) {
-                System.out.println("Alert: price " + stockPrice.getPrice() + " above threshold!");
+        if (source instanceof WeatherSensor sensor) {
+            if (sensor.getTemperature() < FROST_THRESHOLD) {
+                System.out.println("Frost alert: temperature " + sensor.getTemperature()
+                    + " °C is below " + FROST_THRESHOLD + " °C!");
             }
         }
     }
 }
 ```
 
-Each listener receives the Subject and, if it is a `StockPrice`, reads the state and reacts. The Subject does not reference these classes—only the Listener interface.
+Each listener receives the Subject and, if it is a `WeatherSensor`, reads the state and reacts. The Subject does not reference these classes—only the Listener interface.
 
 ### Wiring and Using
 
 Listeners are attached and detached at runtime. The Subject does not need to be changed when you add or remove listeners.
 
 ```java
-StockPrice stockPrice = new StockPrice();
-DashboardDisplay dashboard = new DashboardDisplay();
-LogPanel logPanel = new LogPanel();
-AlertWidget alertWidget = new AlertWidget();
+WeatherSensor sensor = new WeatherSensor();
+CurrentConditionsDisplay currentConditions = new CurrentConditionsDisplay();
+ForecastPanel forecastPanel = new ForecastPanel();
+HistoryLog historyLog = new HistoryLog();
+FrostAlert frostAlert = new FrostAlert();
 
-stockPrice.attach(dashboard);
-stockPrice.attach(logPanel);
-stockPrice.attach(alertWidget);
+sensor.attach(currentConditions);
+sensor.attach(forecastPanel);
+sensor.attach(historyLog);
+sensor.attach(frostAlert);
 
-stockPrice.setPrice(50.0);   // All three are notified
-stockPrice.setPrice(150.0);  // All three are notified; AlertWidget may show alert
+sensor.setReading(5.0, 80.0);   // All four are notified
+sensor.setReading(-2.0, 90.0);   // All four are notified; FrostAlert shows warning
 
-stockPrice.detach(logPanel);
-stockPrice.setPrice(75.0);   // Only dashboard and alert widget are notified
+sensor.detach(historyLog);
+sensor.setReading(3.0, 85.0);   // Only current conditions, forecast, and frost alert are notified
 ```
 
 ## Summary
@@ -105,4 +128,4 @@ stockPrice.setPrice(75.0);   // Only dashboard and alert widget are notified
 - **Before**: The source depended on concrete display types and called each one explicitly. Adding or removing a listener meant changing the source.
 - **After**: The source extends Subject and calls `notifyListeners()`. Displays implement Listener and register with `attach`/`detach`. The source never references concrete listener classes.
 
-The same `StockPrice` subject can later be used with other listener types (e.g. a chart, a persistence layer) without changing `StockPrice` or the existing listeners. That is the benefit of depending only on the Listener interface.
+The same `WeatherSensor` subject can later be used with other listener types (e.g. a statistics panel, a persistence layer) without changing `WeatherSensor` or the existing listeners. That is the benefit of depending only on the Listener interface.

@@ -4,6 +4,15 @@ This time we will solve the following problem:
 
 We must simulate a stock market, with stocks fluctuating in price. The Stock price calculation can differ based on the current state of the stock.
 
+## Logging
+
+Generally, there may be a lot of information, you want to print to the console, for debugging purposes.  
+Therefore, you should use the Logger class from the previous assignment.
+
+## AppConfig
+
+You should use the AppConfig class from the previous assignment.
+
 ## Assignment 3 deliverables
 
 - LiveStock state machine diagram
