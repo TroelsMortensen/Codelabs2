@@ -21,9 +21,33 @@ The source was tightly coupled to `CurrentConditionsDisplay`, `ForecastPanel`, `
 
 ## After: Subject and Listeners
 
-The source becomes a **ConcreteSubject** that extends the abstract **Subject**. The displays become **ConcreteListener**s that implement **Listener**. The source no longer knows their concrete types; it only calls `notifyListeners()`.
+The source becomes a **ConcreteSubject** that extends the abstract **Subject**. The displays become **ConcreteListener**s that implement **Listener**. The source no longer knows their concrete types; it only calls `notifyListeners(arg)` with the new data.
 
 ### ConcreteSubject: WeatherSensor
+
+We pass the state as a data object so that listeners depend on the data, not on the Subject. For example, a record:
+
+```java
+public class WeatherReading {
+    private final double temperature;
+    private final double humidity;
+
+    public WeatherReading(double temperature, double humidity) {
+        this.temperature = temperature;
+        this.humidity = humidity;
+    }
+
+    public double getTemperature() {
+        return temperature;
+    }
+
+    public double getHumidity() {
+        return humidity;
+    }
+}
+```
+
+The WeatherSensor holds temperature and humidity and, when they change, notifies listeners with a `WeatherReading`:
 
 ```java
 public class WeatherSensor extends Subject {
@@ -41,44 +65,44 @@ public class WeatherSensor extends Subject {
     public void setReading(double temperature, double humidity) {
         this.temperature = temperature;
         this.humidity = humidity;
-        notifyListeners();
+        notifyListeners(new WeatherReading(temperature, humidity));
     }
 }
 ```
 
-When the readings change, `setReading` calls `notifyListeners()`. Every attached listener (current conditions, forecast, history, frost alert, or any future listener) is notified through the Listener interface.
+When the readings change, `setReading` calls `notifyListeners(new WeatherReading(...))`. Every attached listener receives that data through the Listener interface.
 
 ### ConcreteListeners: Current Conditions, Forecast, History, Frost Alert
 
-Each component implements Listener and reacts in `update`:
+Each component implements Listener and reacts in `update` to the data it receives:
 
 ```java
 public class CurrentConditionsDisplay implements Listener {
     @Override
-    public void update(Subject source) {
-        if (source instanceof WeatherSensor sensor) {
-            System.out.println("Current: " + sensor.getTemperature() + " °C, "
-                + sensor.getHumidity() + "% humidity");
+    public void update(Object arg) {
+        if (arg instanceof WeatherReading r) {
+            System.out.println("Current: " + r.temperature() + " °C, "
+                + r.humidity() + "% humidity");
         }
     }
 }
 
 public class ForecastPanel implements Listener {
     @Override
-    public void update(Subject source) {
-        if (source instanceof WeatherSensor sensor) {
-            System.out.println("Forecast: temp=" + sensor.getTemperature()
-                + ", humidity=" + sensor.getHumidity());
+    public void update(Object arg) {
+        if (arg instanceof WeatherReading r) {
+            System.out.println("Forecast: temp=" + r.temperature()
+                + ", humidity=" + r.humidity());
         }
     }
 }
 
 public class HistoryLog implements Listener {
     @Override
-    public void update(Subject source) {
-        if (source instanceof WeatherSensor sensor) {
-            System.out.println("History: temp=" + sensor.getTemperature()
-                + ", humidity=" + sensor.getHumidity());
+    public void update(Object arg) {
+        if (arg instanceof WeatherReading r) {
+            System.out.println("History: temp=" + r.temperature()
+                + ", humidity=" + r.humidity());
         }
     }
 }
@@ -87,18 +111,16 @@ public class FrostAlert implements Listener {
     private static final double FROST_THRESHOLD = 0.0;
 
     @Override
-    public void update(Subject source) {
-        if (source instanceof WeatherSensor sensor) {
-            if (sensor.getTemperature() < FROST_THRESHOLD) {
-                System.out.println("Frost alert: temperature " + sensor.getTemperature()
-                    + " °C is below " + FROST_THRESHOLD + " °C!");
-            }
+    public void update(Object arg) {
+        if (arg instanceof WeatherReading r && r.temperature() < FROST_THRESHOLD) {
+            System.out.println("Frost alert: temperature " + r.temperature()
+                + " °C is below " + FROST_THRESHOLD + " °C!");
         }
     }
 }
 ```
 
-Each listener receives the Subject and, if it is a `WeatherSensor`, reads the state and reacts. The Subject does not reference these classes—only the Listener interface.
+Each listener receives the data (a `WeatherReading`) and reacts. It does not depend on `WeatherSensor`—only on the data type. The Subject does not reference these classes—only the Listener interface.
 
 ### Wiring and Using
 
@@ -126,6 +148,6 @@ sensor.setReading(3.0, 85.0);   // Only current conditions, forecast, and frost 
 ## Summary
 
 - **Before**: The source depended on concrete display types and called each one explicitly. Adding or removing a listener meant changing the source.
-- **After**: The source extends Subject and calls `notifyListeners()`. Displays implement Listener and register with `attach`/`detach`. The source never references concrete listener classes.
+- **After**: The source extends Subject and calls `notifyListeners(arg)` with the new data. Displays implement Listener and register with `attach`/`detach`. The source never references concrete listener classes.
 
 The same `WeatherSensor` subject can later be used with other listener types (e.g. a statistics panel, a persistence layer) without changing `WeatherSensor` or the existing listeners. That is the benefit of depending only on the Listener interface.

@@ -15,7 +15,7 @@ When the sensor gets new readings, all four must be updated. The question is: ho
 
 ## A Poor Solution: Direct References
 
-A straightforward but brittle approach is for the "source" class to hold **direct references** to each concrete display or consumer. When its state changes, it explicitly calls each one:
+A straightforward but brittle approach is for the "source" class, `WeatherSensorSource`, to hold **direct references** to each concrete display or consumer. When its state changes, it explicitly calls each one:
 
 ```java
 public class WeatherSensorSource {
@@ -50,7 +50,7 @@ To add a new component (for example a statistics panel), you must:
 1. Add a new field to `WeatherSensorSource`.
 2. Add a call in `setReading` (and in any constructor or setter that wires things up).
 
-To remove a listener, you have to change the same class again. The source is **closed for extension** and **open for modification** every time the set of listeners changes.
+To remove a listener, you have to change the same class again. Every time the set of listeners changes, the class must be modified. Inconvenient!
 
 ## Why This Is a Problem: Drawbacks and Consequences
 
@@ -90,16 +90,6 @@ There is no unified “listener” concept. The source just has a list of specif
 - **Order dependence**: If the order of calls matters (e.g. one listener assumes another has already run), the code is fragile and hard to reason about. There is no single “notification” point; you have a hard-coded sequence.
 - **Testing**: To unit-test the source, you must construct or mock all four listener types. You cannot test “source notifies one listener” in isolation without bringing in the rest. More on this later in the course.
 
-### Summary of Consequences
-
-| Consequence | Effect |
-| ----------- | ------ |
-| Tight coupling | Source cannot be reused without all concrete listeners; listener API changes force source changes. |
-| No runtime flexibility | Listeners cannot be attached or detached at runtime without code changes. |
-| Violates Open/Closed | Adding a listener always means modifying the source. |
-| Testing and configuration | Hard to test in isolation or to support different listener sets (e.g. headless vs full UI). |
-
-The Observer pattern addresses these by introducing a **Listener** interface: the source depends only on that interface and not on concrete listener types, so you can add and remove listeners without changing the source.
 
 ## Visualizing the Problem
 

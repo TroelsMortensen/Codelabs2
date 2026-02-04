@@ -8,9 +8,10 @@ When one object's state _changes_, other objects often need to react:
 
 The **Observer** design pattern gives you a clean way to do this without the changing object knowing the concrete types of whoever is listening.
 
-In this learning path we use the names **Subject** (the object whose state changes) and **Listener** (the object that reacts). You may see the same pattern called Observer, Subscriber, or Event Listener elsewhere; the idea is the same.
+In this learning path we use the names **Subject** (the object whose state changes) and **Listener** (the object(s) that reacts). You may see the same pattern called Observer, Subscriber, or Event Listener elsewhere; the idea is the same.
 
-The pattern is _old_, and has been around for a long time. It is a fundamental pattern in object-oriented design. It was first described in the book "Design Patterns: Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides, published in 1994.
+The pattern is _old_, has been around for a long time. It is a fundamental pattern in object-oriented design. It was first popularized in the book "Design Patterns: Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides, published in 1994!  
+As with everything else, stuff evolves, and so has the pattern. Here, though, I will introduce the original idea.
 
 ## The Core Idea
 
