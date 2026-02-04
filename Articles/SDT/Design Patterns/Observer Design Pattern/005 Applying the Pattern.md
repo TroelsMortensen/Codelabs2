@@ -1,6 +1,6 @@
 # Applying the Pattern
 
-We now apply the Observer pattern to the problem from the second file: a weather sensor that multiple components—current conditions display, forecast panel, history log, frost alert—must react to when the readings change.
+We now apply the Observer pattern to the problem from the second page: a weather sensor that multiple components (current conditions display, forecast panel, history log, frost alert) must react to when the readings change.
 
 ## Before: The Poor Solution
 
@@ -25,7 +25,7 @@ The source becomes a **ConcreteSubject** that extends the abstract **Subject**. 
 
 ### ConcreteSubject: WeatherSensor
 
-We pass the state as a data object so that listeners depend on the data, not on the Subject. For example, a record:
+We pass the state as a data object so that listeners depend on the data, not on the Subject. For example, a class as follows:
 
 ```java
 public class WeatherReading {
@@ -120,11 +120,11 @@ public class FrostAlert implements Listener {
 }
 ```
 
-Each listener receives the data (a `WeatherReading`) and reacts. It does not depend on `WeatherSensor`—only on the data type. The Subject does not reference these classes—only the Listener interface.
+Each listener receives the data (a `WeatherReading`) and reacts. It does not depend on `WeatherSensor`, only on the data type. The Subject does not reference these classes, only the Listener interface.
 
 ### Wiring and Using
 
-Listeners are attached and detached at runtime. The Subject does not need to be changed when you add or remove listeners.
+Listeners are attached and detached at runtime. The Subject does not need to be changed when you add or remove listeners. Notice polymorphism at work here, the `attach` method takes a `Listener` parameter, and any `Listener`-implementation can be attached.
 
 ```java
 WeatherSensor sensor = new WeatherSensor();
