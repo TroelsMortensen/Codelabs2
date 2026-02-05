@@ -151,8 +151,10 @@ classDiagram
         - capacity : int
     }
     
-    Explorer --> Spacecraft : spacecraftId references Spacecraft.id
+    Explorer ..> Spacecraft
 ```
+
+In this diagram `spacecraftId` is a foreign key that references the `id` field of the `Spacecraft` entity.
 
 The arrow shows the _conceptual_ relationship, and the `spacecraftId` field is the foreign key that implements it.
 
