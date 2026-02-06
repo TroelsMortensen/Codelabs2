@@ -12,6 +12,16 @@ When building software systems, we create objects that represent real-world thin
 
 A `Planet` object represents a planet. An `Explorer` object represents a space explorer. But how do we tell one planet apart from another? How do we know which explorer we're talking about?
 
+## Analysis vs Design
+
+You have already been taught about domain models. As an analysis artefact. Nothing changes with this particular artefact. This learning path is about the design/implementation part. **NOT** the analysis part.
+
+On first semester, you then _implemented_ the domain model in Java. Using associations and other relationships to model the relationships between the entities.
+
+In SDT you will _implement_ the domain model in Java. Using primary keys and foreign keys to model the relationships between the entities.
+
+**But, keep in mind the difference between analysis, and design/implementation.**
+
 ## The Identity Problem
 
 Imagine you're building a system to track space exploration missions (sounds familiar?). You have two planets in your system:
