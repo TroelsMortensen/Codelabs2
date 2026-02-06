@@ -170,7 +170,8 @@ public partial class Home : ComponentBase
                         new Session(2, "Design artefacts",
                             [
                                 new LearningPath("Class diagrams", "UML/Design artefacts/Class Diagrams"),
-                                new LearningPath("Sequence diagrams", "UML/Design artefacts/Sequence diagrams")
+                                new LearningPath("Sequence diagrams", "UML/Design artefacts/Sequence diagrams"),
+                                new LearningPath("State machine diagrams", "UML/Design artefacts/State machines")
                             ]
                         ),
                         new Session(3, "Reports and diagrams",
