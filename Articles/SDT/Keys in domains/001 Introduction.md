@@ -12,7 +12,7 @@ When building software systems, we create objects that represent real-world thin
 
 A `Planet` object represents a planet. An `Explorer` object represents a space explorer. But how do we tell one planet apart from another? How do we know which explorer we're talking about?
 
-## Analysis vs Design
+## Analysis vs Design/Implementation
 
 You have already been taught about domain models. As an analysis artefact. Nothing changes with this particular artefact. This learning path is about the design/implementation part. **NOT** the analysis part.
 
