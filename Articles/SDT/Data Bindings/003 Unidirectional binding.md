@@ -50,6 +50,8 @@ After set source to 50: source=50, target=50
 
 The target immediately takes the source's value when bound, and then follows every change to the source.
 
+Notice that after the target is bound to the source, and the source's value is set to 50 (line 14), the target's value is also updated to 50. This is because the target is bound to the source, and the source's value is set to 50.
+
 ## Example: String Properties
 
 ```java

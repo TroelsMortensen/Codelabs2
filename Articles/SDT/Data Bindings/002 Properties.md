@@ -58,7 +58,7 @@ public class PropertiesExample {
 
 ## UI Controls and Properties
 
-In a JavaFX UI, controls expose properties. For example, a `TextField` has a `textProperty()` that returns a `StringProperty`; a `Label` has `textProperty()` as well. You can bind the label's text to the text field's text so the label always shows what the user types—without writing a listener. We do not build full UI here; just be aware that the same property types you create in code are what those controls use under the hood.
+In a JavaFX UI, controls expose properties. For example, a `TextField` has a `textProperty()` that returns a `StringProperty`; a `Label` has `textProperty()` as well. You can bind the label's text to the text field's text so the label always shows what the user types, without writing a listener. We do not build full UI here; just be aware that the same property types you create in code are what those controls use under the hood.
 
 ## Summary
 

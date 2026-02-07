@@ -1,6 +1,8 @@
 # More Complex Examples
 
-This file ties the concepts together with a few slightly more involved examples, still using only a simple `main` method. Then we recap when to use which kind of binding.
+This page ties the concepts together with a few slightly more involved examples, still using only a simple `main` method. Then we recap when to use which kind of binding.
+
+You will probably not need this, but, just to let you know it exists.
 
 ## Formatted Total: Price and Quantity
 
@@ -100,7 +102,3 @@ When `b` is set to 10, `a` is updated (because it is bound to `b`), and then `c`
 - **Computed bindings (`Bindings.add`, `createStringBinding`, `format`, etc.)**: Use when the displayed or stored value is **derived** from one or more observables (sum, concatenation, formatting, comparison). The result is read-only and stays in sync with its dependencies.
 
 In a real JavaFX app, you will often combine these: e.g. a computed binding for a total, bound unidirectionally to a label, and bidirectional binding between a text field and a property in the model.
-</think>
-Fixing the chained example: we can't instantiate `IntegerProperty` directly.
-<｜tool▁calls▁begin｜><｜tool▁call▁begin｜>
-StrReplace

@@ -8,9 +8,9 @@ The **`Bindings`** class in `javafx.beans.binding` provides factory methods for 
 
 `javafx.beans.binding.Bindings` has static methods that return bindings. For example:
 
-- **`Bindings.add(a, b)`** — numeric sum (for `IntegerProperty`, `DoubleProperty`, etc.).
-- **`Bindings.createStringBinding(callable, dependencies...)`** — a string that is computed from the given observables; whenever a dependency changes, the string is recomputed when needed.
-- **`Bindings.format(format, args...)`** — a formatted string (like `String.format`), with format arguments that can be observables so the string updates when they change.
+- **`Bindings.add(a, b)`**: numeric sum (for `IntegerProperty`, `DoubleProperty`, etc.).
+- **`Bindings.createStringBinding(callable, dependencies...)`**: a string that is computed from the given observables; whenever a dependency changes, the string is recomputed when needed.
+- **`Bindings.format(format, args...)`**: a formatted string (like `String.format`), with format arguments that can be observables so the string updates when they change.
 
 The result of these methods is usually a **Binding** (read-only). You do not set it; you only read it. It stays in sync with its dependencies.
 
