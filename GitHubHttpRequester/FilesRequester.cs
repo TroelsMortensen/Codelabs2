@@ -1,4 +1,4 @@
-﻿using System.Net.Http.Headers;
+using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -31,13 +31,11 @@ public static class FilesRequester
 
     private static async Task<string> FetchArticlesOverview(HttpClient client, string folderPath)
     {
-        client.DefaultRequestHeaders.UserAgent.Clear();
-        client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("MyCSharpApp-FileFetcher", "1.0"));
-        client.DefaultRequestHeaders.Accept.Clear();
-        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
+        using var request = new HttpRequestMessage(HttpMethod.Get, BaseUrl.ARTICLES_URL + "/" + folderPath);
+        request.Headers.UserAgent.Add(new ProductInfoHeaderValue("MyCSharpApp-FileFetcher", "1.0"));
+        request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
 
-
-        HttpResponseMessage response = await client.GetAsync(BaseUrl.ARTICLES_URL + "/" + folderPath);
+        HttpResponseMessage response = await client.SendAsync(request);
         if (!response.IsSuccessStatusCode)
         {
             throw new Exception($"Error: {response.StatusCode}");
