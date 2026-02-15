@@ -19,41 +19,13 @@ public partial class Article : ComponentBase
     [Inject] public IJSRuntime JsRuntime { get; set; } = null!;
     [Inject] public ArticlesState ArticlesState { get; set; } = null!;
 
-    private string EffectiveTutorialsName
-    {
-        get
-        {
-            string routeValue = TutorialsName;
-            string queryValue = HttpUtility.UrlDecode(TutorialFromQuery ?? string.Empty);
-            if (string.IsNullOrWhiteSpace(routeValue))
-            {
-                return queryValue;
-            }
 
-            if (!string.IsNullOrWhiteSpace(queryValue) &&
-                !routeValue.Contains('%') &&
-                !routeValue.Contains('/'))
-            {
-                return queryValue;
-            }
-
-            return routeValue;
-        }
-    }
-
-    private string CleanedTutorialsName
-    {
-        get
-        {
-            string decoded = HttpUtility.UrlDecode(EffectiveTutorialsName);
-            return decoded
-                .Substring(decoded.LastIndexOf('/') + 1)
-                .RemoveFirst("Session \\d{1,2} ")
-                .Trim()
-                .Trim('-')
-                .Trim(); // This looks funky..
-        }
-    }
+    private string CleanedTutorialsName => HttpUtility.UrlDecode(TutorialsName)
+        .Substring(TutorialsName.LastIndexOf('/') + 1)
+        .RemoveFirst("Session \\d{1,2} ")
+        .Trim()
+        .Trim('-')
+        .Trim(); // This looks funky..
 
     
     
@@ -64,7 +36,7 @@ public partial class Article : ComponentBase
 
     protected override async Task OnInitializedAsync()
     {
-        pages = await ArticlesState.GetArticlePages(Owner, EffectiveTutorialsName);
+        pages = await ArticlesState.GetArticlePages(Owner, TutorialsName);
         SetPageIndex();
         currentPage = pages[stepIndex];
     }
