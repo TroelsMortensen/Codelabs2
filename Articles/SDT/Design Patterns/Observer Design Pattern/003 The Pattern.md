@@ -1,14 +1,19 @@
 # The Pattern
 
-The Observer pattern (here: Subject and Listener) defines a one-to-many dependency so that when the Subject's state changes, all Listeners are notified automatically, without the Subject knowing concrete listener types.
+The Observer pattern (here: Subject and Listener) defines a one-to-many dependency so that when the Subject's state changes, all Listeners can be notified, without the Subject knowing concrete listener types.
 
 ## Intent
 
 - **Define a one-to-many dependency** between a Subject and its Listeners.
-- When the **Subject's state changes**, all registered Listeners are **notified automatically**.
+- When the **Subject's state changes**, all registered Listeners are **notified**.
 - The Subject depends only on a **Listener interface**, not on concrete listener classes.
 
-This lets you add and remove listeners at runtime and keeps the Subject loosely coupled to whoever is listening.
+This:
+* allows you to add and remove listeners at runtime
+* allows you to add new listeners without modifying the Subject.
+* allows you to test the Subject independently of the Listeners.
+* allows you to add new _types_ of listeners without modifying the Subject.
+* keeps the Subject loosely coupled to whoever is listening.
 
 ## Structure
 
@@ -21,12 +26,12 @@ The following class diagram shows the roles: an abstract **Subject** that mainta
 
 - **Subject** (abstract class): Holds a list of Listeners; provides `attach` and `detach` to register and unregister listeners; calls `notifyListeners()` when state changes (typically from a subclass).
 - **Listener** (interface): Defines `update(Object)` so the Subject can notify with some data without knowing concrete types.
-- **ConcreteSubject**: Extends Subject; holds the actual state; in setters or mutators, updates state and then calls `notifyListeners()`.
-- **ConcreteListener**: Implements Listener; in `update(Object)` it reacts.
+- **ConcreteSubject**: Extends Subject; holds the actual state; can update state and then notify listeners.
+- **ConcreteListener**: Implements Listener. Uses `update(Object)` to react to the new state.
 
 ### Variations
-Sometimes the ConcreteListener has a dependency on the Subject, this serves as a way for the Listener to attach itself to the Subject.  
-Alternatively, sometimes the Listener::update() method takes the Subject as a parameter. The ConcreteListener then has to call relevant get methods on the ConcreteSubject to get the new state. This approach, however, would tie the ConcreteListener to the ConcreteSubject, which is less ideal.
+Sometimes the `ConcreteListener` has a dependency on the `Subject`, this serves as a way for the Listener to attach/detach itself to the `Subject`.  
+Alternatively, sometimes the `Listener::update()` method takes the `Subject` as a parameter. The `ConcreteListener` then has to call relevant get methods on the `ConcreteSubject` to get the new state. This approach, however, would tie the `ConcreteListener` to the `ConcreteSubject`, which is less ideal, though sometimes necessary.
 
 In our case, Listeners will be attached from somewhere else. And they get the relevant data in the update() method.
 

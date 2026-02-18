@@ -14,7 +14,9 @@ public interface Listener {
 
 ## Abstract Subject
 
-The abstract Subject superclass maintains a list of Listeners and provides attach, detach, and a protected method to notify all listeners with some data. Subclasses call `notifyListeners(arg)` when their state changes, passing the relevant state or data as an Object.
+The abstract Subject superclass maintains a list of Listeners and provides attach, detach, and a _protected_ method to notify all listeners with some data. The notify method is protected, so it is only accessible to subclasses, not to other outside classes. It is the ConcreteSubject's responsibility to call this method when its state changes.
+
+Subclasses call `notifyListeners(arg)` when their state changes, passing the relevant state or data as an Object.
 
 ```java
 import java.util.ArrayList;
@@ -117,4 +119,4 @@ public class Demo {
 - **ConcreteSubject**: Extends Subject; holds state; in mutators calls `notifyListeners(arg)` with the relevant data.
 - **ConcreteListener**: Implements Listener; in `update(Object arg)` reacts to the data (e.g. by type-checking the arg).
 
-This is the classic approach using an abstract superclass for Subject. The same structure can be applied to the problem from the previous section — a data source and multiple displays — as shown in the next file.
+This is the classic approach using an abstract superclass for Subject. The same structure can be applied to the problem from the previous section — a data source and multiple displays — as shown on the next page.

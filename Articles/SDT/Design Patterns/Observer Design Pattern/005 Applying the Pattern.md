@@ -47,7 +47,9 @@ public class WeatherReading {
 }
 ```
 
-The WeatherSensor holds temperature and humidity and, when they change, notifies listeners with a `WeatherReading`:
+The above class could have been very simple, if I used a "record" instead of a class. You should look up records, some time, if you are interested in this topic. [For example here](https://troelsmortensen.github.io/Codelabs2/article/TroelsMortensen/SDT%2FRecords?tutorial=SDT%2FRecords).
+
+The `WeatherSensor` holds temperature and humidity and, when they change, notifies listeners with a `WeatherReading`:
 
 ```java
 public class WeatherSensor extends Subject {
