@@ -11,8 +11,7 @@ After completing this assignment, your project structure should look like:
 │   ├── 📄 Portfolio.java
 │   ├── 📄 StockPurchase.java
 │   ├── 📄 Transaction.java
-│   ├── 📄 StockPriceHistory.java
-│   └── 📄 PortfolioValueHistory.java
+│   └── 📄 StockPriceHistory.java
 ├── 📁 persistence
 │   ├── 📁 interfaces
 │   │   ├── 📄 PortfolioDAO.java
