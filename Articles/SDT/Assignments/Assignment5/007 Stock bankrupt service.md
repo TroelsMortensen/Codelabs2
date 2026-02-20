@@ -1,9 +1,5 @@
 # The StockBankruptService class
 
-> **This is an optional deliverable.**
-
-While optional, the game is perhaps a bit meh without this.
-
 This is a service class, it belongs to the business logic layer. It is responsible for reacting to the bankrupt state of a stock. You could roll the functionality into the StockListenerService, if you like. That's also okay.
 
 Sometimes, a Stock can go bankrupt. This means it cannot be purchased anymore. For a while. Then it will reset and be available for purchase again.
