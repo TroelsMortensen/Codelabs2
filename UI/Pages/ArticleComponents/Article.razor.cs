@@ -12,8 +12,6 @@ public partial class Article : ComponentBase
     [Parameter] public string TutorialsName { get; set; } = string.Empty;
     [Parameter] public string Owner { get; set; } = string.Empty;
     [Parameter, SupplyParameterFromQuery] public string? PageNumber { get; set; }
-    [Parameter, SupplyParameterFromQuery(Name = "tutorial")]
-    public string? TutorialFromQuery { get; set; }
 
     [Inject] public NavigationManager NavMgr { get; set; } = null!;
     [Inject] public IJSRuntime JsRuntime { get; set; } = null!;

@@ -323,13 +323,8 @@ public partial class Home : ComponentBase
         await JsRuntime.InvokeVoidAsync("masonryLayout", "CoursesBoxLayout");
     }
 
-    private void NavigateToArticle(string owner, string tutorialName)
-    {
-        string encodedName = Uri.EscapeDataString(tutorialName);
-        string path = $"article/{owner}/{encodedName}";
-        string fallbackQuery = tutorialName.Contains('/') ? $"?tutorial={encodedName}" : string.Empty;
-        NavMgr.NavigateTo($"{path}{fallbackQuery}");
-    }
+    private void NavigateToArticle(string owner, string tutorialName) =>
+        NavMgr.NavigateTo($"article/{owner}/{Uri.EscapeDataString(tutorialName)}");
 
     private void NavigateToWheel() =>
         NavMgr.NavigateTo("wheeloffortune");
