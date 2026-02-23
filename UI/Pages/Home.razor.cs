@@ -209,7 +209,8 @@ public partial class Home : ComponentBase
                                 new LearningPath("Assignment 1", "SDT/Assignments/Assignment1"),
                                 new LearningPath("Assignment 2", "SDT/Assignments/Assignment2"),
                                 new LearningPath("Assignment 3", "SDT/Assignments/Assignment3"),
-                                new LearningPath("Assignment 4", "SDT/Assignments/Assignment4")
+                                new LearningPath("Assignment 4", "SDT/Assignments/Assignment4"),
+                                new LearningPath("Assignment 5", "SDT/Assignments/Assignment5")
                             ]
                         ),
                         new Session(2, "Learning paths",
