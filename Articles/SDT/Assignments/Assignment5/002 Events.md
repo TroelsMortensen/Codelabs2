@@ -10,7 +10,7 @@ So, here's some food for thought.
 
 Given that the StockMarket notifies the system that a stock has been updated, you might consider putting the DTO together with the StockMarket.
 
-I believe I have recommended a package struture like this:
+I believe, I have recommended a package struture like this:
 
 ```
 📁src/
@@ -24,7 +24,7 @@ I believe I have recommended a package struture like this:
 But now the presentation layer needs to reference something somewhat "deep" inside the business layer. This may not be a good idea.  
 We may decide to restructure the internals of this particular part of the architecture, and that should ideally not affect other layers.
 
-But an import statement in the presentation layer would have to be changed.
+But an import statement in the presentation layer would have to be changed, if we move around the packages of the business layer.
 
 Consider this "encapsulation" on package level. You have heard about this concept on class level. And it actually also applies on Module level, should you use those.
 
@@ -47,11 +47,11 @@ Now the presentation layer can reference the events package directly, without ha
 
 ## Conclusion
 
-You can pick the approach you prefer. I prefer the shallow reference approach, as it is more flexible and easier to maintain.
+You can pick the approach you prefer. I prefer the shallow reference approach, as it is more flexible and easier to maintain, given that I can restructure the internals of the business layer, without having to change the import statements in the presentation layer.
 
 ## Tying it to familiar ideas
 
-- **Stable Dependencies / Dependency Rule**: Outer layers (like presentation) should preferably depend on the stable boundary of inner layers, not on internal package details. With shallow references, restructuring internals is less likely to affect imports in other layers.
+- **Stable Dependencies / Dependency Rule**: Upper layers (like presentation) should preferably depend on the stable boundary of lower layers, not on internal package details. With shallow references, restructuring internals is less likely to affect imports in other layers.
 
 - **Information hiding (Parnas)**: How the business layer organizes itself (e.g. sub-packages under `stockmarket`) is an internal design decision. Deep references expose that decision to other layers. Shallow references hide it better.
 

@@ -2,11 +2,13 @@
 
 The next step in your journey is to make the `StockListenerService` a subject. We do this, so the presentation layer can listen to the service for updates, and live-update the UI.
 
+As mentioned on the first page, this particular piece of functionality may also be located elsewhere. It is up to you.
+
 ## To Subject
 
 Make the `StockListenerService` a subject. Pick your approach. You can use the original version, or the newer PropertyChangeSupport version. Or something else.
 
-The primary method, you added on the previous page, about updating the Stock entity, should now update listeners (i.e. presentation layer classes). At the end. When all the important work is done.
+The primary method, you added on the previous page, about updating the Stock entity, could now update listeners (i.e. presentation layer classes). At the end. When all the important work is done. Or you can define a separate method for this. It is up to you.
 
 ## Testing
 
