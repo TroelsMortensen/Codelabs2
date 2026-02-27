@@ -87,6 +87,12 @@ else if (rand < 0.10) {
 
 Consider whether you need a constructor.
 
+Maybe you can accept the LiveStock as a parameter in the constructor.
+
+Or, you provide the LiveStock as a parameter in the state interface's methods. 
+
+Pick one of the above.
+
 ## Other state classes
 
 Their implementation will be pretty similar. But the random change in price will be a bit skewed.
