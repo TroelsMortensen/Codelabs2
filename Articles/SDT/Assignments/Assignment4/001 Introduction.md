@@ -13,7 +13,7 @@ Therefore, you should use the Logger class from the previous assignment.
 
 You should use the AppConfig class from the previous assignment.
 
-## Assignment 3 deliverables
+## Assignment 4 deliverables
 
 - LiveStock state machine diagram
 - LiveStock implementation using the State Design Pattern
