@@ -85,7 +85,7 @@ else if (rand < 0.10) {
 
 ### Constructor
 
-The constructor should take the `liveStock` as a parameter.
+Consider whether you need a constructor.
 
 ## Other state classes
 
