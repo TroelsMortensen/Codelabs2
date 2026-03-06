@@ -30,6 +30,7 @@ It is allowed to change your classes, and how you distribute the functionality, 
 - Conversion of the StockListenerService to use the Observer pattern.
 Optional:
 - Implementation of StockAlertService
+- Updated class diagram
 
 ## Deadline
 
