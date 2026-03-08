@@ -206,11 +206,12 @@ public partial class Home : ComponentBase
                     [
                         new Session(1, "Assignments",
                             [
-                                new LearningPath("Assignment 1", "SDT/Assignments/Assignment1"),
-                                new LearningPath("Assignment 2", "SDT/Assignments/Assignment2"),
-                                new LearningPath("Assignment 3", "SDT/Assignments/Assignment3"),
-                                new LearningPath("Assignment 4", "SDT/Assignments/Assignment4"),
-                                new LearningPath("Assignment 5", "SDT/Assignments/Assignment5")
+                                new LearningPath("Assignment - Domain Model", "SDT/Assignments/Assignment1"),
+                                new LearningPath("Assignment - Singleton", "SDT/Assignments/Assignment2"),
+                                new LearningPath("Assignment - DAO and UoW", "SDT/Assignments/Assignment3"),
+                                new LearningPath("Assignment - State pattern", "SDT/Assignments/Assignment4"),
+                                new LearningPath("Assignment - Observer pattern", "SDT/Assignments/Assignment5"),
+                                new LearningPath("Assignment - Transaction Script", "SDT/Assignments/Assignment - Transaction Script"),
                             ]
                         ),
                         new Session(2, "Learning paths",
