@@ -5,7 +5,7 @@ In this assignment, you will apply the Observer design pattern, in your project:
 1) The StockMarket must notify the system that a stock has been updated.
 2) The business logic layer must notify the UI that a stock has been updated.
 
-## Class structure
+## Assignment structure
 
 We will cover four major features:
 
@@ -14,7 +14,7 @@ We will cover four major features:
 3) Update the OwnedStock when a Stock goes bankrupt.
 4) Notifying the Presentation layer about critical events. (This one is optional.)
 
-In this assignment learning path, I will suggest a design using three classes:
+In this assignment, I will suggest a design using three classes:
 - StockListenerService: persists updated stock data, and notifies the Presentation layer about updated stock prices (maybe the second part could be moved to the StockAlertService..?).
 - StockAlertService: notifies the Presentation layer about critical events.
 - StockBankruptService: updates the OwnedStock when a Stock goes bankrupt.
