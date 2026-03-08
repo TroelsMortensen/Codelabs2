@@ -222,6 +222,7 @@ public partial class Home : ComponentBase
                                 new LearningPath("Transactions", "SDT/Transactions"),
                                 new LearningPath("State Machines", "SDT/Statemachines"),
                                 new LearningPath("Data Binding", "SDT/Data Bindings"),
+                                new LearningPath("JUnit", "SDT/JUnit"),
                             ]
                         ),
                         new Session(3, "Design Principles",
