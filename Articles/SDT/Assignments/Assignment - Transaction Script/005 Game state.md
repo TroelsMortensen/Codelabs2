@@ -7,3 +7,5 @@
 The idea is that _maybe_ it should be possible for the player to:
 * Reset the game, or start a new game.
 * Load a saved game (maybe this is done automatically when the game starts...?)
+
+Eventually you will need some kind of way to start the game, and probably continue.
