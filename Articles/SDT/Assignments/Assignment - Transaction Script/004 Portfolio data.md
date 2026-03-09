@@ -5,7 +5,7 @@ However, you will have a fair amount of freedom when you design your UI, and the
 
 These will be query methods, in a Service class.
 
-## Pick you strategy
+## Pick your strategy
 
 In class I presented two ways of constructing data for the views:
 * DAO-Level Data Assembly
