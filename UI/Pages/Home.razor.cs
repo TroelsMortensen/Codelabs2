@@ -251,6 +251,7 @@ public partial class Home : ComponentBase
                                 new LearningPath("JUnit", "SDT/Testing/Equivalence Partitioning"),
                                 new LearningPath("JUnit", "SDT/Testing/Triple A Test Structure"),
                                 new LearningPath("JUnit", "SDT/Testing/Unit Test Naming"),
+                                new LearningPath("JUnit", "SDT/Testing/Black and White"),
                             ])
                     ]
                 )
