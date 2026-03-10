@@ -1,6 +1,6 @@
 # Practical Examples
 
-This page gives complete AAA/SEV examples with simple logic.
+This page gives complete AAA examples with simple logic.
 
 ## Example 1: Add Two Numbers
 
@@ -55,7 +55,7 @@ In exception tests, Act and Assert can be combined inside `assertThrows`.
 ## Final Checklist
 
 - Can I identify Arrange/Act/Assert quickly?
-- Is there one primary Act/Execute behavior?
+- Is there one primary Act behavior?
 - Do my assertions verify the intended behavior?
 - Am I avoiding unrelated asserts in this test?
 - Is the test readable by someone else in 10 seconds?

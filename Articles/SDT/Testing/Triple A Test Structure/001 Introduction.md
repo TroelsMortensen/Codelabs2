@@ -8,7 +8,7 @@ Arrange-Act-Assert (AAA) is a simple way to structure unit tests so they are eas
 - **Act**: execute the behavior under test.
 - **Assert**: verify the expected result.
 
-This keeps a test focused: setup first, one main action second, verification last.
+This keeps a test focused: setup first, _one_ main action second, verification last.
 
 ## Why This Structure Helps
 
@@ -28,6 +28,6 @@ SEV is an equivalent, dyslexic-friendly phrasing of AAA. Both names refer to the
 
 ## What This Learning Path Covers
 
-- In `002`, each phase in detail.
-- In `003`, common mistakes and fixes.
-- In `004`, full practical examples you can copy.
+- In page `2`, each phase in detail.
+- In page `3`, common mistakes and fixes.
+- In page `4`, full practical examples you can copy.

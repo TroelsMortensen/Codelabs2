@@ -1,8 +1,8 @@
 # The Three Phases
 
-This page explains each phase of Arrange-Act-Assert (Setup-Execute-Verify) in detail.
+This page explains each phase of Arrange-Act-Assert in detail.
 
-## Arrange / Setup
+## Arrange
 
 Use this section to prepare everything needed before the action:
 
@@ -12,7 +12,7 @@ Use this section to prepare everything needed before the action:
 
 Do not run the behavior under test here. Do not assert here.
 
-## Act / Execute
+## Act
 
 Run the one primary behavior being tested.
 
@@ -21,7 +21,7 @@ Run the one primary behavior being tested.
 
 Avoid multiple unrelated actions in the same test.
 
-## Assert / Verify
+## Assert
 
 Check that the result matches expectations.
 

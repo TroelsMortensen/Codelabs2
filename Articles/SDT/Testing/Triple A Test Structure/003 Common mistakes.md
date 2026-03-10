@@ -1,10 +1,10 @@
 # Common Mistakes
 
-Even when teams know AAA/SEV, tests can drift away from the structure. This page shows common mistakes and quick fixes.
+Even when teams know AAA, tests can drift away from the structure. This page shows common mistakes and quick fixes.
 
 ## 1) Arrange After Act
 
-Bad:
+**Bad**, wrong order:
 
 ```java
 int result = calculator.add(2, 3);
@@ -12,7 +12,16 @@ int expected = 5;
 assertEquals(expected, result);
 ```
 
-Better:
+**Also bad**, magic number:
+
+```java
+int result = calculator.add(2, 3);
+assertEquals(5, result);
+```
+
+Do extract the expected value to a variable, and use that variable in the assertion. It just clarifies your test.
+
+**Better**:
 
 ```java
 int expected = 5;                 // Arrange
@@ -70,4 +79,4 @@ Better: assert the behavior this test is about; move unrelated checks to other t
 
 ## Quick Rule
 
-One test should usually have one clear Act/Execute step and assertions that verify that specific behavior.
+One test should usually have one clear Act step and assertions that verify that specific behavior. More, smaller tests are better than fewer, larger tests.
