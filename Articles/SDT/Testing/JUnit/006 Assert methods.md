@@ -56,4 +56,14 @@ void throwAssertExample() {
 }
 ```
 
+You can also get the exception itself, if you want to inspect it. Maybe you want to check the message, or the stack trace, or the cause.
 
+```java
+@Test
+void throwAssertExample() {
+    IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        throw new IllegalArgumentException("bad input");
+    });
+    assertEquals("bad input", exception.getMessage());
+}
+```

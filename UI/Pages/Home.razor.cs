@@ -222,7 +222,6 @@ public partial class Home : ComponentBase
                                 new LearningPath("Transactions", "SDT/Transactions"),
                                 new LearningPath("State Machines", "SDT/Statemachines"),
                                 new LearningPath("Data Binding", "SDT/Data Bindings"),
-                                new LearningPath("JUnit", "SDT/JUnit"),
                             ]
                         ),
                         new Session(3, "Design Principles",
@@ -244,7 +243,15 @@ public partial class Home : ComponentBase
                                 new LearningPath("Option Pattern", "SDT/Design Patterns/Option Pattern"),
                                 new LearningPath("Observer Pattern", "SDT/Design Patterns/Observer Design Pattern"),
                             ]
-                        )
+                        ),
+                        new Session(5, "Testing",
+                            [
+                                new LearningPath("JUnit", "SDT/Testing/JUnit"),
+                                new LearningPath("JUnit", "SDT/Testing/Boundary Value Analysis"),
+                                new LearningPath("JUnit", "SDT/Testing/Equivalence Partitioning"),
+                                new LearningPath("JUnit", "SDT/Testing/Triple A Test Structure"),
+                                new LearningPath("JUnit", "SDT/Testing/Unit Test Naming"),
+                            ])
                     ]
                 )
             ]
