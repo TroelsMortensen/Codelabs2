@@ -1,12 +1,12 @@
 # Choosing Representative Values
 
-After identifying partitions, choose one representative value from each class.
+After identifying partitions, choose one representative value from each partition.
 
 ## Representative Value Rule
 
-Pick one value that is clearly inside each partition.
+Pick one (or a few) value(s) that is clearly inside each partition.
 
-For EP specifically, avoid focusing on boundaries here. Boundary-focused values belong primarily to BVA.
+For EP specifically, avoid focusing on boundaries here. Boundary-focused values belong primarily to Boundary Value Analysis (BVA).
 
 ## Example Table (Score 0..100)
 
@@ -18,18 +18,18 @@ For EP specifically, avoid focusing on boundaries here. Boundary-focused values 
 
 ## Why This Works
 
-Each representative stands for one class. If the representative behaves as expected, it increases confidence that the class behavior is implemented correctly.
+Each representative stands for one partition. If the representative behaves as expected, it increases confidence that the partition behavior is implemented correctly.
 
 ## ASCII Mini Visual
 
 ```text
-Classes:     [ invalid ]   [ valid ]   [ invalid ]
-Values:         -5            50          150
+Partitions:     [ invalid ]   [ valid ]   [ invalid ]
+Values:             -5           50          150
 ```
 
 ## EP and BVA
 
-- **EP** chooses classes and one value per class.
+- **EP** chooses partitions and one value per partition.
 - **BVA** adds extra focus on class edges (boundary and near-boundary values).
 
 They complement each other well.
