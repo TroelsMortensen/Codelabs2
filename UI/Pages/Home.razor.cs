@@ -247,11 +247,11 @@ public partial class Home : ComponentBase
                         new Session(5, "Testing",
                             [
                                 new LearningPath("JUnit", "SDT/Testing/JUnit"),
-                                new LearningPath("JUnit", "SDT/Testing/Boundary Value Analysis"),
-                                new LearningPath("JUnit", "SDT/Testing/Equivalence Partitioning"),
-                                new LearningPath("JUnit", "SDT/Testing/Triple A Test Structure"),
-                                new LearningPath("JUnit", "SDT/Testing/Unit Test Naming"),
-                                new LearningPath("JUnit", "SDT/Testing/Black and White"),
+                                new LearningPath("Boundary Value Analysis", "SDT/Testing/Boundary Value Analysis"),
+                                new LearningPath("Equivalence Partitioning", "SDT/Testing/Equivalence Partitioning"),
+                                new LearningPath("Triple A Test Structure", "SDT/Testing/Triple A Test Structure"),
+                                new LearningPath("Unit Test Naming", "SDT/Testing/Unit Test Naming"),
+                                new LearningPath("Black and White", "SDT/Testing/Black and White"),
                             ])
                     ]
                 )
