@@ -9,7 +9,7 @@ No naming convention is perfect in every situation. This page compares the commo
 | MethodName_ExpectedResult | Clear structure, readable, easy to scan | Can become long for complex scenarios |
 | Given_When_Then | Very explicit context/action/outcome | Verbose; can feel repetitive |
 | Should style | Natural language, good readability | Can become long if over-detailed |
-| UnitOfWork_State_ExpectedBehavior | Familiar classic format, clear separators | Mixed casing/underscores can look inconsistent |
+| UnitUnderTest_State_Expected | Familiar classic format, clear separators | Mixed casing/underscores can look inconsistent |
 | Sentence-like business style | Business intent is very visible | Can be too domain-heavy or very long |
 
 ## Practical Trade-offs
@@ -23,6 +23,24 @@ No naming convention is perfect in every situation. This page compares the commo
 ## Optional Note on JUnit Display Names
 
 If you use JUnit display names, method names can be shorter while display names carry readable sentences. Without display names, method naming quality matters even more.
+
+Example:
+
+```java
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+class SumDisplayNameTest {
+
+    @Test
+    @DisplayName("returns sum when adding two positive numbers")
+    void returnsSum() {
+        assertEquals(5, 2 + 3);
+    }
+}
+```
+
+The result is that the test name is shorter, but the named displayed in the test runner overview is more readable. It is, however, more to "text" to maintain.
 
 ## Guidance
 

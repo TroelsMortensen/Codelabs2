@@ -8,9 +8,9 @@ Good test names make it easier to:
 
 - understand failures quickly,
 - maintain tests over time,
-- communicate intent to teammates and future you.
+- communicate intent to teammates (which includes future you).
 
-A name like `test1` gives almost no information. A name like `shouldReturnSumWhenAddingTwoPositiveNumbers` immediately tells the expected behavior.
+A name like `test1` gives almost no information. A name like `shouldReturnSum_WhenAddingTwoPositiveNumbers` immediately tells the expected behavior.
 
 ## Behavior Over Implementation
 
@@ -24,6 +24,6 @@ There is no single perfect naming convention for all teams. The key is to choose
 
 ## What This Learning Path Covers
 
-- In `002`, common naming conventions with examples.
-- In `003`, pros and cons of each style.
-- In `004`, practical rules for choosing one style and applying it consistently.
+- In page `2`, common naming conventions with examples.
+- In page `3`, pros and cons of each style.
+- In page `4`, practical rules for choosing one style and applying it consistently.

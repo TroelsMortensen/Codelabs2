@@ -18,25 +18,6 @@ validationTest       -> rejectScoreWhenValueIsAboveMaximum
 nullCase             -> shouldThrowWhenInputIsNull
 ```
 
-## Suggested Default for Beginners
-
-A good default is **Given_When_Then** or **Should style**:
-
-- They are easy to read as short behavior statements.
-- They force you to include context and expected outcome.
-- They make failure messages easier to interpret.
-
-## Tiny JUnit Illustration
-
-```java
-class SumNamingExampleTest {
-
-    @Test
-    void givenTwoPositiveNumbers_whenAdd_thenReturnsSum() {
-        assertEquals(5, 2 + 3);
-    }
-}
-```
 
 ## Pre-commit Checklist for Test Names
 
