@@ -19,6 +19,8 @@ A common combination is:
 
 This gives better coverage with fewer tests than random value selection.
 
+I have another article on Equivalence Partitioning.
+
 ## Worked Example (One Input)
 
 Rule: score must be in range `[0, 100]`.
@@ -60,9 +62,9 @@ class ScoreValidatorTest {
 
 ## Optional Two-Input Idea
 
-If a method has two ranged inputs, hold one input at a nominal value while boundary-testing the other, then swap.
+If a method has two ranged inputs, hold one input at a **fixed** value (e.g. a typical value in the middle of its range) while you boundary-test the other, then swap.
 
-Example: test boundaries of `A` while `B` is nominal, then boundaries of `B` while `A` is nominal.
+Example: test boundaries of `A` while `B` is held fixed, then test boundaries of `B` while `A` is held fixed.
 
 ## Summary
 

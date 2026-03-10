@@ -17,6 +17,8 @@ Example: valid values are `(0, 100]`.
 
 Useful BVA-style values here: `0, 1, 2, 99, 100, 101`.
 
+This is just a slightly rephrased version of the 6-value variant, on the previous page. The point is just to be vigilant about the boundaries.
+
 ## Multiple Partitions
 
 Sometimes one input has several partitions, not just one valid interval.

@@ -8,16 +8,15 @@ Assume valid values are from **1 to 100** (inclusive).
 
 BVA test values are:
 
-- `min - 1` -> `0`
-- `min` -> `1`
-- `min + 1` -> `2`
-- `max - 1` -> `99`
-- `max` -> `100`
-- `max + 1` -> `101`
+- `min - 1` -> `0`, just outside the lower boundary
+- `min` -> `1`, the lower boundary
+- `min + 1` -> `2`, just inside the lower boundary
+- `max - 1` -> `99`, just inside the upper boundary
+- `max` -> `100`, the upper boundary
+- `max + 1` -> `101`, just outside the upper boundary
 
-Optionally add one normal middle value (for example `50`).
 
-## ASCII Number Line
+It can be illustrated as a number line:
 
 ```text
 Valid range [1, 100]
@@ -36,12 +35,14 @@ invalid      boundary      inside ... inside      boundary      invalid
 
 For `0` and `101`, tests should verify **rejection** (for example false result, error, or exception), not acceptance.
 
-## 3-Value vs 6-Value Variant
+## 4-Value vs 6-Value Variant
 
-You may see a smaller set (min, middle, max). That is useful for quick checks.
+Above, we used 6 values, two of which were "just inside", but not "on" the boundary. This is the 6-value variant.
 
-The 6-value boundary set is usually better when you specifically want strong boundary coverage.
+You might cut down to 4 values, by using only the "just outside", and "on" the boundary, at both ends. This is the 4-value variant.
 
-## One-Line Example
+The 6-value boundary set is usually better when you specifically want strong boundary coverage. And, really, creating these tests are fairly quick, so better just be safe.
+
+## Summary
 
 If a method accepts integers from `1` to `100`, BVA suggests at least: `0, 1, 2, 99, 100, 101`.

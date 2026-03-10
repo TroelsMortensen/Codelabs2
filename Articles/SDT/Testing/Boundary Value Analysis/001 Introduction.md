@@ -2,6 +2,16 @@
 
 Boundary value analysis (BVA) is a test case design technique. The idea is simple: when an input has limits, many defects appear at or near those limits.
 
+What are limits? Examples:
+* A number must be between 0 and 100
+* A string must be at least 3 characters long
+* A date must be in the future
+* A file must be less than 100MB
+* A password must be at least 8 characters long
+* A username must be at least 3 characters long
+* A username must be less than 20 characters long
+* A username must not contain any special characters
+
 ## What Is BVA?
 
 BVA selects test values at the **edges** of an input domain:
@@ -19,7 +29,7 @@ Boundary defects are very common:
 - off-by-one mistakes,
 - using `<` when `<=` was intended,
 - using `>` when `>=` was intended,
-- fence-post errors in loops and indexing.
+- fence-post errors in loops and indexing, meaning you forgot to test the first or last element of a collection.
 
 Testing only "middle" values often misses these issues.
 
@@ -29,6 +39,6 @@ BVA focuses on boundary-related faults. It is usually combined with other test d
 
 ## What This Learning Path Covers
 
-- In `002`, how to choose boundary values for a simple valid range.
-- In `003`, how open/half-open ranges and multiple partitions affect BVA values.
-- In `004`, how to apply BVA when writing practical test cases.
+- In page `2`, how to choose boundary values for a simple valid range.
+- In page `3`, how open/half-open ranges and multiple partitions affect BVA values.
+- In page `4`, how to apply BVA when writing practical test cases.
