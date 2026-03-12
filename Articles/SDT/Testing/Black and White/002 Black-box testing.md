@@ -2,6 +2,20 @@
 
 Black-box testing designs tests from the outside view of the system.
 
+Generally, your unit tests are more _robust_ and _stable_ if you use a black-box approach.
+
+This approach is also good together with Test-Driven Development (TDD), as it allows you to write tests before you write the code.
+
+TDD is a development process where you write the tests before you write the code. This is done in a cycle of:
+
+1. Write a test
+2. Run the test and see it fail
+3. Write the code to make the test pass
+4. Run the test and see it pass
+5. Refactor the code to make it better
+6. Repeat
+
+
 ## Viewpoint
 
 The tester focuses on:

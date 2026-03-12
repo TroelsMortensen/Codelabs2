@@ -19,16 +19,9 @@ A practical combination is:
 - black-box tests to ensure behavior and rules are correct,
 - white-box checks to ensure key branches/conditions are exercised.
 
-## Small Worked Example
+Ideally, you want to test observable behaviour, not the implementation details. This, however, requires that you have good documentation of the expected behavior. If this is lacking, you will have to look into the code.
 
-Function rule: return "adult" for age >= 18, else "minor".
-
-- Black-box angle:
-  - test representative ages and expected labels.
-- White-box angle:
-  - ensure both `< 18` and `>= 18` branches run.
-
-Together, these give better confidence than either approach alone.
+If you do TDD, you can only rely on the specification, as you don't even have code to look at.
 
 ## Practical Checklist
 

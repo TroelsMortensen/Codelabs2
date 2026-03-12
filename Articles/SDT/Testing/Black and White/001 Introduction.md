@@ -12,6 +12,8 @@ Black-box testing treats the system as a "box" where we only focus on:
 
 The internal code structure is not required to design these tests.
 
+This let's us focus on the behavior of the system, and not the implementation details. Implementation details are often not relevant to the behavior of the system, and can change without the behavior changing.
+
 ## What Is White-box Testing?
 
 White-box testing uses knowledge of internal code structure, for example:
@@ -19,9 +21,12 @@ White-box testing uses knowledge of internal code structure, for example:
 - statements,
 - branches,
 - conditions,
+- loops,
 - paths.
 
 Tests are designed with awareness of how the implementation is written.
+
+While this can help you get better coverage of the internal logic, it can also be a hindrance. If the implementation changes, the tests may need to be updated.
 
 ## Complementary, Not Competing
 
@@ -32,6 +37,8 @@ These approaches are not enemies. They answer different questions:
 
 In practice, strong test suites usually combine both.
 
+You may have a particular complicated method, which is _just_ internal detail, but still it is important enough to test explicitly. 
+
 ## Where They Are Used
 
 - Unit tests
@@ -40,9 +47,9 @@ In practice, strong test suites usually combine both.
 
 ## What This Learning Path Covers
 
-- In `002`, black-box approach with simple examples.
-- In `003`, white-box approach with simple branch-oriented examples.
-- In `004`, how to compare and combine both approaches.
+- In page `2`, black-box approach with simple examples.
+- In page `3`, white-box approach with simple branch-oriented examples.
+- In page `4`, how to compare and combine both approaches.
 
 ```text
 Black-box:  Input -> [System] -> Output
