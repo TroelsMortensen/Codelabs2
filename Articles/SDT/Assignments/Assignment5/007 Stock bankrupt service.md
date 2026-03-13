@@ -19,6 +19,5 @@ The class has a method to handle reacting to the bankrupt state of a stock. It s
 2) The update of the Stock data is already handled by the StockListenerService. So, you don't need to do that here.
 3) Load the OwnedStock entity for this bankrupt Stock (if it exists)
 4) If the OwnedStock entity exists, delete it. Thereby, the player looses all shares of that stock. Or set the number of shares to 0.
-5) You may need to also update the Portfolio entity, if you have some kind of total balance field..?
 6) Commit the changes with the Unit of Work.
 
