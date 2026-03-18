@@ -2,9 +2,6 @@
 
 One of the biggest benefits of MVVM is that ViewModel behavior can be tested without rendering JavaFX UI.
 
-## Learning objective
-
-Learn how to unit test ViewModels by asserting state transitions and collaborator interactions.
 
 ## What to test
 
@@ -29,7 +26,7 @@ Use:
 
 - real ViewModel
 - mocked/fake service dependencies
-- direct property assertions
+- direct property assertions, i.e. the test verifies the ViewModel properties are set to the expected values
 
 Example checks:
 
@@ -45,10 +42,4 @@ Example checks:
 4. successful action clears errors
 5. failed action sets user-facing error
 
-## Exit criteria
 
-After this page, you can:
-
-- write unit tests for ViewModel state transitions
-- isolate ViewModel tests from JavaFX rendering concerns
-- verify both happy-path and failure-path behavior

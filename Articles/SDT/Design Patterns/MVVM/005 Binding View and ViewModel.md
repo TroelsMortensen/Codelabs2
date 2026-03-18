@@ -2,13 +2,16 @@
 
 Once ViewModel state is exposed as properties, the view can bind controls to that state.
 
-## Learning objective
-
-Learn practical binding patterns between JavaFX controls and ViewModel properties in MVVM.
-
 ## Binding directions
 
+We mostly use two directions of binding:
+- Unidirectional: View <- ViewModel
+- Bidirectional: View <-> ViewModel
+
 ## Unidirectional binding (`bind`)
+
+This basically means that the ViewModel is the source of truth, and the View is the consumer. Whenever the ViewModel data changes, the View updates automatically. But it is one-way only. From ViewModel to View.
+
 
 Use when the UI should only display state:
 
@@ -17,34 +20,33 @@ Use when the UI should only display state:
 
 ## Bidirectional binding (`bindBidirectional`)
 
+
 Use when the user edits values directly:
 
-- text fields bound to editable form properties
+- text fields bound to a StringProperty in the ViewModel
 - selected value controls where edits should update ViewModel
+
+The point here is for example, that if a user edits a text field, the ViewModel property is updated automatically. Thereby, the ViewModel automatically knows the new value from the user.
+
+If the text field needs to be cleared, we can update the StringProperty in the ViewModel to an empty string. The View will automatically update to show the empty string.
 
 ## Example controller wiring
 
 ```java
-public void bind(LoginViewModel vm) {
-    usernameField.textProperty().bindBidirectional(vm.usernameProperty());
-    passwordField.textProperty().bindBidirectional(vm.passwordProperty());
-    loginButton.disableProperty().bind(vm.canLoginProperty().not());
-    errorLabel.textProperty().bind(vm.errorMessageProperty());
+public void initialize() {
+    usernameField.textProperty().bindBidirectional(viewModel.usernameProperty());
+    passwordField.textProperty().bindBidirectional(viewModel.passwordProperty());
+    loginButton.disableProperty().bind(viewModel.canLoginProperty().not());
+    errorLabel.textProperty().bind(viewModel.errorMessageProperty());
 }
 ```
+
+Remember, the `initialize()` method is called automatically. For a more safe approach, implement the `Initializable` interface and implement the `initialize()` method with the required parameters.
 
 ## Common pitfalls
 
 - binding everything bidirectionally by default
-- mutating domain/service state directly from controllers
-- adding business decisions in controller event handlers
+- binding input unidirectionally, this will actually disable input
+- adding UI logic or business decisions in controller event handlers
 
-Keep controller code as wiring and delegation.
-
-## Exit criteria
-
-After this page, you can:
-
-- choose between unidirectional and bidirectional binding for common controls
-- wire a controller so UI state reflects ViewModel state automatically
-- keep binding code free from business logic
+Keep controller code as wiring (binding) and delegation (call method on ViewModel).

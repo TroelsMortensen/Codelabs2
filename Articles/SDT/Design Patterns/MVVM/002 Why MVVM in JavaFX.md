@@ -1,12 +1,29 @@
 # Why MVVM in JavaFX
 
-JavaFX makes it easy to put logic directly in controllers. This works for small demos, but as features grow, controller classes often become overloaded.
+JavaFX makes it easy to put logic directly in controllers, which is probably what you have done on first semester. This works for small apps, but as features grow, controller classes often become overloaded.
 
-MVVM gives us a cleaner split between UI rendering and application behavior.
+Controllers are also difficult to test, because they contain UI elements, which are inconvenient to setup correctly.
 
-## Learning objective
+MVVM gives us a cleaner split between UI rendering and UI logic. We can test the UI logic, without the need for a JavaFX runtime.
 
-Understand the concrete problems MVVM solves in JavaFX applications and why teams adopt it.
+Examples of UI logic:
+- basic validation
+- navigation
+- holding data for display
+- managing the state of the UI
+- forwarding requests to the business logic
+- handling errors
+- handling user input
+- handling UI events
+- updating data
+- and probably much more
+
+We want to separate the above from UI rendering:
+- UI elements, like TextFields, Buttons, etc.
+- layouts, like VBox, HBox, AnchorPane, etc.
+- scenes, and stages
+- FXML files
+- styling
 
 ## Typical pain points without MVVM
 
@@ -24,7 +41,7 @@ This quickly becomes hard to read and maintain.
 
 ### 2) Hard-to-test behavior
 
-If business logic is mixed with JavaFX UI code, tests often need JavaFX runtime or become brittle.
+If business or UI logic is mixed with JavaFX UI code, tests often need JavaFX runtime or become brittle.
 
 ### 3) Tight coupling
 
@@ -45,10 +62,4 @@ As screens multiply, duplicated event and synchronization code appears across co
 
 If a line of code can run meaningfully without visual components, it probably belongs in a ViewModel or service, not in a controller.
 
-## Exit criteria
 
-After this page, you can:
-
-- describe at least three common controller-heavy problems
-- explain how MVVM addresses them in JavaFX
-- justify using MVVM for medium/large JavaFX projects

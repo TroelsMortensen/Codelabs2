@@ -4,28 +4,23 @@ As a JavaFX app grows, object creation and dependency wiring should be centraliz
 
 This page connects `ControllerFactory` and `ApplicationContext` to MVVM composition.
 
-## Learning objective
+I will mostly reference theory introduced in other learning paths, about ViewManager, ControllerFactory, and Application Context. You should already be familiar with the concepts.
 
-Understand how controllers, ViewModels, and services are resolved through a composition root using ControllerFactory and ApplicationContext.
+## Existing implementation reference
 
-## Existing implementation references
+References:
+* ViewManager: [Video](https://troelsmortensen.github.io/Codelabs2/article/TroelsMortensen/Session%2022%20-%20JFX%20Continued?pagenumber=11
+* ControllerFactory: [Video](https://troelsmortensen.github.io/Codelabs2/article/TroelsMortensen/Session%2023%20-%20JFX%20Application?pagenumber=5)
+* Application Context: [Learning path](https://troelsmortensen.github.io/Codelabs2/article/TroelsMortensen/SDT%2FDesign%20Patterns%2FApplication%20Context%20Pattern)
 
-For ControllerFactory and ViewManager integration, see:
+This page combines the three above parts.
 
-- `../../../Session 23 - JFX Application/005 Controller Factory.md`
-- `../../../Session 23 - JFX Application/006 Exercise.md`
-
-For Application Context pattern intent and implementation, see:
-
-- `../Application Context Pattern/001 Introduction.md`
-- `../Application Context Pattern/003 The Pattern.md`
-- `../Application Context Pattern/004 Implementation.md`
 
 ## Why combine them
 
-- `ViewManager` knows when a view should be opened
-- `ControllerFactory` knows how to construct controllers
-- `ApplicationContext` knows how to resolve dependencies
+- `ViewManager` knows when a view should be opened, and swaps out views. Uses ControllerFactory to create the controller classes.
+- `ControllerFactory` knows how to construct controllers. Uses ApplicationContext to resolve dependencies.
+- `ApplicationContext` knows how to resolve dependencies.
 
 Together they keep construction logic out of controllers.
 
@@ -33,7 +28,6 @@ Together they keep construction logic out of controllers.
 
 ```mermaid
 flowchart LR
-    startup[Startup]
     viewManager[ViewManager]
     controllerFactory[ControllerFactory]
     applicationContext[ApplicationContext]
@@ -41,27 +35,18 @@ flowchart LR
     viewModel[ViewModel]
     services[Services]
 
-    startup --> viewManager
-    viewManager --> controllerFactory
-    controllerFactory --> applicationContext
-    applicationContext --> viewModel
-    applicationContext --> services
-    controllerFactory --> controller
-    controller --> viewModel
+    viewManager -->|"uses"| controllerFactory
+    controllerFactory -->|"uses"| applicationContext
+    applicationContext -->|"creates"| viewModel
+    applicationContext -->|"creates"| services
+    controllerFactory -->|"creates"| controller
+    controller -->|"binds to"| viewModel
+    viewModel -->|"uses"| services
 ```
 
-## Practical guideline
+Now, we actually have two separate classes responsible for creating objects: the ControllerFactory and the ApplicationContext.
+We _could_ merge them into one class, but I think it is better to keep them separate. The Controller classes are created in a slightly different way than the rest of the objects.
 
-- register service and repository dependencies in one place
-- let factory/context build controller with required ViewModel
-- keep controller constructors focused on dependencies, not creation logic
 
-If a controller does `new SomeService(...)`, move that wiring to the context/factory layer.
 
-## Exit criteria
 
-After this page, you can:
-
-- explain the end-to-end construction flow from startup to controller
-- justify why controllers should not build their own object graphs
-- map Session 23 factory setup to the Application Context pattern

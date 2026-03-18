@@ -2,19 +2,20 @@
 
 In JavaFX MVVM, the ViewModel exposes state through JavaFX properties so views can observe and bind to changes.
 
-## Learning objective
+By state, we mean the data that the ViewModel needs to expose to the View:
+- Username
+- Status messages
+- Validation flags
+- List of items
+- Data for a table
+- etc.
 
-Understand how to model ViewModel state using JavaFX properties and when to expose read-only vs writable state.
 
 ## Reference before this page
 
 This page assumes you already know the property APIs.  
-For full property and binding mechanics, read:
+For full property and binding mechanics, read [about data binding](https://troelsmortensen.github.io/Codelabs2/article/TroelsMortensen/SDT%2FData%20Bindings)
 
-- `../../Data Bindings/001 Introduction.md`
-- `../../Data Bindings/002 Properties.md`
-- `../../Data Bindings/003 Unidirectional binding.md`
-- `../../Data Bindings/004 Bidirectional binding.md`
 
 Here we focus on architectural usage in MVVM.
 
@@ -28,7 +29,9 @@ Typical examples:
 - validation flags (`BooleanProperty`)
 - status messages (`StringProperty`)
 
-## Example shape
+## ViewModel example
+
+In a login view, we want the ViewModel to know about the username and password, and whether the user can login. And when they attempt to login, we want to show if it failed. All this is data, and data is kept in the ViewModel properties. For example:
 
 ```java
 public class LoginViewModel {
@@ -41,16 +44,45 @@ public class LoginViewModel {
 
 ## Exposure guideline
 
-- expose property accessors where binding is needed (`usernameProperty()`)
-- expose value getters for read-only usage (`getUsername()`)
-- keep mutation through methods when business rules apply (`attemptLogin()`)
+Expose property accessors where binding is needed (`usernameProperty()`)
 
-This avoids scattering mutation logic across controllers.
+For example:
 
-## Exit criteria
+```java
+public class LoginViewModel {
 
-After this page, you can:
+    // properties
 
-- design ViewModel state using appropriate property types
-- explain why properties are useful in MVVM
-- decide which values should be mutable directly and which should be updated through ViewModel methods
+    public StringProperty usernameProperty() {
+        return username;
+    }
+}
+```
+
+When we expose the properties, the view can bind to them. For example:
+```java
+public class LoginController {
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private PasswordField passwordField;
+
+    private final LoginViewModel viewModel;
+
+    public LoginController(LoginViewModel viewModel) {
+        this.viewModel = viewModel;
+    }
+
+    public void initialize() {
+        usernameField.textProperty().bind(viewModel.usernameProperty());
+        passwordField.textProperty().bind(viewModel.passwordProperty());
+    }
+}
+```
+
+## Recap
+
+In short:
+* All the data that the view can present, is kept in the ViewModel properties, or Observable lists.
+* All the data that the user inputs, is "pushed" automatically to the ViewModel properties.
+* All the data that the ViewModel needs to know about, is kept in the ViewModel properties.

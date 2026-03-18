@@ -2,9 +2,6 @@
 
 MVVM is mostly about clear boundaries. This page defines the responsibilities and allowed dependencies.
 
-## Learning objective
-
-Learn what each MVVM part is responsible for and how dependencies should flow.
 
 ## Responsibilities
 
@@ -16,7 +13,9 @@ The model represents application data and business rules:
 - business services
 - persistence abstractions/implementations
 
-It should not know JavaFX UI classes.
+It should not know JavaFX classes. You should not have an import statement referencing anything from the javafx package.
+
+In the three-layered architecture, the "model" is everything from the business logic layer and below.
 
 ## View
 
@@ -24,45 +23,42 @@ The view is UI structure and rendering:
 
 - FXML or JavaFX nodes/layout
 - visual state presentation
-- forwarding user input to controller/ViewModel
 
-It should not contain business logic.
+It is also responsible for forwarding user input to the ViewModel.
+
+It should not contain business logic. Or ideally any kind of logic at all.
 
 ## ViewModel
 
 The ViewModel is the presentation logic:
 
-- exposes UI state through properties
-- transforms domain data for display
-- handles user intent methods (save, search, select, etc.)
+- exposes UI state through properties, e.g. what is the current username, status messages, is a button enabled or disabled, color of a label, etc.
+- transforms model data for display, i.e. wrapping the data in properties, and maybe transforming it a little bit, for example converting a boolean to a string "Yes" or "No".
+- handles user intent methods (save, search, select, etc.), i.e. the actions that the user can perform, like saving a form, searching for a user, selecting a planet, etc. Every button click should just result in a ViewModel method call.
 - coordinates with services
 
 It should not create UI controls or load FXML.
+
+There are no TextFields, Buttons, Labels, etc. in the ViewModel.
 
 ## Dependency direction
 
 Use this direction:
 
-- View -> ViewModel
-- ViewModel -> Model/services
+- View → ViewModel (binds to)
+- ViewModel → Model/services (uses)
 
-Avoid:
+```mermaid
+flowchart LR
+    View["View (FXML + controls)"] <-->|"binds to"| ViewModel["ViewModel (state + commands)"]
+    ViewModel -->|"uses"| Model["Model/services (domain + persistence)"]
+```
 
-- ViewModel -> View
-- Model -> View/ViewModel
+## Recap
 
-## Quick smell checks
-
-You likely broke the boundary if:
-
-- a controller opens database connections
-- a ViewModel imports JavaFX layout classes like `VBox` or `Scene`
-- a domain service imports UI control classes
-
-## Exit criteria
-
-After this page, you can:
-
-- classify code into Model, View, or ViewModel correctly
-- describe allowed dependency direction
-- identify at least two boundary violations in a code example
+In short:
+* The Model is the business logic and persistence.
+* The View is the UI rendering, and user input receiver.
+* The ViewModel is the UI logic.
+* The View should not contain business logic.
+* The Model should not know JavaFX classes.
