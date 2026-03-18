@@ -27,7 +27,7 @@ We can diagram it like this:
 ```mermaid
 flowchart LR
     View["View (FXML + controls)"] <-->|"binds to"| ViewModel["ViewModel (state + commands)"]
-    ViewModel -->|"uses"| Model["Model (domain + persistence)"]
+    ViewModel -->|"uses"| Model["Model (services, domain, persistence)"]
 ```
 
 
