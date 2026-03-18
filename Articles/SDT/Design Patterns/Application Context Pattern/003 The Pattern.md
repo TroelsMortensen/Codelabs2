@@ -4,7 +4,7 @@ The **Application Context** pattern centralizes object creation and dependency r
 
 ## Intent
 
-- Provide one "composition root" for the application.
+- Provide one "composition root" for the application, i.e. the place where the application starts and is tied together.
 - Build requested objects with all dependencies injected.
 - Keep lifecycle decisions (shared vs per-request) explicit and consistent.
 - Remove construction logic from controllers and business classes.

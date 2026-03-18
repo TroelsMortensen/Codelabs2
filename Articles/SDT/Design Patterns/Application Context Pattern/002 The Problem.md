@@ -15,7 +15,7 @@ public class PlanetController {
     private final PlanetViewModel viewModel;
 
     public PlanetController() {
-        PlanetDao planetDao = new FilePlanetDao("data/planets.bin");
+        PlanetDao planetDao = new FilePlanetDao("data/planets.txt");
         PlanetService service = new PlanetService(planetDao);
         viewModel = new PlanetViewModel(service);
     }

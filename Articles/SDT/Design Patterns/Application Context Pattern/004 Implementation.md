@@ -8,19 +8,9 @@ The goal is to keep the pattern easy to follow:
 - explicit fields for DAOs, services, and ViewModels,
 - public getters for the ViewModels needed by controllers.
 
-## 1) Minimal Domain Types
+## 1) DAO example class
 
 ```java
-public class Planet {
-    private final int id;
-    private final String name;
-
-    public Planet(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-}
-
 public interface PlanetDao {
     void add(Planet planet);
 }
@@ -39,7 +29,7 @@ public class FilePlanetDao implements PlanetDao {
 }
 ```
 
-## 2) Service and ViewModel
+## 2) Service example class
 
 ```java
 public class PlanetService {
@@ -53,7 +43,11 @@ public class PlanetService {
         planetDao.add(planet);
     }
 }
+```
 
+## 3) ViewModel example class
+
+```java
 public class PlanetViewModel {
     private final PlanetService planetService;
 
@@ -67,26 +61,16 @@ public class PlanetViewModel {
 }
 ```
 
-## 3) AppContext Singleton
+## 4) AppContext Singleton
+
+In the below example, the various "services" are created on demand. That means each ViewModel gets new instances.
+
+In some cases, a service might be shared, in which case you would store it as a private field, for reuse.
 
 ```java
 public class AppContext {
-    private static AppContext instance;
 
-    // DAOs (private)
-    private final PlanetDao planetDao;
-
-    // Services (private)
-    private final PlanetService planetService;
-
-    // ViewModels (public getters)
-    private final PlanetViewModel planetViewModel;
-
-    private AppContext() {
-        planetDao = new FilePlanetDao("data/planets.bin");
-        planetService = new PlanetService(planetDao);
-        planetViewModel = new PlanetViewModel(planetService);
-    }
+    // fields if needed. Maybe some singleton stuff
 
     public static AppContext getInstance() {
         if (instance == null) {
@@ -96,17 +80,27 @@ public class AppContext {
     }
 
     public PlanetViewModel getPlanetViewModel() {
-        return planetViewModel;
+        return new PlanetViewModel(createPlanetService());
+    }
+
+    private PlanetService createPlanetService() {
+        return new PlanetService(createPlanetDao());
+    }
+
+    private PlanetDao createPlanetDao() {
+        return new FilePlanetDao("data/planets.bin");
     }
 }
 ```
 
-## 4) Why This Version Is Useful for Beginners
+## 5) Why This Version Is Useful for Beginners
 
 - No generics and no dynamic registration map.
 - All wiring is explicit and easy to trace.
 - The object graph is still centralized in one place.
 
-## 5) Variation Note
+## 6) Variation Note
 
-Some applications use a more dynamic context where types are registered and resolved through a container API. Frameworks often provide this style. The core idea is still the same: one place controls object creation and dependency wiring.
+Most applications use a more dynamic context where types are registered and resolved through a container API. Frameworks often provide this style. The core idea is still the same: one place controls object creation and dependency wiring.
+
+But instead of writing explicit create methods, the creation of services is done through generics and reflection. This is more complex, but it is more flexible.
