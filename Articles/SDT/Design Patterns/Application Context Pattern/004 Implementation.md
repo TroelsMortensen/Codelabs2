@@ -1,97 +1,112 @@
 # Implementation
 
-This page shows a small, hand-written Java implementation of an Application Context.
+This page shows a simple, hand-written Java implementation of an Application Context.
 
-The goal is not to build a full DI framework. The goal is to clearly show:
+The goal is to keep the pattern easy to follow:
 
-- how types are registered,
-- how types are resolved,
-- and how lifecycle (shared vs new instance) can be controlled.
+- one singleton context object,
+- explicit fields for DAOs, services, and ViewModels,
+- public getters for the ViewModels needed by controllers.
 
-## 1) A Minimal Context
+## 1) Minimal Domain Types
 
 ```java
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Function;
+public class Planet {
+    private final int id;
+    private final String name;
 
-public class ApplicationContext {
-    private final Map<Class<?>, Function<ApplicationContext, ?>> providers = new HashMap<>();
-    private final Map<Class<?>, Object> singletons = new HashMap<>();
+    public Planet(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+}
 
-    public <T> void registerTransient(Class<T> type, Function<ApplicationContext, T> provider) {
-        providers.put(type, provider);
+public interface PlanetDao {
+    void add(Planet planet);
+}
+
+public class FilePlanetDao implements PlanetDao {
+    private final String filePath;
+
+    public FilePlanetDao(String filePath) {
+        this.filePath = filePath;
     }
 
-    public <T> void registerSingleton(Class<T> type, Function<ApplicationContext, T> provider) {
-        providers.put(type, ctx -> singletons.computeIfAbsent(type, t -> provider.apply(ctx)));
+    @Override
+    public void add(Planet planet) {
+        // Save to file (omitted)
+    }
+}
+```
+
+## 2) Service and ViewModel
+
+```java
+public class PlanetService {
+    private final PlanetDao planetDao;
+
+    public PlanetService(PlanetDao planetDao) {
+        this.planetDao = planetDao;
     }
 
-    @SuppressWarnings("unchecked")
-    public <T> T get(Class<T> type) {
-        Function<ApplicationContext, ?> provider = providers.get(type);
-        if (provider == null) {
-            throw new IllegalStateException("No provider registered for " + type.getName());
+    public void addPlanet(Planet planet) {
+        planetDao.add(planet);
+    }
+}
+
+public class PlanetViewModel {
+    private final PlanetService planetService;
+
+    public PlanetViewModel(PlanetService planetService) {
+        this.planetService = planetService;
+    }
+
+    public void createPlanet(int id, String name) {
+        planetService.addPlanet(new Planet(id, name));
+    }
+}
+```
+
+## 3) AppContext Singleton
+
+```java
+public class AppContext {
+    private static AppContext instance;
+
+    // DAOs (private)
+    private final PlanetDao planetDao;
+
+    // Services (private)
+    private final PlanetService planetService;
+
+    // ViewModels (public getters)
+    private final PlanetViewModel planetViewModel;
+
+    private AppContext() {
+        planetDao = new FilePlanetDao("data/planets.bin");
+        planetService = new PlanetService(planetDao);
+        planetViewModel = new PlanetViewModel(planetService);
+    }
+
+    public static AppContext getInstance() {
+        if (instance == null) {
+            instance = new AppContext();
         }
-        return (T) provider.apply(this);
+        return instance;
+    }
+
+    public PlanetViewModel getPlanetViewModel() {
+        return planetViewModel;
     }
 }
 ```
 
-### What happens here?
+## 4) Why This Version Is Useful for Beginners
 
-- `registerTransient(...)` creates a new instance each time `get(...)` is called.
-- `registerSingleton(...)` creates once and reuses the same instance.
-- `get(...)` can recursively resolve dependencies because providers receive the context.
+- No generics and no dynamic registration map.
+- All wiring is explicit and easy to trace.
+- The object graph is still centralized in one place.
 
-## 2) Example Types
+## 5) Variation Note
 
-```java
-public class PortfolioDao {}
-
-public class PortfolioService {
-    private final PortfolioDao dao;
-
-    public PortfolioService(PortfolioDao dao) {
-        this.dao = dao;
-    }
-}
-
-public class PortfolioViewModel {
-    private final PortfolioService service;
-
-    public PortfolioViewModel(PortfolioService service) {
-        this.service = service;
-    }
-}
-```
-
-## 3) Register and Resolve
-
-```java
-public class Bootstrap {
-    public static void main(String[] args) {
-        ApplicationContext context = new ApplicationContext();
-
-        context.registerSingleton(PortfolioDao.class, ctx -> new PortfolioDao());
-        context.registerSingleton(PortfolioService.class,
-                ctx -> new PortfolioService(ctx.get(PortfolioDao.class)));
-        context.registerTransient(PortfolioViewModel.class,
-                ctx -> new PortfolioViewModel(ctx.get(PortfolioService.class)));
-
-        PortfolioViewModel vm1 = context.get(PortfolioViewModel.class);
-        PortfolioViewModel vm2 = context.get(PortfolioViewModel.class);
-
-        // vm1 and vm2 are different (transient)
-        // both share the same PortfolioService and PortfolioDao (singleton)
-    }
-}
-```
-
-## 4) Design Notes
-
-- Keep registration code in one place (startup/composition root).
-- Prefer constructor injection for mandatory dependencies.
-- Keep the context out of domain logic; business classes should receive dependencies, not call `context.get(...)` everywhere.
-
-This keeps the pattern clean and avoids turning the context into a global service locator.
+Some applications use a more dynamic context where types are registered and resolved through a container API. Frameworks often provide this style. The core idea is still the same: one place controls object creation and dependency wiring.

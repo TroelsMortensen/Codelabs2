@@ -7,47 +7,57 @@ From page `3`, the pattern gave us one place to create and connect objects.
 
 ## Scenario
 
-- `PortfolioController` needs `PortfolioViewModel`.
-- `PortfolioViewModel` needs `PortfolioService`.
-- `PortfolioService` needs `PortfolioDao`.
+- `PlanetController` needs `PlanetViewModel`.
+- `PlanetViewModel` needs `PlanetService`.
+- `PlanetService` needs `PlanetDao`.
 
 The application context builds this chain.
 
 ## Domain and ViewModel Classes
 
 ```java
-public interface PortfolioDao {
-    double getCurrentValue();
-}
+public class Planet {
+    private final int id;
+    private final String name;
 
-public class SqlPortfolioDao implements PortfolioDao {
-    @Override
-    public double getCurrentValue() {
-        return 125000.0;
+    public Planet(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 }
 
-public class PortfolioService {
-    private final PortfolioDao dao;
+public interface PlanetDao {
+    void add(Planet planet);
+}
 
-    public PortfolioService(PortfolioDao dao) {
+public class FilePlanetDao implements PlanetDao {
+    @Override
+    public void add(Planet planet) {
+        // Save to file (omitted)
+    }
+}
+
+public class PlanetService {
+    private final PlanetDao dao;
+
+    public PlanetService(PlanetDao dao) {
         this.dao = dao;
     }
 
-    public double loadPortfolioValue() {
-        return dao.getCurrentValue();
+    public void addPlanet(Planet planet) {
+        dao.add(planet);
     }
 }
 
-public class PortfolioViewModel {
-    private final PortfolioService service;
+public class PlanetViewModel {
+    private final PlanetService service;
 
-    public PortfolioViewModel(PortfolioService service) {
+    public PlanetViewModel(PlanetService service) {
         this.service = service;
     }
 
-    public double currentValue() {
-        return service.loadPortfolioValue();
+    public void createPlanet(int id, String name) {
+        service.addPlanet(new Planet(id, name));
     }
 }
 ```
@@ -55,23 +65,40 @@ public class PortfolioViewModel {
 ## Configure the Application Context
 
 ```java
-ApplicationContext context = new ApplicationContext();
+public class AppContext {
+    private static AppContext instance;
 
-context.registerSingleton(PortfolioDao.class, ctx -> new SqlPortfolioDao());
-context.registerSingleton(PortfolioService.class,
-        ctx -> new PortfolioService(ctx.get(PortfolioDao.class)));
-context.registerTransient(PortfolioViewModel.class,
-        ctx -> new PortfolioViewModel(ctx.get(PortfolioService.class)));
+    private final PlanetDao planetDao;
+    private final PlanetService planetService;
+    private final PlanetViewModel planetViewModel;
+
+    private AppContext() {
+        planetDao = new FilePlanetDao();
+        planetService = new PlanetService(planetDao);
+        planetViewModel = new PlanetViewModel(planetService);
+    }
+
+    public static AppContext getInstance() {
+        if (instance == null) {
+            instance = new AppContext();
+        }
+        return instance;
+    }
+
+    public PlanetViewModel getPlanetViewModel() {
+        return planetViewModel;
+    }
+}
 ```
 
 ## Controller Gets a Ready ViewModel
 
 ```java
-public class PortfolioController {
-    private final PortfolioViewModel viewModel;
+public class PlanetController {
+    private final PlanetViewModel viewModel;
 
-    public PortfolioController(ApplicationContext context) {
-        this.viewModel = context.get(PortfolioViewModel.class);
+    public PlanetController() {
+        this.viewModel = AppContext.getInstance().getPlanetViewModel();
     }
 }
 ```
@@ -82,7 +109,7 @@ The controller no longer knows how services or DAOs are created. It only asks fo
 
 For tests, create another context configuration:
 
-- register a fake or in-memory DAO instead of `SqlPortfolioDao`,
+- register a fake or in-memory DAO instead of `FilePlanetDao`,
 - keep the same ViewModel and service classes.
 
 This allows testing behavior without touching production wiring.

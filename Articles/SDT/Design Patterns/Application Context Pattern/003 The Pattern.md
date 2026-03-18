@@ -4,54 +4,58 @@ The **Application Context** pattern centralizes object creation and dependency r
 
 ## Intent
 
-- Provide one composition root for the application.
+- Provide one "composition root" for the application.
 - Build requested objects with all dependencies injected.
 - Keep lifecycle decisions (shared vs per-request) explicit and consistent.
 - Remove construction logic from controllers and business classes.
 
 ## Structure
 
-The context acts as a registry plus factory:
+The context acts as a _registry_ (a place to store the construction rules for types) plus _factory_ (a place to build the requested objects):
 
 - it stores construction rules for types,
 - it can store shared instances,
 - and it resolves dependencies when building requested objects.
 
+We are going to mix the pattern with a JavaFX ControllerFactory, and ViewManager. You have seen these in the previous semester.
+
+But for a simplified example, assume here that a Controller gets access to the ApplicationContext, and requests the ViewModel from it.
+
 ```mermaid
 classDiagram
     class ApplicationContext {
-        +register(type, provider)
-        +get(type)
+        + getPlanetViewModel() PlanetViewModel
     }
 
-    class PortfolioController {
-        -PortfolioViewModel vm
+    class PlanetController {
+        -PlanetViewModel vm
     }
 
-    class PortfolioViewModel
-    class PortfolioService
-    class PortfolioDao
+    class PlanetViewModel
+    class PlanetService
+    class PlanetDao
 
-    PortfolioController --> ApplicationContext : requests ViewModel
-    ApplicationContext --> PortfolioViewModel : creates
-    ApplicationContext --> PortfolioService : resolves dependency
-    ApplicationContext --> PortfolioDao : resolves dependency
-    PortfolioViewModel --> PortfolioService : depends on
-    PortfolioService --> PortfolioDao : depends on
+    PlanetController --> ApplicationContext : requests ViewModel
+    ApplicationContext --> PlanetViewModel : creates
+    ApplicationContext ..> PlanetService : resolves dependency
+    ApplicationContext ..> PlanetDao : resolves dependency
+    PlanetViewModel --> PlanetService : depends on
+    PlanetService --> PlanetDao : depends on
 ```
 
 ## Participants
 
 ### ApplicationContext
 
-- Knows how to create registered types.
+- Knows how to create all services, DAOs, ViewModels, and other types.
 - May keep shared instances.
 - Resolves dependency chains when creating objects.
 
 ### Requested Type (for example ViewModel)
 
-- Asks for dependencies through constructor parameters.
-- Does not know who created it.
+In more complex versions of the pattern, there is a single `getService` method, which can return any service type (here "service" is a very general term). The Application Context will then dynamically figure out what the requested service depends on and create those objects as well. If those objects have dependencies, the context will resolve them as well.
+
+We will use a simplified version of the pattern, though, where this is just hardcoded, instead of dynamically resolved.
 
 ### Dependencies (services, DAOs, etc.)
 
@@ -65,13 +69,13 @@ classDiagram
 - One place to understand and change wiring.
 - Better separation of concerns across layers.
 - Easier testing by swapping context configuration.
-- Explicit lifecycle management.
+- Explicit lifecycle management (is a class a singleton, or a new instance is created for each request?).
+- Each "service" is created in only a single place! It's a lot easier to change which kind of DAO implementation is used across the application.
 
 ### Costs
 
 - The context itself can become large if not organized.
-- Poorly designed registration APIs can hide errors until runtime.
-- If overused as a global lookup from everywhere, the pattern can drift toward a service locator anti-pattern.
+- If overused as a global lookup from everywhere, the pattern can drift toward a [service locator](https://en.wikipedia.org/wiki/Service_locator_pattern), which is sometimes seen as an anti-pattern.
 
 ## Variation Notes
 

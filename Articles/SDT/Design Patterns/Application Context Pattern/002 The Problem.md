@@ -11,18 +11,20 @@ In JavaFX MVVM, this question appears quickly when controllers need ViewModels, 
 A common first approach is to construct the full object graph inside each controller.
 
 ```java
-public class PortfolioController {
-    private final PortfolioViewModel viewModel;
+public class PlanetController {
+    private final PlanetViewModel viewModel;
 
-    public PortfolioController() {
-        PortfolioDao dao = new SqlPortfolioDao("jdbc:postgresql://localhost:5432/trading");
-        PortfolioService service = new PortfolioService(dao);
-        viewModel = new PortfolioViewModel(service);
+    public PlanetController() {
+        PlanetDao planetDao = new FilePlanetDao("data/planets.bin");
+        PlanetService service = new PlanetService(planetDao);
+        viewModel = new PlanetViewModel(service);
     }
 }
 ```
 
-This works for a tiny example, but it scales badly.
+This works for a tiny example, but it scales badly. And it is repeated across many controllers.
+
+So, dependency injection is a better solution.
 
 ## Why This Is a Problem
 
@@ -32,7 +34,7 @@ Object creation appears in many places (controllers, helper classes, startup cod
 
 ### 2) Tight coupling to concrete classes
 
-The controller now depends on `SqlPortfolioDao` and connection details. UI code should not know persistence details.
+The controller now depends on `FilePlanetDao` and persistence file details. UI code should not know persistence details.
 
 ### 3) Duplication and inconsistency
 
@@ -44,7 +46,7 @@ You cannot easily substitute a fake DAO or mock service without changing product
 
 ### 5) Unclear lifecycle decisions
 
-Should `PortfolioService` be shared? Should each controller get a new ViewModel? Without a central place, lifecycle rules become accidental.
+Should `PlanetService` be shared? Should each controller get a new ViewModel? Without a central place, lifecycle rules become accidental.
 
 ## Consequences in Practice
 
