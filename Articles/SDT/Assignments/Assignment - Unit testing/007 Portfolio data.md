@@ -1,5 +1,7 @@
 # Portfolio data tests
 
+> Optional!!
+
 For the portfolio view of your application, you will need to implement a few query methods. Which methods? Well, that may not be clear yet, until you actually design your UI, and build it.
 
 Still, you were encouraged to implement a few query methods in the previous assignment.
