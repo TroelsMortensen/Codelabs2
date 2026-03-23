@@ -6,7 +6,7 @@ namespace UI.Pages;
 public partial class Home : ComponentBase
 {
     // Todo yes yes i know put this somewhere else. In a separate json file somewhere, probably. That can be auto-generated perhaps?
-    
+
     private CourseOverview OverviewData { get; } =
         new CourseOverview(
             [
@@ -60,9 +60,9 @@ public partial class Home : ComponentBase
                         new Session(8, "Introducing Objects",
                             [
                                 new("Objects", "Session 8 Objects"),
-                                new("UML", "Session 8 UML"), 
-                                new("Encapsulation", "Session 8 Encapsulation"), 
-                                new("Shadowing", "Session 8 Shadowing"), 
+                                new("UML", "Session 8 UML"),
+                                new("Encapsulation", "Session 8 Encapsulation"),
+                                new("Shadowing", "Session 8 Shadowing"),
                             ]
                         ),
                         new Session(9, "More about Objects",
@@ -248,16 +248,22 @@ public partial class Home : ComponentBase
                             ]
                         ),
                         new Session(5, "Testing",
-                            [
-                                new LearningPath("JUnit", "SDT/Testing/JUnit"),
-                                new LearningPath("Boundary Value Analysis", "SDT/Testing/Boundary Value Analysis"),
-                                new LearningPath("Equivalence Partitioning", "SDT/Testing/Equivalence Partitioning"),
-                                new LearningPath("Triple A Test Structure", "SDT/Testing/Triple A Test Structure"),
-                                new LearningPath("Unit Test Naming", "SDT/Testing/Unit Test Naming"),
-                                new LearningPath("Black and White", "SDT/Testing/Black and White"),
-                            ])
+                        [
+                            new LearningPath("JUnit", "SDT/Testing/JUnit"),
+                            new LearningPath("Boundary Value Analysis", "SDT/Testing/Boundary Value Analysis"),
+                            new LearningPath("Equivalence Partitioning", "SDT/Testing/Equivalence Partitioning"),
+                            new LearningPath("Triple A Test Structure", "SDT/Testing/Triple A Test Structure"),
+                            new LearningPath("Unit Test Naming", "SDT/Testing/Unit Test Naming"),
+                            new LearningPath("Black and White", "SDT/Testing/Black and White"),
+                        ])
                     ]
-                )
+                ),
+                new Course("JavaFX", "#E4A0F7", [
+                    new Session(1, "JavaFX",
+                    [
+                        new LearningPath("Line Chart", "JavaFX/LineChart")
+                    ])
+                ])
             ]
         );
 
@@ -272,8 +278,8 @@ public partial class Home : ComponentBase
     {
         if (firstRender)
         {
-        await Task.Delay(100); // Wait for DOM to be ready
-        await JsRuntime.InvokeVoidAsync("initializeMasonry", "CoursesBoxLayout");
+            await Task.Delay(100); // Wait for DOM to be ready
+            await JsRuntime.InvokeVoidAsync("initializeMasonry", "CoursesBoxLayout");
         }
     }
 
@@ -305,16 +311,16 @@ public partial class Home : ComponentBase
     {
         var courseKey = GetCourseKey(course);
         bool shouldExpand = !IsCourseExpanded(course);
-        
+
         CourseExpandedState[courseKey] = shouldExpand;
-        
+
         // Expand/collapse all sessions in this course
         foreach (var session in course.Sessions)
         {
             var sessionKey = GetSessionKey(course, session);
             SessionExpandedState[sessionKey] = shouldExpand;
         }
-        
+
         StateHasChanged();
         await Task.Delay(50); // Wait for DOM update
         await JsRuntime.InvokeVoidAsync("masonryLayout", "CoursesBoxLayout");
@@ -342,7 +348,6 @@ public partial class Home : ComponentBase
 
     private void NavigateToWheel() =>
         NavMgr.NavigateTo("wheeloffortune");
-
 }
 
 internal record CourseOverview(IEnumerable<Course> Courses);
