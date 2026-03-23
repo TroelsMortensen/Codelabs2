@@ -14,7 +14,7 @@ Your view should contain:
 
 Suggested labels:
 
-- X-axis: `Update tick`
+- X-axis: `Days since mission launch`
 - Y-axis: `Distance from star (AU)`
 - Chart title: `Mission Telemetry`
 
@@ -22,7 +22,7 @@ Suggested labels:
 
 Implement the feature with MVVM responsibilities:
 
-- ViewModel stores and updates one or more `XYChart.Series<Number, Number>`
+- ViewModel stores and updates `XYChart.Series<Number, Number>` for exactly two missions: `Mission Alpha` and `Mission Beta`
 - Controller configures chart options and attaches ViewModel series
 - Controller binds status label text to a ViewModel property
 
@@ -32,11 +32,16 @@ Use dynamic updates:
 - use `Platform.runLater(...)` for UI updates
 - cap series size to avoid unlimited growth
 
+Required acceptance criteria:
+
+- the chart always contains both lines: `Mission Alpha` and `Mission Beta`
+- incoming Alpha events update only the Alpha series
+- incoming Beta events update only the Beta series
+
 ## Extra
 
 If you want more challenge:
 
-- support one series per mission name
 - add a checkbox to pause/resume updates
 - add a button to clear chart history
 
@@ -50,7 +55,12 @@ Example ViewModel skeleton:
 public class MissionTelemetryViewModel {
     private final Map<String, XYChart.Series<Number, Number>> seriesMap = new HashMap<>();
     private final StringProperty status = new SimpleStringProperty("Waiting for telemetry...");
-    private int tickCounter;
+    private int daySinceLaunchCounter;
+
+    public MissionTelemetryViewModel() {
+        ensureSeries("Mission Alpha");
+        ensureSeries("Mission Beta");
+    }
 
     public Map<String, XYChart.Series<Number, Number>> getAllSeries() {
         return seriesMap;
@@ -68,12 +78,20 @@ public class MissionTelemetryViewModel {
                 return created;
             });
 
-            s.getData().add(new XYChart.Data<>(tickCounter, event.distanceFromStarAU()));
+            s.getData().add(new XYChart.Data<>(daySinceLaunchCounter, event.distanceFromStarAU()));
             if (s.getData().size() > 100) {
                 s.getData().remove(0);
             }
-            tickCounter++;
+            daySinceLaunchCounter++;
             status.set("Last update from " + event.missionName());
+        });
+    }
+
+    private XYChart.Series<Number, Number> ensureSeries(String missionName) {
+        return seriesMap.computeIfAbsent(missionName, key -> {
+            XYChart.Series<Number, Number> created = new XYChart.Series<>();
+            created.setName(key);
+            return created;
         });
     }
 }
@@ -92,7 +110,7 @@ public class MissionTelemetryController {
 
     @FXML
     private void initialize() {
-        xAxis.setLabel("Update tick");
+        xAxis.setLabel("Days since mission launch");
         yAxis.setLabel("Distance from star (AU)");
         lineChart.setCreateSymbols(false);
         lineChart.setAnimated(false);

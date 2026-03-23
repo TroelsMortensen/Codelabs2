@@ -18,9 +18,14 @@ This follows the same responsibility split as your stock chart example:
 Example ViewModel pattern:
 
 ```java
-public class PlanetChartViewModel {
+public class MissionTelemetryViewModel {
     private final Map<String, XYChart.Series<Number, Number>> seriesMap = new HashMap<>();
     private final StringProperty message = new SimpleStringProperty("Waiting for telemetry...");
+
+    public MissionTelemetryViewModel() {
+        ensureSeries("Mission Alpha");
+        ensureSeries("Mission Beta");
+    }
 
     public Map<String, XYChart.Series<Number, Number>> getAllSeries() {
         return seriesMap;
@@ -28,6 +33,14 @@ public class PlanetChartViewModel {
 
     public StringProperty messageProperty() {
         return message;
+    }
+
+    private XYChart.Series<Number, Number> ensureSeries(String missionName) {
+        return seriesMap.computeIfAbsent(missionName, key -> {
+            XYChart.Series<Number, Number> created = new XYChart.Series<>();
+            created.setName(key);
+            return created;
+        });
     }
 }
 ```
@@ -42,8 +55,8 @@ public class PlanetChartViewModel {
 Example controller pattern:
 
 ```java
-public class PlanetChartController {
-    private final PlanetChartViewModel viewModel;
+public class MissionTelemetryController {
+    private final MissionTelemetryViewModel viewModel;
 
     @FXML private LineChart<Number, Number> distanceChart;
     @FXML private NumberAxis xAxis;
@@ -52,8 +65,9 @@ public class PlanetChartController {
 
     @FXML
     private void initialize() {
-        xAxis.setLabel("Discovery order");
+        xAxis.setLabel("Days since mission launch");
         yAxis.setLabel("Distance from star (AU)");
+        distanceChart.setTitle("Mission Telemetry");
         distanceChart.setCreateSymbols(false);
         distanceChart.setAnimated(false);
 

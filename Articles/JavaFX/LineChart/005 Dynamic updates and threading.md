@@ -6,7 +6,7 @@ JavaFX UI objects must only be changed on the JavaFX Application Thread.
 
 ## Use `Platform.runLater(...)`
 
-When a background callback receives new telemetry, push chart updates to the UI thread:
+When a background callback receives telemetry from `Mission Alpha` or `Mission Beta`, push chart updates to the UI thread:
 
 ```java
 @Override
@@ -22,13 +22,13 @@ public void propertyChange(PropertyChangeEvent evt) {
 ## Incremental update pattern
 
 ```java
-private int tickCounter = 0;
+private int daySinceLaunchCounter = 0;
 
 private void updateChartData(TelemetryEvent event) {
     XYChart.Series<Number, Number> series = getSeriesForMission(event.missionName());
 
     series.getData().add(new XYChart.Data<>(
-        tickCounter,
+        daySinceLaunchCounter,
         event.distanceFromStarAU()
     ));
 
@@ -37,13 +37,15 @@ private void updateChartData(TelemetryEvent event) {
         series.getData().remove(0);
     }
 
-    tickCounter++;
+    daySinceLaunchCounter++;
 }
 ```
 
+The same method handles both missions. `event.missionName()` decides whether the point is appended to the `Mission Alpha` line or the `Mission Beta` line.
+
 ## Good practices
 
-- Update chart data in small increments, not full rebuilds each tick.
+- Update chart data in small increments, not full rebuilds for each telemetry day.
 - Limit data points per series for long-running sessions.
 - Prefer `setAnimated(false)` for real-time updates.
 - Keep parsing/validation outside UI callbacks when possible.
