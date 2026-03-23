@@ -17,7 +17,7 @@ Your src folder will have one color, while the test folder will have another col
 
 ## Create the Folder
 
-In IntelliJ, create `src/test` if it does not already exist, under your module.  
+In IntelliJ, create `test` if it does not already exist, under your module.  
 
 ![Create test folder](Resources/NewFolder.png)
 
