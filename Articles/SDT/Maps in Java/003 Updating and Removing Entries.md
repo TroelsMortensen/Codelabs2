@@ -33,8 +33,3 @@ System.out.println(stock.get("Mouse")); // null
 
 If the key does not exist, nothing is removed.
 
-## Quick Summary
-
-- `put()` can add or overwrite
-- `remove()` deletes by key
-- After removal, `get()` returns `null` for that key

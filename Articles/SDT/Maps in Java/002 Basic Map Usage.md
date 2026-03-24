@@ -32,8 +32,3 @@ If the key does not exist, `get()` returns `null`.
 System.out.println(students.get(999)); // null
 ```
 
-## Quick Summary
-
-- Use `put()` to store data
-- Use `get()` to retrieve data by key
-- Unknown keys return `null` with `get()`

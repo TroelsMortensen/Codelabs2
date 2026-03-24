@@ -2,12 +2,10 @@
 
 Here is a quick overview of other helpful `Map` methods.
 
-- `containsKey(key)` - checks whether a key exists
-- `containsValue(value)` - checks whether a value exists
-- `getOrDefault(key, defaultValue)` - returns a fallback when key is missing
+- `containsKey(key)` - checks whether a key exists, returns true if the key is found, false otherwise
+- `containsValue(value)` - checks whether a value exists, returns true if the value is found, false otherwise
+- `getOrDefault(key, defaultValue)` - returns a fallback when key is missing, returns the value if the key is found, otherwise returns the default value
 - `putIfAbsent(key, value)` - adds only if the key is not already present
-- `keySet()` - returns all keys
-- `values()` - returns all values
 - `size()` - returns the number of entries
 - `isEmpty()` - returns `true` if there are no entries
 

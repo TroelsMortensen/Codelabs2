@@ -33,4 +33,18 @@ System.out.println(students.get(101)); // Mia
 
 Notice in the above example that the `Map` is an interface, and we are using a concrete implementation of it, the `HashMap` class. There are other implementations of the `Map` interface, such as `TreeMap` and `LinkedHashMap`. For most cases, the `HashMap` is a good default choice.
 
+## Generic type parameters
+
+When you declare a `Map`, you can specify the type of the keys and the values. That's the information between the `< >` in the declaration.
+
+In the above example, the `Map` is declared as `Map<Integer, String>`, which means that the keys are of type `Integer` and the values are of type `String`. You can use any type you want, as long as it is a valid type in Java.
+
+Here are a few examples of valid type parameters:
+- `Map<String, String>` - keys are strings, values are strings
+- `Map<Integer, Double>` - keys are integers, values are doubles
+- `Map<String, Integer>` - keys are strings, values are integers
+- `Map<String, Person>` - keys are strings, values are objects
+- `Map<String, List<String>>` - keys are strings, values are lists of strings
+
+
 In this learning path, you will work with the most useful `Map` operations.
