@@ -4,7 +4,7 @@ In this assignment, you will write unit tests for the service classes you create
 
 Now we need to ensure that they actually do what they are supposed to do.
 
-'# Deliverables
+# Deliverables
 
 - Unit tests for buying stocks
 - Unit tests for selling stocks
