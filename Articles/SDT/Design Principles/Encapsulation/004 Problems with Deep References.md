@@ -2,32 +2,13 @@
 
 Deep package references create tight coupling to implementation details. Over time, this causes fragile architecture and expensive change.
 
-## The Leakage Problem Through Return Types
-
-Consider this method:
-
-```java
-// package: com.example.order.api
-public class OrderService {
-    public PricingBreakdown getOrderSummary(String orderId) {
-        // ...
-    }
-}
-```
-
-The returned type is:
-
-```java
-com.example.order.internal.calc.PricingBreakdown
-```
-
-Even if callers use `order.api.OrderService`, they are now coupled to `order.internal.calc`.
+We saw examples on the previous page.
 
 ## Why This Hurts
 
 ### 1) Dependency Spread
 
-Once one caller starts using `PricingBreakdown`, others copy the pattern. Internal types spread across layers.
+Once one caller starts using the deeply internal type `PricingBreakdown`, others copy the pattern. Internal types spread across layers.
 
 ### 2) Ripple Effects
 
@@ -127,28 +108,10 @@ src/
             └── PricingBreakdown.java
 ```
 
-## Diagram: Problem vs Solution
-
-```mermaid
-graph TD
-    presentation[presentation] --> orderService[order.api.OrderService]
-    orderService --> leakedInternal[order.internal.calc.PricingBreakdown]
-```
-
-```mermaid
-graph TD
-    presentation[presentation] --> orderService[order.api.OrderService]
-    orderService --> orderApiView[order.api.OrderSummaryView]
-```
 
 ## Mitigation Patterns
 
-- **Facade package:** expose use-case methods and API types from `*.api`.
-- **Internal discipline:** treat `*.internal.*` as non-public package implementation.
-- **Mapping layer:** map internal entities to public view/DTO types at package boundary.
+- **Facade package:** expose use-case methods and API types from a package like `*.api` or `*.facade` or `*.surface`.
+- **Internal discipline:** treat deeper internal packages as non-public package implementation details.
+- **Mapping layer:** map internal data/classes to public view/DTO types at package boundary.
 - **Anti-corruption boundary:** when crossing boundaries, translate types instead of leaking them.
-
-## Quick Summary
-
-Deep references are problematic, but deep return-type leakage is even trickier because it looks shallow at call site. If returned or accepted types come from nested internals, encapsulation has already been broken.
-

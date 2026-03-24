@@ -1,10 +1,10 @@
 # Shallow vs Deep References
 
-When one package uses another package, the dependency can be shallow or deep.
+When one package uses another package, the dependency can be "shallow" or "deep".
 
 ## Shallow Reference
 
-A shallow reference targets the package's intended public surface.
+A shallow reference targets the package's intended public surface, i.e. a package higher up in the package tree.
 
 Example:
 
@@ -22,7 +22,7 @@ A deep reference reaches into nested internal packages.
 Example:
 
 ```java
-import com.example.customer.internal.profile.CustomerProfileEntity;
+import com.example.customer.internal.profile.preferences.notification.channel.EmailNotificationPreference;
 ```
 
 This is risky because callers now depend on implementation details.
@@ -33,10 +33,12 @@ Even if package A references package B *shallowly*, leakage still happens if B r
 
 ### Problem Example
 
+Here the `CustomerFacade` package is the public surface of the `Customer` package. But it is a deeply nested internal class.
+
 ```java
-// package: com.example.customer.api
+// package: com.example.customer
 public class CustomerFacade {
-    public CustomerProfileEntity getCustomerProfile(String customerId) {
+    public EmailNotificationPreference getCustomerProfile(String customerId) {
         // ...
     }
 }
@@ -45,7 +47,7 @@ public class CustomerFacade {
 Package A only calls `CustomerFacade` (looks shallow), but the returned type is:
 
 ```java
-com.example.customer.internal.profile.CustomerProfileEntity
+com.example.customer.internal.profile.preferences.notification.channel.EmailNotificationPreference
 ```
 
 So package A is forced to know and depend on B's internals. This is leakage.
@@ -53,10 +55,10 @@ So package A is forced to know and depend on B's internals. This is leakage.
 ## Better Version (No Leakage)
 
 ```java
-// package: com.example.customer.api
+// package: com.example.customer
 public class CustomerFacade {
     public CustomerProfileView getCustomerProfile(String customerId) {
-        // Map internal entity to API view
+        // Map internal entity to surface view
     }
 }
 ```
@@ -64,53 +66,9 @@ public class CustomerFacade {
 Now callers depend only on:
 
 ```java
-com.example.customer.api.CustomerProfileView
+com.example.customer.CustomerProfileView
 ```
 
-## Package Tree View
-
-### Leaking Version
-
-```console
-src/
-└── com/example/customer/
-    ├── api/
-    │   └── CustomerFacade.java   // returns internal.profile.CustomerProfileEntity
-    └── internal/
-        └── profile/
-            └── CustomerProfileEntity.java
-```
-
-### Encapsulated Version
-
-```console
-src/
-└── com/example/customer/
-    ├── api/
-    │   ├── CustomerFacade.java   // returns api.CustomerProfileView
-    │   └── CustomerProfileView.java
-    └── internal/
-        └── profile/
-            └── CustomerProfileEntity.java
-```
-
-## Dependency Comparison
-
-```mermaid
-graph TD
-    packageA[packageA] --> customerFacade[customer.api.CustomerFacade]
-    customerFacade --> leakedType[customer.internal.profile.CustomerProfileEntity]
-```
-
-The above is leakage through return type.
-
-```mermaid
-graph TD
-    packageA[packageA] --> customerFacade[customer.api.CustomerFacade]
-    customerFacade --> apiType[customer.api.CustomerProfileView]
-```
-
-The above keeps dependency shallow.
 
 ## Quick Decision Rule
 

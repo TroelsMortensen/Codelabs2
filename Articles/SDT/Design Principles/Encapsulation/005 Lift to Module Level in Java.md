@@ -24,15 +24,9 @@ As codebases grow:
 
 Module thinking helps preserve architecture by making boundaries explicit and intentional.
 
-## Conceptual View
+## Java Module System
 
-```mermaid
-graph TD
-    moduleA[ModuleA] --> moduleBPublic[ModuleBPublicSurface]
-    moduleBPublic --> moduleBInternal[ModuleBInternalDetails]
-```
-
-The relationship should be: depend on `ModuleBPublicSurface`, not `ModuleBInternalDetails`.
+In Java, it is possible to explicitly declare which internal parts can be referenced from other modules. This is a nifty tool to ensure encapsulation is enforced consistently. And it is out of scope.
 
 ## Final Takeaway
 
@@ -42,5 +36,5 @@ Encapsulation is one design principle repeated at multiple levels:
 2. Package: expose package API, hide nested internal structure.
 3. Module: expose intended module surface, hide internal implementation.
 
-If students carry this one idea across levels, they make systems easier to change, test, and maintain.
+If you carry this one idea across levels, your systems will be easier to change, test, and maintain.
 
