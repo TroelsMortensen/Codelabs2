@@ -6,6 +6,8 @@ A `Map` in Java stores data as **key-value pairs**.
 - Keys are **unique**
 - Values can be duplicated
 
+Think of this like a phone book, or a dictionary. You look up a word (key), and get the definition (value).
+
 ## Why Use a Map?
 
 Use a `Map` when you need fast lookup by an identifier, such as:
@@ -28,5 +30,7 @@ students.put(102, "Ethan");
 
 System.out.println(students.get(101)); // Mia
 ```
+
+Notice in the above example that the `Map` is an interface, and we are using a concrete implementation of it, the `HashMap` class. There are other implementations of the `Map` interface, such as `TreeMap` and `LinkedHashMap`. For most cases, the `HashMap` is a good default choice.
 
 In this learning path, you will work with the most useful `Map` operations.
