@@ -4,10 +4,10 @@ namespace MdToHtmlConversion.Transformers;
 
 public class MoveLineHighlightingAttributes : ITransformer
 {
-    public string Handle(string markdown, string articleName)
+    public string Handle(string html, string articleName)
     {
         Regex pattern = new Regex("<pre><code class=\"line-numbers language-[a-z]{0,15}{(.*?)}\">");
-        MatchCollection matchCollection = pattern.Matches(markdown);
+        MatchCollection matchCollection = pattern.Matches(html);
         foreach (Match match in matchCollection)
         {
             string existingHtml = match.Value;
@@ -17,9 +17,9 @@ public class MoveLineHighlightingAttributes : ITransformer
 
             string replacementHtml = Regex.Replace(existingHtml, @"{(.*?)}", "");
             replacementHtml = replacementHtml.Replace("pre", $"pre data-line=\"{dataLineValue}\"");
-            markdown = markdown.Replace(existingHtml, replacementHtml);
+            html = html.Replace(existingHtml, replacementHtml);
         }
 
-        return markdown;
+        return html;
     }
 }

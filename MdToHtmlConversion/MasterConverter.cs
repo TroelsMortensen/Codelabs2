@@ -14,7 +14,8 @@ public static class MasterConverter
             new AddLinesToCodeBlocks(),
             new MoveLineHighlightingAttributes(),
             new HintToDetails(), 
-            new ConfigureVideoTags()
+            new ConfigureVideoTags(),
+            new LinkOpensInNewTab()
         ];
 
         return converters

@@ -4,18 +4,18 @@ namespace MdToHtmlConversion.Transformers;
 
 public class CircleStepNumbersInRed : ITransformer
 {
-    public string Handle(string markdown, string articleName)
+    public string Handle(string html, string articleName)
     {
         Regex pattern = new(@"\(\(\d*\)\)");
-        MatchCollection matchCollection = pattern.Matches(markdown);
+        MatchCollection matchCollection = pattern.Matches(html);
         foreach (Match match in matchCollection)
         {
             string theMatch = match.Value;
             string stepNumber = theMatch.Replace("((", "").Replace("))", "");
             string replacementHtml = $"<span class=\"numberCircle\"><span>{stepNumber}</span></span>";
-            markdown = markdown.Replace(theMatch, replacementHtml);
+            html = html.Replace(theMatch, replacementHtml);
         }
 
-        return markdown;
+        return html;
     }
 }

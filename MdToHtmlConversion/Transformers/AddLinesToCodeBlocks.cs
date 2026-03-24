@@ -2,8 +2,8 @@
 
 public class AddLinesToCodeBlocks : ITransformer
 {
-    public string Handle(string markdown, string articleName)
+    public string Handle(string html, string articleName)
     {
-        return markdown.Replace("class=\"language-", "class=\"line-numbers language-");
+        return html.Replace("class=\"language-", "class=\"line-numbers language-");
     }
 }

@@ -4,9 +4,9 @@ namespace MdToHtmlConversion.Transformers;
 
 public class FixImageUrls : ITransformer
 {
-    public string Handle(string markdown, string articleName)
+    public string Handle(string html, string articleName)
     {
-        return PrependBaseUrlToRelativeImgUrl(articleName, markdown);
+        return PrependBaseUrlToRelativeImgUrl(articleName, html);
     }
 
     public static string PrependBaseUrlToRelativeImgUrl(string articleName, string input)
