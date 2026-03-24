@@ -1,4 +1,4 @@
-﻿@page "/Article/{owner}/{*tutorialsname}"
+@page "/Article/{owner}/{*tutorialsname}"
 
 <div>
 </div>
@@ -13,7 +13,7 @@
 else
 {
     <div class="layout" @onclick="CloseDropdown">
-        <div class="steps-container">
+        <div class="steps-container steps-left">
             @for (int i = 0; i < pages.Count; i++)
             {
                 int idx = i;
@@ -45,7 +45,7 @@ else
             <ArticleButtons StepIndex="stepIndex" MaxSteps="(pages.Count - 1)" OnChangePage="ChangePage" />
         </div>
 
-        <div class="steps-container steps-container-spacer">
+        <div class="steps-container steps-right steps-container-spacer">
         </div>
     </div>
 }
