@@ -237,6 +237,7 @@ public partial class Home : ComponentBase
                                 new LearningPath("Dependency Injection", "SDT/Design Principles/Dependency Injection"),
                                 new LearningPath("Law of Demeter", "SDT/Design Principles/Law of Demeter"),
                                 new LearningPath("What is Refactoring", "SDT/Design Principles/What is Refactoring"),
+                                new LearningPath("Encapsulation", "SDT/Design Principles/Encapsulation"),
                             ]
                         ),
                         new Session(4, "Design Patterns",
