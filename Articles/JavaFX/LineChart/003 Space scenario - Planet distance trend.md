@@ -39,7 +39,7 @@ XYChart.Series<Number, Number> betaSeries = new XYChart.Series<>();
 betaSeries.setName("Mission Beta");
 ```
 
-In the above example, I have hardcoded the series names. In a real application, you should probably use a `Map` to store the series, it will be simpler:
+In the above example, I have hardcoded the series names. In a real application, you should probably use a [`Map`, see more here,](https://troelsmortensen.github.io/Codelabs2/article/TroelsMortensen/SDT%2FMaps%20in%20Java) to store the series, it will be simpler:
 
 ```java
 private final Map<String, XYChart.Series<Number, Number>> seriesMap = new HashMap<>();
