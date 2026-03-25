@@ -1,3 +1,8 @@
+# Clean up
+* Move data binding learning path to java fx course.
+* Move all pro1 learning paths to a pro1 course.
+
+# Implementation fixes
 * create a Meta.json file per article with extra data, like category, and tags.
 * Can search on home page by tags.
 * better responsive design, mht den der steps overview
