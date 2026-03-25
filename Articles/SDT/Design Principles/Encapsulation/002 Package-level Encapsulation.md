@@ -29,6 +29,40 @@ So the top level of a package acts like an interface boundary:
 This is the package "public access" idea: other packages should depend on exposed package API types, not on nested internal types.
 
 
+## Using `package-private` (default access)
+
+Java gives you a practical enforcement lever for package encapsulation: access level with **no modifier** (often called *package-private*).
+
+With `package-private`:
+
+- a type or method is accessible from code **in the same package**
+- code **outside the package** cannot directly use it (unless it is part of the package's intentional public surface)
+
+This helps you manage the “implementation details zone”:
+
+- keep internal helper types in nested packages
+- allow package internals to collaborate freely
+- prevent other packages from depending on those internals by accident
+
+Example (conceptually):
+
+```java
+// com.example.customer.internal.workflow
+class CustomerWorkflowEngine {  // package-private by default
+    void execute(...) { /* ... */ }
+}
+```
+
+## Important Limitation: It Does Not Prevent Return-Type Leakage
+
+`package-private` mainly protects *direct access* (importing/using a type from outside the package).
+
+Leakage can also happen through **types that appear in public method signatures**:
+
+- if a package’s public method returns a deep/internal type, callers become coupled to internals even if they cannot “use it directly” beyond the returned value
+
+So use `package-private` to protect implementation helpers, but still apply the “public surface per package” rule for method parameters and return types.
+
 ## Quick Summary
 
 Package-level encapsulation means treating package boundaries like class boundaries: expose only what clients need, keep internals private to the package boundary.
