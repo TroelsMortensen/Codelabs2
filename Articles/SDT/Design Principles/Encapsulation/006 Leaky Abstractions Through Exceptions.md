@@ -6,6 +6,8 @@ But exceptions are also part of the boundary contract.
 
 If technical exceptions from a lower layer escape into upper layers, the abstraction leaks.
 
+Assume your persistence layer throws a `SQLException`, because it uses a database, and your presentation layer catches it. This is a leaky abstraction. What if you change data storage? SQLExceptions are no longer thrown, you have to update your presentation layer to catch the new exceptions.
+
 ## The Problem
 
 In layered architecture, persistence details should stay inside the persistence layer.
@@ -39,26 +41,35 @@ src/
                 └── PlanetFileMapper.java
 ```
 
+```mermaid
+graph TD
+    presentationLayer[Presentation Layer]
+    applicationLayer[Application Layer]
+    persistenceLayer[Persistence Layer]
+
+    presentationLayer --> applicationLayer
+    applicationLayer --> persistenceLayer
+    persistenceLayer -->|"SQLException leaks up"| presentationLayer
+```
+
 ## Before: Leaky Exception Contract
+
+Here is a DAO, with a method to find all planets. It throws an `IOException`, because it uses a file.
 
 ```java
 // package: com.example.spaceexplorer.persistence.api
-import java.io.IOException;
-import java.util.List;
 
-public interface PlanetRepository {
+public interface PlanetDao {
     List<Planet> findAll() throws IOException;
 }
 ```
 
+And the implementation, when reading from a file in line 6, an exception might be thrown, if the file does not exist.
+
 ```java
 // package: com.example.spaceexplorer.persistence.internal.file
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
 
-public class FilePlanetRepository implements PlanetRepository {
+public class FilePlanetDao implements PlanetDao {
     @Override
     public List<Planet> findAll() throws IOException {
         String raw = Files.readString(Path.of("planets.txt"));
@@ -67,21 +78,22 @@ public class FilePlanetRepository implements PlanetRepository {
 }
 ```
 
+The service class, which is in the application layer, catches the exception, and rethrows it as a `RuntimeException`.
+
 ```java
 // package: com.example.spaceexplorer.application.planet
 import java.io.IOException;
 import java.util.List;
 
 public class PlanetService {
-    private final PlanetRepository repository;
 
-    public PlanetService(PlanetRepository repository) {
-        this.repository = repository;
-    }
+    // ...
 
-    public List<Planet> getPlanets() {
+    public List<PlanetDTO> getPlanets() {
         try {
-            return repository.findAll();
+            return planetDao.findAll().stream()
+                .map(PlanetDTO::fromPlanet)
+                .collect(Collectors.toList());
         } catch (IOException e) {
             throw new RuntimeException("Could not load planets", e);
         }
@@ -91,19 +103,12 @@ public class PlanetService {
 
 `PlanetService` now knows file I/O concerns. The persistence detail leaked.
 
-## Diagram: Leakage Flow
+Notice the import statement of the specific exception type.
 
-```mermaid
-graph TD
-    appService[application.PlanetService] --> persistenceApi[persistence.api.PlanetRepository]
-    persistenceApi --> persistenceInternal[persistence.internal.file.FilePlanetRepository]
-    persistenceInternal --> ioEx[java.io.IOException]
-    ioEx --> appService
-```
 
 ## Solution: Translate Exceptions at the Boundary
 
-Catch technical exceptions inside persistence, and translate them to a boundary-level exception that belongs to the persistence API.
+Catch technical exceptions inside persistence, and translate them to a more general exception type. Maybe you just use a RuntimeException. Or maybe you create your own exception type, often extending RuntimeException.
 
 ## Package Tree (Encapsulated Version)
 
@@ -115,33 +120,29 @@ src/
     │       └── PlanetController.java
     ├── application/
     │   └── planet/
-    │       └── PlanetService.java                 // catches PlanetRepositoryException
+    │       └── PlanetService.java                 // catches PlanetDaoException
     └── persistence/
-        ├── api/
-        │   ├── PlanetRepository.java
-        │   └── PlanetRepositoryException.java
-        └── internal/
-            ├── file/
-            │   └── FilePlanetRepository.java      // catches IOException internally
-            └── mapper/
-                └── PlanetFileMapper.java
+        ├── interface/
+        │   ├── PlanetDao.java
+        │   └── PlanetDaoException.java
+        └── file/
+            └── FilePlanetDao.java      // catches IOException internally
 ```
 
 ## After: Boundary Exception Contract
 
 ```java
 // package: com.example.spaceexplorer.persistence.api
-import java.util.List;
 
-public interface PlanetRepository {
+public interface PlanetDao {
     List<Planet> findAll();
 }
 ```
 
 ```java
 // package: com.example.spaceexplorer.persistence.api
-public class PlanetRepositoryException extends RuntimeException {
-    public PlanetRepositoryException(String message, Throwable cause) {
+public class PlanetDaoException extends RuntimeException {
+    public PlanetDaoException(String message, Throwable cause) {
         super(message, cause);
     }
 }
@@ -154,14 +155,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-public class FilePlanetRepository implements PlanetRepository {
+public class FilePlanetDao implements PlanetDao {
     @Override
     public List<Planet> findAll() {
         try {
             String raw = Files.readString(Path.of("planets.txt"));
             return parsePlanets(raw);
         } catch (IOException e) {
-            throw new PlanetRepositoryException("Failed to read planet file", e);
+            throw new PlanetDaoException("Failed to read planet file", e);
         }
     }
 }
@@ -172,34 +173,22 @@ public class FilePlanetRepository implements PlanetRepository {
 import java.util.List;
 
 public class PlanetService {
-    private final PlanetRepository repository;
 
-    public PlanetService(PlanetRepository repository) {
-        this.repository = repository;
-    }
+    // ...
 
-    public List<Planet> getPlanets() {
+    public List<PlanetDTO> getPlanets() {
         try {
-            return repository.findAll();
-        } catch (PlanetRepositoryException e) {
+            return planetDao.findAll().stream()
+                .map(PlanetDTO::fromPlanet)
+                .collect(Collectors.toList());
+        } catch (PlanetDaoException e) {
             throw new ApplicationException("Could not load planets right now", e);
         }
     }
 }
 ```
 
-Now the application layer depends on persistence API semantics, not on file technology details.
-
-## Diagram: Translation at Boundary
-
-```mermaid
-graph TD
-    appService[application.PlanetService] --> persistenceApi[persistence.api.PlanetRepository]
-    persistenceApi --> persistenceInternal[persistence.internal.file.FilePlanetRepository]
-    persistenceInternal --> catchIo[CatchIOException]
-    catchIo --> repoEx[persistence.api.PlanetRepositoryException]
-    repoEx --> appService
-```
+Now the application layer depends on persistence API/surface semantics, not on file technology details.
 
 ## Practical Solutions
 
