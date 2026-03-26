@@ -2,6 +2,8 @@
 
 This is a larger one, because it spans more time. You will implement the GUI, with JavaFX, following the MVVM pattern.
 
+> I strongly recommend you read through the assignment before you start. It is a lot of work, and you will need to know what you are doing. Not everything is done in order, you may have to go back and forth between the parts.
+
 Some of the parts below are introduced in the second session about MVVM.
 
 ## Deliverables
@@ -20,6 +22,7 @@ Some of the parts below are introduced in the second session about MVVM.
 
 Optional:
 * You may build a Single View Application, as introduced on first semester.
+* You may want some kind of main menu to load, start, and restart the game.
 * You may decide how your views look
 * You may decide how your organize your features
 * Maybe you have created a bunch of query methods in a service class, you can expand your features to use these
