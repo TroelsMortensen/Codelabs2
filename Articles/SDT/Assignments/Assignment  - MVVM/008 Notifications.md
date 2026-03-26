@@ -1,7 +1,5 @@
 # Notifications
 
-This is introduced in the second session about MVVM.
-
 Sometimes stuff happens, and we need to notify the user.
 
 Maybe some event from the service layer, and you want to show a popup to the user.
@@ -14,9 +12,9 @@ I have some future plans for this, so you must follow a certain pattern:
 
 ## Define interface
 
-You must define an interface for the notification service. You could name it `NotificationManager`.
+You must define an interface for the notification service. You could name it `NotificationManager`, or some similar clever name.
 
-The interface must declare method(s) to accept a message, and a type of notification. Similar to the Logger, the type can be
+The interface must declare method(s) to accept a message, and a type of notification. Similarly to the Logger, the type can be
 * error
 * warning
 * info

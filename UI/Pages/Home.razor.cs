@@ -213,6 +213,7 @@ public partial class Home : ComponentBase
                                 new LearningPath("Assignment - Observer pattern", "SDT/Assignments/Assignment5"),
                                 new LearningPath("Assignment - Transaction Script", "SDT/Assignments/Assignment - Transaction Script"),
                                 new LearningPath("Assignment - Unit testing", "SDT/Assignments/Assignment - Unit testing"),
+                                new LearningPath("Assignment - MVVM", "SDT/Assignments/Assignment - MVVM"),
                             ]
                         ),
                         new Session(2, "Learning paths",
