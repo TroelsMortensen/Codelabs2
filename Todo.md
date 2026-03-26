@@ -2,6 +2,7 @@
 * Move data binding learning path to java fx course.
 * Move all pro1 learning paths to a pro1 course.
 * Opdater SDT assignment navne
+* Jeg bør automatisk generate learning path path ud fra CourseName/SessionName/LearningPath eller some shit
 
 # Implementation fixes
 * create a Meta.json file per article with extra data, like category, and tags.
