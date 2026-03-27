@@ -49,8 +49,8 @@ public void buyStock(String symbol, int amount) {
 
 ```java
 public void buyStock(String symbol, int amount) {
-    Guard.againstBlank(symbol, "symbol");
-    Guard.againstNonPositive(amount, "amount");
+    Guard.againstBlank(symbol);
+    Guard.againstNonPositive(amount);
 
     // business logic...
 }
