@@ -245,11 +245,13 @@ public partial class Home : ComponentBase
                         new Session(4, "Design Patterns",
                             [
                                 new LearningPath("Design Patterns", "SDT/Design Patterns/What are Design Patterns"),
-                                new LearningPath("Option Pattern", "SDT/Design Patterns/Option Pattern"),
-                                new LearningPath("Observer Pattern", "SDT/Design Patterns/Observer Design Pattern"),
-                                new LearningPath("MVVM", "SDT/Design Patterns/MVVM"),
+                                new LearningPath("Adapter Pattern", "SDT/Design Patterns/Adaptern Pattern"),
                                 new LearningPath("Application Context Pattern", "SDT/Design Patterns/Application Context Pattern"),
                                 new LearningPath("Guard Pattern", "SDT/Design Patterns/Guard Design Pattern"),
+                                new LearningPath("MVVM", "SDT/Design Patterns/MVVM"),
+                                new LearningPath("Option Pattern", "SDT/Design Patterns/Option Pattern"),
+                                new LearningPath("Observer Pattern", "SDT/Design Patterns/Observer Design Pattern"),
+                                new LearningPath("Strategy Pattern", "SDT/Design Patterns/Strategy Pattern"),
                             ]
                         ),
                         new Session(5, "Testing",
