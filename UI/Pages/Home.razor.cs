@@ -244,7 +244,7 @@ public partial class Home : ComponentBase
                         new Session(4, "Design Patterns",
                             [
                                 new LearningPath("Design Patterns", "SDT/Design Patterns/What are Design Patterns"),
-                                new LearningPath("Adapter Pattern", "SDT/Design Patterns/Adaptern Pattern"),
+                                new LearningPath("Adapter Pattern", "SDT/Design Patterns/Adapter Pattern"),
                                 new LearningPath("Application Context Pattern", "SDT/Design Patterns/Application Context Pattern"),
                                 new LearningPath("Guard Pattern", "SDT/Design Patterns/Guard Design Pattern"),
                                 new LearningPath("MVVM", "SDT/Design Patterns/MVVM"),
