@@ -265,12 +265,14 @@ public partial class Home : ComponentBase
                         ])
                     ]
                 ),
-                new Course("JavaFX", "#E4A0F7", [
-                    new Session(1, "JavaFX",
-                    [
-                        new LearningPath("Line Chart", "JavaFX/LineChart")
-                    ])
-                ])
+                new Course("JavaFX", "#E4A0F7", 
+					[
+                   		new Session(1, "JavaFX",
+                    	[
+                        	new LearningPath("Line Chart", "JavaFX/LineChart")
+                    	])
+                	]
+				),
             ]
         );
 
