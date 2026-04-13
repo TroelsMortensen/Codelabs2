@@ -224,7 +224,6 @@ public partial class Home : ComponentBase
                                 new LearningPath("Records", "SDT/Records"),
                                 new LearningPath("Transactions", "SDT/Transactions"),
                                 new LearningPath("State Machines", "SDT/Statemachines"),
-                                new LearningPath("Data Binding", "SDT/Data Bindings"),
                                 new LearningPath("Maps in Java", "SDT/Maps in Java"),
                             ]
                         ),
@@ -269,7 +268,8 @@ public partial class Home : ComponentBase
 					[
                    		new Session(1, "JavaFX",
                     	[
-                        	new LearningPath("Line Chart", "JavaFX/LineChart")
+                            new LearningPath("Data Binding", "SDT/Data Bindings"),
+                        	new LearningPath("Line Chart", "JavaFX/LineChart"),
                     	])
                 	]
 				),
