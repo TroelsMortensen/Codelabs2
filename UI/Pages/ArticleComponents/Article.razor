@@ -1,5 +1,8 @@
 @page "/Article/{owner}/{*tutorialsname}"
 @using MdToHtmlConversion.Models.Segments
+@using MdToHtmlConversion.Models.Segments.Quiz
+@using UI.Pages.QuizComponents
+@using SingleChoiceQuiz = MdToHtmlConversion.Models.Segments.Quiz.SingleChoiceQuizSegment
 
 <div>
 </div>
@@ -28,7 +31,8 @@ else
             <div class="burger-menu" @onclick="ToggleDropdown" @onclick:stopPropagation>
                 <i class="fa fa-bars"></i>
             </div>
-            <ul class="dropdown-menu" style="display: @(isDropdownVisible ? "block" : "none");" @onclick:stopPropagation>
+            <ul class="dropdown-menu" style="display: @(isDropdownVisible ? "block" : "none");"
+                @onclick:stopPropagation>
                 @for (int i = 0; i < pages.Count; i++)
                 {
                     int idx = i;
@@ -39,26 +43,26 @@ else
             </ul>
         </div>
         <div class="page-card">
-            <ArticleButtons StepIndex="stepIndex" MaxSteps="(pages.Count - 1)" OnChangePage="ChangePage" />
+            <ArticleButtons StepIndex="stepIndex" MaxSteps="(pages.Count - 1)" OnChangePage="ChangePage"/>
             <div class="article-content-container">
                 @if (currentPage is not null)
                 {
                     @foreach (var segment in currentPage.PageSegments)
                     {
-                        @switch (segment)
+                        RenderFragment result = segment switch
                         {
-                            case HtmlSegment html:
-                                <div class="article-body">@((MarkupString)html.HtmlContent)</div>
-                                break;
-                        }
+                            HtmlSegment html => @<div class="article-body">@((MarkupString)html.HtmlContent)</div>,
+                            SingleChoiceQuizSegment quiz => @<SingleChoiceQuiz Data="quiz" />,
+                            _ => @<div>Unknown segment type</div>
+                        };
+                        @result
                     }
                 }
             </div>
-            <ArticleButtons StepIndex="stepIndex" MaxSteps="(pages.Count - 1)" OnChangePage="ChangePage" />
+            <ArticleButtons StepIndex="stepIndex" MaxSteps="(pages.Count - 1)" OnChangePage="ChangePage"/>
         </div>
 
         <div class="steps-container steps-right steps-container-spacer">
         </div>
     </div>
 }
-

@@ -1,4 +1,5 @@
-﻿using MdToHtmlConversion.Transformers;
+﻿using MdToHtmlConversion.Models.Segments;
+using MdToHtmlConversion.Transformers;
 
 namespace Tests;
 
@@ -9,7 +10,7 @@ public class PreCodeTagTest
     public void RunTest()
     {
         ConvertMarkdownToHtml converter = new ConvertMarkdownToHtml();
-        string result = converter.Handle(testMarkdown, "something");
+        var result = converter.Handle([new RawMarkdownSegment(testMarkdown)], "something");
         ;
     }
     

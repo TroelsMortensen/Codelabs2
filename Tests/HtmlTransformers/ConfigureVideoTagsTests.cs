@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using Markdig;
+using MdToHtmlConversion.Models.Segments;
 using MdToHtmlConversion.Transformers;
 
 namespace Tests.HtmlTransformers;
@@ -35,8 +36,8 @@ public class ConfigureVideoTagsTests
             .Build();
         
         string html = Markdown.ToHtml(markdown, pipeline);
-        string result = new ConfigureVideoTags().Handle(html, "");
-        Assert.Contains("https://youtube.com/embed/Qb_NUn0TSAU", result);
+        var result = new ConfigureVideoTags().Handle([new RawMarkdownSegment(html)], "");
+        Assert.Contains("https://youtube.com/embed/Qb_NUn0TSAU", ((HtmlSegment)result[0]).HtmlContent);
     }
     
     [Fact]
@@ -68,8 +69,8 @@ public class ConfigureVideoTagsTests
             .Build();
         
         string html = Markdown.ToHtml(markdown, pipeline);
-        string result = new ConfigureVideoTags().Handle(html, "");
-        Assert.Contains("https://youtube.com/embed/Qb_NUn0TSAU", result);
+        var result = new ConfigureVideoTags().Handle([new RawMarkdownSegment(html)], "");
+        Assert.Contains("https://youtube.com/embed/Qb_NUn0TSAU", ((HtmlSegment)result[0]).HtmlContent);
     }
 
     [Fact]
