@@ -1,3 +1,3 @@
 ﻿namespace MdToHtmlConversion.Models.Segments;
 
-public interface PageSegment;
+public interface IPageSegment;
