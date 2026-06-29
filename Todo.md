@@ -27,6 +27,7 @@
 * Link to specific section id, så page scroller ned?
 * Auto generated section numbers
 * Mouse over learningpath step on the left should show the entire title in a tooltip, in case it is too long
+* Jeg har klart brug for en learning path, der viser alle features, til brug når jeg tester.
 
 Kan jeg have tre css
 Basic til alt fælles. 
