@@ -2,7 +2,7 @@
 * Move data binding learning path to java fx course.
 * Move all pro1 learning paths to a pro1 course.
 * Opdater SDT assignment navne
-* Jeg bør automatisk generate learning path path ud fra CourseName/SessionName/LearningPath eller some shit
+* Jeg bør automatisk generate learning-path path ud fra CourseName/SessionName/LearningPath eller some shit
 
 # Implementation fixes
 * create a Meta.json file per article with extra data, like category, and tags.
@@ -26,6 +26,7 @@
 * Tilføj et <note> tag eller something, til at lave hint boxes eller andet, ligesom michael har på fx sit git learning path stuff.
 * Link to specific section id, så page scroller ned?
 * Auto generated section numbers
+* Mouse over learningpath step on the left should show the entire title in a tooltip, in case it is too long
 
 Kan jeg have tre css
 Basic til alt fælles. 
