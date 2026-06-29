@@ -1,13 +1,16 @@
 ﻿using System.Text.RegularExpressions;
+using MdToHtmlConversion.Models.Segments;
 
 namespace MdToHtmlConversion.Transformers;
 
 public class FixImageUrls : ITransformer
 {
-    public string Handle(string html, string articleName)
-    {
-        return PrependBaseUrlToRelativeImgUrl(articleName, html);
-    }
+    public List<PageSegment> Handle(List<PageSegment> segments, string articleName) =>
+        segments.Select(segment =>
+            segment is HtmlSegment htmlSegment
+                ? htmlSegment with { HtmlContent = PrependBaseUrlToRelativeImgUrl(articleName, htmlSegment.HtmlContent) }
+                : segment
+        ).ToList();
 
     public static string PrependBaseUrlToRelativeImgUrl(string articleName, string input)
     {

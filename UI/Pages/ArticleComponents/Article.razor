@@ -1,4 +1,5 @@
 @page "/Article/{owner}/{*tutorialsname}"
+@using MdToHtmlConversion.Models.Segments
 
 <div>
 </div>
@@ -40,7 +41,18 @@ else
         <div class="page-card">
             <ArticleButtons StepIndex="stepIndex" MaxSteps="(pages.Count - 1)" OnChangePage="ChangePage" />
             <div class="article-content-container">
-                @currentPage?.Html
+                @if (currentPage is not null)
+                {
+                    @foreach (var segment in currentPage.PageSegments)
+                    {
+                        @switch (segment)
+                        {
+                            case HtmlSegment html:
+                                <div class="article-body">@((MarkupString)html.HtmlContent)</div>
+                                break;
+                        }
+                    }
+                }
             </div>
             <ArticleButtons StepIndex="stepIndex" MaxSteps="(pages.Count - 1)" OnChangePage="ChangePage" />
         </div>

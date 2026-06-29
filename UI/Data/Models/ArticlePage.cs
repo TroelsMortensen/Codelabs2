@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using MdToHtmlConversion.Models.Segments;
 
 namespace UI.Data.Models;
 
-public record ArticlePage(string Name, MarkupString Html);
+public record ArticlePage(string Name, List<PageSegment> PageSegments);

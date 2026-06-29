@@ -1,10 +1,19 @@
 ﻿using System.Text.RegularExpressions;
+using MdToHtmlConversion.Models.Segments;
 
 namespace MdToHtmlConversion.Transformers;
 
 public class MoveLineHighlightingAttributes : ITransformer
 {
-    public string Handle(string html, string articleName)
+    public List<PageSegment> Handle(List<PageSegment> segments, string articleName) =>
+        segments.Select(segment =>
+            segment is HtmlSegment htmlSegment
+                ? htmlSegment with { HtmlContent = MoveAttributes(htmlSegment.HtmlContent) }
+                : segment
+        ).ToList();
+
+
+    private static string MoveAttributes(string html)
     {
         Regex pattern = new Regex("<pre><code class=\"line-numbers language-[a-z]{0,15}{(.*?)}\">");
         MatchCollection matchCollection = pattern.Matches(html);

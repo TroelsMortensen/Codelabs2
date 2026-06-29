@@ -1,6 +1,5 @@
 ﻿using GitHubHttpRequester;
 using MdToHtmlConversion;
-using Microsoft.AspNetCore.Components;
 using UI.Data.Models;
 
 namespace UI.Data;
@@ -16,7 +15,7 @@ public static class ArticlePagesRequester
             .Where(file => file.Name.EndsWith(".md"))
             .Select((content, index) => new ArticlePage(
                 RemoveLeadingNumberAndSuffixThenAddPageNumber(content.Name, index),
-                new MarkupString(MasterConverter.ConvertMarkdownToHtml(content.Markdown, articleName))
+                MasterConverter.ConvertMarkdownToHtml(content.Markdown, articleName)
             ))
             .ToList();
 

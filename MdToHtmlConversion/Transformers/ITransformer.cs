@@ -1,6 +1,8 @@
-﻿namespace MdToHtmlConversion.Transformers;
+﻿using MdToHtmlConversion.Models.Segments;
+
+namespace MdToHtmlConversion.Transformers;
 
 public interface ITransformer
 {
-    public string Handle(string html, string articleName);
+    List<PageSegment> Handle(List<PageSegment> segments, string articleName);
 }

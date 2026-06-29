@@ -1,4 +1,5 @@
 using HtmlAgilityPack;
+using MdToHtmlConversion.Models.Segments;
 
 namespace MdToHtmlConversion.Transformers;
 
@@ -9,7 +10,14 @@ public class LinkOpensInNewTab : ITransformer
     private const string LinkIcon = "↗";
     private const string WrapperNode = "link-transform-root";
 
-    public string Handle(string html, string articleName)
+    public List<PageSegment> Handle(List<PageSegment> segments, string articleName) =>
+        segments.Select(segment =>
+            segment is HtmlSegment htmlSegment
+                ? htmlSegment with { HtmlContent = UpdateLinks(htmlSegment.HtmlContent) }
+                : segment
+        ).ToList();
+
+    private static string UpdateLinks(string html)
     {
         HtmlDocument document = new();
         document.LoadHtml($"<{WrapperNode}>{html}</{WrapperNode}>"); // to ensure single root element of the passed in html

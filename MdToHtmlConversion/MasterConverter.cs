@@ -1,26 +1,29 @@
-﻿using MdToHtmlConversion.Transformers;
+﻿using MdToHtmlConversion.Models.Segments;
+using MdToHtmlConversion.Transformers;
 
 namespace MdToHtmlConversion;
 
 public static class MasterConverter
 {
-    public static string ConvertMarkdownToHtml(string markdown, string articleName)
+    public static List<PageSegment> ConvertMarkdownToHtml(string markdown, string articleName)
     {
-        List<ITransformer> converters =
+        List<PageSegment> segments = new() { new RawMarkdownSegment(markdown) };
+
+        List<ITransformer> pipeline =
         [
             new ConvertMarkdownToHtml(),
             new CircleStepNumbersInRed(),
             new FixImageUrls(),
             new AddLinesToCodeBlocks(),
             new MoveLineHighlightingAttributes(),
-            new HintToDetails(), 
+            new HintToDetails(),
             new ConfigureVideoTags(),
             new LinkOpensInNewTab()
         ];
 
-        return converters
+        return pipeline
             .Aggregate(
-                markdown,
+                segments,
                 (currentHtml, converter) => converter.Handle(currentHtml, articleName)
             );
     }

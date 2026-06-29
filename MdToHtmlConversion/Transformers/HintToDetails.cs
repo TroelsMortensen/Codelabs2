@@ -1,20 +1,23 @@
 ﻿using System.Text.RegularExpressions;
+using MdToHtmlConversion.Models.Segments;
 
 namespace MdToHtmlConversion.Transformers;
 
 public class HintToDetails : ITransformer
 {
-    public string Handle(string html, string articleName)
-    {
-        string pattern = @"<hint\s+title=""(.*?)"">\s*\r?\n(.*?)\r?\n?</hint>";
-        string replacement = 
-            """
-            <details>
-                <summary>$1</summary>
-            $2
-            </details>
-            """;
+    private const string Pattern = """<hint\s+title="(.*?)">\s*\r?\n(.*?)\r?\n?</hint>""";
 
-        return Regex.Replace(html, pattern, replacement, RegexOptions.Singleline);
-    }
+    private const string Replacement = """
+                                       <details>
+                                           <summary>$1</summary>
+                                       $2
+                                       </details>
+                                       """;
+
+    public List<PageSegment> Handle(List<PageSegment> segments, string articleName) =>
+        segments.Select(segment =>
+            segment is HtmlSegment html
+                ? html with { HtmlContent = Regex.Replace(html.HtmlContent, Pattern, Replacement, RegexOptions.Singleline) }
+                : segment
+        ).ToList();
 }

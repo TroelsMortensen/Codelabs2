@@ -1,10 +1,18 @@
 ﻿using System.Text.RegularExpressions;
+using MdToHtmlConversion.Models.Segments;
 
 namespace MdToHtmlConversion.Transformers;
 
 public class CircleStepNumbersInRed : ITransformer
 {
-    public string Handle(string html, string articleName)
+    public List<PageSegment> Handle(List<PageSegment> segments, string articleName) =>
+        segments.Select(segment =>
+            segment is HtmlSegment htmlSegment
+                ? htmlSegment with { HtmlContent = InsertCircle(htmlSegment.HtmlContent) }
+                : segment
+        ).ToList();
+
+    private static string InsertCircle(string html)
     {
         Regex pattern = new(@"\(\(\d*\)\)");
         MatchCollection matchCollection = pattern.Matches(html);
