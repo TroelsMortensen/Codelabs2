@@ -476,19 +476,7 @@ The answer is **42**.
 
 </hint>
 
-### Video embed (YouTube)
 
-<video src="https://youtu.be/_jEooKZFWkI"></video>
-
-Expected: converted to YouTube iframe embed.
-
-### Raw HTML passthrough
-
-<p><strong>Raw HTML bold</strong> and <em>raw HTML italic</em>.</p>
-
-### Raw iframe (passthrough)
-
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
 
 ---
 

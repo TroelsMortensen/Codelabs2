@@ -18,14 +18,23 @@ public class QuizBlockParser : BlockParser
 
     public override BlockState TryOpen(BlockProcessor processor)
     {
-        StringSlice line = processor.Line;
+// 1. Get the current line
+        var line = processor.Line;
         line.Trim();
-        if (line.ToString().StartsWith("<Quiz>"))
+
+        // 2. Fast check: If it doesn't start with '<', exit immediately
+        if (line.CurrentChar != '<') return BlockState.None;
+
+        // 3. String comparison for the FULL tag
+        // Convert to string only after passing the initial character check
+        if (line.ToString().Equals("<Quiz>", StringComparison.OrdinalIgnoreCase))
         {
             jsonBuilder.Clear();
             processor.NewBlocks.Push(new QuizBlock(this));
             return BlockState.Continue;
         }
+
+        // 4. Return None for <hint>, <div>, <p>, etc.
         return BlockState.None;
     }
 
