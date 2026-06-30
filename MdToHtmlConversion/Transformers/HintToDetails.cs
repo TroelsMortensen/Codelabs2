@@ -16,9 +16,15 @@ public class HintToDetails : ITransformer
                                        """;
 
     public List<PageSegment> Handle(List<PageSegment> segments, string articleName) =>
-        MergeSegmentsOfHints(segments).Select(
-            Convert
-        ).ToList();
+        MergeSegmentsOfHints(segments)
+            .Select(
+                ConvertHintToDetail
+            ).ToList();
+
+    private static PageSegment ConvertHintToDetail(PageSegment segment) =>
+        segment is HtmlSegment html
+            ? html with { HtmlContent = Regex.Replace(html.HtmlContent, Pattern, Replacement, RegexOptions.Singleline) }
+            : segment;
 
     private static List<PageSegment> MergeSegmentsOfHints(List<PageSegment> segments)
     {
@@ -58,16 +64,5 @@ public class HintToDetails : ITransformer
         }
 
         return result;
-    }
-
-    private static PageSegment Convert(PageSegment segment)
-    {
-        if (segment is HtmlSegment html)
-        {
-            HtmlSegment newSegment = html with { HtmlContent = Regex.Replace(html.HtmlContent, Pattern, Replacement, RegexOptions.Singleline) };
-            return newSegment;
-        }
-
-        return segment;
     }
 }

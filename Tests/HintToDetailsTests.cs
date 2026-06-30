@@ -6,10 +6,10 @@ namespace Tests;
 public class HintToDetailsTests
 {
     [Fact]
-    public void HintsAreCorrectlyConvertedToDetails()
+    public void HintPartsSpreadAcrossMultipleSegmentsAreMergedIntoOneSegment()
     {
         List<PageSegment> segments = MasterConverter.ConvertMarkdownToHtml(MarkdownTest, "");
-        ;
+        Assert.Equal(10, segments.Count);
     }
 
     private const string MarkdownTest = """
