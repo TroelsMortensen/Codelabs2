@@ -1,17 +1,76 @@
-﻿using Markdig;
+﻿using System.Text.Json;
+using Markdig;
+using Markdig.Renderers;
+using Markdig.Syntax;
 using MdToHtmlConversion.Models.Segments;
+using MdToHtmlConversion.Models.Segments.Quiz;
+using MdToHtmlConversion.Parsers.Quiz;
 
 namespace MdToHtmlConversion.Transformers;
 
 public class ConvertMarkdownToHtml : ITransformer
 {
-    public List<PageSegment> Handle(List<PageSegment> segments, string articleName)
+    public List<PageSegment> Handle(List<PageSegment> initialMarkdown, string articleName)
     {
-        // Assuming 'segments' contains one big raw Markdown segment initially
-        var rawMarkdown = ((RawMarkdownSegment)segments[0]).Markdown;
+        // Assuming 'segments' contains one big raw Markdown segment initially, probably a dangerous assumption, should improve
+        var rawMarkdown = ((RawMarkdownSegment)initialMarkdown[0]).Markdown;
 
-        var html = Markdown.ToHtml(rawMarkdown, new MarkdownPipelineBuilder().UseAdvancedExtensions().Build());
+        var pipeline = BuildPipeline();
 
-        return [new HtmlSegment(html)];
+        var document = Markdown.Parse(rawMarkdown, pipeline);
+        var result = new List<PageSegment>();
+
+        foreach (var block in document)
+        {
+            if (block is QuizBlock quizBlock)
+            {
+                HandleQuizBlock(quizBlock, result);
+            }
+            else
+            {
+                HandleHtmlBlock(block, result);
+            }
+        }
+
+        return result;
+    }
+
+    private static void HandleHtmlBlock(Block block, List<PageSegment> result)
+    {
+        var html = RenderBlockToHtml(block);
+        result.Add(new HtmlSegment(html));
+    }
+
+    private static void HandleQuizBlock(QuizBlock quizBlock, List<PageSegment> result)
+    {
+        using JsonDocument doc = JsonDocument.Parse(quizBlock.JsonContent);
+        var type = doc.RootElement.GetProperty("Type").GetString();
+
+        QuizSegment segment = type switch
+        {
+            "SingleChoiceQuiz" => JsonSerializer.Deserialize<SingleChoiceQuizSegment>(quizBlock.JsonContent)!,
+            // Add other types here as you build them
+            _ => throw new NotSupportedException($"Quiz type {type} is not supported.")
+        };
+
+        result.Add(segment);
+    }
+
+    private static MarkdownPipeline BuildPipeline()
+    {
+        MarkdownPipelineBuilder pipelineBuilder = new MarkdownPipelineBuilder()
+            .UseAdvancedExtensions();
+        pipelineBuilder.BlockParsers.Insert(0, new QuizBlockParser());
+        var pipeline = pipelineBuilder.Build();
+        return pipeline;
+    }
+
+    private static string RenderBlockToHtml(Block block)
+    {
+        using var writer = new StringWriter();
+        var renderer = new HtmlRenderer(writer);
+        renderer.Write(block);
+        writer.Flush();
+        return writer.ToString();
     }
 }

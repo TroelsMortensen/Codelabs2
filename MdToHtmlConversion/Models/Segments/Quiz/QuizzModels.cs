@@ -1,7 +1,13 @@
 ﻿namespace MdToHtmlConversion.Models.Segments.Quiz;
 
-public record QuizSegment : PageSegment;
+public abstract record QuizSegment(string Type) : PageSegment;
 
-public record SingleChoiceQuizSegment(string Question, List<Answer> Answers) : QuizSegment;
+public record SingleChoiceQuizSegment(
+    string Question, 
+    List<QuizOption> Options, 
+    bool Shuffle = false,
+    string? Hint = null, 
+    string? Explanation = null
+) : QuizSegment("SingleChoiceQuiz");
 
-public record Answer(string text, bool IsCorrect);
+public record QuizOption(string Text, bool IsCorrect);
