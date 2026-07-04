@@ -819,6 +819,24 @@ main[b-mr0ddkk2zs] {
     color: #5ca1e1;
 }
 
+.quiz-error[b-ot05ydc88o] {
+    border-left-color: #c62828;
+}
+
+.quiz-error-message[b-ot05ydc88o] {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    color: #c62828;
+}
+
+.quiz-error-message .fa[b-ot05ydc88o] {
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-size: 1.3rem;
+}
+
 @media (max-width: 600px) {
     .quiz-check-button[b-ot05ydc88o] {
         width: calc(100% - 40px);
