@@ -12,6 +12,7 @@ public static class MasterConverter
         List<ITransformer> pipeline =
         [
             new ConvertMarkdownToHtml(),
+            new MergeHtmlSegments(),
             new CircleStepNumbersInRed(),
             new FixImageUrls(),
             new AddLinesToCodeBlocks(),

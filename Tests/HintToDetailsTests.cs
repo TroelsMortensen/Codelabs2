@@ -1,15 +1,20 @@
 ﻿using MdToHtmlConversion;
 using MdToHtmlConversion.Models.Segments;
+using Xunit.Abstractions;
 
 namespace Tests;
 
-public class HintToDetailsTests
+public class HintToDetailsTests(ITestOutputHelper testOutputHelper)
 {
     [Fact]
-    public void HintPartsSpreadAcrossMultipleSegmentsAreMergedIntoOneSegment()
+    public void HintElementIsConvertedToDetails()
     {
         List<PageSegment> segments = MasterConverter.ConvertMarkdownToHtml(MarkdownTest, "");
-        Assert.Equal(10, segments.Count);
+        Assert.Single(segments);
+        var htmlContent = ((HtmlSegment)segments[0]).HtmlContent;
+        testOutputHelper.WriteLine(htmlContent);
+        Assert.Contains("<details>", htmlContent);
+        Assert.DoesNotContain("<hint>", htmlContent);
     }
 
     private const string MarkdownTest = """

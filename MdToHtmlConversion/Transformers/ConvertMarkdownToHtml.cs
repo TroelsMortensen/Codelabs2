@@ -18,6 +18,11 @@ public class ConvertMarkdownToHtml : ITransformer
         var pipeline = BuildPipeline();
 
         var document = Markdown.Parse(rawMarkdown, pipeline);
+
+        using var writer = new StringWriter();
+        var renderer = new HtmlRenderer(writer);
+        pipeline.Setup(renderer);
+
         var result = new List<PageSegment>();
 
         foreach (var block in document)
@@ -28,17 +33,20 @@ public class ConvertMarkdownToHtml : ITransformer
             }
             else
             {
-                HandleHtmlBlock(block, result);
+                HandleHtmlBlock(writer, renderer, block, result);
             }
         }
 
         return result;
     }
 
-    private static void HandleHtmlBlock(Block block, List<PageSegment> result)
+    private static void HandleHtmlBlock(StringWriter writer, HtmlRenderer renderer, Block block, List<PageSegment> result)
     {
-        var html = RenderBlockToHtml(block);
-        result.Add(new HtmlSegment(html));
+        writer.GetStringBuilder().Clear();
+        renderer.Write(block);
+        writer.Flush();
+
+        result.Add(new HtmlSegment(writer.ToString()));
     }
 
     private static void HandleQuizBlock(QuizBlock quizBlock, List<PageSegment> result)
@@ -46,14 +54,13 @@ public class ConvertMarkdownToHtml : ITransformer
         using JsonDocument doc = JsonDocument.Parse(quizBlock.JsonContent);
         var type = doc.RootElement.GetProperty("Type").GetString();
 
-        QuizSegment segment = type switch
+        var quizSegment = type switch
         {
             "SingleChoiceQuiz" => JsonSerializer.Deserialize<SingleChoiceQuizSegment>(quizBlock.JsonContent)!,
             // Add other types here as you build them
             _ => throw new NotSupportedException($"Quiz type {type} is not supported.")
         };
-
-        result.Add(segment);
+        result.Add(quizSegment);
     }
 
     private static MarkdownPipeline BuildPipeline()
@@ -63,14 +70,5 @@ public class ConvertMarkdownToHtml : ITransformer
         pipelineBuilder.BlockParsers.Insert(0, new QuizBlockParser());
         var pipeline = pipelineBuilder.Build();
         return pipeline;
-    }
-
-    private static string RenderBlockToHtml(Block block)
-    {
-        using var writer = new StringWriter();
-        var renderer = new HtmlRenderer(writer);
-        renderer.Write(block);
-        writer.Flush();
-        return writer.ToString();
     }
 }
