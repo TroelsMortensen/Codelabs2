@@ -1,5 +1,7 @@
 ﻿<div class="quiz-card">
-    <div class="quiz-label">Review question</div>
+    <div class="quiz-header">
+        <div class="quiz-label"><i class="fa fa-question-circle"></i> Review question</div>
+    </div>
 
     <div class="quiz-question">@((MarkupString)Data.Question)</div>
 
@@ -41,18 +43,19 @@
         <div class="quiz-result @(_wasCorrect == true ? "correct" : "incorrect")">
             @if (_wasCorrect == true)
             {
-                <span>Correct</span>
+                <span><i class="fa fa-check-circle"></i> Correct</span>
             }
             else
             {
-                <span>Not quite</span>
+                <span><i class="fa fa-times-circle"></i> Not quite</span>
             }
         </div>
 
         @if (!string.IsNullOrWhiteSpace(Data.Explanation))
         {
             <div class="quiz-explanation">
-                <strong>Explanation:</strong> @Data.Explanation
+                <i class="fa fa-info-circle"></i>
+                <div><strong>Explanation:</strong> @Data.Explanation</div>
             </div>
         }
     }

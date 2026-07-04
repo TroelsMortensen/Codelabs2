@@ -1,22 +1,53 @@
-﻿.quiz-card {
-    border: 1px solid #b4b4b4;
-    border-radius: 10px;
-    background-color: #eee;
-    padding: 16px;
-    margin: 20px 0;
+﻿@keyframes quizFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.quiz-card {
+    background-color: #fff;
+    border: 1px solid #d8dce0;
+    border-left: 4px solid #5ca1e1;
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgb(60 64 67), 0 2px 16px 12px rgba(60, 64, 67, 0.15);
+    margin: 24px 0;
+    overflow: hidden;
+}
+
+.quiz-header {
+    background: linear-gradient(135deg, #eef6fd 0%, #f8fbff 100%);
+    border-bottom: 1px solid #dceaf7;
+    padding: 14px 20px;
 }
 
 .quiz-label {
-    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background-color: rgba(92, 161, 225, 0.15);
+    color: #2b6fa8;
+    font-size: 0.8rem;
     font-weight: 700;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: #555;
-    margin-bottom: 12px;
+}
+
+.quiz-label .fa {
+    font-size: 1rem;
 }
 
 .quiz-question {
+    padding: 20px 20px 0;
     margin-bottom: 16px;
+    font-size: 1.05rem;
+    line-height: 1.5;
 }
 
 .quiz-question ::deep p {
@@ -26,8 +57,9 @@
 .quiz-options {
     border: none;
     margin: 0;
-    padding: 0;
+    padding: 0 20px;
     min-width: 0;
+    counter-reset: quiz-option;
 }
 
 .visually-hidden {
@@ -45,44 +77,100 @@
 .quiz-option {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 12px;
-    margin-bottom: 8px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #fff;
+    gap: 12px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    border: 2px solid #e0e4e8;
+    border-radius: 12px;
+    background-color: #fafbfc;
     cursor: pointer;
-    transition: background-color 0.15s ease, border-color 0.15s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.quiz-option::before {
+    counter-increment: quiz-option;
+    content: counter(quiz-option, upper-alpha);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #e8eef3;
+    color: #4a5568;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .quiz-option:last-child {
     margin-bottom: 0;
 }
 
-.quiz-option:hover:not(.correct):not(.incorrect) {
-    background-color: #f5f5f5;
-    border-color: #999;
+.quiz-option:hover:not(.correct):not(.incorrect):not(:has(input:disabled)) {
+    background-color: #fff;
+    border-color: #5ca1e1;
+    box-shadow: 0 2px 8px rgba(92, 161, 225, 0.2);
+    transform: translateY(-1px);
 }
 
 .quiz-option.selected:not(.correct):not(.incorrect) {
     border-color: #5ca1e1;
     background-color: #eef6fd;
+    box-shadow: 0 2px 8px rgba(92, 161, 225, 0.15);
+}
+
+.quiz-option.selected:not(.correct):not(.incorrect)::before {
+    background-color: #5ca1e1;
+    color: #fff;
 }
 
 .quiz-option.correct {
     border-color: #2e7d32;
+    border-left-width: 4px;
     background-color: #e8f5e9;
+}
+
+.quiz-option.correct::before {
+    background-color: #2e7d32;
+    color: #fff;
+}
+
+.quiz-option.correct::after {
+    content: "\2713";
+    margin-left: auto;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2e7d32;
 }
 
 .quiz-option.incorrect {
     border-color: #c62828;
+    border-left-width: 4px;
     background-color: #ffebee;
 }
 
+.quiz-option.incorrect::before {
+    background-color: #c62828;
+    color: #fff;
+}
+
+.quiz-option.incorrect::after {
+    content: "\2717";
+    margin-left: auto;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #c62828;
+}
+
 .quiz-option input[type="radio"] {
-    flex-shrink: 0;
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
     margin: 0;
-    cursor: pointer;
+    pointer-events: none;
 }
 
 .quiz-option-text {
@@ -90,39 +178,56 @@
 }
 
 .quiz-hint {
-    margin-top: 16px;
+    margin: 16px 20px 0;
 }
 
 .quiz-check-button {
-    margin-top: 16px;
+    display: block;
+    margin: 20px 20px 20px;
     border-radius: 25px;
     background-color: #5ca1e1;
     border: none;
     color: #fff;
     text-align: center;
-    padding: 12px 24px;
+    padding: 12px 28px;
     font-weight: bold;
+    font-size: 1rem;
     transition: all 0.3s ease;
     cursor: pointer;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.35);
 }
 
 .quiz-check-button:hover:not(:disabled) {
-    box-shadow: 0 8px 10px 2px rgba(0, 0, 0, 0.7);
-    transform: translateY(-3px);
+    background-color: #4a90d9;
+    box-shadow: 0 6px 16px rgba(92, 161, 225, 0.5);
+    transform: translateY(-2px);
 }
 
 .quiz-check-button:disabled {
-    opacity: 0.5;
+    opacity: 0.45;
     cursor: not-allowed;
     box-shadow: none;
 }
 
 .quiz-result {
-    margin-top: 16px;
-    padding: 10px 14px;
-    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    margin: 20px 20px 0;
+    padding: 14px 18px;
+    border-radius: 10px;
     font-weight: bold;
+    font-size: 1.05rem;
+    animation: quizFadeIn 0.3s ease;
+}
+
+.quiz-result span {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quiz-result .fa {
+    font-size: 1.25rem;
 }
 
 .quiz-result.correct {
@@ -138,10 +243,28 @@
 }
 
 .quiz-explanation {
-    margin-top: 12px;
-    padding: 10px 14px;
-    border-radius: 8px;
-    background-color: #fff;
-    border: 1px solid #ccc;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 12px 20px 20px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background-color: #f0f4f8;
+    border: 1px solid #d0dae4;
+    border-left: 4px solid #5ca1e1;
     color: #333;
+    animation: quizFadeIn 0.3s ease 0.1s both;
+}
+
+.quiz-explanation .fa {
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-size: 1.2rem;
+    color: #5ca1e1;
+}
+
+@media (max-width: 600px) {
+    .quiz-check-button {
+        width: calc(100% - 40px);
+    }
 }
