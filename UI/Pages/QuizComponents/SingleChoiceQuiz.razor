@@ -1,5 +1,59 @@
-﻿<h3>SingleChoiceQuiz placeholder</h3>
+﻿<div class="quiz-card">
+    <div class="quiz-label">Review question</div>
 
-@code {
-    
-}
+    <div class="quiz-question">@((MarkupString)Data.Question)</div>
+
+    <fieldset class="quiz-options" disabled="@_isChecked">
+        <legend class="visually-hidden">Answer options</legend>
+        @for (var i = 0; i < _displayOptions.Count; i++)
+        {
+            var index = i;
+            var option = _displayOptions[index];
+            <label class="quiz-option @GetOptionCssClass(index)">
+                <input type="radio"
+                       name="@_radioGroupName"
+                       checked="@(_selectedIndex == index)"
+                       @onchange="() => SelectOption(index)" />
+                <span class="quiz-option-text">@option.Text</span>
+            </label>
+        }
+    </fieldset>
+
+    @if (!string.IsNullOrWhiteSpace(Data.Hint))
+    {
+        <details class="quiz-hint">
+            <summary>Hint</summary>
+            <p>@Data.Hint</p>
+        </details>
+    }
+
+    @if (!_isChecked)
+    {
+        <button type="button"
+                class="quiz-check-button"
+                disabled="@(_selectedIndex is null)"
+                @onclick="CheckAnswer">
+            Check answer
+        </button>
+    }
+    else
+    {
+        <div class="quiz-result @(_wasCorrect == true ? "correct" : "incorrect")">
+            @if (_wasCorrect == true)
+            {
+                <span>Correct</span>
+            }
+            else
+            {
+                <span>Not quite</span>
+            }
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(Data.Explanation))
+        {
+            <div class="quiz-explanation">
+                <strong>Explanation:</strong> @Data.Explanation
+            </div>
+        }
+    }
+</div>
