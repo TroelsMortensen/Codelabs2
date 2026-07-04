@@ -263,6 +263,24 @@
     color: #5ca1e1;
 }
 
+.quiz-error {
+    border-left-color: #c62828;
+}
+
+.quiz-error-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    color: #c62828;
+}
+
+.quiz-error-message .fa {
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-size: 1.3rem;
+}
+
 @media (max-width: 600px) {
     .quiz-check-button {
         width: calc(100% - 40px);

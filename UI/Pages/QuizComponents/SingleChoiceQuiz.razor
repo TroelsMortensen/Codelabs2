@@ -1,62 +1,78 @@
-﻿<div class="quiz-card">
-    <div class="quiz-header">
-        <div class="quiz-label"><i class="fa fa-question-circle"></i> Review question</div>
+﻿@if (!_isValid)
+{
+    <div class="quiz-card quiz-error">
+        <div class="quiz-error-message">
+            <i class="fa fa-exclamation-triangle"></i>
+            <div>
+                <strong>Quiz configuration error:</strong>
+                a single choice quiz must have exactly one correct option
+                (found @_correctCount).
+            </div>
+        </div>
     </div>
-
-    <div class="quiz-question">@((MarkupString)Data.Question)</div>
-
-    <fieldset class="quiz-options" disabled="@_isChecked">
-        <legend class="visually-hidden">Answer options</legend>
-        @for (var i = 0; i < _displayOptions.Count; i++)
-        {
-            var index = i;
-            var option = _displayOptions[index];
-            <label class="quiz-option @GetOptionCssClass(index)">
-                <input type="radio"
-                       name="@_radioGroupName"
-                       checked="@(_selectedIndex == index)"
-                       @onchange="() => SelectOption(index)" />
-                <span class="quiz-option-text">@option.Text</span>
-            </label>
-        }
-    </fieldset>
-
-    @if (!string.IsNullOrWhiteSpace(Data.Hint))
-    {
-        <details class="quiz-hint">
-            <summary>Hint</summary>
-            <p>@Data.Hint</p>
-        </details>
-    }
-
-    @if (!_isChecked)
-    {
-        <button type="button"
-                class="quiz-check-button"
-                disabled="@(_selectedIndex is null)"
-                @onclick="CheckAnswer">
-            Check answer
-        </button>
-    }
-    else
-    {
-        <div class="quiz-result @(_wasCorrect == true ? "correct" : "incorrect")">
-            @if (_wasCorrect == true)
-            {
-                <span><i class="fa fa-check-circle"></i> Correct</span>
-            }
-            else
-            {
-                <span><i class="fa fa-times-circle"></i> Not quite</span>
-            }
+}
+else
+{
+    <div class="quiz-card">
+        <div class="quiz-header">
+            <div class="quiz-label"><i class="fa fa-question-circle"></i> Review question</div>
         </div>
 
-        @if (!string.IsNullOrWhiteSpace(Data.Explanation))
+        <div class="quiz-question">@((MarkupString)Data.Question)</div>
+
+        <fieldset class="quiz-options" disabled="@_isChecked">
+            <legend class="visually-hidden">Answer options</legend>
+            @for (var i = 0; i < _displayOptions.Count; i++)
+            {
+                var index = i;
+                var option = _displayOptions[index];
+                <label class="quiz-option @GetOptionCssClass(index)">
+                    <input type="radio"
+                           name="@_radioGroupName"
+                           checked="@(_selectedIndex == index)"
+                           @onchange="() => SelectOption(index)" />
+                    <span class="quiz-option-text">@option.Text</span>
+                </label>
+            }
+        </fieldset>
+
+        @if (!string.IsNullOrWhiteSpace(Data.Hint))
         {
-            <div class="quiz-explanation">
-                <i class="fa fa-info-circle"></i>
-                <div><strong>Explanation:</strong> @Data.Explanation</div>
-            </div>
+            <details class="quiz-hint">
+                <summary>Hint</summary>
+                <p>@Data.Hint</p>
+            </details>
         }
-    }
-</div>
+
+        @if (!_isChecked)
+        {
+            <button type="button"
+                    class="quiz-check-button"
+                    disabled="@(_selectedIndex is null)"
+                    @onclick="CheckAnswer">
+                Check answer
+            </button>
+        }
+        else
+        {
+            <div class="quiz-result @(_wasCorrect == true ? "correct" : "incorrect")">
+                @if (_wasCorrect == true)
+                {
+                    <span><i class="fa fa-check-circle"></i> Correct</span>
+                }
+                else
+                {
+                    <span><i class="fa fa-times-circle"></i> Not quite</span>
+                }
+            </div>
+
+            @if (!string.IsNullOrWhiteSpace(Data.Explanation))
+            {
+                <div class="quiz-explanation">
+                    <i class="fa fa-info-circle"></i>
+                    <div><strong>Explanation:</strong> @Data.Explanation</div>
+                </div>
+            }
+        }
+    </div>
+}

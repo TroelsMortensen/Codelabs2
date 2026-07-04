@@ -13,6 +13,8 @@ public partial class SingleChoiceQuiz : ComponentBase
     private int? _selectedIndex;
     private bool _isChecked;
     private bool? _wasCorrect;
+    private bool _isValid;
+    private int _correctCount;
 
     protected override void OnParametersSet()
     {
@@ -20,6 +22,8 @@ public partial class SingleChoiceQuiz : ComponentBase
             return;
 
         _initializedData = Data;
+        _correctCount = Data.Options.Count(o => o.IsCorrect);
+        _isValid = _correctCount == 1;
         _displayOptions = Data.Shuffle
             ? Data.Options.OrderBy(_ => Random.Shared.Next()).ToList()
             : Data.Options.ToList();
