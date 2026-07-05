@@ -29,13 +29,4 @@ public partial class FlashCardSet : ComponentBase
         else
             _flippedIndices.Add(index);
     }
-
-    // TODO probably remove this.
-    private void HandleKeyDown(int index, KeyboardEventArgs e)
-    {
-        if (e.Key is "Enter" or " ")
-        {
-            ToggleCard(index);
-        }
-    }
 }

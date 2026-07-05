@@ -3,7 +3,9 @@
     border: 1px solid #d8dce0;
     border-left: 4px solid #5ca1e1;
     border-radius: 16px;
-    box-shadow: 0 1px 2px rgb(60 64 67), 0 2px 16px 12px rgba(60, 64, 67, 0.15);
+    box-shadow:
+        0 1px 2px rgb(60 64 67),
+        0 2px 16px 12px rgba(60, 64, 67, 0.15);
     margin: 24px 0;
     overflow: hidden;
 }
@@ -83,7 +85,10 @@
     border-radius: 12px;
     background-color: #fafbfc;
     backface-visibility: hidden;
-    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
 }
 
 .flashcard:hover .flashcard-face {
@@ -101,11 +106,18 @@
     position: absolute;
     top: 10px;
     right: 12px;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
     color: #7a8a9a;
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+.flashcard:hover .flashcard-hint {
+    color: #5ca1e1;
+    opacity: 1;
+}
+
+.flashcard:hover .flashcard-hint .fa {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
 }
 
 .flashcard-content {

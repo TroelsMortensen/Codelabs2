@@ -31,15 +31,18 @@ else
                      role="button"
                      tabindex="0"
                      aria-pressed="@IsFlipped(index)"
-                     @onclick="() => ToggleCard(index)"
-                     @onkeydown="e => HandleKeyDown(index, e)">
+                     @onclick="() => ToggleCard(index)">
                     <div class="flashcard-inner @(IsFlipped(index) ? "flipped" : "")">
                         <div class="flashcard-face flashcard-front">
-                            <span class="flashcard-hint">Tap to flip</span>
+                            <span class="flashcard-hint" aria-hidden="true">
+                                <i class="fa fa-refresh"></i>
+                            </span>
                             <div class="flashcard-content">@((MarkupString)card.Front)</div>
                         </div>
                         <div class="flashcard-face flashcard-back">
-                            <span class="flashcard-hint">Tap to flip</span>
+                            <span class="flashcard-hint" aria-hidden="true">
+                                <i class="fa fa-refresh"></i>
+                            </span>
                             <div class="flashcard-content">@((MarkupString)card.Back)</div>
                         </div>
                     </div>
