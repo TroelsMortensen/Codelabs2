@@ -3,9 +3,6 @@
     border: 1px solid #d8dce0;
     border-left: 4px solid #5ca1e1;
     border-radius: 16px;
-    box-shadow:
-        0 1px 2px rgb(60 64 67),
-        0 2px 16px 12px rgba(60, 64, 67, 0.15);
     margin: 24px 0;
     overflow: hidden;
 }
@@ -73,6 +70,19 @@
     transform: rotateY(180deg);
 }
 
+/* Subtle hover peek — hints that the card can flip */
+.flashcard:hover .flashcard-inner:not(.flipped),
+.flashcard:focus-visible .flashcard-inner:not(.flipped) {
+    transform: rotateY(20deg);
+    transition: transform 0.2s ease;
+}
+
+.flashcard:hover .flashcard-inner.flipped,
+.flashcard:focus-visible .flashcard-inner.flipped {
+    transform: rotateY(160deg);
+    transition: transform 0.2s ease;
+}
+
 .flashcard-face {
     position: absolute;
     inset: 0;
@@ -82,6 +92,7 @@
     justify-content: center;
     padding: 16px;
     border: 2px solid #e0e4e8;
+    border-left-width: 4px;
     border-radius: 12px;
     background-color: #fafbfc;
     backface-visibility: hidden;
@@ -91,15 +102,51 @@
         box-shadow 0.15s ease;
 }
 
-.flashcard:hover .flashcard-face {
+.flashcard-front {
+    border-left-color: #5ca1e1;
+}
+
+.flashcard:hover .flashcard-front {
     background-color: #fff;
     border-color: #5ca1e1;
+    border-left-color: #5ca1e1;
     box-shadow: 0 2px 8px rgba(92, 161, 225, 0.2);
 }
 
 .flashcard-back {
     transform: rotateY(180deg);
     background-color: #eef6fd;
+    border-left-color: #2e7d32;
+}
+
+.flashcard:hover .flashcard-back {
+    background-color: #fff;
+    border-color: #2e7d32;
+    border-left-color: #2e7d32;
+    box-shadow: 0 2px 8px rgba(46, 125, 50, 0.2);
+}
+
+.flashcard-side-badge {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 0.75rem;
+}
+
+.flashcard-front .flashcard-side-badge {
+    background-color: rgba(92, 161, 225, 0.15);
+    color: #2b6fa8;
+}
+
+.flashcard-back .flashcard-side-badge {
+    background-color: rgba(46, 125, 50, 0.15);
+    color: #2e7d32;
 }
 
 .flashcard-hint {
