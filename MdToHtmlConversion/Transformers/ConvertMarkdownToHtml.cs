@@ -54,10 +54,10 @@ public class ConvertMarkdownToHtml : ITransformer
         using JsonDocument doc = JsonDocument.Parse(quizBlock.JsonContent);
         var type = doc.RootElement.GetProperty("Type").GetString();
 
-        var quizSegment = type switch
+        QuizSegment quizSegment = type switch
         {
             "SingleChoiceQuiz" => JsonSerializer.Deserialize<SingleChoiceQuizSegment>(quizBlock.JsonContent)!,
-            // Add other types here as you build them
+            "FlashCardSet" => JsonSerializer.Deserialize<FlashCardSetSegment>(quizBlock.JsonContent)!,
             _ => throw new NotSupportedException($"Quiz type {type} is not supported.")
         };
         result.Add(quizSegment);

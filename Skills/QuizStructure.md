@@ -43,9 +43,9 @@ The `Shuffle` property is optional and is a boolean indicating if the options sh
 The `Hint` property is optional and is a string containing a hint for the user. It can contain HTML.
 The `Explanation` property is optional and is a string containing an explanation for the user. It can contain HTML.
 
-## Flash card set
+## Flash Card Set
 
-This quiz type is a set of flash cards. It consists of a list of flash cards. Each flash card consists of a question and an answer. The user can flip the flash card to see the answer.
+This quiz type is a set of flash cards. Each card shows a question or phrase on the front; the user clicks the card to flip it and reveal the answer on the back. Cards are displayed in a responsive grid (three columns by default, fewer on narrower screens).
 
 Here is a custom Quiz element with example json data for a flash card set:
 
@@ -71,3 +71,7 @@ Here is a custom Quiz element with example json data for a flash card set:
 }
 </Quiz>
 ```
+
+The `Type` property is required and must be set to `FlashCardSet`.
+The `Cards` property is required and must be set to an array of objects. Each object must have a `Front` property and a `Back` property. The `Front` property is the text shown on the front of the card and can contain HTML. The `Back` property is the text shown on the back of the card and can contain HTML. At least one card is required.
+The `Title` property is optional and is a string displayed above the card grid. It can contain HTML.

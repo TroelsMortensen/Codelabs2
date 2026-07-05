@@ -1,7 +1,7 @@
 ﻿using MdToHtmlConversion.Models.Segments.Quiz;
 using Microsoft.AspNetCore.Components;
 
-namespace UI.Pages.QuizComponents;
+namespace UI.Pages.QuizComponents.SingleChoiceQuiz;
 
 public partial class SingleChoiceQuiz : ComponentBase
 {

@@ -1,0 +1,50 @@
+@if (Data.Cards.Count == 0)
+{
+    <div class="quiz-card quiz-error">
+        <div class="quiz-error-message">
+            <i class="fa fa-exclamation-triangle"></i>
+            <div>
+                <strong>Quiz configuration error:</strong>
+                a flash card set must contain at least one card.
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="quiz-card">
+        <div class="quiz-header">
+            <div class="quiz-label"><i class="fa fa-clone"></i> Flash cards</div>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(Data.Title))
+        {
+            <div class="flashcard-title">@Data.Title</div>
+        }
+
+        <div class="flashcard-grid">
+            @for (var i = 0; i < Data.Cards.Count; i++)
+            {
+                var index = i;
+                var card = Data.Cards[index];
+                <div class="flashcard"
+                     role="button"
+                     tabindex="0"
+                     aria-pressed="@IsFlipped(index)"
+                     @onclick="() => ToggleCard(index)"
+                     @onkeydown="e => HandleKeyDown(index, e)">
+                    <div class="flashcard-inner @(IsFlipped(index) ? "flipped" : "")">
+                        <div class="flashcard-face flashcard-front">
+                            <span class="flashcard-hint">Tap to flip</span>
+                            <div class="flashcard-content">@((MarkupString)card.Front)</div>
+                        </div>
+                        <div class="flashcard-face flashcard-back">
+                            <span class="flashcard-hint">Tap to flip</span>
+                            <div class="flashcard-content">@((MarkupString)card.Back)</div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

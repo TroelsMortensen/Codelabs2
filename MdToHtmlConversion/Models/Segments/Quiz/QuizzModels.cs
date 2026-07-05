@@ -11,3 +11,10 @@ public record SingleChoiceQuizSegment(
 ) : QuizSegment("SingleChoiceQuiz");
 
 public record QuizOption(string Text, bool IsCorrect);
+
+public record FlashCard(string Front, string Back);
+
+public record FlashCardSetSegment(
+    List<FlashCard> Cards,
+    string? Title = null
+) : QuizSegment("FlashCardSet");
