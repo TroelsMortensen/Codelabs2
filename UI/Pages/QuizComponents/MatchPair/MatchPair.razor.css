@@ -285,6 +285,10 @@ button.match-piece-answer:hover:not(:disabled):not(.correct):not(.incorrect) {
     box-shadow: none;
 }
 
+.quiz-reset-button {
+    margin-top: 0;
+}
+
 .quiz-result {
     display: flex;
     align-items: center;

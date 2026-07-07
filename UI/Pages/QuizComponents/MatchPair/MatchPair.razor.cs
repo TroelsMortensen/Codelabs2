@@ -28,6 +28,13 @@ public partial class MatchPair : ComponentBase
             return;
 
         _initializedData = Data;
+        ResetQuiz();
+    }
+
+    private void TryAgain() => ResetQuiz();
+
+    private void ResetQuiz()
+    {
         _nextItemId = 0;
         _unpairedPrompts = Data.Pairs
             .Select((pair, index) => new PoolItem(_nextItemId++, index, pair.Prompt))

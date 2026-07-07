@@ -90,6 +90,15 @@ else
                     <span><i class="fa fa-times-circle"></i> @_correctCount of @Data.Pairs.Count pairs correct</span>
                 }
             </div>
+
+            @if (_wasCorrect == false)
+            {
+                <button type="button"
+                        class="quiz-check-button quiz-reset-button"
+                        @onclick="TryAgain">
+                    Try again
+                </button>
+            }
         }
     </div>
 }
