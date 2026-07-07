@@ -84,7 +84,9 @@
 .match-piece-prompt,
 .match-piece-answer {
     --match-tab-radius: 14px;
+    --match-piece-border-width: 2px;
     --match-piece-outline: #9aa8b5;
+    --match-piece-fill: #f3f6f9;
     position: relative;
     display: flex;
     align-items: center;
@@ -92,22 +94,48 @@
     min-height: 52px;
     padding: 12px 20px;
     border: none;
-    background-color: #f3f6f9;
+    background: transparent;
     color: inherit;
     font: inherit;
     text-align: left;
     cursor: pointer;
+    overflow: visible;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.match-piece-prompt::before,
+.match-piece-prompt::after,
+.match-piece-answer::before,
+.match-piece-answer::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
-    filter:
-        drop-shadow(0 0 0 2px var(--match-piece-outline))
-        drop-shadow(0 1px 3px rgba(15, 23, 42, 0.08));
-    transition: background-color 0.15s ease, filter 0.15s ease, transform 0.15s ease;
+    transition: background-color 0.15s ease;
+}
+
+.match-piece-prompt::before,
+.match-piece-answer::before {
+    inset: 0;
+    background-color: var(--match-piece-outline);
+    z-index: 0;
+}
+
+.match-piece-prompt::after,
+.match-piece-answer::after {
+    inset: var(--match-piece-border-width);
+    background-color: var(--match-piece-fill);
+    z-index: 1;
 }
 
 .match-piece-prompt {
     border-radius: 12px 4px 4px 12px;
     padding-right: calc(20px + var(--match-tab-radius));
+}
+
+.match-piece-prompt::before,
+.match-piece-prompt::after {
     -webkit-mask-image: radial-gradient(
         circle var(--match-tab-radius) at 100% 50%,
         transparent 99.5%,
@@ -125,6 +153,10 @@
 .match-piece-answer {
     border-radius: 4px 12px 12px 4px;
     padding-left: calc(20px + var(--match-tab-radius));
+}
+
+.match-piece-answer::before,
+.match-piece-answer::after {
     -webkit-mask-image:
         radial-gradient(
             circle var(--match-tab-radius) at var(--match-tab-radius) 50%,
@@ -154,6 +186,8 @@
 }
 
 .match-piece-content {
+    position: relative;
+    z-index: 2;
     flex: 1;
     line-height: 1.4;
     font-size: 0.95rem;
@@ -166,20 +200,14 @@
 button.match-piece-prompt:hover:not(:disabled):not(.correct):not(.incorrect),
 button.match-piece-answer:hover:not(:disabled):not(.correct):not(.incorrect) {
     --match-piece-outline: #5ca1e1;
-    background-color: #fff;
-    filter:
-        drop-shadow(0 0 0 2px var(--match-piece-outline))
-        drop-shadow(0 2px 8px rgba(92, 161, 225, 0.2));
+    --match-piece-fill: #fff;
     transform: translateY(-1px);
 }
 
 .match-piece-prompt.selected,
 .match-piece-answer.selected {
     --match-piece-outline: #5ca1e1;
-    background-color: #eef6fd;
-    filter:
-        drop-shadow(0 0 0 2px var(--match-piece-outline))
-        drop-shadow(0 2px 8px rgba(92, 161, 225, 0.15));
+    --match-piece-fill: #eef6fd;
 }
 
 .match-pair-results {
@@ -214,28 +242,19 @@ button.match-piece-answer:hover:not(:disabled):not(.correct):not(.incorrect) {
 .match-pair-row:hover:not(:disabled):not(.correct):not(.incorrect) .match-piece-prompt,
 .match-pair-row:hover:not(:disabled):not(.correct):not(.incorrect) .match-piece-answer {
     --match-piece-outline: #5ca1e1;
-    background-color: #fff;
-    filter:
-        drop-shadow(0 0 0 2px var(--match-piece-outline))
-        drop-shadow(0 2px 8px rgba(92, 161, 225, 0.2));
+    --match-piece-fill: #fff;
 }
 
 .match-pair-row.correct .match-piece-prompt,
 .match-pair-row.correct .match-piece-answer {
     --match-piece-outline: #2e7d32;
-    background-color: #e8f5e9;
-    filter:
-        drop-shadow(0 0 0 2px var(--match-piece-outline))
-        drop-shadow(0 1px 3px rgba(46, 125, 50, 0.12));
+    --match-piece-fill: #e8f5e9;
 }
 
 .match-pair-row.incorrect .match-piece-prompt,
 .match-pair-row.incorrect .match-piece-answer {
     --match-piece-outline: #c62828;
-    background-color: #ffebee;
-    filter:
-        drop-shadow(0 0 0 2px var(--match-piece-outline))
-        drop-shadow(0 1px 3px rgba(198, 40, 40, 0.12));
+    --match-piece-fill: #ffebee;
 }
 
 .quiz-check-button {
