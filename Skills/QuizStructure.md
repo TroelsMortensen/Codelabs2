@@ -38,7 +38,50 @@ Here is a custom Quiz element with example json data for a single choice quiz:
 
 The `Type` property is required and must be set to `SingleChoiceQuiz`.
 The `Question` property is required and must be set to a string, it can contain HTML.
-The `Options` property is required and must be set to an array of objects. Each object must have a `Text` property and a `IsCorrect` property. The `Text` property is the text of the option and can contain HTML. The `IsCorrect` property is a boolean indicating if the option is correct. There can only be one correct option.
+The `Options` property is required and must be set to an array of objects. Each object must have a `Text` property and a `IsCorrect` property. The `Text` property is the text of the option and can contain HTML. The `IsCorrect` property is a boolean indicating if the option is correct. There can only be one correct option. There can be any number of options.
+The `Shuffle` property is optional and is a boolean indicating if the options should be shuffled. If not set, the options will not be shuffled.
+The `Hint` property is optional and is a string containing a hint for the user. It can contain HTML.
+The `Explanation` property is optional and is a string containing an explanation for the user. It can contain HTML.
+
+## Multiple Choice Quiz
+
+This quiz type is similar to the Single Choice Quiz: it consists of a question and a list of options. The difference is that the user can select multiple options, and more than one option can be correct. The answer is only counted as correct when all correct options are selected and no incorrect options are selected.
+
+Here is a custom Quiz element with example json data for a multiple choice quiz:
+
+```html
+<Quiz>
+{
+    "Type": "MultipleChoiceQuiz",
+    "Question": "<p>Which of the following are SOLID principles?</p>",
+    "Options": [
+        {
+            "Text": "Single Responsibility Principle",
+            "IsCorrect": true
+        },
+        {
+            "Text": "Open/Closed Principle",
+            "IsCorrect": true
+        },
+        {
+            "Text": "Dependency Inversion Pattern",
+            "IsCorrect": false
+        },
+        {
+            "Text": "Don't Repeat Yourself",
+            "IsCorrect": false
+        }
+    ],
+    "Shuffle": true,
+    "Hint": "Two of these are named principles from the SOLID acronym.",
+    "Explanation": "SRP and OCP are SOLID principles. DIP is close in name but the SOLID principle is Dependency Inversion Principle. DRY is a general guideline, not part of SOLID."
+}
+</Quiz>
+```
+
+The `Type` property is required and must be set to `MultipleChoiceQuiz`.
+The `Question` property is required and must be set to a string, it can contain HTML.
+The `Options` property is required and must be set to an array of objects. Each object must have a `Text` property and a `IsCorrect` property. The `Text` property is the text of the option and can contain HTML. The `IsCorrect` property is a boolean indicating if the option is correct. One or more options can be correct, unlike the Single Choice Quiz which allows exactly one. There can be any number of options.
 The `Shuffle` property is optional and is a boolean indicating if the options should be shuffled. If not set, the options will not be shuffled.
 The `Hint` property is optional and is a string containing a hint for the user. It can contain HTML.
 The `Explanation` property is optional and is a string containing an explanation for the user. It can contain HTML.
@@ -73,5 +116,5 @@ Here is a custom Quiz element with example json data for a flash card set:
 ```
 
 The `Type` property is required and must be set to `FlashCardSet`.
-The `Cards` property is required and must be set to an array of objects. Each object must have a `Front` property and a `Back` property. The `Front` property is the text shown on the front of the card and can contain HTML. The `Back` property is the text shown on the back of the card and can contain HTML. At least one card is required.
+The `Cards` property is required and must be set to an array of objects. Each object must have a `Front` property and a `Back` property. The `Front` property is the text shown on the front of the card and can contain HTML. The `Back` property is the text shown on the back of the card and can contain HTML. At least one card is required. There can be any number of cards, more than one.
 The `Title` property is optional and is a string displayed above the card grid. It can contain HTML.

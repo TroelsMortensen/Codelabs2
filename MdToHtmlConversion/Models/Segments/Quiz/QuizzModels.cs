@@ -10,6 +10,14 @@ public record SingleChoiceQuizSegment(
     string? Explanation = null
 ) : QuizSegment("SingleChoiceQuiz");
 
+public record MultipleChoiceQuizSegment(
+    string Question, 
+    List<QuizOption> Options, 
+    bool Shuffle = false,
+    string? Hint = null, 
+    string? Explanation = null
+) : QuizSegment("MultipleChoiceQuiz");
+
 public record QuizOption(string Text, bool IsCorrect);
 
 public record FlashCard(string Front, string Back);

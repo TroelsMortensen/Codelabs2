@@ -2,6 +2,7 @@
 @using MdToHtmlConversion.Models.Segments
 @using MdToHtmlConversion.Models.Segments.Quiz
 @using UI.Pages.QuizComponents.SingleChoiceQuiz
+@using UI.Pages.QuizComponents.MultipleChoiceQuiz
 @using UI.Pages.QuizComponents.FlashCardSet
 
 <div>
@@ -53,6 +54,7 @@ else
                         {
                             HtmlSegment html => @<div class="article-body">@((MarkupString)html.HtmlContent)</div>,
                             SingleChoiceQuizSegment quiz => @<SingleChoiceQuiz Data="quiz" />,
+                            MultipleChoiceQuizSegment multiQuiz => @<MultipleChoiceQuiz Data="multiQuiz" />,
                             FlashCardSetSegment flashCards => @<FlashCardSet Data="flashCards" />,
                             _ => @<div>Unknown segment type</div>
                         };
