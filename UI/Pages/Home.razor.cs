@@ -233,6 +233,7 @@ public partial class Home : ComponentBase
                             [
                                 new LearningPath("What are Design Principles", "SDT/Design Principles/What are design principles"),
                                 new LearningPath("SOLID principles", "SDT/Design Principles/SOLID"),
+                                new LearningPath("SOLID Test", "SDT/Design Principles/SOLID quiz"),
                                 new LearningPath("Mountains and Islands", "SDT/Design Principles/Mountains and Islands"),
                                 new LearningPath("The Orchestrator Principle", "SDT/Design Principles/The Orchestrator Principle"),
                                 new LearningPath("The Broken Window", "SDT/Design Principles/The Broken Window"),
