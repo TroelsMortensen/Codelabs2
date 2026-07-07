@@ -32,3 +32,10 @@ public record ExpandableDetailItem(string Header, string Content);
 public record ExpandableDetailsSegment(
     List<ExpandableDetailItem> Details
 ) : QuizSegment("ExpandableDetails");
+
+public record StepGuideSegment(
+    string Title,
+    List<StepGuideItem> Details
+) : QuizSegment("StepGuide");
+
+public record StepGuideItem(string Header, string Content);

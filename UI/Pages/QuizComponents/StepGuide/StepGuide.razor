@@ -1,0 +1,78 @@
+@if (!HasValidData)
+{
+    <div class="quiz-card quiz-error">
+        <div class="quiz-error-message">
+            <i class="fa fa-exclamation-triangle"></i>
+            <div>
+                <strong>Quiz configuration error:</strong>
+                a step guide must contain at least one detail.
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="quiz-card">
+        <div class="quiz-header">
+            <div class="quiz-label"><i class="fa fa-map-signs"></i> Step guide</div>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(Data.Title))
+        {
+            <div class="step-guide-title">@Data.Title</div>
+        }
+
+        <div class="step-guide-body">
+            <button type="button"
+                    class="step-nav-arrow"
+                    aria-label="Previous step"
+                    disabled="@IsFirstStep"
+                    @onclick="GoToPreviousStep">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </button>
+
+            <div class="step-panel">
+                <div class="step-badge">@GetStepBadge()</div>
+                <div class="step-header @(IsFirstStep || IsLastStep ? "centered" : "")">
+                    @((MarkupString)CurrentStep!.Header)
+                </div>
+                <div class="step-content">
+                    @((MarkupString)CurrentStep!.Content)
+                </div>
+            </div>
+
+            <button type="button"
+                    class="step-nav-arrow"
+                    aria-label="Next step"
+                    disabled="@IsLastStep"
+                    @onclick="GoToNextStep">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div class="step-progress">
+            @for (var i = 0; i < Data.Details.Count; i++)
+            {
+                var index = i;
+                var isActive = index == _currentIndex;
+                <button type="button"
+                        class="step-progress-item @(isActive ? "active" : "")"
+                        aria-label="Go to step @(index + 1)"
+                        @onclick="() => GoToStep(index)">
+                    @if (index == 0)
+                    {
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    }
+                    else if (index == Data.Details.Count - 1)
+                    {
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                    }
+                    else
+                    {
+                        @index
+                    }
+                </button>
+            }
+        </div>
+    </div>
+}

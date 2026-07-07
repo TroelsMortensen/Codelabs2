@@ -147,3 +147,47 @@ The `Type` property is required and must be set to `ExpandableDetails`.
 The `Details` property is required and must be an array of objects.
 Each detail object must have a `Header` property and a `Content` property. Both are strings and can contain HTML.
 At least one detail item is required. There can be any number of detail items.
+
+## StepGuide
+
+This type renders a guided, step-by-step information block. It includes a centered title and a sequence of details where each item has a header and content. The UI treats the first item as an introduction and the last item as a conclusion based on position.
+
+Here is a custom Quiz element with example json data for a step guide block:
+
+```html
+<Quiz>
+{
+    "Type": "StepGuide",
+    "Title": "World Capitals",
+    "Details": [
+        {
+            "Header": "This is the introduction to the quiz block.",
+            "Content": "<p>This guide introduces the reader to different capital cities of the world.</p>"
+        },
+        {
+            "Header": "Berlin",
+            "Content": "<p>Berlin is the capital of Germany.</p>"
+        },
+        {
+            "Header": "Paris",
+            "Content": "<p>Paris is the capital of France.</p>"
+        },
+        {
+            "Header": "London",
+            "Content": "<p>London is the capital of England.</p>"
+        },
+        {
+            "Header": "Conclusion",
+            "Content": "<p>This guide has introduced the reader to different capital cities of the world.</p>"
+        }
+    ]
+}
+</Quiz>
+```
+
+The `Type` property is required and must be set to `StepGuide`.
+The `Title` property is required and must be a string. It is displayed above the step panel and can contain HTML.
+The `Details` property is required and must be an array of objects.
+Each detail object must have a `Header` property and a `Content` property. Both are strings and can contain HTML.
+At least one detail item is required. There can be any number of detail items.
+The first and last detail items are not a different data shape. Their introduction/conclusion behavior is determined by their position in the list.
