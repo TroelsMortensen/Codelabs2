@@ -26,3 +26,9 @@ public record FlashCardSetSegment(
     List<FlashCard> Cards,
     string? Title = null
 ) : QuizSegment("FlashCardSet");
+
+public record ExpandableDetailItem(string Header, string Content);
+
+public record ExpandableDetailsSegment(
+    List<ExpandableDetailItem> Details
+) : QuizSegment("ExpandableDetails");

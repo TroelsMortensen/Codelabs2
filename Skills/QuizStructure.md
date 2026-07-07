@@ -118,3 +118,32 @@ Here is a custom Quiz element with example json data for a flash card set:
 The `Type` property is required and must be set to `FlashCardSet`.
 The `Cards` property is required and must be set to an array of objects. Each object must have a `Front` property and a `Back` property. The `Front` property is the text shown on the front of the card and can contain HTML. The `Back` property is the text shown on the back of the card and can contain HTML. At least one card is required. There can be any number of cards, more than one.
 The `Title` property is optional and is a string displayed above the card grid. It can contain HTML.
+
+## Expandable Details
+
+This type renders a stack of expandable detail rows. Each row has a header and hidden content that can be expanded by the user.
+
+Here is a custom Quiz element with example json data for an expandable details block:
+
+```html
+<Quiz>
+{
+    "Type": "ExpandableDetails",
+    "Details": [
+        {
+            "Header": "What is the capital of France?",
+            "Content": "<p>Paris</p>"
+        },
+        {
+            "Header": "What does SOLID stand for?",
+            "Content": "<p>Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion.</p>"
+        }
+    ]
+}
+</Quiz>
+```
+
+The `Type` property is required and must be set to `ExpandableDetails`.
+The `Details` property is required and must be an array of objects.
+Each detail object must have a `Header` property and a `Content` property. Both are strings and can contain HTML.
+At least one detail item is required. There can be any number of detail items.

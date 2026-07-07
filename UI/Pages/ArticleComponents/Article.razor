@@ -4,6 +4,7 @@
 @using UI.Pages.QuizComponents.SingleChoiceQuiz
 @using UI.Pages.QuizComponents.MultipleChoiceQuiz
 @using UI.Pages.QuizComponents.FlashCardSet
+@using UI.Pages.QuizComponents.ExpandableDetails
 
 <div>
 </div>
@@ -56,6 +57,7 @@ else
                             SingleChoiceQuizSegment quiz => @<SingleChoiceQuiz Data="quiz" />,
                             MultipleChoiceQuizSegment multiQuiz => @<MultipleChoiceQuiz Data="multiQuiz" />,
                             FlashCardSetSegment flashCards => @<FlashCardSet Data="flashCards" />,
+                            ExpandableDetailsSegment expandableDetails => @<ExpandableDetails Data="expandableDetails" />,
                             _ => @<div>Unknown segment type</div>
                         };
                         @result

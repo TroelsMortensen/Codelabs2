@@ -1,0 +1,48 @@
+@if (Data.Details.Count == 0)
+{
+    <div class="quiz-card quiz-error">
+        <div class="quiz-error-message">
+            <i class="fa fa-exclamation-triangle"></i>
+            <div>
+                <strong>Quiz configuration error:</strong>
+                an expandable details block must contain at least one detail.
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="quiz-card">
+        <div class="quiz-header">
+            <div class="quiz-label"><i class="fa fa-list-alt"></i> Expandable details</div>
+        </div>
+
+        <div class="details-list">
+            @for (var i = 0; i < Data.Details.Count; i++)
+            {
+                var index = i;
+                var detail = Data.Details[index];
+                var isExpanded = IsExpanded(index);
+                var panelId = $"expandable-details-panel-{index}";
+
+                <div class="detail-item">
+                    <button type="button"
+                            class="detail-toggle"
+                            aria-expanded="@isExpanded"
+                            aria-controls="@panelId"
+                            @onclick="() => ToggleDetail(index)">
+                        <span class="detail-header">@((MarkupString)detail.Header)</span>
+                        <i class="fa @(isExpanded ? "fa-minus" : "fa-plus") detail-icon" aria-hidden="true"></i>
+                    </button>
+
+                    @if (isExpanded)
+                    {
+                        <div id="@panelId" class="detail-content">
+                            @((MarkupString)detail.Content)
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+}
