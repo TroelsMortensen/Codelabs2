@@ -6,6 +6,7 @@
 @using UI.Pages.QuizComponents.FlashCardSet
 @using UI.Pages.QuizComponents.ExpandableDetails
 @using UI.Pages.QuizComponents.StepGuide
+@using UI.Pages.QuizComponents.MatchPair
 
 <div>
 </div>
@@ -60,6 +61,7 @@ else
                             FlashCardSetSegment flashCards => @<FlashCardSet Data="flashCards" />,
                             ExpandableDetailsSegment expandableDetails => @<ExpandableDetails Data="expandableDetails" />,
                             StepGuideSegment stepGuide => @<StepGuide Data="stepGuide" />,
+                            MatchPairSegment matchPair => @<MatchPair Data="matchPair" />,
                             _ => @<div>Unknown segment type</div>
                         };
                         @result

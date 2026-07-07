@@ -19,59 +19,50 @@ Create unit tests, similar to the other quiz tests.
 
 Make sure to update the Skills/QuizStructure.md file to include the new type of quiz.
 
-The location for this new component should be in Pages/QuizComponents/StepGuide/... 
+The location for this new component should be in Pages/QuizComponents/MatchPair/... 
 
 Update the switch statement in the Article page to handle this new type as well. 
 
 Also update the switch statement in @MdToHtmlConversion/Transformers/ConvertMarkdownToHtml.cs to handle the new type of quiz.
 
 ## New type
-The next type of quiz is more elaborate. It is less of a quiz, more of a collection of information.
+I need a new type of quiz, MatchPair. 
 
-I call this type of quiz "StepGuide".
+* The data is a collection of pairs, each pair consists of a "Prompt" and a "Answer".
+* The quiz layout is two columns, all Prompts are in the left column, and all Answers are in the right column. Both are shuffled.
+* The user can click on a prompt, and an answer to combine them.
+* When all prompts and answers are combined, the user can submit the quiz to get a result.
+* When a pair is made, it is moved to the bottom of the list.
+* The user can click on a pair to undo the pair.
+* When the user clicks on a prompt, that is selected. The user can click on another prompt to unselect the first one, and select the second one.
+* If the user clicks on a prompt that is already selected, it is unselected.
+* The user can click on a answer to select it. The user can click on another answer to unselect the first one, and select the second one.
+* If the user clicks on an answer that is already selected, it is unselected.
+* The user can click on a pair to undo the pair.
 
-The data is a list of Header and Content pairs.
+The cards for prompts and answers should look like puzzle pieces, i.e. the prompts are on the left, and they have a circular indentation on the right. The answers are on the right, and they have a circular protrusion on the left. When a pair is made, these two pieces are connected, the circles are merged together.
 
-The UI is showing:
-* A box with the header text in bold, slightly larger, left aligned on the top. The content is below.
-* Above this box, there is a title text, centered on the top. This is the title of the "quiz" block.
-* At the top of the box, there is a blue rounded rectangle with the text "Step 1". This text will change as the reader progresses through the "quiz" block.
-* There is a previous arrow to the left of the box. When the user clicks this arrow, the previous step is shown. It is disabled when the reader is on the first step.
-* There is a next arrow to the right of the box. When the user clicks this arrow, the next step is shown. It is disabled when the reader is on the last step.
-* The first step is shown by default. For this step only, the Header is centered on the top. This works as an introduction to the "quiz" block.
-* The last step also has the Header centered on the top. This works as a conclusion to the "quiz" block.
-* Below the quiz block, there are numbers to show how many steps are in the "quiz" block. The current step is highlighted in blue.
-* The first step is a right pointing chevron, matching index 0 in the list of content. This is the introduction to the "quiz" block.
-* The last step is a check mark to indicate the reader has completed the "quiz" block.
-* First and last steps are not different from the other steps in terms of data. It is only their position in the list that indicates whether they are "Introduction", "Step X", or "Conclusion".
-* The data is a list of objects, each object has a header and a content. Something like this:
-```json
+The markdown schema for the MatchPair quiz is as follows:
+
+```html
 <Quiz>
 {
-    "Type": "StepGuide",
-    "Title": "World Capitals",
-    "Details": [
-        {
-            "Header": "This is the introduction to the quiz block.",
-            "Content": "This guide will introduce the reader to different capital cities of the world."
-        },
-        {
-            "Header": "Berlin",
-            "Content": "Berlin is the capital of Germany."
-        },
-        {
-            "Header": "Paris",
-            "Content": "Paris is the capital of France."
-        },
-        {
-            "Header": "London",
-            "Content": "London is the capital of England."
-        },
-        {
-            "Header": "Conclusion",
-            "Content": "This guide has introduced the reader to different capital cities of the world."
-        }
-    ]
+  "Type": "MatchPair",
+  "Title": "Match the Java Concepts",
+  "Pairs": [
+    {
+      "Prompt": "int",
+      "Answer": "A 32-bit signed integer"
+    },
+    {
+      "Prompt": "boolean",
+      "Answer": "Represents true or false"
+    },
+    {
+      "Prompt": "char",
+      "Answer": "A single 16-bit Unicode character"
+    }
+  ]
 }
 </Quiz>
 ```

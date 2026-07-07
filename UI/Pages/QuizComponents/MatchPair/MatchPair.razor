@@ -1,0 +1,95 @@
+@if (!IsValid)
+{
+    <div class="quiz-card quiz-error">
+        <div class="quiz-error-message">
+            <i class="fa fa-exclamation-triangle"></i>
+            <div>
+                <strong>Quiz configuration error:</strong>
+                a match pair quiz must contain at least one pair.
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="quiz-card">
+        <div class="quiz-header">
+            <div class="quiz-label"><i class="fa fa-puzzle-piece"></i> Match pairs</div>
+        </div>
+
+        <div class="match-pair-title">@((MarkupString)Data.Title)</div>
+
+        <div class="match-pair-board">
+            <div class="match-pair-columns">
+                <div class="match-pair-column">
+                    <div class="match-pair-column-label">Prompts</div>
+                    @foreach (var prompt in _unpairedPrompts)
+                    {
+                        <button type="button"
+                                class="@GetPromptCssClass(prompt)"
+                                disabled="@_isChecked"
+                                @onclick="() => ClickPrompt(prompt.Id)">
+                            <div class="match-piece-content">@((MarkupString)prompt.Text)</div>
+                        </button>
+                    }
+                </div>
+
+                <div class="match-pair-column">
+                    <div class="match-pair-column-label">Answers</div>
+                    @foreach (var answer in _unpairedAnswers)
+                    {
+                        <button type="button"
+                                class="@GetAnswerCssClass(answer)"
+                                disabled="@_isChecked"
+                                @onclick="() => ClickAnswer(answer.Id)">
+                            <div class="match-piece-content">@((MarkupString)answer.Text)</div>
+                        </button>
+                    }
+                </div>
+            </div>
+
+            @if (_pairedItems.Count > 0)
+            {
+                <div class="match-pair-results">
+                    @foreach (var pair in _pairedItems)
+                    {
+                        <button type="button"
+                                class="@GetPairedRowCssClass(pair)"
+                                disabled="@_isChecked"
+                                @onclick="() => UndoPair(pair)">
+                            <div class="match-piece-prompt">
+                                <div class="match-piece-content">@((MarkupString)pair.Prompt.Text)</div>
+                            </div>
+                            <div class="match-piece-answer">
+                                <div class="match-piece-content">@((MarkupString)pair.Answer.Text)</div>
+                            </div>
+                        </button>
+                    }
+                </div>
+            }
+        </div>
+
+        @if (!_isChecked)
+        {
+            <button type="button"
+                    class="quiz-check-button"
+                    disabled="@(!AllPaired)"
+                    @onclick="CheckAnswer">
+                Check answer
+            </button>
+        }
+        else
+        {
+            <div class="quiz-result @(_wasCorrect == true ? "correct" : "incorrect")">
+                @if (_wasCorrect == true)
+                {
+                    <span><i class="fa fa-check-circle"></i> Correct — all pairs matched</span>
+                }
+                else
+                {
+                    <span><i class="fa fa-times-circle"></i> @_correctCount of @Data.Pairs.Count pairs correct</span>
+                }
+            </div>
+        }
+    </div>
+}

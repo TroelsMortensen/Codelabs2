@@ -191,3 +191,36 @@ The `Details` property is required and must be an array of objects.
 Each detail object must have a `Header` property and a `Content` property. Both are strings and can contain HTML.
 At least one detail item is required. There can be any number of detail items.
 The first and last detail items are not a different data shape. Their introduction/conclusion behavior is determined by their position in the list.
+
+## MatchPair
+
+This quiz type presents a set of prompt/answer pairs that the user must match. Prompts appear in the left column and answers in the right column, both shuffled. The user selects a prompt and an answer to combine them into a pair. Paired items move to the bottom of the board and can be clicked to undo. When all pairs are made, the user can submit to check their answers.
+
+Here is a custom Quiz element with example json data for a match pair quiz:
+
+```html
+<Quiz>
+{
+  "Type": "MatchPair",
+  "Title": "Match the Java Concepts",
+  "Pairs": [
+    {
+      "Prompt": "int",
+      "Answer": "A 32-bit signed integer"
+    },
+    {
+      "Prompt": "boolean",
+      "Answer": "Represents true or false"
+    },
+    {
+      "Prompt": "char",
+      "Answer": "A single 16-bit Unicode character"
+    }
+  ]
+}
+</Quiz>
+```
+
+The `Type` property is required and must be set to `MatchPair`.
+The `Title` property is required and must be a string displayed above the matching board. It can contain HTML.
+The `Pairs` property is required and must be an array of objects. Each object must have a `Prompt` property and an `Answer` property. Both are strings and can contain HTML. At least one pair is required. There can be any number of pairs.

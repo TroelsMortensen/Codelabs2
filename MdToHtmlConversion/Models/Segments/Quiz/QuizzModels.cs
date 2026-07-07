@@ -39,3 +39,10 @@ public record StepGuideSegment(
 ) : QuizSegment("StepGuide");
 
 public record StepGuideItem(string Header, string Content);
+
+public record MatchPairItem(string Prompt, string Answer);
+
+public record MatchPairSegment(
+    string Title,
+    List<MatchPairItem> Pairs
+) : QuizSegment("MatchPair");
