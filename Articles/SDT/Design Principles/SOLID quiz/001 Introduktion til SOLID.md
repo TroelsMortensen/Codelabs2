@@ -1,6 +1,6 @@
 # Introduktion til SOLID og dets Betydning
 
-![Laptop](Resources/laptop.jpg)
+![Laptop](Resources/Laptop.jpg)
 
 ## Hvorfor er godt softwaredesign vigtigt?
 

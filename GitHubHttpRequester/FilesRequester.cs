@@ -67,10 +67,19 @@ public static class FilesRequester
             }
 
             string mdContent = await contentResponse.Content.ReadAsStringAsync();
-            GitHubFileContent fileContent = fileDetails.First(fc =>
-                fc.DownloadUrl == new Uri(contentResponse.RequestMessage.RequestUri.ToString()).AbsoluteUri);
+            try
+            {
+                GitHubFileContent fileContent = fileDetails.First(fc =>
+                    fc.DownloadUrl == new Uri(contentResponse.RequestMessage.RequestUri.ToString()).AbsoluteUri);
 
-            fileContent.Markdown = mdContent;
+                fileContent.Markdown = mdContent;
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine(e);
+                Console.WriteLine("Does the markdown file name contain a danish letter? " + new Uri(contentResponse.RequestMessage.RequestUri.ToString()).AbsoluteUri);
+                throw;
+            }
         }
     }
 }
