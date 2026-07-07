@@ -36,7 +36,7 @@ public class ConfigureVideoTagsTests
             .Build();
         
         string html = Markdown.ToHtml(markdown, pipeline);
-        var result = new ConfigureVideoTags().Handle([new RawMarkdownSegment(html)], "");
+        var result = new ConfigureVideoTags().Handle([new HtmlSegment(html)], "");
         Assert.Contains("https://youtube.com/embed/Qb_NUn0TSAU", ((HtmlSegment)result[0]).HtmlContent);
     }
     
@@ -69,7 +69,7 @@ public class ConfigureVideoTagsTests
             .Build();
         
         string html = Markdown.ToHtml(markdown, pipeline);
-        var result = new ConfigureVideoTags().Handle([new RawMarkdownSegment(html)], "");
+        var result = new ConfigureVideoTags().Handle([new HtmlSegment(html)], "");
         Assert.Contains("https://youtube.com/embed/Qb_NUn0TSAU", ((HtmlSegment)result[0]).HtmlContent);
     }
 
