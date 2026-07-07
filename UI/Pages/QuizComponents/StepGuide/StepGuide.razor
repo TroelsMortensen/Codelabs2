@@ -14,13 +14,15 @@ else
 {
     <div class="quiz-card">
         <div class="quiz-header">
-            <div class="quiz-label"><i class="fa fa-map-signs"></i> Step guide</div>
+            <div class="step-guide-header-row">
+                <div class="quiz-label"><i class="fa fa-map-signs"></i> Step guide</div>
+                @if (!string.IsNullOrWhiteSpace(Data.Title))
+                {
+                    <div class="step-guide-title">@Data.Title</div>
+                }
+                <div class="step-guide-header-spacer" aria-hidden="true"></div>
+            </div>
         </div>
-
-        @if (!string.IsNullOrWhiteSpace(Data.Title))
-        {
-            <div class="step-guide-title">@Data.Title</div>
-        }
 
         <div class="step-guide-body">
             <button type="button"
@@ -32,7 +34,6 @@ else
             </button>
 
             <div class="step-panel">
-                <div class="step-badge">@GetStepBadge()</div>
                 <div class="step-header @(IsFirstStep || IsLastStep ? "centered" : "")">
                     @((MarkupString)CurrentStep!.Header)
                 </div>

@@ -47,14 +47,4 @@ public partial class StepGuide : ComponentBase
 
         _currentIndex = index;
     }
-
-    private string GetStepBadge()
-    {
-        if (IsFirstStep)
-            return "Introduction";
-        if (IsLastStep)
-            return "Conclusion";
-
-        return $"Step {_currentIndex}";
-    }
 }
