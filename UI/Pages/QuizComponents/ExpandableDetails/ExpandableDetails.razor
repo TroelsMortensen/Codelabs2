@@ -25,7 +25,7 @@ else
                 var isExpanded = IsExpanded(index);
                 var panelId = $"expandable-details-panel-{index}";
 
-                <div class="detail-item">
+                <div class="detail-item @(isExpanded ? "expanded" : "")">
                     <button type="button"
                             class="detail-toggle"
                             aria-expanded="@isExpanded"
