@@ -1,0 +1,70 @@
+@if (!_isValid)
+{
+    <div class="quiz-card quiz-error">
+        <div class="quiz-error-message">
+            <i class="fa fa-exclamation-triangle"></i>
+            <div>
+                <strong>Quiz configuration error:</strong>
+                a true/false quiz must have at least one statement.
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="quiz-card">
+        <div class="quiz-header">
+            <div class="quiz-label"><i class="fa fa-balance-scale"></i> True or false</div>
+        </div>
+
+        <fieldset class="tf-grid" disabled="@_isChecked">
+            <legend class="visually-hidden">True/false statements</legend>
+
+            @for (var i = 0; i < Data.Statements.Count; i++)
+            {
+                var index = i;
+                var statement = Data.Statements[index];
+                <div class="tf-row @GetRowCssClass(index)">
+                    <div class="tf-cell tf-statement">@((MarkupString)statement.Text)</div>
+                    <label class="tf-cell tf-choice">
+                        <input type="radio"
+                               name="@($"tf-{index}")"
+                               checked="@(_selectedAnswers[index] == true)"
+                               @onchange="() => SelectAnswer(index, true)" />
+                        <span>True</span>
+                    </label>
+                    <label class="tf-cell tf-choice">
+                        <input type="radio"
+                               name="@($"tf-{index}")"
+                               checked="@(_selectedAnswers[index] == false)"
+                               @onchange="() => SelectAnswer(index, false)" />
+                        <span>False</span>
+                    </label>
+                </div>
+            }
+        </fieldset>
+
+        @if (!_isChecked)
+        {
+            <button type="button"
+                    class="quiz-check-button"
+                    disabled="@(!CanSubmit)"
+                    @onclick="CheckAnswers">
+                Check answers
+            </button>
+        }
+        else
+        {
+            <div class="quiz-result @(_allCorrect ? "correct" : "incorrect")">
+                @if (_allCorrect)
+                {
+                    <span><i class="fa fa-check-circle"></i> Correct (@_correctCount/@Data.Statements.Count)</span>
+                }
+                else
+                {
+                    <span><i class="fa fa-times-circle"></i> Not quite (@_correctCount/@Data.Statements.Count)</span>
+                }
+            </div>
+        }
+    </div>
+}

@@ -46,3 +46,9 @@ public record MatchPairSegment(
     string Title,
     List<MatchPairItem> Pairs
 ) : QuizSegment("MatchPair");
+
+public record TrueFalseStatement(string Text, bool IsCorrect);
+
+public record TrueFalseQuizSegment(
+    List<TrueFalseStatement> Statements
+) : QuizSegment("TrueFalseQuiz");

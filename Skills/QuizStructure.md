@@ -224,3 +224,36 @@ Here is a custom Quiz element with example json data for a match pair quiz:
 The `Type` property is required and must be set to `MatchPair`.
 The `Title` property is required and must be a string displayed above the matching board. It can contain HTML.
 The `Pairs` property is required and must be an array of objects. Each object must have a `Prompt` property and an `Answer` property. Both are strings and can contain HTML. At least one pair is required. There can be any number of pairs.
+
+## TrueFalseQuiz
+
+This quiz type presents a set of statements. The user must choose whether each statement is true or false. The quiz is only submittable once all statements are answered, and results show which statements were correct or incorrect.
+
+Here is a custom Quiz element with example json data for a true/false quiz:
+
+```html
+<Quiz>
+{
+  "Type": "TrueFalseQuiz",
+  "Statements": [
+    {
+      "Text": "boolean represents true or false.",
+      "IsCorrect": true
+    },
+    {
+      "Text": "char is a single 16-bit Unicode character.",
+      "IsCorrect": false
+    },
+    {
+      "Text": "decimal is a floating-point type with binary precision only.",
+      "IsCorrect": false
+    }
+  ]
+}
+</Quiz>
+```
+
+The `Type` property is required and must be set to `TrueFalseQuiz`.
+The `Statements` property is required and must be an array of objects.
+Each statement object must have a `Text` property and an `IsCorrect` property. The `Text` property is the statement shown to the user and can contain HTML. The `IsCorrect` property is a boolean that marks the expected answer (`true` means the statement is true, `false` means the statement is false).
+At least one statement is required. There can be any number of statements.

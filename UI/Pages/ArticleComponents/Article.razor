@@ -7,6 +7,7 @@
 @using UI.Pages.QuizComponents.ExpandableDetails
 @using UI.Pages.QuizComponents.StepGuide
 @using UI.Pages.QuizComponents.MatchPair
+@using UI.Pages.QuizComponents.TrueFalseQuiz
 
 <div>
 </div>
@@ -62,6 +63,7 @@ else
                             ExpandableDetailsSegment expandableDetails => @<ExpandableDetails Data="expandableDetails" />,
                             StepGuideSegment stepGuide => @<StepGuide Data="stepGuide" />,
                             MatchPairSegment matchPair => @<MatchPair Data="matchPair" />,
+                            TrueFalseQuizSegment trueFalseQuiz => @<TrueFalseQuiz Data="trueFalseQuiz" />,
                             _ => @<div>Unknown segment type</div>
                         };
                         @result
