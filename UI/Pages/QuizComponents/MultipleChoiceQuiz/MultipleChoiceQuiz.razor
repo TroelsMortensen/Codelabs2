@@ -14,7 +14,7 @@ else
 {
     <div class="quiz-card">
         <div class="quiz-header">
-            <div class="quiz-label"><i class="fa fa-question-circle"></i> Select all that apply</div>
+            <div class="quiz-label"><i class="fa fa-check-square-o"></i> Select all that apply</div>
         </div>
 
         <div class="quiz-question">@((MarkupString)Data.Question)</div>
@@ -29,6 +29,9 @@ else
                     <input type="checkbox"
                            checked="@_selectedIndices.Contains(index)"
                            @onchange="() => ToggleOption(index)" />
+                    <span class="quiz-option-checkbox" aria-hidden="true">
+                        <i class="fa fa-check"></i>
+                    </span>
                     <span class="quiz-option-text">@option.Text</span>
                 </label>
             }
@@ -48,7 +51,7 @@ else
                     class="quiz-check-button"
                     disabled="@(_selectedIndices.Count == 0)"
                     @onclick="CheckAnswer">
-                Check answer
+                Check selected answers
             </button>
         }
         else
