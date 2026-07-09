@@ -8,6 +8,7 @@
 @using UI.Pages.QuizComponents.StepGuide
 @using UI.Pages.QuizComponents.MatchPair
 @using UI.Pages.QuizComponents.TrueFalseQuiz
+@using UI.Pages.QuizComponents.ParsonsProblem
 
 <div>
 </div>
@@ -64,6 +65,7 @@ else
                             StepGuideSegment stepGuide => @<StepGuide Data="stepGuide" />,
                             MatchPairSegment matchPair => @<MatchPair Data="matchPair" />,
                             TrueFalseQuizSegment trueFalseQuiz => @<TrueFalseQuiz Data="trueFalseQuiz" />,
+                            ParsonsProblemSegment parsonsProblem => @<ParsonsProblem Data="parsonsProblem" />,
                             _ => @<div>Unknown segment type</div>
                         };
                         @result

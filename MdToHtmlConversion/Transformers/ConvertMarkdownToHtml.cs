@@ -63,6 +63,7 @@ public class ConvertMarkdownToHtml : ITransformer
             "StepGuide" => JsonSerializer.Deserialize<StepGuideSegment>(quizBlock.JsonContent)!,
             "MatchPair" => JsonSerializer.Deserialize<MatchPairSegment>(quizBlock.JsonContent)!,
             "TrueFalseQuiz" => JsonSerializer.Deserialize<TrueFalseQuizSegment>(quizBlock.JsonContent)!,
+            "ParsonsProblem" => JsonSerializer.Deserialize<ParsonsProblemSegment>(quizBlock.JsonContent)!,
             _ => throw new NotSupportedException($"Quiz type {type} is not supported.")
         };
         result.Add(quizSegment);

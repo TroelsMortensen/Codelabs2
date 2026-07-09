@@ -1,0 +1,63 @@
+@if (!_isValid)
+{
+    <div class="quiz-card quiz-error">
+        <div class="quiz-error-message">
+            <i class="fa fa-exclamation-triangle"></i>
+            <div>
+                <strong>Quiz configuration error:</strong>
+                a Parsons problem must have at least one line.
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="quiz-card">
+        <div class="quiz-header">
+            <div class="quiz-label"><i class="fa fa-list-ol"></i> Parsons problem</div>
+        </div>
+
+        <div class="pp-question">@((MarkupString)Data.Question)</div>
+        <div class="pp-solution-label">Solution</div>
+
+        <div class="pp-lines">
+            @for (var i = 0; i < _orderedLines.Count; i++)
+            {
+                var index = i;
+                var line = _orderedLines[index];
+                <div @key="line.Id"
+                     class="pp-line @GetLineCssClass(index)"
+                     draggable="@(_isChecked ? "false" : "true")"
+                     ondragstart="parsonsDrag.onDragStart(event, @index);"
+                     ondragover="parsonsDrag.onDragOver(event);"
+                     @ondrop:preventDefault="true"
+                     @ondrop="() => OnDrop(index)">
+                    <span class="pp-line-handle"><i class="fa fa-grip-vertical"></i></span>
+                    <span class="pp-line-content">@((MarkupString)line.Content)</span>
+                </div>
+            }
+        </div>
+
+        @if (!_isChecked)
+        {
+            <button type="button"
+                    class="quiz-check-button"
+                    @onclick="CheckAnswer">
+                Check answers
+            </button>
+        }
+        else
+        {
+            <div class="quiz-result @(_allCorrect ? "correct" : "incorrect")">
+                @if (_allCorrect)
+                {
+                    <span><i class="fa fa-check-circle"></i> Correct (@_correctCount/@_correctOrder.Count)</span>
+                }
+                else
+                {
+                    <span><i class="fa fa-times-circle"></i> Not quite (@_correctCount/@_correctOrder.Count)</span>
+                }
+            </div>
+        }
+    </div>
+}

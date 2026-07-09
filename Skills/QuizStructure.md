@@ -257,3 +257,30 @@ The `Type` property is required and must be set to `TrueFalseQuiz`.
 The `Statements` property is required and must be an array of objects.
 Each statement object must have a `Text` property and an `IsCorrect` property. The `Text` property is the statement shown to the user and can contain HTML. The `IsCorrect` property is a boolean that marks the expected answer (`true` means the statement is true, `false` means the statement is false).
 At least one statement is required. There can be any number of statements.
+
+## ParsonsProblem
+
+This quiz type presents a shuffled list of lines. The user drags lines to reorder them in a single Solution area, then submits to check whether each line is in the correct position.
+
+Here is a custom Quiz element with example json data for a Parsons problem:
+
+```html
+<Quiz>
+{
+  "Type": "ParsonsProblem",
+  "Question": "Arrange the lines to create a valid Java method that returns the sum of two integers.",
+  "Lines": [
+    { "Id": 1, "Content": "public int sum(int a, int b) {" },
+    { "Id": 2, "Content": "    int result = a + b;" },
+    { "Id": 3, "Content": "    return result;" },
+    { "Id": 4, "Content": "}" }
+  ]
+}
+</Quiz>
+```
+
+The `Type` property is required and must be set to `ParsonsProblem`.
+The `Question` property is required and must be a string shown above the line list. It can contain HTML.
+The `Lines` property is required and must be an array of objects.
+Each line object must have an `Id` property and a `Content` property. The `Id` property is an integer used to define the intended correct order. The `Content` property is the displayed line text and can contain HTML.
+At least one line is required. There can be any number of lines.

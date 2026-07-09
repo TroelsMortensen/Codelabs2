@@ -52,3 +52,10 @@ public record TrueFalseStatement(string Text, bool IsCorrect);
 public record TrueFalseQuizSegment(
     List<TrueFalseStatement> Statements
 ) : QuizSegment("TrueFalseQuiz");
+
+public record ParsonsProblemSegment(
+    string Question,
+    List<ParsonsProblemLine> Lines
+) : QuizSegment("ParsonsProblem");
+
+public record ParsonsProblemLine(int Id, string Content);
