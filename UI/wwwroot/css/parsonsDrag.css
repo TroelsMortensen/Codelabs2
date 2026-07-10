@@ -9,14 +9,13 @@
     box-shadow: none;
 }
 
+/* Drag-over shift hints (transition on .pp-line in ParsonsProblem.razor.css) */
 .pp-line.pp-line-shift-up {
     transform: translateY(-10px);
-    transition: transform 0.15s ease;
 }
 
 .pp-line.pp-line-shift-down {
     transform: translateY(10px);
-    transition: transform 0.15s ease;
 }
 
 .pp-drop-slot-active,

@@ -68,16 +68,12 @@ window.parsonsDrag = {
   clearVisuals: function () {
     this.clearAllVisuals();
   },
-  clear: function () {
-    this.sourceIndex = null;
-    this.clearAllVisuals();
-  },
   clearDropHints: function () {
     this.activeSlot = null;
     this.activeLine = null;
-    document.querySelectorAll('.pp-drop-slot-active, .pp-line-drop-active, .pp-line-drop-before, .pp-line-drop-target, .pp-line-shift-up, .pp-line-shift-down')
+    document.querySelectorAll('.pp-drop-slot-active, .pp-line-drop-active, .pp-line-shift-up, .pp-line-shift-down')
       .forEach(function (el) {
-        el.classList.remove('pp-drop-slot-active', 'pp-line-drop-active', 'pp-line-drop-before', 'pp-line-drop-target', 'pp-line-shift-up', 'pp-line-shift-down');
+        el.classList.remove('pp-drop-slot-active', 'pp-line-drop-active', 'pp-line-shift-up', 'pp-line-shift-down');
       });
   },
   clearAllVisuals: function () {

@@ -70,6 +70,15 @@ else
                     <span><i class="fa fa-times-circle"></i> Not quite (@_correctCount/@_correctOrder.Count)</span>
                 }
             </div>
+
+            @if (!_allCorrect)
+            {
+                <button type="button"
+                        class="quiz-check-button quiz-reset-button"
+                        @onclick="TryAgain">
+                    Try again
+                </button>
+            }
         }
     </div>
 }

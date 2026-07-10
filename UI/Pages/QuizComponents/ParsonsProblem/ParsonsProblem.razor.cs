@@ -65,6 +65,14 @@ public partial class ParsonsProblem : ComponentBase
         _allCorrect = _correctCount == _correctOrder.Count;
     }
 
+    private async Task TryAgain()
+    {
+        _isChecked = false;
+        _allCorrect = false;
+        _correctCount = 0;
+        await JS.InvokeVoidAsync("parsonsDrag.clearAllVisuals");
+    }
+
     private string GetLineCssClass(int index)
     {
         if (!_isChecked)
