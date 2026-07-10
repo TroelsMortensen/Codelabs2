@@ -16,40 +16,37 @@ else
         <div class="quiz-header">
             <div class="quiz-label"><i class="fa fa-list-ol"></i> Parsons problem</div>
         </div>
-
         <div class="pp-question">@((MarkupString)Data.Question)</div>
         <div class="pp-solution-label">Solution</div>
-
-        <div class="pp-lines"
-             ondragleave="parsonsDrag.onLinesDragLeave(event);">
-            <div class="pp-drop-slot"
-                 ondragover="parsonsDrag.onSlotDragOver(event);"
+        <div class="pp-lines">
+            <div class="pp-drop-slot @GetSlotHintClass(0)"
+                 @ondragover:preventDefault="true"
+                 @ondragover="() => OnSlotDragOver(0)"
                  @ondrop:preventDefault="true"
                  @ondrop="() => OnSlotDrop(0)"></div>
-
             @for (var i = 0; i < _orderedLines.Count; i++)
             {
                 var index = i;
                 var line = _orderedLines[index];
                 <div @key="line.Id"
-                     class="pp-line @GetLineCssClass(index)"
+                     class="pp-line @GetLineDragClass(index)"
                      draggable="@(_isChecked ? "false" : "true")"
-                     ondragstart="parsonsDrag.onDragStart(event, @index);"
-                     ondragend="parsonsDrag.clearVisuals();"
-                     ondragover="parsonsDrag.onLineDragOver(event, @index);"
+                     ondragstart="ppDrag.onStart(event, @index)"
+                     @ondragend="OnDragEnd"
+                     @ondragover:preventDefault="true"
+                     @ondragover="() => OnLineDragOver(index)"
                      @ondrop:preventDefault="true"
                      @ondrop="() => OnLineDrop(index)">
                     <span class="pp-line-handle"><i class="fa fa-grip-vertical"></i></span>
                     <span class="pp-line-content">@((MarkupString)line.Content)</span>
                 </div>
-
-                <div class="pp-drop-slot"
-                     ondragover="parsonsDrag.onSlotDragOver(event);"
+                <div class="pp-drop-slot @GetSlotHintClass(index + 1)"
+                     @ondragover:preventDefault="true"
+                     @ondragover="() => OnSlotDragOver(index + 1)"
                      @ondrop:preventDefault="true"
                      @ondrop="() => OnSlotDrop(index + 1)"></div>
             }
         </div>
-
         @if (!_isChecked)
         {
             <button type="button"
@@ -70,7 +67,6 @@ else
                     <span><i class="fa fa-times-circle"></i> Not quite (@_correctCount/@_correctOrder.Count)</span>
                 }
             </div>
-
             @if (!_allCorrect)
             {
                 <button type="button"
