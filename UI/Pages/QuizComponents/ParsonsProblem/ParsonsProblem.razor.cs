@@ -31,18 +31,26 @@ public partial class ParsonsProblem : ComponentBase
         _correctCount = 0;
     }
 
-    private async Task OnDrop(int dropIndex)
+    private Task OnLineDrop(int lineIndex) => OnDrop(lineIndex, fromSlot: false);
+
+    private Task OnSlotDrop(int insertIndex) => OnDrop(insertIndex, fromSlot: true);
+
+    private async Task OnDrop(int insertIndex, bool fromSlot)
     {
         if (_isChecked)
             return;
 
         var sourceIndex = await JS.InvokeAsync<int?>("parsonsDrag.consumeSourceIndex");
-        if (sourceIndex is null || sourceIndex == dropIndex)
+        if (sourceIndex is null || sourceIndex == insertIndex)
             return;
 
         var item = _orderedLines[sourceIndex.Value];
         _orderedLines.RemoveAt(sourceIndex.Value);
-        _orderedLines.Insert(dropIndex, item);
+
+        if (fromSlot && sourceIndex.Value < insertIndex)
+            insertIndex--;
+
+        _orderedLines.Insert(insertIndex, item);
     }
 
     private void CheckAnswer()

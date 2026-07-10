@@ -63,8 +63,13 @@
 .pp-lines {
     display: flex;
     flex-direction: column;
-    gap: 10px;
     padding: 0 20px 20px;
+}
+
+.pp-drop-slot {
+    min-height: 10px;
+    border-radius: 4px;
+    transition: min-height 0.15s ease, background-color 0.15s ease, outline 0.15s ease;
 }
 
 .pp-line {
@@ -77,7 +82,7 @@
     padding: 12px 14px;
     cursor: grab;
     user-select: none;
-    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease, margin-top 0.15s ease;
 }
 
 .pp-line:hover {
@@ -89,10 +94,6 @@
 
 .pp-line:active {
     cursor: grabbing;
-}
-
-.pp-line.dragging {
-    opacity: 0.6;
 }
 
 .pp-line-handle {

@@ -1,0 +1,26 @@
+/* Dragged source line */
+.pp-line.pp-line-dragging {
+    opacity: 0.5;
+}
+
+/* Suppress idle hover lift while dragging */
+.pp-dragging .pp-line:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.pp-line.pp-line-shift-up {
+    transform: translateY(-10px);
+    transition: transform 0.15s ease;
+}
+
+.pp-line.pp-line-shift-down {
+    transform: translateY(10px);
+    transition: transform 0.15s ease;
+}
+
+.pp-drop-slot-active,
+.pp-line.pp-line-drop-active {
+    background-color: rgba(92, 161, 225, 0.15);
+    outline: 2px dashed #5ca1e1;
+}

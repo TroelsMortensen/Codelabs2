@@ -20,7 +20,13 @@ else
         <div class="pp-question">@((MarkupString)Data.Question)</div>
         <div class="pp-solution-label">Solution</div>
 
-        <div class="pp-lines">
+        <div class="pp-lines"
+             ondragleave="parsonsDrag.onLinesDragLeave(event);">
+            <div class="pp-drop-slot"
+                 ondragover="parsonsDrag.onSlotDragOver(event);"
+                 @ondrop:preventDefault="true"
+                 @ondrop="() => OnSlotDrop(0)"></div>
+
             @for (var i = 0; i < _orderedLines.Count; i++)
             {
                 var index = i;
@@ -29,12 +35,18 @@ else
                      class="pp-line @GetLineCssClass(index)"
                      draggable="@(_isChecked ? "false" : "true")"
                      ondragstart="parsonsDrag.onDragStart(event, @index);"
-                     ondragover="parsonsDrag.onDragOver(event);"
+                     ondragend="parsonsDrag.clearVisuals();"
+                     ondragover="parsonsDrag.onLineDragOver(event, @index);"
                      @ondrop:preventDefault="true"
-                     @ondrop="() => OnDrop(index)">
+                     @ondrop="() => OnLineDrop(index)">
                     <span class="pp-line-handle"><i class="fa fa-grip-vertical"></i></span>
                     <span class="pp-line-content">@((MarkupString)line.Content)</span>
                 </div>
+
+                <div class="pp-drop-slot"
+                     ondragover="parsonsDrag.onSlotDragOver(event);"
+                     @ondrop:preventDefault="true"
+                     @ondrop="() => OnSlotDrop(index + 1)"></div>
             }
         </div>
 
