@@ -24,7 +24,28 @@
     <script src="js/wheelOfFortune.js"></script>
     <script src="js/masonry.js"></script>
     <link rel="stylesheet" href="css/parsonsDrag.css" />
-    <script src="js/parsonsDrag.js"></script>
+    <!-- This should be moved to its own js file. What even happened?-->
+    <script>
+        window.ppDrag = {
+            sourceIndex: null,
+            onStart: function (e, i) {
+                e.dataTransfer.setData('text/plain', '');
+                this.sourceIndex = i;
+                e.currentTarget.classList.add('pp-line-dragging');
+                e.currentTarget.closest('.pp-lines')?.classList.add('pp-dragging');
+            },
+            consumeIndex: function () {
+                var i = this.sourceIndex;
+                this.sourceIndex = null;
+                return i;
+            },
+            clearVisuals: function () {
+                document.querySelectorAll('.pp-line-dragging, .pp-dragging').forEach(function (el) {
+                    el.classList.remove('pp-line-dragging', 'pp-dragging');
+                });
+            }
+        };
+    </script>
 </head>
 
 <body>
