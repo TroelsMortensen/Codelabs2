@@ -12,6 +12,6 @@ And the end result looks like this:
 
 ![Creating new class result](Resources/CreateNewClass.png)
 
-Notice a new file is created in the session1 package.
+Notice a new file is created in the session1 package ((1)). Notice also, that the same package name is declared at the top of the file ((2)).
 
-Packages are similar to folders, they are a way to organize your code.
+Packages are essentially folders, they are a way to organize your code. In Java, we just call them packages. If you open a file explorer, you will see that the folder structure inside *src* is the same as the package structure you see in IntelliJ IDEA.

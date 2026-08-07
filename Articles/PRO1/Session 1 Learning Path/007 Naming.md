@@ -4,7 +4,7 @@ When naming variables in Java, there are some rules you must follow:
 1. **Start with a letter**: Variable names must start with a letter (a-z, A-Z), underscore (_), or dollar sign ($).
 2. **Followed by letters, digits, underscores, or dollar signs**: After the first character, you can use letters (a-z, A-Z), digits (0-9), underscores (_).
 3. **No spaces**: Variable names cannot contain spaces.
-4. **Case-sensitive**: Variable names are case-sensitive, meaning `myVariable` and `myvariable` are considered different variables.
+4. **Case-sensitive**: Variable names are case-sensitive, meaning `myVariable` and `myvariable` are considered different variables (notice the uppercase and lowercase "v").
 
 ## Naming conventions
 Java has some conventions for naming variables that help make your code more readable and maintainable. 
@@ -46,3 +46,18 @@ For example:
 ```java
 package com.example.myapp;
 ```
+
+### Method Names
+Method names should be written in **camelCase**, where the first word starts with a lowercase letter and each subsequent word starts with a capital letter.
+
+For example:
+
+```java
+void printHelloWorld() {
+    System.out.println("Hello, World!");
+}
+```
+
+### Other
+
+There are other naming conventions, but these are the most important ones. We will revisit the other naming conventions when relevant.

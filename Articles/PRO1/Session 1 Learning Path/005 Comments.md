@@ -24,11 +24,9 @@ There are two types of comments in Java:
 Create a new class called `CommentsExample`. In this class, write a main method which prints out to the console. Like this:
 
 ```java
-public class CommentsExample {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!"); 
-        System.out.println("Hello, People!"); 
-    }
+void main() {
+    System.out.println("Hello, World!"); 
+    System.out.println("Hello, People!"); 
 }
 ```
 

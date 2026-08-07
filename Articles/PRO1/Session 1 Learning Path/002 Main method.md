@@ -14,6 +14,16 @@ public static void main(String[] args) {
 }
 ```
 
+Alternatively, if you are on Java 26 or later, you can use the simplified syntax, which I **strongly recommend**:
+
+```java
+void main() {
+    // Your code here
+}
+```
+
+You don't even need to declare the class!
+
 Between the curly braces `{..}` is where you will write the code that you want to execute when the program runs.\
 This part is called the **method body**.
 
@@ -45,6 +55,8 @@ You can also right click the file in the project window, and select run:
 Or you select a specific file (with a main method) in the drop down at the top right, and then the green play button:
 
 ![Running main method](Resources/RunSelectedFile.png)
+
+Be careful with this last option. As you complete exercises, your dropdown will fill up with more and more main methods. It is a common mistake to forget to change the dropdown back to the main method you want to run, and thereby running the wrong code.
 
 There are even more ways, but now you have enough options. It does not matter which you pick.
 
