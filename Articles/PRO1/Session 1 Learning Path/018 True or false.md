@@ -12,7 +12,7 @@ This is a decision that the program made based on the condition that your email 
 
 The above examples are all questions that can be answered with either "yes" or "no."
 
-In programming, we instead declare statements, rather than questions. A statement is a sentence that can be either true or false.\
+In programming, we instead declare propositions, rather than questions. A proposition is a sentence that can be either true or false.\
 Questions are answered with yes or no.\
 For example:
 
@@ -23,7 +23,7 @@ For example:
 * The number `3` is greater than `10`. -> true or false.
 * The text "Java" contains the letter 'a'. -> true or false.
 
-All these statements can be evaluated to either true or false.
+All these propositions can be evaluated to either true or false.
 
 In Java, we use the `boolean` type to represent these true or false values.\
 A `boolean` variable can hold one of two values: `true` or `false`. Here are some examples of declaring and using `boolean` variables:

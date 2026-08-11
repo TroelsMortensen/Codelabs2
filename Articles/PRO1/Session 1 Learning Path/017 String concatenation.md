@@ -21,3 +21,4 @@ String message = "I am " + age + " years old."; // "I am 30 years old."
 System.out.println(message); // Prints "I am 30 years old."
 ```
 
+Just about everything in Java can be automatically converted to a string, though it may not always be a meaningful result. We will revisit this topic later in the course.

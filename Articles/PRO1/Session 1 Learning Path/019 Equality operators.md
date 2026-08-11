@@ -1,6 +1,6 @@
 # Equality operators
 
-Continuing from the previous page, we will now explore equality operators in Java. These operators are used to compare two values and determine if they are equal or not.
+Continuing from the previous page, we will now explore equality operators in Java. These operators are used to compare two values (or variables) and determine if they are equal or not.
 
 ## Equality Operators for simple types
 

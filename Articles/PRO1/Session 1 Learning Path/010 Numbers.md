@@ -7,18 +7,18 @@ Most programming languages, including Java, have a set of built-in data types th
 
 There is category of whole numbers, with three types.
 
-These numbers are whole numbers without any decimal points, e.g., 1, 42, -100, etc. In Java, whole numbers can be represented using the following data types:
-- `int`: This is the most commonly used data type for whole numbers. It can store values ranging from -2,147,483,648 to 2,147,483,647.
-- `long`: This data type is used for larger whole numbers. It can store values ranging from -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807.
-- `short`: This data type is used for smaller whole numbers. It can store values ranging from -32,768 to 32,767.
+These numbers are whole numbers without any decimal points, e.g., `1`, `42`, `-100`, etc. In Java, whole numbers can be represented using the following data types:
+- `int`: This is the most commonly used data type for whole numbers, and should be your default choice. It can store values ranging from `-2,147,483,648` to `2,147,483,647`.
+- `long`: This data type is used for larger whole numbers. It can store values ranging from `-9,223,372,036,854,775,808` to `9,223,372,036,854,775,807`.
+- `short`: This data type is used for smaller whole numbers. It can store values ranging from `32,768` to `32,767`.
 
 ## Floating-Point Numbers
 
-Floating-point numbers are numbers that can have decimal points, e.g., 3.14, -0.001, etc. In Java, floating-point numbers can be represented using the following data types:
+Floating-point numbers are numbers that can have decimal points, e.g., `3.14`, `-0.001`, etc. In Java, floating-point numbers can be represented using the following data types:
 - `double`: This is the most commonly used data type for floating-point numbers. It can store values with a high degree of precision, typically up to 15 decimal places.
 - `float`: This data type is used for single-precision floating-point numbers. It can store values with a lower degree of precision, typically up to 7 decimal places.
 
-If you use too many decimal places, you may get an error or unexpected results.
+If you use too many decimal places, you may get an error or unexpected results. You may experience minor rounding errors, or you may get an error like "Number too large".
 
 
 ## Arithmetic Operations
@@ -37,26 +37,24 @@ You can perform standard arithmetic operations on numbers in Java, such as addit
 Here is an example of how to use these operators in Java:
 
 ```java
-public class ArithmeticExample {
-    public static void main(String[] args) {
-        int a = 5;
-        int b = 3;
+void main() {
+    int a = 5;
+    int b = 3;
 
-        int sum = a + b; // 8
-        System.out.println("Sum: " + sum);
+    int sum = a + b; // 8
+    System.out.println("Sum: " + sum);
 
-        int difference = a - b; // 2
-        System.out.println("Difference: " + difference);
+    int difference = a - b; // 2
+    System.out.println("Difference: " + difference);
 
-        int product = a * b; // 15
-        System.out.println("Product: " + product);
+    int product = a * b; // 15
+    System.out.println("Product: " + product);
 
-        int quotient = a / b; // 1 (integer division)
-        System.out.println("Quotient: " + quotient);
+    int quotient = a / b; // 1 (integer division)
+    System.out.println("Quotient: " + quotient);
 
-        int remainder = a % b; // 2
-        System.out.println("Remainder: " + remainder);
-    }
+    int remainder = a % b; // 2
+    System.out.println("Remainder: " + remainder);
 }
 ```
 
@@ -79,21 +77,21 @@ Declare three integer variables, assign them values, and print out the sum of th
 <hint title="Solution">
 
 ```java
-public class SumExample {
-    public static void main(String[] args) {
-        int num1 = 5;
-        int num2 = 10;
-        int num3 = 15;
+void main() {
+    int num1 = 5;
+    int num2 = 10;
+    int num3 = 15;
 
-        int sum = num1 + num2 + num3;
-        System.out.println("Sum: " + sum);
-    }
+    int sum = num1 + num2 + num3;
+    System.out.println("Sum: " + sum);
 }
 ```
 
 </hint>
 
 <hint title="Video solution">
+
+I use the old main method syntax in this video.
 
 <video src="https://youtu.be/a9EgfSzj-ag"></video>
 
@@ -122,20 +120,20 @@ So, `10 / 3` results in `3`, not `3.333...`.
 <hint title="Solution">
 
 ```java
-public class IntegerDivisionExample {
-    public static void main(String[] args) {
-        int x = 10;
-        int y = 3;
+void main() {
+    int x = 10;
+    int y = 3;
 
-        int result = x / y;
-        System.out.println("Result: " + result);
-    }
+    int result = x / y;
+    System.out.println("Result: " + result);
 }
 ```
 
 </hint>
 
 <hint title="Video solution">
+
+I use the old main method syntax in this video.
 
 <video src="https://youtu.be/zU5EOl50_5w"></video>
 
@@ -156,19 +154,17 @@ In Denmark the sales tax is 25%. Calculate the sales tax for these two integers 
 <hint title="Solution">
 
 ```java
-public class SalesTaxExample {
-    public static void main(String[] args) {
-        int price1 = 19;
-        int price2 = 89;
+void main() {
+    int price1 = 19;
+    int price2 = 89;
 
-        double salesTaxRate = 0.25; // 25%
+    double salesTaxRate = 0.25; // 25%
 
-        double salesTax1 = price1 * salesTaxRate;
-        double salesTax2 = price2 * salesTaxRate;
+    double salesTax1 = price1 * salesTaxRate;
+    double salesTax2 = price2 * salesTaxRate;
 
-        System.out.println("Sales tax for " + price1 + " is: " + salesTax1);
-        System.out.println("Sales tax for " + price2 + " is: " + salesTax2);
-    }
+    System.out.println("Sales tax for " + price1 + " is: " + salesTax1);
+    System.out.println("Sales tax for " + price2 + " is: " + salesTax2);
 }
 ```
 </hint>
@@ -178,7 +174,7 @@ public class SalesTaxExample {
 Inspect the following code snippet:
 
 ```java
-public static void main(String[] args)
+void main()
 {
     System.out.println(23 * 4.5 / 0.5 + 1);
     System.out.println(23 * 4.5 / (0.5 + 1));
