@@ -18,7 +18,7 @@ else
                 <div class="quiz-label"><i class="fa fa-map-signs"></i> Step guide</div>
                 @if (!string.IsNullOrWhiteSpace(Data.Title))
                 {
-                    <div class="step-guide-title">@Data.Title</div>
+                    <div class="step-guide-title">@((MarkupString)Data.Title)</div>
                 }
                 <div class="step-guide-header-spacer" aria-hidden="true"></div>
             </div>

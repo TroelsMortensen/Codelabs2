@@ -19,7 +19,7 @@ else
 
         @if (!string.IsNullOrWhiteSpace(Data.Title))
         {
-            <div class="flashcard-title">@Data.Title</div>
+            <div class="flashcard-title">@((MarkupString)Data.Title)</div>
         }
 
         <div class="flashcard-grid">

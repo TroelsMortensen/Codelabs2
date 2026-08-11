@@ -32,7 +32,7 @@ else
                     <span class="quiz-option-checkbox" aria-hidden="true">
                         <i class="fa fa-check"></i>
                     </span>
-                    <span class="quiz-option-text">@option.Text</span>
+                    <span class="quiz-option-text">@((MarkupString)option.Text)</span>
                 </label>
             }
         </fieldset>
@@ -41,7 +41,7 @@ else
         {
             <details class="quiz-hint">
                 <summary>Hint</summary>
-                <p>@Data.Hint</p>
+                <p>@((MarkupString)Data.Hint)</p>
             </details>
         }
 
@@ -71,7 +71,7 @@ else
             {
                 <div class="quiz-explanation">
                     <i class="fa fa-info-circle"></i>
-                    <div><strong>Explanation:</strong> @Data.Explanation</div>
+                    <div><strong>Explanation:</strong> @((MarkupString)Data.Explanation)</div>
                 </div>
             }
         }
