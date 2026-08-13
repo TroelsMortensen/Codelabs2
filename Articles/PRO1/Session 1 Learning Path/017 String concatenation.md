@@ -7,7 +7,7 @@ For example:
 String firstName = "John";
 String lastName = "Doe";
 String fullName = firstName + " " + lastName; // "John Doe"
-System.out.println(fullName); // Prints "John Doe"
+IO.println(fullName); // Prints "John Doe"
 ```
 
 
@@ -18,7 +18,7 @@ You can concatenate strings with primitive types like integers or characters. Wh
 ```java
 int age = 30;
 String message = "I am " + age + " years old."; // "I am 30 years old."
-System.out.println(message); // Prints "I am 30 years old."
+IO.println(message); // Prints "I am 30 years old."
 ```
 
 Just about everything in Java can be automatically converted to a string, though it may not always be a meaningful result. We will revisit this topic later in the course.

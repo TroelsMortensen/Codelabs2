@@ -21,7 +21,7 @@ This should not be a surprise. If you follow a recipe to bake a cake, you go thr
 Now, let's inspect the following code snippet:
 
 ```java
-System.out.println(x);
+IO.println(x);
 int x = 5; 
 ```
 
@@ -44,11 +44,11 @@ When the compiler reached this line of code, it had not yet seen the declaration
 The blue line suggests a fix. You can probably click it, and IntelliJ will attempt to automatically fix things for your.\
 Don't do this. _I strongly recommend doing things as manually as possible, until you understand what is going on._
 
-Now, try moving the line of code `System.out.println(x);` below the declaration of `x`:
+Now, try moving the line of code `IO.println(x);` below the declaration of `x`:
 
 ```java
 int x = 5;
-System.out.println(x);
+IO.println(x);
 ```
 
 Your error should now be gone, and the program should run successfully, printing `5` to the console.
@@ -62,7 +62,7 @@ Arrange the lines so the program declares `x` before it uses it.
   "Lines": [
     { "Id": 1, "Content": "void main() {" },
     { "Id": 2, "Content": "    int x = 5;" },
-    { "Id": 3, "Content": "    System.out.println(x);" },
+    { "Id": 3, "Content": "    IO.println(x);" },
     { "Id": 4, "Content": "}" }
   ],
   "Hint": "You cannot use x before it is declared."

@@ -18,8 +18,8 @@ boolean isEqual = (a == b); // true, because 5 is equal to 5
 boolean isEqualAgain = a == b; // true, because 5 is equal to 5
 boolean isNotEqual = (a != c); // true, because 5 is not equal to 10
 boolean isNotEqualAgain = a != c; // true, because 5 is not equal to 10
-System.out.println("Is a equal to b? " + isEqual); // Prints true
-System.out.println("Is a not equal to c? " + isNotEqual); // Prints true
+IO.println("Is a equal to b? " + isEqual); // Prints true
+IO.println("Is a not equal to c? " + isNotEqual); // Prints true
 ```
 
 In the above code:
@@ -37,7 +37,7 @@ double y = 3.14;
 double z = 2.71;
 boolean isDoubleEqual = (x == y); // true, because 3.14 is equal to 3.14
 boolean isDoubleNotEqual = (x != z); // true, because 3.14 is not equal to 2.71
-System.out.println("Is x equal to y? " + isDoubleEqual); // Prints true
-System.out.println("Is x not equal to z? " + isDoubleNotEqual); // Prints true
+IO.println("Is x equal to y? " + isDoubleEqual); // Prints true
+IO.println("Is x not equal to z? " + isDoubleNotEqual); // Prints true
 ```
 

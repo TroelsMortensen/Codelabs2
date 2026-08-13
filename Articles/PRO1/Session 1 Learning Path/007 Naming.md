@@ -54,7 +54,7 @@ For example:
 
 ```java
 void printHelloWorld() {
-    System.out.println("Hello, World!");
+    IO.println("Hello, World!");
 }
 ```
 

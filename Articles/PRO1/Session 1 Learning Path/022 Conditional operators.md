@@ -17,7 +17,7 @@ Here is an example of how to use the logical AND operator:
 boolean condition1 = true;
 boolean condition2 = false;
 boolean result = condition1 && condition2; // false, because one condition is false
-System.out.println("Result of condition1 && condition2: " + result); // Prints false
+IO.println("Result of condition1 && condition2: " + result); // Prints false
 ```
 
 In the above code the value of `result` is `false` because `condition1` is `true`, but `condition2` is `false`.\
@@ -44,13 +44,13 @@ You have multiple ways of solving this exercise. Here is one way to do it:
 boolean bIsLargerThanA = (a < b);
 boolean bIsSmallerThanC = (b < c);
 boolean result = bIsLargerThanA && bIsSmallerThanC;
-System.out.println("Is b between a and c? " + result);
+IO.println("Is b between a and c? " + result);
 ```
 
 You can also write it in one line:
 ```java
 boolean result = (a < b) && (b < c);
-System.out.println("Is b between a and c? " + result);
+IO.println("Is b between a and c? " + result);
 ```
 
 </hint>
@@ -72,7 +72,7 @@ Here is an example of how to use the logical OR operator:
 boolean condition1 = true;
 boolean condition2 = false;
 boolean result = condition1 || condition2; // true, because one condition is true
-System.out.println("Result of condition1 || condition2: " + result); // Prints true
+IO.println("Result of condition1 || condition2: " + result); // Prints true
 ```
 
 In the above code, the value of `result` is `true` because `condition1` is `true`, even though `condition2` is `false`.
@@ -94,12 +94,12 @@ You have multiple ways of solving this exercise. Here is one way to do it:
 boolean bIsSmallerThanA = (b < a);
 boolean bIsLargerThanC = (b > c);
 boolean result = bIsSmallerThanA || bIsLargerThanC;
-System.out.println("Is b not between a and c? " + result);
+IO.println("Is b not between a and c? " + result);
 ```
 You can also write it in one line:
 ```java
 boolean result = (b < a) || (b > c);
-System.out.println("Is b not between a and c? " + result);
+IO.println("Is b not between a and c? " + result);
 ```
 </hint>
 Try with different values for `b` to see how the result changes.
@@ -113,7 +113,7 @@ Here is an example of how to use the logical NOT operator:
 ```java
 boolean condition = true;
 boolean result = !condition; // false, because we negate true
-System.out.println("Result of !condition: " + result); // Prints false
+IO.println("Result of !condition: " + result); // Prints false
 ```
 
 In the above code, the value of `result` is `false` because we negated `condition`, which was `true`.

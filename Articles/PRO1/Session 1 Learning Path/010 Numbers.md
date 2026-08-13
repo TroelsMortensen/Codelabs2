@@ -42,19 +42,19 @@ void main() {
     int b = 3;
 
     int sum = a + b; // 8
-    System.out.println("Sum: " + sum);
+    IO.println("Sum: " + sum);
 
     int difference = a - b; // 2
-    System.out.println("Difference: " + difference);
+    IO.println("Difference: " + difference);
 
     int product = a * b; // 15
-    System.out.println("Product: " + product);
+    IO.println("Product: " + product);
 
     int quotient = a / b; // 1 (integer division)
-    System.out.println("Quotient: " + quotient);
+    IO.println("Quotient: " + quotient);
 
     int remainder = a % b; // 2
-    System.out.println("Remainder: " + remainder);
+    IO.println("Remainder: " + remainder);
 }
 ```
 
@@ -83,7 +83,7 @@ void main() {
     int num3 = 15;
 
     int sum = num1 + num2 + num3;
-    System.out.println("Sum: " + sum);
+    IO.println("Sum: " + sum);
 }
 ```
 
@@ -125,7 +125,7 @@ void main() {
     int y = 3;
 
     int result = x / y;
-    System.out.println("Result: " + result);
+    IO.println("Result: " + result);
 }
 ```
 
@@ -163,8 +163,8 @@ void main() {
     double salesTax1 = price1 * salesTaxRate;
     double salesTax2 = price2 * salesTaxRate;
 
-    System.out.println("Sales tax for " + price1 + " is: " + salesTax1);
-    System.out.println("Sales tax for " + price2 + " is: " + salesTax2);
+    IO.println("Sales tax for " + price1 + " is: " + salesTax1);
+    IO.println("Sales tax for " + price2 + " is: " + salesTax2);
 }
 ```
 </hint>
@@ -176,12 +176,12 @@ Inspect the following code snippet:
 ```java
 void main()
 {
-    System.out.println(23 * 4.5 / 0.5 + 1);
-    System.out.println(23 * 4.5 / (0.5 + 1));
-    System.out.println(2 + 5 - 18 + 11);
-    System.out.println((2 + 5) - (18 + 11));
-    System.out.println(14 * 18 / 4 + 4);
-    System.out.println(14 * 18 / (4 + 4));
+    IO.println(23 * 4.5 / 0.5 + 1);
+    IO.println(23 * 4.5 / (0.5 + 1));
+    IO.println(2 + 5 - 18 + 11);
+    IO.println((2 + 5) - (18 + 11));
+    IO.println(14 * 18 / 4 + 4);
+    IO.println(14 * 18 / (4 + 4));
 }
 ```
 
@@ -200,7 +200,7 @@ public static void main(String[] args)
 {
     int maxValue = Integer.MAX_VALUE;
     int newValue = maxValue + 1;
-    System.out.println(newValue);
+    IO.println(newValue);
 }
 ```
 

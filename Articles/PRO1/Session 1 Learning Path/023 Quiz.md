@@ -77,6 +77,10 @@ Match each primitive type to the description that fits it best.
   "Question": "<p>Which statement correctly prints text to the console and then moves to a new line?</p>",
   "Options": [
     {
+      "Text": "<code>IO.println(\"Hello\");</code>",
+      "IsCorrect": true
+    },    
+    {
       "Text": "<code>System.out.println(\"Hello\");</code>",
       "IsCorrect": true
     },
@@ -95,7 +99,7 @@ Match each primitive type to the description that fits it best.
   ],
   "Shuffle": true,
   "Hint": "Look for the standard Java output call that ends with <code>ln</code>. See page 4 Print.",
-  "Explanation": "In Java you print with <code>System.out.println(...)</code>. The <code>ln</code> means the cursor moves to a new line after printing."
+  "Explanation": "In Java you print with <code>IO.println(...)</code>. The <code>ln</code> means the cursor moves to a new line after printing."
 }
 </Quiz>
 
@@ -265,7 +269,7 @@ Arrange the lines so the program declares a class with a `main` method, creates 
     { "Id": 1, "Content": "public class Example {" },
     { "Id": 2, "Content": "    public static void main(String[] args) {" },
     { "Id": 3, "Content": "        int number = 5;" },
-    { "Id": 4, "Content": "        System.out.println(number);" },
+    { "Id": 4, "Content": "        IO.println(number);" },
     { "Id": 5, "Content": "    }" },
     { "Id": 6, "Content": "}" }
   ]

@@ -4,7 +4,7 @@ Quite often, you will want to print something to the console. This is a good pla
 
 Towards the end, we will add an actual Graphical User Interface (GUI) to the programs we create.
 
-The command (method call) to print something to the console is `System.out.println( )`.
+The command (method call) to print something to the console is `IO.println( )`.
 
 Between the parentheses `( )` you can put any text you want to print.\
 Text is surrounded by double quotes `" "`. For example:
@@ -13,7 +13,15 @@ Text is surrounded by double quotes `" "`. For example:
 "Hello, World!"
 ```
 
-Each time you execute `System.out.println()`, it will print the text to the console and then move to a new line. If you do not provide any text between the parentheses, it will print an empty line.
+Each time you execute `IO.println()`, it will print the text to the console (or terminal) and then move to a new line. If you do not provide any text between the parentheses, it will print an empty line.
+
+## The old way
+
+Before Java 23, you would have to write the `System.out.println` method call like this:
+
+```java
+System.out.println("Hello, World!");
+```
 
 ## Exercise 1: Print a message
 
@@ -46,7 +54,7 @@ void main() {
 }
 ```
 
-Inside the `main` method body, use the `System.out.println` method to print "Hello, World!" to the console.
+Inside the `main` method body, use the `IO.println` method to print "Hello, World!" to the console.
 
 </hint>
 

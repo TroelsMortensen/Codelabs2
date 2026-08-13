@@ -25,8 +25,8 @@ Create a new class called `CommentsExample`. In this class, write a main method 
 
 ```java
 void main() {
-    System.out.println("Hello, World!"); 
-    System.out.println("Hello, People!"); 
+    IO.println("Hello, World!"); 
+    IO.println("Hello, People!"); 
 }
 ```
 
