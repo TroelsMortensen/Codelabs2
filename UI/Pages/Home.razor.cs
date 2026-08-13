@@ -22,7 +22,7 @@ public partial class Home : ComponentBase
                             [
                                 new LearningPath("String methods", "PRO1/Session 2 String methods"),
                                 new LearningPath("Console input", "PRO1/Session 2 Console Input"),
-                                new LearningPath("The Java Compiler", "PRO1/The Java Compiler"),
+                                new LearningPath("The Java Compiler", "PRO1/Uncategorized/The Java Compiler"),
                                 new LearningPath("IntelliJ shortcuts", "PRO1/IntelliJ Shortcuts 1"),
                                 new LearningPath("Extra exercises", "PRO1/Session 2 - live"),
                             ]
@@ -119,7 +119,7 @@ public partial class Home : ComponentBase
                         ),
                         new Session(18, "Robocode",
                             [
-                                new("Robocode documentation", "PRO1/Robocode") // TODO move to independent page
+                                new("Robocode documentation", "PRO1/Uncategorized/Robocode") // TODO move to independent page
                             ]
                         ),
                         new Session(19, "Introducing files",
@@ -129,14 +129,14 @@ public partial class Home : ComponentBase
                         ),
                         new Session(20, "Application design",
                             [
-                                new("Java documentation", "PRO1/Java Doc"),
-                                new("Automated testing", "PRO1/Automated testing"),
+                                new("Java documentation", "PRO1/Uncategorized/Java Doc"),
+                                new("Automated testing", "PRO1/Uncategorized/Automated testing"),
                                 new("Application design", "PRO1/Session 20 - Application design")
                             ]
                         ),
                         new Session(21, "JavaFX introduction",
                             [
-                                new("Lambdas and method references", "PRO1/Lambda expressions"),
+                                new("Lambdas and method references", "PRO1/Uncategorized/Lambda expressions"),
                                 new("Java FX introduction", "PRO1/Session 21 - JFX intro")
                             ]
                         ),
