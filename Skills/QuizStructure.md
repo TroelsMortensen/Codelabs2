@@ -40,7 +40,7 @@ The `Type` property is required and must be set to `SingleChoiceQuiz`.
 The `Question` property is required and must be set to a string, it can contain HTML.
 The `Options` property is required and must be set to an array of objects. Each object must have a `Text` property and a `IsCorrect` property. The `Text` property is the text of the option and can contain HTML. The `IsCorrect` property is a boolean indicating if the option is correct. There can only be one correct option. There can be any number of options.
 The `Shuffle` property is optional and is a boolean indicating if the options should be shuffled. If not set, the options will not be shuffled.
-The `Hint` property is optional and is a string containing a hint for the user. It can contain HTML.
+The `Hint` property is optional and is a string containing a hint for the user. It can contain HTML. The hint is shown only when the quiz is answered incorrectly.
 The `Explanation` property is optional and is a string containing an explanation for the user. It can contain HTML.
 
 ## Multiple Choice Quiz
@@ -83,7 +83,7 @@ The `Type` property is required and must be set to `MultipleChoiceQuiz`.
 The `Question` property is required and must be set to a string, it can contain HTML.
 The `Options` property is required and must be set to an array of objects. Each object must have a `Text` property and a `IsCorrect` property. The `Text` property is the text of the option and can contain HTML. The `IsCorrect` property is a boolean indicating if the option is correct. One or more options can be correct, unlike the Single Choice Quiz which allows exactly one. There can be any number of options.
 The `Shuffle` property is optional and is a boolean indicating if the options should be shuffled. If not set, the options will not be shuffled.
-The `Hint` property is optional and is a string containing a hint for the user. It can contain HTML.
+The `Hint` property is optional and is a string containing a hint for the user. It can contain HTML. The hint is shown only when the quiz is answered incorrectly.
 The `Explanation` property is optional and is a string containing an explanation for the user. It can contain HTML.
 
 ## Flash Card Set
@@ -216,7 +216,8 @@ Here is a custom Quiz element with example json data for a match pair quiz:
       "Prompt": "char",
       "Answer": "A single 16-bit Unicode character"
     }
-  ]
+  ],
+  "Hint": "Review the Java primitive types and what each one represents."
 }
 </Quiz>
 ```
@@ -224,6 +225,7 @@ Here is a custom Quiz element with example json data for a match pair quiz:
 The `Type` property is required and must be set to `MatchPair`.
 The `Title` property is required and must be a string displayed above the matching board. It can contain HTML.
 The `Pairs` property is required and must be an array of objects. Each object must have a `Prompt` property and an `Answer` property. Both are strings and can contain HTML. At least one pair is required. There can be any number of pairs.
+The `Hint` property is optional and is a string containing a hint for the user. It can contain HTML. The hint is shown only when the quiz is answered incorrectly.
 
 ## TrueFalseQuiz
 
@@ -248,7 +250,8 @@ Here is a custom Quiz element with example json data for a true/false quiz:
       "Text": "decimal is a floating-point type with binary precision only.",
       "IsCorrect": false
     }
-  ]
+  ],
+  "Hint": "Check each type’s size and how floating-point precision works."
 }
 </Quiz>
 ```
@@ -257,6 +260,7 @@ The `Type` property is required and must be set to `TrueFalseQuiz`.
 The `Statements` property is required and must be an array of objects.
 Each statement object must have a `Text` property and an `IsCorrect` property. The `Text` property is the statement shown to the user and can contain HTML. The `IsCorrect` property is a boolean that marks the expected answer (`true` means the statement is true, `false` means the statement is false).
 At least one statement is required. There can be any number of statements.
+The `Hint` property is optional and is a string containing a hint for the user. It can contain HTML. The hint is shown only when the quiz is answered incorrectly.
 
 ## ParsonsProblem
 
@@ -274,7 +278,8 @@ Here is a custom Quiz element with example json data for a Parsons problem:
     { "Id": 2, "Content": "    int result = a + b;" },
     { "Id": 3, "Content": "    return result;" },
     { "Id": 4, "Content": "}" }
-  ]
+  ],
+  "Hint": "A method starts with its signature, then the body statements, and ends with the closing brace."
 }
 </Quiz>
 ```
@@ -284,3 +289,4 @@ The `Question` property is required and must be a string shown above the line li
 The `Lines` property is required and must be an array of objects.
 Each line object must have an `Id` property and a `Content` property. The `Id` property is an integer used to define the intended correct order. The `Content` property is the displayed line text and can contain HTML.
 At least one line is required. There can be any number of lines.
+The `Hint` property is optional and is a string containing a hint for the user. It can contain HTML. The hint is shown only when the quiz is answered incorrectly.
