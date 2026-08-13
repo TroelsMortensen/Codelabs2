@@ -64,7 +64,7 @@ Match each primitive type to the description that fits it best.
     }
   ],
   "Shuffle": true,
-  "Hint": "Think about where the Java Virtual Machine begins running your code.",
+  "Hint": "Think about where the Java Virtual Machine begins running your code. See page 2 Main method.",
   "Explanation": "The <code>main</code> method is the entry point of a Java application. When you run the program, execution starts inside <code>main</code>."
 }
 </Quiz>
@@ -94,7 +94,7 @@ Match each primitive type to the description that fits it best.
     }
   ],
   "Shuffle": true,
-  "Hint": "Look for the standard Java output call that ends with <code>ln</code>.",
+  "Hint": "Look for the standard Java output call that ends with <code>ln</code>. See page 4 Print.",
   "Explanation": "In Java you print with <code>System.out.println(...)</code>. The <code>ln</code> means the cursor moves to a new line after printing."
 }
 </Quiz>
@@ -130,7 +130,7 @@ Select every option that follows common Java naming conventions.
     }
   ],
   "Shuffle": true,
-  "Hint": "Classes use PascalCase; variables and methods use camelCase.",
+  "Hint": "Classes use PascalCase; variables and methods use camelCase. See page 7 Naming.",
   "Explanation": "Classes are written in PascalCase (<code>MyClass</code>). Variables and methods use camelCase (<code>firstName</code>, <code>printHelloWorld</code>). <code>First_Name</code> and <code>myClass</code> do not follow those conventions."
 }
 </Quiz>
@@ -188,7 +188,7 @@ Decide whether each statement about variables, assignment, and scope is true or 
     }
   ],
   "Shuffle": true,
-  "Hint": "When both operands are integers, the decimal part is not kept.",
+  "Hint": "When both operands are integers, the decimal part is not kept. See page 10 Numbers.",
   "Explanation": "Integer division discards the fractional part (it truncates toward zero). So <code>10 / 3</code> is <code>3</code>, not <code>3.33</code> or <code>4</code>."
 }
 </Quiz>
@@ -218,7 +218,7 @@ Decide whether each statement about variables, assignment, and scope is true or 
     }
   ],
   "Shuffle": true,
-  "Hint": "A decimal literal without a suffix is treated as a <code>double</code>.",
+  "Hint": "A decimal literal without a suffix is treated as a <code>double</code>. See page 12 Declaring numbers.",
   "Explanation": "A floating-point literal like <code>3.14</code> is a <code>double</code> by default. To store it in a <code>float</code>, write <code>3.14f</code> (or <code>3.14F</code>). Likewise, large whole-number literals often need <code>L</code> for <code>long</code>."
 }
 </Quiz>
@@ -248,7 +248,7 @@ Decide whether each statement about variables, assignment, and scope is true or 
     }
   ],
   "Shuffle": true,
-  "Hint": "An explicit cast from <code>double</code> to <code>int</code> does not round.",
+  "Hint": "An explicit cast from <code>double</code> to <code>int</code> does not round. See page 13 Casting.",
   "Explanation": "Down-casting from <code>double</code> to <code>int</code> requires an explicit cast and truncates the fractional part. <code>(int) 5.7</code> becomes <code>5</code>, not <code>6</code>."
 }
 </Quiz>
@@ -303,7 +303,7 @@ Select every correct statement about characters, strings, and escape sequences.
     }
   ],
   "Shuffle": true,
-  "Hint": "Remember the difference between single quotes and double quotes, and how backslash escapes work.",
+  "Hint": "Remember the difference between single quotes and double quotes, and how backslash escapes work. See page 14 Char, page 15 Text, and page 16 Escape chars.",
   "Explanation": "<code>char</code> values use single quotes; <code>String</code> values use double quotes, so <code>\"A\"</code> and <code>'A'</code> are different types. Escape sequences like <code>\\n</code> and <code>\\\"</code> change how the string is printed or written."
 }
 </Quiz>
@@ -333,7 +333,7 @@ Select every correct statement about characters, strings, and escape sequences.
     }
   ],
   "Shuffle": true,
-  "Hint": "The <code>==</code> operator is for primitives; strings are objects.",
+  "Hint": "The <code>==</code> operator is for primitives; strings are objects. See page 20 String equality.",
   "Explanation": "For string content, always use <code>.equals()</code>. The <code>==</code> operator may appear to work sometimes because of string interning, but it is unreliable for comparing content."
 }
 </Quiz>
