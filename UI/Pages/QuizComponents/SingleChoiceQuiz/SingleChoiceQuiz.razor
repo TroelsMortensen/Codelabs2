@@ -36,14 +36,6 @@ else
             }
         </fieldset>
 
-        @if (!string.IsNullOrWhiteSpace(Data.Hint))
-        {
-            <details class="quiz-hint">
-                <summary>Hint</summary>
-                <p>@((MarkupString)Data.Hint)</p>
-            </details>
-        }
-
         @if (!_isChecked)
         {
             <button type="button"
@@ -65,6 +57,14 @@ else
                     <span><i class="fa fa-times-circle"></i> Not quite</span>
                 }
             </div>
+
+            @if (_wasCorrect == false && !string.IsNullOrWhiteSpace(Data.Hint))
+            {
+                <div class="quiz-hint">
+                    <i class="fa fa-lightbulb-o"></i>
+                    <div><strong>Hint:</strong> @((MarkupString)Data.Hint)</div>
+                </div>
+            }
 
             @if (!string.IsNullOrWhiteSpace(Data.Explanation))
             {
