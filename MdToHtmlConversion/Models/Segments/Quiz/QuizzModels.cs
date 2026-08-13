@@ -44,13 +44,15 @@ public record MatchPairItem(string Prompt, string Answer);
 
 public record MatchPairSegment(
     string Title,
-    List<MatchPairItem> Pairs
+    List<MatchPairItem> Pairs,
+    string? Hint = null
 ) : QuizSegment("MatchPair");
 
 public record TrueFalseStatement(string Text, bool IsCorrect);
 
 public record TrueFalseQuizSegment(
-    List<TrueFalseStatement> Statements
+    List<TrueFalseStatement> Statements,
+    string? Hint = null
 ) : QuizSegment("TrueFalseQuiz");
 
 public record ParsonsProblemSegment(

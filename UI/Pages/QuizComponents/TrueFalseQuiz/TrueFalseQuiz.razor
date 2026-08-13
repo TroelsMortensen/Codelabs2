@@ -65,6 +65,14 @@ else
                     <span><i class="fa fa-times-circle"></i> Not quite (@_correctCount/@Data.Statements.Count)</span>
                 }
             </div>
+
+            @if (!_allCorrect && !string.IsNullOrWhiteSpace(Data.Hint))
+            {
+                <div class="quiz-hint">
+                    <i class="fa fa-lightbulb-o"></i>
+                    <div><strong>Hint:</strong> @((MarkupString)Data.Hint)</div>
+                </div>
+            }
         }
     </div>
 }

@@ -91,6 +91,14 @@ else
                 }
             </div>
 
+            @if (_wasCorrect == false && !string.IsNullOrWhiteSpace(Data.Hint))
+            {
+                <div class="quiz-hint">
+                    <i class="fa fa-lightbulb-o"></i>
+                    <div><strong>Hint:</strong> @((MarkupString)Data.Hint)</div>
+                </div>
+            }
+
             @if (_wasCorrect == false)
             {
                 <button type="button"

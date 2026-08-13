@@ -22,6 +22,7 @@ public class TrueFalseQuizParserTests
         Assert.Equal(3, quizSegment.Statements.Count);
         Assert.Contains(quizSegment.Statements, s => s.Text.Contains("boolean") && s.IsCorrect);
         Assert.Contains(quizSegment.Statements, s => s.Text.Contains("char") && !s.IsCorrect);
+        Assert.Equal("Check each type’s size and how floating-point precision works.", quizSegment.Hint);
     }
 
     [Fact]
@@ -68,7 +69,8 @@ public class TrueFalseQuizParserTests
                                                    "Text": "decimal is a floating-point type with binary precision only.",
                                                    "IsCorrect": false
                                                  }
-                                               ]
+                                               ],
+                                               "Hint": "Check each type’s size and how floating-point precision works."
                                              }
                                              """;
 }

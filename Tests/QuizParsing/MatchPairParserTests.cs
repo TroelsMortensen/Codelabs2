@@ -23,6 +23,7 @@ public class MatchPairParserTests
         Assert.Equal(3, quizSegment.Pairs.Count);
         Assert.Contains(quizSegment.Pairs,
             p => p.Prompt == "int" && p.Answer == "A 32-bit signed integer");
+        Assert.Equal("Review the Java primitive types and what each one represents.", quizSegment.Hint);
     }
 
     [Fact]
@@ -70,7 +71,8 @@ public class MatchPairParserTests
                                                    "Prompt": "char",
                                                    "Answer": "A single 16-bit Unicode character"
                                                  }
-                                               ]
+                                               ],
+                                               "Hint": "Review the Java primitive types and what each one represents."
                                              }
                                              """;
 }
