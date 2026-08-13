@@ -23,6 +23,7 @@ public class ParsonsProblemParserTests
         Assert.Equal(4, quizSegment.Lines.Count);
         Assert.Contains(quizSegment.Lines, l => l.Id == 1 && l.Content.Contains("public int sum"));
         Assert.Contains(quizSegment.Lines, l => l.Id == 4 && l.Content == "}");
+        Assert.Equal("A method starts with its signature, then the body statements, and ends with the closing brace.", quizSegment.Hint);
     }
 
     [Fact]
@@ -62,7 +63,8 @@ public class ParsonsProblemParserTests
                                                  { "Id": 2, "Content": "    int result = a + b;" },
                                                  { "Id": 3, "Content": "    return result;" },
                                                  { "Id": 4, "Content": "}" }
-                                               ]
+                                               ],
+                                               "Hint": "A method starts with its signature, then the body statements, and ends with the closing brace."
                                              }
                                              """;
 }

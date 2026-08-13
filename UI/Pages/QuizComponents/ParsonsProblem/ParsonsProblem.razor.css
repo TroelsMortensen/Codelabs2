@@ -156,15 +156,40 @@
     margin-top: 0;
 }
 
+.quiz-hint {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 12px 20px 0;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background-color: #fff8e7;
+    border: 1px solid #f0d78c;
+    border-left: 4px solid #e6b422;
+    color: #333;
+    animation: quizFadeIn 0.3s ease 0.1s both;
+}
+
+.quiz-hint .fa {
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-size: 1.2rem;
+    color: #c4920a;
+}
+
 .quiz-result {
     display: flex;
     align-items: center;
-    margin: 4px 20px 20px;
+    margin: 4px 20px 0;
     padding: 14px 18px;
     border-radius: 10px;
     font-weight: bold;
     font-size: 1.05rem;
     animation: quizFadeIn 0.3s ease;
+}
+
+.quiz-result:last-child {
+    margin-bottom: 20px;
 }
 
 .quiz-result span {

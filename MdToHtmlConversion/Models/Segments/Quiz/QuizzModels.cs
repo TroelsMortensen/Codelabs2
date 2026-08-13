@@ -57,7 +57,8 @@ public record TrueFalseQuizSegment(
 
 public record ParsonsProblemSegment(
     string Question,
-    List<ParsonsProblemLine> Lines
+    List<ParsonsProblemLine> Lines,
+    string? Hint = null
 ) : QuizSegment("ParsonsProblem");
 
 public record ParsonsProblemLine(int Id, string Content);
