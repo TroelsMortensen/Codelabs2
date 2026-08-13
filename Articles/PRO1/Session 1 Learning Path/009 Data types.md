@@ -32,48 +32,7 @@ The following pages will introduce each type in detail, but for now, here is a b
 | `long`    | 64          | Large integer value, e.g., 100000L   |
 | `float`   | 32          | Single-precision floating-point, e.g., 3.14f |
 
-Flip each card to revise the primitive types from the table.
 
-<Quiz>
-{
-  "Type": "FlashCardSet",
-  "Title": "Primitive types",
-  "Cards": [
-    {
-      "Front": "int",
-      "Back": "32-bit integer, e.g. 42"
-    },
-    {
-      "Front": "double",
-      "Back": "64-bit floating-point number, e.g. 3.14"
-    },
-    {
-      "Front": "char",
-      "Back": "16-bit single character, e.g. 'A'"
-    },
-    {
-      "Front": "boolean",
-      "Back": "1-bit true or false value"
-    },
-    {
-      "Front": "byte",
-      "Back": "8-bit small integer, e.g. 100"
-    },
-    {
-      "Front": "short",
-      "Back": "16-bit small integer, e.g. 1000"
-    },
-    {
-      "Front": "long",
-      "Back": "64-bit large integer, e.g. 100000L"
-    },
-    {
-      "Front": "float",
-      "Back": "32-bit single-precision floating-point, e.g. 3.14f"
-    }
-  ]
-}
-</Quiz>
 
 Expand a type to see when you would use it.
 

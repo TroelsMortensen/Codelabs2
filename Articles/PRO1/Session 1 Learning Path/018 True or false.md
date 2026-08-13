@@ -36,8 +36,8 @@ Decide whether each proposition is true or false.
       "IsCorrect": false
     },
     {
-      "Text": "The character 'F' is a vowel.",
-      "IsCorrect": false
+      "Text": "The character 'F' is a consonant.",
+      "IsCorrect": true
     },
     {
       "Text": "The number 5 is even.",

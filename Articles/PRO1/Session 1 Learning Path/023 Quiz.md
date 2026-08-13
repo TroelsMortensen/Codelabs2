@@ -347,74 +347,31 @@ Decide whether each statement about operators is true or false.
   "Type": "TrueFalseQuiz",
   "Statements": [
     {
-      "Text": "For ints, the expression 5 == 5 evaluates to true.",
+      "Text": "For ints, the expression <code>5 == 5</code> evaluates to:",
       "IsCorrect": true
     },
     {
-      "Text": "The expression true && false evaluates to false.",
-      "IsCorrect": true
-    },
-    {
-      "Text": "The expression true || false evaluates to false.",
+      "Text": "The expression <code>true && false</code> evaluates to:",
       "IsCorrect": false
     },
     {
-      "Text": "The expression !false evaluates to true.",
+      "Text": "The expression <code>true || false</code> evaluates to:",
       "IsCorrect": true
     },
     {
-      "Text": "For ints a = 5 and b = 10, the expression a > b evaluates to true.",
+      "Text": "The expression <code>!false</code> evaluates to:",
+      "IsCorrect": true
+    },
+    {
+      "Text": "For ints a = 5 and b = 10, the expression <code>a > b</code> evaluates to:",
       "IsCorrect": false
     },
     {
-      "Text": "You should use == to compare the content of two String values.",
+      "Text": "You should use <code>==</code> to compare the content of two <code>String</code> values.",
       "IsCorrect": false
     }
   ]
 }
 </Quiz>
 
-## 13
 
-Flip each card to revise key facts from this learning path.
-
-<Quiz>
-{
-  "Type": "FlashCardSet",
-  "Title": "Session 1 Quick Revision",
-  "Cards": [
-    {
-      "Front": "What is the result of integer division 5 / 2?",
-      "Back": "2 (the fractional part is discarded)"
-    },
-    {
-      "Front": "How do you compare two Strings by content?",
-      "Back": "Use str1.equals(str2)"
-    },
-    {
-      "Front": "What literal suffix is needed for a float?",
-      "Back": "f or F (e.g. 3.14f)"
-    },
-    {
-      "Front": "char vs String quotes?",
-      "Back": "char uses 'A'; String uses \"A\""
-    },
-    {
-      "Front": "What does (int) 5.7 evaluate to?",
-      "Back": "5 (truncates, does not round)"
-    },
-    {
-      "Front": "What do &&, ||, and ! mean?",
-      "Back": "AND (both true), OR (at least one true), NOT (flips true/false)"
-    },
-    {
-      "Front": "How do you concatenate \"John\" and \"Doe\" with a space?",
-      "Back": "\"John\" + \" \" + \"Doe\""
-    },
-    {
-      "Front": "Class naming convention?",
-      "Back": "PascalCase (e.g. MyClass)"
-    }
-  ]
-}
-</Quiz>
