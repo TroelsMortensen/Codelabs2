@@ -35,5 +35,36 @@ In this example:
 - `double y = 3.14;` declares a variable `y` of type `double` and assigns it the value `3.14`.
 - `String name = "Alice";` declares a variable `name` of type `String` and assigns it the value `"Alice"`.
 
+Walk through those lines as a sequence: pick a type, name the box, put a value in, then use it.
+
+<Quiz>
+{
+    "Type": "StepGuide",
+    "Title": "Using a variable",
+    "Details": [
+        {
+            "Header": "A typed box",
+            "Content": "<p>A variable is a box that holds a value. The type decides what you are allowed to put in the box, like <code>int</code>, <code>double</code>, or <code>String</code> in the examples above.</p>"
+        },
+        {
+            "Header": "Choose a type",
+            "Content": "<p>Pick the type that matches the data. Use <code>int</code> for a whole number, <code>double</code> for a decimal number, or <code>String</code> for text.</p>"
+        },
+        {
+            "Header": "Declare a name",
+            "Content": "<p>Give the box a name, such as <code>x</code>, <code>y</code>, or <code>name</code>. That name is how you find the box later.</p>"
+        },
+        {
+            "Header": "Assign a value",
+            "Content": "<p>Use <code>=</code> to put a value into the box, for example <code>int x = 5;</code>. The type and name come before <code>=</code>, and the value comes after it.</p>"
+        },
+        {
+            "Header": "Use the value",
+            "Content": "<p>Once the box has a value, you can use the name to read it, for example by printing it. This filling of the box is called an <strong>assignment</strong>.</p>"
+        }
+    ]
+}
+</Quiz>
+
 We use the `=` operator to assign a value to a variable. Or, put a value into the box.\
 This is called an **assignment**. The variable type and name comes before the `=` sign, and the value comes after it. We assign the value to the variable.

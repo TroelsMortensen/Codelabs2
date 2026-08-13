@@ -40,6 +40,28 @@ If you remove the cast, i.e. `(int)`, you will get a compiler errror, that red s
 
 This is because converting from a larger type (like `double`) to a smaller type (like `int`) can potentially lose information, so Java requires you to explicitly state that you understand the risk of losing data.
 
+Open each item for a short recap of the three conversion ideas.
+
+<Quiz>
+{
+    "Type": "ExpandableDetails",
+    "Details": [
+        {
+            "Header": "Up-casting",
+            "Content": "<p>Converting a smaller type to a larger type, for example <code>int</code> to <code>double</code>. You can write <code>double myDouble = (double) myInt;</code>.</p>"
+        },
+        {
+            "Header": "Implicit conversion",
+            "Content": "<p>When no information is lost, Java can convert automatically. <code>double myDouble = myInt;</code> works without a cast, because <code>5</code> becomes <code>5.0</code>.</p>"
+        },
+        {
+            "Header": "Down-casting",
+            "Content": "<p>Converting a larger type to a smaller type, for example <code>double</code> to <code>int</code>. You must write an explicit cast, and the decimal part is discarded: <code>(int) 5.7</code> becomes <code>5</code>.</p>"
+        }
+    ]
+}
+</Quiz>
+
 ## Additional reading
 
 You can read more about casting [here](https://www.w3schools.com/java/java_type_casting.asp)

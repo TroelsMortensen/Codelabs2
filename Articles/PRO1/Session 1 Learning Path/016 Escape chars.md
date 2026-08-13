@@ -19,6 +19,37 @@ String newLine = "This is the first line.\nThis is the second line.";
 String tabbed = "This is a tab:\tTabbed text.";
 ``` 
 
+Flip each card to revise what the escape sequence does when the string is printed.
+
+<Quiz>
+{
+  "Type": "FlashCardSet",
+  "Title": "Escape sequences",
+  "Cards": [
+    {
+      "Front": "<code>\\\"</code>",
+      "Back": "Double quote, e.g. She said, \"Hello!\""
+    },
+    {
+      "Front": "<code>\\'</code>",
+      "Back": "Single quote"
+    },
+    {
+      "Front": "<code>\\\\</code>",
+      "Back": "Backslash, e.g. This is a backslash: \\"
+    },
+    {
+      "Front": "<code>\\n</code>",
+      "Back": "New line — the text after \\n continues on the next line"
+    },
+    {
+      "Front": "<code>\\t</code>",
+      "Back": "Tab — inserts extra horizontal space"
+    }
+  ]
+}
+</Quiz>
+
 ## Exercise - Escaped Characters Example
 Create a new class called `EscapedCharactersExample`. In this class, create a main method. Copy in the above code examples of escaped characters and print each `String` to the console.
 

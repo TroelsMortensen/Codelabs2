@@ -118,6 +118,40 @@ System.out.println("Result of !condition: " + result); // Prints false
 
 In the above code, the value of `result` is `false` because we negated `condition`, which was `true`.
 
+Each line is an expression. Mark whether it evaluates to true or false.
+
+<Quiz>
+{
+  "Type": "TrueFalseQuiz",
+  "Statements": [
+    {
+      "Text": "<code>true &amp;&amp; false</code>",
+      "IsCorrect": false
+    },
+    {
+      "Text": "<code>true || false</code>",
+      "IsCorrect": true
+    },
+    {
+      "Text": "<code>!true</code>",
+      "IsCorrect": false
+    },
+    {
+      "Text": "<code>true &amp;&amp; true</code>",
+      "IsCorrect": true
+    },
+    {
+      "Text": "<code>false || false</code>",
+      "IsCorrect": false
+    },
+    {
+      "Text": "<code>(5 &lt; 10) &amp;&amp; (10 &lt; 15)</code>",
+      "IsCorrect": true
+    }
+  ]
+}
+</Quiz>
+
 ## Exercise - Simple weather
 
 Create a class with a main method. In the main method, declare a boolean variable `theTemperatureIsNice`, and an integer variable `theTemperature`.

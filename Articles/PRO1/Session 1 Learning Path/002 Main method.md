@@ -27,6 +27,20 @@ You don't even need to declare the class!
 Between the curly braces `{..}` is where you will write the code that you want to execute when the program runs.\
 This part is called the **method body**.
 
+Arrange the lines of the classic `main` method. You will still see this form in older examples and videos.
+
+<Quiz>
+{
+  "Type": "ParsonsProblem",
+  "Question": "Arrange the lines to form the classic Java main method.",
+  "Lines": [
+    { "Id": 1, "Content": "public static void main(String[] args) {" },
+    { "Id": 2, "Content": "    // Your code here" },
+    { "Id": 3, "Content": "}" }
+  ],
+  "Hint": "The method signature comes first, then the body, then the closing brace."
+}
+</Quiz>
 
 A few important points about the `main` method, which may not all make sense yet:
 
@@ -44,21 +58,48 @@ Most of the following exercises will just be writing some code inside the `main`
 
 ## Running a main method
 
-In IntelliJ you can run a main method in several ways. The simplest is just clicking the green play button next to the `main` method declaration.
+Walk through the ways to run a `main` method in IntelliJ. Any of them is fine.
+
+<Quiz>
+{
+    "Type": "StepGuide",
+    "Title": "Running a main method in IntelliJ",
+    "Details": [
+        {
+            "Header": "Several ways to run",
+            "Content": "<p>In IntelliJ you can run a main method in several ways. There are even more than the three shown here, but these are enough to get started. It does not matter which you pick.</p>"
+        },
+        {
+            "Header": "Green play button",
+            "Content": "<p>The simplest is clicking the green play button next to the <code>main</code> method declaration.</p>"
+        },
+        {
+            "Header": "Right-click the file",
+            "Content": "<p>You can also right-click the file in the project window and select run.</p>"
+        },
+        {
+            "Header": "Dropdown at the top right",
+            "Content": "<p>Or you select a specific file (with a main method) in the dropdown at the top right, and then click the green play button.</p>"
+        },
+        {
+            "Header": "Watch the dropdown",
+            "Content": "<p>Be careful with the dropdown option. As you complete exercises, it will fill up with more and more main methods. It is a common mistake to forget to change the dropdown back to the main method you want to run, and thereby running the wrong code.</p>"
+        }
+    ]
+}
+</Quiz>
+
+The green play button next to `main`:
 
 ![Running main method](Resources/RunningTheMainMethod.png)
 
-You can also right click the file in the project window, and select run:
+Right-click the file in the project window:
 
-![Running main method](Resources/RightClickToRun.png).
+![Running main method](Resources/RightClickToRun.png)
 
-Or you select a specific file (with a main method) in the drop down at the top right, and then the green play button:
+The dropdown at the top right:
 
 ![Running main method](Resources/RunSelectedFile.png)
-
-Be careful with this last option. As you complete exercises, your dropdown will fill up with more and more main methods. It is a common mistake to forget to change the dropdown back to the main method you want to run, and thereby running the wrong code.
-
-There are even more ways, but now you have enough options. It does not matter which you pick.
 
 
 ## Video

@@ -25,6 +25,36 @@ For example:
 
 All these propositions can be evaluated to either true or false.
 
+Decide whether each proposition is true or false.
+
+<Quiz>
+{
+  "Type": "TrueFalseQuiz",
+  "Statements": [
+    {
+      "Text": "The text \"Hello\" is equal to \"World\".",
+      "IsCorrect": false
+    },
+    {
+      "Text": "The character 'F' is a vowel.",
+      "IsCorrect": false
+    },
+    {
+      "Text": "The number 5 is even.",
+      "IsCorrect": false
+    },
+    {
+      "Text": "The number 3 is greater than 10.",
+      "IsCorrect": false
+    },
+    {
+      "Text": "The text \"Java\" contains the letter 'a'.",
+      "IsCorrect": true
+    }
+  ]
+}
+</Quiz>
+
 In Java, we use the `boolean` type to represent these true or false values.\
 A `boolean` variable can hold one of two values: `true` or `false`. Here are some examples of declaring and using `boolean` variables:
 

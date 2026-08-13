@@ -52,3 +52,19 @@ System.out.println(x);
 ```
 
 Your error should now be gone, and the program should run successfully, printing `5` to the console.
+
+Arrange the lines so the program declares `x` before it uses it.
+
+<Quiz>
+{
+  "Type": "ParsonsProblem",
+  "Question": "Arrange the lines so the compiler can run this main method.",
+  "Lines": [
+    { "Id": 1, "Content": "void main() {" },
+    { "Id": 2, "Content": "    int x = 5;" },
+    { "Id": 3, "Content": "    System.out.println(x);" },
+    { "Id": 4, "Content": "}" }
+  ],
+  "Hint": "You cannot use x before it is declared."
+}
+</Quiz>

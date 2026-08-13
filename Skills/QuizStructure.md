@@ -4,7 +4,13 @@ In the learning paths (or articles), various types of quizzes can be used to tes
 
 These have a specific format in the markdown files. Below, the available quiz types are described.
 
-## Single Choice Quiz
+**Scored** quizzes let the reader submit an answer and receive a result: correct or failure. **Unscored** quizzes are interactive but do not grade the reader.
+
+## Scored Quizzes
+
+These quiz types require the reader to submit an answer. After submission, the reader is shown whether the answer was correct or incorrect.
+
+### Single Choice Quiz
 
 This is the most basic quiz type. It consists of a question and a list of options. The user can select only one option.
 
@@ -43,7 +49,7 @@ The `Shuffle` property is optional and is a boolean indicating if the options sh
 The `Hint` property is optional and is a string containing a hint for the user. It can contain HTML. The hint is shown only when the quiz is answered incorrectly.
 The `Explanation` property is optional and is a string containing an explanation for the user. It can contain HTML.
 
-## Multiple Choice Quiz
+### Multiple Choice Quiz
 
 This quiz type is similar to the Single Choice Quiz: it consists of a question and a list of options. The difference is that the user can select multiple options, and more than one option can be correct. The answer is only counted as correct when all correct options are selected and no incorrect options are selected.
 
@@ -86,7 +92,110 @@ The `Shuffle` property is optional and is a boolean indicating if the options sh
 The `Hint` property is optional and is a string containing a hint for the user. It can contain HTML. The hint is shown only when the quiz is answered incorrectly.
 The `Explanation` property is optional and is a string containing an explanation for the user. It can contain HTML.
 
-## Flash Card Set
+### MatchPair
+
+This quiz type presents a set of prompt/answer pairs that the user must match. Prompts appear in the left column and answers in the right column, both shuffled. The user selects a prompt and an answer to combine them into a pair. Paired items move to the bottom of the board and can be clicked to undo. When all pairs are made, the user can submit to check their answers.
+
+Here is a custom Quiz element with example json data for a match pair quiz:
+
+```html
+<Quiz>
+{
+  "Type": "MatchPair",
+  "Title": "Match the Java Concepts",
+  "Pairs": [
+    {
+      "Prompt": "int",
+      "Answer": "A 32-bit signed integer"
+    },
+    {
+      "Prompt": "boolean",
+      "Answer": "Represents true or false"
+    },
+    {
+      "Prompt": "char",
+      "Answer": "A single 16-bit Unicode character"
+    }
+  ],
+  "Hint": "Review the Java primitive types and what each one represents."
+}
+</Quiz>
+```
+
+The `Type` property is required and must be set to `MatchPair`.
+The `Title` property is required and must be a string displayed above the matching board. It can contain HTML.
+The `Pairs` property is required and must be an array of objects. Each object must have a `Prompt` property and an `Answer` property. Both are strings and can contain HTML. At least one pair is required. There can be any number of pairs.
+The `Hint` property is optional and is a string containing a hint for the user. It can contain HTML. The hint is shown only when the quiz is answered incorrectly.
+
+### TrueFalseQuiz
+
+This quiz type presents a set of statements. The user must choose whether each statement is true or false. The quiz is only submittable once all statements are answered, and results show which statements were correct or incorrect.
+
+Here is a custom Quiz element with example json data for a true/false quiz:
+
+```html
+<Quiz>
+{
+  "Type": "TrueFalseQuiz",
+  "Statements": [
+    {
+      "Text": "boolean represents true or false.",
+      "IsCorrect": true
+    },
+    {
+      "Text": "char is a single 16-bit Unicode character.",
+      "IsCorrect": false
+    },
+    {
+      "Text": "decimal is a floating-point type with binary precision only.",
+      "IsCorrect": false
+    }
+  ],
+  "Hint": "Check each type’s size and how floating-point precision works."
+}
+</Quiz>
+```
+
+The `Type` property is required and must be set to `TrueFalseQuiz`.
+The `Statements` property is required and must be an array of objects.
+Each statement object must have a `Text` property and an `IsCorrect` property. The `Text` property is the statement shown to the user and can contain HTML. The `IsCorrect` property is a boolean that marks the expected answer (`true` means the statement is true, `false` means the statement is false).
+At least one statement is required. There can be any number of statements.
+The `Hint` property is optional and is a string containing a hint for the user. It can contain HTML. The hint is shown only when the quiz is answered incorrectly.
+
+### ParsonsProblem
+
+This quiz type presents a shuffled list of lines. The user drags lines to reorder them in a single Solution area, then submits to check whether each line is in the correct position.
+
+Here is a custom Quiz element with example json data for a Parsons problem:
+
+```html
+<Quiz>
+{
+  "Type": "ParsonsProblem",
+  "Question": "Arrange the lines to create a valid Java method that returns the sum of two integers.",
+  "Lines": [
+    { "Id": 1, "Content": "public int sum(int a, int b) {" },
+    { "Id": 2, "Content": "    int result = a + b;" },
+    { "Id": 3, "Content": "    return result;" },
+    { "Id": 4, "Content": "}" }
+  ],
+  "Hint": "A method starts with its signature, then the body statements, and ends with the closing brace."
+}
+</Quiz>
+```
+
+The `Type` property is required and must be set to `ParsonsProblem`.
+The `Question` property is required and must be a string shown above the line list. It can contain HTML.
+The `Lines` property is required and must be an array of objects.
+Each line object must have an `Id` property and a `Content` property. The `Id` property is an integer used to define the intended correct order. The `Content` property is the displayed line text and can contain HTML.
+At least one line is required. There can be any number of lines.
+The `Hint` property is optional and is a string containing a hint for the user. It can contain HTML. The hint is shown only when the quiz is answered incorrectly.
+
+## Unscored Quizzes
+
+These quiz types are interactive learning aids. The reader can explore the content, but there is no submit step and no correct/incorrect result.
+
+### Flash Card Set
 
 This quiz type is a set of flash cards. Each card shows a question or phrase on the front; the user clicks the card to flip it and reveal the answer on the back. Cards are displayed in a responsive grid (three columns by default, fewer on narrower screens).
 
@@ -119,7 +228,7 @@ The `Type` property is required and must be set to `FlashCardSet`.
 The `Cards` property is required and must be set to an array of objects. Each object must have a `Front` property and a `Back` property. The `Front` property is the text shown on the front of the card and can contain HTML. The `Back` property is the text shown on the back of the card and can contain HTML. At least one card is required. There can be any number of cards, more than one.
 The `Title` property is optional and is a string displayed above the card grid. It can contain HTML.
 
-## Expandable Details
+### Expandable Details
 
 This type renders a stack of expandable detail rows. Each row has a header and hidden content that can be expanded by the user.
 
@@ -148,7 +257,7 @@ The `Details` property is required and must be an array of objects.
 Each detail object must have a `Header` property and a `Content` property. Both are strings and can contain HTML.
 At least one detail item is required. There can be any number of detail items.
 
-## StepGuide
+### StepGuide
 
 This type renders a guided, step-by-step information block. It includes a centered title and a sequence of details where each item has a header and content. The UI treats the first item as an introduction and the last item as a conclusion based on position.
 
@@ -191,102 +300,3 @@ The `Details` property is required and must be an array of objects.
 Each detail object must have a `Header` property and a `Content` property. Both are strings and can contain HTML.
 At least one detail item is required. There can be any number of detail items.
 The first and last detail items are not a different data shape. Their introduction/conclusion behavior is determined by their position in the list.
-
-## MatchPair
-
-This quiz type presents a set of prompt/answer pairs that the user must match. Prompts appear in the left column and answers in the right column, both shuffled. The user selects a prompt and an answer to combine them into a pair. Paired items move to the bottom of the board and can be clicked to undo. When all pairs are made, the user can submit to check their answers.
-
-Here is a custom Quiz element with example json data for a match pair quiz:
-
-```html
-<Quiz>
-{
-  "Type": "MatchPair",
-  "Title": "Match the Java Concepts",
-  "Pairs": [
-    {
-      "Prompt": "int",
-      "Answer": "A 32-bit signed integer"
-    },
-    {
-      "Prompt": "boolean",
-      "Answer": "Represents true or false"
-    },
-    {
-      "Prompt": "char",
-      "Answer": "A single 16-bit Unicode character"
-    }
-  ],
-  "Hint": "Review the Java primitive types and what each one represents."
-}
-</Quiz>
-```
-
-The `Type` property is required and must be set to `MatchPair`.
-The `Title` property is required and must be a string displayed above the matching board. It can contain HTML.
-The `Pairs` property is required and must be an array of objects. Each object must have a `Prompt` property and an `Answer` property. Both are strings and can contain HTML. At least one pair is required. There can be any number of pairs.
-The `Hint` property is optional and is a string containing a hint for the user. It can contain HTML. The hint is shown only when the quiz is answered incorrectly.
-
-## TrueFalseQuiz
-
-This quiz type presents a set of statements. The user must choose whether each statement is true or false. The quiz is only submittable once all statements are answered, and results show which statements were correct or incorrect.
-
-Here is a custom Quiz element with example json data for a true/false quiz:
-
-```html
-<Quiz>
-{
-  "Type": "TrueFalseQuiz",
-  "Statements": [
-    {
-      "Text": "boolean represents true or false.",
-      "IsCorrect": true
-    },
-    {
-      "Text": "char is a single 16-bit Unicode character.",
-      "IsCorrect": false
-    },
-    {
-      "Text": "decimal is a floating-point type with binary precision only.",
-      "IsCorrect": false
-    }
-  ],
-  "Hint": "Check each type’s size and how floating-point precision works."
-}
-</Quiz>
-```
-
-The `Type` property is required and must be set to `TrueFalseQuiz`.
-The `Statements` property is required and must be an array of objects.
-Each statement object must have a `Text` property and an `IsCorrect` property. The `Text` property is the statement shown to the user and can contain HTML. The `IsCorrect` property is a boolean that marks the expected answer (`true` means the statement is true, `false` means the statement is false).
-At least one statement is required. There can be any number of statements.
-The `Hint` property is optional and is a string containing a hint for the user. It can contain HTML. The hint is shown only when the quiz is answered incorrectly.
-
-## ParsonsProblem
-
-This quiz type presents a shuffled list of lines. The user drags lines to reorder them in a single Solution area, then submits to check whether each line is in the correct position.
-
-Here is a custom Quiz element with example json data for a Parsons problem:
-
-```html
-<Quiz>
-{
-  "Type": "ParsonsProblem",
-  "Question": "Arrange the lines to create a valid Java method that returns the sum of two integers.",
-  "Lines": [
-    { "Id": 1, "Content": "public int sum(int a, int b) {" },
-    { "Id": 2, "Content": "    int result = a + b;" },
-    { "Id": 3, "Content": "    return result;" },
-    { "Id": 4, "Content": "}" }
-  ],
-  "Hint": "A method starts with its signature, then the body statements, and ends with the closing brace."
-}
-</Quiz>
-```
-
-The `Type` property is required and must be set to `ParsonsProblem`.
-The `Question` property is required and must be a string shown above the line list. It can contain HTML.
-The `Lines` property is required and must be an array of objects.
-Each line object must have an `Id` property and a `Content` property. The `Id` property is an integer used to define the intended correct order. The `Content` property is the displayed line text and can contain HTML.
-At least one line is required. There can be any number of lines.
-The `Hint` property is optional and is a string containing a hint for the user. It can contain HTML. The hint is shown only when the quiz is answered incorrectly.

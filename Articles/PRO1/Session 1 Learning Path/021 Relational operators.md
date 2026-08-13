@@ -24,6 +24,36 @@ Again, parentheses are used for clarity, but they are not strictly necessary in 
 
 You can use these operators on number types, such as `int`, `double`, and `float`. 
 
+Decide whether each expression evaluates to true or false.
+
+<Quiz>
+{
+  "Type": "TrueFalseQuiz",
+  "Statements": [
+    {
+      "Text": "<code>5 &gt; 10</code>",
+      "IsCorrect": false
+    },
+    {
+      "Text": "<code>5 &lt; 10</code>",
+      "IsCorrect": true
+    },
+    {
+      "Text": "<code>18 &gt;= 18</code>",
+      "IsCorrect": true
+    },
+    {
+      "Text": "<code>17 &gt;= 18</code>",
+      "IsCorrect": false
+    },
+    {
+      "Text": "<code>19 &lt;= 18</code>",
+      "IsCorrect": false
+    }
+  ]
+}
+</Quiz>
+
 ## Exercise - Can you vote?
 
 Create a class with a main method. In the main method, declare three integer values:

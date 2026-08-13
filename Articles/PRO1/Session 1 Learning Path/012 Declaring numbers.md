@@ -23,6 +23,34 @@ If you forget, you will get an error from the Java compiler:
 
 Notice the red squiggly line, indicating an error in your program. When you mouse over the error, it will show you a tool tip, explaining the problem.
 
+Match each number literal to the type it represents.
+
+<Quiz>
+{
+  "Type": "MatchPair",
+  "Title": "Match the number literal to its type",
+  "Pairs": [
+    {
+      "Prompt": "3",
+      "Answer": "int"
+    },
+    {
+      "Prompt": "3L",
+      "Answer": "long"
+    },
+    {
+      "Prompt": "3.0",
+      "Answer": "double"
+    },
+    {
+      "Prompt": "3.0f",
+      "Answer": "float"
+    }
+  ],
+  "Hint": "Unsuffixed whole numbers are int. L means long, a decimal is double, and f means float."
+}
+</Quiz>
+
 
 
 
