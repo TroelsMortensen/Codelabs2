@@ -25,6 +25,34 @@ String name;    // Declaration
 name = "Alice"; // Assignment
 ```
 
+<Quiz>
+{
+  "Type": "SingleChoiceQuiz",
+  "Question": "<p>In <code>int x = 5;</code>, what is <code>int x</code>?</p>",
+  "Options": [
+    {
+      "Text": "The declaration",
+      "IsCorrect": true
+    },
+    {
+      "Text": "The assignment",
+      "IsCorrect": false
+    },
+    {
+      "Text": "A method call",
+      "IsCorrect": false
+    },
+    {
+      "Text": "The default value",
+      "IsCorrect": false
+    }
+  ],
+  "Shuffle": true,
+  "Hint": "The page splits the line into two operations.",
+  "Explanation": "<code>int x</code> is the declaration. <code>= 5</code> is the assignment."
+}
+</Quiz>
+
 In rare cases it can be useful to declare a variable without assigning a value immediately. In that case, the variable will have a **default** value based on its type. 
 
 Generally, we want to avoid these rare cases, as they are error-prone and can lead to unexpected behavior. But sometimes they cannot be avoided.

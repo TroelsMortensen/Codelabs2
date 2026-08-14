@@ -49,3 +49,39 @@ long defaultLong = 0L;          // Default value for long
 float defaultFloat = 0.0f;      // Default value for float
 ```
 </hint>
+
+Match each primitive type to the default value you saw.
+
+<Quiz>
+{
+  "Type": "MatchPair",
+  "Title": "Match each primitive to its default",
+  "Pairs": [
+    {
+      "Prompt": "<code>int</code>",
+      "Answer": "<code>0</code>"
+    },
+    {
+      "Prompt": "<code>double</code>",
+      "Answer": "<code>0.0</code>"
+    },
+    {
+      "Prompt": "<code>boolean</code>",
+      "Answer": "<code>false</code>"
+    },
+    {
+      "Prompt": "<code>char</code>",
+      "Answer": "<code>'\\u0000'</code> (null character)"
+    },
+    {
+      "Prompt": "<code>long</code>",
+      "Answer": "<code>0L</code>"
+    },
+    {
+      "Prompt": "<code>float</code>",
+      "Answer": "<code>0.0f</code>"
+    }
+  ],
+  "Hint": "Whole-number types go to zero; <code>boolean</code> is the odd one out; <code>char</code> is not a space. These are the defaults for the variables you declared in the class."
+}
+</Quiz>

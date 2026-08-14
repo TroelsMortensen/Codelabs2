@@ -46,6 +46,61 @@ Notice "Large Jar of weird stuff!" is in the backpack (a separate place in your 
 
 So, if you don't assign a value to a reference type variable, it will point to `null`, meaning it doesn't point to any object in memory. You have a note, but it doesn't tell you where to find anything.
 
+Flip each card to recap where values live.
+
+<Quiz>
+{
+  "Type": "FlashCardSet",
+  "Title": "Belt and backpack",
+  "Cards": [
+    {
+      "Front": "Where is a primitive value stored?",
+      "Back": "Directly in the variable — a slot on your utility belt."
+    },
+    {
+      "Front": "What does a reference variable hold?",
+      "Back": "A note that says where to find the object in the backpack."
+    },
+    {
+      "Front": "Where is the actual String text stored?",
+      "Back": "In the backpack — a separate place in memory, not in the variable itself."
+    },
+    {
+      "Front": "What does an unassigned reference point to?",
+      "Back": "Nothing. The note points to <code>null</code>."
+    }
+  ]
+}
+</Quiz>
+
+Match each idea to where it belongs in memory.
+
+<Quiz>
+{
+  "Type": "MatchPair",
+  "Title": "Match the memory idea",
+  "Pairs": [
+    {
+      "Prompt": "Primitive type",
+      "Answer": "Value stored in the variable"
+    },
+    {
+      "Prompt": "Reference type",
+      "Answer": "Note or address of an object"
+    },
+    {
+      "Prompt": "<code>null</code>",
+      "Answer": "No object yet"
+    },
+    {
+      "Prompt": "<code>String</code> object",
+      "Answer": "Stored separately (backpack)"
+    }
+  ],
+  "Hint": "The belt holds the variable. Primitives put the value there. References put a note there, and the object lives in the backpack."
+}
+</Quiz>
+
 This is a _very_ simplified explanation. There are more involved, with heaps and stacks.
 
 You may optionally read more [here](https://www.baeldung.com/java-stack-heap).

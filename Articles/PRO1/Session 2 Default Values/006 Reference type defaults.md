@@ -13,6 +13,34 @@ This means you have a variable (or reference) that does not point to any actual 
 
 Your note says you could have a "Large Jar of weird stuff!", but you currently don't have that jar in your backpack. You just have the note, and it points to nothing (`null`).
 
+<Quiz>
+{
+  "Type": "SingleChoiceQuiz",
+  "Question": "<p>What is the default value of an unassigned <code>String</code> variable?</p>",
+  "Options": [
+    {
+      "Text": "<code>null</code>",
+      "IsCorrect": true
+    },
+    {
+      "Text": "<code>\"\"</code>",
+      "IsCorrect": false
+    },
+    {
+      "Text": "<code>\"null\"</code>",
+      "IsCorrect": false
+    },
+    {
+      "Text": "<code>0</code>",
+      "IsCorrect": false
+    }
+  ],
+  "Shuffle": true,
+  "Hint": "The variable is a note that does not point anywhere yet.",
+  "Explanation": "Unassigned reference types are <code>null</code>. Printing them shows the text <code>null</code>; that is not the same as an empty string."
+}
+</Quiz>
+
 ### Exercise: Reference Type Default Values
 
 Create a new class, for example, `ReferenceDefaults`, and declare a string variable without assigning it a value.\
@@ -75,3 +103,92 @@ This is what my console looks like:
 
 We can see the blue text indicating the problem occured in the `main` method, line 11.\
 It also says we cannot call the method `equals` on a variable that is `null`.
+
+Walk through why that call crashed.
+
+<Quiz>
+{
+    "Type": "StepGuide",
+    "Title": "Calling a method on null",
+    "Details": [
+        {
+            "Header": "You called a method on nothing",
+            "Content": "<p>The crash happened because <code>.equals()</code> was called on a variable that did not point to an object.</p>"
+        },
+        {
+            "Header": "<code>myString = null</code>",
+            "Content": "<p>The note points nowhere. <code>myString</code> does not refer to any <code>String</code> in memory.</p>"
+        },
+        {
+            "Header": "<code>.equals(...)</code> needs an object",
+            "Content": "<p>To call a method, Java must find the object and run the method on it. There is no object here.</p>"
+        },
+        {
+            "Header": "Java cannot call a method on nothing",
+            "Content": "<p>That is a <code>NullPointerException</code>. The program stops at the call site.</p>"
+        },
+        {
+            "Header": "Printing null is fine",
+            "Content": "<p>Printing a <code>null</code> variable writes the text <code>null</code> and does not crash. Calling a method on it does.</p>"
+        }
+    ]
+}
+</Quiz>
+
+<Quiz>
+{
+  "Type": "SingleChoiceQuiz",
+  "Question": "<p>Why does <code>myString.equals(otherString)</code> throw <code>NullPointerException</code>?</p>",
+  "Options": [
+    {
+      "Text": "<code>myString</code> is <code>null</code>, so there is no object to call <code>.equals()</code> on.",
+      "IsCorrect": true
+    },
+    {
+      "Text": "<code>otherString</code> is empty.",
+      "IsCorrect": false
+    },
+    {
+      "Text": "<code>.equals()</code> cannot compare strings.",
+      "IsCorrect": false
+    },
+    {
+      "Text": "<code>==</code> should have been used instead.",
+      "IsCorrect": false
+    }
+  ],
+  "Shuffle": true,
+  "Hint": "Look at which variable you called the method on.",
+  "Explanation": "The method is invoked on <code>myString</code>. That variable is <code>null</code>, so there is no object. <code>otherString</code> is a normal string and is not the problem."
+}
+</Quiz>
+
+Select every action that can cause a `NullPointerException`.
+
+<Quiz>
+{
+  "Type": "MultipleChoiceQuiz",
+  "Question": "<p>Which of the following can cause a <code>NullPointerException</code>?</p>",
+  "Options": [
+    {
+      "Text": "Calling a method on a variable that is <code>null</code>.",
+      "IsCorrect": true
+    },
+    {
+      "Text": "Comparing two strings with <code>==</code>.",
+      "IsCorrect": false
+    },
+    {
+      "Text": "Printing a <code>null</code> <code>String</code> with <code>System.out.println</code>.",
+      "IsCorrect": false
+    },
+    {
+      "Text": "Assigning <code>null</code> and then calling <code>.equals()</code> on that variable.",
+      "IsCorrect": true
+    }
+  ],
+  "Shuffle": true,
+  "Hint": "Printing <code>null</code> is allowed. The crash happens when you try to do something <em>with</em> the missing object.",
+  "Explanation": "A <code>NullPointerException</code> happens when you call a method on <code>null</code>, including after you assign <code>null</code> yourself. Printing <code>null</code> only writes the text <code>null</code>. Using <code>==</code> on two strings does not throw this exception."
+}
+</Quiz>
