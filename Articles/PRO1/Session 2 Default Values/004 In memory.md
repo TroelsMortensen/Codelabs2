@@ -73,33 +73,6 @@ Flip each card to recap where values live.
 }
 </Quiz>
 
-Match each idea to where it belongs in memory.
-
-<Quiz>
-{
-  "Type": "MatchPair",
-  "Title": "Match the memory idea",
-  "Pairs": [
-    {
-      "Prompt": "Primitive type",
-      "Answer": "Value stored in the variable"
-    },
-    {
-      "Prompt": "Reference type",
-      "Answer": "Note or address of an object"
-    },
-    {
-      "Prompt": "<code>null</code>",
-      "Answer": "No object yet"
-    },
-    {
-      "Prompt": "<code>String</code> object",
-      "Answer": "Stored separately (backpack)"
-    }
-  ],
-  "Hint": "The belt holds the variable. Primitives put the value there. References put a note there, and the object lives in the backpack."
-}
-</Quiz>
 
 This is a _very_ simplified explanation. There are more involved, with heaps and stacks.
 

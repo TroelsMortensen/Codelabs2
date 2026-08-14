@@ -2,44 +2,6 @@
 
 Test your understanding of this learning path: the two type categories, declaration and assignment, how values sit in memory, primitive and reference defaults, string comparison, and `NullPointerException`.
 
-## 1
-
-Match each primitive type to its default value.
-
-<Quiz>
-{
-  "Type": "MatchPair",
-  "Title": "Match each primitive to its default value",
-  "Pairs": [
-    {
-      "Prompt": "<code>int</code>",
-      "Answer": "<code>0</code>"
-    },
-    {
-      "Prompt": "<code>double</code>",
-      "Answer": "<code>0.0</code>"
-    },
-    {
-      "Prompt": "<code>boolean</code>",
-      "Answer": "<code>false</code>"
-    },
-    {
-      "Prompt": "<code>char</code>",
-      "Answer": "<code>'\\u0000'</code> (null character)"
-    },
-    {
-      "Prompt": "<code>long</code>",
-      "Answer": "<code>0L</code>"
-    },
-    {
-      "Prompt": "<code>float</code>",
-      "Answer": "<code>0.0f</code>"
-    }
-  ],
-  "Hint": "Whole-number types go to zero; <code>boolean</code> is the odd one out; <code>char</code> is not a space. See page 5 Primitive defaults."
-}
-</Quiz>
-
 ## 2
 
 <Quiz>
@@ -207,35 +169,5 @@ Arrange the lines so the program declares `x`, assigns a value, then prints it.
     { "Id": 5, "Content": "}" }
   ],
   "Hint": "Declare first, then assign, then use the variable. See page 3 Declaration and assignment."
-}
-</Quiz>
-
-## 8
-
-<Quiz>
-{
-  "Type": "SingleChoiceQuiz",
-  "Question": "<p>What went wrong when <code>myString</code> is <code>null</code> and the program runs <code>myString.equals(otherString)</code>?</p>",
-  "Options": [
-    {
-      "Text": "You tried to call a method on nothing.",
-      "IsCorrect": true
-    },
-    {
-      "Text": "Java cannot print the word <code>null</code>.",
-      "IsCorrect": false
-    },
-    {
-      "Text": "<code>otherString</code> has the wrong type.",
-      "IsCorrect": false
-    },
-    {
-      "Text": "<code>.equals()</code> only works if you also use <code>==</code>.",
-      "IsCorrect": false
-    }
-  ],
-  "Shuffle": true,
-  "Hint": "The method is called on <code>myString</code>. See page 6 Null pointer exception.",
-  "Explanation": "You tried to do something with nothing. <code>myString</code> does not point to an object, so Java cannot call <code>.equals()</code> on it. Printing <code>null</code> would have been fine."
 }
 </Quiz>
