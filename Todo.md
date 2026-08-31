@@ -26,7 +26,7 @@
 * Link to specific section id, så page scroller ned?
 * Auto generated section numbers
 * Mouse over learningpath step on the left should show the entire title in a tooltip, in case it is too long
-* Sådan nogle exclamatuon boxes som i Michaels github pages ting. 
+* Sådan nogle exclamatuon boxes som i Michaels github pages ting.
 
 Kan jeg have tre css
 Basic til alt fælles. 

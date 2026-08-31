@@ -17,7 +17,31 @@ long myLong;
 float myFloat;
 ```
 
-Now, create a new class, for example, `PrimitiveDefaults`, and declare variables of each primitive type without assigning them a value. Then print these variables to see their default values.
+Unassigned variables can only be used, if they are _field variables_, otherwise the compiler will not allow you to do anything with them. So, for this exercise, we have to use "fields". These are covered later in the course, so don't despair just yet.
+
+Now, create a new class, for example, `PrimitiveDefaults`, and declare variables of each primitive type without assigning them a value. 
+
+It will look something like this:
+
+```java
+void main()
+{
+    // code here
+}
+
+int myInt;
+double myDouble;
+boolean myBoolean;
+char myChar;
+byte myByte;
+short myShort;
+long myLong;
+float myFloat;
+```
+
+Notice, how the variables are defined _outside_ the scope of the main method, upgrading them from _local_ variables to _field_ variables. You should now be able to print them out from the main method.
+
+Print these variables to see their default values.
 
 I suggest a comment for each variable to indicate its type and default value. Like:
 ```java	
@@ -29,14 +53,7 @@ Inspect the output to see the default values for each primitive type.
 
 <hint title="Solution">
 
-
-```java
-int myNumber; // Declaration without assignment
-System.out.println(myNumber); // This will print 0, the default value for int
-
-boolean myBoolean; // Declaration without assignment
-System.out.println(myBoolean); // This will print false, the default value for boolean
-```
+The result:
 
 ```java
 int defaultInt = 0;             // Default value for int
