@@ -45,7 +45,7 @@ Print these variables to see their default values.
 
 I suggest a comment for each variable to indicate its type and default value. Like:
 ```java	
-System.out.println("Default value for int: " + myInt);
+IO.println("Default value for int: " + myInt);
 ```
 
 Inspect the output to see the default values for each primitive type.
