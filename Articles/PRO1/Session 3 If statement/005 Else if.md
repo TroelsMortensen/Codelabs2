@@ -162,7 +162,8 @@ Write a program that asks the user to enter their exam score. Use an if-else-if-
 - "F" for scores below 60
 
 Example Output:
-```
+
+```console
 Enter your score:
 85
 Your grade is: B
