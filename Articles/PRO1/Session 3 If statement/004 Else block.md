@@ -12,13 +12,13 @@ Watch the video below to learn how to use the `else` block in Java.
 Write a program that asks the user to enter their exam score. Use an if-else statement to print "You passed" if the score is 50 or higher, and "You failed" otherwise.
 
 Example Output:
-```
+```console
 Enter your score:
 45
 You failed
 ```
 
-```
+```console
 Enter your score:
 75
 You passed
