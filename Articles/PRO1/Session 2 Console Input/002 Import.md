@@ -1,8 +1,6 @@
 # Importing packages
 
-This page is more or less deprecated after Java 26, as they have simplified how to read from the console. I will keep it, though, as you may encounter this code in several examples, and should therefore know about it.
 
-Page 5 will show the newer approach.
 
 Picture the following scenario:\
 Yyou are working on a project in your garden. You have a garden shed where you keep all your tools. You have _a lot_ of tools.\
