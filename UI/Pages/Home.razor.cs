@@ -36,7 +36,7 @@ public partial class Home : ComponentBase
                         ),
                         new Session(4, "Switch-statement",
                             [
-                                new("Enums", "Session 4 Enums"),
+                                new("Enums", "PRO1/Session 4 Enums"),
                                 new("The switch statement", "PRO1/Session 4 Switch statement")
                             ]
                         ),
