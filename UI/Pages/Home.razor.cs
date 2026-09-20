@@ -52,10 +52,15 @@ public partial class Home : ComponentBase
                                 new("Arrays", "PRO1/Session 6 Arrays")
                             ]
                         ),
+                        new Session(7, "Functions and Records",
+                            [
+                                new("Records", "PRO1/Uncategorized/Records"),
+                                new("Java Functions", "PRO1/Uncategorized/Java Functions")
+                            ]
+                        ),
                         new Session(7, "Lists",
                             [
-                                new("ArrayList", "PRO1/Session 7 List"),
-                                new("Records", "PRO1/Uncategorized/Records")
+                                new("ArrayList", "PRO1/Session 7 List")
                             ]
                         ),
                         new Session(8, "Introducing Objects",
