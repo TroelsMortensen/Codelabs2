@@ -38,6 +38,7 @@ Given this record:
 
 ```java
 record Book(String title, String author, int year) {}
+
 Book book = new Book("The Hobbit", "J.R.R. Tolkien", 1937);
 ```
 

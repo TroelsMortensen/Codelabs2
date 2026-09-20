@@ -5,11 +5,13 @@ Once you have created a record, you can read each field by using its name follow
 ```java
 record Book(String title, String author, int year) {}
 
-Book book = new Book("The Hobbit", "J.R.R. Tolkien", 1937);
+void main() {
+    Book book = new Book("The Hobbit", "J.R.R. Tolkien", 1937);
 
-System.out.println(book.title());   // The Hobbit
-System.out.println(book.author());  // J.R.R. Tolkien
-System.out.println(book.year());    // 1937
+    IO.println(book.title());   // The Hobbit
+    IO.println(book.author());  // J.R.R. Tolkien
+    IO.println(book.year());    // 1937
+}
 ```
 
 The name of the field is also the name you use to read it:

@@ -7,9 +7,10 @@ When you print a record, Java shows its contents in a readable way:
 ```java
 record Book(String title, String author, int year) {}
 
-Book book = new Book("The Hobbit", "J.R.R. Tolkien", 1937);
-
-System.out.println(book);
+void main() {
+    Book book = new Book("The Hobbit", "J.R.R. Tolkien", 1937);
+    IO.println(book);
+}
 ```
 
 Typical output:
@@ -22,7 +23,7 @@ You see the record name and each field with its value. That makes it easy to che
 
 ## Comparing records
 
-Two records with the **same field values** count as equal. Different values mean they are not equal.
+Two records with the **same field _values_** count as equal. Different values mean they are not equal.
 
 ```java
 Book book1 = new Book("The Hobbit", "J.R.R. Tolkien", 1937);
