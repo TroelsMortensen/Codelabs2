@@ -35,4 +35,4 @@ if (book.year() < 1950)
 
 You **read** values from a record. You do not change them after the record has been created.
 
-In the next page, you will see what happens when you print a record, and how two records can be compared.
+In the next page, you will see what to do when you need different values — by creating a new record.

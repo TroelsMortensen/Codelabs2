@@ -93,9 +93,13 @@ Decide whether each statement is true or false.
     {
       "Text": "Two records with the same field values count as equal.",
       "IsCorrect": true
+    },
+    {
+      "Text": "To change a value, you create a new record using values from the old one.",
+      "IsCorrect": true
     }
   ],
-  "Hint": "Review pages 2–4: order matters when creating, contents stay as given, accessors use the field name, and equals compares field values."
+  "Hint": "Review pages 2–5: order matters when creating, contents stay as given, accessors use the field name, changing means creating a new record, and equals compares field values."
 }
 </Quiz>
 
@@ -113,5 +117,43 @@ Arrange the lines so the program declares a `Book` record, creates one, and prin
     { "Id": 3, "Content": "System.out.println(book.title());" }
   ],
   "Hint": "First declare the record, then create one with new, then read the title with book.title()."
+}
+</Quiz>
+
+## 5
+
+Given this record:
+
+```java
+record Book(String title, String author, int year) {}
+
+Book book = new Book("The Hobbit", "J.R.R. Tolkien", 1937);
+```
+
+<Quiz>
+{
+  "Type": "SingleChoiceQuiz",
+  "Question": "<p>How do you get a version of <code>book</code> with year <code>1938</code>?</p>",
+  "Options": [
+    {
+      "Text": "<code>new Book(book.title(), book.author(), 1938)</code>",
+      "IsCorrect": true
+    },
+    {
+      "Text": "<code>book.year() = 1938</code>",
+      "IsCorrect": false
+    },
+    {
+      "Text": "<code>book.year(1938)</code>",
+      "IsCorrect": false
+    },
+    {
+      "Text": "<code>book.year = 1938</code>",
+      "IsCorrect": false
+    }
+  ],
+  "Shuffle": true,
+  "Hint": "See page 4 Changing a Value — you cannot change fields; create a new record and reuse values from the old one.",
+  "Explanation": "Records cannot be changed after creation. You create a new Book, copy title and author from the existing one, and pass the new year."
 }
 </Quiz>
