@@ -54,7 +54,8 @@ public partial class Home : ComponentBase
                         ),
                         new Session(7, "Lists",
                             [
-                                new("ArrayList", "PRO1/Session 7 List")
+                                new("ArrayList", "PRO1/Session 7 List"),
+                                new("Records", "PRO1/Uncategorized/Records")
                             ]
                         ),
                         new Session(8, "Introducing Objects",
