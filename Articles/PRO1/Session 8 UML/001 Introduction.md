@@ -4,7 +4,7 @@ This learning path introduces UML (Unified Modeling Language), and how to use it
 
 I will have a different article combining all the UML concepts, and how to use them in Astah, so that everything is in one place.
 
-[UML overview](https://troelsmortensen.github.io/Codelabs2/article/TroelsMortensen/UML%20Class%20Diagrams)
+[UML overview](https://troelsmortensen.github.io/Codelabs2/article/TroelsMortensen/UML%2FDesign%20artefacts%2FClass%20Diagrams)
 
 ## Conceptual
 
