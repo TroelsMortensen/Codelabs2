@@ -65,28 +65,4 @@ For one-to-one we conventionally leave out the multiplicity (no `1` needed).
 | `*` at arrow head | Many instances |
 | One-way vs two-way | One field vs fields on both sides |
 
-<Quiz>
-{
-  "Type": "MatchPair",
-  "Title": "Match the UML Elements",
-  "Pairs": [
-    {
-      "Prompt": "Solid open arrow (-->)",
-      "Answer": "Association"
-    },
-    {
-      "Prompt": "Arrow points to Address",
-      "Answer": "Person has a field of type Address"
-    },
-    {
-      "Prompt": "* at the arrow head",
-      "Answer": "One-to-many multiplicity"
-    },
-    {
-      "Prompt": "Arrows in both directions",
-      "Answer": "Bidirectional association"
-    }
-  ],
-  "Hint": "Review the direction and multiplicity sections on this page."
-}
-</Quiz>
+

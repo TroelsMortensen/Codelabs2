@@ -16,7 +16,7 @@ Watch the following video for an overview of the association relationship:
 
 - **Loose coupling**: Objects can exist independently
 - **Bidirectional or unidirectional**: Objects can reference each other (though one-way is more common)
-- **No ownership**: Neither object owns the other
+- **No ownership**: Neither object _owns_ the other
 - **Flexible**: Objects can be created and destroyed independently
 
 ## How association works in Java
@@ -24,6 +24,17 @@ Watch the following video for an overview of the association relationship:
 Association is implemented by having a field variable of the first class which is an instance of the second class.
 
 Class `A` has a field variable `b` of type `B`. So `A` has an association with `B`.
+
+```java
+public class A
+{
+    private B b; // association with B
+}
+
+public class B
+{
+}
+```
 
 ## Key points
 
@@ -34,31 +45,3 @@ Class `A` has a field variable `b` of type `B`. So `A` has an association with `
 5. **Runtime binding**: Associations can be established and changed during program execution
 
 Association is the most flexible type of relationship and is commonly used when you need objects to work together but maintain their independence.
-
-<Quiz>
-{
-    "Type": "SingleChoiceQuiz",
-    "Question": "<p>What is the defining feature of an association in code?</p>",
-    "Options": [
-        {
-            "Text": "A field variable that holds a reference to another object",
-            "IsCorrect": true
-        },
-        {
-            "Text": "A static method call with no stored reference",
-            "IsCorrect": false
-        },
-        {
-            "Text": "Creating the other object only inside the constructor and never exposing it",
-            "IsCorrect": false
-        },
-        {
-            "Text": "Extending another class",
-            "IsCorrect": false
-        }
-    ],
-    "Shuffle": true,
-    "Hint": "Read the short version near the top of this page.",
-    "Explanation": "Association means one object knows about another through a field variable. There is no ownership."
-}
-</Quiz>

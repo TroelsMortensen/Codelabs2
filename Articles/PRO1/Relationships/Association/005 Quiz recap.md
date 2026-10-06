@@ -61,67 +61,6 @@ Decide whether each statement is true or false.
 }
 </Quiz>
 
-## 3
-
-Match each UML element to its meaning.
-
-<Quiz>
-{
-  "Type": "MatchPair",
-  "Title": "Association UML",
-  "Pairs": [
-    {
-      "Prompt": "Person --> Address",
-      "Answer": "Person knows about Address via a field"
-    },
-    {
-      "Prompt": "SoccerTeam --> \"*\" Player",
-      "Answer": "Team references many players"
-    },
-    {
-      "Prompt": "Solid open arrow",
-      "Answer": "Association notation"
-    },
-    {
-      "Prompt": "Dashed open arrow",
-      "Answer": "Dependency (not association)"
-    }
-  ],
-  "Hint": "See page 4 Association in UML."
-}
-</Quiz>
-
-## 4
-
-Select every valid association scenario.
-
-<Quiz>
-{
-  "Type": "MultipleChoiceQuiz",
-  "Question": "<p>Which scenarios are associations?</p>",
-  "Options": [
-    {
-      "Text": "A person knows about an address, and that address could also be used by someone else",
-      "IsCorrect": true
-    },
-    {
-      "Text": "A team holds a list of players who can also play for another team",
-      "IsCorrect": true
-    },
-    {
-      "Text": "A calculator method takes a rectangle as a parameter and does not store it",
-      "IsCorrect": false
-    },
-    {
-      "Text": "A house creates rooms internally and never shares those room instances",
-      "IsCorrect": false
-    }
-  ],
-  "Shuffle": true,
-  "Hint": "Association = field reference, no ownership. Dependency has no field. Composition has exclusive ownership.",
-  "Explanation": "Person–Address and Team–Player are associations. Calculator–Rectangle is a dependency. House–Room with exclusive ownership is composition."
-}
-</Quiz>
 
 ## 5
 
@@ -150,5 +89,56 @@ Select every valid association scenario.
     "Shuffle": true,
     "Hint": "See page 4 — the arrow starts at the class with the field.",
     "Explanation": "The arrow starts at the class that holds the field and points to the field's type."
+}
+</Quiz>
+
+## 6
+
+<Quiz>
+{
+  "Type": "TrueFalseQuiz",
+  "Statements": [
+    {
+      "Text": "With association, two Person objects can reference the same Address instance.",
+      "IsCorrect": true
+    },
+    {
+      "Text": "Association means the Person owns the Address and no other object may reference it.",
+      "IsCorrect": false
+    },
+    {
+      "Text": "changeAddress shows that associations can be changed at runtime.",
+      "IsCorrect": true
+    }
+  ],
+  "Hint": "Review the shared references section on this page."
+}
+</Quiz>
+
+## 7
+
+<Quiz>
+{
+  "Type": "MatchPair",
+  "Title": "Match the UML Elements",
+  "Pairs": [
+    {
+      "Prompt": "Solid open arrow (-->)",
+      "Answer": "Association"
+    },
+    {
+      "Prompt": "Arrow points to Address",
+      "Answer": "Person has a field of type Address"
+    },
+    {
+      "Prompt": "* at the arrow head",
+      "Answer": "One-to-many multiplicity"
+    },
+    {
+      "Prompt": "Arrows in both directions",
+      "Answer": "Bidirectional association"
+    }
+  ],
+  "Hint": "Review the direction and multiplicity sections on this page."
 }
 </Quiz>

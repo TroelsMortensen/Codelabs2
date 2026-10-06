@@ -19,11 +19,7 @@ public class Address
         this.city = city;
         this.zipCode = zipCode;
     }
-
-    public String getFullAddress()
-    {
-        return street + ", " + city + " " + zipCode;
-    }
+    // ...
 }
 ```
 
@@ -87,7 +83,7 @@ Person bob = new Person("Bob", shared);
 // Both Alice and Bob reference the same Address instance
 ```
 
-That would then be a many-to-one relationship from persons to address. The point for now: with association, multiple objects are allowed to know about the same related object.
+This would then be a "many-to-one" relationship from multiple persons to a single address. The point for now: with association, multiple objects are allowed to know about the same related object.
 
 ```mermaid
 classDiagram
@@ -110,23 +106,4 @@ classDiagram
     Person --> Address
 ```
 
-<Quiz>
-{
-  "Type": "TrueFalseQuiz",
-  "Statements": [
-    {
-      "Text": "With association, two Person objects can reference the same Address instance.",
-      "IsCorrect": true
-    },
-    {
-      "Text": "Association means the Person owns the Address and no other object may reference it.",
-      "IsCorrect": false
-    },
-    {
-      "Text": "changeAddress shows that associations can be changed at runtime.",
-      "IsCorrect": true
-    }
-  ],
-  "Hint": "Review the shared references section on this page."
-}
-</Quiz>
+

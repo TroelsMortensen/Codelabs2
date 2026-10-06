@@ -6,7 +6,9 @@ A one-to-many association means one object knows about many objects of the same 
 
 A player can sometimes play for multiple teams — for example a local team and a national team. Two teams can reference the same player. That sounds like an association.
 
-```java{3}
+This actually makes it a many-to-many relationship, but in this case (and generally) we only _implement_ one side of the relationships.
+
+```java{4}
 public class SoccerTeam
 {
     private String teamName;
@@ -75,31 +77,3 @@ classDiagram
     }
     SoccerTeam --> "*" Player
 ```
-
-<Quiz>
-{
-    "Type": "SingleChoiceQuiz",
-    "Question": "<p>Why is SoccerTeam–Player an association rather than composition?</p>",
-    "Options": [
-        {
-            "Text": "Players can exist independently and can be referenced by multiple teams",
-            "IsCorrect": true
-        },
-        {
-            "Text": "Because an ArrayList is used",
-            "IsCorrect": false
-        },
-        {
-            "Text": "Because Player has a jersey number",
-            "IsCorrect": false
-        },
-        {
-            "Text": "Because the team creates players inside its constructor",
-            "IsCorrect": false
-        }
-    ],
-    "Shuffle": true,
-    "Hint": "Look at the shared player example on this page.",
-    "Explanation": "Association has no ownership. The same player can belong to more than one team, and players exist independently."
-}
-</Quiz>
