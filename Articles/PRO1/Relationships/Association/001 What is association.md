@@ -1,0 +1,64 @@
+# What is association
+
+An **association** is a relationship between two classes where one class "knows about", "uses", or "references" another class.
+
+It represents a loose coupling where objects can exist independently of each other. In a one-to-one association, each instance of one class is associated with one instance of another class.
+
+Association is the most common relationship between two objects.
+
+The short version: one object has a reference to another object — a field variable of the first object is an instance of the second object.
+
+Watch the following video for an overview of the association relationship:
+
+<video src="https://youtu.be/pnRQPfMuyQY"></video>
+
+## Key characteristics
+
+- **Loose coupling**: Objects can exist independently
+- **Bidirectional or unidirectional**: Objects can reference each other (though one-way is more common)
+- **No ownership**: Neither object owns the other
+- **Flexible**: Objects can be created and destroyed independently
+
+## How association works in Java
+
+Association is implemented by having a field variable of the first class which is an instance of the second class.
+
+Class `A` has a field variable `b` of type `B`. So `A` has an association with `B`.
+
+## Key points
+
+1. **Independence**: Both objects can exist without each other
+2. **Flexibility**: Objects can be associated and disassociated at runtime
+3. **No lifecycle dependency**: Destroying one object does not affect the other
+4. **Reference-based**: Uses object references
+5. **Runtime binding**: Associations can be established and changed during program execution
+
+Association is the most flexible type of relationship and is commonly used when you need objects to work together but maintain their independence.
+
+<Quiz>
+{
+    "Type": "SingleChoiceQuiz",
+    "Question": "<p>What is the defining feature of an association in code?</p>",
+    "Options": [
+        {
+            "Text": "A field variable that holds a reference to another object",
+            "IsCorrect": true
+        },
+        {
+            "Text": "A static method call with no stored reference",
+            "IsCorrect": false
+        },
+        {
+            "Text": "Creating the other object only inside the constructor and never exposing it",
+            "IsCorrect": false
+        },
+        {
+            "Text": "Extending another class",
+            "IsCorrect": false
+        }
+    ],
+    "Shuffle": true,
+    "Hint": "Read the short version near the top of this page.",
+    "Explanation": "Association means one object knows about another through a field variable. There is no ownership."
+}
+</Quiz>

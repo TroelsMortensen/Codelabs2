@@ -160,6 +160,15 @@ public partial class Home : ComponentBase
                             [
                                 new("Exam practice exercises", "PRO1/Session 24 - Exam")
                             ]
+                        ),
+                        new Session(25, "Relationships",
+                            [
+                                new("Introduction", "PRO1/Relationships/Introduction"),
+                                new("Dependency", "PRO1/Relationships/Dependency"),
+                                new("Association", "PRO1/Relationships/Association"),
+                                new("Aggregation", "PRO1/Relationships/Aggregation"),
+                                new("Composition", "PRO1/Relationships/Composition")
+                            ]
                         )
                     ]
                 ),
