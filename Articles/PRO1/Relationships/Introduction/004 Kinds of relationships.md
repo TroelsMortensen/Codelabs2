@@ -32,30 +32,3 @@ classDiagram
 
 Each of these has its own learning path where you will go into the details — including code patterns, UML notation, and how one-to-many fits each kind.
 
-For now, remember: a field variable that references another object is an association (or stronger). If there is no field, and another class is only used temporarily (for example as a method parameter), that is a dependency.
-
-<Quiz>
-{
-  "Type": "MatchPair",
-  "Title": "Match the Relationship",
-  "Pairs": [
-    {
-      "Prompt": "Dependency",
-      "Answer": "Temporary use, no field variable"
-    },
-    {
-      "Prompt": "Association",
-      "Answer": "Knows about via a field, no ownership"
-    },
-    {
-      "Prompt": "Aggregation",
-      "Answer": "Whole-part, part can exist alone"
-    },
-    {
-      "Prompt": "Composition",
-      "Answer": "Whole-part, strong exclusive ownership"
-    }
-  ],
-  "Hint": "Review the table on this page — weakest to strongest."
-}
-</Quiz>

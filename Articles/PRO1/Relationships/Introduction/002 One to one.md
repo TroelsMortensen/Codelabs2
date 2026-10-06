@@ -53,7 +53,7 @@ public class Person
 
 ### Usage
 
-```java{4-5}
+```java{5-6}
 public class Main
 {
     public static void main(String[] args)
@@ -92,30 +92,3 @@ classDiagram
 
 This kind of relationship — one object knowing about another through a field — is called an **association**. You will see more about that in a dedicated learning path.
 
-<Quiz>
-{
-    "Type": "SingleChoiceQuiz",
-    "Question": "<p>What creates a one-to-one relationship between <code>Person</code> and <code>Address</code>?</p>",
-    "Options": [
-        {
-            "Text": "A field variable of type <code>Address</code> inside <code>Person</code>",
-            "IsCorrect": true
-        },
-        {
-            "Text": "A static method call from <code>Person</code> to <code>Address</code>",
-            "IsCorrect": false
-        },
-        {
-            "Text": "Two classes with the same package name",
-            "IsCorrect": false
-        },
-        {
-            "Text": "An <code>ArrayList</code> of addresses",
-            "IsCorrect": false
-        }
-    ],
-    "Shuffle": true,
-    "Hint": "Look at the field variables in the Person class on this page.",
-    "Explanation": "A one-to-one relationship is created by a field that holds a single reference to another object."
-}
-</Quiz>

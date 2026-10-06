@@ -61,30 +61,7 @@ Decide whether each statement is true or false.
 }
 </Quiz>
 
-## 3
 
-Arrange the lines to create a valid `SoccerTeam` class with an `ArrayList` of players and an `addPlayer` method.
-
-<Quiz>
-{
-  "Type": "ParsonsProblem",
-  "Question": "Arrange the lines to create a SoccerTeam that holds many Players.",
-  "Lines": [
-    { "Id": 1, "Content": "public class SoccerTeam {" },
-    { "Id": 2, "Content": "    private String teamName;" },
-    { "Id": 3, "Content": "    private ArrayList&lt;Player&gt; players;" },
-    { "Id": 4, "Content": "    public SoccerTeam(String teamName) {" },
-    { "Id": 5, "Content": "        this.teamName = teamName;" },
-    { "Id": 6, "Content": "        this.players = new ArrayList&lt;&gt;();" },
-    { "Id": 7, "Content": "    }" },
-    { "Id": 8, "Content": "    public void addPlayer(Player player) {" },
-    { "Id": 9, "Content": "        players.add(player);" },
-    { "Id": 10, "Content": "    }" },
-    { "Id": 11, "Content": "}" }
-  ],
-  "Hint": "See page 3 One to many — create the list in the constructor, then add players in a method."
-}
-</Quiz>
 
 ## 4
 
@@ -145,5 +122,35 @@ Select every correct statement.
     "Shuffle": true,
     "Hint": "See the SoccerTeam UML on page 3 One to many.",
     "Explanation": "The star at the arrow head is multiplicity: it means many instances of the class at that end."
+}
+</Quiz>
+
+# 6
+
+<Quiz>
+{
+    "Type": "SingleChoiceQuiz",
+    "Question": "<p>How do you typically express a one-to-many relationship in Java?</p>",
+    "Options": [
+        {
+            "Text": "With an <code>ArrayList</code> (or other collection) of the related class",
+            "IsCorrect": true
+        },
+        {
+            "Text": "With two identical field variables of the related class",
+            "IsCorrect": false
+        },
+        {
+            "Text": "With a static method that returns many objects",
+            "IsCorrect": false
+        },
+        {
+            "Text": "By making both classes extend the same parent",
+            "IsCorrect": false
+        }
+    ],
+    "Shuffle": true,
+    "Hint": "Look at the players field in SoccerTeam on this page.",
+    "Explanation": "A one-to-many relationship is usually a collection field, such as ArrayList, holding many references of the same type."
 }
 </Quiz>
