@@ -73,31 +73,3 @@ classDiagram
 | Other class appears as a field variable | Association (or stronger) |
 
 When both apply, show the stronger one. A class that has a field of type `Person` and also takes a `Person` as a method parameter is still drawn as an association.
-
-<Quiz>
-{
-    "Type": "SingleChoiceQuiz",
-    "Question": "<p>Which change turns a dependency into an association?</p>",
-    "Options": [
-        {
-            "Text": "Storing the other object in a field variable",
-            "IsCorrect": true
-        },
-        {
-            "Text": "Calling a static method on the other class",
-            "IsCorrect": false
-        },
-        {
-            "Text": "Passing the other object as a method parameter",
-            "IsCorrect": false
-        },
-        {
-            "Text": "Creating the other object as a local variable",
-            "IsCorrect": false
-        }
-    ],
-    "Shuffle": true,
-    "Hint": "Compare Version 1 and Version 2 on this page.",
-    "Explanation": "A field variable creates a permanent reference — that is association. Parameters, locals, and static calls alone are dependency."
-}
-</Quiz>

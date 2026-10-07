@@ -152,3 +152,65 @@ Select every line that creates a dependency (and not an association).
     "Explanation": "The dashed arrow starts at Calculator and points to Rectangle, so Calculator depends on Rectangle."
 }
 </Quiz>
+
+
+## 6 
+
+<Quiz>
+{
+    "Type": "SingleChoiceQuiz",
+    "Question": "<p>Which UML arrow represents a dependency?</p>",
+    "Options": [
+        {
+            "Text": "A dashed line with an open arrowhead (<code>..&gt;</code>)",
+            "IsCorrect": true
+        },
+        {
+            "Text": "A solid line with an open arrowhead (<code>--&gt;</code>)",
+            "IsCorrect": false
+        },
+        {
+            "Text": "A solid line with an empty diamond (<code>o--&gt;</code>)",
+            "IsCorrect": false
+        },
+        {
+            "Text": "A solid line with a filled diamond (<code>*--&gt;</code>)",
+            "IsCorrect": false
+        }
+    ],
+    "Shuffle": true,
+    "Hint": "See the basic notation at the top of this page.",
+    "Explanation": "Dependency uses a dashed open arrow. Solid open arrow is association; empty diamond is aggregation; filled diamond is composition."
+}
+</Quiz>
+
+## 7
+
+
+<Quiz>
+{
+    "Type": "SingleChoiceQuiz",
+    "Question": "<p>Which change turns a dependency into an association?</p>",
+    "Options": [
+        {
+            "Text": "Storing the other object in a field variable",
+            "IsCorrect": true
+        },
+        {
+            "Text": "Calling a static method on the other class",
+            "IsCorrect": false
+        },
+        {
+            "Text": "Passing the other object as a method parameter",
+            "IsCorrect": false
+        },
+        {
+            "Text": "Creating the other object as a local variable",
+            "IsCorrect": false
+        }
+    ],
+    "Shuffle": true,
+    "Hint": "Compare Version 1 and Version 2 on this page.",
+    "Explanation": "A field variable creates a permanent reference — that is association. Parameters, locals, and static calls alone are dependency."
+}
+</Quiz>

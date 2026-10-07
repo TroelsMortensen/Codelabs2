@@ -9,7 +9,8 @@ Dependency is implemented through:
 
 ## Example 1: Static method call
 
-Below is a class `EmailValidator`, used to validate an email address. To keep it simple, we only check if the email contains an `@` and a `.`.
+Below is a class `EmailValidator`, used to validate an email address.  
+To keep it simple, we only check if the email contains an `@` and a `.`.
 
 ```java
 public class EmailValidator
@@ -47,7 +48,7 @@ public class EmailExample
 
 ## Example 2: Method parameter
 
-Here `Calculator` depends on `Rectangle`. The `Rectangle` type appears in method parameters. `Calculator` must know about `Rectangle`, but it does not store a `Rectangle` in a field.
+Here, `Calculator` depends on `Rectangle`. The `Rectangle` type appears in method parameters. `Calculator` must know about `Rectangle`, but it does not store a `Rectangle` in a field.
 
 A `Rectangle` is passed in, used inside the method, and when the method finishes, the relationship is gone.
 
@@ -103,9 +104,9 @@ A method can also create a dependency by returning another type:
 ```java
 public class AddressFactory
 {
-    public Address createHomeAddress(String street, String city)
+    public Address createHomeAddress(String street, String city, String houseNumber)
     {
-        return new Address(street, city, "00000");
+        return new Address(street, city, houseNumber);
     }
 }
 ```
@@ -118,24 +119,3 @@ public class AddressFactory
 2. **No permanent reference**: No field stores the dependency
 3. **Method-level coupling**: Established through parameters, locals, returns, or static calls
 4. **Independent lifecycle**: Both objects can exist and be destroyed independently
-
-<Quiz>
-{
-  "Type": "TrueFalseQuiz",
-  "Statements": [
-    {
-      "Text": "Calling a static method on another class creates a dependency.",
-      "IsCorrect": true
-    },
-    {
-      "Text": "A method parameter of type Rectangle means Calculator stores a permanent reference to a Rectangle.",
-      "IsCorrect": false
-    },
-    {
-      "Text": "Creating an object as a local variable inside a method can create a dependency.",
-      "IsCorrect": true
-    }
-  ],
-  "Hint": "Review the four examples on this page — none of them use a field variable."
-}
-</Quiz>

@@ -42,32 +42,7 @@ Dependencies are often left out of UML diagrams because they can quickly clutter
 3. **Static calls**: One class calls static methods of another
 4. **Important relationships**: When the dependency is significant to the design
 
+You can also, sometimes, show that a class depends on a package. This is useful if a class depends on several classes in this other package.
+
 If a stronger relationship exists (association, aggregation, or composition), show that instead. Always show the strongest relationship.
 
-<Quiz>
-{
-    "Type": "SingleChoiceQuiz",
-    "Question": "<p>Which UML arrow represents a dependency?</p>",
-    "Options": [
-        {
-            "Text": "A dashed line with an open arrowhead (<code>..&gt;</code>)",
-            "IsCorrect": true
-        },
-        {
-            "Text": "A solid line with an open arrowhead (<code>--&gt;</code>)",
-            "IsCorrect": false
-        },
-        {
-            "Text": "A solid line with an empty diamond (<code>o--&gt;</code>)",
-            "IsCorrect": false
-        },
-        {
-            "Text": "A solid line with a filled diamond (<code>*--&gt;</code>)",
-            "IsCorrect": false
-        }
-    ],
-    "Shuffle": true,
-    "Hint": "See the basic notation at the top of this page.",
-    "Explanation": "Dependency uses a dashed open arrow. Solid open arrow is association; empty diamond is aggregation; filled diamond is composition."
-}
-</Quiz>
