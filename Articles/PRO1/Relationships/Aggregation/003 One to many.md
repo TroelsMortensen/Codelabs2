@@ -48,7 +48,7 @@ public class Book
 }
 ```
 
-Glancing at the code, it looks very much like an association. And again, aggregation is difficult to actually enforce in code — more on that in a later page.
+Glancing at the code, it looks very much like an association. And again, aggregation is difficult to actually enforce in code. I try to "simulate" it by actually _removing_ the book from the library when it is transferred to another library.
 
 ### Transferring ownership
 
@@ -87,30 +87,3 @@ classDiagram
     Library o--> "*" Book
 ```
 
-<Quiz>
-{
-    "Type": "SingleChoiceQuiz",
-    "Question": "<p>Why is Library–Book described as aggregation?</p>",
-    "Options": [
-        {
-            "Text": "Books are parts of a library collection but can be transferred to another library",
-            "IsCorrect": true
-        },
-        {
-            "Text": "Books are created inside the Library constructor and never leave",
-            "IsCorrect": false
-        },
-        {
-            "Text": "A library only uses Book as a method parameter",
-            "IsCorrect": false
-        },
-        {
-            "Text": "Book extends Library",
-            "IsCorrect": false
-        }
-    ],
-    "Shuffle": true,
-    "Hint": "Read the transfer example and conceptual meaning on this page.",
-    "Explanation": "Aggregation is whole-part with transferable ownership. Books can move between libraries."
-}
-</Quiz>

@@ -1,6 +1,6 @@
 # Limits of aggregation
 
-This relationship is primarily used in the _modelling_ part. You can express the intent in UML diagrams as a concept, but we cannot really enforce it in the code.
+This relationship is primarily used in the _modelling_ part. You can express the intent in UML diagrams as a concept, but we cannot really enforce it in the code. We can attempt to simulate it by removing the object from the parent when it is transferred to another parent, as you have seen. But when expanding the program, fellow team members might not respect this intent and end up with several objects aggregating the same object.
 
 ## The problem
 
@@ -30,7 +30,7 @@ public class CarTest
 }
 ```
 
-And now we are back to this being an association. There are various hacks to make it more difficult to violate aggregation, but it is still possible.
+And now we are back to this being an association. Aggregation is a case where you have to rely on convention and discipline to enforce the intent.
 
 ## So why use aggregation at all?
 
@@ -42,24 +42,3 @@ That is why aggregation is used less often in practice than association and comp
 ## Bottom line
 
 Association versus aggregation is a matter of interpretation and intent. It is rarely super clear from the code alone. Use the empty diamond in diagrams when you want to communicate weak ownership — but do not expect the compiler to police it.
-
-<Quiz>
-{
-  "Type": "TrueFalseQuiz",
-  "Statements": [
-    {
-      "Text": "Java automatically prevents the same Engine from being installed in two cars.",
-      "IsCorrect": false
-    },
-    {
-      "Text": "Aggregation is mainly useful to express intent in UML diagrams.",
-      "IsCorrect": true
-    },
-    {
-      "Text": "In code, aggregation often looks the same as association.",
-      "IsCorrect": true
-    }
-  ],
-  "Hint": "Read the CarTest example and the bottom line on this page."
-}
-</Quiz>

@@ -41,12 +41,14 @@ public class Car
     private String model;
     private Engine engine;
 
+    // Creates a car with no engine installed yet
     public Car(String make, String model)
     {
         this.make = make;
         this.model = model;
     }
 
+    // Removes the engine and returns it, so it can be used elsewhere
     public Engine removeEngine()
     {
         Engine removedEngine = this.engine;
@@ -54,28 +56,26 @@ public class Car
         return removedEngine;
     }
 
+    // Installs an engine; throws if the car already has one
     public void installEngine(Engine engine)
     {
         if (this.engine != null)
         {
-            System.out.println("Cannot install engine - car already has an engine");
-            return;
+            throw new IllegalStateException("Cannot install engine - car already has an engine");
         }
         this.engine = engine;
         System.out.println(make + " " + model + " now has " + engine.getEngineSpecs());
     }
 
+    // Starts the car; throws if no engine is installed
     public void startCar()
     {
-        if (engine != null)
+        if (engine == null)
         {
-            System.out.println("Starting " + make + " " + model + "...");
-            engine.start();
+            throw new IllegalStateException("Cannot start car - no engine installed");
         }
-        else
-        {
-            System.out.println("Cannot start car - no engine installed");
-        }
+        System.out.println("Starting " + make + " " + model + "...");
+        engine.start();
     }
 }
 ```
@@ -105,7 +105,7 @@ The child object (`Engine`) is a component of the parent (`Car`), but it can exi
       "IsCorrect": true
     },
     {
-      "Text": "installEngine refuses a second engine while one is already installed.",
+      "Text": "installEngine throws IllegalStateException if the car already has an engine.",
       "IsCorrect": true
     },
     {

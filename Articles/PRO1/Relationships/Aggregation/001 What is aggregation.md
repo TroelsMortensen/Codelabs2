@@ -2,12 +2,16 @@
 
 **Aggregation** is a "has-a" relationship where one class contains or "owns" another class as a part, but the contained object can exist independently. The ownership is stronger than an association.
 
+You may be able to find many different definitions online, many of which do not really differ from _association_. This learning path is _my_ interpretation of the relationship.
+
+Often, the relationship is more about conceptual _intent_ rather than something that is clear from the code. It is, therefore, not really something you explicitly implement, and even then, it is hard to ensure the relation is not degraded to an assocation. 
+
 ## Conceptual example
 
 Consider this:
 
 - A person owns a car. There is at most one owner for this car at a time. But ownership can be transferred to another person.
-- A person has a brain. There is at most one brain for this person. Ownership _cannot_ be transferred to another person.
+- A person has a brain. There is at most one brain for this person. Ownership _cannot_ be transferred to another person (not yet, at least).
 
 These two relationships have different implications. One ownership is transferable (weaker), the other is not (stronger — that is composition, covered later). Aggregation sits in between association and composition: whole-part, but the part can still exist on its own and ownership can move.
 
@@ -44,30 +48,4 @@ The only conceptual difference from association is that the ownership is stronge
 - **Aggregation**: Objects have a whole-part relationship, but parts can exist independently
 - **Aggregation** implies a stronger relationship than association but weaker than composition
 
-<Quiz>
-{
-    "Type": "SingleChoiceQuiz",
-    "Question": "<p>What best describes aggregation?</p>",
-    "Options": [
-        {
-            "Text": "A whole-part relationship where the part can exist independently",
-            "IsCorrect": true
-        },
-        {
-            "Text": "A temporary use of another class with no field variable",
-            "IsCorrect": false
-        },
-        {
-            "Text": "Exclusive ownership where the part cannot exist without the whole",
-            "IsCorrect": false
-        },
-        {
-            "Text": "Inheritance from a parent class",
-            "IsCorrect": false
-        }
-    ],
-    "Shuffle": true,
-    "Hint": "Read the definition at the top of this page.",
-    "Explanation": "Aggregation is whole-part with weak ownership — the part can exist alone and ownership can transfer."
-}
-</Quiz>
+

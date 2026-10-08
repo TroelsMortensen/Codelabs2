@@ -152,3 +152,64 @@ Match each scenario to association or aggregation.
     "Explanation": "If the part is created outside and passed in, the same reference can be given to multiple containers — the code looks like association."
 }
 </Quiz>
+
+
+## 6
+
+<Quiz>
+{
+    "Type": "SingleChoiceQuiz",
+    "Question": "<p>What best describes aggregation?</p>",
+    "Options": [
+        {
+            "Text": "A whole-part relationship where the part can exist independently",
+            "IsCorrect": true
+        },
+        {
+            "Text": "A temporary use of another class with no field variable",
+            "IsCorrect": false
+        },
+        {
+            "Text": "Exclusive ownership where the part cannot exist without the whole",
+            "IsCorrect": false
+        },
+        {
+            "Text": "Inheritance from a parent class",
+            "IsCorrect": false
+        }
+    ],
+    "Shuffle": true,
+    "Hint": "Read the definition at the top of this page.",
+    "Explanation": "Aggregation is whole-part with weak ownership — the part can exist alone and ownership can transfer."
+}
+</Quiz>
+
+## 7
+
+<Quiz>
+{
+    "Type": "SingleChoiceQuiz",
+    "Question": "<p>Which UML symbol represents aggregation?</p>",
+    "Options": [
+        {
+            "Text": "Empty diamond at the owner end (<code>o--&gt;</code>)",
+            "IsCorrect": true
+        },
+        {
+            "Text": "Filled diamond at the owner end (<code>*--&gt;</code>)",
+            "IsCorrect": false
+        },
+        {
+            "Text": "Dashed open arrow (<code>..&gt;</code>)",
+            "IsCorrect": false
+        },
+        {
+            "Text": "Solid open arrow with no diamond (<code>--&gt;</code>)",
+            "IsCorrect": false
+        }
+    ],
+    "Shuffle": true,
+    "Hint": "See the diagrams on this page — empty diamond vs filled diamond.",
+    "Explanation": "Aggregation uses an empty diamond. Filled diamond is composition. Dashed arrow is dependency. Solid open arrow without diamond is association."
+}
+</Quiz>

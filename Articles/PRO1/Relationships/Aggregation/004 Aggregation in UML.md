@@ -25,7 +25,7 @@ classDiagram
         + getEngineSpecs() String
     }
 
-    Car o--> Engine
+    Car o--> " " Engine
 ```
 
 Notice the empty diamond is at the "owner" side, and the open arrowhead is at the "owned" side. Here `Car` knows about `Engine`, but `Engine` does not know about `Car`. Notice also the field variable `engine` in the `Car` class.
@@ -59,36 +59,10 @@ classDiagram
 
 | Element | Meaning |
 | --- | --- |
-| Empty diamond (`o-->`) | Aggregation |
+| Empty diamond (`◇──>`) | Aggregation |
 | Diamond at the start | The whole / owner side |
 | Arrowhead at the end | The part / owned side |
 | No multiplicity | One (conventionally omitted) |
 | `*` at arrow head | Many parts |
 
-<Quiz>
-{
-    "Type": "SingleChoiceQuiz",
-    "Question": "<p>Which UML symbol represents aggregation?</p>",
-    "Options": [
-        {
-            "Text": "Empty diamond at the owner end (<code>o--&gt;</code>)",
-            "IsCorrect": true
-        },
-        {
-            "Text": "Filled diamond at the owner end (<code>*--&gt;</code>)",
-            "IsCorrect": false
-        },
-        {
-            "Text": "Dashed open arrow (<code>..&gt;</code>)",
-            "IsCorrect": false
-        },
-        {
-            "Text": "Solid open arrow with no diamond (<code>--&gt;</code>)",
-            "IsCorrect": false
-        }
-    ],
-    "Shuffle": true,
-    "Hint": "See the diagrams on this page — empty diamond vs filled diamond.",
-    "Explanation": "Aggregation uses an empty diamond. Filled diamond is composition. Dashed arrow is dependency. Solid open arrow without diamond is association."
-}
-</Quiz>
+
