@@ -209,3 +209,33 @@ Explore these scenarios. Expand each to see a suggested relationship type. (This
     "Explanation": "A getter that returns the real child breaks exclusive ownership. Returning or storing a copy preserves composition."
 }
 </Quiz>
+
+## 8
+
+<Quiz>
+{
+    "Type": "SingleChoiceQuiz",
+    "Question": "<p>Why does <code>addRoom(String roomType, double area, boolean hasWindow)</code> preserve composition?</p>",
+    "Options": [
+        {
+            "Text": "The House creates the Room internally from data — no outside reference to that Room exists",
+            "IsCorrect": true
+        },
+        {
+            "Text": "Because it uses an ArrayList",
+            "IsCorrect": false
+        },
+        {
+            "Text": "Because the method is public",
+            "IsCorrect": false
+        },
+        {
+            "Text": "Because Room has no methods",
+            "IsCorrect": false
+        }
+    ],
+    "Shuffle": true,
+    "Hint": "Compare taking data vs taking a Room object.",
+    "Explanation": "Passing data and creating Room inside House means only the House holds the real Room instance."
+}
+</Quiz>

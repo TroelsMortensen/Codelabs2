@@ -2,7 +2,9 @@
 
 **Composition** is a "part-of" relationship where one class contains another class as an essential component. The contained object cannot exist independently of the container (or owner or parent object) — it is created, managed, and destroyed by the container. This is the strongest form of relationship.
 
-Let's assume class `A` contains class `B` (A ➜ B). When this is a composition, only A _knows_ about the instance of B. No other class knows about that instance of B. When A is destroyed, B is also destroyed.
+Almost always, the composed child object can be "unwrapped" and merged into the parent object. This may not be pretty, but it is possible. Often the separate object just make it easier to work with.
+
+Let's assume class `A` contains class `B` (A ➜ B). When this is a composition, _only_ A knows about the instance of B. No other class knows about that instance of B. When A is destroyed, B is also destroyed.
 
 If we can use parent-child terminology: A is the parent, B is the child. The child cannot exist without the parent.
 
@@ -26,7 +28,7 @@ Composition is generally implemented through:
 
 ## Example: House and Room
 
-Any given room must always exist within a house. It cannot exist without a house. When the house is destroyed, the room is also destroyed. Sure, maybe you can build a modular house, in some way, but for the most part, a room is a part of a house.
+Any given room must always exist within a house. It cannot exist without a house. A room cannot exist within two houses at the same time. When the house is destroyed, the room is also destroyed. Sure, maybe you can build a modular house, in some way, but for the most part - and this example - a room is a part of a house.
 
 Here is a room class:
 

@@ -39,6 +39,8 @@ Instead of returning (or storing) the actual child, create a **copy**. That pres
 
 ### Method 1: Copy constructor
 
+Here we overload the constructor (add a second one) that takes a `Room` object as a parameter. This is a copy constructor.
+
 ```java{14-19}
 public class Room
 {
@@ -85,7 +87,7 @@ public class House
         this.livingRoom = new Room("Living Room", 300.0, true);
     }
 
-    public Room getLivingRoomCopy()
+    public Room getLivingRoom()
     {
         return new Room(livingRoom);
     }
@@ -123,7 +125,7 @@ public class Room
 
 And `addRoom` that accepts a `Room` but stores a copy:
 
-```java{12-16}
+```java{12-17}
 public class House
 {
     private String address;

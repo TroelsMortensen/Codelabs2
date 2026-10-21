@@ -83,7 +83,7 @@ public ArrayList<Room> getRooms()
 
 ## Copy all the way down
 
-What if `Room` itself has a composed `Window`? Then you need to copy the `Window` as well. The copy method or copy constructor is good here, because the class itself knows how to copy itself — including its internal parts.
+What if `Room` itself has a composed `Window`? Then you need to copy the `Window` as well. We cannot risk the Window leaking out of the Room and House. Some thief might call `window.open()` and can now sneak in. The copy method or copy constructor is good here, because the class itself knows how to copy itself — including its internal parts.
 
 **COPY** COPY Copy copy <sub>copy</sub>, all the way down.
 

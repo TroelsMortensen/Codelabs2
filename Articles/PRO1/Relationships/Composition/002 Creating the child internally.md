@@ -2,13 +2,13 @@
 
 The House (owner, container) has several ways to enforce the composition relationship. 
 
-On this page the parent creates the child. Outside code never holds a reference to the parent's actual child instances.
+On this page the parent creates the child. Outside code never holds a reference to the parent's (House) actual child instances (Rooms).
 
 ## Version 1: Create in the constructor
 
 Notice how the constructor instantiates the `Room` objects:
 
-```java{11-12}
+```java{10-11}
 public class House
 {
     private String address;
@@ -44,7 +44,9 @@ public class House
 
 Alternatively, you can provide room information from the outside through the constructor or a method. In either case, you do **not** take a `Room` object as a parameter. You pass in relevant data, and the house creates the `Room` objects internally.
 
-```java{13-18}
+This works, but the method signature can be bloated with too many parameters.
+
+```java{12-17}
 public class House
 {
     private String address;
@@ -115,35 +117,8 @@ public class CompositionExample
 
 We can handle composition by:
 
-1. The constructor on the parent class _creates_ the child object
-2. A method on the parent receives **data** and creates the child internally
+1. The constructor on the parent class _creates_ the child object right away. This works if we know which children to create.
+2. A method on the parent receives **data** and creates the child internally. This is more dynamic.
 
 On the next page: what if you want to accept a `Room` object as a parameter? 
 
-<Quiz>
-{
-    "Type": "SingleChoiceQuiz",
-    "Question": "<p>Why does <code>addRoom(String roomType, double area, boolean hasWindow)</code> preserve composition?</p>",
-    "Options": [
-        {
-            "Text": "The House creates the Room internally from data — no outside reference to that Room exists",
-            "IsCorrect": true
-        },
-        {
-            "Text": "Because it uses an ArrayList",
-            "IsCorrect": false
-        },
-        {
-            "Text": "Because the method is public",
-            "IsCorrect": false
-        },
-        {
-            "Text": "Because Room has no methods",
-            "IsCorrect": false
-        }
-    ],
-    "Shuffle": true,
-    "Hint": "Compare taking data vs taking a Room object.",
-    "Explanation": "Passing data and creating Room inside House means only the House holds the real Room instance."
-}
-</Quiz>

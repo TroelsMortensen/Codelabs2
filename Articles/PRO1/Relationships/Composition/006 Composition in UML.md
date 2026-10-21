@@ -72,33 +72,4 @@ classDiagram
     Aggregation o--> B : aggregation
 ```
 
-| Symbol | Relationship |
-| --- | --- |
-| Filled diamond (`*-->`) | Composition |
-| Empty diamond (`o-->`) | Aggregation |
 
-<Quiz>
-{
-  "Type": "MatchPair",
-  "Title": "Match the Diamonds",
-  "Pairs": [
-    {
-      "Prompt": "Filled diamond (*-->)",
-      "Answer": "Composition — strong ownership"
-    },
-    {
-      "Prompt": "Empty diamond (o-->)",
-      "Answer": "Aggregation — weak ownership"
-    },
-    {
-      "Prompt": "* at the arrow head",
-      "Answer": "Many composed parts"
-    },
-    {
-      "Prompt": "Diamond at the House end",
-      "Answer": "House is the owner / whole"
-    }
-  ],
-  "Hint": "Review the diagrams and contrast table on this page."
-}
-</Quiz>
