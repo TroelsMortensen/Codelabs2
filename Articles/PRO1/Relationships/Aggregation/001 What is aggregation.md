@@ -2,7 +2,7 @@
 
 **Aggregation** is a "has-a" relationship where one class contains or "owns" another class as a part, but the contained object can exist independently. The ownership is stronger than an association.
 
-You may be able to find many different definitions online, many of which do not really differ from _association_. This learning path is _my_ interpretation of the relationship.
+You may be able to find many different definitions online, many of which do not really differ from _association_. This learning path is _my_ interpretation of the relationship. I use it when a there is some kind of control over the ownership, when it is intentially managed. And this is quite rare.
 
 Often, the relationship is more about conceptual _intent_ rather than something that is clear from the code. It is, therefore, not really something you explicitly implement, and even then, it is hard to ensure the relation is not degraded to an assocation. 
 
@@ -10,18 +10,18 @@ Often, the relationship is more about conceptual _intent_ rather than something 
 
 Consider this:
 
-- A person owns a car. There is at most one owner for this car at a time. But ownership can be transferred to another person.
+- A person owns a car. There is at most one owner for this car at a time. But ownership can be transferred to another person. Alternatively, I guess two people can own the car together, but still, the ownership is clear. Someone else cannot just take the car away from them, or decide to just own it.
 - A person has a brain. There is at most one brain for this person. Ownership _cannot_ be transferred to another person (not yet, at least).
 
 These two relationships have different implications. One ownership is transferable (weaker), the other is not (stronger — that is composition, covered later). Aggregation sits in between association and composition: whole-part, but the part can still exist on its own and ownership can move.
 
 ## Car and engine
 
-A car has an engine. The engine is a part of the car, but the engine can exist independently. The engine can be removed from the car and placed in another car. At any given time there is only one engine in the car, and the engine is used by _only_ one car.
+A car has an engine. The engine is a part of the car, but the engine can exist independently. The engine can be removed from the car and placed in another car. At any given time there is only one engine in the car, and the engine is used by _only_ that car.
 
 If this were a plain association, the engine could be used by multiple cars at once. That does not really make sense, so we use aggregation instead.
 
-Honestly, it is difficult to distinguish between aggregation and association in code. We can use aggregation in our designs (UML diagrams) to imply intent, but generally it has little to no effect on the code we write. Mostly, association versus aggregation is a matter of interpretation and intent.
+Honestly, it is difficult to distinguish between aggregation and association in code. We can use aggregation in our designs (UML diagrams) to imply intent, but generally it has little to no effect on the code we write. Mostly, association versus aggregation is a matter of interpretation and intent. But when writing code, it is maintained through convention and discipline. The code cannot enforce it.
 
 ## Key characteristics
 

@@ -96,23 +96,3 @@ Engine removed = mustang.removeEngine();
 
 The child object (`Engine`) is a component of the parent (`Car`), but it can exist independently. The parent has "weak" ownership and methods to manage the relationship. Other cars should not reference the same engine at the same time — that is the intent of aggregation.
 
-<Quiz>
-{
-  "Type": "TrueFalseQuiz",
-  "Statements": [
-    {
-      "Text": "removeEngine returns the engine so it can live on outside the car.",
-      "IsCorrect": true
-    },
-    {
-      "Text": "installEngine throws IllegalStateException if the car already has an engine.",
-      "IsCorrect": true
-    },
-    {
-      "Text": "After removeEngine, the Engine object is automatically destroyed.",
-      "IsCorrect": false
-    }
-  ],
-  "Hint": "Look at removeEngine and installEngine on this page."
-}
-</Quiz>

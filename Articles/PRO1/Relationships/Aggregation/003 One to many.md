@@ -4,7 +4,7 @@ A library can have many books, and books can be transferred between libraries. O
 
 ## Example: Library and Book
 
-```java{3}
+```java{4}
 public class Library
 {
     private String libraryName;
@@ -21,9 +21,18 @@ public class Library
         books.add(book);
     }
 
-    public Book removeBook(Book book)
+    public Book removeBook(String isbn)
     {
-        books.remove(book);
+        // remove book from list by ISBN
+        Book book = books.stream()
+            .filter(b -> b.getIsbn().equals(isbn))
+            .findFirst()
+            .orElse(null);
+        
+        if (book != null) {
+            books.remove(book);
+        }
+
         return book;
     }
 
@@ -35,20 +44,11 @@ public class Library
 
 public class Book
 {
-    private String title;
-    private String author;
-    private String isbn;
-
-    public Book(String title, String author, String isbn)
-    {
-        this.title = title;
-        this.author = author;
-        this.isbn = isbn;
-    }
+    ... // other fields and methods
 }
 ```
 
-Glancing at the code, it looks very much like an association. And again, aggregation is difficult to actually enforce in code. I try to "simulate" it by actually _removing_ the book from the library when it is transferred to another library.
+Glancing at the code, it looks very much like an association. And again, aggregation is difficult to actually enforce in code. I try to "simulate" it by actually _removing_ the book from the library when it is transferred to another library. See line 17 above.
 
 ### Transferring ownership
 
@@ -60,8 +60,8 @@ Library campus = new Library("Campus Library");
 
 downtown.addBook(novel);
 // Transfer to another library
-downtown.removeBook(novel);
-campus.addBook(novel);
+Book toBeTransferred = downtown.removeBook("978-0441172719");
+campus.addBook(toBeTransferred);
 ```
 
 ### Conceptual meaning
@@ -75,7 +75,7 @@ classDiagram
         - books : ArrayList~Book~
         + Library(libraryName : String)
         + addBook(book : Book) void
-        + removeBook(book : Book) Book
+        + removeBook(isbn : String) Book
     }
 
     class Book {

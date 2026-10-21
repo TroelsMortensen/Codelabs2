@@ -35,7 +35,7 @@ And now we are back to this being an association. Aggregation is a case where yo
 ## So why use aggregation at all?
 
 - In **UML**, aggregation documents your intent: "this is a whole-part relationship, and the part can be transferred."
-- In **code**, aggregation looks almost identical to association. The difference is conceptual, not something Java enforces for you.
+- In **code**, aggregation looks identical to association, unless you attempt to model it as I have shown. This is uncommon, I believe. The difference is conceptual, not something Java enforces for you.
 
 That is why aggregation is used less often in practice than association and composition. When ownership is truly exclusive and the part cannot exist alone, use composition instead. When objects just know about each other with no whole-part meaning, use association.
 
