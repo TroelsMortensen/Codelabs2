@@ -1,6 +1,6 @@
 # Dependency vs association
 
-The difference between dependency and association is whether a **field variable** stores the reference.
+The difference between dependency and association is, essentially, whether a **field variable** stores the reference.
 
 ## Same classes, two relationships
 

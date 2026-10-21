@@ -3,8 +3,7 @@
 Dependency is implemented through:
 
 - **Method parameters** that accept other objects, but do not store them in a field
-- **Local variables** that create temporary references
-- **Return values** from method calls
+- **Local variables** that create temporary references, i.e. use the new keyword to create a new object
 - **Static method calls** to other classes
 
 ## Example 1: Static method call
@@ -99,7 +98,7 @@ public class PersonExample
 
 ## Example 4: Return value
 
-A method can also create a dependency by returning another type:
+A method can also create a dependency by returning another type, which is sort of like the above example of local creation:
 
 ```java
 public class AddressFactory

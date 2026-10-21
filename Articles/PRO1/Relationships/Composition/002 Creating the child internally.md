@@ -1,6 +1,8 @@
 # Creating the child internally
 
-To keep composition, the parent creates the child. Outside code never holds a reference to the parent's actual child instances.
+The House (owner, container) has several ways to enforce the composition relationship. 
+
+On this page the parent creates the child. Outside code never holds a reference to the parent's actual child instances.
 
 ## Version 1: Create in the constructor
 
@@ -116,7 +118,7 @@ We can handle composition by:
 1. The constructor on the parent class _creates_ the child object
 2. A method on the parent receives **data** and creates the child internally
 
-On the next page: what if you want to accept a `Room` object as a parameter? That needs copying.
+On the next page: what if you want to accept a `Room` object as a parameter? 
 
 <Quiz>
 {

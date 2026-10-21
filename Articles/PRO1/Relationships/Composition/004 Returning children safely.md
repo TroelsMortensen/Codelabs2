@@ -36,7 +36,7 @@ public class House
 }
 ```
 
-The above creates a _new ArrayList_ with the same elements.
+The above creates a _new ArrayList_, but with the same elements! We call this a "shallow copy". 
 
 But is that enough?
 
@@ -54,7 +54,7 @@ classDiagram
 
 So `OtherClass` still knows about the same Room objects as the House — not copies, but the actual same objects.
 
-Why is that a problem? Say `Room` has `paintRoom(String color)`. If `OtherClass` calls that method, it changes the House's room without the House controlling it.
+Why is that a problem? Say `Room` has `paintRoom(String color)`. If `OtherClass` calls that method, it changes the House's room _without_ the House controlling it.
 
 What we want instead:
 
@@ -89,23 +89,4 @@ What if `Room` itself has a composed `Window`? Then you need to copy the `Window
 
 ![copy](Resources/TurtlesAllTheWayDown.jpg)
 
-<Quiz>
-{
-  "Type": "TrueFalseQuiz",
-  "Statements": [
-    {
-      "Text": "return new ArrayList&lt;&gt;(rooms) is enough to preserve composition when Room objects are mutable.",
-      "IsCorrect": false
-    },
-    {
-      "Text": "A safe getRooms must copy both the list and each Room inside it.",
-      "IsCorrect": true
-    },
-    {
-      "Text": "If Room composes Window, Room's copy method should also copy the Window.",
-      "IsCorrect": true
-    }
-  ],
-  "Hint": "Review the 'copying the list is not enough' section and the deep-copy getRooms method."
-}
-</Quiz>
+

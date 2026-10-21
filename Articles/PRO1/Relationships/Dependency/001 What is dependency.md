@@ -26,4 +26,4 @@ When a field variable is involved, we show the stronger relationship (associatio
 - **Temporary relationship**: Objects interact only when needed
 - **No permanent reference**: The dependent class does not store a reference in a field
 - **Method-level interaction**: Used through method parameters, local variables, or static calls
-- **Loose coupling**: Classes are independent and can exist separately
+- **Coupling**: Classes are independent and can exist separately

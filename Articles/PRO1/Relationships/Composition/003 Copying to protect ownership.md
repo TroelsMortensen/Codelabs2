@@ -8,7 +8,7 @@ You might want:
 public void addRoom(Room room)
 ```
 
-But then the room object is created somewhere else, outside the house. Two different objects now have a reference to the same room — and that **breaks** composition.
+But then the room object is created somewhere else, outside the house. Two different objects (or "places") now have a reference to the same room — and that **breaks** composition.
 
 ## The problem with direct getters
 
@@ -29,7 +29,7 @@ public class House
 
 **Why this is problematic:**
 
-- External code can modify the room directly without the house knowing
+- External code can modify the room directly without the house knowing, breaking the ownership
 - Multiple objects could hold references to the same room
 - Breaks exclusive ownership
 
@@ -39,7 +39,7 @@ Instead of returning (or storing) the actual child, create a **copy**. That pres
 
 ### Method 1: Copy constructor
 
-```java{16-21}
+```java{14-19}
 public class Room
 {
     private String roomType;
@@ -73,7 +73,7 @@ public class Room
 
 Safe getter on `House`:
 
-```java{13-16}
+```java{12-15}
 public class House
 {
     private String address;
@@ -92,9 +92,11 @@ public class House
 }
 ```
 
+With the above code snippet, the actual living room object never leaves the house object. Instead we return a new Room object that is a copy of the living room object.
+
 ### Method 2: Custom copy method
 
-```java{15-18}
+```java{14-17}
 public class Room
 {
     private String roomType;
@@ -121,7 +123,7 @@ public class Room
 
 And `addRoom` that accepts a `Room` but stores a copy:
 
-```java{14-18}
+```java{12-16}
 public class House
 {
     private String address;
@@ -159,30 +161,4 @@ We can enforce composition by:
 2. A method receives data and creates the child internally
 3. A method receives a child object and stores a **copy**
 
-<Quiz>
-{
-    "Type": "SingleChoiceQuiz",
-    "Question": "<p>Which method breaks composition?</p>",
-    "Options": [
-        {
-            "Text": "<code>public Room getLivingRoom() { return livingRoom; }</code>",
-            "IsCorrect": true
-        },
-        {
-            "Text": "<code>public Room getLivingRoomCopy() { return livingRoom.createCopy(); }</code>",
-            "IsCorrect": false
-        },
-        {
-            "Text": "<code>public void addRoom(String type, double area, boolean hasWindow)</code> creating Room inside",
-            "IsCorrect": false
-        },
-        {
-            "Text": "<code>public void addRoom(Room room) { rooms.add(room.createCopy()); }</code>",
-            "IsCorrect": false
-        }
-    ],
-    "Shuffle": true,
-    "Hint": "Returning the original reference lets outsiders share ownership.",
-    "Explanation": "A getter that returns the real child breaks exclusive ownership. Returning or storing a copy preserves composition."
-}
-</Quiz>
+

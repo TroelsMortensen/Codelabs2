@@ -179,3 +179,33 @@ Explore these scenarios. Expand each to see a suggested relationship type. (This
     ]
 }
 </Quiz>
+
+## 7
+
+<Quiz>
+{
+    "Type": "SingleChoiceQuiz",
+    "Question": "<p>Which method breaks composition?</p>",
+    "Options": [
+        {
+            "Text": "<code>public Room getLivingRoom() { return livingRoom; }</code>",
+            "IsCorrect": true
+        },
+        {
+            "Text": "<code>public Room getLivingRoomCopy() { return livingRoom.createCopy(); }</code>",
+            "IsCorrect": false
+        },
+        {
+            "Text": "<code>public void addRoom(String type, double area, boolean hasWindow)</code> creating Room inside",
+            "IsCorrect": false
+        },
+        {
+            "Text": "<code>public void addRoom(Room room) { rooms.add(room.createCopy()); }</code>",
+            "IsCorrect": false
+        }
+    ],
+    "Shuffle": true,
+    "Hint": "Returning the original reference lets outsiders share ownership.",
+    "Explanation": "A getter that returns the real child breaks exclusive ownership. Returning or storing a copy preserves composition."
+}
+</Quiz>

@@ -1,6 +1,6 @@
 # Composition in UML
 
-In UML, composition is represented by a solid line with a **filled diamond** at one end and an open arrowhead at the other. Aggregation uses an _empty_ diamond — composition uses a filled one.
+In UML, composition is represented by a solid line with a **filled diamond** at one end and an open arrowhead at the other. Aggregation uses an _empty_ or non-filled diamond — composition uses a filled one.
 
 ## One to one
 
@@ -22,7 +22,7 @@ classDiagram
     House *--> Room
 ```
 
-Notice we do not put a `1` on the relationship line for composing one object — multiplicity is conventionally left out.
+Notice we do not put a `1` on the relationship line for composing one object — multiplicity is conventionally left out if there is only one.
 
 In code, the Room is created and managed by the House, and no class outside the House accesses that specific Room instance:
 
