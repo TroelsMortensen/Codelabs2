@@ -3,8 +3,8 @@
 Now that we have an object, the ever-present serializable `Person` object, we can write it to a file.
 
 In this example, we write a `Person` object to a file.\
-We need an `ObjectOutputStream` object. This object needs an object which can actually do the writing, in our case a FileOutput`Stream` object. This happens in lines 8-10, in the try() part.\
-In line 12, we then write the `Person` object to _whatever_ the `ObjectOutputStream` object is connected to. In this case, it is connected to a `FileOutputStream` object, which is connected to a file.
+We need an `ObjectOutputStream` object. This object needs an object which can actually do the writing, in our case a `FileOutputStream` object. This happens in lines 8-10, in the try(...) part.\
+In line 12, we then write the `Person` object to _whatever_ the `ObjectOutputStream` object is connected to. In this case, it is connected to a `FileOutputStream` object, which is "connected" to a file.
 
 ```java{12}
 import java.io.FileOutputStream;
@@ -29,7 +29,7 @@ public class ObjectSerializer {
 }
 ```
 
-That's actually pretty simple. The `ObjectOutputStream` object is responsible for converting the `Person` object to a binary stream, and writing it to the file.
+That's actually pretty simple. The `ObjectOutputStream` object is responsible for converting the `Person` object to a binary stream, and uses the FileOutputStream to write it to the file. On later semesters, you will see we can use other kinds of streams to send the data to other destinations, like a network socket.
 
 ## Complete Serialization Example
 
@@ -73,7 +73,7 @@ Bob Smith,35,bob@example.com
 And then, we could read back the text, and convert this into a `Person` object again. However, what about the `Address` object? And what about the `Country` object? Quickly, representing the object, or list of objects, as a plain text, can become rather complicated.\
 Every update to the data format requires a new version of the converter. It is tedious to maintain, and super error-prone.
 
-So, it's much easier to just write the binary data to the file. And since the data is in binary format, it can be read back by any program that knows how to interpret the binary data.
+So, it's much easier to just write the binary data to the file. And since the data is in binary format, it can be read back by any program that knows how to interpret the binary data. It _will_ still break, if we change the classes, and we try to deserialize an older version of the data into the newer classes. But a least we don't need to rewrite our own text-based format.
 
 ![atually](Resources/actually.jpg)
 

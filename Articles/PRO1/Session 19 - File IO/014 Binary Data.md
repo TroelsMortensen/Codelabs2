@@ -28,13 +28,13 @@ So far, we've focused on **text files** - files that contain human-readable char
 
 | File Type | Description | Example |
 |-----------|-------------|---------|
-| **Images** | Photos, graphics | `.jpg`, `.png`, `.gif`, `.bmp` |
-| **Audio** | Music, sounds | `.mp3`, `.wav`, `.flac` |
-| **Video** | Movies, clips | `.mp4`, `.avi`, `.mov` |
-| **Documents** | PDFs, Word docs | `.pdf`, `.docx` |
-| **Executables** | Programs | `.exe`, `.dll` |
-| **Compressed** | Archives | `.zip`, `.rar`, `.tar` |
-| **Java** | Compiled code | `.class`, `.jar` |
+| **Images** | Photos, graphics | `.jpg` `.png` `.gif` `.bmp` |
+| **Audio** | Music, sounds | `.mp3` `.wav` `.flac` |
+| **Video** | Movies, clips | `.mp4` `.avi` `.mov` |
+| **Documents** | PDFs, Word docs | `.pdf` `.docx` |
+| **Executables** | Programs | `.exe` `.dll` |
+| **Compressed** | Archives | `.zip` `.rar` `.tar` |
+| **Java** | Compiled code | `.class` `.jar` |
 
 ## Working with Binary Data in Java
 

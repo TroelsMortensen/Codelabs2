@@ -156,7 +156,7 @@ public class DataContainer implements Serializable {
         this.myOtherDataList = new ArrayList<>();
     }
     
-    // methods to add objects to the lists, and to retrieve the lists. 
+    // getter methods for the lists 
     // no need to copy stuff
 }
 ```
