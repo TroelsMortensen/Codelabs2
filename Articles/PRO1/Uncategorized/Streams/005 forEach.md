@@ -2,7 +2,7 @@
 
 `forEach` is a **terminal** operation. It takes each remaining element and **does something** with it — usually print, or later trigger UI behaviour. That “do something” is a **`Consumer`**: one argument, no return value.
 
-`forEach` does **not** produce a new list. When you need a list result, use collecting instead (next concept pages).
+`forEach` does **not** produce a new list. When you need a list result, you will use `toList()` instead — that comes a few pages later.
 
 ## Loop vs stream
 

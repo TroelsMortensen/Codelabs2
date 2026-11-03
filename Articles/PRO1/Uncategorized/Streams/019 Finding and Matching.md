@@ -30,10 +30,37 @@ void main() {
 }
 ```
 
-Related terminals (same idea, different question):
+## allMatch
 
-- `allMatch(predicate)` — are **all** elements matching?
-- `noneMatch(predicate)` — are **no** elements matching?
+`allMatch` is terminal. It returns `true` only if **every** element passes the predicate. If even one fails, the result is `false`.
+
+**Loop vs stream:**
+
+```java
+void main() {
+    List<Integer> scores = List.of(7, 9, 5, 10);
+
+    // Loop
+    boolean allPassLoop = true;
+    for (Integer s : scores) {
+        if (s < 5) {
+            allPassLoop = false;
+            break;
+        }
+    }
+
+    // Stream
+    boolean allPassStream = scores.stream()
+                                  .allMatch(s -> s >= 5);
+
+    IO.println(allPassLoop);    // true
+    IO.println(allPassStream);  // true
+}
+```
+
+If the list were `List.of(7, 9, 4, 10)`, both would be `false`, because `4` fails the test.
+
+There is also `noneMatch(predicate)` — `true` when **no** element matches. You will use `anyMatch` and `allMatch` most often.
 
 ## findFirst
 
