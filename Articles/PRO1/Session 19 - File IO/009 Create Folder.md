@@ -97,7 +97,7 @@ public class SafeFolderCreation {
 }
 ```
 
-Yeah, the Files class also handles folders, with the same method as checking for existence of files. Is is actually a bit annoying with this ambiguity. Would have been nice with a `Directories` class, or something like that. That's actually a good idea for a future exercise, I should remember this.
+Yeah, the Files class also handles folders, with the same method as checking for existence of files. It is actually a bit annoying with this ambiguity; would have been nice with a `Directories` class, or something like that. That's actually a good idea for a future exercise, I should remember this.
 
 ## Key Points
 

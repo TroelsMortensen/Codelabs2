@@ -12,16 +12,18 @@ Understanding the difference between text and binary files is fundamental to wor
 - **Line-oriented** - often organized into lines of text
 - **Platform-independent** - mostly work the same across different operating systems
 
+All the text you read in this learning path is stored in a text file, and loaded when you open the page.
+
 ### Examples of Text Files:
 ```
-- .txt files (plain text)
-- .java files (Java source code)
-- .html files (web pages)
-- .csv files (comma-separated values)
-- .json files (data exchange)
-- .xml files (structured data)
-- .properties files (configuration)
-- .log files (application logs)
+.txt files (plain text)
+.java files (Java source code)
+.html files (web pages)
+.csv files (comma-separated values)
+.json files (data exchange)
+.xml files (structured data)
+.properties files (configuration)
+.log files (application logs)
 ```
 
 All these files can be opened and read with a text editor, like Notepad, VS Code, etc.
@@ -45,6 +47,8 @@ Numbers: 12345
 - **Format-specific** - require specific programs to interpret
 - **Often more efficient** - can store data more compactly
 
+
+
 ### Examples of Binary Files:
 ```
 - .jpg, .png files (images)
@@ -58,13 +62,13 @@ Numbers: 12345
 
 Depending on what program tries to read a binary file, it will be able to interpret the data. For example, a photo viewer will be able to show you the photo, but a text editor will not.
 
-And, as you will see, we can take an object in Java, convert it to binary, and save that to a file. This will be good for your semester project.
+And, as you will see, we can take an object in Java, convert it to binary, and save that to a file. This is the recommended way to save data in your first semester project.
 
 ### What Binary Data Looks Like:
-If you opened a binary file in a text editor, you might see:
-```
-ÿØÿàJFIFHHÿÛC           !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ÿÛC
-```
+
+This is a screenshot of an audio file (.mp3) opened in a text editor.
+
+![Audio File in Text Editor](Resources/BinaryFile.jpg)
 
 Not super meaningful, and that's because the binary data may not even represent text. It could be a photo, or a video, or an executable program, or a compressed archive, or a compiled Java code, or anything else.
 

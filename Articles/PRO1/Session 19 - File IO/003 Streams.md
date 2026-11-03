@@ -2,9 +2,11 @@
 
 Streams are Java's way of handling the flow of data to and from files. Think of streams as **pipes** that connect your program to files, allowing data to flow in one direction. It is not all in one go, but rather in chunks.
 
+And then Java introduced another kind of streams, which operate on collections of data, like lists and sets. But that kind of stream is not covered in this learning path.
+
 ## What are Streams?
 
-A **stream** is an abstraction that represents a flow of data. It's like a water pipe - data flows through it from a source to a destination.
+A **stream** is an abstraction that represents a flow of data. It's like a water pipe - data flows through it from a source to a destination (e.g. from file to program).
 
 ### Real-World Analogy
 
@@ -36,14 +38,14 @@ Java has a well-organized hierarchy of stream classes, including:
 
 ```mermaid
 classDiagram
-    class InputStream {
+    class _InputStream_ {
         <<abstract>>
         +read() int
         +read(byte[]) int
         +close() void
     }
     
-    class OutputStream {
+    class _OutputStream_ {
         <<abstract>>
         +write(int) void
         +write(byte[]) void
@@ -70,12 +72,13 @@ classDiagram
         +FileWriter(String)
     }
     
-    InputStream <|-- FileInputStream
-    OutputStream <|-- FileOutputStream
-    FileReader ..> InputStream : uses
-    FileWriter ..> OutputStream : uses
+    _InputStream_ <|-- FileInputStream
+    _OutputStream_ <|-- FileOutputStream
+    FileReader ..> _InputStream_ : uses
+    FileWriter ..> _OutputStream_ : uses
 ```
 
+We will come back to concrete examples of these classes later in this learning path.
 
 ## Stream Characteristics
 
@@ -89,6 +92,8 @@ int firstByte = stream.read();  // Reads byte 1
 int secondByte = stream.read(); // Reads byte 2
 // Can't directly jump to byte 1000
 ```
+
+Is this actually usable? Not really. You don't want to manually read each byte of a file to then reconstruct the data from that sequence of bytes. We will use another class for that particular purpose. That other class, the stream, will then use the `FileInputStream` to read the data.
 
 ### **2. One-Way Flow**
 Streams flow in one direction:
@@ -110,4 +115,4 @@ Streams flow in one direction:
 
 ## What's Next?
 
-Now that you understand streams, let's start working with text files! We'll begin with writing text to files using Java's file I/O classes.
+Now that you understand streams (maybe?), let's start working with text files! We'll begin with writing text to files using Java's file I/O classes.

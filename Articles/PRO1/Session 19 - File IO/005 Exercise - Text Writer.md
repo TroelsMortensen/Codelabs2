@@ -18,7 +18,7 @@ public static void main(String[] args) {
 ```
 
 This should write out "Hello, World!" to the file "test.txt". But where is that file?
-Well, if you give it just a name, like above, the location will be relative, to where your program is running.
+Well, if you give it just a name, like above, the location will be _relative_, to where your program is running.
 
 Mine ends up here:
 
@@ -28,7 +28,7 @@ You can double click it, and verify the content. IntelliJ can open text files ju
 
 ## Exercise 5.1 - Absolute path
 
-Another approach is to use an absolute path, which is a full path to the file. This is useful if you want to write to a file in a different location.
+Another approach is to use an _absolute path_, which is a full path to the file, starting from the root of the file system (on Windows it is the `C:\` drive). This is useful if you want to write to a file in a different location.
 
 For example, I can define the file path and name like below, and the file will be created in the Documents folder of my user account.
 
@@ -48,6 +48,6 @@ Give it a try, remember to update the path to something on your computer.
 
 Why the `\\` escape character? Because the `\` is used as an escape character in Java strings. So, we need to escape it with another `\`. 
 
-If you are on mac or linux, you can use the `/` character instead of `\`.
+If you are on mac or linux, you can use the `/` character instead of `\`. This is sometimes also accepted on Windows, you could give it a try.
 
 

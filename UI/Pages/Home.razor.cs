@@ -140,28 +140,33 @@ public partial class Home : ComponentBase
                                 new("Application design", "PRO1/Session 20 - Application design")
                             ]
                         ),
-                        new Session(21, "JavaFX introduction",
+                        new Session(21, "Lambdas and Streams",
                             [
                                 new("Lambdas and method references", "PRO1/Uncategorized/Lambda expressions"),
+                                new("Streams", "PRO1/Uncategorized/Streams"),
+                            ]
+                        ),
+                        new Session(22, "JavaFX introduction",
+                            [
                                 new("Java FX introduction", "PRO1/Session 21 - JFX intro")
                             ]
                         ),
-                        new Session(22, "JavaFX - multiple views",
+                        new Session(23, "JavaFX - multiple views",
                             [
                                 new("JavaFX - Multiple views", "PRO1/Session 22 - JFX Continued")
                             ]
                         ),
-                        new Session(23, "JavaFX - Application",
+                        new Session(24, "JavaFX - Application",
                             [
                                 new("JavaFX - application design", "PRO1/Session 23 - JFX Application")
                             ]
                         ),
-                        new Session(24, "Exam",
+                        new Session(25, "Exam",
                             [
                                 new("Exam practice exercises", "PRO1/Session 24 - Exam")
                             ]
                         ),
-                        new Session(25, "Relationships",
+                        new Session(26, "Relationships",
                             [
                                 new("Introduction", "PRO1/Relationships/Introduction"),
                                 new("Dependency", "PRO1/Relationships/Dependency"),

@@ -30,7 +30,7 @@ try (PrintWriter writer = new PrintWriter(new FileWriter("log.txt"))) {
 2024-01-15 11:00:00 - Application restarted
 ```
 
-Notice the timestamp is from the write operation, not the original content.
+
 
 ### Appending (Preserves Existing Content)
 

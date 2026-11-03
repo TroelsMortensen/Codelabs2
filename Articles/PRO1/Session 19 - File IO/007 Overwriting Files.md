@@ -1,6 +1,6 @@
 # Overwriting Existing Files
 
-When you write to a file that already exists, Java will **overwrite** the existing content by default. This means the old content is completely replaced with the new content.
+When you write to a file that already exists, Java will generally**overwrite** the existing content by default (depends on which class you use to write to the file). This means the old content is completely replaced with the new content, and that is not always ideal.
 
 ## Default Behavior: Overwriting
 

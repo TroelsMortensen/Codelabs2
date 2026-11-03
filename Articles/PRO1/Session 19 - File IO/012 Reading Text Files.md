@@ -6,12 +6,18 @@ Now let's learn how to read text data from files. Java provides several ways to 
 
 ### Using FileReader
 
-LoL, you can use this class, but that's just annoying. Let's skip it.
+LoL, you can use this class, but that's just annoying. Let's skip it. Okay, it's not _that_ bad, but it's not _that_ good either.
+
+It has two relevant methods:
+- `readAllAsString()` - reads the entire file as a string
+- `readAllLines()` - reads all lines at once and returns a list of strings
+
+In both cases, you need to read the entire file into memory, which is not efficient for large files.
 
 ## Better Approach: Using BufferedReader
 
 `BufferedReader` provides more convenient methods for reading text. It allows you to read text from a file line by line.
-This will not read all the content at once, but instead scan the text file line by line, basically only looking at one line at a time. This is how we can read massively large files, without running out of memory. Only one line at a time is loaded into memory.
+This will not read all the content at once, but instead scan the text file line by line, basically only looking at one line at a time. This is how we can read massively large files, without running out of memory. Only one line at a time is loaded into memory, processed, then discarded.
 
 Again, we use the try-with-resources approach, where we create a new BufferedReader object, and pass a FileReader object to the constructor. The FileReader object is responsible for reading the file, and the BufferedReader object is responsible for reading the file line by line.\
 The BufferedReader adds that extra level of abstraction and usability, making things easier for us, the developers.
@@ -34,6 +40,18 @@ public class BetterTextReader {
     }
 }
 ```
+
+And an explanation of the code:
+
+- In the try-with-resources, we create a `BufferedReader` wrapping a `FileReader` for `data.txt`. When the try block ends, both are closed automatically.
+- We declare a `String line` variable to hold each line as we read it.
+- The `while` condition does two things at once: it calls `reader.readLine()` and assigns the result to `line`-variable. Then it checks whether that `line` is `null`.
+  - `readLine()` returns the next line of text from the file (without the newline character).
+  - When there are no more lines left, `readLine()` returns `null`, and the loop stops.
+- Inside the loop, we print the current line. Then we go back and read the next one.
+- If something goes wrong (file missing, no permission, etc.), the `catch` block handles the `IOException`.
+
+So the flow is: open → read a line → process it → read the next line → … → stop when `null` → close.
 
 ## Modern Approach: Files.readAllLines()
 
