@@ -72,5 +72,5 @@ During your studies on further semesters, you will learn about more advanced des
 
 ## Initial solution suggestion
 
-You may find inspiration for the code in [this generated solution suggestion](https://github.com/TroelsMortensen/Codelabs2/tree/master/Articles/Session%2020%20-%20Application%20design/Solution).
+You may find inspiration for the code in [this generated solution suggestion](https://github.com/TroelsMortensen/Codelabs2/tree/master/Articles/PRO1/Session%2020%20-%20Application%20design/Solution).
 I may refine it later. Your solution may look slightly different, but the core ideas are the same.
