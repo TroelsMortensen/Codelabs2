@@ -8,7 +8,7 @@ You will need:
 - a main class to run the application, i.e. the usual start method
 - The ViewManager class, to switch between the views
 
-Just put everything into the same package. Next session we will explore application structure a bit more.
+Just put everything into the same package - including the fxml files, if you like. Next session we will explore application structure a bit more.
 
 ## UI
 Below, you will see two wire frames of the views, use these as inspiration.

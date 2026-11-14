@@ -9,6 +9,8 @@ This static approach is not ideal, but it's a good enough for now. Next session,
 
 You will once again need a ViewManager, and a class to start things.
 
+> Do read through the entire exercise, before you start!
+
 ## UI
 
 Below, I have added some very beautiful ascii art, to help you visualize the UI.
@@ -40,6 +42,8 @@ Below, I have added some very beautiful ascii art, to help you visualize the UI.
 │                                         │
 └─────────────────────────────────────────┘
 ```
+
+Consider using a `ListView` to show the list of people. It should be possible to select an item in the list.
 
 ### View 2: Person Details
 
