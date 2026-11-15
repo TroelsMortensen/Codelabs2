@@ -1,7 +1,7 @@
 # Layouts in JavaFX
 
 Layout of your application is done with various panes. You have already seen some of them, such as VBox, HBox, and AnchorPane.\
-Each pane has specific behaviour and properties.
+Each pane has specific behaviour and properties. And you can put panes inside other panes, to combine the behaviours and properties of various panes for more complex layouts.
 
 The layouts are:
 
