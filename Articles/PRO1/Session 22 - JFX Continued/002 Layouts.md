@@ -21,7 +21,7 @@ The layouts are:
 
 ![GridPane](Resources/GridPane.jpg)
 
-**StackPane** - Stacks children on top of each other, centered by default. Useful for overlaying elements or creating layered effects. The z-order of the children is defined by the order of the children list with the 0th child being the bottom and last child on top
+**StackPane** - Stacks children on top of each other, centered by default. Useful for overlaying elements or creating layered effects. The z-order of the children is defined by the order of the children list with the 0th child being the bottom and last child on top. You can also use this to create the "go back to previous view" functionality, you know from browsers.
 
 ![StackPane](Resources/StackPane.jpg)
 
