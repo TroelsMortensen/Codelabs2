@@ -6,6 +6,8 @@ Again, we will just focus on the features related to the `Planet` entity, but yo
 
 We will build this incrementally, step by step, to help you understand the architecture.
 
+[Here is a solution](https://github.com/TroelsMortensen/JavaFxExamples/tree/master/22_SpaceExplorationExerciseSolution) for inspiration.
+
 ---
 
 ## Exercise 1: Set Up the Package Structure
